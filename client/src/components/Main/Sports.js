@@ -17,7 +17,7 @@ export const Sports=()=>
                 <ol className="breadcrumb">
                     <Link to="/" className="breadcrumb-item">Home</Link>
                     <Link to="/Sports" className="breadcrumb-item">Sports</Link>
-                    <Link to="/" className="breadcrumb-item active" aria-current="page">Thoroughbreds</Link>
+                    <Link to = "/Sports" className="breadcrumb-item active" aria-current="page">Thoroughbreds</Link>
                 </ol>
              </nav>
             </div>
