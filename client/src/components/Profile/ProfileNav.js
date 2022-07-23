@@ -6,7 +6,7 @@ import { Route, Routes, Link } from "react-router-dom";
 import { Header } from "../Header/Header";
 
 export const ProfileNav = () => {
-  const { user, isAuthenticated, loading } = useSelector((state) => state.user);
+  const { user, isAuthenticated, loading,error } = useSelector((state) => state.user);
 
   console.log(user);
 
@@ -15,7 +15,6 @@ export const ProfileNav = () => {
       <div className="flexbox">
         <div className="box_one">
           <h1>Profile Setting</h1>
-
           <div className="pic1">
             <Link to="/dashboard" className="col">
               Edit Profile
@@ -66,31 +65,3 @@ export const ProfileNav = () => {
   );
 };
 
-{
-  /* <Navbar/> */
-}
-{
-  /* <Routes> */
-}
-{
-  /* <Route path='/home' exact element={<Home/>} />
-          <Route path='/reports' element={<Reports/>} />
-        <Route path='/products' element={<Products/>} /> */
-}
-{
-  /* </Routes> */
-}
-{
-  /* <Header/> */
-}
-{
-  /* {/* <div style = {{position:"absolute",top:"20%"}} classNameName="profile"> */
-}
-{
-  /* <img src = "/Profile.png"/>
-        <h2 >userName:{user.username}</h2>
-        <h1>{new Date(user.dob).toDateString()}</h1>
-        <h2>gender:{user.gender}</h2>
-        
-    </div> */
-}

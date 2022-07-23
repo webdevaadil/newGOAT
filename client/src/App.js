@@ -12,6 +12,7 @@ import { PaymentMethoad } from "./components/Profile/PaymentMethoad";
 import { Profile } from "./components/Profile/Profile";
 import { AccountSetting } from "./components/Profile/AccountSetting";
 import { Dashboard } from "./components/Profile/Dashboard";
+import { Sports } from "./components/Main/Sports";
 
 function App() {
   const user = localStorage.getItem("token");
@@ -22,6 +23,8 @@ function App() {
           <Route path="/" element={<Main/>} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/sports" element={<Sports/>} />
+
             <Route path="/dashboard" element={<Dashboard />}>
               <Route path="" element={<Profile/>} />
               <Route path="payment" element={<PaymentMethoad />} />
