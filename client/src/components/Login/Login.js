@@ -76,7 +76,7 @@ if(error){
             <form onSubmit={handleSubmit} className="form-floating mb-3">
               <input onChange={(e)=>(setLoginEmail(e.target.value))} name = "email" value = {loginEmail} type="email"
               className="form-control mb-4" id="floatingInputValue" placeholder="yourmail@mail.com"/>
-              <label for="floatingInputValue">Email Address</label>
+              <label htmlFor="floatingInputValue">Email Address</label>
               <div className="form-floating mb-3">
                 <input 
                 name="password"
@@ -85,7 +85,7 @@ if(error){
                 onChange={(e)=>setLoginPassword(e.target.value)}
                 type="password" className="form-control" id="myInput" placeholder="*******" />
                 <i className="fa fa-eye" onClick={myFunction}></i>
-                <label for="floatingPassword">Passwords</label>
+                <label htmlFor="floatingPassword">Passwords</label>
               </div>
               <div className="fom-btn mb-3">
                 <button style={{backgroundColor:" #10867F",color:'black'}} disabled = {loginPassword==""} type="submit" className="btn btn-outline-secondary">Login</button>

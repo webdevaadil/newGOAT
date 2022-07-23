@@ -1,13 +1,18 @@
-import React from "react";
+import React,{useState} from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Header.css";
 import { Loginbtn } from "./Loginbtn";
 export const Header = () => {
   const { user, isAuthenticated, loading } = useSelector((state) => state);
+
+  const[show,setShow] = useState(false)
+
 console.log(user)
 
   const navigate = useNavigate();
+
+
   return (
     <>
           <div className="container-fluid Mainheader">      
@@ -23,7 +28,16 @@ console.log(user)
                   <Link to= "/" className="nav-link" >HOME</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to = "/sports" className="nav-link">SPORTS</Link>
+                  <div onClick={()=>{setShow(!show)}} style = {{color:"white",cursor:"pointer"}} className="nav-link">SPORTS</div>
+                  {show&&
+                    <div className="card">
+                      <div className="card-body">
+
+                    <Link to = "/thoroughbreds">Throughbreds</Link>
+                  <br/>
+                    <Link to = "/greyhounds">Greyhounds</Link>
+                      </div>
+                  </div>}
                 </li>    
               </ul>
         <Loginbtn/>

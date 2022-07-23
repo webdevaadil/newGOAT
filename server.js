@@ -3,12 +3,14 @@ dotenv.config({ path: "./config.env" });
 const express = require("express");
 const connectDB =require("./config/db")
 const path = require("path")
+const cookieParser = require("cookie-parser")
 connectDB()
 
 const app = express();
 
 app.use(express.json())
 app.use('/api/auth', require('./routes/auth'))
+app.use(cookieParser())
 const PORT = process.env.PORT ||5000;
 
 
