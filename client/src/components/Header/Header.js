@@ -34,12 +34,12 @@ console.log(user)
                       <div className="card-body"> 
                       <div >
                    <img src="/Vector.png" alt="" />
-                    <Link style ={{fontSize:"15px"}}   onClick={()=>setShow(!show)} to = "/thoroughbreds">Throughbreds</Link>
+                    <Link className="modaltext" style ={{fontSize:"15px"}}   onClick={()=>setShow(!show)} to = "/thoroughbreds">Throughbreds</Link>
                       </div>
                   <br/>
                   <div  >
                      <img src="left-Vector.png" alt="" />
-                    <Link style ={{fontSize:"15px"}}  onClick={()=>setShow(!show)}  to = "/greyhounds">Greyhounds</Link>
+                    <Link className="modaltext"  style ={{fontSize:"15px"}}  onClick={()=>setShow(!show)}  to = "/greyhounds">Greyhounds</Link>
                   </div>
                       </div>
                   </div>}

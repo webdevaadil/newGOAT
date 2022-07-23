@@ -64,3 +64,6 @@ a{
 	text-decoration: none;
     color: black;
 }
+.modaltext:hover{
+color: #10867F;
+}
