@@ -14,10 +14,15 @@ import { AccountSetting } from "./components/Profile/AccountSetting";
 import { Dashboard } from "./components/Profile/Dashboard";
 import { Thoroughbreds } from "./components/Main/Thoroughbreds";
 import { Greyhounds } from "./components/Main/Greyhounds";
+import { HorseDetails } from "./components/Main/HorseDetails";
+import { Greydetails } from "./components/Main/Greydetails";
+import { useSelector } from "react-redux";
 
 
 function App() {
-  const user = localStorage.getItem("token");
+
+  const {user,error,loading,isAuthenticated}  = useSelector((state)=>state.user)
+
   return (
     <>
       <BrowserRouter>
@@ -27,6 +32,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/thoroughbreds" element={<Thoroughbreds/>}/>
           <Route path="/greyhounds" element={<Greyhounds/>}/>
+          <Route path = "/horsedetails" element = {<HorseDetails/>}/>
+          <Route path = "/greydetails" element = {<Greydetails/>}/>
             <Route path="/dashboard" element={<Dashboard />}>
               <Route path="" element={<Profile/>} />
               <Route path="payment" element={<PaymentMethoad />} />
@@ -37,5 +44,6 @@ function App() {
     </>
   );
 }
+
 
 export default App;

@@ -10,7 +10,9 @@ export const Timetable = () => {
             <h3 className="free-title">Today, 04 Aug 2021</h3>
             <div className='upcomming-table'>
             <table>
-                <tr>
+
+              <tbody>
+              <tr>
                   <th className='first-border'>Track Namey</th>
                   <th>Time</th>
                   <th>Race No.</th>
@@ -65,7 +67,9 @@ export const Timetable = () => {
                   <td>3</td>
                   <td> 7</td>
                   <td>6.5</td>  
-                </tr>               
+                </tr>   
+              </tbody>
+                       
               </table>
             </div>
           </div>
@@ -76,6 +80,8 @@ export const Timetable = () => {
             <h3 className="free-title">Tomorrow, 05 Aug 2021</h3>
             <div className='upcomming-table'>
             <table>
+              <tbody>
+
                 <tr>
                   <th className='first-border'>Track Namey</th>
                   <th>Time</th>
@@ -132,6 +138,7 @@ export const Timetable = () => {
                   <td> 7</td>
                   <td>6.5</td>  
                 </tr>               
+              </tbody>
               </table>
             </div>
           </div>

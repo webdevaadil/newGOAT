@@ -17,8 +17,8 @@ export const Thoroughbreds=()=>
             <nav aria-label="breadcrumb" className="section-banner">
                 <ol className="breadcrumb">
                     <Link to="/" className="breadcrumb-item">Home</Link>
-                    <Link to="/Sports" className="breadcrumb-item">Sports</Link>
-                    <Link to = "/Sports" className="breadcrumb-item active" aria-current="page">Thoroughbreds</Link>
+                    <Link to="/thoroughbreds" className="breadcrumb-item">Sports</Link>
+                    <Link style={{color:"#10867F"}}  to = "/thoroughbreds" className="breadcrumb-item active" aria-current="page">Thoroughbreds</Link>
                 </ol>
              </nav>
             </div>
@@ -38,7 +38,7 @@ export const Thoroughbreds=()=>
                  <div className='tips-colum1'>
                   <h3>Murray Bridge, NSW</h3>
                   <div className='space'>
-                    <button className='btn'>Race 1</button>
+                    <Link to = "/horsedetails" > <button className='btn'>Race 1</button></Link>
                     <p>In 2 minutes</p>
                   </div>
                  </div>
@@ -50,7 +50,8 @@ export const Thoroughbreds=()=>
                  <div className='tips-colum1'>
                   <h3>Flemington, VIC</h3>
                   <div className='space'>
-                    <button className='btn'>Race 2</button>
+                  <Link to = "/horsedetails" > <button className='btn'>Race 2</button></Link>
+
                     <p>In 3 minutes</p>
                   </div>
                  </div>
@@ -62,7 +63,8 @@ export const Thoroughbreds=()=>
                  <div className='tips-colum1'>
                   <h3>Ascot, WA</h3>
                   <div className='space'>
-                    <button className='btn'>Race 2</button>
+                                    <Link to = "/horsedetails" > <button className='btn'>Race 3</button></Link>
+
                     <p>In 4 minutes</p>
                   </div>
                  </div>
@@ -74,7 +76,8 @@ export const Thoroughbreds=()=>
                  <div className='tips-colum1'>
                   <h3>Warwick, NSW</h3>
                   <div className='space'>
-                    <button className='btn'>Race 2</button>
+                                    <Link to = "/horsedetails" > <button className='btn'>Race 4</button></Link>
+
                     <p>In 5 minutes</p>
                   </div>
                  </div>
@@ -86,7 +89,8 @@ export const Thoroughbreds=()=>
                  <div className='tips-colum1'>
                   <h3>Eaglefarm, QLD</h3>
                   <div className='space'>
-                    <button className='btn'>Race 1</button>
+                  <Link to = "/horsedetails" > <button className='btn'>Race 5</button></Link>
+
                     <p>In 6 minutes</p>
                   </div>
                  </div>
@@ -98,7 +102,7 @@ export const Thoroughbreds=()=>
                  <div className='tips-colum1'>
                   <h3>Belmont, WA</h3>
                   <div className='space'>
-                    <button className='btn'>Race 2</button>
+                                    <Link to = "/horsedetails" > <button className='btn'>Race 6</button></Link>
                     <p>In 6 minutes</p>
                   </div>
                  </div>

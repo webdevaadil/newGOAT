@@ -30,20 +30,28 @@ console.log(user)
                 <li className="nav-item">
                   <div onClick={()=>{setShow(!show)}} style = {{color:"white",cursor:"pointer"}} className="nav-link">SPORTS</div>
                   {show&&
-                    <div className="card">
-                      <div className="card-body">
-
-                    <Link to = "/thoroughbreds">Throughbreds</Link>
+                    <div style = {{zIndex:"1",width:"232px",height:"160px" ,gap:"24px",position:"absolute",left:"26%"}} className="card">
+                      <div className="card-body"> 
+                      <div >
+                   <img src="/Vector.png" alt="" />
+                    <Link style ={{fontSize:"15px"}}   onClick={()=>setShow(!show)} to = "/thoroughbreds">Throughbreds</Link>
+                      </div>
                   <br/>
-                    <Link to = "/greyhounds">Greyhounds</Link>
+                  <div  >
+                     <img src="left-Vector.png" alt="" />
+                    <Link style ={{fontSize:"15px"}}  onClick={()=>setShow(!show)}  to = "/greyhounds">Greyhounds</Link>
+                  </div>
                       </div>
                   </div>}
                 </li>    
+            
               </ul>
+             
         <Loginbtn/>
             </div>
           </nav>
         </div>
+      
     </>
   );
 };

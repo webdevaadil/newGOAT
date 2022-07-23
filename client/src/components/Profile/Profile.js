@@ -12,6 +12,7 @@ export const Profile = () => {
   const [name,setName] = useState("")
   const [date,setDate]  = useState(``)
   const [gender,setGender]  = useState("")
+  const [image,setImage]  = useState("")
   const datat = user.dob
   // console.log(user.dob.;
 // console.log(datat.toISOString().split('T')[0]);
@@ -39,7 +40,10 @@ console.log();
 
           <div className="pic_flex_box">
             <img  src={process.env.PUBLIC_URL + "img/1.png"}alt="rec" />
-            <input className="big_btn" value ="Upload Photo"/>
+            <div className="image">
+              <label htmlFor="file">Upload Photo</label>
+            <input style={{backgroundColor:"white"}} type="file" className="big_btn" onChange = {(e)=>setImage(e.target.value)}/>
+            </div>
           </div>
           <h2 className="per_text">Personal Details</h2>
           <input onChange= {(e)=>{setName(e.target.value)}} value = {user.username}  className="name" type="text" placeholder="Full name" />
