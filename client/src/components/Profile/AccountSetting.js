@@ -4,6 +4,7 @@ import "./accountsetting.css";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updatePassword } from "../../actions/userAction";
 import { UPDATE_PASSWORD_RESET } from "../../constants/userConstants";
+import axios from "axios";
 
 export const AccountSetting = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export const AccountSetting = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const updatePasswordSubmit = (e) => {
+  const updatePasswordSubmit = async(e) => {
     e.preventDefault();
 
     const myForm = new FormData();
@@ -20,9 +21,17 @@ export const AccountSetting = () => {
     myForm.set("oldPassword", oldPassword);
     myForm.set("newPassword", newPassword);
     myForm.set("confirmPassword", confirmPassword);
+    
+      
+      const data  = await axios.put(
+        `/api/auth/update`,
+        {oldPassword,newPassword,confirmPassword},
+      );
+  
+    }
 
-    dispatch(updatePassword({oldPassword,newPassword,confirmPassword}));
-  };
+    // dispatch(updatePassword({oldPassword,newPassword,confirmPassword}));
+  
   // useEffect(() => {
   //   if (error) {
   //     alert.error(error);

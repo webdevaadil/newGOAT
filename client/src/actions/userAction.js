@@ -73,26 +73,7 @@ export const loaduser = () => async (dispatch) => {
 
   }
 };
-export const updatePassword = (oldPassword,newPassword,confirmPassword) => async (dispatch) => {
-  try {
-    dispatch({ type: UPDATE_PASSWORD_REQUEST });
 
-    const config = { headers: { "Content-Type": "application/json" } };
-
-    const { data } = await axios.put(
-      `/api/auth/update`,
-      {oldPassword,newPassword,confirmPassword},
-      config
-    );
-
-    dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: data.success });
-  } catch (error) {
-    dispatch({
-      type: UPDATE_PASSWORD_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
 
 // export const loaduser = () =>async(dispatch)=>{
 
