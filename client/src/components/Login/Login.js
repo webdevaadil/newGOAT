@@ -9,6 +9,7 @@ import image1 from "../../Images/Rectangle1.jpg"
 import { Metadata } from "../layout/Metadata";
 import { Loader } from "../layout/Loader";
 import {useAlert, userAlert} from "react-alert"
+import store from "../../store";
 
 export const Login = () => {
   const {user,error,loading,isAuthenticated}  = useSelector((state)=>state.user)
@@ -27,25 +28,26 @@ export const Login = () => {
     try {
     
       dispatch(login(loginEmail,loginPassword))
-    
-
+      
+      
     } 
     catch (error) {
       if(error){
-    return error
+        return error
       }
-
+      
     }}
     useEffect(()=>{
-
-if(error){
-  alert.error(error)
-  dispatch(clearErrors());
-}
+      
+      if(error){
+        alert.error(error)
+        dispatch(clearErrors());
+      }
 
       if(isAuthenticated){
 
         navigate("/") 
+
       }
      
     },[error,navigate,isAuthenticated,loading])

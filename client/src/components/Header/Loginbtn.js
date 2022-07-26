@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import store from "../../store";
+import { loaduser } from "../../actions/userAction";
 
 export const Loginbtn = () => {
   const navigate = useNavigate();
-  const { user, isAuthenticated, loading } = useSelector((state) => state.user);
+  const { user, isAuthenticated, loading} = useSelector((state) => state.user);
+  useEffect(()=>{
 
+    if(isAuthenticated){
+      
+    }
+    store.dispatch(loaduser())
 
+  },[])
   return (
     <>
       <span className="home_btn">
@@ -21,6 +29,7 @@ export const Loginbtn = () => {
           </div>
         )}
       </span>
+        {/* <button onClick={()=>navigate("/dashboard")} className="user_btn"></button> */}
     </>
   );
 };

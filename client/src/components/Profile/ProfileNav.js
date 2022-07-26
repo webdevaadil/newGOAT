@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import scss from'scss'
 import "./profile.css";
 import { useSelector, useDispatch } from "react-redux";
-import { Route, Routes, Link } from "react-router-dom";
-import { Header } from "../Header/Header";
+import { Route, Routes, Link, useNavigate } from "react-router-dom";
+import { loaduser, logout } from "../../actions/userAction";
+import store from "../../store";
 
 export const ProfileNav = () => {
-  const { user, isAuthenticated, loading,error } = useSelector((state) => state.user);
+  let navigate = useNavigate()
+  const dispatch = useDispatch();
+  const { user, isAuthenticated, loading} = useSelector((state) => state.user);
+  useEffect(()=>{
 
+    if(isAuthenticated){
+      
+    }
+    store.dispatch(loaduser())
+
+  },[])
+  
+  function logoutUser() {
+    dispatch(logout());
+    alert("Logout Successfully");
+
+      navigate("/login")
+      
+  
+  }
   console.log(user);
 
   return (
@@ -16,7 +35,7 @@ export const ProfileNav = () => {
         <div className="box_one">
           <h1>Profile Setting</h1>
           <div className="pic1">
-            <Link to="/dashboard" className="col">
+            <Link to="/dashboard" className="">
               Edit Profile
             </Link>
             <img
@@ -52,7 +71,7 @@ export const ProfileNav = () => {
             />
           </div>
           <div className="pic5">
-            <h2>Logout</h2>
+            <button onClick={logoutUser}>Logout</button>
             <img
               className="img2"
               src="img/log-out.png"

@@ -6,7 +6,8 @@ import { userReducer } from "./reducers/userReducer"
 
 
 const reducer = combineReducers({
-    user:userReducer
+    user:userReducer,
+
 })
 
 const middleware = [thunk]
