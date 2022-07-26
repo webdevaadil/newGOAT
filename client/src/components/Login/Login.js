@@ -81,7 +81,6 @@ if(error){
                 <input 
                 name="password"
                 value={loginPassword}
-
                 onChange={(e)=>setLoginPassword(e.target.value)}
                 type="password" className="form-control" id="myInput" placeholder="*******" />
                 <i className="fa fa-eye" onClick={myFunction}></i>

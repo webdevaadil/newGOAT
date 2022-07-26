@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -5,16 +6,16 @@ const crypto = require("crypto");
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: [true, "plese provide username"],
+    required: [true, "please provide username"],
   },
   email: {
     type: String,
-    required: [true, "plese provide email"],
+    required: [true, "please provide email"],
     unique: true,
   },
   password: {
     type: String,
-    required: [true, "plese provide password"],
+    required: [true, "please provide password"],
     minlength: 6,
     select: false,
   },
@@ -26,6 +27,12 @@ const userSchema = new mongoose.Schema({
     type:String,
     default:"male"
   },
+  photo: {   
+ 
+    data: Buffer,   
+    type: String
+
+},
 
   resetPasswordToken: String,
   resetPasswordExpire: Date,

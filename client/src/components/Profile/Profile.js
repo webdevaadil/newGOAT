@@ -41,14 +41,15 @@ console.log();
           <div className="pic_flex_box">
             <img  src={process.env.PUBLIC_URL + "img/1.png"}alt="rec" />
             <div className="image">
-              <label htmlFor="file">Upload Photo</label>
-            <input style={{backgroundColor:"white"}} type="file" className="big_btn" onChange = {(e)=>setImage(e.target.value)}/>
+              <label htmlFor="file">Upload Photo
+            <input accept ="image/*" type="file" className="big_btn" onChange = {(e)=>setImage(e.target.value)}/>
+            </label>
             </div>
           </div>
           <h2 className="per_text">Personal Details</h2>
           <input onChange= {(e)=>{setName(e.target.value)}} value = {user.username}  className="name" type="text" placeholder="Full name" />
           <div className="input_flex_box">
-            <input onChange = {(e)=>{setDate(e.target.value)}} value={formatDate(user.dob)}  className="dob"  placeholder="Date of Birth" />
+            <input type="date" onChange = {(e)=>{setDate(e.target.value)}} value={formatDate(user.dob)}  className="dob"  placeholder="Date of Birth" />
             <input  onChange = {(e)=>{setGender(e.target.value)}} value = {user.gender} className="gender" type="text" placeholder="Gender(Optinal)" />
           </div>
           <div className="button_flex_box">
