@@ -8,7 +8,7 @@ router.route("/login").post(login);
 
 router.route("/me").get(isAuthuser,dashboard);
 router.route("/logout").get(logout);
-router.route("/password/update").get(isAuthuser, updatePassword);
+router.route("/update").put(isAuthuser, updatePassword);
 
 // router.route("/resetpassword/:resetToken").put(resetPassword);
 

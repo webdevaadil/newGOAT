@@ -52,7 +52,7 @@ exports.login = catchAsyncerror( async (req, res, next) => {
     if (!user) {
       return res.status(500).json("invalid credentials user not found");
     }
-    const isMatch = await user.matchPasswords(password);
+    const isMatch = await user.matchPassword(password);
     if (!isMatch) {
       return res.status(500).json("password is not vallid please register");
     }
@@ -106,15 +106,15 @@ exports.logout = catchAsyncerror(async (req, res, next) => {
 // update User password
 exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
-
-  const isPasswordMatched = await user.matchPasswords(req.body.oldPassword);
+// console.log(user);
+  const isPasswordMatched = await user.matchPassword(req.body.oldPassword);
 
   if (!isPasswordMatched) {
-    return next(new ErrorHander("Old password is incorrect", 400));
+    return next(new ErrorResponse("Old password is incorrect", 400));
   }
 
   if (req.body.newPassword !== req.body.confirmPassword) {
-    return next(new ErrorHander("password does not match", 400));
+    return next(new ErrorResponse("password does not match", 400));
   }
 
   user.password = req.body.newPassword;
