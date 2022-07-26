@@ -1,44 +1,86 @@
-import { CLEAR_ERRORS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, REGISTER_USER_FAIL, REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS } from "../constants/userConstants"
+import {
+  CLEAR_ERRORS,
+  DETAIL_USER_FAIL,
+  DETAIL_USER_REQUEST,
+  DETAIL_USER_SUCCESS,
+  LOGIN_FAIL,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGOUT_USER_FAIL,
+  LOGOUT_USER_SUCCESS,
+  REGISTER_USER_FAIL,
+  REGISTER_USER_REQUEST,
+  REGISTER_USER_SUCCESS,
+} from "../constants/userConstants";
 
-export const userReducer = (state ={},action)=>{
-    console.log(state.user)
+export const userReducer = (state = {}, action) => {
 
-    switch(action.type){
-        case LOGIN_REQUEST:
-        case REGISTER_USER_REQUEST:
-            return{
-                loading:true,
-                isAuthenticated:false
-            }
+  switch (action.type) {
+    case LOGIN_REQUEST:
+    case REGISTER_USER_REQUEST:
+      return {
+        loading: true,
+        isAuthenticated: false,
+      };
 
-        case LOGIN_SUCCESS:
-        case REGISTER_USER_SUCCESS:
-            return {
-                ...state,
-                loading:false,
-                isAuthenticated:true,
-                user:action.payload
-            }  
+    case LOGIN_SUCCESS:
+    case REGISTER_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: true,
+        user: action.payload,
+      };
 
-      case LOGIN_FAIL:
-     case REGISTER_USER_FAIL:
-        return{
-          ...state,
+    case LOGIN_FAIL:
+    case REGISTER_USER_FAIL:
+      return {
+        ...state,
         loading: false,
         isAuthenticated: false,
         user: null,
-        error:action.payload,
-        }
+        error: action.payload,
+      };
+    case LOGOUT_USER_SUCCESS:
+      return {
+        loading: false,
+        user: null,
+        isAuthenticated: false,
+      };
+    case LOGOUT_USER_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
 
-        case CLEAR_ERRORS:
+    case CLEAR_ERRORS:
       return {
         ...state,
         error: null,
       };
+    case DETAIL_USER_REQUEST:
+      return {
+        loading: true,
+        isAuthenticated: false,
+      };
+    case DETAIL_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: true,
+        user: action.payload,
+      };
 
-        default:
-        return state
+    case DETAIL_USER_FAIL:
+      return {
+        loading: false,
+        isAuthenticated: false,
+        user: null,
+        error: action.payload,
+      };
 
-    }
-
-}
+    default:
+      return state;
+  }
+};

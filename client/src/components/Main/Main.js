@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Main.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Metadata } from "../layout/Metadata";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
+import store from "../../store";
+import { useSelector } from "react-redux";
+import { loaduser } from "../../actions/userAction";
 
 export const Main = () => {
+  const {user,error,loading,isAuthenticated}  = useSelector((state)=>state.user)
+
   const navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
-  };
+  
+
+ 
 
   return (
     <>

@@ -16,13 +16,11 @@ import { Thoroughbreds } from "./components/Main/Thoroughbreds";
 import { Greyhounds } from "./components/Main/Greyhounds";
 import { HorseDetails } from "./components/Main/HorseDetails";
 import { Greydetails } from "./components/Main/Greydetails";
-import { useSelector } from "react-redux";
 
 
 function App() {
 
-  const {user,error,loading,isAuthenticated}  = useSelector((state)=>state.user)
-
+  
   return (
     <>
       <BrowserRouter>

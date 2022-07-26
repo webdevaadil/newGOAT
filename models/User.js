@@ -19,13 +19,17 @@ const userSchema = new mongoose.Schema({
     minlength: 6,
     select: false,
   },
-  dob:{
-    type:Date,
-    required:[true,"please provide date of birth"],
+  dob: {
+    type: Date,
+    required: [true, "please provide date of birth"],
   },
-  gender:{
-    type:String,
-    default:"male"
+  gender: {
+    type: String,
+    default: "male",
+  },
+  photo: {
+    data: Buffer,
+    type: String,
   },
   photo: {   
  
@@ -37,6 +41,7 @@ const userSchema = new mongoose.Schema({
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 });
+
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
@@ -49,7 +54,7 @@ userSchema.methods.matchPasswords = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 userSchema.methods.getSignedToken = function () {
-  return jwt.sign({id: this._id }, process.env.JWT_SECRET, {
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE,
   });
 };
@@ -59,7 +64,7 @@ userSchema.methods.getresetPasswordToken = function () {
     .createHash("sha256")
     .update(resetToken)
     .digest("hex");
-  this.resetPasswordExpire = Date.now() + 10 * (60 * 1000);
+  this.resetPasswordExpire = Date.now() + 24 * 60 * 60 * 100;
   return resetToken;
 };
 const user = mongoose.model("userLOgin", userSchema);
