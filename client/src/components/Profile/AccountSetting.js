@@ -23,20 +23,20 @@ export const AccountSetting = () => {
 
     dispatch(updatePassword({oldPassword,newPassword,confirmPassword}));
   };
-  useEffect(() => {
-    if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
-    }
+  // useEffect(() => {
+  //   if (error) {
+  //     alert.error(error);
+  //     dispatch(clearErrors());
+  //   }
 
-    if (isUpdated) {
-      alert.success("Profile Updated Successfully");
+  //   if (isUpdated) {
+  //     alert.success("Profile Updated Successfully");
 
-      dispatch({
-        type: UPDATE_PASSWORD_RESET,
-      });
-    }
-  }, [dispatch, error, alert, isUpdated]);
+  //     dispatch({
+  //       type: UPDATE_PASSWORD_RESET,
+  //     });
+  //   }
+  // }, [dispatch, error, alert, isUpdated]);
   return (
     <div style={{ display: "flex" }}>
       <form
