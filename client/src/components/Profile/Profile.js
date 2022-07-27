@@ -1,7 +1,8 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { ProfileNav } from "./ProfileNav";
-import { useSelector } from "react-redux";
+import axios from 'axios'
+import React,{useState} from 'react'
+import { ProfileNav } from './ProfileNav'
+import { useSelector, useDispatch } from "react-redux";
+
 
 export const Profile = () => {
   const { user, isAuthenticated, loading } = useSelector((state) => state.user);
@@ -18,73 +19,46 @@ console.log();
       day = "" + d.getDate(),
       year = d.getFullYear();
 
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
 
-    return [year, month, day].join("-");
-  }
+  return [year, month, day].join('-');
+}
 
-  console.log();
+console.log();
 
-  return (
-    <>
-      <div style={{ display: "flex" }}>
+  return (<>
+      <div style={{display:"flex"}}>
         {/* <ProfileNav/> */}
-        {isAuthenticated === true ? (
-          <div className="box_two">
-            <h2 className="pro_heading">Profile Photo</h2>
 
-            <div className="pic_flex_box">
-              <img src={process.env.PUBLIC_URL + "img/1.png"} alt="rec" />
-              <div className="image">
-                <label htmlFor="file">Upload Photo</label>
-                <input
-                  style={{ backgroundColor: "white" }}
-                  type="file"
-                  className="big_btn"
-                  onChange={handle}
-                />
-              </div>
-            </div>
-            <h2 className="per_text">Personal Details</h2>
-            <input
-              onChange={handle}
-              value={user.username}
-              className="name"
-              name="name"
-              type="text"
-              placeholder="Full name"
-            />
-            <div className="input_flex_box">
-              <input
-                onChange={handle}
-                name="dob"
-                value={formatDate(user.dob)}
-                className="dob"
-                placeholder="Date of Birth"
-                type="date"
-              />
-            
-               <select onChange={handle}
-                value={user.gender}
-                className="gender"
-                name="gender"
-                type="text"
-                placeholder="Gender(Optinal)">
-                        <option value="male">Male</option>
-                        <option value="femae">Female</option>
+        <div class="box_two">
+                <h2 class="pro_heading">Profile Photo</h2>
+
+                <div class="pic_flex_box">
+                    <img class="pro_pic" src="img/1.png" alt='loading'/>
+                    <button class="big_btn">Upload Photo</button>
+                </div>
+                <h2 class="per_text">Personal Details</h2>
+                <input class="name" type="text" placeholder="Full name"/>
+                <div class="input_flex_box">
+                    <input class="dob" type="date" placeholder="Date of Birth"/>
+                    <select class="gender" type="text">
+                        <option value="volvo">Male</option>
                     </select>
+
+                </div>
+                <div class="button_flex_box">
+                    <button class="dis_btn">Discard</button>
+                    <button class="sav_btn">Save</button>
+                </div>
             </div>
-            <div className="button_flex_box">
-              <button className="dis_btn">Discard</button>
-              <button className="sav_btn">Save</button>
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
-      
-    </>
-  );
-};
+        </div>
+   
+  </>
+  )
+}
+
+
+
