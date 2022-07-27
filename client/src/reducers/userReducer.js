@@ -15,10 +15,12 @@ import {
   UPDATE_PASSWORD_REQUEST,
   UPDATE_PASSWORD_RESET,
   UPDATE_PASSWORD_SUCCESS,
+  UPDATE_PROFIE_FAIL,
+  UPDATE_PROFIE_REQUEST,
+  UPDATE_PROFIE_SUCCESS,
 } from "../constants/userConstants";
 
 export const userReducer = (state = {}, action) => {
-
   switch (action.type) {
     case LOGIN_REQUEST:
     case REGISTER_USER_REQUEST:
@@ -83,23 +85,26 @@ export const userReducer = (state = {}, action) => {
         user: null,
         error: action.payload,
       };
-case UPDATE_PASSWORD_REQUEST:
-  return{
-    ...state,
-    loading:true,
-  }
-case UPDATE_PASSWORD_SUCCESS:
-  return{
-    ...state,
-    loading:false,
-    isUpdated:action.payload,
-  }
-case UPDATE_PASSWORD_FAIL:
-  return{
-    ...state,
-    loading:false,
-    error:action.payload,
-  }
+    case UPDATE_PASSWORD_REQUEST:
+    case UPDATE_PROFIE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case UPDATE_PASSWORD_SUCCESS:
+    case UPDATE_PROFIE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isUpdated: true,
+      };
+    case UPDATE_PASSWORD_FAIL:
+    case UPDATE_PROFIE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     case UPDATE_PASSWORD_RESET:
       return {
         ...state,

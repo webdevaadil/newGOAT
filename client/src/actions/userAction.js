@@ -15,6 +15,8 @@ import {
   UPDATE_PASSWORD_FAIL,
   UPDATE_PASSWORD_REQUEST,
   UPDATE_PASSWORD_SUCCESS,
+  UPDATE_PROFIE_REQUEST,
+  UPDATE_PROFIE_SUCCESS,
 } from "../constants/userConstants";
 
 export const login = (email, password) => async (dispatch, getState) => {
@@ -69,31 +71,43 @@ export const loaduser = () => async (dispatch) => {
 
     console.log(data.user);
   } catch (error) {
-    dispatch({ type: DETAIL_USER_FAIL});
-
+    dispatch({ type: DETAIL_USER_FAIL });
   }
 };
+export const updatePassword = (password) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_PASSWORD_REQUEST });
 
+    const config = { headers: { "Content-Type": "application/json" } };
 
-// export const loaduser = () =>async(dispatch)=>{
+    const data = await axios.put(`/api/auth/update/password`, password, config);
 
-// try{
-//     dispatch({type:DETAIL_USER_REQUEST})
-//     const {data}  = await axios.get(
-//         `/api/auth/me`,
-//         );
-
-// dispatch({type:DETAIL_USER_SUCCESS,payload:data.user})
-// console.log(data)
-
-// }catch(error){
-//     dispatch({type:DETAIL_USER_FAIL,payload:error.response.data})
-
-//     console.log(error.response)
-
-// }
-
-// }
+    dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PASSWORD_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+export const updateprofile = (updatedata) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_PROFIE_REQUEST });
+    const config = { headers: { "Content-Type": "application/json" } };
+    const data = await axios.put(
+      `/api/auth/update/profile`,
+      updatedata,
+      config
+    );
+    console.log(data);
+    dispatch({ type: UPDATE_PROFIE_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PASSWORD_FAIL,
+      payload: error.response.data,
+    });
+  }
+};
 
 //clearing errors
 export const clearErrors = () => async (dispatch) => {

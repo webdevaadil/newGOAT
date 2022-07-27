@@ -16,6 +16,7 @@ import { Thoroughbreds } from "./components/Main/Thoroughbreds";
 import { Greyhounds } from "./components/Main/Greyhounds";
 import { HorseDetails } from "./components/Main/HorseDetails";
 import { Greydetails } from "./components/Main/Greydetails";
+import { About } from "./components/Profile/About";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
               <Route path="" element={<Profile/>} />
               <Route path="payment" element={<PaymentMethoad />} />
               <Route path="accountsetting" element={<AccountSetting />} />
+              <Route path="about" element={<About/>} />
             </Route>
         </Routes>
       </BrowserRouter>

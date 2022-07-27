@@ -4,7 +4,7 @@
     box-sizing: border-box;
 
 }
-.boddy{
+body{
     background-color: #F4F7F8;
     display: flex;
     justify-content: center;
@@ -84,11 +84,11 @@
 
 /************* This is box two *****/
 
-/* .flexbox{
+.flexbox{
     display: flex;
     width: 100%;
     
-} */
+}
 .box_two{
     width:50%;
     height:35%; 

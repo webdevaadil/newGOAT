@@ -4,7 +4,7 @@
     box-sizing: border-box;
 
 }
-.boddy{
+body{
     background-color: #F4F7F8;
     display: flex;
     justify-content: center;
@@ -15,7 +15,7 @@
 .box_one{
     border-radius: 8px;
     height: 44%;
-    width: 24%;
+    width: 25%;
     background-color: #fff;
     padding: 15px;
     margin-right: 25px;
@@ -84,11 +84,11 @@
 
 /************* This is box two *****/
 
-/* .flexbox{
+.flexbox{
     display: flex;
     width: 100%;
     
-} */
+}
 .box_two{
     width:50%;
     height:35%; 
@@ -214,7 +214,11 @@ li::before {
     border: 2px solid #dee2e6!important;
     font-family: 'Nunito Sans', sans-serif;
     background-color: #fff;
+
 }
+/* value{
+    color: yellow;
+} */
 .pay_detail{
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
@@ -278,11 +282,12 @@ li::before {
     border: none;
 
 }
-@media screen and (max-width:947px) {
+@media screen and (max-width:866px) {
     .box_one{
-        width: 35%;
+        width: 40%;
     }
 }
+
 @media screen and (max-width: 768px) {
     .flexbox{
         display: block;
@@ -294,9 +299,9 @@ li::before {
     .box_two{
       width: 100%;
       height: 25%;
-      margin-top: 20px;
+      margin-top: 10px;
     }
     .box_three{
-        margin-top: 70px;
+        margin-top: 60px;
     }
 }

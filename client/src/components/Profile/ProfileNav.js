@@ -63,7 +63,8 @@ export const ProfileNav = () => {
             />
           </div>
           <div className="pic4">
-            <h2>About</h2>
+            <Link to="/dashboard/about">About</Link>
+
             <img
               className="img2"
               src="img/info.jpg"
@@ -71,7 +72,7 @@ export const ProfileNav = () => {
             />
           </div>
           <div className="pic5">
-            <button onClick={logoutUser}>Logout</button>
+            <p style={{cursor:"pointer"}}onClick={logoutUser}>Logout</p>
             <img
               className="img2"
               src="img/log-out.png"

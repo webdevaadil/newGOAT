@@ -4,78 +4,68 @@ import "./accountsetting.css";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updatePassword } from "../../actions/userAction";
 import { UPDATE_PASSWORD_RESET } from "../../constants/userConstants";
-import axios from "axios";
+import { useAlert } from "react-alert";
 
 export const AccountSetting = () => {
   const dispatch = useDispatch();
+  const alert = useAlert();
 
   const { error, isUpdated, loading } = useSelector((state) => state.user);
-  const [oldPassword, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const updatePasswordSubmit = async(e) => {
+  const [data, setdata] = useState({
+    oldPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+  const handle = (e) => {
+    setdata({ ...data, [e.target.name]: e.target.value });
+  };
+  console.log(data);
+  const updatePasswordSubmit = (e) => {
     e.preventDefault();
 
-    const myForm = new FormData();
-
-    myForm.set("oldPassword", oldPassword);
-    myForm.set("newPassword", newPassword);
-    myForm.set("confirmPassword", confirmPassword);
+    dispatch(updatePassword(data));
+  };
+  useEffect(() => {
     
-      
-      const data  = await axios.put(
-        `/api/auth/update`,
-        {oldPassword,newPassword,confirmPassword},
-      );
-  
+    if (isUpdated) {
+      alert.success("password Updated Successfully");
+      setdata({ oldPassword: "", newPassword: "", confirmPassword: "" });
     }
-
-    // dispatch(updatePassword({oldPassword,newPassword,confirmPassword}));
-  
-  // useEffect(() => {
-  //   if (error) {
-  //     alert.error(error);
-  //     dispatch(clearErrors());
-  //   }
-
-  //   if (isUpdated) {
-  //     alert.success("Profile Updated Successfully");
-
-  //     dispatch({
-  //       type: UPDATE_PASSWORD_RESET,
-  //     });
-  //   }
-  // }, [dispatch, error, alert, isUpdated]);
+    if (error) {
+      alert.error("error");
+      dispatch(clearErrors());
+    }
+  }, [dispatch, error, alert, isUpdated]);
   return (
     <div style={{ display: "flex" }}>
-      <form
-        onSubmit={updatePasswordSubmit}
-        className="box_two"
-      >
+      <form onSubmit={updatePasswordSubmit} className="box_two">
         <h2 className="per_text">Change Password</h2>
         <input
           className="cuttent_pass"
           type="password"
           placeholder="cuttent_pass"
           required
-          value={oldPassword}
-          onChange={(e) => setOldPassword(e.target.value)}
+          name="oldPassword"
+          value={data.oldPassword}
+          onChange={handle}
         />
         <input
           className="new_pass"
           type="password"
           placeholder="Enter a new Password"
           required
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
+          name="newPassword"
+          value={data.newPassword}
+          onChange={handle}
         />
         <input
           className="re_pass"
           type="password"
+          name="confirmPassword"
           placeholder="Re-enter a new Password"
           required
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          value={data.confirmPassword}
+          onChange={handle}
         />
 
         <button type="submit" value="Change" className="sav_btn">

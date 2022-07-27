@@ -4,7 +4,7 @@ import"./paymentmethoad.css"
 
 export const PaymentMethoad = () => {
   return (
-    <div style={{display:"flex"}}>
+    <div className="boddy"style={{display:"flex"}}>
         
       <div className="box_two">
         <h2>Bronze Membership</h2>

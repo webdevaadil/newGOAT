@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 async function isEmailValid(email) {
   return emailValidator.validate(email);
 }
-exports.register =  catchAsyncerror(async (req, res, next) => {
+exports.register = catchAsyncerror(async (req, res, next) => {
   const { username, email, password, dob, gender } = req.body;
   if (password.length < 6) {
     return res.status(400).json("password must be 6 character long");
@@ -41,7 +41,7 @@ exports.register =  catchAsyncerror(async (req, res, next) => {
   }
 });
 
-exports.login = catchAsyncerror( async (req, res, next) => {
+exports.login = catchAsyncerror(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return next(new ErrorResponse("please provide email&password", 400));
@@ -64,7 +64,7 @@ exports.login = catchAsyncerror( async (req, res, next) => {
   }
 });
 
-exports.isAuthuser =  catchAsyncerror(async (req, res, next) => {
+exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   const { token } = req.cookies;
   console.log(token);
   if (!token) {
@@ -74,7 +74,7 @@ exports.isAuthuser =  catchAsyncerror(async (req, res, next) => {
   req.user = await User.findById(decodedData.id);
   next();
 });
-exports.dashboard =  catchAsyncerror(async (req, res, next) => {
+exports.dashboard = catchAsyncerror(async (req, res, next) => {
   if (req.session) {
     console.log(req.session.email);
   }
@@ -106,15 +106,15 @@ exports.logout = catchAsyncerror(async (req, res, next) => {
 // update User password
 exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
-// console.log(user);
+  console.log(req.body);
   const isPasswordMatched = await user.matchPassword(req.body.oldPassword);
 
   if (!isPasswordMatched) {
-    return next(new ErrorResponse("Old password is incorrect", 400));
+    return res.status(400).json("Old password is incorrect");
   }
 
   if (req.body.newPassword !== req.body.confirmPassword) {
-    return next(new ErrorResponse("password does not match", 400));
+    return res.status(400).json("password does not match");
   }
 
   user.password = req.body.newPassword;
@@ -122,6 +122,27 @@ exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   await user.save();
 
   sendToken(user, 200, res);
+});
+// update User Profile
+exports.updateProfile = catchAsyncerror(async (req, res, next) => {
+const {username,gender,dob}=req.body
+ await User.findByIdAndUpdate(
+    req.user.id,
+    {
+      username,
+      gender,
+      dob,
+    },
+    {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    }
+  );
+console.log(req.body);
+  res.status(200).json({
+    success: "updated",
+  });
 });
 
 const sendToken = (user, statusCode, res) => {
