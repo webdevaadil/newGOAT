@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "dev": "nodemon server.js",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false && npm install --legacy-peer-deps client && npm run build --prefix client"
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false && npm install -f  && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
