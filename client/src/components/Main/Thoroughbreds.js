@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useDebugValue, useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
 import "./Sports.css"
 import { Link } from "react-router-dom";
 import { Timetable } from "./Timetable";
 import { Breadcrumb } from 'antd';
+import { Records } from "./Records";
+import axios from 'axios'
+import { Pagination } from "./Pagination";
+
 
 
 
 export const Thoroughbreds=()=>{
+
+  const [detail, setDetail] = useState([])
+  const [loading, setLoading] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
+
+  const getdata =async()=>{
+
+    const res = await axios.get("https://api.sheety.co/0c0bc2828e2abc80b15460bd2b8c43e9/horsetips/sheet2")
+    let finaldata = await res.data.sheet2
+   setDetail(finaldata)
+   console.log(detail)
+  }
+
+
+useEffect(()=>{
+
+  getdata()
+},[])
+
+
+const indexOfLastRecord = currentPage * recordsPerPage;
+const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+const currentRecords = detail.slice(indexOfFirstRecord, indexOfLastRecord);
+const nPages = Math.ceil(detail.length / recordsPerPage)
+console.log(currentRecords)
 
 
     return (
@@ -127,7 +158,15 @@ export const Thoroughbreds=()=>{
           </div>
         </div>
       </div>
-      <Timetable/>
+      
+      <Records detail={currentRecords}/>
+            <Pagination
+                nPages={nPages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
+
+    
 <Footer/>
     </>
     )

@@ -175,12 +175,14 @@ p.card-text {
 
 .ant-breadcrumb {
   display: flex;
+  padding: 20px 0;
 }
 .ant-breadcrumb ol{
   display: flex;
   list-style: none;
   position: absolute;
   left: 11%;
+
 
 }
 .ant-breadcrumb ol li{

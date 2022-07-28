@@ -4,19 +4,25 @@ import {Header} from "../Header/Header"
 import Footer from "../Footer/Footer"
 import { useState,useEffect } from "react";
 import axios from "axios"
+import { Breadcrumb} from 'antd';
+import { Pagination } from "./Pagination";
+
+
 
 
 export const Greyhounds = ()=>{
 
   const [detail,setDetail] = useState([])
+  const [loading, setLoading] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
   
   const getdata = async()=>{
 
     const res = await axios.get("https://api.sheety.co/0c0bc2828e2abc80b15460bd2b8c43e9/horsetips/sheet2")
     let finaldata = await res.data.sheet2
    setDetail(finaldata)
-   console.log(detail)
- 
 
   }
   useEffect(()=>{
@@ -24,23 +30,30 @@ export const Greyhounds = ()=>{
     getdata()
   },[])
 
-
-
+  const indexOfLastRecord = currentPage * recordsPerPage;
+const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+const currentRecords = detail.slice(indexOfFirstRecord, indexOfLastRecord);
+const nPages = Math.ceil(detail.length / recordsPerPage)
+console.log(currentRecords)
 
   return(
       <>  
       <Header/>    
       <div id="sport-sec">        
-            <div className="container">
-            <nav aria-label="breadcrumb" className="section-banner">
-                <ol className="breadcrumb">
-                    <Link to="/" className="breadcrumb-item">Home</Link>
-                    <Link to="/Sports" className="breadcrumb-item">Sports</Link>
-                    <Link style={{color:"#10867F"}} to="/greyhounds" className="breadcrumb-item 
-                    " aria-current="page">Greyhounds</Link>
-                </ol>
-             </nav>
-            </div>
+      <Breadcrumb separator=">">
+    <Breadcrumb.Item  >
+    <Link to="/" >Home</Link>
+    </Breadcrumb.Item>
+    <Breadcrumb.Item >
+    <Link to="/Thoroughbreds" >Sports</Link>
+
+    </Breadcrumb.Item>
+    <Breadcrumb.Item >
+ <Link style={{color:"#10867F"}} to = "/greyhounds">
+ Greyhounds
+ </Link>
+    </Breadcrumb.Item>
+  </Breadcrumb>
         </div>
         <div>    
         <div className='container-fluid' id='freetip-sec'>
@@ -137,7 +150,13 @@ export const Greyhounds = ()=>{
           </div>
         </div>
       </div>
-   <Timetable/> 
+   <Timetable detail = {currentRecords}/> 
+  
+   <Pagination
+                nPages={nPages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
 
   <Footer/>
   

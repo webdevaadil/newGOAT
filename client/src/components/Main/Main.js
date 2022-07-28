@@ -8,27 +8,37 @@ import store from "../../store";
 import { useSelector } from "react-redux";
 import { loaduser } from "../../actions/userAction";
 import axios from 'axios'
+import { Records } from "./Records";
+import { Pagination } from "./Pagination";
 
 export const Main = () => {
-  const {user,error,loading,isAuthenticated}  = useSelector((state)=>state.user)
-  const[detail,setDetail] = useState([])
 
-  const navigate = useNavigate();
-  
-  const getdata = async()=>{
+  const [detail, setDetail] = useState([])
+  const [loading, setLoading] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
+
+  const getdata =async()=>{
 
     const res = await axios.get("https://api.sheety.co/0c0bc2828e2abc80b15460bd2b8c43e9/horsetips/sheet2")
     let finaldata = await res.data.sheet2
    setDetail(finaldata)
    console.log(detail)
- 
-
   }
-  useEffect(()=>{
 
-    getdata()
-  },[])
 
+useEffect(()=>{
+
+  getdata()
+},[])
+
+
+const indexOfLastRecord = currentPage * recordsPerPage;
+const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+const currentRecords = detail.slice(indexOfFirstRecord, indexOfLastRecord);
+const nPages = Math.ceil(detail.length / recordsPerPage)
+console.log(currentRecords)
 
   return (
     <>
@@ -74,7 +84,9 @@ export const Main = () => {
                   <div className="tips-colum1">
                     <h3>Murray Bridge, NSW</h3>
                     <div className="space">
+                      <Link to = "/horsedetails">
                       <button className="btn">Race 2</button>
+                      </Link>
                       <p>9:00 AM</p>
                     </div>
                   </div>
@@ -86,7 +98,9 @@ export const Main = () => {
                   <div className="tips-colum1">
                     <h3>Murray Bridge, NSW</h3>
                     <div className="space">
-                      <button className="btn freebt-2">Race 2</button>
+                    <Link to = "/horsedetails">
+                      <button className="btn">Race 2</button>
+                      </Link>
                       <p>9:00 AM</p>
                     </div>
                   </div>
@@ -98,7 +112,9 @@ export const Main = () => {
                   <div className="tips-colum1">
                     <h3>Murray Bridge, NSW</h3>
                     <div className="space">
-                      <button className="btn freebt-2">Race 2</button>
+                    <Link to = "/horsedetails">
+                      <button className="btn">Race 2</button>
+                      </Link>
                       <p>9:00 AM</p>
                     </div>
                   </div>
@@ -110,7 +126,9 @@ export const Main = () => {
                   <div className="tips-colum1">
                     <h3>Murray Bridge, NSW</h3>
                     <div className="space">
+                    <Link to = "/horsedetails">
                       <button className="btn">Race 2</button>
+                      </Link>
                       <p>9:00 AM</p>
                     </div>
                   </div>
@@ -122,7 +140,9 @@ export const Main = () => {
                   <div className="tips-colum1">
                     <h3>Murray Bridge, NSW</h3>
                     <div className="space">
-                      <button className="btn freebt-2">Race 2</button>
+                    <Link to = "/horsedetails">
+                      <button className="btn">Race 2</button>
+                      </Link>
                       <p>9:00 AM</p>
                     </div>
                   </div>
@@ -134,7 +154,9 @@ export const Main = () => {
                   <div className="tips-colum1">
                     <h3>Murray Bridge, NSW</h3>
                     <div className="space">
+                    <Link to = "/horsedetails">
                       <button className="btn">Race 2</button>
+                      </Link>
                       <p>9:00 AM</p>
                     </div>
                   </div>
@@ -148,6 +170,7 @@ export const Main = () => {
                 <h4>
                   <span>678% in returns</span> on your initial investment.
                 </h4>
+                Link
                 <button className="btn freetips-btn">SIGN ME UP!</button>
               </div>
             </div>
@@ -155,176 +178,15 @@ export const Main = () => {
         </div>
       </div>
 
-      <div>
-        <div className="container-fluid upcomming-sec">
-          <div className="container">
-            <h3>Upcoming Races</h3>
-            <div className="upcomming-table">
-              <table>
-                <tr>
-                  <th className="first-border">Category</th>
-                  <th>Time</th>
-                  <th>Track Name</th>
-                  <th>Race No.</th>
-                  <th className="first-border2">Win Odds</th>
-                </tr>
-{
-  detail.map((items,index)=>{
 
-    return(
-      <tr>
-      <td>
-        <img src="../Vector.png" alt="horse image" />
-      </td>
-      <td>{items.raceTime}</td>
-      <td>{items.raceLocation}</td>
-      <td>
-        <button className="btn btn-1">Race        {items.raceNumber}</button>
-      </td>
-      <td>6.7</td>
-    </tr>
-    )
-  })
-}
-               
-                {/* <tr>
-                  <td>
-                    <img src="../left-Vector.png" alt="imge" />
-                  </td>
-                  <td> 9:15 AM Tomorrow</td>
-                  <td>Aramac, QLD</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1 btn-2">Race 2</button>
-                  </td>
-                  <td>6.7</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="../left-Vector.png" alt="imge" />
-                  </td>
-                  <td> 12:00 PM Tomorrow </td>
-                  <td>Aramac, QLD</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1 btn-2">Race 4</button>
-                  </td>
-                  <td>6.7</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="../Vector.png" alt="imge" />
-                  </td>
-                  <td> 9:00 AM 23 Sep</td>
-                  <td>Flemington, VIC</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1">Race 1</button>
-                  </td>
-                  <td>6.7</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="../left-Vector.png" alt="imge" />
-                  </td>
-                  <td>4:00 PM 23 Sep</td>
-                  <td>Northam, WA</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1 btn-2">Race 5</button>
-                  </td>
-                  <td>6.7</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="../Vector.png" alt="imge" />
-                  </td>
-                  <td> 4:30 PM 23 Sep</td>
-                  <td>Wawick, NSW</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1">Race 7</button>
-                  </td>
-                  <td>6.7</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="../Vector.png" alt="imge" />
-                  </td>
-                  <td>11:00 AM 25 Sep</td>
-                  <td>Geelong, VIC</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1">Race 3</button>
-                  </td>
-                  <td>6.7</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="../left-Vector.png" alt="loading" />
-                  </td>
-                  <td> 3:00 PM 29 Sep</td>
-                  <td>Narrogin, WA</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1 btn-2">Race 6</button>
-                  </td>
-                  <td>6.7</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="../left-Vector.png" alt="loading" />
-                  </td>
-                  <td> 9:30 AM 30 Sep</td>
-                  <td>Birdsville, QLD</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1 btn-2">Race 1</button>
-                  </td>
-                  <td>6.7</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="../Vector.png" alt="loading" />
-                  </td>
-                  <td> 12:30 PM 30 Sep</td>
-                  <td>Corowa, NSW</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1">Race 4</button>
-                  </td>
-                  <td>6.7</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="../left-Vector.png " alt="loading    " />
-                  </td>
-                  <td> 3:00 PM 30 Sep</td>
-                  <td>Corowa, NSW</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1 btn-2">Race 2</button>
-                  </td>
-                  <td>6.7</td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="../Vector.png" alt="loading" />
-                  </td>
-                  <td> 4:30 PM 30 Sep</td>
-                  <td>Mareeba, QLD</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1">Race 6</button>
-                  </td>
-                  <td>6.7</td>
-                </tr> */}
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Records detail={currentRecords}/>
+            <Pagination
+                nPages={nPages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
+
+     
       <Footer />
     </>
-  );
-};
+  )}
