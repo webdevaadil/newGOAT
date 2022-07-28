@@ -6,12 +6,9 @@ import { loaduser } from "../../actions/userAction";
 
 export const Loginbtn = () => {
   const navigate = useNavigate();
-  const { user, isAuthenticated, loading} = useSelector((state) => state.user);
+  const { user, isAuthenticated, loading} = useSelector((state) =>state.user);
   useEffect(()=>{
 
-    if(isAuthenticated){
-      
-    }
     store.dispatch(loaduser())
 
   },[])
