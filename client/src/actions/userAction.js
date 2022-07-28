@@ -61,7 +61,7 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: LOGOUT_USER_FAIL, payload: error.response.data.message });
   }
 };
-
+//////////////////loaduser////////////////
 export const loaduser = () => async (dispatch) => {
   try {
     dispatch({ type: DETAIL_USER_REQUEST });
@@ -108,6 +108,7 @@ export const updateprofile = (updatedata) => async (dispatch) => {
     });
   }
 };
+//////////////////loaduser////////////////
 
 //clearing errors
 export const clearErrors = () => async (dispatch) => {

@@ -3,11 +3,18 @@ const ErrorResponse = require("../utlis/errorresponse.js");
 const emailValidator = require("deep-email-validator");
 const catchAsyncerror = require("../middleware/catchAsyncerror");
 const jwt = require("jsonwebtoken");
+const cloudinary = require("cloudinary");
+
 
 async function isEmailValid(email) {
   return emailValidator.validate(email);
 }
 exports.register = catchAsyncerror(async (req, res, next) => {
+  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    folder: "horse",
+    width: 150,
+    crop: "scale",
+  });
   const { username, email, password, dob, gender } = req.body;
   if (password.length < 6) {
     return res.status(400).json("password must be 6 character long");
