@@ -93,13 +93,13 @@ export const updatePassword = (password) => async (dispatch) => {
 export const updateprofile = (updatedata) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PROFIE_REQUEST });
-    const config = { headers: { "Content-Type": "application/json" } };
-    const data = await axios.put(
+    const config = { headers: { "Content-Type": "multipart/form-data" } };  // const data = await axios.put(
+      const data = await axios.put(
       `/api/auth/update/profile`,
       updatedata,
       config
     );
-    console.log(data);
+    console.log(updatedata);
     dispatch({ type: UPDATE_PROFIE_SUCCESS, payload: data.success });
   } catch (error) {
     dispatch({

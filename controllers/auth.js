@@ -10,11 +10,11 @@ async function isEmailValid(email) {
   return emailValidator.validate(email);
 }
 exports.register = catchAsyncerror(async (req, res, next) => {
-  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-    folder: "horse",
-    width: 150,
-    crop: "scale",
-  });
+  // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+  //   folder: "horse",
+  //   width: 150,
+  //   crop: "scale",
+  // });
   const { username, email, password, dob, gender } = req.body;
   if (password.length < 6) {
     return res.status(400).json("password must be 6 character long");
@@ -132,22 +132,21 @@ exports.updatePassword = catchAsyncerror(async (req, res, next) => {
 });
 // update User Profile
 exports.updateProfile = catchAsyncerror(async (req, res, next) => {
-const {username,gender,dob}=req.body
+const newUserData = {
+  name: req.body.username,
+  dob: req.body.dob,
+  gender: req.body.gender,
+};
  await User.findByIdAndUpdate(
     req.user.id,
-    {
-      username,
-      gender,
-      dob,
-    },
+    newUserData,
     {
       new: true,
       runValidators: true,
       useFindAndModify: false,
     }
   );
-console.log(req.body);
-  res.status(200).json({
+    res.status(200).json({
     success: "updated",
   });
 });

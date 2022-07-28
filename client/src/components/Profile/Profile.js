@@ -8,26 +8,29 @@ import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 
 export const Profile = () => {
   const dispatch = useDispatch();
+
   const alert = useAlert();
-  const { user, isAuthenticated, loading ,isUpdated,error} = useSelector((state) => state.user);
+  const { user, isAuthenticated, loading, isUpdated, error } = useSelector(
+    (state) => state.user
+  );
 
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [gender, setgender] = useState("");
   const [dob, setdob] = useState("");
-
   const updateProfileSubmit = (e) => {
     e.preventDefault();
     const myForm = new FormData();
 
     myForm.set("name", name);
-    myForm.set("email", email);
+    myForm.set("gender", gender);
     myForm.set("dob", dob);
     dispatch(updateprofile(myForm));
   };
   useEffect(() => {
     if (user) {
-      setName(user.name);
-      setEmail(user.email);
+      setgender(user.email);
+      setName(user.username);
+      setdob(user.dob);
     }
 
     if (error) {
@@ -44,7 +47,6 @@ export const Profile = () => {
       });
     }
   }, [dispatch, error, alert, user, isUpdated]);
-
   function formatDate(date) {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -55,12 +57,15 @@ export const Profile = () => {
     return [year, month, day].join("-");
   }
 
-  const handleChange = (e) => {};
   return (
     <>
       <div style={{ display: "flex" }}>
         {isAuthenticated === true ? (
-          <div className="box_two">
+          <form
+            encType="multipart/form-data"
+            onSubmit={updateProfileSubmit}
+            className="box_two"
+          >
             <h2 className="pro_heading">Profile Photo</h2>
 
             <div className="pic_flex_box">
@@ -71,38 +76,40 @@ export const Profile = () => {
                   style={{ backgroundColor: "white" }}
                   type="file"
                   className="big_btn"
-                  onChange={updateProfileSubmit}
                 />
               </div>
             </div>
             <h2 className="per_text">Personal Details</h2>
             <input
-              onChange={updateProfileSubmit}
-              value={user.username}
+              onChange={(e) => setName(e.target.value)}
+              value={name}
               className="name"
               type="text"
               placeholder="Full name"
             />
             <div className="input_flex_box">
               <input
-                onChange={updateProfileSubmit}
-                value={formatDate(user.dob)}
+                onChange={(e) => setdob(e.target.value)}
+                value={formatDate(dob)}
                 className="dob"
                 placeholder="Date of Birth"
+                type="date"
               />
               <input
-                onChange={updateProfileSubmit}
-                value={user.gender}
+                onChange={(e) => setgender(e.target.value)}
+                value={gender}
                 className="gender"
-                type="text"
                 placeholder="Gender(Optinal)"
               />
             </div>
             <div className="button_flex_box">
-              <button className="dis_btn">Discard</button>
-              <button className="sav_btn">Save</button>
+              <input type="submit" value="Update" className="dis_btn"
+                
+              />
+              <input    type="submit"
+                  value="Update"className="sav_btn"/>
             </div>
-          </div>
+          </form>
         ) : (
           "please login"
         )}
