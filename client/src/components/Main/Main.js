@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useDebugValue, useEffect, useState } from "react";
 import "./Main.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Metadata } from "../layout/Metadata";
@@ -7,14 +7,28 @@ import { Header } from "../Header/Header";
 import store from "../../store";
 import { useSelector } from "react-redux";
 import { loaduser } from "../../actions/userAction";
+import axios from 'axios'
 
 export const Main = () => {
   const {user,error,loading,isAuthenticated}  = useSelector((state)=>state.user)
+  const[detail,setDetail] = useState([])
 
   const navigate = useNavigate();
   
+  const getdata = async()=>{
 
+    const res = await axios.get("https://api.sheety.co/0c0bc2828e2abc80b15460bd2b8c43e9/horsetips/sheet2")
+    let finaldata = await res.data.sheet2
+   setDetail(finaldata)
+   console.log(detail)
  
+
+  }
+  useEffect(()=>{
+
+    getdata()
+  },[])
+
 
   return (
     <>
@@ -154,19 +168,26 @@ export const Main = () => {
                   <th>Race No.</th>
                   <th className="first-border2">Win Odds</th>
                 </tr>
-                <tr>
-                  <td>
-                    <img src="../Vector.png" alt="imge" />
-                  </td>
-                  <td> 9:00 AM Today</td>
-                  <td>Murray Bridge, SA</td>
-                  <td>
-                    {" "}
-                    <button className="btn btn-1">Race 1</button>
-                  </td>
-                  <td>6.7</td>
-                </tr>
-                <tr>
+{
+  detail.map((items,index)=>{
+
+    return(
+      <tr>
+      <td>
+        <img src="../Vector.png" alt="horse image" />
+      </td>
+      <td>{items.raceTime}</td>
+      <td>{items.raceLocation}</td>
+      <td>
+        <button className="btn btn-1">Race        {items.raceNumber}</button>
+      </td>
+      <td>6.7</td>
+    </tr>
+    )
+  })
+}
+               
+                {/* <tr>
                   <td>
                     <img src="../left-Vector.png" alt="imge" />
                   </td>
@@ -297,7 +318,7 @@ export const Main = () => {
                     <button className="btn btn-1">Race 6</button>
                   </td>
                   <td>6.7</td>
-                </tr>
+                </tr> */}
               </table>
             </div>
           </div>

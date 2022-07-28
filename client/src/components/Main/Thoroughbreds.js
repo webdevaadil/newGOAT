@@ -6,8 +6,13 @@ import { Link } from "react-router-dom";
 import { Timetable } from "./Timetable";
 
 
-export const Thoroughbreds=()=>
-{
+export const Thoroughbreds=()=>{
+
+
+
+
+
+
     return (
     
     <>
