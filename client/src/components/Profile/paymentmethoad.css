@@ -112,7 +112,7 @@
     letter-spacing: 0.15px;
     color: #0A0E0F;
 }
-li::before {
+.box_two li::before {
     content: url(img/Vector-right.png);
     font-size: 20px;
     vertical-align: middle;
