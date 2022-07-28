@@ -2,9 +2,31 @@ import { Link } from "react-router-dom";
 import { Timetable } from "./Timetable";
 import {Header} from "../Header/Header"
 import Footer from "../Footer/Footer"
+import { useState,useEffect } from "react";
+import axios from "axios"
 
 
 export const Greyhounds = ()=>{
+
+  const [detail,setDetail] = useState([])
+  
+  const getdata = async()=>{
+
+    const res = await axios.get("https://api.sheety.co/0c0bc2828e2abc80b15460bd2b8c43e9/horsetips/sheet2")
+    let finaldata = await res.data.sheet2
+   setDetail(finaldata)
+   console.log(detail)
+ 
+
+  }
+  useEffect(()=>{
+
+    getdata()
+  },[])
+
+
+
+
   return(
       <>  
       <Header/>    

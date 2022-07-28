@@ -4,13 +4,11 @@ import { Header } from "../Header/Header";
 import "./Sports.css"
 import { Link } from "react-router-dom";
 import { Timetable } from "./Timetable";
+import { Breadcrumb } from 'antd';
+
 
 
 export const Thoroughbreds=()=>{
-
-
-
-
 
 
     return (
@@ -18,15 +16,22 @@ export const Thoroughbreds=()=>{
     <>
     <Header/>
     <div id="sport-sec">        
-            <div className="container">
-            <nav aria-label="breadcrumb" className="section-banner">
-                <ol className="breadcrumb">
-                    <Link to="/" className="breadcrumb-item">Home</Link>
-                    <Link to="/thoroughbreds" className="breadcrumb-item">Sports</Link>
-                    <Link style={{color:"#10867F"}}  to = "/thoroughbreds" className="breadcrumb-item active" aria-current="page">Thoroughbreds</Link>
-                </ol>
-             </nav>
-            </div>
+            {/* <div className="container"> */}
+            <Breadcrumb separator=">">
+    <Breadcrumb.Item  >
+    <Link to="/" >Home</Link>
+    </Breadcrumb.Item>
+    <Breadcrumb.Item >
+    <Link to="/Thoroughbreds" >Sports</Link>
+
+    </Breadcrumb.Item>
+    <Breadcrumb.Item >
+ <Link style={{color:"#10867F"}} to = "/thoroughbreds">
+ Thoroughbreds
+ </Link>
+    </Breadcrumb.Item>
+  </Breadcrumb>
+            {/* </div> */}
         </div>
         <div>    
         <div className='container-fluid' id='freetip-sec'>

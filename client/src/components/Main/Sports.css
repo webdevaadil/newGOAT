@@ -171,6 +171,23 @@ p.card-text {
 .right-cln {
   padding-left: 25px;
 }
+
+
+.ant-breadcrumb {
+  display: flex;
+}
+.ant-breadcrumb ol{
+  display: flex;
+  list-style: none;
+  position: absolute;
+  left: 11%;
+
+}
+.ant-breadcrumb ol li{
+padding: 5px;
+
+}
+
 /* Details end */
 
 
