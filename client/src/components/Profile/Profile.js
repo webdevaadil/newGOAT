@@ -14,23 +14,25 @@ export const Profile = () => {
     (state) => state.user
   );
 
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const [gender, setgender] = useState("");
   const [dob, setdob] = useState("");
+  const [avtar, setavtar] = useState("");
   const updateProfileSubmit = (e) => {
     e.preventDefault();
     const myForm = new FormData();
 
-    myForm.set("name", name);
+    myForm.set("username", username);
     myForm.set("gender", gender);
     myForm.set("dob", dob);
     dispatch(updateprofile(myForm));
   };
   useEffect(() => {
     if (user) {
-      setgender(user.email);
+      setgender(user.gender);
       setName(user.username);
       setdob(user.dob);
+      setavtar(user.pic);
     }
 
     if (error) {
@@ -69,7 +71,7 @@ export const Profile = () => {
             <h2 className="pro_heading">Profile Photo</h2>
 
             <div className="pic_flex_box">
-              <img src={process.env.PUBLIC_URL + "img/1.png"} alt="rec" />
+              <img style={{width:"300px",height:"301px"}}src={avtar} alt="rec" />
               <div className="image">
                 <label htmlFor="file">Upload Photo</label>
                 <input
@@ -82,7 +84,7 @@ export const Profile = () => {
             <h2 className="per_text">Personal Details</h2>
             <input
               onChange={(e) => setName(e.target.value)}
-              value={name}
+              value={username}
               className="name"
               type="text"
               placeholder="Full name"
@@ -103,7 +105,7 @@ export const Profile = () => {
               />
             </div>
             <div className="button_flex_box">
-              <input type="submit" value="Update" className="dis_btn"
+              <input type="reset" value="Update" className="dis_btn"
                 
               />
               <input    type="submit"

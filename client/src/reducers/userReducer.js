@@ -96,7 +96,8 @@ export const userReducer = (state = {}, action) => {
       return {
         ...state,
         loading: false,
-        isUpdated: action.payload,
+        // isUpdated: action.payload,
+        isUpdated:true
       };
     case UPDATE_PASSWORD_FAIL:
     case UPDATE_PROFIE_FAIL:

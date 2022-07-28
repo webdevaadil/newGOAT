@@ -133,7 +133,7 @@ exports.updatePassword = catchAsyncerror(async (req, res, next) => {
 // update User Profile
 exports.updateProfile = catchAsyncerror(async (req, res, next) => {
 const newUserData = {
-  name: req.body.username,
+  username: req.body.username,
   dob: req.body.dob,
   gender: req.body.gender,
 };
