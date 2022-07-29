@@ -44,7 +44,7 @@ console.log(currentRecords)
 
   return (
     <>
-      <Metadata title="the Goat tips" />
+    
       <Header />
       {/* main image */}
 

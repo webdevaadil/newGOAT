@@ -17,6 +17,8 @@ import { Greyhounds } from "./components/Main/Greyhounds";
 import { HorseDetails } from "./components/Main/HorseDetails";
 import { Greydetails } from "./components/Main/Greydetails";
 import { About } from "./components/Profile/About";
+import { Metadata } from "./components/layout/Metadata";
+import { Package } from "./components/Signup/Package";
 
 
 function App() {
@@ -24,6 +26,7 @@ function App() {
   
   return (
     <>
+      <Metadata title="The Goat Tips" />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main/>} />
@@ -38,6 +41,7 @@ function App() {
               <Route path="payment" element={<PaymentMethoad />} />
               <Route path="accountsetting" element={<AccountSetting />} />
               <Route path="about" element={<About/>} />
+              {/* <Route path = "packages" element = {<Package/>}/> */}
             </Route>
         </Routes>
       </BrowserRouter>

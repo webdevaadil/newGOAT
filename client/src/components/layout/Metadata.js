@@ -5,7 +5,7 @@ export const Metadata = ({title}) => {
   return (
     <>
      <Helmet>
-    <title>{title}</title>
+ <title> {title}</title>
   </Helmet>
     </>
   )
