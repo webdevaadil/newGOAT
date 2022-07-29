@@ -21,7 +21,7 @@ export const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
                         onClick={prevPage} 
                         to='#'>
                         
-                        Previous
+                         Previous
                     </Link>
                     </li>
                 <li className="page-item">

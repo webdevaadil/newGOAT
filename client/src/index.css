@@ -31,6 +31,17 @@ code {
 	border-radius: 5px;
 	text-align: center;
 }
+.page-link{
+	background-color:#10867F;
+	padding: 10px;
+	margin: 0 5px;
+	color: white;
+	width: 100px;
+	justify-content: center;
+	text-align: center;
+	border-radius: 10px;
+	font-weight: 600;
+}
 
 Link{
 	text-decoration: none;

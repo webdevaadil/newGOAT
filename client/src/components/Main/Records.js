@@ -28,12 +28,12 @@ export const Records = ({detail}) => {
       <td>
         <img src="../Vector.png" alt="horse image" />
       </td>
-      <td>{items.raceTime}</td>
-      <td>{items.raceLocation}</td>
+      <td>{items.RaceDate}</td>
+      <td>{items.RaceLocation}</td>
       <td>
       <Link to = "/horsedetails">
 
-<button className="btn btn-1">Race  {items.raceNumber}</button>
+<button className="btn btn-1">Race  {items.RaceNumber}</button>
 </Link>
       </td>
       <td>6.7</td>
