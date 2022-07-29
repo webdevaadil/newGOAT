@@ -172,7 +172,6 @@ console.log(currentRecords)
                 <h4>
                   <span>678% in returns</span> on your initial investment.
                 </h4>
-                Link
                 <button className="btn freetips-btn">SIGN ME UP!</button>
               </div>
             </div>
