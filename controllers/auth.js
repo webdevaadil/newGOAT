@@ -15,7 +15,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
       if (user) {
         return res.status(500).json("user already registered");
       } else {
-        const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
+        const myCloud = await cloudinary.uploader.upload("https://res.cloudinary.com/degu3b9yz/image/upload/v1659352924/avatars/blilsisofr6pbhnuxbte.png", {
           folder: "avatars",
           width: 150,
           crop: "scale",

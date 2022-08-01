@@ -124,17 +124,8 @@ export const Signup = () => {
                     <i className="fa fa-eye"></i>
                     <label htmlFor="floatingPassword">Passwords</label>
                   </div>
-                  <div className="form-floating mb-3">
 
-                <input
-                  style={{ backgroundColor: "white" }}
-                  type="file"
-                  className="big_btn"
-                  onChange={handleChange}
-                />
-                                   <label htmlFor="file">Upload Photo</label>
-
-                  </div>
+             
                  
                   <div className="form-inner">
                     <div className="form-floating mb-3">

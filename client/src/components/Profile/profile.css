@@ -2,7 +2,7 @@
 /******************* this is box two ******************/
 .flexbox{
     display: flex;
-    margin: 150px;
+    margin: 150px 0;
 }
 
 .profile_box_two{
