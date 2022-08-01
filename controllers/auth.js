@@ -138,7 +138,7 @@ console.log("hi");
 
     const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
       folder: "horse",
-      width: 150,
+      // width: 150,
       crop: "scale",
     });
 
