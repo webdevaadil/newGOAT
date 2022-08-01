@@ -26,10 +26,7 @@ export const Login = () => {
     e.preventDefault()
     
     try {
-    
       dispatch(login(loginEmail,loginPassword))
-      
-      
     } 
     catch (error) {
       if(error){

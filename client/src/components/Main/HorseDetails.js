@@ -3,28 +3,29 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
 import axios from "axios";
-
-
-
+import { Breadcrumb } from 'antd';
+import { useSelector,useDispatch } from "react-redux";
 
 export const HorseDetails = ()=>{
 
-
-
-
+    const {data,error,loading,isAuthenticated} = useSelector((state)=>state.data)
 
   return(
       <>  
       <Header/>    
       <div id="sport-sec">        
-            <div className="container">
-            <nav aria-label="breadcrumb" className="section-banner">
-                <ol className="breadcrumb">
-                    <Link to="/Thoroughbreds" className="breadcrumb-item"><a href="#">Thoroughbreds</a></Link>
-                    <Link to="/" className="breadcrumb-item " aria-current="page">Details</Link>
-                </ol>
-             </nav>
-            </div>
+      <Breadcrumb separator=">">
+
+    <Breadcrumb.Item >
+    <Link to="/Thoroughbreds" >Thoroughbreds</Link>
+
+    </Breadcrumb.Item>
+    <Breadcrumb.Item >
+ <Link style={{color:"#10867F"}} to = "/thoroughbreds">
+ Details
+ </Link>
+    </Breadcrumb.Item>
+  </Breadcrumb>
         </div>  
         <div>
         <div className="container-fluid details-sec">

@@ -13,30 +13,25 @@ import { Pagination } from "./Pagination";
 
 export const Main = () => {
 
-  const [detail, setDetail] = useState([])
+  const [detail,setDetail] = useState([])
   const [loading, setLoading] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
-
-  const getdata =async()=>{
-
-
+  
+  const getdata = async()=>{
 
     const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=JxTR_CmO6LOwDEY7gYj8mh-6N5klsFTfRxZBd1zAUaSlLfloCVG1VYeAl4mKdepsjisvchrhrId-zj_OKuJ8Ztfr9h0fILoXm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnM5Ekl7EwoTMsxbGD7Mk6JPN3Ls7Oyxjmrsr3ZQwRD52M_vMAqczDkXfnrBBGFFHff8VMKaSWAE-WxUrUSiQwyHxctBCURm4-9z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
-    let finaldata = await res.data
-    console.log(res.data.data)
-   setDetail(res.data.data)
+    let finaldata = await res.data.data
+   setDetail(finaldata)
+
   }
+  useEffect(()=>{
 
+    getdata()
+  },[])
 
-useEffect(()=>{
-
-  getdata()
-},[])
-
-
-const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfLastRecord = currentPage * recordsPerPage;
 const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 const currentRecords = detail.slice(indexOfFirstRecord, indexOfLastRecord);
 const nPages = Math.ceil(detail.length / recordsPerPage)
@@ -172,7 +167,10 @@ console.log(currentRecords)
                 <h4>
                   <span>678% in returns</span> on your initial investment.
                 </h4>
+                <Link to ="/packages">
                 <button className="btn freetips-btn">SIGN ME UP!</button>
+
+                </Link>
               </div>
             </div>
           </div>

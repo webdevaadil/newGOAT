@@ -41,8 +41,8 @@ function App() {
               <Route path="payment" element={<PaymentMethoad />} />
               <Route path="accountsetting" element={<AccountSetting />} />
               <Route path="about" element={<About/>} />
-              {/* <Route path = "packages" element = {<Package/>}/> */}
             </Route>
+              <Route path = "/packages" element = {<Package/>}/>
         </Routes>
       </BrowserRouter>
     </>

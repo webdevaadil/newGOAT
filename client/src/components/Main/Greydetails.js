@@ -2,22 +2,27 @@ import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
+import { Breadcrumb } from 'antd';
+
 
 export const Greydetails = ()=>{
+    
   return(
       <> 
      <Header/>  
       <div id="sport-sec">        
-            <div className="container">
-            <nav aria-label="breadcrumb" className="section-banner">
-                <ol className="breadcrumb">
-                    <Link to="/" className="breadcrumb-item">Home</Link>
-                    <Link to="/greydetails" className="breadcrumb-item">Sports</Link>
-                    <Link  to="/Thoroughbreds" className="breadcrumb-item">Greyhounds</Link>
-                    <Link style={{color:"#10867F"}} to="/greydetails" className="breadcrumb-item " aria-current="page">Details</Link>
-                </ol>
-             </nav>
-            </div>
+      <Breadcrumb separator=">">
+
+<Breadcrumb.Item >
+<Link to="/Thoroughbreds" >Greyhounds</Link>
+
+</Breadcrumb.Item>
+<Breadcrumb.Item >
+<Link style={{color:"#10867F"}} to = "/thoroughbreds">
+Details
+</Link>
+</Breadcrumb.Item>
+</Breadcrumb>
         </div>  
         <div>
         <div className="container-fluid details-sec">

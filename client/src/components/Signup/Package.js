@@ -1,12 +1,33 @@
 import React from 'react'
+import "./Package.css"
+import Select from 'react-select'
+import img1 from "../../Images/level.png"
+import img2 from "../../Images/name1.png"
+import img3 from "../../Images/name2.png"
+import img4 from "../../Images/name3.png"
+import img5 from "../../Images/name4.png"
 
 export const Package = () => {
+
+  const options = [
+    { value: '$60 / week', label: <div style = {{fontWeight:600,fontSize:"20px",color:"#282828"}}><img style={{height:"60px",width:"205px",marginRight:"30px"}} src={img1} />$60 / week</div> },
+    { value: '$45 / week', label: <div style = {{fontWeight:600,fontSize:"20px",color:"#282828"}}><img style={{height:"60px",width:"205px",marginRight:"30px"}}  src={img2} />$45/ week</div> },
+    { value: '$30 / week', label:<div style = {{fontWeight:600,fontSize:"20px",color:"#282828"}}><img style={{height:"60px",width:"205px",marginRight:"30px"}}  src={img3} />$30/ week</div>  },
+    { value: '$15 / week', label: <div style = {{fontWeight:600,fontSize:"20px",color:"#282828"}}><img style={{height:"60px",width:"205px",marginRight:"30px"}}  src={img4} />$15/ week</div>  },
+    { value: 'Free', label: <div style = {{fontWeight:600,fontSize:"20px",color:"#282828"}}><img style={{height:"60px",width:"205px",marginRight:"30px"}}  src={img5} />Free</div> },
+  ];
+
+  const customStyles ={
+    height:45
+  }
+
+
+
   return (
     <>
 
 <div class="container-fluid form-section wel-form">        
-            <div class="row">
-                <div class="col-md-6">
+            <div class="col-md-6">
                     <div class="wel-p1 pack-main">
                        
                       </div>
@@ -18,19 +39,13 @@ export const Package = () => {
                         <div class="form-main"> 
                               <form class="form-floating mb-3">
                                 <div class="form-floating">
-                        
-                                  <select class="form-select" aria-label="Floating label select example" id="id_select2_example">
-                                    <option  value="Required" data-img_src="">Select</option>
-                                    <option data-img_src="assets/images/level.png">$60 / week</option>
-                                    <option data-img_src="assets/images/name1.png">$45 / week</option>
-                                    <option data-img_src="assets/images/name2.png">$30 / week</option>
-                                    <option data-img_src="assets/images/name3.png">$15 / week</option>
-                                    <option data-img_src="assets/images/name4.png">Free</option>
-                                  </select>
-                                  
-                                 
-                                  <label for="floatingSelect">Select Package</label>
-                                </div>
+
+<Select
+defaultValue="Select"
+options={options} 
+styles = {customStyles}
+/>
+                                                      </div>
                                 <h4 class="mt-4">Payment Details</h4>
                                 <div class="form-floating mb-3">
                                   <input type="Name" class="form-control" placeholder="J Done"/>
@@ -66,7 +81,7 @@ export const Package = () => {
                     </div>
                 </div>
             </div>
-        </div>
+ 
     </div>
 
     </>
