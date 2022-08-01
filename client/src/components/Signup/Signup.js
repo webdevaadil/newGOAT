@@ -125,18 +125,15 @@ export const Signup = () => {
                     <label htmlFor="floatingPassword">Passwords</label>
                   </div>
                   <div className="form-floating mb-3">
-                  <img src={avatar} alt="Avatar Preview" />
 
-                    <input
-                      required
-                      onChange={handleChange}
-                      name="avatar"
-                      type="file"
-                      // accept="image/*"
-                      className="form-control"
-                      id="myInput"
-                    />
-                    <label htmlFor="floatingPassword">img</label>
+                <input
+                  style={{ backgroundColor: "white" }}
+                  type="file"
+                  className="big_btn"
+                  onChange={handleChange}
+                />
+                                   <label htmlFor="file">Upload Photo</label>
+
                   </div>
                  
                   <div className="form-inner">
