@@ -1,5 +1,5 @@
 import axios from "axios";
-import"./profile.css"
+import "./profile.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
@@ -21,7 +21,6 @@ export const Profile = () => {
   const [avatarPreview, setavatarPreview] = useState("/Profile.png");
 
   const updateProfileSubmit = (e) => {
-    
     e.preventDefault();
     const myForm = new FormData();
 
@@ -32,18 +31,17 @@ export const Profile = () => {
 
     dispatch(updateprofile(myForm));
   };
-  const handle=(e)=>{
-   if( e.target.name === "avatar") {
-      const reader = new FileReader();
+  const handle = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        // setavatarPreview(reader.result);
+        setavatar(reader.result);
+      }
+    };
 
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setavatarPreview(reader.result);
-          setavatar(reader.result);
-        }
-      };
-      reader.readAsDataURL(e.target.files[0]);}
-  }
+    reader.readAsDataURL(e.target.files[0]);
+  };
   useEffect(() => {
     if (user) {
       setgender(user.gender);
@@ -78,23 +76,27 @@ export const Profile = () => {
 
   return (
     <>
-      <div  className="profile_box_two"style={{ display: "flex" }}>
+      <div className="profile_box_two" style={{ display: "flex" }}>
         {isAuthenticated === true ? (
-          <form
-            encType="multipart/form-data"
-            onSubmit={updateProfileSubmit}
-           
-          >
+          <form encType="multipart/form-data" onSubmit={updateProfileSubmit}>
             <h2 className="pro_heading">Profile Photo</h2>
 
             <div className="pic_flex_box">
-              <img style={{width:"300px",height:"301px"}}src={avatar} alt="rec" />
-              <div className="image">
-                <label htmlFor="file">Upload Photo</label>
+              <div
+                style={{
+                  display: "contents",
+                }}
+                id="updateProfileImage"
+              >
+                <img
+                  style={{ width: "301px" }}
+                  src={avatar}
+                  alt="Avatar Preview"
+                />
                 <input
-                  style={{ backgroundColor: "white" }}
                   type="file"
-                  className="big_btn"
+                  name="avatar"
+                  accept="image/*"
                   onChange={handle}
                 />
               </div>
@@ -123,11 +125,8 @@ export const Profile = () => {
               />
             </div>
             <div className="button_flex_box">
-              <input type="reset" value="Discard" className="dis_btn"
-                
-              />
-              <input    type="submit"
-                  value="Update"className="sav_btn"/>
+              <input type="reset" value="Discard" className="dis_btn" />
+              <input type="submit" value="Update" className="sav_btn" />
             </div>
           </form>
         ) : (
