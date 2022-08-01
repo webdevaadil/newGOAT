@@ -17,24 +17,39 @@ export const Profile = () => {
   const [username, setName] = useState("");
   const [gender, setgender] = useState("");
   const [dob, setdob] = useState("");
-  const [pic, setpic] = useState("");
+  const [avatar, setavatar] = useState("");
+  const [avatarPreview, setavatarPreview] = useState("/Profile.png");
+
   const updateProfileSubmit = (e) => {
+    
     e.preventDefault();
     const myForm = new FormData();
 
     myForm.set("username", username);
     myForm.set("gender", gender);
     myForm.set("dob", dob);
-    myForm.set("pic", pic);
+    myForm.set("avatar", avatar);
 
     dispatch(updateprofile(myForm));
   };
+  const handle=(e)=>{
+   if( e.target.name === "avatar") {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setavatarPreview(reader.result);
+          setavatar(reader.result);
+        }
+      };
+      reader.readAsDataURL(e.target.files[0]);}
+  }
   useEffect(() => {
     if (user) {
       setgender(user.gender);
       setName(user.username);
       setdob(user.dob);
-      setpic(user.pic);
+      setavatar(user.avatar.url);
     }
 
     if (error) {
@@ -73,14 +88,14 @@ export const Profile = () => {
             <h2 className="pro_heading">Profile Photo</h2>
 
             <div className="pic_flex_box">
-              <img style={{width:"300px",height:"301px"}}src={pic} alt="rec" />
+              <img style={{width:"300px",height:"301px"}}src={avatar} alt="rec" />
               <div className="image">
                 <label htmlFor="file">Upload Photo</label>
                 <input
                   style={{ backgroundColor: "white" }}
                   type="file"
                   className="big_btn"
-                  onChange={(e) =>setpic(e.target.files)}
+                  onChange={handle}
                 />
               </div>
             </div>

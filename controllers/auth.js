@@ -1,16 +1,10 @@
 const User = require("../models/User");
 const ErrorResponse = require("../utlis/errorresponse.js");
-const emailValidator = require("deep-email-validator");
 const catchAsyncerror = require("../middleware/catchAsyncerror");
 const jwt = require("jsonwebtoken");
-const cloudinary = require("cloudinary");
-
-
-async function isEmailValid(email) {
-  return emailValidator.validate(email);
-}
+var cloudinary = require("cloudinary").v2;
 exports.register = catchAsyncerror(async (req, res, next) => {
-  const { username, email, password, dob, gender,pic } = req.body;
+  const { username, email, password, dob, gender } = req.body;
 
   if (password.length < 6) {
     return res.status(400).json("password must be 6 character long");
@@ -18,29 +12,30 @@ exports.register = catchAsyncerror(async (req, res, next) => {
 
   try {
     User.findOne({ email }, async (err, user) => {
-      const { valid, reason, validators } = await isEmailValid(email);
-      console.log(validators);
-
-      if (!valid) {
-        return res
-          .status(500)
-          .json("email is invalid please enter a valid email");
-      } else if (user) {
+      if (user) {
         return res.status(500).json("user already registered");
       } else {
+        const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
+          folder: "avatars",
+          width: 150,
+          crop: "scale",
+        });
         const user = await User.create({
           username,
           email,
           password,
           dob,
           gender,
-        
+          avatar: {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url,
+          },
         });
 
         sendToken(user, 201, res);
       }
     });
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });
@@ -129,42 +124,17 @@ exports.updatePassword = catchAsyncerror(async (req, res, next) => {
 });
 // update User Profile
 exports.updateProfile = catchAsyncerror(async (req, res, next) => {
-  
-  if (req.body.avatar !== "") {
-    const user = await User.findById(req.user.id);
-
-    const imageId = user.pic.public_id;
-
-    await cloudinary.v2.uploader.destroy(imageId);
-
-    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-      folder: "horse",
-      width: 150,
-      crop: "scale",
-    });
-
-    newUserData.avatar = {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url,
-    };
-  }
-
   const newUserData = {
-  username: req.body.username,
-  dob: req.body.dob,
-  gender: req.body.gender,
- 
-};
- await User.findByIdAndUpdate(
-    req.user.id,
-    newUserData,
-    {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false,
-    }
-  );
-    res.status(200).json({
+    username: req.body.username,
+    dob: req.body.dob,
+    gender: req.body.gender,
+  };
+
+  await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    useFindAndModify: false,
+  });
+  res.status(200).json({
     success: "updated",
   });
 });
