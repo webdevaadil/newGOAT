@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 // import scss from'scss'
-import "./profile.css";
+import "./profilenav.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import { loaduser, logout } from "../../actions/userAction";
@@ -31,8 +31,7 @@ export const ProfileNav = () => {
 
   return (
     <>
-      <div className="flexbox">
-        <div className="box_one">
+        <div className="profile_box_one">
           <h1>Profile Setting</h1>
           <div className="pic1">
             <Link to="/dashboard" className="">
@@ -79,7 +78,7 @@ export const ProfileNav = () => {
               alt="loading"
             />
           </div>
-        </div>
+        
       </div>
     </>
   );

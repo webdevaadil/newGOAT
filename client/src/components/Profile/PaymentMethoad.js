@@ -4,9 +4,8 @@ import"./paymentmethoad.css"
 
 export const PaymentMethoad = () => {
   return (
-    <div className="boddy"style={{display:"flex"}}>
         
-      <div className="box_two">
+      <div className="payment_box_two">
         <h2>Bronze Membership</h2>
         <h2>$15 / Week</h2>
         <ul>
@@ -39,6 +38,5 @@ export const PaymentMethoad = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };

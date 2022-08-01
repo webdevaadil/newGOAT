@@ -1,6 +1,6 @@
 import axios from "axios";
+import"./profile.css"
 import React, { useEffect, useState } from "react";
-import { ProfileNav } from "./ProfileNav";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import { clearErrors, loaduser, updateprofile } from "../../actions/userAction";
@@ -17,7 +17,7 @@ export const Profile = () => {
   const [username, setName] = useState("");
   const [gender, setgender] = useState("");
   const [dob, setdob] = useState("");
-  const [avtar, setavtar] = useState("");
+  const [pic, setpic] = useState("");
   const updateProfileSubmit = (e) => {
     e.preventDefault();
     const myForm = new FormData();
@@ -25,6 +25,8 @@ export const Profile = () => {
     myForm.set("username", username);
     myForm.set("gender", gender);
     myForm.set("dob", dob);
+    myForm.set("pic", pic);
+
     dispatch(updateprofile(myForm));
   };
   useEffect(() => {
@@ -32,7 +34,7 @@ export const Profile = () => {
       setgender(user.gender);
       setName(user.username);
       setdob(user.dob);
-      setavtar(user.pic);
+      setpic(user.pic);
     }
 
     if (error) {
@@ -61,23 +63,24 @@ export const Profile = () => {
 
   return (
     <>
-      <div style={{ display: "flex" }}>
+      <div  className="profile_box_two"style={{ display: "flex" }}>
         {isAuthenticated === true ? (
           <form
             encType="multipart/form-data"
             onSubmit={updateProfileSubmit}
-            className="box_two"
+           
           >
             <h2 className="pro_heading">Profile Photo</h2>
 
             <div className="pic_flex_box">
-              <img style={{width:"300px",height:"301px"}}src={avtar} alt="rec" />
+              <img style={{width:"300px",height:"301px"}}src={pic} alt="rec" />
               <div className="image">
                 <label htmlFor="file">Upload Photo</label>
                 <input
                   style={{ backgroundColor: "white" }}
                   type="file"
                   className="big_btn"
+                  onChange={(e) =>setpic(e.target.files)}
                 />
               </div>
             </div>
@@ -105,7 +108,7 @@ export const Profile = () => {
               />
             </div>
             <div className="button_flex_box">
-              <input type="reset" value="Update" className="dis_btn"
+              <input type="reset" value="Discard" className="dis_btn"
                 
               />
               <input    type="submit"

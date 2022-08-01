@@ -1,96 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 
-}
-.boddy{
-    background-color: #F4F7F8;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-
-
-}
-.box_one{
-    border-radius: 8px;
-    height: 44%;
-    width: 24%;
-    background-color: #fff;
-    padding: 15px;
-    margin-right: 25px;
-
-    
-}
-.box_one h1{
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0.15px;
-    color: #0A0E0F;
-    font-family: 'Nunito Sans', sans-serif;
-    padding-bottom: 24px;
-    
-}
-.col{
-    font-size: 16px;
-    font-weight: 800;
-    line-height: 24px;
-    letter-spacing: 0.15px;
-    color:#10867F;
-    font-family: 'Nunito Sans', sans-serif;
-    padding: 5px;
-}
-.pic1{
-    display: flex;
-    justify-content: space-between;
-
-}
-.pic2{
-    display: flex;
-    justify-content: space-between;
-   
-
-}
-.pic3{
-    display: flex;
-    justify-content: space-between;
-   
-}
-.pic4{
-    display: flex;
-    justify-content: space-between;
-   
-}
-.pic5{
-    display: flex;
-    justify-content: space-between;
-    
-}
-.img2{
-    padding: 8px;
-}
-.box_list{
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 24px;
-    letter-spacing: 0.15px;
-    color:#4E4F51;
-    font-family: 'Nunito Sans', sans-serif;
-    list-style: none;
-    cursor: pointer;
-    padding:5px;
-}
 
 /************* This is box two *****/
 
-/* .flexbox{
-    display: flex;
-    width: 100%;
-    
-} */
-.box_two{
-    width:50%;
+.payment_box_two{
+    width:710px;
     height:35%; 
     background-color: #fff;
     padding: 10px;
@@ -103,7 +16,7 @@
     margin-top: 60px;
 
 }
-.box_two h2{
+.payment_box_two h2{
     font-family: 'Nunito Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -112,14 +25,14 @@
     letter-spacing: 0.15px;
     color: #0A0E0F;
 }
-.box_two li::before {
+.payment_box_two li::before {
     content: url(img/Vector-right.png);
     font-size: 20px;
     vertical-align: middle;
     padding-right: 20px;
     
 }
-.box_two li{
+.payment_box_two li{
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
@@ -278,20 +191,22 @@
     border: none;
 
 }
-@media screen and (max-width:947px) {
+@media screen and (max-width:968px) {
     .box_one{
         width: 35%;
     }
+    .payment_box_two{
+        margin-top: 20px;
+        width: 97%;
+    }
 }
 @media screen and (max-width: 768px) {
-    .flexbox{
-        display: block;
-    }
+  
     .box_one{
         height: auto;
         width: 100%;
       }
-    .box_two{
+    .payment_box_two{
       width: 100%;
       height: 25%;
       margin-top: 20px;

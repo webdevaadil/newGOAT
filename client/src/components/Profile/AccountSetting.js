@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ProfileNav } from "./ProfileNav";
 import "./accountsetting.css";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updatePassword } from "../../actions/userAction";
@@ -37,8 +36,8 @@ export const AccountSetting = () => {
     }
   }, [dispatch, error, alert, isUpdated]);
   return (
-    <div style={{ display: "flex" }}>
-      <form onSubmit={updatePasswordSubmit} className="box_two">
+    <div className="account_box_two" style={{ display: "flex" }}>
+      <form onSubmit={updatePasswordSubmit} >
         <h2 className="per_text">Change Password</h2>
         <input
           className="cuttent_pass"

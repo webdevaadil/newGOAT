@@ -4,14 +4,14 @@
   "description": "",
   "main": "server.js",
   "engines": {
-    "node":"16.14.0",
-    "npm":"8.13.2"
+    "node": "16.14.0",
+    "npm": "8.13.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "dev": "nodemon server.js",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false && npm install -f --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install -f --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +32,7 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.4",
     "mongoose": "^6.4.4",
+    "multer-storage-cloudinary": "^4.0.0",
     "node-sass": "^7.0.1",
     "nodemailer": "^6.7.7",
     "redis": "^4.2.0",

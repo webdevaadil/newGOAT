@@ -38,11 +38,10 @@ const userSchema = new mongoose.Schema({
 
 },
 pic: {
-  type: String,
-  required: true,
-  default:
-    "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
-},
+ public_id: {
+   type: String,
+   required: true,
+ }},
 
   resetPasswordToken: String,
   resetPasswordExpire: Date,

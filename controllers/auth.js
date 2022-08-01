@@ -10,12 +10,8 @@ async function isEmailValid(email) {
   return emailValidator.validate(email);
 }
 exports.register = catchAsyncerror(async (req, res, next) => {
-  // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-  //   folder: "horse",
-  //   width: 150,
-  //   crop: "scale",
-  // });
-  const { username, email, password, dob, gender } = req.body;
+  const { username, email, password, dob, gender,pic } = req.body;
+
   if (password.length < 6) {
     return res.status(400).json("password must be 6 character long");
   }
@@ -38,6 +34,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
           password,
           dob,
           gender,
+        
         });
 
         sendToken(user, 201, res);
@@ -132,10 +129,31 @@ exports.updatePassword = catchAsyncerror(async (req, res, next) => {
 });
 // update User Profile
 exports.updateProfile = catchAsyncerror(async (req, res, next) => {
-const newUserData = {
+  
+  if (req.body.avatar !== "") {
+    const user = await User.findById(req.user.id);
+
+    const imageId = user.pic.public_id;
+
+    await cloudinary.v2.uploader.destroy(imageId);
+
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: "horse",
+      width: 150,
+      crop: "scale",
+    });
+
+    newUserData.avatar = {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    };
+  }
+
+  const newUserData = {
   username: req.body.username,
   dob: req.body.dob,
   gender: req.body.gender,
+ 
 };
  await User.findByIdAndUpdate(
     req.user.id,
