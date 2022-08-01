@@ -94,6 +94,17 @@
 .details-sec {
   background: #F4F7F8;
   padding: 2rem 0px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  
+}
+.details-sec .row{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  /* width: 1440px !important;
+  margin: auto; */
 }
 
 .details-sec .btn {
@@ -181,14 +192,14 @@ p.card-text {
   display: flex;
   list-style: none;
   position: absolute;
-  left: 11%;
-
+  left:11%;
 
 }
 .ant-breadcrumb ol li{
 padding: 5px;
 
 }
+
 
 /* Details end */
 

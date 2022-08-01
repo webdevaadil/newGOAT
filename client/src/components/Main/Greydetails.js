@@ -28,7 +28,7 @@ Details
         <div className="container-fluid details-sec">
            <div className="container mt-3">
            <div className="row">
-                <div className="col-md-7">
+                <div className="col-lg-12">
                   <div className="detisl-bg">
                     <img src="/Greydetails.png" />
                   </div>
@@ -67,7 +67,7 @@ Details
                             <th className='first-border'>No.</th>
                             <th>Greyhound Name</th>
                             <th>Official Odds</th>
-                            <th className='first-border2'> <img src="/Group 5.png" /></th>
+                            <th className='first-border2'> <img src="/Group5.png" /></th>
                             </tr>
                             <tr>
                                 <td>1</td>
@@ -139,41 +139,7 @@ Details
                         </div>
                     </div>
                 </div> 
-                <div className="col-md-5">
-                    <div className="right-cln">
-                    <div className="row">
-                    <div className="card details-crd">
-                        <div className="card-body">
-                        <a href="#" className="card-link"> <img src="/circle.png" /> The Goat’s Tips</a>
-                        <a href="#" className="card-link"><img src="/award.png" /> No. 4</a>
-                           <p className="card-text">After being the first locally trained horse in the 2020 Melbourne Cup, Charlie, Australia’s most improved stayer’s 
-                          sole focus for this year will be another tilt at Australia’s most famous race.</p>
-                          <p>Jockey, Giana Press said with this in mind they don’t intend to tackle weight-for-age races, or set him for a race like the Sydney Cup over
-                             autumn, as they don’t want him to rise too much in the Melbourne Cup weights.</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="row">
-                    <div className="card details-crd">
-                        <div className="card-body">
-                        <a href="#" className="card-link"> <img src="/card-img2.png" /> The Goat’s Tips</a>
-                        <a href="#" className="card-link"><img src="/award.png" /> No. 4</a>
-                           <p className="card-text">Charlie joined the Maher-Eustace stable and graduated from a third in a Wangaratta Maiden at his first start with them to a win in the Melbourne Cup.</p>
-                         </div>
-                    </div>
-                    </div>
-                    <div className="row">
-                    <div className="card details-crd">
-                        <div className="card-body">
-                        <a href="#" className="card-link"> <img src="/card-img1.png" /> The Goat’s Tips</a>
-                        <a href="#" className="card-link"><img src="/award.png" /> No. 4</a>
-                           <p className="card-text">In the nine starts between those two runs he had six wins and three seconds. Included in his wins was a victory in The Bart Cummings which gained the son of Pierro a start in the Melbourne Cup..</p>
-                          <p>That was his first racing preparation. He was a lightly framed three-year-old when he joined..</p>
-                        </div>
-                    </div>
-                    </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-                </div>
-                </div>
+              
             </div>
             </div>
             </div>

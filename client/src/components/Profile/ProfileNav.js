@@ -12,9 +12,6 @@ export const ProfileNav = () => {
   const { user, isAuthenticated, loading} = useSelector((state) => state.user);
   useEffect(()=>{
 
-    if(isAuthenticated){
-      
-    }
     store.dispatch(loaduser())
 
   },[])
@@ -39,7 +36,7 @@ export const ProfileNav = () => {
             </Link>
             <img
               className="img2"
-          src="img/edit.jpg"
+          src="/img/edit.jpg"
 
               alt="loading"
             />
@@ -48,7 +45,7 @@ export const ProfileNav = () => {
             <Link to="/dashboard/payment">Payment Methods</Link>
             <img
               className="img2"
-              src="img/credit-carddfdf.png"
+              src="/img/credit-carddfdf.png"
               alt="loading"
             />
           </div>
@@ -57,7 +54,7 @@ export const ProfileNav = () => {
 
             <img
               className="img2"
-              src= "img/settings.jpg"
+              src= "/img/settings.jpg"
               alt="loading"
             />
           </div>
@@ -66,7 +63,7 @@ export const ProfileNav = () => {
 
             <img
               className="img2"
-              src="img/info.jpg"
+              src="/img/info.jpg"
               alt="loading"
             />
           </div>
@@ -74,7 +71,7 @@ export const ProfileNav = () => {
             <p style={{cursor:"pointer"}}onClick={logoutUser}>Logout</p>
             <img
               className="img2"
-              src="img/log-out.png"
+              src="/img/log-out.png"
               alt="loading"
             />
           </div>

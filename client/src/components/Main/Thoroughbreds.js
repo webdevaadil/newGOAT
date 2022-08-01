@@ -42,10 +42,10 @@ console.log(currentRecords)
     
     <>
     <Header/>
-    <div id="sport-sec">        
+    <div  id="sport-sec">        
             {/* <div className="container"> */}
             <Breadcrumb separator=">">
-    <Breadcrumb.Item  >
+    <Breadcrumb.Item >
     <Link to="/" >Home</Link>
     </Breadcrumb.Item>
     <Breadcrumb.Item >
