@@ -13,22 +13,6 @@ export const HorseDetails = ()=>{
     const {data,error,loading,isAuthenticated} = useSelector((state)=>state.data)
 
 
-    const getapidata = async()=>{
-       
-   dispatch(apidata())
-
-    }
-
-useEffect(()=>{
-
-    getapidata()
-
-},[dispatch])
-
-
-
-    
-
   return(
       <>  
       <Header/>    
