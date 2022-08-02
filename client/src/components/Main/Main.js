@@ -10,6 +10,7 @@ import { loaduser } from "../../actions/userAction";
 import axios from 'axios'
 import { Records } from "./Records";
 import { Pagination } from "./Pagination";
+import { apidata } from "../../actions/apiAction";
 
 export const Main = () => {
 
@@ -29,6 +30,7 @@ export const Main = () => {
   useEffect(()=>{
 
     getdata()
+
   },[])
 
   const indexOfLastRecord = currentPage * recordsPerPage;

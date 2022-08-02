@@ -176,7 +176,9 @@ export const Signup = () => {
               </div>
               <p>
                 By signing up, I agree to the{" "}
+                <Link to ="/dashboard/about">
                 <span>Terms and conditions and Privacy policy</span>
+                </Link>
               </p>
             </div>
           </div>

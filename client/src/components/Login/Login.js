@@ -93,7 +93,9 @@ export const Login = () => {
             </form>
            
           </div>
-          <p>By signing up, I agree to the <span>Terms and conditions and Privacy policy</span></p>
+          <p>By signing up, I agree to the
+            
+            <Link to ="/dashboard/about"><span>Terms and conditions and Privacy policy</span></Link> </p>
 
         </div>
       </div>
