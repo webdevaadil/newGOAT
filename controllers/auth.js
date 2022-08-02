@@ -3,6 +3,11 @@ const ErrorResponse = require("../utlis/errorresponse.js");
 const catchAsyncerror = require("../middleware/catchAsyncerror");
 const jwt = require("jsonwebtoken");
 var cloudinary = require("cloudinary").v2;
+const emailValidator = require("deep-email-validator");
+
+async function isEmailValid(email) {
+  return emailValidator.validate(email);
+}
 exports.register = catchAsyncerror(async (req, res, next) => {
   const { username, email, password, dob, gender } = req.body;
 
@@ -12,14 +17,24 @@ exports.register = catchAsyncerror(async (req, res, next) => {
 
   try {
     User.findOne({ email }, async (err, user) => {
-      if (user) {
+      const { valid, reason, validators } = await isEmailValid(email);
+      console.log(validators);
+
+      if (!valid) {
+        return res
+          .status(500)
+          .json("email is invalid please enter a valid email");
+      } else if (user) {
         return res.status(500).json("user already registered");
       } else {
-        const myCloud = await cloudinary.uploader.upload("https://res.cloudinary.com/degu3b9yz/image/upload/v1659352924/avatars/blilsisofr6pbhnuxbte.png", {
-          folder: "avatars",
-          width: 150,
-          crop: "scale",
-        });
+        const myCloud = await cloudinary.uploader.upload(
+          "https://res.cloudinary.com/degu3b9yz/image/upload/v1659352924/avatars/blilsisofr6pbhnuxbte.png",
+          {
+            folder: "avatars",
+            width: 150,
+            crop: "scale",
+          }
+        );
         const user = await User.create({
           username,
           email,
@@ -129,12 +144,12 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     dob: req.body.dob,
     gender: req.body.gender,
   };
-  if (req.body.avatar ) {
+  if (req.body.avatar) {
     const user = await User.findById(req.user.id);
-console.log("hi");
+    console.log("hi");
     const imageId = user.avatar.public_id;
 
-     cloudinary.uploader.destroy(imageId);
+    cloudinary.uploader.destroy(imageId);
 
     const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
       folder: "horse",

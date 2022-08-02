@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import { clearErrors, loaduser, updateprofile } from "../../actions/userAction";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
+import { Loader } from "../layout/Loader";
 
 export const Profile = () => {
   const dispatch = useDispatch();
@@ -76,6 +77,7 @@ export const Profile = () => {
 
   return (
     <>
+      {loading ? <Loader/>:
       <div className="profile_box_two" style={{ display: "flex" }}>
         {isAuthenticated === true ? (
           <form encType="multipart/form-data" onSubmit={updateProfileSubmit}>
@@ -132,7 +134,7 @@ export const Profile = () => {
         ) : (
           "please login"
         )}
-      </div>
+      </div>}
     </>
   );
 };
