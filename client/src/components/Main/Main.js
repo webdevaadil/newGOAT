@@ -47,8 +47,6 @@ export const Main = () => {
     
     const newarr =  detail.concat(dogdetail)
     setFinaldetail(newarr)
-
-  setDetail([...detail,finaldata])
     
   }
   useEffect(()=>{
