@@ -276,7 +276,7 @@ table {
 
 
 
-/* responsive */
+/* responsive  class*/
 @media (max-width: 1200px) {
   .tip-grid {
     grid-gap: 10px;
