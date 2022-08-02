@@ -11,11 +11,12 @@ import axios from 'axios'
 import { Records } from "./Records";
 import { Pagination } from "./Pagination";
 import { apidata } from "../../actions/apiAction";
+import { Loader } from "../layout/Loader";
 
 export const Main = () => {
+  const {user,error,loading,isAuthenticated}  = useSelector((state)=>state.user)
 
   const [detail,setDetail] = useState([])
-  const [loading, setLoading] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
@@ -31,7 +32,7 @@ export const Main = () => {
 
     getdata()
 
-  },[])
+  },[user])
 
   const indexOfLastRecord = currentPage * recordsPerPage;
 const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
@@ -41,9 +42,9 @@ console.log(currentRecords)
 
   return (
     <>
-    
+    <div>
+
       <Header />
-      {/* main image */}
 
       <div className="slide">
         <section className="container-fluid">
@@ -162,6 +163,7 @@ console.log(currentRecords)
                 </div>
               </div>
             </div>
+            {isAuthenticated === false  ?
             <div className="main_1 main-img">
               <div className="main_cont">
                 <h3>Sign up to The Goat Tips Today!</h3>
@@ -174,11 +176,22 @@ console.log(currentRecords)
 
                 </Link>
               </div>
-            </div>
+            </div>:<div className="main_1 main-img">
+              <div className="main_cont">
+                <h3>hi</h3>
+                <p>Welcome</p>
+                <h4>
+                  <span>{}</span>
+                </h4>
+                <Link to ="/packages">
+                <button className="btn freetips-btn"></button>
+
+                </Link>
+              </div>
+            </div>}
           </div>
         </div>
       </div>
-
 
       <Records detail={currentRecords}/>
             <Pagination
@@ -189,5 +202,7 @@ console.log(currentRecords)
 
      
       <Footer />
+    </div>
+
     </>
   )}
