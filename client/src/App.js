@@ -4,7 +4,8 @@ import {
   Routes,
   Navigate,
   BrowserRouter,
-} from "react-router-dom";
+} from "react-router-dom"
+
 import { Main } from "./components/Main/Main";
 import { Signup } from "./components/Signup/Signup";
 import { Login } from "./components/Login/Login";
@@ -19,11 +20,14 @@ import { Greydetails } from "./components/Main/Greydetails";
 import { About } from "./components/Profile/About";
 import { Metadata } from "./components/layout/Metadata";
 import { Package } from "./components/Signup/Package";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { apidata } from "./actions/apiAction";
 
 
 function App() {
 
-  
+
   return (
     <>
       <Metadata title="The Goat Tips" />
@@ -34,8 +38,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/thoroughbreds" element={<Thoroughbreds/>}/>
           <Route path="/greyhounds" element={<Greyhounds/>}/>
-          <Route path = "/horsedetails" element = {<HorseDetails/>}/>
-          <Route path = "/greydetails" element = {<Greydetails/>}/>
+          <Route path = "/horsedetails/:id" element = {<HorseDetails/>}/>
+          <Route path = "/greydetails/:id" element = {<Greydetails/>}/>
             <Route path="/dashboard" element={<Dashboard />}>
               <Route path="" element={<Profile/>} />
               <Route path="payment" element={<PaymentMethoad />} />
