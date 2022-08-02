@@ -19,6 +19,7 @@ import { Greydetails } from "./components/Main/Greydetails";
 import { About } from "./components/Profile/About";
 import { Metadata } from "./components/layout/Metadata";
 import { Package } from "./components/Signup/Package";
+import { ProtectedRoute } from "./components/Route/ProtectedRoute";
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
           <Route path = "/horsedetails" element = {<HorseDetails/>}/>
           <Route path = "/greydetails" element = {<Greydetails/>}/>
             <Route path="/dashboard" element={<Dashboard />}>
-              <Route path="" element={<Profile/>} />
+              <ProtectedRoute path="" element={<Profile/>} />
               <Route path="payment" element={<PaymentMethoad />} />
               <Route path="accountsetting" element={<AccountSetting />} />
               <Route path="about" element={<About/>} />
