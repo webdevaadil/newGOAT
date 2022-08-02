@@ -113,7 +113,7 @@ export const Timetable = ({detail,loading}) => {
      <td>{items.RaceTime}</td>
      <td>{items.RaceLocation}</td>
      <td>
-       <Link to ={`/greydetails/${index}`}>
+       <Link to ={`/greydetails/${items.id}`}>
    
        <button className="btn btn-1">Race       {items.RaceNumber}</button>
        </Link>

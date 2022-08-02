@@ -41,7 +41,7 @@ function App() {
           <Route path = "/horsedetails/:id" element = {<HorseDetails/>}/>
           <Route path = "/greydetails/:id" element = {<Greydetails/>}/>
             <Route path="/dashboard" element={<Dashboard />}>
-              <ProtectedRoute path="" element={<Profile/>} />
+              <Route path="" element={<Profile/>} />
               <Route path="payment" element={<PaymentMethoad />} />
               <Route path="accountsetting" element={<AccountSetting />} />
               <Route path="about" element={<About/>} />

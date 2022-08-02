@@ -26,28 +26,37 @@ export const Main = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
   
+for(var i = 0;i<=detail.length;i++){
+//  console.log(detail[i])
 
+}
 
-
+console.log(detail)
   const getdata = async()=>{
 
     const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=JxTR_CmO6LOwDEY7gYj8mh-6N5klsFTfRxZBd1zAUaSlLfloCVG1VYeAl4mKdepsjisvchrhrId-zj_OKuJ8Ztfr9h0fILoXm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnM5Ekl7EwoTMsxbGD7Mk6JPN3Ls7Oyxjmrsr3ZQwRD52M_vMAqczDkXfnrBBGFFHff8VMKaSWAE-WxUrUSiQwyHxctBCURm4-9z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
     let finaldata = await res.data.data
-   setDetail(finaldata)
-   setLoading(!loading)
+
+    console.log(finaldata)
+    setLoading(!loading)
+    
+
+    //adding key and value to the object
+  
+   finaldata.map((items,index)=> items.id = index)
+    
+    
+     setDetail(finaldata)
 
 
-  }
+}
+
 
 
   const getDogdata = async()=>{
     const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=jDoChie6LqLG6ElHDz5XnSp5xbRzBGY7boopl67X51Y-MgBXn3qY9IykJM3v2v8gEiKx0RCnFEBRpeCaaI4b-91ukFetCelMm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnF9OXc95fD23eDvAhF7wtmVRghiF34032X6xCyWzrqMkLu9JIXnQGOCkJaLaMp569JzQoN6xAOTwYcScU6dDSajx9N_XZM_k49z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
     let finaldata = await res.data.data
     setDogdetail(finaldata)
-    
-    const newarr =  detail.concat(dogdetail)
-    setFinaldetail(newarr)
-    
   }
   useEffect(()=>{
     
@@ -215,4 +224,5 @@ console.log(currentRecords)
       <Footer />
       </>
 
-  )}
+  )
+  }

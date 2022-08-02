@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom'
 import { Loader } from '../layout/Loader'
 
 export const Records = ({detail,loading}) => {
-  
    
- 
   return (
     <>
     {
@@ -37,7 +35,7 @@ export const Records = ({detail,loading}) => {
       <td>{items.RaceDate}</td>
       <td>{items.RaceLocation}</td>
       <td>
-      <Link to = {`/horsedetails/${index}`}>
+      <Link to = {`/horsedetails/${items.id}`}>
 
 <button className="btn btn-1">Race  {items.RaceNumber}</button>
 </Link>
