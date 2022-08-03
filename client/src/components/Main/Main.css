@@ -339,6 +339,18 @@ h3.free-head {
 .main_cont {
   text-align: center;
 }
+.main_cont h3 {
+  font-size: 2.188rem;
+  line-height: 2.75rem;
+}
+.main_cont span {
+  font-size: 2.188rem;
+  line-height: 2.75rem;
+}
+button.btn.freetips-btn {
+  background: #10867F;
+  padding: 6px 30px;
+}
 }
 @media (max-width:668px) {
   .main-grid {
