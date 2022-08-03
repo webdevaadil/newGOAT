@@ -43,7 +43,12 @@ console.log(detail)
 
     //adding key and value to the object
   
-   finaldata.map((items,index)=> items.id = index)
+   finaldata.filter((items,index)=> {
+     items.id = index
+    return(
+     <></>
+    )
+   })
     
     
      setDetail(finaldata)
@@ -53,10 +58,15 @@ console.log(detail)
 
 
 const getNextDate = ()=>{
-  const date = new Date()
 
-date.setDate(date.getDate() -7)
-console.log()
+  const today = new Date()
+  const start = today.getDate()
+const end = today.getDate()+5
+console.log(start)
+console.log(end)
+
+let loop = new Date(start)
+
 }
 
 
@@ -70,6 +80,7 @@ console.log()
     apidata(dispatch)
     getdata()
     getDogdata()
+    getNextDate()
   },[])
   
   console.log(detail)
