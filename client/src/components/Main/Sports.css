@@ -222,7 +222,7 @@ padding: 5px;
   
   @media (max-width: 992px) {
     .main-sec {
-      width: 80% !important;
+      width: 80%;
       padding-top: 0px;
   } 
     .main-freetips {
