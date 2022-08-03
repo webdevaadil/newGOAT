@@ -19,11 +19,14 @@ import { Greydetails } from "./components/Main/Greydetails";
 import { About } from "./components/Profile/About";
 import { Metadata } from "./components/layout/Metadata";
 import { Package } from "./components/Signup/Package";
+import { useSelector } from "react-redux";
 import { ProtectedRoute } from "./components/Route/ProtectedRoute";
 
 
 function App() {
-
+  const {  isAuthenticated } = useSelector(
+    (state) => state.user
+  );
   
   return (
     <>
@@ -37,8 +40,10 @@ function App() {
           <Route path="/greyhounds" element={<Greyhounds/>}/>
           <Route path = "/horsedetails" element = {<HorseDetails/>}/>
           <Route path = "/greydetails" element = {<Greydetails/>}/>
-            <Route path="/dashboard" element={<Dashboard />}>
-              <ProtectedRoute path="" element={<Profile/>} />
+            <Route path="/dashboard" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Dashboard />       </ProtectedRoute>}>
+              <Route path="" element={
+                <Profile/>
+       } />
               <Route path="payment" element={<PaymentMethoad />} />
               <Route path="accountsetting" element={<AccountSetting />} />
               <Route path="about" element={<About/>} />

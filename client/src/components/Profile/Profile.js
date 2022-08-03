@@ -6,6 +6,8 @@ import { useAlert } from "react-alert";
 import { clearErrors, loaduser, updateprofile } from "../../actions/userAction";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import { Loader } from "../layout/Loader";
+import { Navigate } from "react-router-dom";
+import { Login } from "../Login/Login";
 
 export const Profile = () => {
   const dispatch = useDispatch();
@@ -74,9 +76,13 @@ export const Profile = () => {
     if (day.length < 2) day = "0" + day;
     return [year, month, day].join("-");
   }
+  if(isAuthenticated===false){
+    <Navigate to={<Login/>}/>
+  }
 
   return (
     <>
+    
       {loading ? <Loader/>:
       <div className="profile_box_two" style={{ display: "flex" }}>
         {isAuthenticated === true ? (
