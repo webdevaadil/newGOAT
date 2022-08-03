@@ -210,6 +210,7 @@ button.btn.freetips-btn {
 }
 .upcomming-table {
   padding-top: 1rem;
+  overflow-x: auto;
 }
 th, td {
   text-align: left;
@@ -313,6 +314,7 @@ span.home_btn a {
 }
 }
 
+
 @media (max-width: 778px) {
   .main-content {
     text-align: center;
@@ -331,9 +333,21 @@ span.home_btn a {
 .slide {
   height: 400px;
 }
+h3.free-head {
+  text-align: center;
+}
+.main_cont {
+  text-align: center;
+}
 }
 @media (max-width:668px) {
-  
+  .main-grid {
+    grid-template-columns: repeat(1,1fr);
+}
+.tip-grid {
+  grid-gap: 0px;
+  justify-content: space-around;
+}
 }
 
 @media (prefers-reduced-motion: no-preference) {
