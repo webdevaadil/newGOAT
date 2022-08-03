@@ -39,9 +39,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/thoroughbreds" element={<Thoroughbreds/>}/>
           <Route path="/greyhounds" element={<Greyhounds/>}/>
-          <Route path = "/horsedetails" element = {<HorseDetails/>}/>
-          <Route path = "/greydetails" element = {<Greydetails/>}/>
-            <Route path="/dashboard" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Dashboard />       </ProtectedRoute>}>
+          <Route path = "/horsedetails/:id" element = {<HorseDetails/>}/>
+          <Route path = "/greydetails/:id" element = {<Greydetails/>}/>
+            <Route path="/dashboard" element={<Dashboard />}>
               <Route path="" element={
                 <Profile/>
        } />
