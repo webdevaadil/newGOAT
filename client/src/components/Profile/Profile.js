@@ -67,6 +67,7 @@ export const Profile = () => {
       });
     }
   }, [dispatch, error, alert, user, isUpdated]);
+  
   function formatDate(date) {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),

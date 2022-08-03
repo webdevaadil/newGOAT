@@ -1,15 +1,88 @@
-import React,{useState} from "react";
-import { Link } from "react-router-dom";
+import React,{useEffect, useState} from "react";
+import { Link, useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
 import { Breadcrumb } from 'antd';
+import axios from "axios";
+import { Loader } from "../layout/Loader";
 
 
 export const Greydetails = ()=>{
     
+
+    const { id } = useParams();
+    const [detail,setDetail] = useState([])
+    const [loading,setLoading] = useState(true)
+    const getdata = async()=>{
+
+        const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=jDoChie6LqLG6ElHDz5XnSp5xbRzBGY7boopl67X51Y-MgBXn3qY9IykJM3v2v8gEiKx0RCnFEBRpeCaaI4b-91ukFetCelMm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnF9OXc95fD23eDvAhF7wtmVRghiF34032X6xCyWzrqMkLu9JIXnQGOCkJaLaMp569JzQoN6xAOTwYcScU6dDSajx9N_XZM_k49z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
+        let finaldata = await res.data.data[id]
+    console.log(finaldata)
+       setDetail([finaldata])
+       
+       setLoading(!loading)
+    
+      }
+      useEffect(()=>{
+        getdata()
+      },[])
+
+
+ const getCurrenttime = (date) => {
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var now = new Date(date);
+        var month = months[now.getMonth() + 1];
+        var date = now.getDate();
+
+        var hour = now.getHours();
+        var min = now.getMinutes();
+       var year = now.getFullYear();
+        var period = "am"
+        if (hour > 11) {
+            period = "pm"
+            if (hour > 12) {
+                hour -= 12
+            }
+        }
+        if (min < 10) {
+            min = "0" + min
+        }
+        console.log(period);
+        return `${date}    ${month}    ${year}`
+        console.log((month + "/" + date));
+
+    }
+
+
+    function getTime(date){
+        var now = new Date(date);
+
+        var hour = now.getHours();
+        var min = now.getMinutes();
+
+
+        var period = "am"
+        if (hour > 11) {
+            period = "pm"
+            if (hour > 12) {
+                hour -= 12
+            }
+        }
+        if (min < 10) {
+            min = "0" + min
+        }
+
+        return  `${hour}:${min}   ${period}`
+
+      }
+
+
   return(
       <> 
-     <Header/>  
+      {
+        loading?<Loader/>:(
+            <>
+               <Header/>  
       <div id="sport-sec">        
       <Breadcrumb separator=">">
 
@@ -32,21 +105,24 @@ Details
                   <div className="detisl-bg">
                     <img src="/Greydetails.png" />
                   </div>
+
+{detail.map((item,index)=>{
+    return(
                   <div className="row">
                     <div className="det-des mt-4">
-                        <h3>Murray Bridge, SA</h3>
+                        <h3>{getCurrenttime(item.RaceDate) }</h3>
                         <div className="row det-cont mt-2">
                             <div className="col-md-2">
-                                 <button className='btn det-btn freebt-2'>Race 2</button>
+                                 <button className='btn det-btn freebt-2'>Race    {item.RaceNumber}</button>
                             </div>
                             <div className="col-md-3 ">
                                 <div className="detail-date">
-                                    <p>Today, 04 Aug 2021</p>
+                                    <p>{item.RaceLocation}</p>
                                 </div>
                             </div>
                             <div className="col-md-2 ">
                               <div className="detail-time">
-                                    <p>9:00 AM</p>
+                                    <p>{getTime(item.RaceDate)}</p>
                                 </div>
                             </div>
                             <div className="col-md-3">
@@ -60,6 +136,11 @@ Details
                         </div>
                     </div>
                   </div>
+        
+    )
+})}
+
+                </div> 
                   <div className="row">
                     <div className='upcomming-table'>
                         <table>
@@ -138,13 +219,16 @@ Details
                         </table>
                         </div>
                     </div>
-                </div> 
               
             </div>
             </div>
             </div>
         </div>       
         <Footer/> 
+            </>
+        )
+      }
+  
 
     </>
   )

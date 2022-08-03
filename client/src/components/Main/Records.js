@@ -1,13 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Loader } from '../layout/Loader'
 
-export const Records = ({detail}) => {
-  
+export const Records = ({detail,loading}) => {
    
- 
   return (
     <>
-     <div>
+    {
+  loading?<Loader/>:(
+<>
+
+<div>
+      
         <div className="container-fluid upcomming-sec">
           <div className="container">
             <h3>Upcoming Races</h3>
@@ -31,7 +35,7 @@ export const Records = ({detail}) => {
       <td>{items.RaceDate}</td>
       <td>{items.RaceLocation}</td>
       <td>
-      <Link to = "/horsedetails">
+      <Link to = {`/horsedetails/${items.id}`}>
 
 <button className="btn btn-1">Race  {items.RaceNumber}</button>
 </Link>
@@ -46,6 +50,10 @@ export const Records = ({detail}) => {
           </div>
         </div>
       </div>
+</>
+  )
+  }
+     
     </>
   )
 }
