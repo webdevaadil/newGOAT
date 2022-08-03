@@ -23,8 +23,18 @@ export const Header = () => {
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
+          >          
+            <div class="container">
+            <input type="checkbox" id="checkbox1" class="checkbox1 visuallyHidden"/>
+            <label for="checkbox1">
+                <div class="hamburger hamburger1">
+                    <span class="bar bar1"></span>
+                    <span class="bar bar2"></span>
+                    <span class="bar bar3"></span>
+                    <span class="bar bar4"></span>
+                </div>
+            </label>
+            </div> 
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -85,7 +95,7 @@ export const Header = () => {
                 )}
               </li>
             </ul>
-
+               
             <Loginbtn />
           </div>
         </nav>

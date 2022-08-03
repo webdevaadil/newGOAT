@@ -38,7 +38,7 @@ function App() {
           <Route path = "/horsedetails" element = {<HorseDetails/>}/>
           <Route path = "/greydetails" element = {<Greydetails/>}/>
             <Route path="/dashboard" element={<Dashboard />}>
-              <ProtectedRoute path="" element={<Profile/>} />
+              <Route path="" element={<Profile/>} />
               <Route path="payment" element={<PaymentMethoad />} />
               <Route path="accountsetting" element={<AccountSetting />} />
               <Route path="about" element={<About/>} />

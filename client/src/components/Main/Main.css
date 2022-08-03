@@ -308,6 +308,9 @@ table {
 .main_cont {
   padding: 2rem 2rem;
 }
+span.home_btn a {
+  margin-top: 10px !important;
+}
 }
 
 @media (prefers-reduced-motion: no-preference) {
