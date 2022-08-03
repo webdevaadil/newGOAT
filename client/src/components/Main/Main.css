@@ -313,6 +313,29 @@ span.home_btn a {
 }
 }
 
+@media (max-width: 778px) {
+  .main-content {
+    text-align: center;
+}
+.main-sec {
+  width: 100% !important;
+} 
+.main-content h2 {
+  font-size: 2.188rem;
+  line-height: 2.75rem;
+}
+.main-content p {
+  font-size: 16px;
+  line-height: 26px;
+}
+.slide {
+  height: 400px;
+}
+}
+@media (max-width:668px) {
+  
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
