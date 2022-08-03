@@ -10,6 +10,7 @@ import axios from 'axios'
 import { Pagination } from "./Pagination";
 import { apidata } from "../../actions/apiAction";
 import { useDispatch,useSelector } from "react-redux";
+import { Loader } from "../layout/Loader";
 
 export const Thoroughbreds=()=>{
 
@@ -23,7 +24,10 @@ export const Thoroughbreds=()=>{
 
     const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=JxTR_CmO6LOwDEY7gYj8mh-6N5klsFTfRxZBd1zAUaSlLfloCVG1VYeAl4mKdepsjisvchrhrId-zj_OKuJ8Ztfr9h0fILoXm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnM5Ekl7EwoTMsxbGD7Mk6JPN3Ls7Oyxjmrsr3ZQwRD52M_vMAqczDkXfnrBBGFFHff8VMKaSWAE-WxUrUSiQwyHxctBCURm4-9z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
     let finaldata = await res.data.data
+    
+    finaldata.map((items,index)=> items.id = index)
    setDetail(finaldata)
+   setLoading(!loading)
 
   }
   useEffect(()=>{
@@ -41,7 +45,7 @@ console.log(currentRecords)
     return (
     
     <>
-    <Header/>
+     <Header/>
     <div  id="sport-sec">        
             {/* <div className="container"> */}
             <Breadcrumb separator=">">
@@ -231,7 +235,7 @@ console.log(currentRecords)
         </div>
 </div>
       
-      <Records detail={currentRecords}/>
+      <Records loading = {loading} detail={currentRecords}/>
             <Pagination
                 nPages={nPages}
                 currentPage={currentPage}
@@ -241,6 +245,7 @@ console.log(currentRecords)
     
 <Footer/>
     </>
+
     )
   
 }

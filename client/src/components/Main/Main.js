@@ -5,7 +5,7 @@ import { Metadata } from "../layout/Metadata";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
 import store from "../../store";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { loaduser } from "../../actions/userAction";
 import axios from 'axios'
 import { Records } from "./Records";
@@ -14,25 +14,76 @@ import { apidata } from "../../actions/apiAction";
 import { Loader } from "../layout/Loader";
 
 export const Main = () => {
-  const {user,error,loading,isAuthenticated}  = useSelector((state)=>state.user)
+  const dispatch = useDispatch()
 
+  const data = useSelector((state)=>state.data)
   const [detail,setDetail] = useState([])
+  const [dogdetail,setDogdetail] = useState([])
+  const [finaldetail,setFinaldetail]  = useState([])
+  const [loading,setLoading] = useState(true)
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
   
+for(var i = 0;i<=detail.length;i++){
+//  console.log(detail[i])
+
+}
+
+console.log(detail)
   const getdata = async()=>{
 
     const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=JxTR_CmO6LOwDEY7gYj8mh-6N5klsFTfRxZBd1zAUaSlLfloCVG1VYeAl4mKdepsjisvchrhrId-zj_OKuJ8Ztfr9h0fILoXm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnM5Ekl7EwoTMsxbGD7Mk6JPN3Ls7Oyxjmrsr3ZQwRD52M_vMAqczDkXfnrBBGFFHff8VMKaSWAE-WxUrUSiQwyHxctBCURm4-9z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
     let finaldata = await res.data.data
-   setDetail(finaldata)
 
+    console.log(finaldata)
+    setLoading(!loading)
+    
+
+    //adding key and value to the object
+  
+   finaldata.filter((items,index)=> {
+     items.id = index
+    return(
+     <></>
+    )
+   })
+    
+    
+     setDetail(finaldata)
+
+
+}
+
+
+const getNextDate = ()=>{
+
+  const today = new Date()
+  const start = today.getDate()
+const end = today.getDate()+5
+console.log(start)
+console.log(end)
+
+let loop = new Date(start)
+
+}
+
+
+  const getDogdata = async()=>{
+    const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=jDoChie6LqLG6ElHDz5XnSp5xbRzBGY7boopl67X51Y-MgBXn3qY9IykJM3v2v8gEiKx0RCnFEBRpeCaaI4b-91ukFetCelMm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnF9OXc95fD23eDvAhF7wtmVRghiF34032X6xCyWzrqMkLu9JIXnQGOCkJaLaMp569JzQoN6xAOTwYcScU6dDSajx9N_XZM_k49z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
+    let finaldata = await res.data.data
+    setDogdetail(finaldata)
   }
   useEffect(()=>{
-
+    
+    apidata(dispatch)
     getdata()
-
-  },[user])
+    getDogdata()
+    getNextDate()
+  },[])
+  
+  console.log(detail)
 
   const indexOfLastRecord = currentPage * recordsPerPage;
 const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
@@ -42,9 +93,9 @@ console.log(currentRecords)
 
   return (
     <>
-    <div>
-
-      <Header />
+    
+       <Header />
+      {/* main image */}
 
       <div className="slide">
         <section className="container-fluid">
@@ -163,7 +214,6 @@ console.log(currentRecords)
                 </div>
               </div>
             </div>
-            {isAuthenticated === false  ?
             <div className="main_1 main-img">
               <div className="main_cont">
                 <h3>Sign up to The Goat Tips Today!</h3>
@@ -176,33 +226,21 @@ console.log(currentRecords)
 
                 </Link>
               </div>
-            </div>:<div className="main_1 main-img">
-              <div className="main_cont">
-                <h3>hi</h3>
-                <p>Welcome</p>
-                <h4>
-                  <span>{}</span>
-                </h4>
-                <Link to ="/packages">
-                <button className="btn freetips-btn"></button>
-
-                </Link>
-              </div>
-            </div>}
+            </div>
           </div>
         </div>
       </div>
 
-      <Records detail={currentRecords}/>
+
+      <Records loading = {loading} detail={currentRecords}/>
             <Pagination
                 nPages={nPages}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
             />
 
-     
       <Footer />
-    </div>
+      </>
 
-    </>
-  )}
+  )
+  }

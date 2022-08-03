@@ -4,8 +4,9 @@ import { useState,useEffect } from "react";
 import axios from "axios"
 import { Pagination } from './Pagination';
 import { Link } from 'react-router-dom';
+import { Loader } from '../layout/Loader';
 
-export const Timetable = ({detail}) => {
+export const Timetable = ({detail,loading}) => {
 
 
 
@@ -85,44 +86,51 @@ export const Timetable = ({detail}) => {
         <div className='container-fluid raceup-sec'>
           <div className='container'>
             <h3 className="free-title">Tomorrow, 05 Aug 2021</h3>
-            <div className='upcomming-table'>
-            <table>
-              <tbody>
-
-                <tr>
-                  <th className='first-border'>Track Namey</th>
-                  <th>Time</th>
-                  <th>Race No.</th>
-                  <th>Favourite No.</th>
-                  <th className='first-border2'>Win Odds</th>
-                </tr>
-
-{
-  detail.map((items,index)=>{
-return (
-  <tr  key = {index}>
-  <td>
-    <img src="../left-Vector.png" alt="horse image" />
-  </td>
-  <td>{items.RaceTime}</td>
-  <td>{items.RaceLocation}</td>
-  <td>
-    <Link to = "/greydetails">
-
-    <button className="btn btn-1">Race        {items.RaceNumber}</button>
-    </Link>
-  </td>
-  <td>6.7</td>
-</tr>
-)
-  })
-}
 
 
-             </tbody>
-              </table>
-          
-            </div>
+            {
+               loading?<Loader/>:
+               <div className='upcomming-table'>
+               <table>
+                 <tbody>
+   
+                   <tr>
+                     <th className='first-border'>Track Namey</th>
+                     <th>Time</th>
+                     <th>Race No.</th>
+                     <th>Favourite No.</th>
+                     <th className='first-border2'>Win Odds</th>
+                   </tr>
+   
+   {
+    
+     detail.map((items,index)=>{
+   return (
+     <tr  key = {index}>
+     <td>
+       <img src="../left-Vector.png" alt="horse image" />
+     </td>
+     <td>{items.RaceTime}</td>
+     <td>{items.RaceLocation}</td>
+     <td>
+       <Link to ={`/greydetails/${items.id}`}>
+   
+       <button className="btn btn-1">Race       {items.RaceNumber}</button>
+       </Link>
+     </td>
+     <td>6.7</td>
+   </tr>
+   )
+     })
+   }
+   
+   
+                </tbody>
+                 </table>
+             
+               </div>
+            }
+           
           </div>
         </div>
     

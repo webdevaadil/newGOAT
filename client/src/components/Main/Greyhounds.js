@@ -6,8 +6,9 @@ import { useState,useEffect } from "react";
 import axios from "axios"
 import { Breadcrumb} from 'antd';
 import { Pagination } from "./Pagination";
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { apidata } from "../../actions/apiAction";
+import { Loader } from "../layout/Loader";
 
 
 export const Greyhounds = ()=>{
@@ -22,7 +23,11 @@ export const Greyhounds = ()=>{
 
     const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=jDoChie6LqLG6ElHDz5XnSp5xbRzBGY7boopl67X51Y-MgBXn3qY9IykJM3v2v8gEiKx0RCnFEBRpeCaaI4b-91ukFetCelMm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnF9OXc95fD23eDvAhF7wtmVRghiF34032X6xCyWzrqMkLu9JIXnQGOCkJaLaMp569JzQoN6xAOTwYcScU6dDSajx9N_XZM_k49z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
     let finaldata = await res.data.data
+    finaldata.map((items,index)=> items.id = index)
+    console.log(finaldata)
    setDetail(finaldata)
+
+   setLoading(!loading)
 
   }
   useEffect(()=>{
@@ -37,8 +42,9 @@ const nPages = Math.ceil(detail.length / recordsPerPage)
 console.log(currentRecords)
 
   return(
-      <>  
-      <Header/>    
+   
+         <>
+                   <Header/>    
       <div id="sport-sec">        
       <Breadcrumb separator=">">
     <Breadcrumb.Item  >
@@ -150,7 +156,7 @@ console.log(currentRecords)
           </div>
         </div>
       </div>
-   <Timetable detail = {currentRecords}/> 
+   <Timetable loading = {loading} detail = {currentRecords}/> 
   
    <Pagination
                 nPages={nPages}
@@ -159,7 +165,8 @@ console.log(currentRecords)
             />
 
   <Footer/>
+             </>
   
-    </>
+
   )
 }

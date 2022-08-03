@@ -1,24 +1,11 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
-import { Navigate, Route } from "react-router-dom";
-export const ProtectedRoute = ({  component: element, ...rest }) => {
-    const { loading, isAuthenticated, user } = useSelector((state) => state.user);
-    return (
-    <Fragment>
-    {loading === false && (
-      <Route
-        {...rest}
-        render={(props) => {
-          if (isAuthenticated === false) {
-            return <Navigate to="/login" />;
-          }
+import { Navigate } from "react-router-dom";
+import { Login } from "../Login/Login";
+export const ProtectedRoute = ({ isAuthenticated }) => {
+  if (!isAuthenticated) {
+    <Navigate to={"/login"} />;
+  }
 
-         
-
-          return <element {...props} />;
-        }}
-      />
-    )}
-  </Fragment>
-  )
-}
+  return isAuthenticated && <Navigate to="/login" />;
+};
