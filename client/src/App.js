@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 
 import { Main } from "./components/Main/Main";
-import { Signup } from "./components/Signup/Signup";
 import { Login } from "./components/Login/Login";
 import { PaymentMethoad } from "./components/Profile/PaymentMethoad";
 import { Profile } from "./components/Profile/Profile";
