@@ -154,6 +154,7 @@ font-family: 'Nunito Sans';
     align-items: center;
     height:auto;
     border-radius: 22px;
+    min-height: 400px;
 }
 .main_cont {
   color: #FFFFFF;
