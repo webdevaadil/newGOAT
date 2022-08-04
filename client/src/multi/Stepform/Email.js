@@ -5,7 +5,6 @@ export const Email = ({ formData, setForm, navigation }) => {
    setForm(e)
    navigation.next()
 }
-  console.log(formData);
 
   return (
     <section>
@@ -45,7 +44,7 @@ export const Email = ({ formData, setForm, navigation }) => {
             <button
               className="btn_two"
               name="packages"
-              value={"Bronze"}
+              value={"$15 / week"}
                 
                 onClick={handle}
             >
@@ -65,7 +64,7 @@ export const Email = ({ formData, setForm, navigation }) => {
             <button
               className="btn_two"
               name="packages"
-              value={"Silver"}
+              value={"$30 / week"}
               onClick={handle}
             >
               Select
@@ -84,7 +83,7 @@ export const Email = ({ formData, setForm, navigation }) => {
             <button
               className="btn_two"
               name="packages"
-              value={"Gold"}
+              value={"$45 / week"}
               onClick={handle}
             >
               Select
@@ -103,7 +102,7 @@ export const Email = ({ formData, setForm, navigation }) => {
             <button
               className="btn_two"
               name="packages"
-              value={"Platinum"}
+              value={"$60 / week"}
               onClick={handle}
             >
               Select

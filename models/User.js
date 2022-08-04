@@ -26,19 +26,29 @@ const userSchema = new mongoose.Schema({
     type: Date,
     required: [true, "please provide date of birth"],
   },
+  Name_of_card: {
+    type: String,
+    required: [true, "please provide Name_of_card"],
+  },
+
+  card_no: {
+    type: Number,
+    required: [true, "please provide card_no"],
+  },
+
+  Expiry: {
+    type: Date,
+    required: [true, "please provide Expiry"],
+  },
+  cvc: {
+    type: Number,
+    required: [true, "please provide cvc"],
+  },
   gender: {
     type: String,
     default: "male",
   },
-  photo: {
-    data: Buffer,
-    type: String,
-  },
-  photo: {   
- 
-    data: Buffer,   
-    type: String
-  },
+
   avatar:{
         
     public_id:{

@@ -9,7 +9,6 @@ import { Metadata } from "../../components/layout/Metadata";
 import { Loader } from "../../components/layout/Loader";
 
 export const Names = ({ formData, setForm, navigation }) => {
-  // const { name, email, dob, Password } = formData;
 
   const navigate = useNavigate();
   const alert = useAlert();
@@ -20,31 +19,28 @@ export const Names = ({ formData, setForm, navigation }) => {
   );
 
   const dispatch = useDispatch();
-  const [data, setData] = useState({
-    username: "",
-    email: "",
-    Password: "",
-    dob: ``,
-    gender: "",
-  });
-  const { name, email, Password, dob, gender } = formData;
+  // const [data, setData] = useState({
+  //   name  : "",
+  //   email: "",
+  //   Password: "",
+  //   dob: ``,
+  //   gender: "",
+  // });
+  const { username, email, password, dob, gender } = formData;
 
-  const handleChange = (e) => {
+  // const handleChange = (e) => {
    
-      setData({ ...data, [e.target.name]: e.target.value });
+  //     setData({ ...data, [e.target.name]: e.target.value });
    
-  };
-  console.log(formData);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    navigation.next()
 
     const myForm = new FormData();
 
-    myForm.set("name", name);
-    myForm.set("email", email);
-    myForm.set("Password", Password);
-    myForm.set("dob", dob);
+  
        dispatch(register(myForm));
   };
 
@@ -76,8 +72,8 @@ export const Names = ({ formData, setForm, navigation }) => {
                   <div className="form-floating"></div>
                   <div className="form-floating mb-3">
                     <input
-                      name="name"
-                      value={name}
+                      name="username"
+                      value={username}
                       onChange={setForm}
                       type="text"
                       className="form-control"
@@ -104,11 +100,11 @@ export const Names = ({ formData, setForm, navigation }) => {
 
                   <div className="form-floating mb-3">
                     <input
-                      value={Password}
+                      value={password}
                       required
                       onChange={setForm}
-                      name="Password"
-                      type="Password"
+                      name="password"
+                      type="password"
                       className="form-control"
                       id="myInput"
                       placeholder="*******"
@@ -166,8 +162,8 @@ export const Names = ({ formData, setForm, navigation }) => {
                     <button
                       style={{ backgroundColor: " #10867F", color: "black" }}
                       // disabled={data.dob === ""}
-                      // type="submit"
-                      onClick={()=>navigation.next()}
+                      type="submit"
+                      // onClick={}
                       className="btn btn-outline-secondary"
                     >
                     Next
