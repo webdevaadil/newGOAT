@@ -325,6 +325,14 @@ table {
 span.home_btn a {
   margin-top: 10px !important;
 }
+h3.free-title {
+  text-align: center;
+}
+#freetip-sec {
+  background: #F4F7F8;
+  padding-top: 60px;
+}
+
 }
 
 
