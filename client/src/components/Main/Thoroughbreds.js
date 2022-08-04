@@ -33,7 +33,7 @@ export const Thoroughbreds=()=>{
   useEffect(()=>{
 
     getdata()
-  },[])
+  },[loading,detail])
 
   const indexOfLastRecord = currentPage * recordsPerPage;
 const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
@@ -241,8 +241,6 @@ console.log(currentRecords)
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
             />
-
-    
 <Footer/>
     </>
 
