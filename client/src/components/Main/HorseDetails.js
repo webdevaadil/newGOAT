@@ -22,14 +22,21 @@ export const HorseDetails = ()=>{
        setLoading(!loading)
     
       }
+
+      const getWeather = async()=>{
+       const res= await axios.get("https://api.openweathermap.org/data/2.5/weather?q=indore&appid=b73312e7c6fc88cb40630784c12943b0")
+            
+          }
+    
+
       useEffect(()=>{
         getdata()
+        getWeather()
       },[])
 
       console.log(detail)
 
-
-      function formatDate(date) {
+ const  formatDate = (date)=> {
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var now = new Date(date);
         var month = months[now.getMonth() + 1];
@@ -74,6 +81,7 @@ export const HorseDetails = ()=>{
         return  `${hour}:${min}   ${period}`
 
       }
+
 
 
   return(

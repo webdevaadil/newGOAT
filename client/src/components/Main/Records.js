@@ -4,6 +4,30 @@ import { Loader } from '../layout/Loader'
 
 export const Records = ({detail,loading}) => {
    
+  const  formatDate = (date)=> {
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var now = new Date(date);
+    var month = months[now.getMonth() + 1];
+    var date = now.getDate();
+
+    var hour = now.getHours();
+    var min = now.getMinutes();
+   var year = now.getFullYear();
+    var period = "am"
+    if (hour > 11) {
+        period = "pm"
+        if (hour > 12) {
+            hour -= 12
+        }
+    }
+    if (min < 10) {
+        min = "0" + min
+    }
+    console.log(period);
+    return `${date}    ${month}    ${year}`
+    console.log((month + "/" + date));
+  }
+
   return (
     <>
     {
@@ -26,16 +50,17 @@ export const Records = ({detail,loading}) => {
                 </tr>
 {
   detail.map((items,index)=>{
+    
 
     return(
       <tr  key = {index}>
       <td>
         <img src="../Vector.png" alt="horse image" />
       </td>
-      <td>{items.RaceDate}</td>
+      <td>{formatDate(items.RaceDate)}</td>
       <td>{items.RaceLocation}</td>
       <td>
-      <Link to = {`/horsedetails/${items.id}`}>
+      <Link to = {`/horsedetails/${items.id}/${items.RaceLocation}`}>
 
 <button className="btn btn-1">Race  {items.RaceNumber}</button>
 </Link>

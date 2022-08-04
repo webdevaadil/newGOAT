@@ -124,6 +124,13 @@ body{
   border-radius: 24px;
   padding: 5px 21px;
 }
+.tip-grid button.btn:hover{
+background-color: rgba(255, 255, 255, 0.693);
+  color: #000;
+  border: 1px solid silver;
+  border-radius: 24px;
+  padding: 5px 21px;
+}
 .main_1 h1 {
   font-size: 24px;
   line-height: 32px;
