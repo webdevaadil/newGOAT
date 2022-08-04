@@ -71,6 +71,15 @@ export const Signup = () => {
       navigate("/");
     }
   }, [navigate, isAuthenticated, loading, error,alert,dispatch]);
+
+  function showPassword() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
   return (
     <>
       {loading && <Loader />}
@@ -121,7 +130,7 @@ export const Signup = () => {
                       id="myInput"
                       placeholder="*******"
                     />
-                    <i className="fa fa-eye"></i>
+                    <i onClick={showPassword} className="fa fa-eye"></i>
                     <label htmlFor="floatingPassword">Passwords</label>
                   </div>
 

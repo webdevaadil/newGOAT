@@ -17,6 +17,7 @@ export const Main = () => {
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.data);
+  const {isAuthenticated,user,error} = useSelector((state)=>state.user)
   const [detail, setDetail] = useState([]);
   const [todayrace, setTodayRace] = useState([]);
   const [placename,setPlaceName] = useState("")
@@ -213,18 +214,32 @@ export const Main = () => {
                     </div>
               </div>
               </div>
-            <div className="main_1 main-img">
-              <div className="main_cont">
-                <h3>Sign up to The Goat Tips Today!</h3>
-                <p>And get the hottest tips that can earn you up to </p>
-                <h4>
-                  <span>678% in returns</span> on your initial investment.
-                </h4>
-                <Link to="/packages">
-                  <button className="btn freetips-btn">SIGN ME UP!</button>
-                </Link>
-              </div>
-            </div>
+{
+  isAuthenticated?<div className="main_1 main-img">
+  <div className="main_cont">
+    <h3>Welcome ! {user.username}</h3>
+    <p>And get the hottest tips that can earn you up to </p>
+    <h4>
+      <span>678% in returns</span> on your initial investment.
+    </h4>
+  
+  </div>
+</div>:
+  <div className="main_1 main-img">
+    <div className="main_cont">
+      <h3>Sign up to The Goat Tips Today!</h3>
+      <p>And get the hottest tips that can earn you up to </p>
+      <h4>
+        <span>678% in returns</span> on your initial investment.
+      </h4>
+      <Link to="/packages">
+        <button className="btn freetips-btn">SIGN ME UP!</button>
+      </Link>
+    </div>
+  </div>
+}
+
+
               </div>
             </div>
               </div>

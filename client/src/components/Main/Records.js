@@ -51,6 +51,7 @@ export const Records = ({detail,loading}) => {
 {
   detail.map((items,index)=>{
     
+ const trimlocation = items.RaceLocation.replace(/ +/g, "")
 
     return(
       <tr  key = {index}>
@@ -60,7 +61,7 @@ export const Records = ({detail,loading}) => {
       <td>{formatDate(items.RaceDate)}</td>
       <td>{items.RaceLocation}</td>
       <td>
-      <Link to = {`/horsedetails/${items.id}/${items.RaceLocation}`}>
+      <Link to = {`/horsedetails/${items.id}/${trimlocation}`}>
 
 <button className="btn btn-1">Race  {items.RaceNumber}</button>
 </Link>
