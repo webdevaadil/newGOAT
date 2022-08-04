@@ -13,21 +13,28 @@ export const Timetable = ({detail,loading}) => {
   //getting today date
    
   const currentday = new Date()
-  const currentdaystring = new Date(currentday).toDateString()
-  const thisday = new Date("7/22/12")
-  console.log(thisday.toDateString())
-  console.log(currentdaystring)
-  const nextday  = new Date(currentday)
- nextday.setDate(nextday.getDate()+1)
-
-
+  const currentdaystring = new Date(currentday).toLocaleDateString()
+  
 
    const filtereddate = detail.filter((items,index)=>{
-    return items.RaceDate === thisday
-  
-  })
-   console.log(filtereddate)
+    const thisday = new Date("7/22/12").toLocaleDateString()
 
+    console.log(currentdaystring)
+    return(
+      items.RaceDate === currentdaystring
+      )
+      
+    })
+
+console.log(detail)
+    //Getting Tommoroww date
+    const nextday  = new Date(currentday)
+    nextday.setDate(nextday.getDate()+1)
+    nextday.toLocaleDateString()
+
+    const tommorow = detail.filter((items,index)=>items.RaceDate === nextday)
+
+ 
   return (
     <>
     <div className='container-fluid raceup-sec'>
@@ -93,7 +100,7 @@ export const Timetable = ({detail,loading}) => {
    
    {
     
-     detail.map((items,index)=>{
+     tommorow.map((items,index)=>{
  
    return (
      <tr  key = {index}>

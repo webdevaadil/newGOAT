@@ -25,7 +25,7 @@ export const Greyhounds = ()=>{
     let finaldata = await res.data.data
     finaldata.map((items,index)=>{
       
-      items.RaceDate = new Date(items.RaceDate).toDateString()
+      items.RaceDate = new Date(items.RaceDate).toLocaleDateString()
       return items.id = index})
     console.log(finaldata)
 
