@@ -276,6 +276,12 @@ table {
 /* upcomming-sec css end  */
 
 
+/* pagination */
+.page-link:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
 
 /* responsive  class*/
 @media (max-width: 1200px) {
@@ -350,6 +356,22 @@ h3.free-head {
 button.btn.freetips-btn {
   background: #10867F;
   padding: 6px 30px;
+}
+.upcomming-table td:nth-child(4) {
+  width: 145px;
+}
+.upcomming-table img {
+  max-width: 45px;
+  width: 100%;
+}
+.upcomming-table td:nth-child(2) {
+  font-size: 12px;
+}
+.upcomming-table th:nth-child(3) {
+  width: 120px !important;
+}
+.upcomming-table th:last-child {
+  width: 99px;
 }
 }
 @media (max-width:668px) {

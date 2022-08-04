@@ -50,3 +50,28 @@
     font-family: 'Lato';
   }
   /* footer cdd end */
+
+
+  /* responsive */
+
+
+  @media (max-width:1200px){
+
+  }
+
+
+  @media (max-width:992px){
+  
+  }
+
+
+  @media (max-width:778px) {
+    .footer-ct {
+      text-align: center;
+  }
+  .footer-sec {
+    background: #03203E;
+    padding: 20px 10px;
+    color: #fff;
+}
+  }
