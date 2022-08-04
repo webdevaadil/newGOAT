@@ -217,6 +217,7 @@ button.btn.freetips-btn {
 }
 .upcomming-table {
   padding-top: 1rem;
+  overflow-x: auto;
 }
 th, td {
   text-align: left;
@@ -314,6 +315,57 @@ table {
 }
 .main_cont {
   padding: 2rem 2rem;
+}
+span.home_btn a {
+  margin-top: 10px !important;
+}
+}
+
+
+@media (max-width: 778px) {
+  .main-content {
+    text-align: center;
+}
+.main-sec {
+  width: 100% !important;
+} 
+.main-content h2 {
+  font-size: 2.188rem;
+  line-height: 2.75rem;
+}
+.main-content p {
+  font-size: 16px;
+  line-height: 26px;
+}
+.slide {
+  height: 400px;
+}
+h3.free-head {
+  text-align: center;
+}
+.main_cont {
+  text-align: center;
+}
+.main_cont h3 {
+  font-size: 2.188rem;
+  line-height: 2.75rem;
+}
+.main_cont span {
+  font-size: 2.188rem;
+  line-height: 2.75rem;
+}
+button.btn.freetips-btn {
+  background: #10867F;
+  padding: 6px 30px;
+}
+}
+@media (max-width:668px) {
+  .main-grid {
+    grid-template-columns: repeat(1,1fr);
+}
+.tip-grid {
+  grid-gap: 0px;
+  justify-content: space-around;
 }
 }
 

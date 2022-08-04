@@ -1,6 +1,10 @@
 .Mainheader {
 	background: #101617;
 	padding: 5px 0px;
+	position: fixed;
+    z-index: 9999;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+	transition: ease-in-out 0.5s;
   }
   
   .Mainheader a.nav-link {
@@ -36,11 +40,12 @@
   }
   .top-btn .btn:hover {
 	background: #fff;
+	color: #000;
   }
   .navbar-light .navbar-toggler {
 	color: rgba(0,0,0,.5);
 	border-color: rgba(0,0,0,.1);
-	background: #fff !important;
+	
   }
   a.navbar-brand img {
 	width: 100%;
@@ -67,3 +72,70 @@ a{
 .modaltext:hover{
 color: #10867F;
 }
+
+
+.visuallyHidden {
+    position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height: 1px; width: 1px; 
+    margin: -1px; padding: 0; border: 0; 
+}
+.hamburger {
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+
+.hamburger .bar {
+    padding: 0;
+    width: 30px;
+    height: 3px;
+    background-color:#fff;
+    display: block;
+    border-radius: 4px;
+    transition: all 0.4s ease-in-out;
+    position: absolute; 
+}
+
+.bar1 {
+    top: 0;
+}
+
+.bar2,
+.bar3 {
+    top: 13.5px;
+}
+
+.bar3 {
+    right: 0;
+}
+
+.bar4 {
+    bottom: 0;
+}
+
+/* HAMBURGER 1 */
+.checkbox1:checked + label > .hamburger1 > .bar1{
+    transform: rotate(45deg);
+    transform-origin: 5%;
+    width: 41px
+}
+
+.checkbox1:checked + label > .hamburger1 > .bar2 {
+    transform: translateX(-40px);
+    background-color: transparent;
+}
+
+.checkbox1:checked + label > .hamburger1 > .bar3 {
+    transform: translateX(40px);
+    background-color: transparent;
+}
+
+.checkbox1:checked + label > .hamburger1 > .bar4 {
+    transform-origin: 5%;
+    transform: rotate(-45deg);
+    width: 41px;
+}
+

@@ -182,7 +182,7 @@ export const Main = () => {
       <div>
         <div className="container-fluid" id="freetip-sec">
           <div className="container section">
-            <h3>Today’s Free Tips</h3>
+            <h3 className="free-head">Today’s Free Tips</h3>
           </div>
 
           <div className="container main-freetips">

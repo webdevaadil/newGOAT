@@ -144,12 +144,11 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     dob: req.body.dob,
     gender: req.body.gender,
   };
-  if (req.body.avatar!='') {
+  if (req.body.avatar ) {
     const user = await User.findById(req.user.id);
-    console.log("hi");
     const imageId = user.avatar.public_id;
 
-    cloudinary.uploader.destroy(imageId);
+     cloudinary.uploader.destroy(imageId);
 
     const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
       folder: "horse",
@@ -170,6 +169,8 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     success: "updated",
   });
 });
+
+
 
 const sendToken = (user, statusCode, res) => {
   const token = user.getSignedToken();
