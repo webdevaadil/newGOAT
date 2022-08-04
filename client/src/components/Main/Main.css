@@ -301,6 +301,7 @@ table {
 .space {
   gap: 10px;
 }
+
 }
 
 
@@ -346,9 +347,10 @@ h3.free-title {
 .main-content h2 {
   font-size: 2.188rem;
   line-height: 2.75rem;
+  padding-top: 60px;
 }
 .main-content p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 26px;
 }
 .slide {

@@ -74,4 +74,7 @@
     padding: 20px 10px;
     color: #fff;
 }
+.foot-link p {
+  padding-top: 0px !important; 
+}
   }

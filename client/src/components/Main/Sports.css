@@ -256,6 +256,10 @@ padding: 5px;
       height: auto;
       width: 100%;
   }
+ 
+  }
+
+  @media (max-width:668px) {
   .raceup-sec .upcomming-table th {
     overflow-wrap: break-word;
   }
