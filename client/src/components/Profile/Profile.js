@@ -85,7 +85,9 @@ export const Profile = () => {
     <>
     
       {loading ? <Loader/>:
-      <div className="profile_box_two" style={{ display: "flex" }}>
+    
+      <div className="profile_box_two">
+          <div className="row">
         {isAuthenticated === true ? (
           <form encType="multipart/form-data" onSubmit={updateProfileSubmit}>
             <h2 className="pro_heading">Profile Photo</h2>
@@ -100,10 +102,10 @@ export const Profile = () => {
                 <img
                   style={{ width: "301px" }}
                   src={avatar}
-                  alt="Avatar Preview"
+                  alt="Avatar Preview" 
                 />
                 <input
-                  type="file"
+                  type="file" className="profil-img"
                   name="avatar"
                   accept="image/*"
                   onChange={handle}
@@ -141,6 +143,7 @@ export const Profile = () => {
         ) : (
           <Navigate to={"/login"}/>
         )}
+        </div>
       </div>}
     </>
   );

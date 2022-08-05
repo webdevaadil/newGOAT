@@ -14,14 +14,16 @@ export const Dashboard = () => {
   return (
     <>  
       <Header />
+      <div className="main-body">
       <section>
-        <div style={{ width: "80%", margin: "0 auto" }} class="container">
+        <div class="container profile-sec">
           <div class="flexbox">
             <ProfileNav />
             <Outlet />
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 };

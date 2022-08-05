@@ -1,14 +1,27 @@
 
 /******************* this is box two ******************/
-.flexbox{
+/* .flexbox{
     display: flex;
     margin: 150px 0;
+} */
+.profile-sec {
+    max-width: 75% !important;
+    margin: auto !important;
+    width: 100%;
 }
-
+.main-body {
+    margin-top: 100px !important;
+    margin-bottom: 40px !important;
+}
+.flexbox {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    width: 100%;
+    column-gap: 35px;
+}
 .profile_box_two{
     background-color: #fff;
    max-width: 100%;
-    width: 710px;
     padding: 17px;
 
 }
@@ -39,9 +52,7 @@
     font-size: 16px;
     line-height: 22px;
     letter-spacing: 0.5px;
-    text-transform: capitalize;
-    /* margin-left: 18px;
-    margin-top: 130px; */
+    text-transform: capitalize;   
     margin: 0px 15px 0px 15px;
 }
 .pic_flex_box{
@@ -142,21 +153,21 @@
 }  
 }
 
-@media screen and (max-width: 968px) {
-   
-   
+@media screen and (max-width:992px) { 
     .pro_pic{
         width: 50%;
     }
     .profile_box_two{
-        margin-top: 20px;
-        width: 97%;
+        width:100%;
     }
     .box_one{
         width: 100%;
     }
     .big_btn{
         width: 52%;
+    }
+    .profile-sec {
+        max-width: 90% !important;
     }
 }
 
@@ -165,7 +176,35 @@
 .big_btn{
     padding: 10px 0px 10px 10px;
 }
+
 }
+
+@media screen and (max-width:668px) {
+    
+    .flexbox {
+        display: flex;
+        grid-template-columns: 100%;
+        width: 100%;
+        column-gap: 35px;
+        flex-direction: column-reverse;
+    }
+    .profile-sec {
+        max-width: 100% !important;
+    }
+    .profile_box_one {
+        margin-top: 30px;
+    }
+    .pro_heading {
+        font-size: 24px;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    .per_text , .profile_box_one  {
+        text-align: center;
+    }
+   
+   
+    }
  
 
     
