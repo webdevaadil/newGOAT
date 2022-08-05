@@ -22,6 +22,7 @@ import { Package } from "./components/Signup/Package";
 import { useSelector } from "react-redux";
 import { ProtectedRoute } from "./components/Route/ProtectedRoute";
 import { Multilf } from "./multi/Multilf";
+import { Loader } from "./components/layout/Loader";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -46,6 +47,7 @@ function App() {
           </Route>
           <Route path="/packages" element={<Package />} />
           <Route path="/pac" element={<Multilf/>} />
+          <Route path="/loader" element={<Loader/>} />
         </Routes>
       </BrowserRouter>
     </>

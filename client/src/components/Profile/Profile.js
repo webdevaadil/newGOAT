@@ -139,7 +139,7 @@ export const Profile = () => {
             </div>
           </form>
         ) : (
-          "please login"
+          <Navigate to={"/login"}/>
         )}
       </div>}
     </>
