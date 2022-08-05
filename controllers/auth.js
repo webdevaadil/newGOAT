@@ -19,11 +19,12 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     card_no,
     Expiry,
     cvc,
-   } = req.body;
+    packages
+  } = req.body;
 
-  // if (password.length < 6) {
-  //   return res.status(400).json("password must be 6 character long");
-  // }
+  if (password.length < 6) {
+    return res.status(400).json("password must be 6 character long");
+  }
 
   try {
     User.findOne({ email }, async (err, user) => {
@@ -55,6 +56,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
           card_no,
           Expiry,
           cvc,
+          packages,
           avatar: {
             public_id: myCloud.public_id,
             url: myCloud.secure_url,
