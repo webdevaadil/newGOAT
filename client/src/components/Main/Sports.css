@@ -203,7 +203,20 @@ padding: 5px;
 
 /* Details end */
 
-
+/* Throughbreds page css  start*/
+.Throug-img{
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.18) 60%),url("../../Images/races.png");
+  background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height:auto;
+    border-radius: 22px;
+    min-height: 400px;
+}
+/* Throughbreds page css end*/
 
 
 
