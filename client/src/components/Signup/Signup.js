@@ -2,46 +2,62 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import "./Signup.css";
+import "./Signup.css";
 import { clearErrors, register } from "../../actions/userAction";
+import { Metadata } from "../layout/Metadata";
+import { Loader } from "../layout/Loader";
 import { useAlert } from "react-alert";
-import { Metadata } from "../../components/layout/Metadata";
-import { Loader } from "../../components/layout/Loader";
 
-export const Names = ({ formData, setForm, navigation }) => {
-
+export const Signup = () => {
   const navigate = useNavigate();
   const alert = useAlert();
-  
+  const [avatar, setAvatar] = useState();
+  const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
 
   const dispatch = useDispatch();
-  // const [data, setData] = useState({
-  //   name  : "",
-  //   email: "",
-  //   Password: "",
-  //   dob: ``,
-  //   gender: "",
-  // });
-  const { username, email, password, dob, gender } = formData;
+  const [data, setData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    dob: ``,
+    gender: "",
+  });
+  const { username, email, password,dob,gender } = data;
 
-  // const handleChange = (e) => {
-   
-  //     setData({ ...data, [e.target.name]: e.target.value });
-   
-  // };
+  const handleChange = (e) => {
+    if (e.target.name === "avatar") {
+      const reader = new FileReader();
 
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setAvatarPreview(reader.result);
+          setAvatar(reader.result);
+        }
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+ 
+      setData({ ...data, [e.target.name]: e.target.value });
+    }
+    };
+    console.log(data);
+    
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigation.next()
 
     const myForm = new FormData();
 
-  
-       dispatch(register(myForm));
+    myForm.set("username", username);
+    myForm.set("email", email);
+    myForm.set("password", password);
+    myForm.set("dob", dob);
+    myForm.set("avatar", avatar);
+    dispatch(register(myForm));
   };
 
   useEffect(() => {
@@ -54,56 +70,50 @@ export const Names = ({ formData, setForm, navigation }) => {
       alert.success("Signup Successfull");
       navigate("/");
     }
-  }, [navigate, isAuthenticated, loading, error, alert, dispatch]);
+  }, [navigate, isAuthenticated, loading, error,alert,dispatch]);
+
+  function showPassword() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
   return (
     <>
-      {loading && <Loader />}
-<<<<<<< HEAD
-    
+      {loading && <Loader />} 
       <section id="form-section">
         <div className="wel-form">
           <div className="wel-p1 img-main">
             <div className="img-main"></div>
-=======
-      <Metadata title="Signup" />
-      <section id="form-section" className="container">
-        <div className="row">
-          <div className="col-md-6">
-              <div className="welcome-img">
-              <img src="/welcome-img.png" />
-            </div>
->>>>>>> 3273878df2eb88765fc520a632cad79075389a5b
           </div>
-          <div className="col-md-6">
-            <div className="form-content wel-bg ">
+          <div className="wel-p1 wel-bg">
+            <div className="form-content">
               <h2>Hello!</h2>
-              <div className="form-main">
-                <form onSubmit={handleSubmit} encType="multipart/form-data" autoComplete="new-password" className="form-floating mb-3">
+              <div className="form-main">                
+                <form onSubmit={handleSubmit} encType="multipart/form-data"className="form-floating mb-3">
                   <div className="form-floating"></div>
                   <div className="form-floating mb-3">
                     <input
                       name="username"
                       value={username}
-                      onChange={setForm}
+                      onChange={handleChange}
                       type="text"
                       className="form-control"
                       placeholder="Your Full Name"
-                      autoComplete="off"
-
                     />
                     <label htmlFor="floatingInput">Name</label>
                   </div>
                   <div className="form-floating mb-3">
                     <input
-                      onChange={setForm}
+                      onChange={handleChange}
                       type="email"
                       name="email"
                       required
                       value={email}
                       className="form-control"
                       placeholder="yourmail@mail.com"
-                      autoComplete="new-password"
-
                     />
                     <label htmlFor="floatingInput">Email Address</label>
                   </div>
@@ -112,47 +122,39 @@ export const Names = ({ formData, setForm, navigation }) => {
                     <input
                       value={password}
                       required
-                      onChange={setForm}
+                      onChange={handleChange}
                       name="password"
                       type="password"
                       className="form-control"
                       id="myInput"
                       placeholder="*******"
-                      autoComplete="new-password"
-
                     />
-                    <i className="fa fa-eye"></i>
+                    <i onClick={showPassword} className="fa fa-eye"></i>
                     <label htmlFor="floatingPassword">Passwords</label>
                   </div>
 
-
-
-                  <div className="form-inner fom-btn">
+             
+                 
+                  <div className="form-inner">
                     <div className="form-floating mb-3">
                       <input
-                        onChange={setForm}
+                        onChange={handleChange}
                         name="dob"
                         value={dob}
                         required
                         type="date"
                         className="form-control"
                         placeholder="dd/mm/yyyy"
-                        autoComplete="new-password"
-
-
                       />
                       <label htmlFor="floatingInput">Date of Birth</label>
                     </div>
                     <div className="form-floating">
                       <select
                         name="gender"
-                        onChange={setForm}
+                        onChange={handleChange}
                         className="form-select"
                         aria-label="Floating label select example"
                         value={gender}
-                        autoComplete="new-password"
-
-
                       >
                         <option disabled>Select</option>
                         <option>Male</option>
@@ -163,7 +165,15 @@ export const Names = ({ formData, setForm, navigation }) => {
                       <label htmlFor="floatingSelect">Gender (Optional)</label>
                     </div>
                   </div>
-                  <div className="fom-btn mb-3 mt-3">
+                  <div className="fom-btn mb-3">
+                    <button
+                      style={{ backgroundColor: " #10867F", color: "black" }}
+                      disabled={data.dob === ""}
+                      type="submit"
+                      className="btn btn-outline-secondary"
+                    >
+                      Sign Up
+                    </button>
                     <Link
                       to="/login"
                       type="login"
@@ -171,22 +181,13 @@ export const Names = ({ formData, setForm, navigation }) => {
                     >
                       Login
                     </Link>
-                    <button
-                      style={{ backgroundColor: " #10867F", color: "black" }}
-                      // disabled={data.dob === ""}
-                      type="submit"
-                      // onClick={}
-                      className="btn btn-outline-secondary"
-                    >
-                    Next
-                    </button>
                   </div>
                 </form>
               </div>
               <p>
                 By signing up, I agree to the{" "}
-                <Link to="/dashboard/about">
-                  <span>Terms and conditions and Privacy policy</span>
+                <Link to ="/dashboard/about">
+                <span>Terms and conditions and Privacy policy</span>
                 </Link>
               </p>
             </div>
@@ -196,4 +197,3 @@ export const Names = ({ formData, setForm, navigation }) => {
     </>
   );
 };
-

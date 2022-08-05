@@ -15,11 +15,11 @@ export const Timetable = ({detail,loading}) => {
   const currentday = new Date()
   const currentdaystring = new Date(currentday).toLocaleDateString()
   
+  console.log(currentdaystring)
 
    const filtereddate = detail.filter((items,index)=>{
     const thisday = new Date("7/22/12").toLocaleDateString()
 
-    console.log(currentdaystring)
     return(
       items.RaceDate === currentdaystring
       )
@@ -30,9 +30,20 @@ console.log(detail)
     //Getting Tommoroww date
     const nextday  = new Date(currentday)
     nextday.setDate(nextday.getDate()+1)
-    nextday.toLocaleDateString()
+   
+    const newdate = nextday.toLocaleDateString()
+    console.log(newdate)
 
-    const tommorow = detail.filter((items,index)=>items.RaceDate === nextday)
+
+    const tommorow = detail.filter((items,index)=>{
+      return(
+    items.RaceDate === newdate
+
+      )
+    })
+    
+
+    console.log(tommorow)
 
  
   return (
@@ -54,26 +65,23 @@ console.log(detail)
 
 {
   filtereddate.map((items,index)=>{
-    return(
-      <>
+    let racetime = new Date(items.RaceTime).toLocaleTimeString()
 
-<tr>
+
+    return(
+     
+               <tr key={items.id}>
                   <td>{items.RaceLocation}</td>
-                  <td>{items.RaceTime}</td>
+                  <td>{racetime}</td>
                   <td>{items.RaceNumber}</td>
                   <td> 5</td>
                   <td>6.7</td>  
                 </tr>
 
-      </>
     )
   })
 }
-
-
-           
-              </tbody>
-                       
+              </tbody>         
               </table>
             </div>
           </div>
@@ -82,7 +90,6 @@ console.log(detail)
         <div className='container-fluid raceup-sec'>
           <div className='container'>
             <h3 className="free-title">Tomorrow, {nextday.toDateString()}</h3>
-
 
             {
                loading?<Loader/>:
@@ -99,18 +106,20 @@ console.log(detail)
                    </tr>
    
    {
-    
      tommorow.map((items,index)=>{
- 
+    let racetime = new Date(items.RaceTime).toLocaleTimeString()
+    const trimlocation = items.RaceLocation.replace(/ +/g, "")
+
+
    return (
      <tr  key = {index}>
      <td>
        <img src="../left-Vector.png" alt="horse image" />
      </td>
-     <td>{items.RaceTime}</td>
+     <td>{racetime}</td>
      <td>{items.RaceLocation}</td>
      <td>
-       <Link to ={`/greydetails/${items.id}`}>
+       <Link to ={`/greydetails/${items.id}/${trimlocation}`}>
    
        <button className="btn btn-1">Race       {items.RaceNumber}</button>
        </Link>

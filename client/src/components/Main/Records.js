@@ -51,6 +51,8 @@ export const Records = ({detail,loading}) => {
 {
   detail.map((items,index)=>{
     
+    items.id = index
+    const date = new Date(items.RaceDate).toDateString()
  const trimlocation = items.RaceLocation.replace(/ +/g, "")
 
     return(
@@ -58,7 +60,7 @@ export const Records = ({detail,loading}) => {
       <td>
         <img src="../Vector.png" alt="horse image" />
       </td>
-      <td>{formatDate(items.RaceDate)}</td>
+      <td>{date}</td>
       <td>{items.RaceLocation}</td>
       <td>
       <Link to = {`/horsedetails/${items.id}/${trimlocation}`}>

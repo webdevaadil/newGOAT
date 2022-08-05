@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: [true, "please provide card_no"],
   },
+  packages: {
+    type: String,
+    required: [true, "please provide packages"],
+  },
 
   Expiry: {
     type: Date,

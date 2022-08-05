@@ -15,4 +15,10 @@ export const apidata = async(dispatch)=> {
   }
 };
 
+export const weatherapi = async(location,dispatch)=>{
+
+  
+
+}
+
 
