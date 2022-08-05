@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updatePassword } from "../../actions/userAction";
 import { UPDATE_PASSWORD_RESET } from "../../constants/userConstants";
 import { useAlert } from "react-alert";
+import { Navigate } from "react-router-dom";
+import { Loader } from "../layout/Loader";
 
 export const AccountSetting = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
-  const { error, isUpdated, loading } = useSelector((state) => state.user);
+  const { error, isUpdated, loading ,isAuthenticated} = useSelector((state) => state.user);
   const [data, setdata] = useState({
     oldPassword: "",
     newPassword: "",
@@ -36,6 +38,10 @@ export const AccountSetting = () => {
     }
   }, [dispatch, error, alert, isUpdated]);
   return (
+    <>
+    {loading? <Loader/>:
+    <>
+      {isAuthenticated === true ? ( 
     <div className="account_box_two" style={{ display: "flex" }}>
       <form onSubmit={updatePasswordSubmit} >
         <h2 className="per_text">Change Password</h2>
@@ -72,5 +78,11 @@ export const AccountSetting = () => {
         </button>
       </form>
     </div>
+      ) : (
+        <Navigate to={"/login"} />
+      )}
+    </>
+    }
+    </>
   );
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import React from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import {useSelector,useDispatch} from "react-redux"
 import "./Login.css";
 import axios from "axios";
@@ -58,9 +58,13 @@ export const Login = () => {
       }
     }
   return (
+
     <>
-    {loading&&<Loader/>}
-    <Metadata title = "loginUser"/>
+    {loading? <Loader/>:
+    <>
+      {isAuthenticated === false ?  ( 
+   <>
+   <Metadata title = "loginUser"/>
 
     <section id="form-section">
     <div className="wel-form">
@@ -102,7 +106,13 @@ export const Login = () => {
     </div>
 
   </section>
+  </>
 
-    </>
+):(
+  <Navigate to={"/"} />
+) }
+</>
+}
+</>
   );
 }

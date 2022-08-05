@@ -1,10 +1,20 @@
 import React from "react";
 import { ProfileNav } from "./ProfileNav";
 import"./paymentmethoad.css"
+import { useSelector } from "react-redux";
+import { Loader } from "../layout/Loader";
+import { Navigate } from "react-router-dom";
 
 export const PaymentMethoad = () => {
+  const { user, isAuthenticated, loading, isUpdated, error } = useSelector(
+    (state) => state.user
+  );
+
   return (
-        
+        <>
+    {loading? <Loader/>:
+    <>
+      {isAuthenticated === true ? ( 
       <div className="payment_box_two">
         <h2>Bronze Membership</h2>
         <h2>$15 / Week</h2>
@@ -38,5 +48,11 @@ export const PaymentMethoad = () => {
           </div>
         </div>
       </div>
+       ) : (
+        <Navigate to={"/login"} />
+      )}
+    </>
+    }
+    </>
   );
 };
