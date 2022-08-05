@@ -102,7 +102,7 @@ body{
   padding-top: 20px;
 }
 .main_1 {
-  width: 50%;
+  width: 100%;
 }
 .tip-grid {
   background: #fff;
@@ -291,10 +291,17 @@ table {
 }
 
 
+
+
+
+
+
+
 /* responsive  class*/
 @media (max-width: 1200px) {
   .tip-grid {
     grid-gap: 10px;
+    justify-content: space-evenly;
 }
 .tip-grid button.btn {
   padding: 5px 13px;
@@ -302,9 +309,22 @@ table {
 .space {
   gap: 10px;
 }
-
+.space {
+  flex-direction: column;
+}
 }
 
+@media (max-width:1024px) {
+.space {
+  flex-direction: column;
+}
+.space  p {
+  margin-bottom: 0px;
+}
+.tip-grid {
+  padding: 5px;
+}
+}
 
 @media (max-width: 992px) {
   .main-sec {
@@ -334,7 +354,15 @@ h3.free-title {
   background: #F4F7F8;
   padding-top: 60px;
 }
-
+.tip-grid {
+  padding: 20px;
+}
+.space {
+  flex-direction:inherit;
+}
+.upcomming-sec{
+  text-align: center;
+}
 }
 
 
@@ -364,8 +392,8 @@ h3.free-head {
   text-align: center;
 }
 .main_cont h3 {
-  font-size: 2.188rem;
-  line-height: 2.75rem;
+  font-size: 35px;
+  line-height: 42px;
 }
 .main_cont span {
   font-size: 2.188rem;

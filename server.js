@@ -37,6 +37,15 @@ if (process.env.NODE_ENV === "production") {
 ("hi");
 
 // --------------------------deployment------------------------------
+// --------------------------errorhandle------------------------------
+process.on("unhandledRejection",(err)=>{
+  console.log(`Error:${err.message}`)
+  console.log(`shutting down the server due to unhandled promise rejection`)
+  server.close(()=>{
+      process.exit(1)
+  })
+});
+// --------------------------errorhandle------------------------------
 
 //-----------------------cloudinary---------------------
 
@@ -50,10 +59,4 @@ cloudinary.config({
 const server = app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
 });
-process.on("unhandledRejection",(err)=>{
-  console.log(`Error:${err.message}`)
-  console.log(`shutting down the server due to unhandled promise rejection`)
-  server.close(()=>{
-      process.exit(1)
-  })
-});
+

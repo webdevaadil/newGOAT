@@ -203,7 +203,20 @@ padding: 5px;
 
 /* Details end */
 
-
+/* Throughbreds page css  start*/
+.Throug-img{
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.18) 60%),url("../../Images/races.png");
+  background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height:auto;
+    border-radius: 22px;
+    min-height: 400px;
+}
+/* Throughbreds page css end*/
 
 
 
@@ -222,9 +235,10 @@ padding: 5px;
     font-size: 16px;
     line-height: 13px;    
 }
-  .footer-ct {
-    grid-template-columns: repeat(1,1fr);    
-  }
+.footer-ct {
+  grid-template-columns: repeat(3,1fr);
+  text-align: left;
+}
   }
   
   
@@ -276,6 +290,14 @@ padding: 5px;
   line-height: 16px;
   letter-spacing: 0.15px;
   text-align: center;
+}
+.footer-ct {
+  grid-template-columns: repeat(1,1fr);
+  text-align: center;
+}
+.main_cont h3 {
+  font-size: 30px;
+  line-height: 42px;
 }
   }
 

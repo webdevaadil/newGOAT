@@ -9,7 +9,18 @@ async function isEmailValid(email) {
   return emailValidator.validate(email);
 }
 exports.register = catchAsyncerror(async (req, res, next) => {
-  const { username, email, password, dob, gender } = req.body;
+  const {
+    username,
+    email,
+    password,
+    dob,
+    gender,
+    Name_of_card,
+    card_no,
+    Expiry,
+    cvc,
+    packages
+  } = req.body;
 
   if (password.length < 6) {
     return res.status(400).json("password must be 6 character long");
@@ -41,6 +52,11 @@ exports.register = catchAsyncerror(async (req, res, next) => {
           password,
           dob,
           gender,
+          Name_of_card,
+          card_no,
+          Expiry,
+          cvc,
+          packages,
           avatar: {
             public_id: myCloud.public_id,
             url: myCloud.secure_url,
@@ -144,11 +160,11 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     dob: req.body.dob,
     gender: req.body.gender,
   };
-  if (req.body.avatar ) {
+  if (req.body.avatar) {
     const user = await User.findById(req.user.id);
     const imageId = user.avatar.public_id;
 
-     cloudinary.uploader.destroy(imageId);
+    cloudinary.uploader.destroy(imageId);
 
     const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
       folder: "horse",
@@ -169,8 +185,6 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     success: "updated",
   });
 });
-
-
 
 const sendToken = (user, statusCode, res) => {
   const token = user.getSignedToken();

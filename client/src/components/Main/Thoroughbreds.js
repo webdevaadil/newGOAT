@@ -152,9 +152,9 @@ console.log(currentRecords)
               </div>             
             </div>
             </div>
-            <div className='main_1'>
+            <div className='main_1 Throug-img'>
               <div className="upraces-img">
-               <img src="/races.png" />
+               {/* <img src="/races.png" /> */}
              </div>  
             </div>
           </div>
