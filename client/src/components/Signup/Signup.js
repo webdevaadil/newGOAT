@@ -82,8 +82,7 @@ export const Signup = () => {
   }
   return (
     <>
-      {loading && <Loader />}
-      <Metadata title="Signup" />
+      {loading && <Loader />} 
       <section id="form-section">
         <div className="wel-form">
           <div className="wel-p1 img-main">

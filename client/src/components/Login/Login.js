@@ -60,7 +60,7 @@ export const Login = () => {
   return (
     <>
     {loading&&<Loader/>}
-    <Metadata title = "loginUser"/>
+   
 
     <section id="form-section">
     <div className="wel-form">

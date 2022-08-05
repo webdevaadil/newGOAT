@@ -12,10 +12,10 @@ import { Records } from "./Records";
 import { Pagination } from "./Pagination";
 import { apidata } from "../../actions/apiAction";
 import { Loader } from "../layout/Loader";
+import moment from "moment";
 
 export const Main = () => {
   const dispatch = useDispatch();
-
   const data = useSelector((state) => state.data);
   const {isAuthenticated,user,error} = useSelector((state)=>state.user)
   const [detail, setDetail] = useState([]);
@@ -28,82 +28,66 @@ export const Main = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
 
-  const formatDate = (date) => {
-    var months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    var now = new Date();
-    var month = months[now.getMonth() + 1];
-    var date = now.getDate();
-
-    var hour = now.getHours();
-    var min = now.getMinutes();
-    var year = now.getFullYear();
-    var period = "am";
-    if (hour > 11) {
-      period = "pm";
-      if (hour > 12) {
-        hour -= 12;
-      }
-    }
-    if (min < 10) {
-      min = "0" + min;
-    }
-    return `${date}    ${month}    ${year}`;
-   
-  };
+ 
 
   const getdata = async () => {
     const res = await axios.get(
-      "https://script.googleusercontent.com/macros/echo?user_content_key=JxTR_CmO6LOwDEY7gYj8mh-6N5klsFTfRxZBd1zAUaSlLfloCVG1VYeAl4mKdepsjisvchrhrId-zj_OKuJ8Ztfr9h0fILoXm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnM5Ekl7EwoTMsxbGD7Mk6JPN3Ls7Oyxjmrsr3ZQwRD52M_vMAqczDkXfnrBBGFFHff8VMKaSWAE-WxUrUSiQwyHxctBCURm4-9z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl"
+      "https://script.google.com/macros/s/AKfycbwYRAwed4AU7R2q62na51ele3njePVqe_IGYf6JTDEtP1PKhhZPrJfExVea_Ulo98Iw/exec"
     );
     let finaldata = await res.data.data;
-
     setLoading(!loading);
+
+finaldata.map((items,index)=>items.RaceDate =new Date(items.RaceDate).toLocaleDateString())
+    setDetail(finaldata);
+
+
+    
+      const currenthour = new Date().toJSON()
+      console.log(currenthour)
+
+    const filterdate = finaldata.filter((items,index)=>{
+      const currentday = new Date()
+      const currentdaystring = new Date(currentday).toLocaleDateString()
+return(
+  items.RaceDate===currentdaystring&&index<7
+)
+    })
+    console.log(filterdate)
+    setTodayRace(filterdate)
+    
 
     
 
     //getting next 5 days
-    const today = new Date();
-    console.log(today)
-    const start = today.getTime();
-    const end = today.getTime()+5
-    console.log(start);
-    console.log(end);
+    // const today = new Date();
+    // console.log(today)
+    // const start = today.getTime();
+    // const end = today.getTime()+5
+    // console.log(start);
+    // console.log(end);
 
     //UPCOMING RACES 
-    const filtereddata = finaldata.filter((items, index) => {
-      //adding key and value to the object
-      items.id = index;
-      items.RaceDate = new Date(items.RaceDate);
-      const time = new Date(items.RaceDate).getTime();
-      setPlaceName(items.RaceLocation)
-      return time <= end && start <= time;
-    });
-    setDetail(filtereddata);
+    // const filtereddata = finaldata.filter((items, index) => {
+    //   //adding key and value to the object
+    //   items.id = index;
+    //   items.RaceDate = new Date(items.RaceDate);
+    //   const time = new Date(items.RaceDate).getTime();
+    //   setPlaceName(items.RaceLocation)
+    //   return time <= end && start <= time;
+    // });
 
-    console.log(filtereddata)
+
     //getting today date
 
-    const todaydate = new Date();
 
-    console.log(finaldata);
-    const racetoday = filtereddata.filter((items, index) => {
+    
 
-      return items.raceDate === todaydate;
-    });
-    setTodayRace(racetoday);
+    // console.log(finaldata);
+    // const racetoday = filtereddata.filter((items, index) => {
+
+    //   return items.raceDate === todaydate;
+    // });
+    // setTodayRace(racetoday);
   };
 
   const getDogdata = async () => {
@@ -152,6 +136,8 @@ export const Main = () => {
 
   }
 
+ 
+
   return (
     <>
       <Header />
@@ -189,10 +175,20 @@ export const Main = () => {
           <div className="container main-freetips">
             <div className="main_1">
               <div className="main-grid 1">
-                <div className="tip-grid">
-              {todayrace.map((items, index) => {
+              {
+    
+              
+              todayrace.map((items, index) => {
+
+                const minutesnow = new Date().getMinutes()
+                const minutesprev = moment(items.RaceTime).get('minute')
+                const inminutes = minutesprev-minutesnow
+                console.log(inminutes)
+                
+
                 return (
                   <>
+                  <div className="tip-grid">
                       <div className="tips-colum1">
                         <img src="../Vector.png" alt="iage" />
                       </div>
@@ -204,16 +200,18 @@ export const Main = () => {
                               Race {items.RaceNumber}
                             </button>
                           </Link>
-                          <p>{getTime(items.RaceDate)}</p>
+                          <p>in {inminutes} Minute</p>
                         </div>
+                    </div>
                       </div>
                   </>
                 );
               })}
 
-                    </div>
               </div>
               </div>
+
+
 {
   isAuthenticated?<div className="main_1 main-img">
   <div className="main_cont">
@@ -238,8 +236,6 @@ export const Main = () => {
     </div>
   </div>
 }
-
-
               </div>
             </div>
               </div>

@@ -62,7 +62,7 @@ export const Names = ({ formData, setForm, navigation }) => {
   return (
     <>
       {loading && <Loader />}
-      <Metadata title="Signup" />
+    
       <section id="form-section">
         <div className="wel-form">
           <div className="wel-p1 img-main">
@@ -151,6 +151,8 @@ export const Names = ({ formData, setForm, navigation }) => {
                         <option disabled>Select</option>
                         <option>Male</option>
                         <option>Female</option>
+                        <option>Non-binary</option>
+                        <option>Prefer not to say</option>
                       </select>
                       <label htmlFor="floatingSelect">Gender (Optional)</label>
                     </div>

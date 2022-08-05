@@ -151,7 +151,7 @@ export const HorseDetails = ()=>{
                 </div>
                 <div className="col-md-3 ">
                     <div className="detail-mt">
-                        <p><img src="/carbon_partly-cloudy.png" />{temprature}°C - {weatherdata}</p>
+                        <p><img src="/carbon_partly-cloudy.png" />       {" "}        {temprature}°C {weatherdata}</p>
                     </div>
                 </div>
                 <div className="col-md-2 ">

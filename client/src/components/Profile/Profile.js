@@ -126,12 +126,25 @@ export const Profile = () => {
                 placeholder="Date of Birth"
                 type="date"
               />
-              <input
-                onChange={(e) => setgender(e.target.value)}
-                value={gender}
-                className="gender"
-                placeholder="Gender(Optinal)"
-              />
+             <div style={{width:"400px"}} className="form-floating">
+                      <select
+                        name="gender"
+                        onChange={(e)=>setgender(e.target.value)}
+                        className="form-select"
+                        aria-label="Floating label select example"
+                        value={gender}
+                        autoComplete="new-password"
+
+
+                      >
+                        <option disabled>Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Non-binary</option>
+                        <option>Prefer not to say</option>
+                      </select>
+                      <label htmlFor="floatingSelect">Gender (Optional)</label>
+                    </div>
             </div>
             <div className="button_flex_box">
               <input type="reset" value="Discard" className="dis_btn" />

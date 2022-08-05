@@ -10,9 +10,11 @@ import { Loader } from "../layout/Loader";
 export const Greydetails = ()=>{
     
 
-    const { id } = useParams();
+    const { id,location} = useParams();
     const [detail,setDetail] = useState([])
     const [loading,setLoading] = useState(true)
+    const [weatherdata,setWeatherData]  = useState("")
+    const [temprature,setTemprature] = useState() 
     const getdata = async()=>{
 
         const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=jDoChie6LqLG6ElHDz5XnSp5xbRzBGY7boopl67X51Y-MgBXn3qY9IykJM3v2v8gEiKx0RCnFEBRpeCaaI4b-91ukFetCelMm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnF9OXc95fD23eDvAhF7wtmVRghiF34032X6xCyWzrqMkLu9JIXnQGOCkJaLaMp569JzQoN6xAOTwYcScU6dDSajx9N_XZM_k49z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
@@ -23,9 +25,32 @@ export const Greydetails = ()=>{
        setLoading(!loading)
     
       }
+
+
+
+      const getWeather = async()=>{
+    
+
+
+        const res= await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location},{Au}&units=metric&appid=b73312e7c6fc88cb40630784c12943b0`)
+      
+      const temp = res.data.main.temp
+      setTemprature(temp)
+      console.log(temprature)
+      res.data.weather.map((items,index)=>{
+          setWeatherData(items.description)
+          console.log(weatherdata)
+ 
+         })
+ 
+             
+           }
+
       useEffect(()=>{
         getdata()
+        getWeather()
       },[])
+
 
 
  const getCurrenttime = (date) => {
@@ -127,7 +152,7 @@ Details
                             </div>
                             <div className="col-md-3">
                                 <div className="detail-mt">
-                                    <p><img src="/carbon_partly-cloudy.png" />11°C - Cloudy</p>
+                                    <p><img src="/carbon_partly-cloudy.png" />{temprature} - {weatherdata}</p>
                                 </div>
                             </div>
                             <div className="col-md-2 ">
