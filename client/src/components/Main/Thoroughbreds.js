@@ -11,27 +11,46 @@ import { Pagination } from "./Pagination";
 import { apidata } from "../../actions/apiAction";
 import { useDispatch,useSelector } from "react-redux";
 import { Loader } from "../layout/Loader";
+import moment from "moment";
 
 export const Thoroughbreds=()=>{
 
   const [detail,setDetail] = useState([])
   const [loading, setLoading] = useState(true);
-
+  const [todayrace, setTodayRace] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
   
   const getdata = async()=>{
 
-    const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=JxTR_CmO6LOwDEY7gYj8mh-6N5klsFTfRxZBd1zAUaSlLfloCVG1VYeAl4mKdepsjisvchrhrId-zj_OKuJ8Ztfr9h0fILoXm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnM5Ekl7EwoTMsxbGD7Mk6JPN3Ls7Oyxjmrsr3ZQwRD52M_vMAqczDkXfnrBBGFFHff8VMKaSWAE-WxUrUSiQwyHxctBCURm4-9z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
+    const res = await axios.get("https://script.google.com/macros/s/AKfycbzY1VMvhRABm0tIBQxWoTmc_wyDbo-BLL4UzM_qfLfSh9lswfF4j8gc3v5MNTXE5Sr4/exec")
     let finaldata = await res.data.data
     
-    finaldata.map((items,index)=> items.id = index)
+    finaldata.map((items,index)=> {
+      items.RaceDate = new Date(items.RaceDate).toLocaleDateString()
+      items.id = index
+      items.minutes = new Date(items.RaceTime).getMinutes()
+    
+    
+    })
    setDetail(finaldata)
    setLoading(!loading)
 
+
+//filtering currentday data
+   const filterdate = finaldata.filter((items,index)=>{
+    const currentday = new Date()
+    const currentdaystring = new Date(currentday).toLocaleDateString()
+return(
+items.RaceDate===currentdaystring&&index<7&&items.minutes>new Date().getMinutes()
+)
+  })
+  console.log(filterdate)
+  setTodayRace(filterdate)
+
+
   }
   useEffect(()=>{
-
     getdata()
   },[])
 
@@ -74,82 +93,40 @@ console.log(currentRecords)
           <div className='container main-freetips'>
             <div className='main_1'>             
               <div className='main-grid 1'>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                   <img src="../Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Murray Bridge, NSW</h3>
-                  <div className='space'>
-                    <Link to = "/horsedetails" > <button className='btn'>Race 1</button></Link>
-                    <p>In 2 minutes</p>
-                  </div>
-                 </div>
-              </div>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                 <img src="../Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Flemington, VIC</h3>
-                  <div className='space'>
-                  <Link to = "/horsedetails" > <button className='btn'>Race 2</button></Link>
+      {
+               
+               todayrace.map((items, index) => {
 
-                    <p>In 3 minutes</p>
-                  </div>
-                 </div>
-              </div>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                 <img src="../Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Ascot, WA</h3>
-                  <div className='space'>
-                                    <Link to = "/horsedetails" > <button className='btn'>Race 3</button></Link>
+                const minutesnow = new Date().getMinutes()
+                const minutesprev = moment(items.RaceTime).get('minute')
+                const inminutes = minutesprev-minutesnow
+                console.log(inminutes)
+    const trimlocation = items.RaceLocation.replace(/ +/g, "")
 
-                    <p>In 4 minutes</p>
-                  </div>
-                 </div>
-              </div>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                 <img src="../Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Warwick, NSW</h3>
-                  <div className='space'>
-                                    <Link to = "/horsedetails" > <button className='btn'>Race 4</button></Link>
+                
 
-                    <p>In 5 minutes</p>
-                  </div>
-                 </div>
-              </div>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                 <img src="../Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Eaglefarm, QLD</h3>
-                  <div className='space'>
-                  <Link to = "/horsedetails" > <button className='btn'>Race 5</button></Link>
-
-                    <p>In 6 minutes</p>
-                  </div>
-                 </div>
-              </div>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                 <img src="../Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Belmont, WA</h3>
-                  <div className='space'>
-                                    <Link to = "/horsedetails" > <button className='btn'>Race 6</button></Link>
-                    <p>In 6 minutes</p>
-                  </div>
-                 </div>
-              </div>             
+                return (
+                  <>
+                  <div className="tip-grid">
+                      <div className="tips-colum1">
+                        <img src="../Vector.png" alt="iage" />
+                      </div>
+                      <div className="tips-colum1">
+                        <h3>{items.RaceLocation}</h3>
+                        <div className="space">
+                          <Link to={`/horseDetails/${items.id}/${trimlocation}`}>
+                            <button className="btn">
+                              Race {items.RaceNumber}
+                            </button>
+                          </Link>
+                          <p>in {inminutes} Minute</p>
+                        </div>
+                    </div>
+                      </div>
+                  </>
+                );
+              })
+      }           
             </div>
             </div>
             <div className='main_1 Throug-img'>
@@ -166,7 +143,7 @@ console.log(currentRecords)
 <div>
 <div className='container-fluid raceup-sec'>
           <div className='container'>
-            <h3 className="free-title">Today, 04 Aug 2021</h3>
+            <h3 className="free-title">Today,{new Date().toDateString()}</h3>
             <div className='upcomming-table'>
             <table>
 

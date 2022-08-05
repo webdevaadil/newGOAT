@@ -42,14 +42,24 @@ finaldata.map((items,index)=>items.RaceDate =new Date(items.RaceDate).toLocaleDa
 
 
     
-      const currenthour = new Date().toJSON()
+      const currenthour = new Date().getTime()
+    console.log(new Date(currenthour).toJSON())  
+    console.log(new Date().toTimeString("en-US", {timeZone: "Australia/Sydney"}))
+
       console.log(currenthour)
+
+      const filtereddata = finaldata.filter((items, index) => {
+        //adding key and value to the object
+        items.id = index;
+        items.minutes = new Date(items.RaceTime).getMinutes()
+      
+      });
 
     const filterdate = finaldata.filter((items,index)=>{
       const currentday = new Date()
       const currentdaystring = new Date(currentday).toLocaleDateString()
 return(
-  items.RaceDate===currentdaystring&&index<7
+  items.RaceDate===currentdaystring&&index<7&&items.minutes>new Date().getMinutes()
 )
     })
     console.log(filterdate)
@@ -67,14 +77,7 @@ return(
     // console.log(end);
 
     //UPCOMING RACES 
-    // const filtereddata = finaldata.filter((items, index) => {
-    //   //adding key and value to the object
-    //   items.id = index;
-    //   items.RaceDate = new Date(items.RaceDate);
-    //   const time = new Date(items.RaceDate).getTime();
-    //   setPlaceName(items.RaceLocation)
-    //   return time <= end && start <= time;
-    // });
+
 
 
     //getting today date
@@ -206,7 +209,8 @@ return(
                       </div>
                   </>
                 );
-              })}
+              })
+              }
 
               </div>
               </div>
@@ -230,7 +234,7 @@ return(
       <h4>
         <span>678% in returns</span> on your initial investment.
       </h4>
-      <Link to="/packages">
+      <Link to="/signup">
         <button className="btn freetips-btn">SIGN ME UP!</button>
       </Link>
     </div>

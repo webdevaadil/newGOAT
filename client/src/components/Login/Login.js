@@ -60,14 +60,6 @@ export const Login = () => {
   return (
     <>
     {loading&&<Loader/>}
-<<<<<<< HEAD
-   
-
-    <section id="form-section">
-    <div className="wel-form">
-      <div className="wel-p1 img-main">
-        <div className="img-main">
-=======
     <Metadata title = "loginUser"/>
     <div className="container-fluid">
     <div className="welcome-sec">
@@ -75,7 +67,6 @@ export const Login = () => {
       <div className="col-md-6">      
         <div className="welcome-img">
            <img src="/welcome-img.png" />
->>>>>>> 3273878df2eb88765fc520a632cad79075389a5b
         </div>
       </div>   
       <div className="col-md-6">
