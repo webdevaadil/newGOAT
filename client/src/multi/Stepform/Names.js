@@ -58,21 +58,11 @@ export const Names = ({ formData, setForm, navigation }) => {
   return (
     <>
       {loading && <Loader />}
-<<<<<<< HEAD
     
       <section id="form-section">
         <div className="wel-form">
           <div className="wel-p1 img-main">
             <div className="img-main"></div>
-=======
-      <Metadata title="Signup" />
-      <section id="form-section" className="container">
-        <div className="row">
-          <div className="col-md-6">
-              <div className="welcome-img">
-              <img src="/welcome-img.png" />
-            </div>
->>>>>>> 3273878df2eb88765fc520a632cad79075389a5b
           </div>
           <div className="col-md-6">
             <div className="form-content wel-bg ">
