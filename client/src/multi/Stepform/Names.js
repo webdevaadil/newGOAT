@@ -58,21 +58,11 @@ export const Names = ({ formData, setForm, navigation }) => {
   return (
     <>
       {loading && <Loader />}
-
     
-      {/* <section id="form-section">
+      <section id="form-section">
         <div className="wel-form">
           <div className="wel-p1 img-main">
-            </div>
-            </section> */}
             <div className="img-main"></div>
-      <section id="form-section" className="container">
-        <div className="row">
-          <div className="col-md-6">
-              <div className="welcome-img">
-              <img src="/welcome-img.png" />
-            </div>
-
           </div>
           <div className="col-md-6">
             <div className="form-content wel-bg ">
@@ -196,4 +186,3 @@ export const Names = ({ formData, setForm, navigation }) => {
     </>
   );
 };
-

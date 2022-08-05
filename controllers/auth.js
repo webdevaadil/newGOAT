@@ -96,7 +96,7 @@ exports.login = catchAsyncerror(async (req, res, next) => {
 
 exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   const { token } = req.cookies;
-  console.log(token);
+  // console.log(token);
   if (!token) {
     return next(new ErrorResponse("plese login to access this resource", 401));
   }

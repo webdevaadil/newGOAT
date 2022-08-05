@@ -60,13 +60,12 @@ export const Login = () => {
   return (
     <>
     {loading&&<Loader/>}
-    <Metadata title = "loginUser"/>
-    <div className="container-fluid">
-    <div className="welcome-sec">
-    <div className="row">
-      <div className="col-md-6">      
-        <div className="welcome-img">
-           <img src="/welcome-img.png" />
+   
+
+    <section id="form-section">
+    <div className="wel-form">
+      <div className="wel-p1 img-main">
+        <div className="img-main">
         </div>
       </div>   
       <div className="col-md-6">
@@ -103,8 +102,7 @@ export const Login = () => {
       </div>
       </div>
     </div>
-  </div>
-  </div> 
+  </section>
   
     </>
   );
