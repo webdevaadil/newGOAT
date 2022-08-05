@@ -66,8 +66,8 @@ export const Names = ({ formData, setForm, navigation }) => {
               <img src="/welcome-img.png" />
             </div>
           </div>
-          <div className="col-md-6 wel-bg">
-            <div className="form-content">
+          <div className="col-md-6">
+            <div className="form-content wel-bg ">
               <h2>Hello!</h2>
               <div className="form-main">
                 <form onSubmit={handleSubmit} encType="multipart/form-data" autoComplete="new-password" className="form-floating mb-3">

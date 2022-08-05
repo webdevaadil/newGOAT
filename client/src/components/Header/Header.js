@@ -10,7 +10,8 @@ export const Header = () => {
 
   return (
     <>
-      <div className="container-fluid Mainheader">
+      <div className=" top-header">
+        <div className="container-fluid Mainheader">
         <nav className="container navbar navbar-expand-lg navbar-light">
           <Link className="navbar-brand" to="/">
             <img src="../logo.png" alt="this" />
@@ -94,11 +95,11 @@ export const Header = () => {
                   </div>
                 )}
               </li>
-            </ul>
-               
+            </ul>               
             <Loginbtn />
           </div>
         </nav>
+        </div>
       </div>
     </>
   );
