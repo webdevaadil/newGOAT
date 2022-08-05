@@ -62,6 +62,7 @@ body{
     background-repeat: no-repeat;
     background-size: contain;
     width: 100%;
+    height:100%;
 }
 .img-main{
     background: url('../../Images/welcome-img.png');
@@ -170,6 +171,13 @@ i.fa.fa-eye {
 }
 
 
+/* sign up form */
+.form-floating {
+    width: 100%;
+}
+
+
+
 /* responsive */
 
 @media (max-width:1200px) {
@@ -202,14 +210,13 @@ i.fa.fa-eye {
     }
     .form-content {
         padding: 30px 25px;
-        height: 100vh;
+        height: 100%;
     }
 
-.welcome-img img {
-    width: 100%;
-    object-fit: cover;
-    max-height: 300px;
-}
+        .welcome-img img {
+            width: 100%;
+            object-fit: cover;
+        }
 }
 
 @media (max-width:668px){

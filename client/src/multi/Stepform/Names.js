@@ -59,12 +59,14 @@ export const Names = ({ formData, setForm, navigation }) => {
     <>
       {loading && <Loader />}
       <Metadata title="Signup" />
-      <section id="form-section">
-        <div className="wel-form">
-          <div className="wel-p1 img-main">
-            <div className="img-main"></div>
+      <section id="form-section" className="container">
+        <div className="row">
+          <div className="col-md-6">
+              <div className="welcome-img">
+              <img src="/welcome-img.png" />
+            </div>
           </div>
-          <div className="wel-p1 wel-bg">
+          <div className="col-md-6 wel-bg">
             <div className="form-content">
               <h2>Hello!</h2>
               <div className="form-main">
@@ -117,7 +119,7 @@ export const Names = ({ formData, setForm, navigation }) => {
 
 
 
-                  <div className="form-inner">
+                  <div className="form-inner fom-btn">
                     <div className="form-floating mb-3">
                       <input
                         onChange={setForm}
@@ -147,11 +149,13 @@ export const Names = ({ formData, setForm, navigation }) => {
                         <option disabled>Select</option>
                         <option>Male</option>
                         <option>Female</option>
+                        <option>Non-binary</option>
+                        <option>Prefer not to say</option>
                       </select>
                       <label htmlFor="floatingSelect">Gender (Optional)</label>
                     </div>
                   </div>
-                  <div className="fom-btn mb-3">
+                  <div className="fom-btn mb-3 mt-3">
                     <Link
                       to="/login"
                       type="login"
