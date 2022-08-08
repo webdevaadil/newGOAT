@@ -129,11 +129,11 @@ const handle=(e)=>{
                 <form onSubmit={handleSub} className="form-floating mb-3">
                   <div className="form-floating">
                     <Select
-                      defaultValue={formData.packages}
+                      defaultValue={packages}
                       options={options}
                       styles={customStyles}
                       value={packages}
-                      // onChange={handle}
+                      onChange={handle}
                       name="packages"
                     />
                   </div>
