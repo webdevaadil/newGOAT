@@ -46,9 +46,7 @@ export const PaymentMethoad = () => {
       });
     }
   }, [dispatch, error, user, alert,isUpdated]);
-  if(user.packages==="free"){
-setdpackge("hiiii")
-  }
+
   const updateP = (e) => {
     e.preventDefault();
     const myForm = new FormData();
@@ -79,6 +77,7 @@ setdpackge("hiiii")
         <>
           {isAuthenticated === true ? (
             <div className="payment_box_two">
+              {user.packages===""}
               <h2>Bronze Membership</h2>
               <h2>$15 / Week</h2>
               <ul>

@@ -23,10 +23,10 @@ const Footer=()=>
               <div className='foot_1'>
                 <h4>Group 2</h4>
                 <ul>
-                   <Link to = '/dashboard/about'>
+                   <Link to = '/about'>
                   <li>Privacy Policy</li>
                    </Link>
-                   <Link to = "/dashboard/about">
+                   <Link to = "/about">
                   <li >Terms & Conditions</li>
                    </Link>
                 </ul>
