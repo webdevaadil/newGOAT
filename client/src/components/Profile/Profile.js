@@ -26,12 +26,13 @@ export const Profile = () => {
   const updateProfileSubmit = (e) => {
     e.preventDefault();
     const myForm = new FormData();
-
+    
     myForm.set("username", username);
     myForm.set("gender", gender);
     myForm.set("dob", dob);
     myForm.set("avatar", avatar);
-
+    
+    console.log(myForm);
     dispatch(updateprofile(myForm));
   };
   const handle = (e) => {
@@ -142,7 +143,6 @@ export const Profile = () => {
                         <option disabled>Select</option>
                         <option>Male</option>
                         <option>Female</option>
-                        <option>Non-binary</option>
                         <option>Prefer not to say</option>
                       </select>
                       <label htmlFor="floatingSelect">Gender (Optional)</label>

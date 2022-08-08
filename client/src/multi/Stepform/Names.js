@@ -186,4 +186,3 @@ export const Names = ({ formData, setForm, navigation }) => {
     </>
   );
 };
-

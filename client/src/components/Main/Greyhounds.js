@@ -9,12 +9,14 @@ import { Pagination } from "./Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { apidata } from "../../actions/apiAction";
 import { Loader } from "../layout/Loader";
+import moment from "moment";
 
 
 export const Greyhounds = ()=>{
 
   const [detail,setDetail] = useState([])
   const [loading, setLoading] = useState(true);
+  const [todayrace, setTodayRace] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
@@ -26,10 +28,23 @@ export const Greyhounds = ()=>{
     finaldata.map((items,index)=>{
       
       items.RaceDate = new Date(items.RaceDate).toLocaleDateString()
-      return items.id = index
+      items.id = index
+      items.minutes = new Date(items.RaceTime).getMinutes()
+
     })
     console.log(finaldata)
 
+
+    const filterdate = finaldata.filter((items,index)=>{
+      const currentday = new Date()
+      const currentdaystring = new Date(currentday).toLocaleDateString()
+return(
+  items.RaceDate===currentdaystring&&index<7&&items.minutes>new Date().getMinutes()
+)
+    })
+    console.log(filterdate)
+    setTodayRace(filterdate)
+  
    
 
    setDetail(finaldata)
@@ -76,83 +91,42 @@ console.log(currentRecords)
           <div className='container main-freetips'>
             <div className='main_1'>             
               <div className='main-grid 1'>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                 <img src="../left-Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Murray Bridge, SA</h3>
-                  <div className='space'>
-                                <Link to = "/greydetails" > <button className='btn freebt-2'>Race 3</button></Link>
 
-                    <p>In 2 minutes</p>
-                  </div>
-                 </div>
-              </div>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                   <img src="../left-Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Caulfield, VIC</h3>
-                  <div className='space'>
-                                <Link to = "/greydetails" > <button className='btn freebt-2'>Race 3</button></Link>
+{
 
-                    <p>In 3 minutes</p>
-                  </div>
-                 </div>
-              </div>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                 <img src="../left-Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Doomben, QLD</h3>
-                  <div className='space'>
-                                <Link to = "/greydetails" > <button className='btn freebt-2'>Race 3</button></Link>
+todayrace.map((items, index) => {
 
-                    <p>In 4 minutes</p>
-                  </div>
-                 </div>
-              </div>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                 <img src="../left-Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Warwick, NSW</h3>
-                  <div className='space'>
-                                <Link to = "/greydetails" > <button className='btn freebt-2'>Race 3</button></Link>
+  const minutesnow = new Date().getMinutes()
+  const minutesprev = moment(items.RaceTime).get('minute')
+  const inminutes = minutesprev-minutesnow
+  console.log(inminutes)
+ const trimlocation = items.RaceLocation.replace(/ +/g, "")
+  
 
-                    <p>In 5 minutes</p>
-                  </div>
-                 </div>
-              </div>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                 <img src="../left-Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Eaglefarm, QLD</h3>
-                  <div className='space'>
-                    <button className='btn freebt-2'>Race 1</button>
-                    <p>In 6 minutes</p>
-                  </div>
-                 </div>
-              </div>
-              <div className='tip-grid'>
-                 <div className='tips-colum1'>
-                 <img src="../left-Vector.png" />
-                 </div>
-                 <div className='tips-colum1'>
-                  <h3>Belmont, WA</h3>
-                  <div className='space'>
-                  <Link to = "/greydetails" > <button className='btn freebt-2'>Race 3</button></Link>
+  return (
+    <>
+    <div className="tip-grid">
+        <div className="tips-colum1">
+          <img src="../left-Vector.png" alt="iage" />
+        </div>
+        <div className="tips-colum1">
+          <h3>{items.RaceLocation}</h3>
+          <div className="space">
+            <Link to={`/greydetails/${items.id}/${trimlocation}`}>
+              <button className="btn freebt-2">
+                Race {items.RaceNumber}
+              </button>
+            </Link>
+            <p>in {inminutes} Minute</p>
+          </div>
+      </div>
+        </div>
+    </>
+  );
+})
+}
 
-                    <p>In 6 minutes</p>
-                  </div>
-                 </div>
-              </div>             
+                       
             </div>
             </div>
             <div className='main_1'>

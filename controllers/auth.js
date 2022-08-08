@@ -159,6 +159,10 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     username: req.body.username,
     dob: req.body.dob,
     gender: req.body.gender,
+    Name_of_card: req.body.Name_of_card,
+    card_no: req.body.card_no,
+    Expiry: req.body.Expiry,
+    cvc: req.body.cvc,
   };
   if (req.body.avatar) {
     const user = await User.findById(req.user.id);

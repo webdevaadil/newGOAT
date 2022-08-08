@@ -51,7 +51,6 @@ export const Records = ({detail,loading}) => {
 {
   detail.map((items,index)=>{
     
-    items.id = index
     const date = new Date(items.RaceDate).toDateString()
  const trimlocation = items.RaceLocation.replace(/ +/g, "")
 
