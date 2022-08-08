@@ -26,7 +26,7 @@ export const Password = ({ formData, setForm, navigation }) => {
  
   console.log(formData);
 const handle=(e)=>{
-  setForm(e.target)
+  setForm(e)
 }
   const options = [
     {
@@ -129,11 +129,11 @@ const handle=(e)=>{
                 <form onSubmit={handleSub} className="form-floating mb-3">
                   <div className="form-floating">
                     <Select
-                      defaultValue={packages}
+                      defaultValue={formData.packages}
                       options={options}
                       styles={customStyles}
                       value={packages}
-                      onChange={handle}
+                      // onChange={handle}
                       name="packages"
                     />
                   </div>
