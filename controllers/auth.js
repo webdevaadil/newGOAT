@@ -163,6 +163,7 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     card_no: req.body.card_no,
     Expiry: req.body.Expiry,
     cvc: req.body.cvc,
+    packages: req.body.packages,
   };
   if (req.body.avatar) {
     const user = await User.findById(req.user.id);

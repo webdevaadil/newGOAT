@@ -1,22 +1,17 @@
-import React, { useDebugValue, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import "./Main.css";
-import { Link, useNavigate } from "react-router-dom";
-import { Metadata } from "../layout/Metadata";
+import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
-import store from "../../store";
 import { useSelector, useDispatch } from "react-redux";
-import { loaduser } from "../../actions/userAction";
 import axios from "axios";
 import { Records } from "./Records";
 import { Pagination } from "./Pagination";
 import { apidata } from "../../actions/apiAction";
-import { Loader } from "../layout/Loader";
 import moment from "moment";
 
 export const Main = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.data);
   const {isAuthenticated,user,error} = useSelector((state)=>state.user)
   const [detail, setDetail] = useState([]);
   const [todayrace, setTodayRace] = useState([]);

@@ -13,21 +13,20 @@ import { clearErrors, register } from "../../actions/userAction";
 import { Loader } from "../../components/layout/Loader";
 
 export const Password = ({ formData, setForm, navigation }) => {
-  const {packages,Name_of_card ,card_no,Expiry,cvc} = formData;
+  const { packages, Name_of_card, card_no, Expiry, cvc } = formData;
   const navigate = useNavigate();
   const alert = useAlert();
-  
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
 
   const dispatch = useDispatch();
- 
+
   console.log(formData);
-const handle=(e)=>{
-  setForm(e)
-}
+  const handle = (e) => {
+    setForm(e.value);
+  };
   const options = [
     {
       value: "$60 / week",
@@ -103,7 +102,7 @@ const handle=(e)=>{
   const handleSub = async (e) => {
     e.preventDefault();
     dispatch(register(formData));
-  }
+  };
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -116,7 +115,7 @@ const handle=(e)=>{
   }, [navigate, isAuthenticated, loading, error, alert, dispatch]);
   return (
     <>
-     {loading && <Loader />}
+      {loading && <Loader />}
       <div className="container-fluid form-section wel-form">
         <div className="col-md-6">
           <div className="wel-p1 pack-main"></div>
@@ -129,10 +128,12 @@ const handle=(e)=>{
                 <form onSubmit={handleSub} className="form-floating mb-3">
                   <div className="form-floating">
                     <Select
-                      defaultValue={packages}
+                    
                       options={options}
                       styles={customStyles}
-                      value={packages}
+                      value={options.filter(function (option) {
+                        return option.value === packages;
+                      })}
                       onChange={handle}
                       name="packages"
                     />
@@ -188,14 +189,14 @@ const handle=(e)=>{
                       </div>
                     </div>
                   </div>
-               <div className="fom-btn mb-3">
-                  <button type="submit" className="btn btn-outline-secondary">
-                    Sign Up
-                  </button>
-                  <button type="login" className="btn btn-outline-secondary">
-                    Login
-                  </button>
-                </div> 
+                  <div className="fom-btn mb-3">
+                    <button type="submit" className="btn btn-outline-secondary">
+                      Sign Up
+                    </button>
+                    <button type="login" className="btn btn-outline-secondary">
+                      Login
+                    </button>
+                  </div>
                 </form>
               </div>
               <p>

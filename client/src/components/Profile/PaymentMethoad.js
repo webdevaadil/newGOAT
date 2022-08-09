@@ -5,9 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../layout/Loader";
 import { Navigate } from "react-router-dom";
 import { useAlert } from "react-alert";
+import img1 from "../../Images/level.png";
+import img2 from "../../Images/name1.png";
+import img3 from "../../Images/name2.png";
+import img4 from "../../Images/name3.png";
+import img5 from "../../Images/name4.png";
 
 import { clearErrors, loaduser, updateprofile } from "../../actions/userAction";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
+import Select from "react-select";
+
 
 export const PaymentMethoad = () => {
   const dispatch = useDispatch();
@@ -46,7 +53,76 @@ export const PaymentMethoad = () => {
       });
     }
   }, [dispatch, error, user, alert,isUpdated]);
-
+  const options = [
+    {
+      value: "$60 / week",
+      label: (
+        <div style={{ fontWeight: 600, fontSize: "20px", color: "#282828" }}>
+          <img
+            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            src={img1}
+            alt="loading"
+          />
+          $60 / week
+        </div>
+      ),
+    },
+    {
+      value: "$45 / week",
+      label: (
+        <div style={{ fontWeight: 600, fontSize: "20px", color: "#282828" }}>
+          <img
+            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            src={img2}
+            alt="loading"
+          />
+          $45/ week
+        </div>
+      ),
+    },
+    {
+      value: "$30 / week",
+      label: (
+        <div style={{ fontWeight: 600, fontSize: "20px", color: "#282828" }}>
+          <img
+            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            src={img3}
+            alt="loading"
+          />
+          $30/ week
+        </div>
+      ),
+    },
+    {
+      value: "$15 / week",
+      label: (
+        <div style={{ fontWeight: 600, fontSize: "20px", color: "#282828" }}>
+          <img
+            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            src={img4}
+            alt="loading"
+          />
+          $15/ week
+        </div>
+      ),
+    },
+    {
+      value: "Free",
+      label: (
+        <div style={{ fontWeight: 600, fontSize: "20px", color: "#282828" }}>
+          <img
+            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            src={img5}
+            alt="loading"
+          />
+          Free
+        </div>
+      ),
+    },
+  ];
+  const customStyles = {
+    height: 45,
+  };
   const updateP = (e) => {
     e.preventDefault();
     const myForm = new FormData();
@@ -69,6 +145,9 @@ export const PaymentMethoad = () => {
     if (day.length < 2) day = "0" + day;
     return [year, month, day].join("-");
   }
+  const handle=(e)=>{
+    setpackages( e.value )
+  }
   return (
     <>
       {loading ? (
@@ -87,15 +166,20 @@ export const PaymentMethoad = () => {
               </ul>
 
               <div>
-                <form className="box_three" onSubmit={updateP}>
+                <form className="box_three form-floating mb-3" onSubmit={updateP}>
                   <h2 className="per_text">Membership Details</h2>
-                  <input
-                    className="Select_pack"
-                    type="text"
-                    placeholder="Select Package"
-                    value={packages}
-                    onChange={(e) => setpackages(e.target.value)}
+                  <div className="form-floating">
+                  <Select
+                   className="Select_pack"
+                   options={options}
+                   styles={customStyles}
+                    value={options.filter(function(option) {
+                      return option.value === packages;
+                    })}
+            
+                    onChange={handle}
                   />
+                  </div>
                   <h2 className="pay_detail">Payment Details</h2>
                   <input
                     className="card_name"

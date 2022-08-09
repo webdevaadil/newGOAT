@@ -1,7 +1,11 @@
 import React from "react";
+import Footer from "../Footer/Footer";
+import { Header } from "../Header/Header";
 import "./impo.css";
 export const Aboutus = () => {
-  return (
+  return (<>
+      <Header/>
+
     <div
       style={{
         margin: "0 auto",
@@ -10,6 +14,8 @@ export const Aboutus = () => {
         justifyContent: "center",
         flexDirection: "column",
         alignItems: "center",
+        padding:"100px"
+        
       }}
     >
       {" "}
@@ -63,5 +69,7 @@ export const Aboutus = () => {
         </p>
       </div>
     </div>
+      <Footer/>
+        </>
   );
 };

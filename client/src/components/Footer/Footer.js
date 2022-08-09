@@ -15,7 +15,7 @@ const Footer=()=>
                   <Link to = '/'>
                   <li >Home</li>
                   </Link>
-                  <Link to = "/horsedetails">
+                  <Link to = "/packages">
                   <li>Features</li>
                   </Link>
                 </ul>

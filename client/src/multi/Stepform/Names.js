@@ -19,20 +19,10 @@ export const Names = ({ formData, setForm, navigation }) => {
   );
 
   const dispatch = useDispatch();
-  // const [data, setData] = useState({
-  //   name  : "",
-  //   email: "",
-  //   Password: "",
-  //   dob: ``,
-  //   gender: "",
-  // });
+
   const { username, email, password, dob, gender } = formData;
 
-  // const handleChange = (e) => {
-   
-  //     setData({ ...data, [e.target.name]: e.target.value });
-   
-  // };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -76,6 +66,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                       value={username}
                       onChange={setForm}
                       type="text"
+                      required
                       className="form-control"
                       placeholder="Your Full Name"
                       autoComplete="off"
