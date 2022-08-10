@@ -29,8 +29,7 @@ export const Multilf = () => {
     { id: "name" },
     { id: "address" },
     { id: "contact" },
-    { id: "review" },
-    { id: "submit" },
+   
   ];
     const [formData, setForm] = useForm(defaultData);
     const { step, navigation } = useStep({
@@ -48,11 +47,8 @@ export const Multilf = () => {
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
+
   useEffect(() => {
-    if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
-    }
 
     if (isAuthenticated) {
       alert.success("Signup Successfull");
@@ -68,10 +64,6 @@ export const Multilf = () => {
         return <Email {...props} />;
       case "contact":
         return <Password {...props} />;
-      case "review":
-        return <Dob {...props} />;
-      case "submit":
-        return <Submit {...props} />;
     }
   
     return (

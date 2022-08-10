@@ -14,7 +14,7 @@ export const Header = () => {
         <div className="container-fluid Mainheader">
         <nav className="container navbar navbar-expand-lg navbar-light">
           <Link className="navbar-brand" to="/">
-            <img src="/logo.png" alt="this" />
+            <img style={{height:"60px"}}src="/logo1.png" alt="this" />
           </Link>
           <button
             className="navbar-toggler"

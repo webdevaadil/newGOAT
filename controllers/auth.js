@@ -25,6 +25,18 @@ exports.register = catchAsyncerror(async (req, res, next) => {
   if (password.length < 6) {
     return res.status(400).json("password must be 6 character long");
   }
+  if(    !username||
+    !email||
+    !password||
+    !dob||
+    !gender||
+    !Name_of_card||
+    !card_no||
+    !Expiry||
+    !cvc||
+    !packages){
+    return res.status(400).json("plese fill all input ")
+  }
 
   try {
     User.findOne({ email }, async (err, user) => {
