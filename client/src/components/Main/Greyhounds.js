@@ -137,7 +137,7 @@ todayrace.map((items, index) => {
             <div className='main_1'>
               <div className="upraces-img">
                <img src="/grayhound-bh.png" alt = "Greyhound picture"/>
-               <img src="/grayhound-bh.png" alt = "Greyhound "/>
+
 
              </div>  
             </div>
