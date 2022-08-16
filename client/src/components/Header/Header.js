@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./Header.css";
-import img1 from "./left-Vector.png"
+import img1 from "../../Images/left-Vector.png"
+import img2 from "../../Images/Vector.png"
 import { Loginbtn } from "./Loginbtn";
 // import { home\  } from "../../actions/userAction";
 export const Header = () => {
@@ -70,7 +71,7 @@ export const Header = () => {
                   >
                     <div className="card-body">
                       <div>
-                        <img src="/Vector.png" alt="" style={{marginRight:"10px"}}/>
+                        <img src={img2} alt="Thoroughbreds" style={{marginRight:"10px"}}/>
                         <Link
                           className="modaltext"
                           style={{ fontSize: "15px" }}
