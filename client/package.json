@@ -17,6 +17,7 @@
     "react": "^18.2.0",
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
+    "react-credit-card-input": "^1.1.5",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.34.0",
@@ -31,6 +32,7 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
+    "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",
     "zoho": "file:.."
   },

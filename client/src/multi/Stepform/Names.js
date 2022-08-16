@@ -19,20 +19,10 @@ export const Names = ({ formData, setForm, navigation }) => {
   );
 
   const dispatch = useDispatch();
-  // const [data, setData] = useState({
-  //   name  : "",
-  //   email: "",
-  //   Password: "",
-  //   dob: ``,
-  //   gender: "",
-  // });
+
   const { username, email, password, dob, gender } = formData;
 
-  // const handleChange = (e) => {
-   
-  //     setData({ ...data, [e.target.name]: e.target.value });
-   
-  // };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +31,7 @@ export const Names = ({ formData, setForm, navigation }) => {
     const myForm = new FormData();
 
   
-       dispatch(register(myForm));
+      //  dispatch(register(myForm));
   };
 
   useEffect(() => {
@@ -76,6 +66,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                       value={username}
                       onChange={setForm}
                       type="text"
+                      required
                       className="form-control"
                       placeholder="Your Full Name"
                       autoComplete="off"
@@ -144,8 +135,9 @@ export const Names = ({ formData, setForm, navigation }) => {
 
 
                       >
-                        <option disabled>Select</option>
-                        <option>Male</option>
+                        {/* <option disabled>Select</option> */}
+                        <option  >""</option>
+                        <option >Male</option>
                         <option>Female</option>
                         <option>Non-binary</option>
                         <option>Prefer not to say</option>
@@ -175,7 +167,7 @@ export const Names = ({ formData, setForm, navigation }) => {
               </div>
               <p>
                 By signing up, I agree to the{" "}
-                <Link to="/dashboard/about">
+                <Link to="/privacy-policy">
                   <span>Terms and conditions and Privacy policy</span>
                 </Link>
               </p>

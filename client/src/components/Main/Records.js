@@ -4,7 +4,34 @@ import { Loader } from '../layout/Loader'
 
 export const Records = ({detail,loading}) => {
    
+<<<<<<< HEAD
  
+=======
+  const  formatDate = (date)=> {
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var now = new Date(date);
+    var month = months[now.getMonth() + 1];
+    var date = now.getDate();
+
+    var hour = now.getHours();
+    var min = now.getMinutes();
+   var year = now.getFullYear();
+    var period = "am"
+    if (hour > 11) {
+        period = "pm"
+        if (hour > 12) {
+            hour -= 12
+        }
+    }
+    if (min < 10) {
+        min = "0" + min
+    }
+    console.log(period);
+    return `${date}    ${month}    ${year}`
+    // console.log((month + "/" + date));
+  }
+
+>>>>>>> cb1e71afe1512489e3fd9a7a058b819dec1d8b1c
   return (
     <>
     {
@@ -28,7 +55,7 @@ export const Records = ({detail,loading}) => {
   detail.map((items,index)=>{
     
     const date = new Date(items.RaceDate).toDateString()
- const trimlocation = items.RaceLocation.replace(/ +/g, "")
+ const trimlocation = items.RaceLocation.replace(/ +/g, "-").toLowerCase()
 
     return(
       <tr  key = {index}>

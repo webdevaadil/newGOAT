@@ -1,17 +1,13 @@
-import React, { useDebugValue, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import "./Main.css";
-import { Link, useNavigate } from "react-router-dom";
-import { Metadata } from "../layout/Metadata";
+import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
-import store from "../../store";
 import { useSelector, useDispatch } from "react-redux";
-import { loaduser } from "../../actions/userAction";
 import axios from "axios";
 import { Records } from "./Records";
 import { Pagination } from "./Pagination";
 import { apidata } from "../../actions/apiAction";
-import { Loader } from "../layout/Loader";
 import moment from "moment";
 
 export const Main = () => {
@@ -178,7 +174,7 @@ return(
                       <div className="tips-colum1">
                         <h3>{items.RaceLocation}</h3>
                         <div className="space">
-                          <Link to={`horseDetails/${items.id}/${items.RaceLocation}`}>
+                          <Link to={`horsedetails/${items.id}/${items.RaceLocation.replace(/ +/g, "-").toLowerCase()}`}>
                             <button className="btn">
                               Race {items.RaceNumber}
                             </button>

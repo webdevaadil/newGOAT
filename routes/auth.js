@@ -10,6 +10,7 @@ router.route("/me").get(isAuthuser,dashboard);
 router.route("/logout").get(logout);
 router.route("/update/password").put(isAuthuser, updatePassword);
 router.route("/update/profile").put(isAuthuser, updateProfile);
+// router.router('/createorder',).get( )
 
 // router.route("/resetpassword/:resetToken").put(resetPassword);
 

@@ -6,7 +6,7 @@ const Footer=()=>
 {
     return (
         <>
-        <div className='container-fluid footer-sec'>
+        <div className='container-fluid footer-sec'st>
           <div className='container'>
             <div className='footer-ct'>
               <div className='foot_1'>
@@ -15,7 +15,7 @@ const Footer=()=>
                   <Link to = '/'>
                   <li >Home</li>
                   </Link>
-                  <Link to = "/horsedetails">
+                  <Link to = "/packages">
                   <li>Features</li>
                   </Link>
                 </ul>
@@ -23,10 +23,10 @@ const Footer=()=>
               <div className='foot_1'>
                 <h4>Group 2</h4>
                 <ul>
-                   <Link to = '/dashboard/about'>
+                   <Link to = '/privacy-policy'>
                   <li>Privacy Policy</li>
                    </Link>
-                   <Link to = "/dashboard/about">
+                   <Link to = "/privacy-policy">
                   <li >Terms & Conditions</li>
                    </Link>
                 </ul>

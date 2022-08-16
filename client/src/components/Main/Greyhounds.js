@@ -105,7 +105,7 @@ todayrace.map((items, index) => {
   const minutesprev = new Date(items.RaceTime).getUTCMinutes()
   const inminutes = minutesprev-minutesnow
   console.log(inminutes)
- const trimlocation = items.RaceLocation.replace(/ +/g, "")
+ const trimlocation = items.RaceLocation.replace(/ +/g, "-").toLowerCase()
   
 
   return (
@@ -136,7 +136,11 @@ todayrace.map((items, index) => {
             </div>
             <div className='main_1'>
               <div className="upraces-img">
+<<<<<<< HEAD
                <img src="/grayhound-bh.png" alt = "Greyhound picture"/>
+=======
+               <img src="/grayhound-bh.png" alt = "Greyhound "/>
+>>>>>>> cb1e71afe1512489e3fd9a7a058b819dec1d8b1c
              </div>  
             </div>
           </div>

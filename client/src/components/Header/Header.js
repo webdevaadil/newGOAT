@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./Header.css";
+import img1 from "./left-Vector.png"
 import { Loginbtn } from "./Loginbtn";
 // import { home\  } from "../../actions/userAction";
 export const Header = () => {
@@ -14,7 +15,7 @@ export const Header = () => {
         <div className="container-fluid Mainheader">
         <nav className="container navbar navbar-expand-lg navbar-light">
           <Link className="navbar-brand" to="/">
-            <img src="/logo.png" alt="this" />
+            <img style={{height:"60px"}}src="/logo1.png" alt="this" />
           </Link>
           <button
             className="navbar-toggler"
@@ -69,7 +70,7 @@ export const Header = () => {
                   >
                     <div className="card-body">
                       <div>
-                        <img src="/Vector.png" alt="" />
+                        <img src="/Vector.png" alt="" style={{marginRight:"10px"}}/>
                         <Link
                           className="modaltext"
                           style={{ fontSize: "15px" }}
@@ -81,7 +82,12 @@ export const Header = () => {
                       </div>
                       <br />
                       <div>
+<<<<<<< HEAD
                         <img src="/left-Vector.png" alt="" />
+=======
+                        <img src={img1} alt="?" style={{marginRight:"10px"}}/>
+                        {/* <img src="./left-Vector.png" alt="" /> */}
+>>>>>>> cb1e71afe1512489e3fd9a7a058b819dec1d8b1c
                         <Link
                           className="modaltext"
                           style={{ fontSize: "15px" }}

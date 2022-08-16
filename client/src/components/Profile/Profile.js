@@ -26,12 +26,13 @@ export const Profile = () => {
   const updateProfileSubmit = (e) => {
     e.preventDefault();
     const myForm = new FormData();
-
+    
     myForm.set("username", username);
     myForm.set("gender", gender);
     myForm.set("dob", dob);
     myForm.set("avatar", avatar);
-
+    
+    console.log(myForm);
     dispatch(updateprofile(myForm));
   };
   const handle = (e) => {
@@ -86,9 +87,11 @@ export const Profile = () => {
     
       {loading ? <Loader/>:
     
-      <div className="profile_box_two">
+      <div className="profile_box_two ">
           <div className="row">
-        {isAuthenticated === true ? (
+        {isAuthenticated !== true ?(
+          <Navigate to={"/login"}/>
+        ): (
           <form encType="multipart/form-data" onSubmit={updateProfileSubmit}>
             <h2 className="pro_heading">Profile Photo</h2>
 
@@ -142,7 +145,6 @@ export const Profile = () => {
                         <option disabled>Select</option>
                         <option>Male</option>
                         <option>Female</option>
-                        <option>Non-binary</option>
                         <option>Prefer not to say</option>
                       </select>
                       <label htmlFor="floatingSelect">Gender (Optional)</label>
@@ -153,9 +155,7 @@ export const Profile = () => {
               <input type="submit" value="Update" className="sav_btn" />
             </div>
           </form>
-        ) : (
-          <Navigate to={"/login"}/>
-        )}
+        ) }
         </div>
       </div>}
     </>

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import { loaduser, logout } from "../../actions/userAction";
 import store from "../../store";
+import CreditCardInput from 'react-credit-card-input';
 
 export const ProfileNav = () => {
   let navigate = useNavigate()
@@ -34,7 +35,7 @@ export const ProfileNav = () => {
             <Link to="/dashboard" className="">
               Edit Profile
             </Link>
-            <img
+            <img style={{ filter: "black"}}
               className="img2"
           src="/img/edit.jpg"
 

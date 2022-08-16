@@ -22,10 +22,22 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     packages
   } = req.body;
 
+ 
+  if(    !username||
+    !email||
+    !password||
+    !dob||
+    !gender||
+    !Name_of_card||
+    !card_no||
+    !Expiry||
+    !cvc||
+    !packages){
+    return res.status(400).json("plese fill all input ")
+  }
   if (password.length < 6) {
     return res.status(400).json("password must be 6 character long");
   }
-
   try {
     User.findOne({ email }, async (err, user) => {
       const { valid, reason, validators } = await isEmailValid(email);
@@ -67,7 +79,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
       }
     });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    // res.status(500).json({ success: false, });
   }
 });
 
@@ -90,7 +102,7 @@ exports.login = catchAsyncerror(async (req, res, next) => {
 
     sendToken(user, 200, res);
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    // res.status(500).json({ success: false });
   }
 });
 
@@ -159,6 +171,11 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     username: req.body.username,
     dob: req.body.dob,
     gender: req.body.gender,
+    Name_of_card: req.body.Name_of_card,
+    card_no: req.body.card_no,
+    Expiry: req.body.Expiry,
+    cvc: req.body.cvc,
+    packages: req.body.packages,
   };
   if (req.body.avatar) {
     const user = await User.findById(req.user.id);
