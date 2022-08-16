@@ -129,7 +129,7 @@ return(
               <div className="main-sec">
                 <div className="main-content">
 
-                    <h2>The Goat Tips making money with horse tips</h2>
+                    <h2>The Goat Tips</h2>
 
                   <p>
                     The Goat Tips - Betting made easy! Your guide for sports
