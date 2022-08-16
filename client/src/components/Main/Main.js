@@ -193,7 +193,7 @@ return(
                       <div className="tips-colum1">
                         <h3>{items.RaceLocation}</h3>
                         <div className="space">
-                          <Link to={`horseDetails/${items.id}/${items.RaceLocation}`}>
+                          <Link to={`horsedetails/${items.id}/${items.RaceLocation.replace(/ +/g, "-").toLowerCase()}`}>
                             <button className="btn">
                               Race {items.RaceNumber}
                             </button>

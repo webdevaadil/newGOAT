@@ -10,6 +10,7 @@ import { Loader } from "../layout/Loader";
 
 export const HorseDetails = ()=>{
     const { id,location} = useParams();
+   console.log(location);
     const [detail,setDetail] = useState([])
     const [loading,setLoading] = useState(true)
     const [weatherdata,setWeatherData]  = useState("")
@@ -24,12 +25,12 @@ export const HorseDetails = ()=>{
        setLoading(!loading)
     
       }
-
-      const getWeather = async()=>{
+const [useloc, setuseloc] = useState(location)
     
+      const getWeather = async()=>{
 
 
-       const res= await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location},{Au}&units=metric&appid=b73312e7c6fc88cb40630784c12943b0`)
+       const res= await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location.split('-').join(' ')},{Au}&units=metric&appid=b73312e7c6fc88cb40630784c12943b0`)
      
      const temp = res.data.main.temp
      setTemprature(temp)
@@ -44,12 +45,17 @@ export const HorseDetails = ()=>{
           }
     
 
-      useEffect(()=>{
-        getdata()
-        getWeather()
-      },[])
-
+          useEffect(()=>{
+            getdata()
+            if(location=== "Central-Park"){
+                setuseloc(`Central Park`) 
+           }
+           console.log(location);
+            getWeather()
+          },[])
+  
       console.log(detail)
+      console.log(useloc)
 
  const  formatDate = (date)=> {
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

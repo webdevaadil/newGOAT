@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
 import "./impo.css";
 export const Aboutus = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (<>
       <Header/>
 

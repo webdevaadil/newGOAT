@@ -22,9 +22,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     packages
   } = req.body;
 
-  if (password.length < 6) {
-    return res.status(400).json("password must be 6 character long");
-  }
+ 
   if(    !username||
     !email||
     !password||
@@ -37,7 +35,9 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     !packages){
     return res.status(400).json("plese fill all input ")
   }
-
+  if (password.length < 6) {
+    return res.status(400).json("password must be 6 character long");
+  }
   try {
     User.findOne({ email }, async (err, user) => {
       const { valid, reason, validators } = await isEmailValid(email);
@@ -79,7 +79,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
       }
     });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    // res.status(500).json({ success: false, });
   }
 });
 
@@ -102,7 +102,7 @@ exports.login = catchAsyncerror(async (req, res, next) => {
 
     sendToken(user, 200, res);
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    // res.status(500).json({ success: false });
   }
 });
 

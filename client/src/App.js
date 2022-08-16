@@ -47,7 +47,7 @@ function App() {
             <Route path="accountsetting" element={<AccountSetting />} />
             <Route path="about" element={<About />} />
           </Route>
-            <Route path="/about" element={<Aboutus/>} />
+            <Route path="/privacy-policy" element={<Aboutus/>} />
           <Route path="/packages" element={<Package />} />
           <Route path="/pac" element={<Multilf/>} />
           <Route path="/loader" element={<Loader/>} />

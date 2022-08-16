@@ -134,8 +134,8 @@ export const Password = ({ formData, setForm, navigation }) => {
                       value={options.filter(function (option) {
                         return option.value === packages;
                       })}
-                      onChange={handle}
-                      name="packages"
+                      onChange={setForm}
+                      // name="packages"
                     />
                   </div>
                   <h4 className="mt-4">Payment Details</h4>
@@ -147,6 +147,7 @@ export const Password = ({ formData, setForm, navigation }) => {
                       name="Name_of_card"
                       value={Name_of_card}
                       onChange={setForm}
+                      
                     />
                     <label htmlFor="floatingInput">Name on Card</label>
                   </div>
@@ -157,7 +158,10 @@ export const Password = ({ formData, setForm, navigation }) => {
                       placeholder="123 456 791 23"
                       name="card_no"
                       value={card_no}
-                      onChange={setForm}
+
+                      onChange={setForm}   
+                      maxlength="16"
+                      // pattern="[0-9]+"
                     />
                     <label htmlFor="floatingInput">Card Number</label>
                   </div>
@@ -193,11 +197,11 @@ export const Password = ({ formData, setForm, navigation }) => {
                     <button type="submit" className="btn btn-outline-secondary">
                       Sign Up
                     </button>
-                    <button type="login" className="btn btn-outline-secondary">
-                      Login
-                    </button>
                   </div>
                 </form>
+                    <button type="login" className="btn btn-outline-secondary" onClick={navigation.previous(0)}>
+                      Login
+                    </button>
               </div>
               <p>
                 By signing up, I agree to the{" "}

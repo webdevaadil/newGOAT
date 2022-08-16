@@ -32,7 +32,7 @@ export const Greydetails = ()=>{
     
 
 
-        const res= await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location},{Au}&units=metric&appid=b73312e7c6fc88cb40630784c12943b0`)
+        const res= await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location.split('-').join(' ')},{Au}&units=metric&appid=b73312e7c6fc88cb40630784c12943b0`)
       
       const temp = res.data.main.temp
       setTemprature(temp)

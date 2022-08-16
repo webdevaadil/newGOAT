@@ -57,6 +57,7 @@ export const Signup = () => {
     myForm.set("password", password);
     myForm.set("dob", dob);
     myForm.set("avatar", avatar);
+    myForm.set("gender", gender);
     dispatch(register(myForm));
   };
 

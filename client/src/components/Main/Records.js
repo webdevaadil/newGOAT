@@ -25,7 +25,7 @@ export const Records = ({detail,loading}) => {
     }
     console.log(period);
     return `${date}    ${month}    ${year}`
-    console.log((month + "/" + date));
+    // console.log((month + "/" + date));
   }
 
   return (
@@ -52,7 +52,7 @@ export const Records = ({detail,loading}) => {
   detail.map((items,index)=>{
     
     const date = new Date(items.RaceDate).toDateString()
- const trimlocation = items.RaceLocation.replace(/ +/g, "")
+ const trimlocation = items.RaceLocation.replace(/ +/g, "-").toLowerCase()
 
     return(
       <tr  key = {index}>

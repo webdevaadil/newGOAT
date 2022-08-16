@@ -31,7 +31,7 @@ export const Names = ({ formData, setForm, navigation }) => {
     const myForm = new FormData();
 
   
-       dispatch(register(myForm));
+      //  dispatch(register(myForm));
   };
 
   useEffect(() => {
@@ -135,8 +135,9 @@ export const Names = ({ formData, setForm, navigation }) => {
 
 
                       >
-                        <option disabled>Select</option>
-                        <option>Male</option>
+                        {/* <option disabled>Select</option> */}
+                        <option  >""</option>
+                        <option >Male</option>
                         <option>Female</option>
                         <option>Non-binary</option>
                         <option>Prefer not to say</option>
@@ -166,7 +167,7 @@ export const Names = ({ formData, setForm, navigation }) => {
               </div>
               <p>
                 By signing up, I agree to the{" "}
-                <Link to="/dashboard/about">
+                <Link to="/privacy-policy">
                   <span>Terms and conditions and Privacy policy</span>
                 </Link>
               </p>

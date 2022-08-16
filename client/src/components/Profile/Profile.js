@@ -87,9 +87,11 @@ export const Profile = () => {
     
       {loading ? <Loader/>:
     
-      <div className="profile_box_two">
+      <div className="profile_box_two ">
           <div className="row">
-        {isAuthenticated === true ? (
+        {isAuthenticated !== true ?(
+          <Navigate to={"/login"}/>
+        ): (
           <form encType="multipart/form-data" onSubmit={updateProfileSubmit}>
             <h2 className="pro_heading">Profile Photo</h2>
 
@@ -153,9 +155,7 @@ export const Profile = () => {
               <input type="submit" value="Update" className="sav_btn" />
             </div>
           </form>
-        ) : (
-          <Navigate to={"/login"}/>
-        )}
+        ) }
         </div>
       </div>}
     </>

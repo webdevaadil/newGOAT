@@ -198,7 +198,7 @@ export const PaymentMethoad = () => {
               </ul></>:"" }
               
 
-              <div>
+              <div className="top">
                 <form className="box_three form-floating mb-3" onSubmit={updateP}>
                   <h2 className="per_text">Membership Details</h2>
                   <div className="form-floating">

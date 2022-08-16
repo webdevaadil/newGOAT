@@ -49,7 +49,7 @@ export const register = (userData) => async (dispatch) => {
       type: REGISTER_USER_FAIL,
       payload: error.response.data,
     });
-    console.log(error);
+    // console.log(error);
   }
 };
 export const logout = () => async (dispatch) => {

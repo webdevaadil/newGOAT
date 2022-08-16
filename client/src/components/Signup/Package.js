@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Package.css"
 import Select from 'react-select'
 import img1 from "../../Images/level.png"
@@ -7,6 +7,8 @@ import img3 from "../../Images/name2.png"
 import img4 from "../../Images/name3.png"
 import img5 from "../../Images/name4.png"
 import { Link } from 'react-router-dom'
+import { Header } from '../Header/Header'
+import Footer from '../Footer/Footer'
 
 export const Package = () => {
 
@@ -22,19 +24,25 @@ export const Package = () => {
     height:45
   }
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <>
+    <div style={{display:"flex" ,flexDirection:"column" ,justifyContent:"space-between"}}>
 
-<section>
+<Header/>
+<section style={{    display: "flex",
+    flexDirection: "column",
+    height: "100%",  margin:"100px 0"}}>
         <div class="container">
             <h1 class="main_head">Packages</h1>
             <div class="flex_box">
                 <div class="box_one">
                     <h2>Pub Punters</h2>
                     <h3>Free</h3>
-                    <button class="b1-btn_one">78% Returns</button>
+                    <button class="b1-btn_one" style={{width:"216px"}}>78% Returns</button>
                     <ul class="list_item">
                         <li>1234 Users</li>
                         <li>234 Tips sent</li>
@@ -50,7 +58,7 @@ export const Package = () => {
                 <div class="box_one">
                     <h2>Bronze</h2>
                     <h3>$15 / week</h3>
-                    <button class="b2-btn_one">98% Returns</button>
+                    <button class="b2-btn_one"style={{width:"216px"}}>98% Returns</button>
                     <ul class="list_item">
                         <li>1234 Users</li>
                         <li>234 Tips sent</li>
@@ -64,7 +72,7 @@ export const Package = () => {
                 <div class="box_one">
                     <h2>Silver</h2>
                     <h3>$30 / week</h3>
-                    <button class="b3-btn_one">120% Returns</button>
+                    <button class="b3-btn_one"style={{width:"216px"}}>120% Returns</button>
                     <ul class="list_item">
                         <li>1234 Users</li>
                         <li>234 Tips sent</li>
@@ -78,7 +86,7 @@ export const Package = () => {
                 <div class="box_one">
                     <h2>Gold</h2>
                     <h3>$45 / week</h3>
-                    <button class="b4-btn_one">165% Returns</button>
+                    <button class="b4-btn_one"style={{width:"216px"}}>165% Returns</button>
                     <ul class="list_item">
                         <li>1234 Users</li>
                         <li>234 Tips sent</li>
@@ -92,7 +100,7 @@ export const Package = () => {
                 <div class="box_one">
                     <h2>Platinum</h2>
                     <h3>$60 / week</h3>
-                    <button class="b5-btn_one">265% Returns</button>
+                    <button class="b5-btn_one"style={{width:"216px"}}>265% Returns</button>
                     <ul class="list_item">
                         <li>1234 Users</li>
                         <li>234 Tips sent</li>
@@ -110,6 +118,9 @@ export const Package = () => {
 
  
     </section>
+    <Footer/>
+    </div>
+
 
     </>
   )

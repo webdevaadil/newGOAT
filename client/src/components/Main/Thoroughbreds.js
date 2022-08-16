@@ -72,7 +72,7 @@ console.log(currentRecords)
     <Link to="/" >Home</Link>
     </Breadcrumb.Item>
     <Breadcrumb.Item >
-    <Link to="/Thoroughbreds" >Sports</Link>
+    <Link to="/thoroughbreds" >Sports</Link>
 
     </Breadcrumb.Item>
     <Breadcrumb.Item >
@@ -101,7 +101,7 @@ console.log(currentRecords)
                 const minutesprev = moment(items.RaceTime).get('minute')
                 const inminutes = minutesprev-minutesnow
                 console.log(inminutes)
-    const trimlocation = items.RaceLocation.replace(/ +/g, "")
+    const trimlocation = items.RaceLocation.replace(/ +/g, "-").toLowerCase()
 
                 
 
