@@ -4,9 +4,6 @@ import { Loader } from '../layout/Loader'
 
 export const Records = ({detail,loading}) => {
    
-<<<<<<< HEAD
- 
-=======
   const  formatDate = (date)=> {
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var now = new Date(date);
@@ -31,7 +28,6 @@ export const Records = ({detail,loading}) => {
     // console.log((month + "/" + date));
   }
 
->>>>>>> cb1e71afe1512489e3fd9a7a058b819dec1d8b1c
   return (
     <>
     {

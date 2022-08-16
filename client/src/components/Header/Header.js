@@ -64,7 +64,7 @@ export const Header = () => {
                       height: "160px",
                       gap: "24px",
                       position: "absolute",
-                      left: "26%",
+                      left: "12%",
                     }}
                     className="card"
                   >
@@ -82,12 +82,9 @@ export const Header = () => {
                       </div>
                       <br />
                       <div>
-<<<<<<< HEAD
-                        <img src="/left-Vector.png" alt="" />
-=======
+              
                         <img src={img1} alt="?" style={{marginRight:"10px"}}/>
                         {/* <img src="./left-Vector.png" alt="" /> */}
->>>>>>> cb1e71afe1512489e3fd9a7a058b819dec1d8b1c
                         <Link
                           className="modaltext"
                           style={{ fontSize: "15px" }}
