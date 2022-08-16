@@ -16,30 +16,33 @@ import moment from "moment";
 
 export const Main = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.data);
   const {isAuthenticated,user,error} = useSelector((state)=>state.user)
+  const {data,loading} = useSelector((state)=>state.apidata)
   const [detail, setDetail] = useState([]);
   const [todayrace, setTodayRace] = useState([]);
   const [placename,setPlaceName] = useState("")
   const [dogdetail, setDogdetail] = useState([]);
   const [finaldetail, setFinaldetail] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
 
  
 
+  console.log(data)
   const getdata = async () => {
     const res = await axios.get(
       "https://script.google.com/macros/s/AKfycbwYRAwed4AU7R2q62na51ele3njePVqe_IGYf6JTDEtP1PKhhZPrJfExVea_Ulo98Iw/exec"
     );
     let finaldata = await res.data.data;
-    setLoading(!loading);
+
 
 finaldata.map((items,index)=>items.RaceDate =new Date(items.RaceDate).toLocaleDateString())
-    setDetail(finaldata);
+setDetail(finaldata);
 
+
+console.log(finaldata)
 
     
       const currenthour = new Date().getTime()
@@ -117,29 +120,6 @@ return(
   console.log(currentRecords);
 
 
-  function getTime(date){
-    var now = new Date(date);
-
-    var hour = now.getHours();
-    var min = now.getMinutes();
-
-
-    var period = "am"
-    if (hour > 11) {
-        period = "pm"
-        if (hour > 12) {
-            hour -= 12
-        }
-    }
-    if (min < 10) {
-        min = "0" + min
-    }
-
-    return  `${hour}:${min}   ${period}`
-
-  }
-
- 
 
   return (
     <>
@@ -152,7 +132,7 @@ return(
             <div className="row">
               <div className="main-sec">
                 <div className="main-content">
-                  <h2>The Goat Tips</h2>
+                  <h2>The Horse Tips get the horse tips</h2>
                   <p>
                     The Goat Tips - Betting made easy! Your guide for sports
                     betting, The Goat’s Tips caters to your needs with different
@@ -220,7 +200,7 @@ return(
   isAuthenticated?<div className="main_1 main-img">
   <div className="main_cont">
     <h3>Welcome ! {user.username}</h3>
-    <p>And get the hottest tips that can earn you up to </p>
+    <p>get the hottest tips that can earn you up to </p>
     <h4>
       <span>678% in returns</span> on your initial investment.
     </h4>

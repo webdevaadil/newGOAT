@@ -29,17 +29,22 @@ export const Greyhounds = ()=>{
       
       items.RaceDate = new Date(items.RaceDate).toLocaleDateString()
       items.id = index
-      items.minutes = new Date(items.RaceTime).getMinutes()
+      items.minutes = new Date(items.RaceTime).getUTCMinutes()
+      items.hour = new Date(items.RaceTime).getUTCHours()
+      
+
+
 
     })
     console.log(finaldata)
 
 
     const filterdate = finaldata.filter((items,index)=>{
+
       const currentday = new Date()
       const currentdaystring = new Date(currentday).toLocaleDateString()
 return(
-  items.RaceDate===currentdaystring&&index<7&&items.minutes>new Date().getMinutes()
+  items.RaceDate===currentdaystring&&index<7&&items.minutes>new Date().getMinutes()&&items.hour===new Date().getHours()
 )
     })
     console.log(filterdate)
@@ -97,7 +102,7 @@ console.log(currentRecords)
 todayrace.map((items, index) => {
 
   const minutesnow = new Date().getMinutes()
-  const minutesprev = moment(items.RaceTime).get('minute')
+  const minutesprev = new Date(items.RaceTime).getUTCMinutes()
   const inminutes = minutesprev-minutesnow
   console.log(inminutes)
  const trimlocation = items.RaceLocation.replace(/ +/g, "")
@@ -105,7 +110,7 @@ todayrace.map((items, index) => {
 
   return (
     <>
-    <div className="tip-grid">
+    <div key={items.id} className="tip-grid">
         <div className="tips-colum1">
           <img src="../left-Vector.png" alt="iage" />
         </div>
@@ -131,7 +136,7 @@ todayrace.map((items, index) => {
             </div>
             <div className='main_1'>
               <div className="upraces-img">
-               <img src="/grayhound-bh.png" alt = "Greyhound image"/>
+               <img src="/grayhound-bh.png" alt = "Greyhound picture"/>
              </div>  
             </div>
           </div>

@@ -18,8 +18,6 @@ export const Timetable = ({detail,loading}) => {
   console.log(currentdaystring)
 
    const filtereddate = detail.filter((items,index)=>{
-    const thisday = new Date("7/22/12").toLocaleDateString()
-
     return(
       items.RaceDate === currentdaystring
       )
@@ -38,7 +36,6 @@ console.log(detail)
     const tommorow = detail.filter((items,index)=>{
       return(
     items.RaceDate === newdate
-
       )
     })
     
@@ -66,8 +63,6 @@ console.log(detail)
 {
   filtereddate.map((items,index)=>{
     let racetime = new Date(items.RaceTime).toLocaleTimeString()
-
-
     return(
      
                <tr key={items.id}>

@@ -81,7 +81,7 @@ export const Header = () => {
                       </div>
                       <br />
                       <div>
-                        <img src="left-Vector.png" alt="" />
+                        <img src="/left-Vector.png" alt="" />
                         <Link
                           className="modaltext"
                           style={{ fontSize: "15px" }}

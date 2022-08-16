@@ -8,7 +8,7 @@ import { apiReducer } from "./reducers/apiReducer"
 
 const reducer = combineReducers({
     user:userReducer,
-      data:apiReducer
+      apidata:apiReducer
 
 })
 

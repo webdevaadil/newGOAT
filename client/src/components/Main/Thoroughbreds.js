@@ -11,7 +11,7 @@ import { Pagination } from "./Pagination";
 import { apidata } from "../../actions/apiAction";
 import { useDispatch,useSelector } from "react-redux";
 import { Loader } from "../layout/Loader";
-import moment from "moment";
+
 
 export const Thoroughbreds=()=>{
 
@@ -26,11 +26,13 @@ export const Thoroughbreds=()=>{
     const res = await axios.get("https://script.google.com/macros/s/AKfycbzY1VMvhRABm0tIBQxWoTmc_wyDbo-BLL4UzM_qfLfSh9lswfF4j8gc3v5MNTXE5Sr4/exec")
     let finaldata = await res.data.data
     
+    
+    
     finaldata.map((items,index)=> {
       items.RaceDate = new Date(items.RaceDate).toLocaleDateString()
       items.id = index
-      items.minutes = new Date(items.RaceTime).getMinutes()
-    
+      items.minutes = new Date(items.RaceTime).getUTCMinutes()
+      items.hour = new Date(items.RaceTime).getUTCHours()
     
     })
    setDetail(finaldata)
@@ -40,9 +42,14 @@ export const Thoroughbreds=()=>{
 //filtering currentday data
    const filterdate = finaldata.filter((items,index)=>{
     const currentday = new Date()
+    const currenthour = new Date().getHours()
+    console.log(currenthour)
+
     const currentdaystring = new Date(currentday).toLocaleDateString()
 return(
-items.RaceDate===currentdaystring&&index<7&&items.minutes>new Date().getMinutes()
+// items.RaceDate===currentdaystring&&index<7&&items.minutes>new Date().getMinutes()
+items.RaceDate===currentdaystring&&index<7&&items.hour==currenthour&&items.minutes>new Date().getMinutes()
+
 )
   })
   console.log(filterdate)
@@ -98,7 +105,7 @@ console.log(currentRecords)
                todayrace.map((items, index) => {
 
                 const minutesnow = new Date().getMinutes()
-                const minutesprev = moment(items.RaceTime).get('minute')
+                const minutesprev = new Date(items.RaceTime).getUTCMinutes()
                 const inminutes = minutesprev-minutesnow
                 console.log(inminutes)
     const trimlocation = items.RaceLocation.replace(/ +/g, "")

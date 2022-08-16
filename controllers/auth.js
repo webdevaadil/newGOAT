@@ -84,7 +84,7 @@ exports.login = catchAsyncerror(async (req, res, next) => {
     }
     const isMatch = await user.matchPassword(password);
     if (!isMatch) {
-      return res.status(500).json("password is not vallid please register");
+      return res.status(500).json("password is not valid please register");
     }
     // res.status(201).json(user)
 
