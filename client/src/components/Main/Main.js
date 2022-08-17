@@ -189,7 +189,7 @@ export const Main = () => {
                 })):(<div className="content">
                 <div className="wrapper-1">
                   <div className="wrapper-2">
-                    <h1>Thank you !</h1>
+                    
                     <p>"No tips for the day stay tuned for daily tips"</p>
                     
                   </div>
