@@ -5,11 +5,9 @@ import { useForm, useStep } from "react-hooks-helper";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearErrors } from "../actions/userAction";
-import { Dob } from "./Stepform/Dob";
 import { Email } from "./Stepform/Email";
 import { Names } from "./Stepform/Names";
 import { Password } from "./Stepform/Password";
-import { Submit } from "./Stepform/Submit";
 
 export const Multilf = () => {
   const [defaultData, setDefaultData] = useState({

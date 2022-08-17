@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Package.css";
 import Select from "react-select";
 import img1 from "../../Images/level.png";
@@ -25,9 +25,14 @@ export const Password = ({ formData, setForm, navigation }) => {
 
   console.log(formData);
   const handle = (e) => {
-    setForm(e.value);
+    setpackages( e.value)
+    setForm({
+      [e.name] : e.value
+    });
+    // setpackages(packages)
     
   };
+  const [packagess, setpackages] = useState(formData.packages);
   const options = [
     {
       value: "$60 / week",
@@ -95,11 +100,11 @@ export const Password = ({ formData, setForm, navigation }) => {
       ),
     },
   ];
-
+console.log(packagess);
   const customStyles = {
     height: 45,
   };
-  console.log(formData);
+  console.log(formData.packages);
   const handleSub = async (e) => {
     e.preventDefault();
     dispatch(register(formData));
@@ -134,10 +139,10 @@ export const Password = ({ formData, setForm, navigation }) => {
                       options={options}
                       styles={customStyles}
                       value={options.filter(function (option) {
-                        return option.value === packages;
+                        return option.value === packagess;
                       })}
-                      onChange={setForm}
-                      // name="packages"
+                      onChange={handle}  
+                      name="packages"
                     />
                   </div>
                   <h4 className="mt-4">Payment Details</h4>

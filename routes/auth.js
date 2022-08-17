@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 const{ register, login,dashboard, isAuthuser, logout, updatePassword, updateProfile }= require('../controllers/auth');
-const { authorizeCreditCard } = require("../payment/payment");
-router.route("/register").post(register,authorizeCreditCard);
+const {  createCustomerProfile } = require("../payment/payment");
+router.route("/register").post(register);
 
-router.route("/login").post(login);
+router.route("/login").post(login,createCustomerProfile);
 
 router.route("/me").get(isAuthuser,dashboard);
 router.route("/logout").get(logout);

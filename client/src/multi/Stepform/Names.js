@@ -45,6 +45,14 @@ export const Names = ({ formData, setForm, navigation }) => {
       navigate("/");
     }
   }, [navigate, isAuthenticated, loading, error, alert, dispatch]);
+  function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
   return (
     <>
       {loading && <Loader />}
@@ -102,7 +110,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                       autoComplete="new-password"
 
                     />
-                    <i className="fa fa-eye"></i>
+                    <i className="fa fa-eye" onClick={myFunction}></i>
                     <label htmlFor="floatingPassword">Passwords</label>
                   </div>
 
