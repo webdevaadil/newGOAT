@@ -24,7 +24,7 @@ import { Aboutus } from "./components/extra/About";
 
 import { ProtectedRoute } from "./components/Route/ProtectedRoute";
 import { Multilf } from "./multi/Multilf";
-import { Loader } from "./components/layout/Loader";
+// import { Loader } from "./components/layout/Loader";
 import { Thankyou } from "./components/Profile/Thankyou";
 
 function App() {
