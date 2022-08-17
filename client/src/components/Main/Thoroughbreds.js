@@ -11,6 +11,7 @@ import { Pagination } from "./Pagination";
 import { apidata } from "../../actions/apiAction";
 import { useDispatch,useSelector } from "react-redux";
 import { Loader } from "../layout/Loader";
+import img1 from "../../Images/Vector.png"
 
 
 export const Thoroughbreds=()=>{
@@ -48,7 +49,7 @@ export const Thoroughbreds=()=>{
     const currentdaystring = new Date(currentday).toLocaleDateString()
 return(
 // items.RaceDate===currentdaystring&&index<7&&items.minutes>new Date().getMinutes()
-items.RaceDate===currentdaystring&&index<7&&items.hour==currenthour&&items.minutes>new Date().getMinutes()
+items.RaceDate===currentdaystring&&items.hour==currenthour&&items.minutes>new Date().getMinutes()
 
 )
   })
@@ -116,7 +117,7 @@ console.log(currentRecords)
                   <>
                   <div className="tip-grid">
                       <div className="tips-colum1">
-                        <img src="../Vector.png" alt="iage" />
+                        <img src={img1} alt="iage" />
                       </div>
                       <div className="tips-colum1">
                         <h3>{items.RaceLocation}</h3>
@@ -219,7 +220,7 @@ console.log(currentRecords)
         </div>
 </div>
       
-      <Records loading = {loading} detail={currentRecords}/>
+      <Records horseimg = {img1} loading = {loading} detail={currentRecords}/>
             <Pagination
                 nPages={nPages}
                 currentPage={currentPage}

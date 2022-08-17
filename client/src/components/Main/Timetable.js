@@ -6,7 +6,7 @@ import { Pagination } from './Pagination';
 import { Link } from 'react-router-dom';
 import { Loader } from '../layout/Loader';
 
-export const Timetable = ({detail,loading}) => {
+export const Timetable = ({detail,loading,dogimg}) => {
 
 
 
@@ -109,7 +109,7 @@ console.log(detail)
    return (
      <tr  key = {index}>
      <td>
-       <img src="../left-Vector.png" alt="horse image" />
+       <img src={dogimg} alt="horse image" />
      </td>
      <td>{racetime}</td>
      <td>{items.RaceLocation}</td>

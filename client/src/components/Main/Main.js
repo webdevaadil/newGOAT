@@ -9,6 +9,7 @@ import { Records } from "./Records";
 import { Pagination } from "./Pagination";
 import { apidata } from "../../actions/apiAction";
 import moment from "moment";
+import img1 from "../../Images/Vector.png"
 
 export const Main = () => {
   const dispatch = useDispatch();
@@ -24,9 +25,6 @@ export const Main = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
 
- 
-
-  console.log(data)
   const getdata = async () => {
     const res = await axios.get(
       "https://script.google.com/macros/s/AKfycbwYRAwed4AU7R2q62na51ele3njePVqe_IGYf6JTDEtP1PKhhZPrJfExVea_Ulo98Iw/exec"
@@ -51,45 +49,23 @@ console.log(finaldata)
         //adding key and value to the object
         items.id = index;
         items.minutes = new Date(items.RaceTime).getMinutes()
+        items.hour = new Date(items.RaceTime).getUTCHours()
       
       });
 
     const filterdate = finaldata.filter((items,index)=>{
       const currentday = new Date()
       const currentdaystring = new Date(currentday).toLocaleDateString()
+      const currenthour = new Date().getHours()
+      
 return(
-  items.RaceDate===currentdaystring&&index<7&&items.minutes>new Date().getMinutes()
+  items.RaceDate===currentdaystring&&items.hour==currenthour&&items.minutes>new Date().getMinutes()
 )
     })
     console.log(filterdate)
     setTodayRace(filterdate)
     
 
-    
-
-    //getting next 5 days
-    // const today = new Date();
-    // console.log(today)
-    // const start = today.getTime();
-    // const end = today.getTime()+5
-    // console.log(start);
-    // console.log(end);
-
-    //UPCOMING RACES 
-
-
-
-    //getting today date
-
-
-    
-
-    // console.log(finaldata);
-    // const racetoday = filtereddata.filter((items, index) => {
-
-    //   return items.raceDate === todaydate;
-    // });
-    // setTodayRace(racetoday);
   };
 
   const getDogdata = async () => {
@@ -171,7 +147,7 @@ return(
                   <>
                   <div className="tip-grid">
                       <div className="tips-colum1">
-                        <img src="../Vector.png" alt="iage" />
+                        <img src={img1} alt="iage" />
                       </div>
                       <div className="tips-colum1">
                         <h3>{items.RaceLocation}</h3>
@@ -221,7 +197,7 @@ return(
               </div>
             </div>
               </div>
-      <Records loading={loading} detail={currentRecords} />
+      <Records horseimg={img1} loading={loading} detail={currentRecords} />
       <Pagination
         nPages={nPages}
         currentPage={currentPage}

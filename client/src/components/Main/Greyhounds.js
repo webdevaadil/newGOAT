@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { apidata } from "../../actions/apiAction";
 import { Loader } from "../layout/Loader";
 import moment from "moment";
+import img1 from "../../Images/left-Vector.png"
+
 
 
 export const Greyhounds = ()=>{
@@ -31,10 +33,7 @@ export const Greyhounds = ()=>{
       items.id = index
       items.minutes = new Date(items.RaceTime).getUTCMinutes()
       items.hour = new Date(items.RaceTime).getUTCHours()
-      
-
-
-
+    
     })
     console.log(finaldata)
 
@@ -44,7 +43,7 @@ export const Greyhounds = ()=>{
       const currentday = new Date()
       const currentdaystring = new Date(currentday).toLocaleDateString()
 return(
-  items.RaceDate===currentdaystring&&index<7&&items.minutes>new Date().getMinutes()&&items.hour===new Date().getHours()
+  items.RaceDate===currentdaystring&&items.minutes>new Date().getMinutes()&&items.hour===new Date().getHours()
 )
     })
     console.log(filterdate)
@@ -105,14 +104,14 @@ todayrace.map((items, index) => {
   const minutesprev = new Date(items.RaceTime).getUTCMinutes()
   const inminutes = minutesprev-minutesnow
   console.log(inminutes)
- const trimlocation = items.RaceLocation.replace(/ +/g, "-").toLowerCase()
+  const trimlocation = items.RaceLocation.replace(/ +/g, "-").toLowerCase()
   
 
   return (
     <>
     <div key={items.id} className="tip-grid">
         <div className="tips-colum1">
-          <img src="../left-Vector.png" alt="iage" />
+          <img src={img1} alt="iage" />
         </div>
         <div className="tips-colum1">
           <h3>{items.RaceLocation}</h3>
@@ -144,7 +143,7 @@ todayrace.map((items, index) => {
           </div>
         </div>
       </div>
-   <Timetable loading = {loading} detail = {detail}/> 
+   <Timetable dogimg = {img1} loading = {loading} detail = {detail}/> 
   
    <Pagination
                 nPages={nPages}
