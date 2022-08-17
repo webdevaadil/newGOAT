@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import { Main } from "./components/Main/Main";
+import Home from "./components/Main/Home"
 import { Login } from "./components/Login/Login";
 import { PaymentMethoad } from "./components/Profile/PaymentMethoad";
 import { Profile } from "./components/Profile/Profile";
@@ -35,7 +36,8 @@ function App() {
       <Metadata title="The Goat Tips" />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Home/>} />
+          <Route path="/main" element={<Main />} />
           <Route path="/signup" element={<Multilf />} />
           <Route path="/login" element={<Login />} />
           <Route path="/thoroughbreds" element={<Thoroughbreds />} />

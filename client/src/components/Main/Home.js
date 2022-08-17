@@ -1,18 +1,37 @@
 import React from 'react'
 import './Home.css';
-
+import img1 from "../../Images/GOAT_logo.png"
+import img2 from "../../Images/gold.png"
+import img3 from "../../Images/platinum.png"
+import img4 from "../../Images/silver.png"
+import img5 from "../../Images/bronze.png"
+import races from "../../Images/races.png"
+import races1 from "../../Images/races1.png"
+import icon from "../../Images/icon.png"
+import icon2 from "../../Images/icon2.png"
+import horseRacing from "../../Images/Horse-Racing.jpg"
+import horseIcon from  "../../Images/horse-icon.png"
+import greyRacing from "../../Images/Greyhound-Racing.jpg"
+import houndIcon from  "../../Images/hound-icon.png"
+import reliable from "../../Images/freetips-mobile.png"
+import HomeHeader from '../Header/HomeHeader';
+import HomeFooter from '../Footer/HomeFooter';
+import {Link} from "react-router-dom"
 
 const Home = () => {
   return (
-    <div>        
+    <div>  
+      <HomeHeader/>      
       <div className='banner-sec'>
         <div className='container her0'>
           <div className='row banner-main'>
             <div className='col-lg-8 col-md-12'>
               <div className='baner-ct'>
-                <img src="./GOAT_logo_-2.png"/>
+                <img src={img1}/>
                 <div className='bnner-btn'>
+                  <Link to = "/signup">
                   <button className='signbtn'>Signup</button>
+                  </Link>
                 </div>
                 <h2><span>Win Better</span> with <br></br> The GOAT's Tips</h2>
                 <p>A sports tipping service that consistently delivers a positive return on investment for its clients. 
@@ -101,9 +120,9 @@ const Home = () => {
                  <div className="card card1">
                  <div class="clearfix">
                       <button type="button" class="btn  float-start">
-                      <img src="./icon.png"/> The Goats tips
+                      <img src={icon}/> The Goats tips
                       </button>
-                      <button type="button" class="btn  float-end"> <img src="./icon2.png"/> No. 4</button>
+                      <button type="button" class="btn  float-end"> <img src={icon2}/> No. 4</button>
                    </div>
                    <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
                      Tips provides consistent returns to enhance your sporting experience.</p>
@@ -113,9 +132,9 @@ const Home = () => {
                  <div className="card card1">
                  <div class="clearfix">
                       <button type="button" class="btn  float-start">
-                      <img src="./icon.png"/> The Goats tips
+                      <img src={icon}/> The Goats tips
                       </button>
-                      <button type="button" class="btn  float-end"> <img src="./icon2.png"/> No. 4</button>
+                      <button type="button" class="btn  float-end"> <img src={icon2}/> No. 4</button>
                    </div>
                    <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
                      Tips provides consistent returns to enhance your sporting experience.</p>                    
@@ -123,9 +142,9 @@ const Home = () => {
                  <div className="card card1">
                  <div class="clearfix">
                       <button type="button" class="btn  float-start">
-                      <img src="./icon.png"/> The Goats tips
+                      <img src={icon}/> The Goats tips
                       </button>
-                      <button type="button" class="btn  float-end"> <img src="./icon2.png"/> No. 4</button>
+                      <button type="button" class="btn  float-end"> <img src={icon2}/> No. 4</button>
                    </div>
                    <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
                      Tips provides consistent returns to enhance your sporting experience.</p>
@@ -145,7 +164,7 @@ const Home = () => {
                   <div className='row reliav-main'>
                     <div className='col-md-6'>
                       <div className='reliable-img'>
-                      <img src="./freetips-mobile.png"/>
+                      <img src={reliable}/>
                       </div>
                     </div>
 
@@ -172,7 +191,7 @@ const Home = () => {
                     <div className='col-md-6'>
                       <div className='reliable-img'>  
                        <div className='mob-img'>
-                       <img src="./races1.png"/>
+                       <img src={races1}/>
                         </div>        
                       </div>
                     </div>                    
@@ -190,7 +209,7 @@ const Home = () => {
           <div className='row tipping1'>
             <div className='col-md-6'>
              <div className='tipp-img'>
-             <img src="./bronze.png"/>
+             <img src={img5}/>
              </div>
             </div>
             <div className='col-md-6'>
@@ -211,7 +230,7 @@ const Home = () => {
           <div className='row tipping1'>
             <div className='col-md-6'>
              <div className='tipp-img'>
-             <img src="./silver.png"/>
+             <img src={img4}/>
              </div>
             </div>
             <div className='col-md-6'>
@@ -232,7 +251,7 @@ const Home = () => {
           <div className='row tipping1'>
             <div className='col-md-6'>
              <div className='tipp-img'>
-             <img src="./gold.png"/>
+             <img src={img2}/>
              </div>
             </div>
             <div className='col-md-6'>
@@ -253,7 +272,7 @@ const Home = () => {
           <div className='row tipping1'>
             <div className='col-md-6'>
              <div className='tipp-img'>
-             <img src="./platinum.png"/>
+             <img src={img3}/>
              </div>
             </div>
             <div className='col-md-6'>
@@ -285,13 +304,13 @@ const Home = () => {
             <div className='row service-main'>
               <div className='col-md-6'>
               <div className='service-img2'>          
-              <img src="./Horse-Racing.jpg" alt="img"/>
+              <img src={horseRacing} alt="img"/>
               </div>
               </div>
               <div className='col-md-6'>
                 <div className='service-ct'>
                   <div className='ser-img'>
-                  <img src="./horse-icon.png" alt="img" />
+                  <img src={horseIcon} alt="img" />
                   </div>
                   <h3>Horse Racing Tips</h3>
                   <p>Our eyes are always on the track to ensure we get the inside rail on the winning tips sent out.</p>
@@ -302,13 +321,13 @@ const Home = () => {
             <div className='row service-main'>
               <div className='col-md-6'>
               <div className='service-img2'>
-              <img src="./Greyhound-Racing.jpg" alt="img"/>
+              <img src={greyRacing} alt="img"/>
               </div>
               </div>
               <div className='col-md-6'>
                 <div className='service-ct'>
                   <div className='ser-img'>
-                  <img src="./hound-icon.png" alt="img"/>
+                  <img src={houndIcon} alt="img"/>
                   </div>
                   <h3>Horse Racing Tips</h3>
                   <p>Our eyes are always on the track to ensure we get the inside rail on the winning tips sent out.</p>
@@ -435,6 +454,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <HomeFooter/>
     </div>
   )
 }

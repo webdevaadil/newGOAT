@@ -10,7 +10,7 @@
 .banner-sec {
     background-color: #000;
     height: auto;
-    background-image: url(../image/goat-tips-hero.jpg);
+    background-image: url("../../Images/goat-tips-hero.jpg");
     background-position: right;
     background-repeat: no-repeat;
     background-size: auto;
@@ -180,7 +180,7 @@
 
 .result {
     height: auto;
-    background-image: url(../image/bg-img1.png) !important;
+    background-image: url("../../Images/bg-img1.png") !important;
     background-position: left center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -273,7 +273,7 @@
 
 .relai2 {
     height: auto;
-    background-image: url(../image/races.png);
+    background-image: url("../../Images/races.png");
     background-position: right top;
     background-repeat: no-repeat;
     background-size:contain;
