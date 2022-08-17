@@ -26,6 +26,7 @@ export const Password = ({ formData, setForm, navigation }) => {
   console.log(formData);
   const handle = (e) => {
     setForm(e.value);
+    
   };
   const options = [
     {
@@ -113,6 +114,7 @@ export const Password = ({ formData, setForm, navigation }) => {
       navigate("/");
     }
   }, [navigate, isAuthenticated, loading, error, alert, dispatch]);
+  console.log();
   return (
     <>
       {loading && <Loader />}
@@ -160,7 +162,7 @@ export const Password = ({ formData, setForm, navigation }) => {
                       value={card_no}
 
                       onChange={setForm}   
-                      maxlength="16"
+                      maxLength="16"
                       // pattern="[0-9]+"
                     />
                     <label htmlFor="floatingInput">Card Number</label>
@@ -168,7 +170,7 @@ export const Password = ({ formData, setForm, navigation }) => {
                   <div className="form-inner">
                     <div className="form-floating mb-3">
                       <input
-                        type="date"
+                        type="month"
                         className="form-control"
                         placeholder="dd/mm/yyyy"
                         name="Expiry"
@@ -197,11 +199,12 @@ export const Password = ({ formData, setForm, navigation }) => {
                     <button type="submit" className="btn btn-outline-secondary">
                       Sign Up
                     </button>
+                    <button onClick={()=>{navigation.previous(1)}} className="btn btn-outline-secondary">
+                    back
+                    </button>
                   </div>
                 </form>
-                    <button type="login" className="btn btn-outline-secondary" onClick={navigation.previous(0)}>
-                      Login
-                    </button>
+                  
               </div>
               <p>
                 By signing up, I agree to the{" "}

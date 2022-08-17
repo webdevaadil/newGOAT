@@ -54,16 +54,16 @@ export const Multilf = () => {
       alert.success("Signup Successfull");
       navigate("/");
     }
-  }, [navigate, isAuthenticated, loading, error, alert, dispatch]);
+  }, [navigate, isAuthenticated, loading, error, formData,alert, dispatch]);
     const props = { formData, setForm, navigation };
-  
+    
     switch (step.id) {
       case "name":
         return <Names {...props} />;
-      case "address":
-        return <Email {...props} />;
-      case "contact":
-        return <Password {...props} />;
+        case "address":
+          return <Email {...props} />;
+        case "contact":
+          return <Password {...props} />;
     }
   
     return (
