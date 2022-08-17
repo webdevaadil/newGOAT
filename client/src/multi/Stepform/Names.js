@@ -133,10 +133,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                         value={gender}
                         autoComplete="new-password"
 
-
                       >
-                        {/* <option disabled>Select</option> */}
-                        <option  >""</option>
                         <option >Male</option>
                         <option>Female</option>
                         <option>Non-binary</option>

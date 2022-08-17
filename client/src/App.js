@@ -25,6 +25,7 @@ import { Aboutus } from "./components/extra/About";
 import { ProtectedRoute } from "./components/Route/ProtectedRoute";
 import { Multilf } from "./multi/Multilf";
 import { Loader } from "./components/layout/Loader";
+import { Thankyou } from "./components/Profile/Thankyou";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -50,7 +51,8 @@ function App() {
             <Route path="/privacy-policy" element={<Aboutus/>} />
           <Route path="/packages" element={<Package />} />
           <Route path="/pac" element={<Multilf/>} />
-          <Route path="/loader" element={<Loader/>} />
+          <Route path="/thankyou" element={<Thankyou/>} />
+
         </Routes>
       </BrowserRouter>
     </>

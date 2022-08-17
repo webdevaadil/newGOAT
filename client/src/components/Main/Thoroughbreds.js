@@ -13,7 +13,6 @@ import { useDispatch,useSelector } from "react-redux";
 import { Loader } from "../layout/Loader";
 import img1 from "../../Images/Vector.png"
 
-
 export const Thoroughbreds=()=>{
 
   const [detail,setDetail] = useState([])
@@ -27,14 +26,11 @@ export const Thoroughbreds=()=>{
     const res = await axios.get("https://script.google.com/macros/s/AKfycbzY1VMvhRABm0tIBQxWoTmc_wyDbo-BLL4UzM_qfLfSh9lswfF4j8gc3v5MNTXE5Sr4/exec")
     let finaldata = await res.data.data
     
-    
-    
     finaldata.map((items,index)=> {
       items.RaceDate = new Date(items.RaceDate).toLocaleDateString()
       items.id = index
       items.minutes = new Date(items.RaceTime).getUTCMinutes()
       items.hour = new Date(items.RaceTime).getUTCHours()
-    
     })
    setDetail(finaldata)
    setLoading(!loading)
@@ -48,14 +44,13 @@ export const Thoroughbreds=()=>{
 
     const currentdaystring = new Date(currentday).toLocaleDateString()
 return(
-// items.RaceDate===currentdaystring&&index<7&&items.minutes>new Date().getMinutes()
+
 items.RaceDate===currentdaystring&&items.hour==currenthour&&items.minutes>new Date().getMinutes()
 
 )
   })
   console.log(filterdate)
   setTodayRace(filterdate)
-
 
   }
   useEffect(()=>{
@@ -68,9 +63,7 @@ const currentRecords = detail.slice(indexOfFirstRecord, indexOfLastRecord);
 const nPages = Math.ceil(detail.length / recordsPerPage)
 console.log(currentRecords)
 
-
     return (
-    
     <>
      <Header/>
     <div  id="sport-sec">        
@@ -89,7 +82,6 @@ console.log(currentRecords)
  </Link>
     </Breadcrumb.Item>
   </Breadcrumb>
-           
         </div>
 
 
@@ -109,9 +101,8 @@ console.log(currentRecords)
                 const minutesprev = new Date(items.RaceTime).getUTCMinutes()
                 const inminutes = minutesprev-minutesnow
                 console.log(inminutes)
-    const trimlocation = items.RaceLocation.replace(/ +/g, "-").toLowerCase()
+                const trimlocation = items.RaceLocation.replace(/ +/g, "-").toLowerCase()
 
-                
 
                 return (
                   <>
@@ -146,8 +137,6 @@ console.log(currentRecords)
         </div>
       </div>
 
-
-      
 <div>
 <div className='container-fluid raceup-sec'>
           <div className='container'>
@@ -212,8 +201,7 @@ console.log(currentRecords)
                   <td> 7</td>
                   <td>6.5</td>  
                 </tr>   
-              </tbody>
-                       
+              </tbody>        
               </table>
             </div>
           </div>

@@ -54,6 +54,9 @@
     padding: 8px;
 }
 
+.img2:active{
+    color: #10867F;
+}
 .list_icon{
     font-size: 16px;
     font-weight: 600;

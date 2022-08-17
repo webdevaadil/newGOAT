@@ -6,7 +6,7 @@ const Footer=()=>
 {
     return (
         <>
-        <div className='container-fluid footer-sec'st>
+        <div className='container-fluid footer-sec'>
           <div className='container'>
             <div className='footer-ct'>
               <div className='foot_1'>

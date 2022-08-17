@@ -6,22 +6,30 @@ import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import { loaduser, logout } from "../../actions/userAction";
 import store from "../../store";
 import CreditCardInput from 'react-credit-card-input';
+import {useAlert} from "react-alert"
+import { confirmAlert } from 'react-confirm-alert'
+import editimg from "./img/feather.png"
 
 export const ProfileNav = () => {
   let navigate = useNavigate()
   const dispatch = useDispatch();
+  const alert  = useAlert()
   const { user, isAuthenticated, loading} = useSelector((state) => state.user);
   useEffect(()=>{
-
     store.dispatch(loaduser())
-
   },[])
   
   function logoutUser() {
-    dispatch(logout());
-    alert("Logout Successfully");
+    const confirmdata =   window.confirm("are you sure,You Want to Logout",navigate("/Thankyou"))
+    if(confirmdata===true){
+      dispatch(logout());
+     navigate("/Thankyou")
+    }
+    else{
+      navigate("/dashboard")
+    }
 
-      navigate("/login")
+      
       
   
   }
@@ -35,46 +43,59 @@ export const ProfileNav = () => {
             <Link to="/dashboard" className="">
               Edit Profile
             </Link>
+
+            <Link to = "/dashboard">
+
             <img style={{ filter: "black"}}
               className="img2"
-          src="/img/edit.jpg"
+          src={editimg}
 
               alt="loading"
             />
+            </Link>
           </div>
           <div className="pic2">
             <Link to="/dashboard/payment">Payment Methods</Link>
+
+            <Link to="/dashboard/payment">
             <img
               className="img2"
               src="/img/credit-carddfdf.png"
               alt="loading"
             />
+            </Link>
           </div>
           <div className="pic3">
             <Link to="/dashboard/accountsetting">Account Settings</Link>
 
+<Link to="/dashboard/accountsetting">
             <img
               className="img2"
               src= "/img/settings.jpg"
               alt="loading"
             />
+</Link>
           </div>
           <div className="pic4">
             <Link to="/dashboard/about">About</Link>
-
+<Link to = "/dashboard/about">
             <img
               className="img2"
               src="/img/info.jpg"
               alt="loading"
             />
+</Link>
           </div>
+          <div onClick={logoutUser} style={{cursor:"pointer"}} >
           <div className="pic5">
-            <p style={{cursor:"pointer"}}onClick={logoutUser}>Logout</p>
+            <p >Logout</p>
             <img
               className="img2"
               src="/img/log-out.png"
               alt="loading"
             />
+          </div>
+
           </div>
         
       </div>
