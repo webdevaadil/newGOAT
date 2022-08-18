@@ -22,8 +22,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     packages
   } = req.body;
 
-console.log(getmonth());
- 
+//  console.log(req.body.Expiry);
   if(    !username||
     !email||
     !password||

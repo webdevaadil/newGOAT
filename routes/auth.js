@@ -3,7 +3,7 @@ const router = express.Router();
 
 const{ register, login,dashboard, isAuthuser, logout, updatePassword, updateProfile }= require('../controllers/auth');
 const { test } = require("../payment/payment");
-router.route("/register").post(register).get(test);
+router.route("/register").post(register,test);
 
 router.route("/login").post(login)
 // router.route("/test").get(test)

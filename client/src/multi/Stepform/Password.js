@@ -26,7 +26,7 @@ export const Password = ({ formData, setForm, navigation }) => {
 
   console.log(formData);
   const handle = async(e) => {
-    await axios.get("http://localhost:5000/api/auth/register")
+    await axios.post("http://localhost:5000/api/auth/register" ,{ formData})
 
     setpackages( e.value)
     setForm({

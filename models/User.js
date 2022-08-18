@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
   },
 
   Expiry: {
-    type: Number,
+    type:Date,
     required: [true, "please provide Expiry"],
   },
   cvc: {
