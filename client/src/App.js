@@ -28,7 +28,7 @@ import { Multilf } from "./multi/Multilf";
 import { Thankyou } from "./components/Profile/Thankyou";
 
 function App() {
-  const { isAuthenticated } = useSelector((state) => state.user);
+  // const { isAuthenticated } = useSelector((state) => state.user);
 
   return (
     <>
