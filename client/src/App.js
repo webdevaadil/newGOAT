@@ -22,13 +22,13 @@ import { Package } from "./components/Signup/Package";
 import { useSelector } from "react-redux";
 import { Aboutus } from "./components/extra/About";
 
-import { ProtectedRoute } from "./components/Route/ProtectedRoute";
+// import { ProtectedRoute } from "./components/Route/ProtectedRoute";
 import { Multilf } from "./multi/Multilf";
 // import { Loader } from "./components/layout/Loader";
 import { Thankyou } from "./components/Profile/Thankyou";
 
 function App() {
-  // const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated } = useSelector((state) => state.user);
 
   return (
     <>
