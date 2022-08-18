@@ -14,17 +14,17 @@ export const Dashboard = () => {
 
   return (
     <>  
-    {loading&& <Loader/>}
+ 
       <Header />
       <div className="main-body">
       <section>
-        <div class="container profile-sec">
-          <div class="flexbox" style={{height:"730px"}}>
+        <div class="container profile-sec"style={{zIndex:"-1"}}>
+          <div class="flexbox" style={{height:"730px" ,margin:"100px auto"}}>
             <ProfileNav />
             <Outlet />
           </div>
         </div>
-        <Footer/>
+        <Footer />
       </section>
       </div>
     </>

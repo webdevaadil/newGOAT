@@ -22,6 +22,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     packages
   } = req.body;
 
+console.log(getmonth());
  
   if(    !username||
     !email||
@@ -131,7 +132,7 @@ exports.dashboard = catchAsyncerror(async (req, res, next) => {
 
     // productCount,
   });
-  console.log(user);
+  // console.log("user");
   // console.log({token});
 });
 exports.logout = catchAsyncerror(async (req, res, next) => {

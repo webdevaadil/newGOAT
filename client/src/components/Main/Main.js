@@ -100,6 +100,9 @@ export const Main = () => {
 
     getDogdata();
   }, []);
+  const handli=async()=>{
+  
+  }
 
   const indexOfLastRecord = currentPage * recordsPerPage;
 
@@ -150,7 +153,7 @@ export const Main = () => {
           <div className="container main-freetips">
             <div className="main_1">
               <div className="main-grid 1">
-                {todayrace.length>=1?(  todayrace.map((items, index) => {
+                {todayrace.length!==0?(  todayrace.map((items, index) => {
                   const minutesnow = new Date().getMinutes();
                   const minutesprev = new Date(items.RaceTime).getUTCMinutes();
                   const inminutes = minutesprev - minutesnow;
@@ -240,7 +243,7 @@ export const Main = () => {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-
+<button onClick={handli}>hiiii tesr</button>
       <Footer />
     </>
   );

@@ -11,6 +11,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, register } from "../../actions/userAction";
 import { Loader } from "../../components/layout/Loader";
+import axios from "axios";
 
 export const Password = ({ formData, setForm, navigation }) => {
   const { packages, Name_of_card, card_no, Expiry, cvc } = formData;
@@ -24,7 +25,9 @@ export const Password = ({ formData, setForm, navigation }) => {
   const dispatch = useDispatch();
 
   console.log(formData);
-  const handle = (e) => {
+  const handle = async(e) => {
+    await axios.get("http://localhost:5000/api/auth/register")
+
     setpackages( e.value)
     setForm({
       [e.name] : e.value
@@ -32,7 +35,7 @@ export const Password = ({ formData, setForm, navigation }) => {
     // setpackages(packages)
     
   };
-  const [packagess, setpackages] = useState(formData.packages);
+  const [packagess, setpackages] = useState(packages);
   const options = [
     {
       value: "$60 / week",
@@ -175,7 +178,7 @@ console.log(packagess);
                   <div className="form-inner">
                     <div className="form-floating mb-3">
                       <input
-                        type="month"
+                        type="Month"
                         className="form-control"
                         placeholder="dd/mm/yyyy"
                         name="Expiry"
