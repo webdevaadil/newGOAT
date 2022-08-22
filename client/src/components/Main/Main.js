@@ -243,7 +243,6 @@ export const Main = () => {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-<button onClick={handli}>hiiii tesr</button>
       <Footer />
     </>
   );
