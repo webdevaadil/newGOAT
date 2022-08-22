@@ -105,7 +105,7 @@
 }
 
 .result-mian {
-    padding: 100px 0px 0px 0px;
+    padding: 100px 0px 242px 0px;
 }
 .hor-list ul li {
     list-style: none;
@@ -197,6 +197,7 @@
     text-transform: none;
     color: #03203e;
     text-align: left;
+    margin-top: 15px;
 }
 .resut-content p {
     font-size: 18px;
@@ -604,7 +605,7 @@ ul.socil-link li {
     letter-spacing: 1px;
 }
 .carousel-item h4 {
-    color: #00008b;
+    color: #ffffff;
     font-family: "Nunito Sans",sans-serif !important;
     font-size: 24px;
     font-style: italic;
@@ -617,7 +618,7 @@ ul.socil-link li {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .carousel-item p span {
-    color: #767a81;
+    color: #A96E3A;
     font-size: 18px !important;
     font-style: normal !important;
     font-family: "Nunito Sans",sans-serif !important;

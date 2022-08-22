@@ -21,7 +21,6 @@ connectDB();
 app.use("/api/auth", require("./routes/auth"));
 const PORT = process.env.PORT || 5000;
 
-
 // --------------------------deployment------------------------------
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "./client/build")));

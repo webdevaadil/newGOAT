@@ -449,7 +449,9 @@ const Home = () => {
               <h3>Become a Winner Now!</h3>
               <p>Join us in backing daily winners with a subscription tailored to your preferences.</p>
               <div className='bnner-btn'>
-                  <button className='signbtn'>Sign Me Up</button>
+                <Link to = "/signup">
+                  <button className='signbtn'>Sign Me Up</button> 
+                </Link>
                 </div>
             </div>
           </div>
