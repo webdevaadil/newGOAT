@@ -690,10 +690,7 @@ ul.socil-link li {
     color: #A96E3A;
 }
 /* tab section  start */
-.tab-section{
-    padding-top: 20px;
-    padding-bottom: 42px;
-}
+
 .tab-section .nav {
     display: flex;
     flex-wrap: wrap;
