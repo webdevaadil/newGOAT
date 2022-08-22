@@ -1,11 +1,4 @@
-/* @font-face { */
-    /* font-family: "Light";   /*Can be any text*/
-    /* src: local("AirbnbCerealLight"), */
-      /* url("../font/Sportypo-Reguler-Demo.ttf") format("truetype"); */
-  /* } */
-  /* *{ */
-    /* font-family: "Light"; */
-  /* } */ */
+
 .banner-sec {
     height: 100vh;
     background: #000;
