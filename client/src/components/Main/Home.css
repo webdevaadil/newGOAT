@@ -45,14 +45,16 @@
     font-size: 22px;
     font-style: normal;
     color: #ffffff;
-    padding-right: 153px;
+    padding-right: 77px;
     padding-top: 10px;
+    text-align: center;
 }
 .baner-ct {
     clip-path: polygon(0 0, 81% 0, 100% 100%, 0% 100%);
     background: #000;
     padding-right: 46px;
     padding: 50px 0px;
+    text-align: center;
 }
 
 
@@ -189,6 +191,7 @@
 }
 .rate-mian {
     margin: 60px 0px;
+    text-align: center;
 }
 /* tips start */
 .resut-content h3 {
@@ -689,7 +692,7 @@ ul.socil-link li {
 /* tab section  start */
 .tab-section{
     padding-top: 20px;
-    padding-bottom: 162px;
+    padding-bottom: 42px;
 }
 .tab-section .nav {
     display: flex;

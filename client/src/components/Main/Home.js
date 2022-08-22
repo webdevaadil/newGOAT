@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div>
+    <div >
       <div className="banner-sec">
         <div className="container her0">
           <div className="row banner-main">
@@ -169,9 +169,9 @@ const Home = () => {
                  <div className="card card1">
                  <div class="clearfix">
                       <button type="button" class="btn  float-start">
-                      <img src="./icon.png"/> The Goats tips
+                      <img src={icon2} alt=""/> The Goats tips
                       </button>
-                      <button type="button" class="btn  float-end"> <img src="./icon2.png"/> No. 4</button>
+                      <button type="button" class="btn  float-end"> <img src="./icon2.png" alt=""/> No. 4</button>
                    </div>
                    <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
                      Tips provides consistent returns to enhance your sporting experience.</p>
@@ -181,9 +181,9 @@ const Home = () => {
                  <div className="card card1">
                  <div class="clearfix">
                       <button type="button" class="btn  float-start">
-                      <img src="./icon.png"/> The Goats tips
+                      <img src={icon2} alt=""/> The Goats tips
                       </button>
-                      <button type="button" class="btn  float-end"> <img src="./icon2.png"/> No. 4</button>
+                      <button type="button" class="btn  float-end"> <img src="./icon2.png"alt=""/> No. 4</button>
                    </div>
                    <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
                      Tips provides consistent returns to enhance your sporting experience.</p>                    
@@ -191,9 +191,9 @@ const Home = () => {
                  <div className="card card1">
                  <div class="clearfix">
                       <button type="button" class="btn  float-start">
-                      <img src="./icon.png"/> The Goats tips
+                      <img src={icon2}alt=""/> The Goats tips
                       </button>
-                      <button type="button" class="btn  float-end"> <img src="./icon2.png"/> No. 4</button>
+                      <button type="button" class="btn  float-end"> <img src="./icon2.png"alt=""/> No. 4</button>
                    </div>
                    <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
                      Tips provides consistent returns to enhance your sporting experience.</p>
@@ -213,7 +213,7 @@ const Home = () => {
           <div className="row reliav-main">
             <div className="col-md-6">
               <div className="reliable-img">
-                <img src={reliable} />
+                <img src={reliable}alt="" />
               </div>
             </div>
 
@@ -247,7 +247,7 @@ const Home = () => {
             <div className="col-md-6">
               <div className="reliable-img">
                 <div className="mob-img">
-                  <img src={races1} />
+                  <img src={races1}alt="" />
                 </div>
               </div>
             </div>
@@ -271,7 +271,7 @@ const Home = () => {
             <div className="row tipping1">
               <div className="col-md-6">
                 <div className="tipp-img">
-                  <img src={img5} />
+                  <img src={img5} alt=""/>
                 </div>
               </div>
               <div className="col-md-6">
@@ -300,7 +300,7 @@ const Home = () => {
             <div className="row tipping1">
               <div className="col-md-6">
                 <div className="tipp-img">
-                  <img src={img4} />
+                  <img src={img4}alt="" />
                 </div>
               </div>
               <div className="col-md-6">
@@ -329,7 +329,7 @@ const Home = () => {
             <div className="row tipping1">
               <div className="col-md-6">
                 <div className="tipp-img">
-                  <img src={img2} />
+                  <img src={img2} alt=""/>
                 </div>
               </div>
               <div className="col-md-6">
@@ -358,7 +358,7 @@ const Home = () => {
             <div className="row tipping1">
               <div className="col-md-6">
                 <div className="tipp-img">
-                  <img src={img3} />
+                  <img src={img3} alt=""/>
                 </div>
               </div>
               <div className="col-md-6">
