@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+// import"../font/Sportypo-Reguler-Demo.ttf"
 import img1 from "../../Images/GOAT_logo.png";
 import img2 from "../../Images/gold.png";
 import img3 from "../../Images/platinum.png";
@@ -378,7 +379,9 @@ const Home = () => {
             </div>
           </div>
           <div className="bnner-btn">
+          <Link to="/signup">
             <button className="signbtn">Sign Me Up</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -406,7 +409,7 @@ const Home = () => {
                 </p>
               </div>
               <div className="bnner-btn">
-                <button className="signbtn">Sign Me Up</button>
+              <Link to="/signup"> <button className="signbtn"href="/signup">Sign Me Up</button></Link>
               </div>
             </div>
           </div>
@@ -429,7 +432,9 @@ const Home = () => {
                 </p>
               </div>
               <div className="bnner-btn">
+              <Link to="/signup">
                 <button className="signbtn">Sign Me Up</button>
+                </Link>
               </div>
             </div>
           </div>

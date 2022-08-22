@@ -1,3 +1,11 @@
+/* @font-face { */
+    /* font-family: "Light";   /*Can be any text*/
+    /* src: local("AirbnbCerealLight"), */
+      /* url("../font/Sportypo-Reguler-Demo.ttf") format("truetype"); */
+  /* } */
+  /* *{ */
+    /* font-family: "Light"; */
+  /* } */ */
 .banner-sec {
     height: 100vh;
     background: #000;
@@ -274,7 +282,7 @@
 
 .relai2 {
     height: auto;
-    background-image: url("../../Images/races.png");
+    /* background-image: url("../../Images/races.png"); */
     background-position: right top;
     background-repeat: no-repeat;
     background-size:contain;
@@ -555,7 +563,7 @@ ul.socil-link li {
     color: red;
   }
   .reliable-img img {
-    max-width: 100%;
+    max-width: 110%;
     height: auto;
 }
 .card img {
@@ -674,7 +682,9 @@ ul.socil-link li {
     padding-bottom: 80px;
 }
 .mob-img {
-    display: none;
+    height: auto;
+    max-width: 100%;
+    width: 561px !important;
 }
 .resut-content ul {
     list-style: none;
