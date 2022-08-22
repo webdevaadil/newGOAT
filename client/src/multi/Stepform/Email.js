@@ -35,7 +35,7 @@ export const Email = ({ formData, setForm, navigation }) => {
             <button
               className="btn_two"
               name="packages"
-              value={"Free "}
+              value={"Free"}
               onClick={handle}
             >
               Select

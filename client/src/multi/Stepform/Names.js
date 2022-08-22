@@ -7,6 +7,7 @@ import { clearErrors, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import { Metadata } from "../../components/layout/Metadata";
 import { Loader } from "../../components/layout/Loader";
+import axios from "axios";
 
 export const Names = ({ formData, setForm, navigation }) => {
 
@@ -27,6 +28,7 @@ export const Names = ({ formData, setForm, navigation }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     navigation.next()
+    await axios.get("http://localhost:5000/api/auth/register")
 
     const myForm = new FormData();
 
@@ -45,6 +47,14 @@ export const Names = ({ formData, setForm, navigation }) => {
       navigate("/");
     }
   }, [navigate, isAuthenticated, loading, error, alert, dispatch]);
+  function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
   return (
     <>
       {loading && <Loader />}
@@ -102,7 +112,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                       autoComplete="new-password"
 
                     />
-                    <i className="fa fa-eye"></i>
+                    <i className="fa fa-eye" onClick={myFunction}></i>
                     <label htmlFor="floatingPassword">Passwords</label>
                   </div>
 
@@ -154,7 +164,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                       style={{ backgroundColor: " #10867F", color: "black" }}
                       // disabled={data.dob === ""}
                       type="submit"
-                      // onClick={}
+                  
                       className="btn btn-outline-secondary"
                     >
                     Next

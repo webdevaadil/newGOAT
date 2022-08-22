@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema({
   },
 
   Expiry: {
-    type: Date,
+    type:Date,
     required: [true, "please provide Expiry"],
   },
   cvc: {

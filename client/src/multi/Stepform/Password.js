@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Package.css";
 import Select from "react-select";
 import img1 from "../../Images/level.png";
@@ -11,6 +11,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, register } from "../../actions/userAction";
 import { Loader } from "../../components/layout/Loader";
+import axios from "axios";
 
 export const Password = ({ formData, setForm, navigation }) => {
   const { packages, Name_of_card, card_no, Expiry, cvc } = formData;
@@ -24,10 +25,17 @@ export const Password = ({ formData, setForm, navigation }) => {
   const dispatch = useDispatch();
 
   console.log(formData);
-  const handle = (e) => {
-    setForm(e.value);
+  const handle = async(e) => {
+    await axios.post("http://localhost:5000/api/auth/register" ,{ formData})
+
+    setpackages( e.value)
+    setForm({
+      [e.name] : e.value
+    });
+    // setpackages(packages)
     
   };
+  const [packagess, setpackages] = useState(packages);
   const options = [
     {
       value: "$60 / week",
@@ -95,11 +103,11 @@ export const Password = ({ formData, setForm, navigation }) => {
       ),
     },
   ];
-
+console.log(packagess);
   const customStyles = {
     height: 45,
   };
-  console.log(formData);
+  console.log(formData.packages);
   const handleSub = async (e) => {
     e.preventDefault();
     dispatch(register(formData));
@@ -134,10 +142,10 @@ export const Password = ({ formData, setForm, navigation }) => {
                       options={options}
                       styles={customStyles}
                       value={options.filter(function (option) {
-                        return option.value === packages;
+                        return option.value === packagess;
                       })}
-                      onChange={setForm}
-                      // name="packages"
+                      onChange={handle}  
+                      name="packages"
                     />
                   </div>
                   <h4 className="mt-4">Payment Details</h4>
@@ -170,7 +178,7 @@ export const Password = ({ formData, setForm, navigation }) => {
                   <div className="form-inner">
                     <div className="form-floating mb-3">
                       <input
-                        type="month"
+                        type="Month"
                         className="form-control"
                         placeholder="dd/mm/yyyy"
                         name="Expiry"

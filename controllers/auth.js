@@ -22,8 +22,12 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     packages
   } = req.body;
 
+<<<<<<< HEAD
  
  
+=======
+//  console.log(req.body.Expiry);
+>>>>>>> 2495b30cc5c59ed6aa9a641a9e800ae28e241333
   if(    !username||
     !email||
     !password||
@@ -132,7 +136,7 @@ exports.dashboard = catchAsyncerror(async (req, res, next) => {
 
     // productCount,
   });
-  console.log(user);
+  // console.log("user");
   // console.log({token});
 });
 exports.logout = catchAsyncerror(async (req, res, next) => {
