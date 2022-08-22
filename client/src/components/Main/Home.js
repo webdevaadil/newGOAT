@@ -1,7 +1,9 @@
 import React from "react";
 import "./Home.css";
 // import"../font/Sportypo-Reguler-Demo.ttf"
+
 import img1 from "../../Images/GOAT_logo.png";
+import Count from "react-countup";
 import img2 from "../../Images/gold.png";
 import img3 from "../../Images/platinum.png";
 import img4 from "../../Images/silver.png";
@@ -16,18 +18,21 @@ import greyRacing from "../../Images/Greyhound-Racing.jpg";
 import houndIcon from "../../Images/hound-icon.png";
 import reliable from "../../Images/freetips-mobile.png";
 import HomeHeader from "../Header/HomeHeader";
+import scrollTrigger from "react-scroll-trigger";
 import HomeFooter from "../Footer/HomeFooter";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Home = () => {
+  const [counteron, setcounteron] = useState(false);
   return (
-    <div >
+    <div>
       <div className="banner-sec">
         <div className="container her0">
           <div className="row banner-main">
             <div className="col-lg-8 col-md-12">
               <div className="baner-ct">
-                <img src={img1} />
+                <img src={img1} alt="" />
                 <div className="bnner-btn">
                   <Link to="/signup">
                     <button className="signbtn">Signup</button>
@@ -57,19 +62,32 @@ const Home = () => {
           <div className="row">
             <div className="col-md-4">
               <div className="tips-ct">
-                <h2> &#62;6,000</h2>
+                <scrollTrigger onEnter={()=>setcounteron(true)} onExit={()=>setcounteron(false)}>
+                <h2>
+                  {" "}
+                  &#62;
+                  <Count start={0} end={6000} duration={2} delay={0} />{" "}
+                </h2>
+                </scrollTrigger>
                 <p>Tips Sent</p>
               </div>
             </div>
             <div className="col-md-4">
               <div className="tips-ct brde">
-                <h2> &#62;37%</h2>
+                <h2>
+                  {" "}
+                  &#62;
+                  <Count start={0} end={37} duration={2} delay={0} />%
+                </h2>
                 <p>Tips Sent</p>
               </div>
             </div>
             <div className="col-md-4">
               <div className="tips-ct">
-                <h2> 400+</h2>
+                <h2>
+                  {" "}
+                  <Count start={0} end={400} duration={2} delay={0} />+
+                </h2>
                 <p>Satisfied Clients</p>
               </div>
             </div>
@@ -77,65 +95,117 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='result'>
-           <div className="container result-mian">
-              <div className="section-title">
-                <h3>Reliable Results</h3>
-              </div>
+      <div className="result">
+        <div className="container result-mian">
+          <div className="section-title">
+            <h3>Reliable Results</h3>
+          </div>
 
-              <div className='tab-section'> 
-                    <ul className="nav nav-tabs" id="myTab" role="tablist">
-                        <li className="nav-item" role="presentation">
-                            <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"> Horse Racing</button>
-                        </li>
-                        <li className="nav-item" role="presentation">
-                            <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Greyhound Racing</button>
-                        </li>
-                    </ul>
-                    <div className="tab-content" id="myTabContent">
-                    <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <div className='row rate-mian'>
-                        <div className='col-md-4 col-sm-4'>
-                          <h3>37%</h3>
-                          <p>Win strike rate</p>
-                        </div>
-                        <div className='col-md-4 col-sm-4'>
-                          <h3>$2.90</h3>
-                          <p>Average winning odds</p>
-                        </div>
-                        <div className='col-md-4 col-sm-4'>
-                          <h3>56%</h3>
-                          <p>Top 2 place rate</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div className='row rate-mian'>
-                            <div className='col-md-4 col-sm-4'>
-                              <h3>57%</h3>
-                              <p>Win strike rate</p>
-                            </div>
-                            <div className='col-md-4 col-sm-4'>
-                              <h3>$2.30</h3>
-                              <p>Average winning odds</p>
-                            </div>
-                            <div className='col-md-4 col-sm-4'>
-                              <h3>68%</h3>
-                              <p>Top 2 place rate</p>
-                            </div>
-                      </div>
-                    </div>
-                    </div>
+          <div className="tab-section">
+            <ul className="nav nav-tabs" id="myTab" role="tablist">
+              <li className="nav-item" role="presentation">
+                <button
+                  className="nav-link active"
+                  id="home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#home"
+                  type="button"
+                  role="tab"
+                  aria-controls="home"
+                  aria-selected="true"
+                >
+                  {" "}
+                  Horse Racing
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button
+                  className="nav-link"
+                  id="profile-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="profile"
+                  aria-selected="false"
+                >
+                  Greyhound Racing
+                </button>
+              </li>
+            </ul>
+            <div className="tab-content" id="myTabContent">
+              <div
+                className="tab-pane fade show active"
+                id="home"
+                role="tabpanel"
+                aria-labelledby="home-tab"
+              >
+                <div className="row rate-mian">
+                  <div className="col-md-4 col-sm-4">
+                    <h3>
+                      <Count start={0} end={37} duration={2} delay={0} />%
+                    </h3>
+                    <p>Win strike rate</p>
+                  </div>
+                  <div className="col-md-4 col-sm-4">
+                    <h3>
+                      $
+                      <Count
+                        start={0}
+                        end={2.9}
+                        duration={2}
+                        decimal={3}
+                        delay={0}
+                      />
+                    </h3>
+                    <p>Average winning odds</p>
+                  </div>
+                  <div className="col-md-4 col-sm-4">
+                    <h3>
+                      <Count start={0} end={56} duration={2} delay={0} />%
+                    </h3>
+                    <p>Top 2 place rate</p>
+                  </div>
+                </div>
               </div>
-              {/* <div className='hor-list'>
+              <div
+                className="tab-pane fade"
+                id="profile"
+                role="tabpanel"
+                aria-labelledby="profile-tab"
+              >
+                <div className="row rate-mian">
+                  <div className="col-md-4 col-sm-4">
+                    <h3>
+                      <Count start={0} end={57} duration={2} delay={0} />%
+                    </h3>
+                    <p>Win strike rate</p>
+                  </div>
+                  <div className="col-md-4 col-sm-4">
+                    <h3>
+                      $<Count start={0} end={2.3} duration={2} delay={0} />
+                    </h3>
+                    <p>Average winning odds</p>
+                  </div>
+                  <div className="col-md-4 col-sm-4">
+                    <h3>
+                      <Count start={0} end={68} duration={2} delay={0} />%
+                    </h3>
+                    <p>Top 2 place rate</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <div className='hor-list'>
                 <ul>
                   <li>Horse Racing</li>
                   <li>Greyhound Racing</li>
                 </ul>
               </div> */}
 
-              <div className="rate">
-                {/* <div className='row rate-mian'>
+          <div className="rate">
+            {/* <div className='row rate-mian'>
                   <div className='col-md-4 col-sm-4'>
                     <h3>37%</h3>
                     <p>Win strike rate</p>
@@ -149,71 +219,108 @@ const Home = () => {
                     <p>Top 2 place rate</p>
                   </div>
                 </div> */}
-              <div className='container-fluid'>
+            <div className="container-fluid">
               <div className="row tips-mian">
-                <div className='col-lg-6 col-md-12'>
+                <div className="col-lg-6 col-md-12">
                   <div className="resut-content">
-                    <h3>Quality Sporting Tips <span>From Expert Tipsters</span> </h3>
-                    <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's Tips provides
-                       consistent returns to enhance your sporting experience.</p>
+                    <h3>
+                      Quality Sporting Tips <span>From Expert Tipsters</span>{" "}
+                    </h3>
+                    <p>
+                      Whether you're a professional investor or a casual pub
+                      punter, we've got you covered. The GOAT's Tips provides
+                      consistent returns to enhance your sporting experience.
+                    </p>
                     <ul>
-                      <li> <i class="fa fa-check"></i> Thoroughbred horse racing</li>
-                      <li> <i class="fa fa-check"></i> Greyhound racing</li>
-                      <li> <i class="fa fa-check"></i> Additional sports coming soon!</li>
-
-                    </ul>   
+                      <li>
+                        {" "}
+                        <i class="fa fa-check"></i> Thoroughbred horse racing
+                      </li>
+                      <li>
+                        {" "}
+                        <i class="fa fa-check"></i> Greyhound racing
+                      </li>
+                      <li>
+                        {" "}
+                        <i class="fa fa-check"></i> Additional sports coming
+                        soon!
+                      </li>
+                    </ul>
                   </div>
                 </div>
-                <div className='col-lg-6 col-md-12'>
+                <div className="col-lg-6 col-md-12">
                   <div className="resut-content">
-                 <div className="card card1">
-                 <div class="clearfix">
-                      <button type="button" class="btn  float-start">
-                      <img src={icon2} alt=""/> The Goats tips
-                      </button>
-                      <button type="button" class="btn  float-end"> <img src="./icon2.png" alt=""/> No. 4</button>
-                   </div>
-                   <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
-                     Tips provides consistent returns to enhance your sporting experience.</p>
-                     <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
-                     Tips provides consistent returns to enhance your sporting experience.</p>
-                 </div>
-                 <div className="card card1">
-                 <div class="clearfix">
-                      <button type="button" class="btn  float-start">
-                      <img src={icon2} alt=""/> The Goats tips
-                      </button>
-                      <button type="button" class="btn  float-end"> <img src="./icon2.png"alt=""/> No. 4</button>
-                   </div>
-                   <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
-                     Tips provides consistent returns to enhance your sporting experience.</p>                    
-                 </div>
-                 <div className="card card1">
-                 <div class="clearfix">
-                      <button type="button" class="btn  float-start">
-                      <img src={icon2}alt=""/> The Goats tips
-                      </button>
-                      <button type="button" class="btn  float-end"> <img src="./icon2.png"alt=""/> No. 4</button>
-                   </div>
-                   <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
-                     Tips provides consistent returns to enhance your sporting experience.</p>
-                     <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
-                     Tips provides consistent returns to enhance your sporting experience.</p>
-                 </div>
+                    <div className="card card1">
+                      <div class="clearfix">
+                        <button type="button" class="btn  float-start">
+                          <img src={icon2} alt="" /> The Goats tips
+                        </button>
+                        <button type="button" class="btn  float-end">
+                          {" "}
+                          <img src="./icon2.png" alt="" /> No. 4
+                        </button>
+                      </div>
+                      <p>
+                        Whether you're a professional investor or a casual pub
+                        punter, we've got you covered. The GOAT's Tips provides
+                        consistent returns to enhance your sporting experience.
+                      </p>
+                      <p>
+                        Whether you're a professional investor or a casual pub
+                        punter, we've got you covered. The GOAT's Tips provides
+                        consistent returns to enhance your sporting experience.
+                      </p>
+                    </div>
+                    <div className="card card1">
+                      <div class="clearfix">
+                        <button type="button" class="btn  float-start">
+                          <img src={icon2} alt="" /> The Goats tips
+                        </button>
+                        <button type="button" class="btn  float-end">
+                          {" "}
+                          <img src="./icon2.png" alt="" /> No. 4
+                        </button>
+                      </div>
+                      <p>
+                        Whether you're a professional investor or a casual pub
+                        punter, we've got you covered. The GOAT's Tips provides
+                        consistent returns to enhance your sporting experience.
+                      </p>
+                    </div>
+                    <div className="card card1">
+                      <div class="clearfix">
+                        <button type="button" class="btn  float-start">
+                          <img src={icon2} alt="" /> The Goats tips
+                        </button>
+                        <button type="button" class="btn  float-end">
+                          {" "}
+                          <img src="./icon2.png" alt="" /> No. 4
+                        </button>
+                      </div>
+                      <p>
+                        Whether you're a professional investor or a casual pub
+                        punter, we've got you covered. The GOAT's Tips provides
+                        consistent returns to enhance your sporting experience.
+                      </p>
+                      <p>
+                        Whether you're a professional investor or a casual pub
+                        punter, we've got you covered. The GOAT's Tips provides
+                        consistent returns to enhance your sporting experience.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-              </div>
-              </div>  
-             
+            </div>
           </div>
         </div>
+      </div>
       <div className="Reliable-sec">
         <div className="container">
           <div className="row reliav-main">
             <div className="col-md-6">
               <div className="reliable-img">
-                <img src={reliable}alt="" />
+                <img src={reliable} alt="" />
               </div>
             </div>
 
@@ -247,7 +354,7 @@ const Home = () => {
             <div className="col-md-6">
               <div className="reliable-img">
                 <div className="mob-img">
-                  <img src={races1}alt="" />
+                  <img src={races1} alt="" />
                 </div>
               </div>
             </div>
@@ -271,7 +378,7 @@ const Home = () => {
             <div className="row tipping1">
               <div className="col-md-6">
                 <div className="tipp-img">
-                  <img src={img5} alt=""/>
+                  <img src={img5} alt="" />
                 </div>
               </div>
               <div className="col-md-6">
@@ -300,7 +407,7 @@ const Home = () => {
             <div className="row tipping1">
               <div className="col-md-6">
                 <div className="tipp-img">
-                  <img src={img4}alt="" />
+                  <img src={img4} alt="" />
                 </div>
               </div>
               <div className="col-md-6">
@@ -329,7 +436,7 @@ const Home = () => {
             <div className="row tipping1">
               <div className="col-md-6">
                 <div className="tipp-img">
-                  <img src={img2} alt=""/>
+                  <img src={img2} alt="" />
                 </div>
               </div>
               <div className="col-md-6">
@@ -358,7 +465,7 @@ const Home = () => {
             <div className="row tipping1">
               <div className="col-md-6">
                 <div className="tipp-img">
-                  <img src={img3} alt=""/>
+                  <img src={img3} alt="" />
                 </div>
               </div>
               <div className="col-md-6">
@@ -386,9 +493,9 @@ const Home = () => {
             </div>
           </div>
           <div className="bnner-btn">
-          <Link to="/signup">
-            <button className="signbtn">Sign Me Up</button>
-            </Link> 
+            <Link to="/signup">
+              <button className="signbtn">Sign Me Up</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -416,7 +523,12 @@ const Home = () => {
                 </p>
               </div>
               <div className="bnner-btn">
-              <Link to="/signup"> <button className="signbtn"href="/signup">Sign Me Up</button></Link>
+                <Link to="/signup">
+                  {" "}
+                  <button className="signbtn" href="/signup">
+                    Sign Me Up
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -439,8 +551,8 @@ const Home = () => {
                 </p>
               </div>
               <div className="bnner-btn">
-              <Link to="/signup">
-                <button className="signbtn">Sign Me Up</button>
+                <Link to="/signup">
+                  <button className="signbtn">Sign Me Up</button>
                 </Link>
               </div>
             </div>
@@ -466,7 +578,7 @@ const Home = () => {
             </li>
             <li>
               <a href="https://www.instagram.com/goats.tips/">
-              <i class="fa fa-instagram"></i>
+                <i class="fa fa-instagram"></i>
               </a>
             </li>
           </ul>
@@ -510,7 +622,10 @@ const Home = () => {
 
       <div className="testimpnal-sec">
         <div className="container">
-          <div className="section-title" style={{textAlign:"center" ,marginBottom:"10px"}}>
+          <div
+            className="section-title"
+            style={{ textAlign: "center", marginBottom: "10px" }}
+          >
             <h3>Testimonials</h3>
           </div>
           <div
