@@ -77,130 +77,137 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="result">
-        <div className="container result-mian">
-          <div className="section-title">
-            <h3>Reliable Results</h3>
-          </div>
+      <div className='result'>
+           <div className="container result-mian">
+              <div className="section-title">
+                <h3>Reliable Results</h3>
+              </div>
 
-          <div className="hor-list">
-            <ul>
-              <li>Horse Racing</li>
-              <li>Greyhound Racing</li>
-            </ul>
-          </div>
-
-          <div className="rate">
-            <div className="row rate-mian">
-              <div className="col-md-4 col-sm-4">
-                <h3>37%</h3>
-                <p>Win strike rate</p>
-              </div>
-              <div className="col-md-4 col-sm-4">
-                <h3>$2.90</h3>
-                <p>Average winning odds</p>
-              </div>
-              <div className="col-md-4 col-sm-4">
-                <h3>56%</h3>
-                <p>Top 2 place rate</p>
-              </div>
-            </div>
-            <div className="container-fluid">
-              <div className="row tips-mian">
-                <div className="col-lg-6 col-md-12">
-                  <div className="resut-content">
-                    <h3>
-                      Quality Sporting Tips <span>From Expert Tipsters</span>{" "}
-                    </h3>
-                    <p>
-                      Whether you're a professional investor or a casual pub
-                      punter, we've got you covered. The GOAT's Tips provides
-                      consistent returns to enhance your sporting experience.
-                    </p>
-                    <ul>
-                      <li>
-                        {" "}
-                        <i class="fa fa-check"></i> Thoroughbred horse racing
-                      </li>
-                      <li>
-                        {" "}
-                        <i class="fa fa-check"></i> Greyhound racing
-                      </li>
-                      <li>
-                        {" "}
-                        <i class="fa fa-check"></i> Additional sports coming
-                        soon!
-                      </li>
+              <div className='tab-section'> 
+                    <ul className="nav nav-tabs" id="myTab" role="tablist">
+                        <li className="nav-item" role="presentation">
+                            <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"> Horse Racing</button>
+                        </li>
+                        <li className="nav-item" role="presentation">
+                            <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Greyhound Racing</button>
+                        </li>
                     </ul>
+                    <div className="tab-content" id="myTabContent">
+                    <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div className='row rate-mian'>
+                        <div className='col-md-4 col-sm-4'>
+                          <h3>37%</h3>
+                          <p>Win strike rate</p>
+                        </div>
+                        <div className='col-md-4 col-sm-4'>
+                          <h3>$2.90</h3>
+                          <p>Average winning odds</p>
+                        </div>
+                        <div className='col-md-4 col-sm-4'>
+                          <h3>56%</h3>
+                          <p>Top 2 place rate</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div className='row rate-mian'>
+                            <div className='col-md-4 col-sm-4'>
+                              <h3>57%</h3>
+                              <p>Win strike rate</p>
+                            </div>
+                            <div className='col-md-4 col-sm-4'>
+                              <h3>$2.30</h3>
+                              <p>Average winning odds</p>
+                            </div>
+                            <div className='col-md-4 col-sm-4'>
+                              <h3>68%</h3>
+                              <p>Top 2 place rate</p>
+                            </div>
+                      </div>
+                    </div>
+                    </div>
+              </div>
+              {/* <div className='hor-list'>
+                <ul>
+                  <li>Horse Racing</li>
+                  <li>Greyhound Racing</li>
+                </ul>
+              </div> */}
+
+              <div className="rate">
+                {/* <div className='row rate-mian'>
+                  <div className='col-md-4 col-sm-4'>
+                    <h3>37%</h3>
+                    <p>Win strike rate</p>
+                  </div>
+                  <div className='col-md-4 col-sm-4'>
+                    <h3>$2.90</h3>
+                    <p>Average winning odds</p>
+                  </div>
+                  <div className='col-md-4 col-sm-4'>
+                    <h3>56%</h3>
+                    <p>Top 2 place rate</p>
+                  </div>
+                </div> */}
+              <div className='container-fluid'>
+              <div className="row tips-mian">
+                <div className='col-lg-6 col-md-12'>
+                  <div className="resut-content">
+                    <h3>Quality Sporting Tips <span>From Expert Tipsters</span> </h3>
+                    <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's Tips provides
+                       consistent returns to enhance your sporting experience.</p>
+                    <ul>
+                      <li> <i class="fa fa-check"></i> Thoroughbred horse racing</li>
+                      <li> <i class="fa fa-check"></i> Greyhound racing</li>
+                      <li> <i class="fa fa-check"></i> Additional sports coming soon!</li>
+
+                    </ul>   
                   </div>
                 </div>
-                <div className="col-lg-6 col-md-12">
+                <div className='col-lg-6 col-md-12'>
                   <div className="resut-content">
-                    <div className="card card1">
-                      <div class="clearfix">
-                        <button type="button" class="btn  float-start">
-                          <img src={icon} /> The Goats tips
-                        </button>
-                        <button type="button" class="btn  float-end">
-                          {" "}
-                          <img src={icon2} /> No. 4
-                        </button>
-                      </div>
-                      <p>
-                        Whether you're a professional investor or a casual pub
-                        punter, we've got you covered. The GOAT's Tips provides
-                        consistent returns to enhance your sporting experience.
-                      </p>
-                      <p>
-                        Whether you're a professional investor or a casual pub
-                        punter, we've got you covered. The GOAT's Tips provides
-                        consistent returns to enhance your sporting experience.
-                      </p>
-                    </div>
-                    <div className="card card1">
-                      <div class="clearfix">
-                        <button type="button" class="btn  float-start">
-                          <img src={icon} /> The Goats tips
-                        </button>
-                        <button type="button" class="btn  float-end">
-                          {" "}
-                          <img src={icon2} /> No. 4
-                        </button>
-                      </div>
-                      <p>
-                        Whether you're a professional investor or a casual pub
-                        punter, we've got you covered. The GOAT's Tips provides
-                        consistent returns to enhance your sporting experience.
-                      </p>
-                    </div>
-                    <div className="card card1">
-                      <div class="clearfix">
-                        <button type="button" class="btn  float-start">
-                          <img src={icon} /> The Goats tips
-                        </button>
-                        <button type="button" class="btn  float-end">
-                          {" "}
-                          <img src={icon2} /> No. 4
-                        </button>
-                      </div>
-                      <p>
-                        Whether you're a professional investor or a casual pub
-                        punter, we've got you covered. The GOAT's Tips provides
-                        consistent returns to enhance your sporting experience.
-                      </p>
-                      <p>
-                        Whether you're a professional investor or a casual pub
-                        punter, we've got you covered. The GOAT's Tips provides
-                        consistent returns to enhance your sporting experience.
-                      </p>
-                    </div>
+                 <div className="card card1">
+                 <div class="clearfix">
+                      <button type="button" class="btn  float-start">
+                      <img src="./icon.png"/> The Goats tips
+                      </button>
+                      <button type="button" class="btn  float-end"> <img src="./icon2.png"/> No. 4</button>
+                   </div>
+                   <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
+                     Tips provides consistent returns to enhance your sporting experience.</p>
+                     <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
+                     Tips provides consistent returns to enhance your sporting experience.</p>
+                 </div>
+                 <div className="card card1">
+                 <div class="clearfix">
+                      <button type="button" class="btn  float-start">
+                      <img src="./icon.png"/> The Goats tips
+                      </button>
+                      <button type="button" class="btn  float-end"> <img src="./icon2.png"/> No. 4</button>
+                   </div>
+                   <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
+                     Tips provides consistent returns to enhance your sporting experience.</p>                    
+                 </div>
+                 <div className="card card1">
+                 <div class="clearfix">
+                      <button type="button" class="btn  float-start">
+                      <img src="./icon.png"/> The Goats tips
+                      </button>
+                      <button type="button" class="btn  float-end"> <img src="./icon2.png"/> No. 4</button>
+                   </div>
+                   <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
+                     Tips provides consistent returns to enhance your sporting experience.</p>
+                     <p>Whether you're a professional investor or a casual pub punter, we've got you covered. The GOAT's
+                     Tips provides consistent returns to enhance your sporting experience.</p>
+                 </div>
                   </div>
                 </div>
               </div>
-            </div>
+              </div>
+              </div>  
+             
           </div>
         </div>
-      </div>
       <div className="Reliable-sec">
         <div className="container">
           <div className="row reliav-main">
@@ -381,7 +388,7 @@ const Home = () => {
           <div className="bnner-btn">
           <Link to="/signup">
             <button className="signbtn">Sign Me Up</button>
-            </Link>
+            </Link> 
           </div>
         </div>
       </div>
