@@ -474,7 +474,7 @@ const Home = () => {
       </div>
 
       <div className="nesletter-sec">
-        <div className="container">
+        <div className="">
           <div className="row news-main">
             <div className="col-md-8">
               <div className="mes-cont">
@@ -510,7 +510,7 @@ const Home = () => {
 
       <div className="testimpnal-sec">
         <div className="container">
-          <div className="section-title">
+          <div className="section-title" style={{textAlign:"center" ,marginBottom:"10px"}}>
             <h3>Testimonials</h3>
           </div>
           <div

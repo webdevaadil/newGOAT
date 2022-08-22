@@ -504,7 +504,7 @@ ul.socil-link li {
 .news-main {
     padding: 60px 110px 60px 110px;
     background: linear-gradient(0deg, rgba(62,53,53,1) 0%, rgba(0,0,0,1) 100%);
-    border-radius: 10px;
+    /* border-radius: 10px; */
     margin: 60px 0px;
 }
 .mes-cont h4 {
