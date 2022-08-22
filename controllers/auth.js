@@ -22,13 +22,10 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     packages
   } = req.body;
 
-<<<<<<< HEAD
  
  
-=======
-//  console.log(req.body.Expiry);
->>>>>>> 2495b30cc5c59ed6aa9a641a9e800ae28e241333
-  if(    !username||
+  console.log(req.body.Expiry);
+if(    !username||
     !email||
     !password||
     !dob||

@@ -11,9 +11,9 @@ const fileupload = require("express-fileupload");
 const app = express();
 app.use(cookiesparser());
 app.use(express.json({ limit: "50mb" }));
- app.use(express.urlencoded({ limit: "500kb", extended: true }));
+app.use(express.urlencoded({ limit: "500kb", extended: true }));
 
-app.use(fileupload()) 
+app.use(fileupload());
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: true }));
 connectDB();
@@ -37,25 +37,24 @@ if (process.env.NODE_ENV === "production") {
 
 // --------------------------deployment------------------------------
 // --------------------------errorhandle------------------------------
-process.on("unhandledRejection",(err)=>{
-  console.log(`Error:${err.message}`)
-  console.log(`shutting down the server due to unhandled promise rejection`)
-  server.close(()=>{
-      process.exit(1)
-  })
+process.on("unhandledRejection", (err) => {
+  console.log(`Error:${err.message}`);
+  console.log(`shutting down the server due to unhandled promise rejection`);
+  server.close(() => {
+    process.exit(1);
+  });
 });
 // --------------------------errorhandle------------------------------
 
 //-----------------------cloudinary---------------------
 
 cloudinary.config({
-  cloud_name:process.env.CLOUDINARY_NAME,
-  api_key:process.env.CLOUDINARY_API_KEY,
-  api_secret:process.env.CLOUDINARY_API_SECRET,
-  secure:true
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+  secure: true,
 });
 //-----------------------cloudinary---------------------
 const server = app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
 });
-
