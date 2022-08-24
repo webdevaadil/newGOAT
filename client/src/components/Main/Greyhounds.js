@@ -25,7 +25,7 @@ export const Greyhounds = ()=>{
   
   const getdata = async()=>{
 
-    const res = await axios.get("https://script.google.com/macros/s/AKfycbwYRAwed4AU7R2q62na51ele3njePVqe_IGYf6JTDEtP1PKhhZPrJfExVea_Ulo98Iw/exec")
+    const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=mRCJoZmZwDhI9snrKQytAyaYBFA86KZVDFLPkYBXbWHawByMQFgspe7s0zeJeD95vZVdmaoMk9evhzGCuq80mcjgkSfQdbTBm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnF9OXc95fD23eDvAhF7wtmVRghiF34032X6xCyWzrqMkLu9JIXnQGOCkJaLaMp569JzQoN6xAOTwYcScU6dDSajx9N_XZM_k49z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
     let finaldata = await res.data.data
     finaldata.map((items,index)=>{
       

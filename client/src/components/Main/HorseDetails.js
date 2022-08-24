@@ -17,7 +17,7 @@ export const HorseDetails = ()=>{
     const [temprature,setTemprature] = useState()
     const getdata = async()=>{
         
-        const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=jDoChie6LqLG6ElHDz5XnSp5xbRzBGY7boopl67X51Y-MgBXn3qY9IykJM3v2v8gEiKx0RCnFEBRpeCaaI4b-91ukFetCelMm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnF9OXc95fD23eDvAhF7wtmVRghiF34032X6xCyWzrqMkLu9JIXnQGOCkJaLaMp569JzQoN6xAOTwYcScU6dDSajx9N_XZM_k49z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
+        const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=z8U-J-WGfUKgT7aI036ce0-LqgyvluBVYO6sl3MBidqsoxeP8zVCsBqh3KALwEXqsmH3b3AH8f2vhzGCuq80mZw5OuI2BYhEm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnM5Ekl7EwoTMsxbGD7Mk6JPN3Ls7Oyxjmrsr3ZQwRD52M_vMAqczDkXfnrBBGFFHff8VMKaSWAE-WxUrUSiQwyHxctBCURm4-9z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
         let finaldata = await res.data.data[id]
     console.log(finaldata)
        setDetail([finaldata])

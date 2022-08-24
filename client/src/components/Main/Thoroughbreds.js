@@ -23,7 +23,7 @@ export const Thoroughbreds=()=>{
   
   const getdata = async()=>{
 
-    const res = await axios.get("https://script.google.com/macros/s/AKfycbzY1VMvhRABm0tIBQxWoTmc_wyDbo-BLL4UzM_qfLfSh9lswfF4j8gc3v5MNTXE5Sr4/exec")
+    const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=z8U-J-WGfUKgT7aI036ce0-LqgyvluBVYO6sl3MBidqsoxeP8zVCsBqh3KALwEXqsmH3b3AH8f2vhzGCuq80mZw5OuI2BYhEm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnM5Ekl7EwoTMsxbGD7Mk6JPN3Ls7Oyxjmrsr3ZQwRD52M_vMAqczDkXfnrBBGFFHff8VMKaSWAE-WxUrUSiQwyHxctBCURm4-9z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
     let finaldata = await res.data.data
     
     finaldata.map((items,index)=> {
