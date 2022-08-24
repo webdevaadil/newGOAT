@@ -3,6 +3,8 @@ import "./Home.css";
 // import"../font/Sportypo-Reguler-Demo.ttf"
 
 import img1 from "../../Images/GOAT_logo.png";
+import horse from "../../Images/goat-tips-hero.jpg";
+import man from "../../Images/man1.jpg";
 import Count from "react-countup";
 import img2 from "../../Images/gold.png";
 import img3 from "../../Images/platinum.png";
@@ -29,37 +31,46 @@ import { clearErrors, loaduser } from "../../actions/userAction";
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
-  
+
   const [counteron, setcounteron] = useState(false);
-  const { user, isAuthenticated, loading, isUpdated, error } = useSelector(
+  const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
-  useEffect(()=>{
-    if(error){
-      alert.error(error)
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
       dispatch(clearErrors());
     }
-    if(!isAuthenticated){
-      dispatch(loaduser())
-      
+    if (!isAuthenticated) {
+      dispatch(loaduser());
     }
 
-    if(isAuthenticated){
-
-      navigate("/main") 
-
+    if (isAuthenticated) {
+      // alert.success("Signup Successfull");
+      navigate("/main");
     }
-   
-  },[user,isAuthenticated])
-if(!isAuthenticated){console.log("hi");}
-if(isAuthenticated){console.log("hello");}
+  }, [dispatch, isAuthenticated, error, navigate]);
+  if (!isAuthenticated) {
+    console.log("hi");
+  }
+  if (isAuthenticated) {
+    console.log("hello");
+  }
+  // let num6 = 6000;
+  // let redyi = num6.toLocaleString;
+  const redy = () => {
+    navigate("/packages");
+  };
+
   return (
     <div>
       <div className="banner-sec">
         <div className="container her0">
           <div className="row banner-main">
-            <div className="col-lg-8 col-md-12">
+            <div
+              className="col-lg-8 col-md-12"
+              style={{ padding: "0", margin: "0" }}
+            >
               <div className="baner-ct">
                 <img src={img1} alt="" />
                 <div className="bnner-btn">
@@ -85,6 +96,19 @@ if(isAuthenticated){console.log("hello");}
           </div>
         </div>
       </div>
+      <section>
+        <div
+          className=" media-banner"
+          style={{ display: "none", width: "100%", height: "100%" }}
+        >
+          <img
+            style={{ width: "100%", height: "100%" }}
+            src={horse}
+            alt=""
+            srcset=""
+          />
+        </div>
+      </section>
 
       <div className="tips-sec">
         <div className="container tips-main">
@@ -93,29 +117,27 @@ if(isAuthenticated){console.log("hello");}
               <div className="tips-ct">
                 <h2>
                   {" "}
-                  &#62;
-                  <Count start={0} end={6000} duration={2} delay={0} />{" "}
+                  &#62;6,000
+                  {/* <Count
+                    start={0}
+                    end={num6.toLocaleString()}
+                    duration={2}
+                    delay={0}
+                  />{" "} */}
                 </h2>
-               
+
                 <p>Tips Sent</p>
               </div>
             </div>
             <div className="col-md-4">
               <div className="tips-ct brde">
-                <h2>
-                  {" "}
-                  &#62;
-                  <Count start={0} end={37} duration={2} delay={0} />%
-                </h2>
+                <h2> &#62; 37%</h2>
                 <p>Tips Sent</p>
               </div>
             </div>
             <div className="col-md-4">
               <div className="tips-ct">
-                <h2>
-                  {" "}
-                  <Count start={0} end={400} duration={2} delay={0} />+
-                </h2>
+                <h2> 400+</h2>
                 <p>Satisfied Clients</p>
               </div>
             </div>
@@ -171,27 +193,17 @@ if(isAuthenticated){console.log("hello");}
                 <div className="row rate-mian">
                   <div className="col-md-4 col-sm-4">
                     <h3>
-                      <Count start={0} end={37} duration={2} delay={0} />%
+                      {/* <Count start={0} end={37} duration={2} delay={0} /> */}
+                      37%
                     </h3>
                     <p>Win strike rate</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3>
-                      $
-                      <Count
-                        start={0}
-                        end={2.9}
-                        duration={2}
-                        decimal={3}
-                        delay={0}
-                      />
-                    </h3>
+                    <h3>$2.9</h3>
                     <p>Average winning odds</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3>
-                      <Count start={0} end={56} duration={2} delay={0} />%
-                    </h3>
+                    <h3>56%</h3>
                     <p>Top 2 place rate</p>
                   </div>
                 </div>
@@ -204,21 +216,15 @@ if(isAuthenticated){console.log("hello");}
               >
                 <div className="row rate-mian">
                   <div className="col-md-4 col-sm-4">
-                    <h3>
-                      <Count start={0} end={57} duration={2} delay={0} />%
-                    </h3>
+                    <h3>57%</h3>
                     <p>Win strike rate</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3>
-                      $<Count start={0} end={2.3} duration={2} delay={0} />
-                    </h3>
+                    <h3>$2.3</h3>
                     <p>Average winning odds</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3>
-                      <Count start={0} end={68} duration={2} delay={0} />%
-                    </h3>
+                    <h3>68%</h3>
                     <p>Top 2 place rate</p>
                   </div>
                 </div>
@@ -343,6 +349,26 @@ if(isAuthenticated){console.log("hello");}
           </div>
         </div>
       </div>
+      <section style={{ height: "100%" }}>
+        <div
+          className=" media-banner"
+          style={{
+            display: "none",
+            width: "100%",
+            maxWidth: "992px",
+            height: "auto",
+          }}
+        >
+          <div className="box" style={{ height: "100%  " }}>
+            <img
+              style={{ width: "100%", height: "100%" }}
+              src={man}
+              alt=""
+              srcset=""
+            />
+          </div>
+        </div>
+      </section>
       <div className="Reliable-sec">
         <div className="container">
           <div className="row reliav-main">
@@ -403,119 +429,127 @@ if(isAuthenticated){console.log("hello");}
             </h4>
           </div>
           <div className="tipp">
-            <div className="row tipping1">
-              <div className="col-md-6">
-                <div className="tipp-img">
-                  <img src={img5} alt="" />
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="tipping-ct">
-                  <h3>Bronze</h3>
-                  <p>$15 / Week</p>
-                  <div className="return">
-                    <span>98% returns</span>
+            <div className="btn" style={{ width: "50%" }} onClick={redy}>
+              <div className="row tipping1 " style={{ width: "100%" }}>
+                <div className="col-md-6">
+                  <div className="tipp-img">
+                    <img src={img5} alt="" />
                   </div>
-                  <ul className="tiip-list">
-                    <li>
-                      {" "}
-                      <i class="fa fa-check"></i> Top tip of the day
-                    </li>
-                    <li>
-                      <i class="fa fa-check"></i> Every Saturday
-                    </li>
-                    <li>
-                      {" "}
-                      <i class="fa fa-check"></i>Free and direct to your inbox
-                    </li>
-                  </ul>
+                </div>
+                <div className="col-md-6">
+                  <div className="tipping-ct">
+                    <h3>Bronze</h3>
+                    <p>$15 / Week</p>
+                    <div className="return">
+                      <span>98% returns</span>
+                    </div>
+                    <ul className="tiip-list">
+                      <li>
+                        {" "}
+                        <i class="fa fa-check"></i> Top tip of the day
+                      </li>
+                      <li>
+                        <i class="fa fa-check"></i> Every Saturday
+                      </li>
+                      <li>
+                        {" "}
+                        <i class="fa fa-check"></i>Free and direct to your inbox
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="row tipping1">
-              <div className="col-md-6">
-                <div className="tipp-img">
-                  <img src={img4} alt="" />
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="tipping-ct">
-                  <h3>Silver</h3>
-                  <p>$30 / Week</p>
-                  <div className="return">
-                    <span>120% returns</span>
+            <div className="btn" style={{ width: "50%" }} onClick={redy}>
+              <div className="row tipping1" style={{ width: "100%" }}>
+                <div className="col-md-6">
+                  <div className="tipp-img">
+                    <img src={img4} alt="" />
                   </div>
-                  <ul className="tiip-list">
-                    <li>
-                      {" "}
-                      <i class="fa fa-check"></i> Our 10 best tips
-                    </li>
-                    <li>
-                      <i class="fa fa-check"></i>Every Saturday
-                    </li>
-                    <li>
-                      {" "}
-                      <i class="fa fa-check"></i>Direct to your inbox
-                    </li>
-                  </ul>
+                </div>
+                <div className="col-md-6">
+                  <div className="tipping-ct">
+                    <h3>Silver</h3>
+                    <p>$30 / Week</p>
+                    <div className="return">
+                      <span>120% returns</span>
+                    </div>
+                    <ul className="tiip-list">
+                      <li>
+                        {" "}
+                        <i class="fa fa-check"></i> Our 10 best tips
+                      </li>
+                      <li>
+                        <i class="fa fa-check"></i>Every Saturday
+                      </li>
+                      <li>
+                        {" "}
+                        <i class="fa fa-check"></i>Direct to your inbox
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="row tipping1">
-              <div className="col-md-6">
-                <div className="tipp-img">
-                  <img src={img2} alt="" />
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="tipping-ct">
-                  <h3>Gold</h3>
-                  <p>$45 / Week</p>
-                  <div className="return">
-                    <span>165% returns</span>
+            <div className="btn" style={{ width: "50%" }} onClick={redy}>
+              <div className="row tipping1"  style={{ width: "100%" }}>
+                <div className="col-md-6">
+                  <div className="tipp-img">
+                    <img src={img2} alt="" />
                   </div>
-                  <ul className="tiip-list">
-                    <li>
-                      {" "}
-                      <i class="fa fa-check"></i>Our top daily tips, plus
-                    </li>
-                    <li>
-                      <i class="fa fa-check"></i>Our top 15 Saturday tips
-                    </li>
-                    <li>
-                      {" "}
-                      <i class="fa fa-check"></i>Direct to your inbox
-                    </li>
-                  </ul>
+                </div>
+                <div className="col-md-6">
+                  <div className="tipping-ct">
+                    <h3>Gold</h3>
+                    <p>$45 / Week</p>
+                    <div className="return">
+                      <span>165% returns</span>
+                    </div>
+                    <ul className="tiip-list">
+                      <li>
+                        {" "}
+                        <i class="fa fa-check"></i>Our top daily tips, plus
+                      </li>
+                      <li>
+                        <i class="fa fa-check"></i>Our top 15 Saturday tips
+                      </li>
+                      <li>
+                        {" "}
+                        <i class="fa fa-check"></i>Direct to your inbox
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="row tipping1">
-              <div className="col-md-6">
-                <div className="tipp-img">
-                  <img src={img3} alt="" />
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="tipping-ct">
-                  <h3>Platinum</h3>
-                  <p>$60 / Week</p>
-                  <div className="return">
-                    <span>265% returns</span>
+            <div className="btn" style={{ width: "50%" }} onClick={redy}>
+              <div className="row tipping1" style={{ width: "100%" }}>
+                <div className="col-md-6">
+                  <div className="tipp-img">
+                    <img src={img3} alt="" />
                   </div>
-                  <ul className="tiip-list">
-                    <li>
-                      {" "}
-                      <i class="fa fa-check"></i> Our top 5 daily tips, plus
-                    </li>
-                    <li>
-                      <i class="fa fa-check"></i> Our top 20 Saturday tips
-                    </li>
-                    <li>
-                      {" "}
-                      <i class="fa fa-check"></i>Direct to your inbox
-                    </li>
-                  </ul>
+                </div>
+                <div className="col-md-6">
+                  <div className="tipping-ct">
+                    <h3>Platinum</h3>
+                    <p>$60 / Week</p>
+                    <div className="return">
+                      <span>265% returns</span>
+                    </div>
+                    <ul className="tiip-list">
+                      <li>
+                        {" "}
+                        <i class="fa fa-check"></i> Our top 5 daily tips, plus
+                      </li>
+                      <li>
+                        <i class="fa fa-check"></i> Our top 20 Saturday tips
+                      </li>
+                      <li>
+                        {" "}
+                        <i class="fa fa-check"></i>Direct to your inbox
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -572,7 +606,7 @@ if(isAuthenticated){console.log("hello");}
                 <div className="ser-img">
                   <img src={houndIcon} alt="img" />
                 </div>
-                <h3>Horse Racing Tips</h3>
+                <h3>Greyhound Racing Tips</h3>
                 <p>
                   Our eyes are always on the track to ensure we get the inside
                   rail on the winning tips sent out.
@@ -595,17 +629,29 @@ if(isAuthenticated){console.log("hello");}
           </div>
           <ul className="socil-link">
             <li>
-              <a href="https://www.facebook.com/The-GOATs-Tips-102013742449574">
+              <a
+                target={"_blank"}
+                rel="noreferrer"
+                href="https://www.facebook.com/The-GOATs-Tips-102013742449574"
+              >
                 <i class="fa fa-facebook-f"> </i>
               </a>
             </li>
             <li>
-              <a href="https://twitter.com/thegoatstips">
+              <a
+                target={"_blank"}
+                rel="noreferrer"
+                href="https://twitter.com/thegoatstips"
+              >
                 <i class="fa fa-twitter"></i>
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/goats.tips/">
+              <a
+                target={"_blank"}
+                rel="noreferrer"
+                href="https://www.instagram.com/goats.tips/"
+              >
                 <i class="fa fa-instagram"></i>
               </a>
             </li>

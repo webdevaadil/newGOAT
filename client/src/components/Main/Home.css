@@ -31,6 +31,9 @@
     min-width: 300px;
     margin: 15px 0px;
 }
+.signbtn:hover{
+    background: #4AA331 !important;
+}
 .baner-ct h2 {
     font-size: 54px;
     color: #fff;
@@ -559,7 +562,7 @@ ul.socil-link li {
     color: red;
   }
   .reliable-img img {
-    max-width: 110%;
+    max-width: 100%;
     height: auto;
 }
 .card img {
@@ -725,6 +728,26 @@ ul.socil-link li {
 /* responsive */
 
 @media(max-width:992px) {
+    .result-mian {
+        padding: 0;
+    }
+    .media-banner{
+        display: block !important;
+    }
+    .banner-main{
+        /* width: 100%; */
+        margin: 0;
+     }
+    .banner-sec {
+        background-image: none;
+    }
+    .result {
+        background-image: none !important;
+        
+
+    }
+
+
     .relai2 {
         background: #C5AEA3;
     }
@@ -780,6 +803,9 @@ ul.socil-link li {
 }
 
 @media(max-width:778px) {
+    .baner-ct{
+        padding: 0%;
+    }
     .banner-sec {
         margin-top: 0px;
     }
@@ -796,14 +822,33 @@ ul.socil-link li {
         text-align: center;
         padding: 0px;
     }
+    .banner-sec{
+        width: 100%;
+    }
+     .banner-main{
+        width: 100%;
+        
+     }
+     .reliable-img img, .mob-img img{
+width: 100% ;
+     }
     .baner-ct {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         background: #000;
-        opacity: 0.8;
+        
         text-align: center;
-        padding: 15px;
-        margin: 10px;
     }
+    .media-banner{
+        display: block !important;
+    }
+    .banner-main{
+        /* width: 100%F; */
+        margin: 0;
+     }
+    .banner-sec {
+        background-image: none;
+    }
+
     .baner-ct h2 {
         font-size: 45px;
         color: #fff;
