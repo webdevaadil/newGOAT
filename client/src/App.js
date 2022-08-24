@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import { Main } from "./components/Main/Main";
-import Home from "./components/Main/Home"
+import Home from "./components/Main/Home";
 import { Login } from "./components/Login/Login";
 import { PaymentMethoad } from "./components/Profile/PaymentMethoad";
 import { Profile } from "./components/Profile/Profile";
@@ -27,6 +27,7 @@ import { Aboutus } from "./components/extra/About";
 import { Multilf } from "./multi/Multilf";
 import { Loader } from "./components/layout/Loader";
 import { Thankyou } from "./components/Profile/Thankyou";
+import { RequireAuth } from "./RequireAuth";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -36,13 +37,16 @@ function App() {
       <Metadata title="The Goat Tips" />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/main" element={<Main />} />
+          <Route path="/" element={<Home />} />
+          <Route index path="/main" element={<Main />} />
           <Route path="/signup" element={<Multilf />} />
           <Route path="/login" element={<Login />} />
           <Route path="/thoroughbreds" element={<Thoroughbreds />} />
           <Route path="/greyhounds" element={<Greyhounds />} />
-          <Route path="/horsedetails/:id/:location" element={<HorseDetails />} />
+          <Route
+            path="/horsedetails/:id/:location"
+            element={<HorseDetails />}
+          />
           <Route path="/greydetails/:id/:location" element={<Greydetails />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="" element={<Profile />} />
@@ -50,11 +54,12 @@ function App() {
             <Route path="accountsetting" element={<AccountSetting />} />
             <Route path="about" element={<About />} />
           </Route>
-            <Route path="/privacy-policy" element={<Aboutus/>} />
+          <Route path="/privacy-policy" element={<Aboutus />} />
           <Route path="/packages" element={<Package />} />
-          <Route path="/pac" element={<Multilf/>} />
-          <Route path="/thankyou" element={<Thankyou/>} />
-
+          <Route path="/pac" element={<Multilf />} />
+          <Route element={<RequireAuth />}>
+            <Route path="/thankyou" element={<Thankyou />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

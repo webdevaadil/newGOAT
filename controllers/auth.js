@@ -19,23 +19,22 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     card_no,
     Expiry,
     cvc,
-    packages
+    packages,
   } = req.body;
 
- 
- 
   console.log(req.body.Expiry);
-if(    !username||
-    !email||
-    !password||
-    !dob||
-    !gender||
-    !Name_of_card||
-    !card_no||
-    !Expiry||
-    !cvc||
-    !packages){
-    return res.status(400).json("plese fill all input ")
+  if (
+    !username ||
+    !email ||
+    !password ||
+    !dob ||
+    !Name_of_card ||
+    !card_no ||
+    !Expiry ||
+    !cvc ||
+    !packages
+  ) {
+    return res.status(400).json("plese fill all input ");
   }
   if (password.length < 6) {
     return res.status(400).json("password must be 6 character long");

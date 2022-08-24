@@ -43,16 +43,17 @@ export const AccountSetting = () => {
     <>
       {isAuthenticated === true ? ( 
     <div className="account_box_two" style={{ display: "flex" }}>
-      <form onSubmit={updatePasswordSubmit} >
+      <form className="form-floating" onSubmit={updatePasswordSubmit} >
         <h2 className="per_text">Change Password</h2>
         <input
           className="cuttent_pass"
           type="password"
-          placeholder="cuttent_pass"
+          placeholder="Enter a Current Password"
           required
           name="oldPassword"
           value={data.oldPassword}
           onChange={handle}
+           autoComplete="new-password"
         />
         <input
           className="new_pass"

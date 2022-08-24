@@ -142,9 +142,10 @@ export const Profile = () => {
 
 
                       >
-                        <option disabled>Select</option>
+                      <option > select </option>
                         <option>Male</option>
                         <option>Female</option>
+                        <option>Non-binary</option>
                         <option>Prefer not to say</option>
                       </select>
                       <label htmlFor="floatingSelect">Gender (Optional)</label>

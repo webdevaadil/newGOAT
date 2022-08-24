@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 // import"../font/Sportypo-Reguler-Demo.ttf"
 
@@ -20,11 +20,40 @@ import reliable from "../../Images/freetips-mobile.png";
 import HomeHeader from "../Header/HomeHeader";
 import scrollTrigger from "react-scroll-trigger";
 import HomeFooter from "../Footer/HomeFooter";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Login } from "../Login/Login";
+import { clearErrors, loaduser } from "../../actions/userAction";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+  
   const [counteron, setcounteron] = useState(false);
+  const { user, isAuthenticated, loading, isUpdated, error } = useSelector(
+    (state) => state.user
+  );
+  useEffect(()=>{
+    if(error){
+      alert.error(error)
+      dispatch(clearErrors());
+    }
+    if(!isAuthenticated){
+      dispatch(loaduser())
+      
+    }
+
+    if(isAuthenticated){
+
+      navigate("/main") 
+
+    }
+   
+  },[user,isAuthenticated])
+if(!isAuthenticated){console.log("hi");}
+if(isAuthenticated){console.log("hello");}
   return (
     <div>
       <div className="banner-sec">
@@ -62,13 +91,12 @@ const Home = () => {
           <div className="row">
             <div className="col-md-4">
               <div className="tips-ct">
-                <scrollTrigger onEnter={()=>setcounteron(true)} onExit={()=>setcounteron(false)}>
                 <h2>
                   {" "}
                   &#62;
                   <Count start={0} end={6000} duration={2} delay={0} />{" "}
                 </h2>
-                </scrollTrigger>
+               
                 <p>Tips Sent</p>
               </div>
             </div>

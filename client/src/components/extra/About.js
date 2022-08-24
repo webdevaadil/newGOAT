@@ -4,7 +4,7 @@ import { Header } from "../Header/Header";
 import "./impo.css";
 export const Aboutus = () => {
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(150, 0)
   }, [])
   return (<>
       <Header/>

@@ -44,7 +44,7 @@ export const Login = () => {
 
       if(isAuthenticated){
 
-        navigate("/") 
+        navigate("/main") 
 
       }
      

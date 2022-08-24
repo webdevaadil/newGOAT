@@ -23,6 +23,10 @@
     border: solid 2px grey;
     margin: 10px;
 }
+.cuttent_pass::placeholder ,.new_pass::placeholder ,.re_pass::placeholder{
+    color: #0A0E0F;
+    opacity: 0.5;
+}
 .new_pass{
     width: 660px;
     height: 56px;

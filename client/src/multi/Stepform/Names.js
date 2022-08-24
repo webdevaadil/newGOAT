@@ -10,10 +10,8 @@ import { Loader } from "../../components/layout/Loader";
 import axios from "axios";
 
 export const Names = ({ formData, setForm, navigation }) => {
-
   const navigate = useNavigate();
   const alert = useAlert();
-  
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
@@ -23,17 +21,26 @@ export const Names = ({ formData, setForm, navigation }) => {
 
   const { username, email, password, dob, gender } = formData;
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigation.next()
-    await axios.get("http://localhost:5000/api/auth/register")
+    navigation.next();
+    await axios.get("http://localhost:5000/api/auth/register");
 
     const myForm = new FormData();
 
-  
-      //  dispatch(register(myForm));
+    //  dispatch(register(myForm));
+  };
+  const [errorMessage, setErrorMessage] = useState("");
+  const handle = (e) => {
+    setForm(e);
+    setInterval(() => {
+      const valued = e.target.value.trim();
+      if (valued.length < 8) {
+        setErrorMessage("Password is less 8 than");
+      } else {
+        setErrorMessage("");
+      }
+    }, 2000);
   };
 
   useEffect(() => {
@@ -58,7 +65,7 @@ export const Names = ({ formData, setForm, navigation }) => {
   return (
     <>
       {loading && <Loader />}
-    
+
       <section id="form-section">
         <div className="wel-form">
           <div className="wel-p1 img-main">
@@ -68,7 +75,12 @@ export const Names = ({ formData, setForm, navigation }) => {
             <div className="form-content wel-bg ">
               <h2>Hello!</h2>
               <div className="form-main">
-                <form onSubmit={handleSubmit} encType="multipart/form-data" autoComplete="new-password" className="form-floating mb-3">
+                <form
+                  onSubmit={handleSubmit}
+                  encType="multipart/form-data"
+                  autoComplete="new-password"
+                  className="form-floating mb-3"
+                >
                   <div className="form-floating"></div>
                   <div className="form-floating mb-3">
                     <input
@@ -80,7 +92,6 @@ export const Names = ({ formData, setForm, navigation }) => {
                       className="form-control"
                       placeholder="Your Full Name"
                       autoComplete="off"
-
                     />
                     <label htmlFor="floatingInput">Name</label>
                   </div>
@@ -94,7 +105,6 @@ export const Names = ({ formData, setForm, navigation }) => {
                       className="form-control"
                       placeholder="yourmail@mail.com"
                       autoComplete="new-password"
-
                     />
                     <label htmlFor="floatingInput">Email Address</label>
                   </div>
@@ -103,20 +113,27 @@ export const Names = ({ formData, setForm, navigation }) => {
                     <input
                       value={password}
                       required
-                      onChange={setForm}
+                      onChange={handle}
                       name="password"
                       type="password"
                       className="form-control"
                       id="myInput"
                       placeholder="*******"
                       autoComplete="new-password"
-
                     />
+                    {errorMessage === "" ? null : (
+                      <span
+                        style={{
+                          fontWeight: "lighter",
+                          color: "red",
+                        }}
+                      >
+                        {errorMessage}
+                      </span>
+                    )}
                     <i className="fa fa-eye" onClick={myFunction}></i>
                     <label htmlFor="floatingPassword">Passwords</label>
                   </div>
-
-
 
                   <div className="form-inner fom-btn">
                     <div className="form-floating mb-3">
@@ -129,8 +146,6 @@ export const Names = ({ formData, setForm, navigation }) => {
                         className="form-control"
                         placeholder="dd/mm/yyyy"
                         autoComplete="new-password"
-
-
                       />
                       <label htmlFor="floatingInput">Date of Birth</label>
                     </div>
@@ -142,9 +157,9 @@ export const Names = ({ formData, setForm, navigation }) => {
                         aria-label="Floating label select example"
                         value={gender}
                         autoComplete="new-password"
-
                       >
-                        <option >Male</option>
+                        <option>select gender</option>
+                        <option>Male</option>
                         <option>Female</option>
                         <option>Non-binary</option>
                         <option>Prefer not to say</option>
@@ -162,12 +177,11 @@ export const Names = ({ formData, setForm, navigation }) => {
                     </Link>
                     <button
                       style={{ backgroundColor: " #10867F", color: "black" }}
-                      // disabled={data.dob === ""}
+                      disabled={errorMessage === "Password is less 8 than"}
                       type="submit"
-                  
                       className="btn btn-outline-secondary"
                     >
-                    Next
+                      Next
                     </button>
                   </div>
                 </form>
