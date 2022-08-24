@@ -4,7 +4,7 @@ import "./Home.css";
 
 import img1 from "../../Images/GOAT_logo.png";
 import horse from "../../Images/goat-tips-hero.jpg";
-import man from "../../Images/man1.jpg";
+import man from "../../Images/man1.21a7578cbf7b6a963356.jpg";
 import Count from "react-countup";
 import img2 from "../../Images/gold.png";
 import img3 from "../../Images/platinum.png";
