@@ -377,7 +377,10 @@
 .return {
     margin: 12px 0;
     border-radius: 3px;
-    width: 200px;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    /* width: 200px; */
 }
 .return span {
     font-size:2vw;
@@ -1007,5 +1010,12 @@ width: 100% ;
     }
     .service-ct {
         padding-top: 20px;
+    }
+  }
+  @media(max-width:1082px) {
+    .return{
+        display: flex;
+        justify-content: center;
+        width: auto;
     }
   }
