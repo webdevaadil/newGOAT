@@ -1,9 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Footer from '../Footer/Footer'
+import { Header } from '../Header/Header'
 
 export const Thankyou = () => {
   return (
    <>
+<div style={{display:"flex",flexDirection:"column",justifyContent:"space-between",height:'100vh'}}>
+   <Header/>
 <div className="content">
   <div className="wrapper-1">
     <div className="wrapper-2">
@@ -18,6 +22,8 @@ export const Thankyou = () => {
     </div>
 </div>
 </div>
+<Footer/>
+  </div>   
    </>
   )
 }

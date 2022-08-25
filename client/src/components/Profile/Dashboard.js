@@ -13,20 +13,31 @@ export const Dashboard = () => {
   useEffect(() => {}, [loading, navigation]);
 
   return (
-    <>  
- 
+    <>
+    {loading&& (<Loader/>)}
+      <>
+      <div style={{zIndex:-10}}>
+
       <Header />
+    </div>
       <div className="main-body">
-      <section>
-        <div class="container profile-sec"style={{zIndex:"-1"}}>
-          <div class="flexbox" style={{height:"730px" ,margin:"100px auto"}}>
-            <ProfileNav />
-            <Outlet />
+        <section>
+          <div class="container profile-sec" style={{ zIndex: "-5" }}>
+            <div
+              class="flexbox"
+              style={{ height: "730px", margin: "100px auto" }}
+            >
+              <ProfileNav />
+              <Outlet />
+            </div>
           </div>
-        </div>
-        <Footer />
-      </section>
+          <div style={{ zIndex:111}}>
+            <Footer />
+          </div>
+        </section>
       </div>
+      </>
+    
     </>
   );
 };

@@ -33,7 +33,7 @@ export const AccountSetting = () => {
       setdata({ oldPassword: "", newPassword: "", confirmPassword: "" });
     }
     if (error) {
-      alert.error("error");
+      alert.error(error);
       dispatch(clearErrors());
     }
   }, [dispatch, error, alert, isUpdated]);

@@ -57,9 +57,9 @@ function App() {
           <Route path="/privacy-policy" element={<Aboutus />} />
           <Route path="/packages" element={<Package />} />
           <Route path="/pac" element={<Multilf />} />
-          <Route element={<RequireAuth />}>
+          {/* <Route element={<RequireAuth />}> */}
             <Route path="/thankyou" element={<Thankyou />} />
-          </Route>
+          {/* </Route> */}
         </Routes>
       </BrowserRouter>
     </>

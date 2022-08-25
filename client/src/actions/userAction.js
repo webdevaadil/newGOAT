@@ -15,8 +15,11 @@ import {
   UPDATE_PASSWORD_FAIL,
   UPDATE_PASSWORD_REQUEST,
   UPDATE_PASSWORD_SUCCESS,
+  UPDATE_PROFIE_FAIL,
   UPDATE_PROFIE_REQUEST,
   UPDATE_PROFIE_SUCCESS,
+  UPDATE_PROFILE_IMAGE_request,
+  UPDATE_PROFILE_IMAGE_SUCCESS,
 } from "../constants/userConstants";
 import { confirmAlert } from 'react-confirm-alert'
 import { useNavigate } from "react-router-dom";
@@ -58,6 +61,24 @@ export const register = (userData) => async (dispatch) => {
     // console.log(error);
   }
 };
+export const updateimage =(imguplod)=>async(dispatch)=>{
+  try {
+    dispatch({ type: UPDATE_PROFILE_IMAGE_request });
+    const config = { headers: { "Content-Type": "multipart/form-data" } };  
+      const data = await axios.put(
+      `/api/auth/update/profilepic`,
+      imguplod,
+      config
+    );
+    console.log(imguplod);
+    dispatch({ type: UPDATE_PROFILE_IMAGE_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PASSWORD_FAIL,
+      payload: error.response.data,
+    });
+  }
+}
 export const logout = () => async (dispatch) => {
   try {
     await axios.get(`/api/auth/logout`);
@@ -109,7 +130,7 @@ export const updateprofile = (updatedata) => async (dispatch) => {
     dispatch({ type: UPDATE_PROFIE_SUCCESS, payload: data.success });
   } catch (error) {
     dispatch({
-      type: UPDATE_PASSWORD_FAIL,
+      type: UPDATE_PROFIE_FAIL,
       payload: error.response.data,
     });
   }

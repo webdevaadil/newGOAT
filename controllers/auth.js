@@ -153,11 +153,11 @@ exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   const isPasswordMatched = await user.matchPassword(req.body.oldPassword);
 
   if (!isPasswordMatched) {
-    return res.status(400).json("Old password is incorrect");
+    return res.status(400).json({message:"Old password is incorrect"});
   }
 
   if (req.body.newPassword !== req.body.confirmPassword) {
-    return res.status(400).json("password does not match");
+    return res.status(400).json({message:"password does not match"} );
   }
 
   user.password = req.body.newPassword;
@@ -178,6 +178,19 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     cvc: req.body.cvc,
     packages: req.body.packages,
   };
+
+  await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+  res.status(200).json({
+    success: "updated",
+  });
+});
+exports.profilepic= catchAsyncerror(async(req,res,next)=>{
+  const newUserData = {
+    avatar: req.body.avatar}
   if (req.body.avatar) {
     const user = await User.findById(req.user.id);
     const imageId = user.avatar.public_id;
@@ -194,15 +207,16 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
       public_id: myCloud.public_id,
       url: myCloud.secure_url,
     };
+    await User.findByIdAndUpdate(req.user.id, newUserData, {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    });
+    res.status(200).json({
+      success: "updated",
+    });
   }
-  await User.findByIdAndUpdate(req.user.id, newUserData, {
-    new: true,
-    useFindAndModify: false,
-  });
-  res.status(200).json({
-    success: "updated",
-  });
-});
+})
 
 const sendToken = (user, statusCode, res) => {
   const token = user.getSignedToken();

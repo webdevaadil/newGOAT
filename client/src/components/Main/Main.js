@@ -19,11 +19,15 @@ import { Pagination } from "./Pagination";
 import { apidata } from "../../actions/apiAction";
 
 import img1 from "../../Images/Vector.png";
+import { Loader } from "../layout/Loader";
 
 export const Main = () => {
   const dispatch = useDispatch();
 
-  const { isAuthenticated, user, error } = useSelector((state) => state.user);
+  const { isAuthenticated, user, error, loading } = useSelector(
+    (state) => state.user
+  );
+  useEffect(() => {}, []);
 
   const [detail, setDetail] = useState([]);
 
@@ -35,7 +39,7 @@ export const Main = () => {
 
   const [finaldetail, setFinaldetail] = useState([]);
 
-  const [loading, setLoading] = useState(true);
+  const [aloading, setaLoading] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -48,7 +52,7 @@ export const Main = () => {
 
     let finaldata = await res.data.data;
 
-    setLoading(!loading);
+    setaLoading(!aloading);
 
     finaldata.map(
       (items, index) =>
@@ -100,9 +104,7 @@ export const Main = () => {
 
     getDogdata();
   }, []);
-  const handli=async()=>{
-  
-  }
+  const handli = async () => {};
 
   const indexOfLastRecord = currentPage * recordsPerPage;
 
@@ -116,134 +118,149 @@ export const Main = () => {
 
   return (
     <>
-      <Header />
 
-      {/* main image */}
+<Header />
+      {loading ? (
+        <Loader />
+        ) : (
+          <>
+          <div className="slide">
+            <section className="container-fluid">
+              <div className="container">
+                <div className="row">
+                  <div className="main-sec">
+                    <div className="main-content">
+                      <h2>The Goat Tips</h2>
 
-      <div className="slide">
-        <section className="container-fluid">
-          <div className="container">
-            <div className="row">
-              <div className="main-sec">
-                <div className="main-content">
-                  <h2>The Goat Tips</h2>
-
-                  <p>
-                    The Goat Tips - Betting made easy! Your guide for sports
-                    betting, The Goat’s Tips caters to your needs with different
-                    packages, provides tips and guidance for betting on
-                    Thoroughbreds, Greyhounds and much more with real-time data
-                    on upcoming races and a great ROI. Sign up now!
-                  </p>
+                      <p>
+                        The Goat Tips - Betting made easy! Your guide for sports
+                        betting, The Goat’s Tips caters to your needs with
+                        different packages, provides tips and guidance for
+                        betting on Thoroughbreds, Greyhounds and much more with
+                        real-time data on upcoming races and a great ROI. Sign
+                        up now!
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      {/* free tips section */}
-
-      <div>
-        <div className="container-fluid" id="freetip-sec">
-          <div className="container section">
-            <h3 className="free-head">Today’s Free Tips</h3>
+            </section>
           </div>
 
-          <div className="container main-freetips">
-            <div className="main_1">
-              <div className="main-grid 1">
-                {todayrace.length!==0?(  todayrace.map((items, index) => {
-                  const minutesnow = new Date().getMinutes();
-                  const minutesprev = new Date(items.RaceTime).getUTCMinutes();
-                  const inminutes = minutesprev - minutesnow;
+          {/* free tips section */}
 
-                  console.log(inminutes);
-                  const trimlocation = items.RaceLocation.replace(
-                    / +/g,
-                    "-"
-                  ).toLowerCase();
+          <div>
+            <div className="container-fluid" id="freetip-sec">
+              <div className="container section">
+                <h3 className="free-head">Today’s Free Tips</h3>
+              </div>
 
-                  return (
-                    <>
-                      <div className="tip-grid">
-                        <div className="tips-colum1">
-                          <img src={img1} alt="horseimg" />
-                        </div>
+              <div className="container main-freetips">
+                <div className="main_1">
+                  <div className="main-grid 1">
+                    {todayrace.length !== 0 ? (
+                      todayrace.map((items, index) => {
+                        const minutesnow = new Date().getMinutes();
+                        const minutesprev = new Date(
+                          items.RaceTime
+                        ).getUTCMinutes();
+                        const inminutes = minutesprev - minutesnow;
 
-                        <div className="tips-colum1">
-                          <h3>{items.RaceLocation}</h3>
+                        console.log(inminutes);
+                        const trimlocation = items.RaceLocation.replace(
+                          / +/g,
+                          "-"
+                        ).toLowerCase();
 
-                          <div className="space">
-                            <Link
-                              to={`horseDetails/${items.id}/${trimlocation}`}
-                            >
-                              <button className="btn">
-                                Race {items.RaceNumber}
-                              </button>
-                            </Link>
+                        return (
+                          <>
+                            <div className="tip-grid">
+                              <div className="tips-colum1">
+                                <img src={img1} alt="horseimg" />
+                              </div>
 
-                            <p>in {inminutes} Minute</p>
+                              <div className="tips-colum1">
+                                <h3>{items.RaceLocation}</h3>
+
+                                <div className="space">
+                                  <Link
+                                    to={`horseDetails/${items.id}/${trimlocation}`}
+                                  >
+                                    <button className="btn">
+                                      Race {items.RaceNumber}
+                                    </button>
+                                  </Link>
+
+                                  <p>in {inminutes} Minute</p>
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        );
+                      })
+                    ) : (
+                      <div className="content">
+                        <div className="wrapper-1">
+                          <div className="wrapper-2">
+                            <p>
+                              "No tips for the day stay tuned for daily tips"
+                            </p>
                           </div>
                         </div>
                       </div>
-                    </>
-                  )
-                })):(<div className="content">
-                <div className="wrapper-1">
-                  <div className="wrapper-2">
-                    
-                    <p>"No tips for the day stay tuned for daily tips"</p>
-                    
+                    )}
                   </div>
-              </div>
-              </div>)}
-              
-              
+                </div>
+
+                {isAuthenticated ? (
+                  <div className="main_1 main-img">
+                    <div className="main_cont">
+                      <h3>Welcome ! {user.username}</h3>
+
+                      <p>And get the hottest tips that can earn you up to </p>
+
+                      <h4>
+                        <span>678% in returns</span> on your initial investment.
+                      </h4>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="main_1 main-img">
+                    <div className="main_cont">
+                      <h3>Sign up to The Goat Tips Today!</h3>
+
+                      <p>And get the hottest tips that can earn you up to </p>
+
+                      <h4>
+                        <span>678% in returns</span> on your initial investment.
+                      </h4>
+
+                      <Link to="/signup">
+                        <button className="btn freetips-btn">
+                          SIGN ME UP!
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
-
-            {isAuthenticated ? (
-              <div className="main_1 main-img">
-                <div className="main_cont">
-                  <h3>Welcome ! {user.username}</h3>
-
-                  <p>And get the hottest tips that can earn you up to </p>
-
-                  <h4>
-                    <span>678% in returns</span> on your initial investment.
-                  </h4>
-                </div>
-              </div>
-            ) : (
-              <div className="main_1 main-img">
-                <div className="main_cont">
-                  <h3>Sign up to The Goat Tips Today!</h3>
-
-                  <p>And get the hottest tips that can earn you up to </p>
-
-                  <h4>
-                    <span>678% in returns</span> on your initial investment.
-                  </h4>
-
-                  <Link to="/signup">
-                    <button className="btn freetips-btn">SIGN ME UP!</button>
-                  </Link>
-                </div>
-              </div>
-            )}
           </div>
-        </div>
-      </div>
 
-      <Records horseimg={img1} loading={loading} detail={currentRecords} />
+          <Records
+            horseimg={img1}
+            aloading={aloading}
+            detail={currentRecords}
+          />
 
-      <Pagination
-        nPages={nPages}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-      <Footer />
+          <Pagination
+            nPages={nPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+          <Footer />
+        </>
+      )}
     </>
   );
 };

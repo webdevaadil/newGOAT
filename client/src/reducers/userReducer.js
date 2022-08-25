@@ -18,6 +18,9 @@ import {
   UPDATE_PROFIE_FAIL,
   UPDATE_PROFIE_REQUEST,
   UPDATE_PROFIE_SUCCESS,
+  UPDATE_PROFILE_IMAGE_request,
+  UPDATE_PROFILE_IMAGE_SUCCESS,
+  UPDATE_PROFILE_IMAGE_FAIL,
 } from "../constants/userConstants";
 
 export const userReducer = (state = {}, action) => {
@@ -87,25 +90,26 @@ export const userReducer = (state = {}, action) => {
       };
     case UPDATE_PASSWORD_REQUEST:
     case UPDATE_PROFIE_REQUEST:
+    case UPDATE_PROFILE_IMAGE_request:
       return {
         ...state,
         loading: true,
       };
     case UPDATE_PASSWORD_SUCCESS:
     case UPDATE_PROFIE_SUCCESS:
+    case UPDATE_PROFILE_IMAGE_SUCCESS:
       return {
         ...state,
         loading: false,
-        // isUpdated: action.payload,
-        isUpdated:true
+        isUpdated: true,
       };
     case UPDATE_PASSWORD_FAIL:
     case UPDATE_PROFIE_FAIL:
+    case UPDATE_PROFILE_IMAGE_FAIL:
       return {
         ...state,
         loading: false,
         error: action.payload,
-        
       };
     case UPDATE_PASSWORD_RESET:
       return {

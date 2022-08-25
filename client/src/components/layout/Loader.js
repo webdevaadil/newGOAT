@@ -3,8 +3,9 @@ import "./Loader.css";
 
 export const Loader = () => {
   return (
-    <div className="loading">
+    <div className="loading" style={{zIndex:-999999999}}>
     <div></div>
   </div>
   )
 }
+  
