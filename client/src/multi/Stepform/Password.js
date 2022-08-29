@@ -35,6 +35,7 @@ export const Password = ({ formData, setForm, navigation }) => {
     // setpackages(packages)
     
   };
+ 
   const [packagess, setpackages] = useState(packages);
   const options = [
     {
@@ -126,6 +127,7 @@ console.log(packagess);
   return (
     <>
       {loading && <Loader />}
+
       <div className="container-fluid form-section wel-form">
         <div className="col-md-6">
           <div className="wel-p1 pack-main"></div>

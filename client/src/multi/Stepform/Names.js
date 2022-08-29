@@ -62,9 +62,14 @@ export const Names = ({ formData, setForm, navigation }) => {
       x.type = "password";
     }
   }
+  const payment=async()=>{
+    await axios.post("http://localhost:5000/pay" ,)
+
+  }
   return (
     <>
       {loading && <Loader />}
+      <button onClick={payment}>payment</button>
 
       <section id="form-section">
         <div className="wel-form">
