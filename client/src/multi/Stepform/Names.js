@@ -63,7 +63,7 @@ export const Names = ({ formData, setForm, navigation }) => {
     }
   }
   const payment=async()=>{
-    await axios.post("http://localhost:5000/pay" ,)
+    await axios.post("https://gottipsapp.herokuapp.com/pay" ,)
 
   }
   return (
