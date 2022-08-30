@@ -1,0 +1,78 @@
+.profile_box_one{
+    border-radius: 8px;
+    height:290px;
+    background-color: #fff;
+    padding: 15px;
+}
+.profile_box_one h1{
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #0A0E0F;
+    font-family: 'Nunito Sans', sans-serif;
+    padding-bottom: 24px;
+}
+    
+
+.col{
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #10867F;
+    font-family: 'Nunito Sans', sans-serif;
+   
+}
+.pic1{
+    display: flex;
+    justify-content: space-between;
+
+}
+.pic2{
+    display: flex;
+    justify-content: space-between;
+   
+
+}
+.pic3{
+    display: flex;
+    justify-content: space-between;
+   
+}
+.pic4{
+    display: flex;
+    justify-content: space-between;
+   
+}
+.pic5{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.img2{
+    padding: 8px;
+}
+
+.img2:active{
+    color: #10867F;
+}
+.list_icon{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color:#4E4F51;
+    font-family: 'Nunito Sans', sans-serif;
+    list-style: none;
+    cursor: pointer;
+   
+}
+@media screen and (max-width: 968px) {
+    .flexbox{
+        flex-wrap: wrap;
+    }}
+    @media screen and (max-width: 768px) {
+        .flexbox{
+            display: block;
+        }}

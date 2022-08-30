@@ -1,0 +1,73 @@
+.theader {
+    background-color: #000;
+    padding: 15px 0px;
+}
+.signbtn {
+    padding: 10px 40px;
+    border-radius: 25px;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+.signbtn {
+    color: #000;
+    background-color: #10867F;
+    padding: 8px 16px;
+    border-radius: 50px;
+    min-width: 150px;
+    text-align: center;
+    font-weight: bold !important;
+    text-transform: none;
+}
+.signbtn:hover{
+  background-color: #113c39;
+  color: white;
+}
+.sign-btn {
+    text-align: right;
+}
+.head-sec {
+    display: flex;
+    align-items: center;
+}
+.top-container {
+    background-color: #f1f1f1;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .header {
+    padding: 10px 16px;
+    color: #f1f1f1;
+  }
+  
+  .sticky {
+    top: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  
+ /* footer */
+
+
+.footer-sec {
+    background: #000;
+    padding: 10px;
+}
+
+.footer-vct h4 {
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+}
+
+/* responsive */
+@media (max-width:778px) {
+    .head-sec {
+        text-align: center;
+    }
+    .sign-btn {
+        text-align: center;
+        padding: 15px 0px;
+    }    
+    
+  }
