@@ -96,19 +96,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <section>
-        <div
-          className=" media-banner"
-          style={{ display: "none", width: "100%", height: "100%" }}
-        >
-          <img
-            style={{ width: "100%", height: "100%" }}
-            src={horse}
-            alt=""
-            srcset=""
-          />
-        </div>
-      </section>
+      
 
       <div className="tips-sec">
         <div className="container tips-main">

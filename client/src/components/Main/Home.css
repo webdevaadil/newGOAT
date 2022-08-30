@@ -757,9 +757,7 @@ ul.socil-link li {
         /* width: 100%; */
         margin: 0;
      }
-    .banner-sec {
-        background-image: none;
-    }
+   
     .result {
         background-image: none !important;
         
@@ -790,7 +788,7 @@ ul.socil-link li {
     }
     .baner-ct {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        background: #000;
+        background: #000000bf;
         padding-right: 0px;
         padding: 20px;
         text-align: center;
@@ -863,7 +861,7 @@ width: 100% ;
      }
     .baner-ct {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        background: #000;
+        background: #000000bf;
         
         text-align: center;
     }
@@ -877,9 +875,7 @@ width: 100% ;
         /* width: 100%F; */
         margin: 0;
      }
-    .banner-sec {
-        background-image: none;
-    }
+  
 
     .baner-ct h2 {
         font-size: 45px;
