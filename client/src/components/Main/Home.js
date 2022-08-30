@@ -81,7 +81,7 @@ const Home = () => {
                 <h2>
                   <span>Win Better</span> with <br></br> The GOAT's Tips
                 </h2>
-                <p>
+                <p style={{margin:"0"}}>
                   A sports tipping service that consistently delivers a positive
                   return on investment for its clients. The GOAT's Tips utilises
                   the latest technology and artificial intelligence to improve
@@ -105,13 +105,13 @@ const Home = () => {
               <div className="tips-ct">
                 <h2>
                   {" "}
-                  &#62;6,000
-                  {/* <Count
+                  &#62;
+                  <Count
                     start={0}
-                    end={num6.toLocaleString()}
+                    end={6000}
                     duration={2}
                     delay={0}
-                  />{" "} */}
+                  />{" "}
                 </h2>
 
                 <p>Tips Sent</p>
@@ -119,13 +119,23 @@ const Home = () => {
             </div>
             <div className="col-md-4">
               <div className="tips-ct brde">
-                <h2> &#62; 37%</h2>
+                <h2> &#62;<Count
+                    start={0}
+                    end={37}
+                    duration={2}
+                    delay={0}
+                  />%</h2>
                 <p>Tips Sent</p>
               </div>
             </div>
             <div className="col-md-4">
               <div className="tips-ct">
-                <h2> 400+</h2>
+                <h2> <Count
+                    start={0}
+                    end={400}
+                    duration={2}
+                    delay={0}
+                  />+</h2>
                 <p>Satisfied Clients</p>
               </div>
             </div>
@@ -182,16 +192,31 @@ const Home = () => {
                   <div className="col-md-4 col-sm-4">
                     <h3>
                       {/* <Count start={0} end={37} duration={2} delay={0} /> */}
-                      37%
+                      <Count
+                    start={0}
+                    end={37}
+                    duration={2}
+                    delay={0}
+                  />%
                     </h3>
                     <p>Win strike rate</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3>$2.9</h3>
+                    <h3>$<Count
+                    start={0}
+                    end={2.9}
+                    duration={2}
+                    delay={0}
+                  /></h3>
                     <p>Average winning odds</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3>56%</h3>
+                    <h3><Count
+                    start={0}
+                    end={56}
+                    duration={2}
+                    delay={0}
+                  />%</h3>
                     <p>Top 2 place rate</p>
                   </div>
                 </div>
@@ -204,15 +229,30 @@ const Home = () => {
               >
                 <div className="row rate-mian">
                   <div className="col-md-4 col-sm-4">
-                    <h3>57%</h3>
+                    <h3><Count
+                    start={0}
+                    end={57}
+                    duration={2}
+                    delay={0}
+                  />%</h3>
                     <p>Win strike rate</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3>$2.3</h3>
+                    <h3>$<Count
+                    start={0}
+                    end={2.3}
+                    duration={2}
+                    delay={0}
+                  /></h3>
                     <p>Average winning odds</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3>68%</h3>
+                    <h3><Count
+                    start={0}
+                    end={68}
+                    duration={2}
+                    delay={0}
+                  />%</h3>
                     <p>Top 2 place rate</p>
                   </div>
                 </div>
