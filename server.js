@@ -25,9 +25,11 @@ connectDB();
 app.use("/api/auth", require("./routes/auth"));
 const PORT = process.env.PORT || 5000;
 //////////////paypall/////////////////////
+
 app.post('/pay', (req, res) => {
+  console.log("pay");
   const create_payment_json = {
-    "intent": "sale",
+    "intent": "authorize",
     "payer": {
         "payment_method": "paypal"
     },

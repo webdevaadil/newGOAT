@@ -61,9 +61,9 @@ export const Header = () => {
                   <div
                     style={{
                       zIndex: "1",
-                      width: "232px",
-                      height: "160px",
-                      gap: "24px",
+                      // width: "232px",
+                      // height: "160px",
+                      // gap: "24px",
                       position: "absolute",
                       left: "12%",
                     }}
