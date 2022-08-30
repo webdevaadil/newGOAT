@@ -81,7 +81,7 @@ export const Main = () => {
       );
     });
 
-    console.log(filterdate);
+    // console.log(filterdate);
 
     setTodayRace(filterdate);
   };
@@ -113,7 +113,10 @@ export const Main = () => {
 
   const nPages = Math.ceil(detail.length / recordsPerPage);
 
-  console.log(currentRecords);
+  // console.log(nPages);
+  // if(nPages===0){
+  //  <Pagination disabledClassName/>
+  // }
 
   return (
     <>
@@ -256,6 +259,7 @@ export const Main = () => {
             nPages={nPages}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
+            disabledClass
           />
           <Footer />
         </>

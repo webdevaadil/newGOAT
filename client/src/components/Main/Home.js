@@ -436,7 +436,7 @@ const Home = () => {
             <div className="col-md-6">
               <div className="reliable-img">
                 <div className="mob-img">
-                  <img src={races1} alt="" />
+                  {/* <img src={races1} alt="" /> */}
                 </div>
               </div>
             </div>

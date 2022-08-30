@@ -30,7 +30,7 @@ import { Thankyou } from "./components/Profile/Thankyou";
 import { RequireAuth } from "./RequireAuth";
 
 function App() {
-  const { isAuthenticated } = useSelector((state) => state.user);
+
 
   return (
     <>
@@ -38,7 +38,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route index path="/main" element={<Main />} />
+          <Route index path="/main" element={<Main/>} />
           <Route path="/signup" element={<Multilf />} />
           <Route path="/login" element={<Login />} />
           <Route path="/thoroughbreds" element={<Thoroughbreds />} />
@@ -67,3 +67,16 @@ function App() {
 }
 
 export default App;
+export function ProtectedRoute(props){
+
+  const { user } = useSelector((state) => state.user);
+
+  if(user)
+  {
+    return props.children
+  
+  }else{
+   return <Navigate to="/"/>
+  }
+
+}

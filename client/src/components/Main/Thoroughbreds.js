@@ -11,7 +11,7 @@ import { Pagination } from "./Pagination";
 import { apidata } from "../../actions/apiAction";
 import { useDispatch,useSelector } from "react-redux";
 import { Loader } from "../layout/Loader";
-import img1 from "../../Images/Vector.png"
+import img1 from "../../Images/left-Vector.png"
 
 export const Thoroughbreds=()=>{
 
@@ -70,16 +70,13 @@ console.log(currentRecords)
             {/* <div className="container"> */}
             <Breadcrumb separator=">">
     <Breadcrumb.Item >
-    <Link to="/" >Home</Link>
+    <Link to="/main" >Home</Link>
     </Breadcrumb.Item>
+    
     <Breadcrumb.Item >
-    <Link to="/thoroughbreds" >Sports</Link>
-
-    </Breadcrumb.Item>
-    <Breadcrumb.Item >
- <Link style={{color:"#10867F"}} to = "/thoroughbreds">
+ {/* <Link style={{color:"#10867F"}} to = "/thoroughbreds"> */}
  Thoroughbreds
- </Link>
+ {/* </Link> */}
     </Breadcrumb.Item>
   </Breadcrumb>
         </div>

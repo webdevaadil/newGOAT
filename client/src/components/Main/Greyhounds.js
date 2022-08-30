@@ -74,16 +74,13 @@ console.log(currentRecords)
       <div id="sport-sec">        
       <Breadcrumb separator=">">
     <Breadcrumb.Item>
-    <Link to="/" >Home</Link>
+    <Link to="/main" >Home</Link>
     </Breadcrumb.Item>
-    <Breadcrumb.Item >
-    <Link to="/Thoroughbreds" >Sports</Link>
 
-    </Breadcrumb.Item>
     <Breadcrumb.Item >
- <Link style={{color:"#10867F"}} to = "/greyhounds">
+ {/* <Link style={{color:"#10867F"}} to = "/greyhounds"> */}
  Greyhounds
- </Link>
+ {/* </Link> */}
     </Breadcrumb.Item>
   </Breadcrumb>
         </div>
