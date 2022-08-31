@@ -33,11 +33,11 @@ export const Main = () => {
 
   const [todayrace, setTodayRace] = useState([]);
 
-  const [placename, setPlaceName] = useState("");
+  // const [placename, setPlaceName] = useState("");
 
   const [dogdetail, setDogdetail] = useState([]);
 
-  const [finaldetail, setFinaldetail] = useState([]);
+  // const [finaldetail, setFinaldetail] = useState([]);
 
   const [aloading, setaLoading] = useState(true);
 
@@ -103,29 +103,53 @@ export const Main = () => {
 
     getDogdata();
   }, []);
+  const [newfetchdate, setnewfetchdate] = useState("");
   const handli = async () => {};
 
   const indexOfLastRecord = currentPage * recordsPerPage;
 
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 
-  const currentRecords = detail.slice(indexOfFirstRecord, indexOfLastRecord);
+  let currentRecords = detail.slice(indexOfFirstRecord, indexOfLastRecord);
+  // const [filterdetail, setFilterdetail] = useState(second)
 
   const nPages = Math.ceil(detail.length / recordsPerPage);
+  // const nPages = Math.ceil(currentRecords.length);
 
-  // console.log(nPages);
-  // if(nPages===0){
-  //  <Pagination disabledClassName/>
-  // }
+  const [datenew, setdatenew] = useState("");
+
+  console.log(datenew);
+
+  const handlechange = (e) => {
+    e.preventDefault();
+    setnewfetchdate(datenew);
+  };
+  if (newfetchdate !== "") {
+    const datefilter = currentRecords.filter((item, index) => {
+      return item.RaceDate === newfetchdate;
+    });
+    currentRecords = datefilter;
+  }
+  const handle = (e) => {
+    let keyword = new Date(e.target.value);
+    const mon = keyword.getMonth();
+    const dat = keyword.getDate();
+    const yearr = keyword.getFullYear();
+    setdatenew(`${mon + 1}/${dat}/${yearr}`);
+  };
+  const resetcalender = (e) => {
+    e.preventDefault();
+    // e.target.reset();
+    setnewfetchdate("");
+  };
 
   return (
     <>
-
-<Header />
+      <Header />
       {loading ? (
         <Loader />
-        ) : (
-          <>
+      ) : (
+        <>
           <div className="slide">
             <section className="container-fluid">
               <div className="container">
@@ -249,11 +273,47 @@ export const Main = () => {
             </div>
           </div>
 
-          <Records
-            horseimg={img1}
-            aloading={aloading}
-            detail={currentRecords}
-          />
+          <div className="container">
+           <div style={{display:"flex",justifyContent:"end"}}>
+           <form
+            
+            className="form"
+            onSubmit={handlechange}
+            onReset={resetcalender}
+          >
+            <input
+              className="datepicker form-control "
+              style={{
+             
+                alignItems: "center",
+                textAlign: "center",
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+              }}
+              onChange={handle}
+              name="min"
+              id="min"
+              type="date"
+            />
+           
+              <div >
+              
+            <input
+                className="btn btn-primary"
+                style={{margin:"10px", backgroundColor: "#10867f" }}
+                type="submit"
+                value={"submit"}
+                />
+              <input
+                className="btn btn-danger "
+                type="reset"
+                value={"reset"}
+              />
+            </div>
+          </form>
+           </div>
+          </div>
+          <Records horseimg={img1} loading={loading} detail={currentRecords} />
 
           <Pagination
             nPages={nPages}

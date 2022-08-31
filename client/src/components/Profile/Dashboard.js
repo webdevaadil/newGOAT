@@ -14,7 +14,7 @@ export const Dashboard = () => {
 
   return (
     <>
-    {loading&& (<Loader/>)}
+    {/* {loading&& (<Loader/>)} */}
       <>
       <div style={{zIndex:-10}}>
 

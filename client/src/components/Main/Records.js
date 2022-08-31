@@ -4,34 +4,17 @@ import { Link } from "react-router-dom";
 import { Loader } from "../layout/Loader";
 
 export const Records = ({ detail, loading, horseimg }) => {
-  const [datenew, setdatenew] = useState("");
-  const handle = (e) => {
-    let keyword = new Date(e.target.value);
-    const mon = keyword.getMonth();
-    const dat = keyword.getDate();
-    const yearr = keyword.getFullYear();
-    setdatenew(`${mon + 1}/${dat}/${yearr}`);
-  };
-  console.log(datenew);
-  let racedata = detail;
-  const handlechange = () => {
-    const datefilter = detail.filter((items, index) => {
-      // console.log(items); 
-      return items.RaceDate === datenew;
-    });
-    racedata = datefilter;
-    console.log(racedata);
-  };
+
   return (
     <>
       {loading ? (
         <Loader />
       ) : (
         <>
-          <button onClick={handlechange}>fillter</button>
+          {/* <button onClick={handlechange}>fillter</button> */}
           <div>
             <div className="container-fluid upcomming-sec">
-              <div className="container">
+              <div className="container" style={{marginBottom:"10px"}}>
                 <h3>Upcoming Races</h3>
                 <div className="upcomming-table">
                   <table>
@@ -42,7 +25,8 @@ export const Records = ({ detail, loading, horseimg }) => {
                       <th>Race No.</th>
                       <th className="first-border2">Win Odds</th>
                     </tr>
-                    {racedata.map((items, index) => {
+                      
+                    {detail.map((items, index) => {
                       const date = new Date(items.RaceDate).toDateString();
                       const trimlocation = items.RaceLocation.replace(
                         / +/g,
@@ -71,13 +55,21 @@ export const Records = ({ detail, loading, horseimg }) => {
                       );
                     })}
                   </table>
+                      {detail.length<=0&&( <div className="content">
+                            <div className="wrapper-1" style={{marginBottom:"20px"}}>
+                              <div className="wrapper-2">
+                                <p>
+                                  "No races for the day stay tuned for daily races information"
+                                </p>
+                              </div>
+                            </div>
+                          </div>)}
                 </div>
               </div>
             </div>
           </div>
         </>
       )}
-      <input onChange={handle} name="min" id="min" type="date" />
     </>
   );
 };

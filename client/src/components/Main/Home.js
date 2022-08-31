@@ -109,7 +109,7 @@ const Home = () => {
                   <Count
                     start={0}
                     end={6000}
-                    duration={2}
+                    duration={10}
                     delay={0}
                   />{" "}
                 </h2>
@@ -122,7 +122,7 @@ const Home = () => {
                 <h2> &#62;<Count
                     start={0}
                     end={37}
-                    duration={2}
+                    duration={4}
                     delay={0}
                   />%</h2>
                 <p>Tips Sent</p>
@@ -133,7 +133,7 @@ const Home = () => {
                 <h2> <Count
                     start={0}
                     end={400}
-                    duration={2}
+                    duration={6}
                     delay={0}
                   />+</h2>
                 <p>Satisfied Clients</p>
@@ -191,11 +191,11 @@ const Home = () => {
                 <div className="row rate-mian">
                   <div className="col-md-4 col-sm-4">
                     <h3>
-                      {/* <Count start={0} end={37} duration={2} delay={0} /> */}
+                      {/* <Count start={0} end={37} duration={7} delay={0} /> */}
                       <Count
                     start={0}
                     end={37}
-                    duration={2}
+                    duration={4}
                     delay={0}
                   />%
                     </h3>
@@ -214,7 +214,7 @@ const Home = () => {
                     <h3><Count
                     start={0}
                     end={56}
-                    duration={2}
+                    duration={5}
                     delay={0}
                   />%</h3>
                     <p>Top 2 place rate</p>
@@ -232,7 +232,7 @@ const Home = () => {
                     <h3><Count
                     start={0}
                     end={57}
-                    duration={2}
+                    duration={7}
                     delay={0}
                   />%</h3>
                     <p>Win strike rate</p>
@@ -250,7 +250,7 @@ const Home = () => {
                     <h3><Count
                     start={0}
                     end={68}
-                    duration={2}
+                    duration={7}
                     delay={0}
                   />%</h3>
                     <p>Top 2 place rate</p>
@@ -436,7 +436,7 @@ const Home = () => {
             <div className="col-md-6">
               <div className="reliable-img">
                 <div className="mob-img">
-                  {/* <img src={races1} alt="" /> */}
+                  <img src={races1} alt="" />
                 </div>
               </div>
             </div>
