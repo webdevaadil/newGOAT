@@ -130,24 +130,17 @@ export const Profile = () => {
 
                   <div
                     className="pic_flex_box"
-                    style={{
-
-                      flexDirection: "column",
-                      width:"300px",
-                      alignItems:"center",
-                      // alignItems: "baseline",
-
-                    }}
+                    
                   >
                     {/* <div style={{display: "flex",}}id="updateProfileImage"> */}
                     <img
-                      style={{ width: "300px" }}
+                      className="profile-img"
                       src={avatar}
                       alt="Avatar Preview"
                     />
                     {/* <input type="file"className="profil-img"name="avatar"accept="image/*"onChange={handle}/> */}
                     <Button
-                      variant="primary"
+                      variant="primary profile-btn"
                       style={{ marginTop: "10px" }}
                       onClick={handleShow}
                     >

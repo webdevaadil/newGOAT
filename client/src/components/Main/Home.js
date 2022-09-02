@@ -41,23 +41,16 @@ const Home = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    if (!isAuthenticated) {
-      dispatch(loaduser());
-    }
+    // if (!isAuthenticated) {
+    //   dispatch(loaduser());
+    // }
 
-    if (isAuthenticated) {
-      // alert.success("Signup Successfull");
-      navigate("/main");
-    }
+    // if (isAuthenticated) {
+    //   // alert.success("Signup Successfull");
+    //   navigate("/main");
+    // }
   }, [dispatch, isAuthenticated, error, navigate]);
-  if (!isAuthenticated) {
-    console.log("hi");
-  }
-  if (isAuthenticated) {
-    console.log("hello");
-  }
-  // let num6 = 6000;
-  // let redyi = num6.toLocaleString;
+ 
   const redy = () => {
     navigate("/packages");
   };

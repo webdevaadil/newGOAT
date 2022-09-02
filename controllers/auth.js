@@ -4,6 +4,7 @@ const catchAsyncerror = require("../middleware/catchAsyncerror");
 const jwt = require("jsonwebtoken");
 var cloudinary = require("cloudinary").v2;
 const emailValidator = require("deep-email-validator");
+const { expressjwt } = require("express-jwt");
 
 async function isEmailValid(email) {
   return emailValidator.validate(email);
@@ -80,7 +81,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
       }
     });
   } catch (error) {
-    // res.status(500).json({ success: false, });
+    console.log(error.message);
   }
 });
 
@@ -103,6 +104,8 @@ exports.login = catchAsyncerror(async (req, res, next) => {
 
     sendToken(user, 200, res);
   } catch (error) {
+    throw new Error(error);
+
     // res.status(500).json({ success: false });
   }
 });
@@ -111,7 +114,9 @@ exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   const { token } = req.cookies;
   // console.log(token);
   if (!token) {
-    return next(new ErrorResponse("plese login to access this resource", 401));
+    return res
+      .status(500)
+      .json({ message: "plese login to access this resource" }, 401)
   }
   const decodedData = jwt.verify(token, process.env.JWT_SECRET);
   req.user = await User.findById(decodedData.id);
@@ -122,18 +127,11 @@ exports.dashboard = catchAsyncerror(async (req, res, next) => {
     console.log(req.session.email);
   }
   const user = await User.findById(req.user.id);
-  // const productCount = await Product.countDocuments()
-  // if (!products) {
-  //   return next(new ErrorResponse("product not found", 404));
-  // }
+
   res.status(200).json({
     sucess: true,
     user,
-
-    // productCount,
   });
-  // console.log("user");
-  // console.log({token});
 });
 exports.logout = catchAsyncerror(async (req, res, next) => {
   await res.cookie("token", null, {
@@ -146,6 +144,12 @@ exports.logout = catchAsyncerror(async (req, res, next) => {
     message: "Logged Out",
   });
 });
+exports.requireSignin = catchAsyncerror(async (req, res, next) => {
+  expressjwt({
+    secret: config.jwtSecret,
+    userProperty: "auth",
+  });
+});
 // update User password
 exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
@@ -153,11 +157,11 @@ exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   const isPasswordMatched = await user.matchPassword(req.body.oldPassword);
 
   if (!isPasswordMatched) {
-    return res.status(400).json({message:"Old password is incorrect"});
+    return res.status(400).json({ message: "Old password is incorrect" });
   }
 
   if (req.body.newPassword !== req.body.confirmPassword) {
-    return res.status(400).json({message:"password does not match"} );
+    return res.status(400).json({ message: "password does not match" });
   }
 
   user.password = req.body.newPassword;
@@ -188,9 +192,10 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     success: "updated",
   });
 });
-exports.profilepic= catchAsyncerror(async(req,res,next)=>{
+exports.profilepic = catchAsyncerror(async (req, res, next) => {
   const newUserData = {
-    avatar: req.body.avatar}
+    avatar: req.body.avatar,
+  };
   if (req.body.avatar) {
     const user = await User.findById(req.user.id);
     const imageId = user.avatar.public_id;
@@ -216,7 +221,7 @@ exports.profilepic= catchAsyncerror(async(req,res,next)=>{
       success: "updated",
     });
   }
-})
+});
 
 const sendToken = (user, statusCode, res) => {
   const token = user.getSignedToken();

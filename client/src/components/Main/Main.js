@@ -143,6 +143,7 @@ export const Main = () => {
     setnewfetchdate("");
   };
 
+
   return (
     <>
       <Header />
@@ -226,7 +227,7 @@ export const Main = () => {
                       })
                     ) : (
                       <div className="content">
-                        <div className="wrapper-1">
+                        <div className="wrapper-1" style={{height:"auto !important" }}>
                           <div className="wrapper-2">
                             <p>
                               "No tips for the day stay tuned for daily tips"

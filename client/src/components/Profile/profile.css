@@ -21,7 +21,7 @@
 }
 .profile_box_two{
     background-color: #fff;
-   max-width: 100%;
+   max-width: 90%;
     padding: 17px;
 
 }
@@ -55,12 +55,7 @@
     text-transform: capitalize;   
     margin: 0px 15px 0px 15px;
 }
-.pic_flex_box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
-}
+
 .per_text{
     font-size: 20px;
     font-weight: 800;
@@ -69,6 +64,13 @@
     color: #0A0E0F;;
     padding: 25px 0px 5px 0px;
 }
+.pic_flex_box {
+    display: grid;
+}
+.profile-btn {
+    width: 67%;
+}
+
 .name{
     width: 100%;
     /* height: 56px; */
@@ -238,6 +240,14 @@
         margin-left: 0px;
         margin-top: 10px;
 }  
+.profile_box_two {
+    background-color: #fff;
+    max-width: 68%;
+    padding: 17px;
+}
+.profile_box_two {
+    max-width: 50% !important;
+}
 }
 
 @media screen and (max-width:992px) { 
@@ -256,14 +266,84 @@
     .profile-sec {
         max-width: 90% !important;
     }
+    p.text_content {
+        text-align: left;
+    }
+    .flexbox {
+        display: grid;
+        grid-template-columns: 30% 100%;
+        width: 100%;
+        column-gap: 35px;
+    }
 }
 
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:778px) {
 .big_btn{
     padding: 10px 0px 10px 10px;
 }
-
+.profile_box_two {
+    max-width: 100%;
+}
+.pic_flex_box {
+    display: grid;
+    justify-content: center;
+}
+.profile-btn {
+    width: 100%;
+}
+img.profile-img {
+    max-width: 100%;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.input_flex_box {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 15px;
+}
+.form-floating {
+    width: 100% !important;
+}
+.button_flex_box {
+    display: flex;
+    flex-direction: column;
+}
+.account_box_two {
+    width: 100% !important;
+}
+.new_pass , .re_pass , .cuttent_pass{
+    width: 100%  !important;
+    margin: 10px 0px !important;
+}
+.account_box_two {
+    height: auto;
+}
+.about_box_two, .boxx {
+    width: 100%;
+}
+.about_box_two, .boxx {
+    width: 100% !important;
+}
+.about_box_two {
+    margin-top:0px;
+    padding: 10px;
+}
+p.text_content {
+    text-align: center;
+}
+.pro_heading {
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 5px;
+}
+.profile_box_two {
+    max-width: 100% !important;
+}
+.payment_box_two h2 {
+    text-align: center;
+}
 }
 
 @media screen and (max-width:668px) {
@@ -274,6 +354,7 @@
         width: 100%;
         column-gap: 35px;
         flex-direction: column-reverse;
+        padding: 20px;
     }
     .profile-sec {
         max-width: 100% !important;
