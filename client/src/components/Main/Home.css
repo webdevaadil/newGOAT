@@ -979,7 +979,7 @@ ul.socil-link li {
         line-height: 54px;
     }
     .tipp-img img {
-        max-width: 140px;
+        /* max-width: 140px; */
         height: 100%;
     }
     .tipping1 {
