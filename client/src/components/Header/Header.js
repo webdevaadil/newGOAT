@@ -14,7 +14,8 @@ export const Header = () => {
     <>
       <div className=" top-header" >
         <div className="container-fluid Mainheader" >
-        <nav className="container navbar navbar-expand-lg navbar-light">
+        <nav style={{
+display: "-wflex ebkit-box -moz-box  -ms-flexbox -webkit-flex"}} className="container navbar navbar-expand-lg navbar-light">
           <Link className="navbar-brand" to="/">
             <img style={{height:"60px"}}src="/logo1.png" alt="this" />
           </Link>
