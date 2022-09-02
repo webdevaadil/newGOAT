@@ -274,44 +274,51 @@ export const Main = () => {
           </div>
 
           <div className="container">
-           <div style={{display:"flex",justifyContent:"end"}}>
-           <form
-            
-            className="form"
-            onSubmit={handlechange}
-            onReset={resetcalender}
-          >
-            <input
-              className="datepicker form-control "
-              style={{
-             
-                alignItems: "center",
-                textAlign: "center",
-                letterSpacing: "2px",
-                textTransform: "uppercase",
-              }}
-              onChange={handle}
-              name="min"
-              id="min"
-              type="date"
-            />
-           
-              <div >
-              
-            <input
-                className="btn btn-primary"
-                style={{margin:"10px", backgroundColor: "#10867f" }}
-                type="submit"
-                value={"submit"}
-                />
-              <input
-                className="btn btn-danger "
-                type="reset"
-                value={"reset"}
-              />
+            <div className="row">
+              <div className="col-md-9"></div>
+              <div className="col-md-3">
+              <div className="caender">
+
+                  <form
+                  
+                  className="form"
+                  onSubmit={handlechange}
+                  onReset={resetcalender}
+                  >
+                  <input
+                    className="datepicker form-control "
+                    style={{
+                    
+                      alignItems: "center",
+                      textAlign: "center",
+                      letterSpacing: "2px",
+                      textTransform: "uppercase",
+                    }}
+                    onChange={handle}
+                    name="min"
+                    id="min"
+                    type="date"
+                  />
+
+                    <div className="cal-btn">
+                    
+                  <input
+                      className="btn btn-primary"
+                      style={{margin:"10px", backgroundColor: "#10867f" }}
+                      type="submit"
+                      value={"submit"}
+                      />
+                    <input
+                      className="btn btn-danger "
+                      type="reset"
+                      value={"reset"}
+                    />
+                  </div>
+                  </form>
+                  </div>
+                  </div>
             </div>
-          </form>
-           </div>
+           
           </div>
           <Records horseimg={img1} loading={loading} detail={currentRecords} />
 

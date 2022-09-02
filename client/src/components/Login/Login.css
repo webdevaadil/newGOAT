@@ -18,7 +18,7 @@ body{
     display: flex;
     width: 100%;
     background: #F3F7F8;
-    height:100vh;
+   
 }
 .wel-p1 {
     width: 100%;
@@ -33,6 +33,14 @@ body{
 }
 .form-main {
     padding-top: 1rem;
+}
+
+.wel-form {
+    position: absolute;
+    left: 0;
+    padding: 0;
+    height: 100vh;
+    align-items: center;
 }
 .form-content {
     padding: 0px 7rem;
@@ -71,6 +79,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
+    /* height: 100Vh; */
+    height: 700px;
 }
   .fom-btn .btn {
     width: 48%;
@@ -124,6 +134,7 @@ i.fa.fa-eye {
 .fom-btn .btn:hover {
     background: #AEB3B9;
     border: none;
+    color: #fff;
 }
 .form-main .form-content p {
     font-size: 14px;
@@ -183,7 +194,7 @@ i.fa.fa-eye {
 @media (max-width:1200px) {
     .form-content {
         padding: 25px 25px;
-        height: 100vh;
+        height: auto;
     }
     .fom-btn {
         gap: 10px;
@@ -195,6 +206,10 @@ i.fa.fa-eye {
     .form-content h2 {
         font-size: 35px;
         line-height: 42px;
+    }
+    .fom-btn {
+        gap: 10px;
+        
     }
 }
 
@@ -217,10 +232,22 @@ i.fa.fa-eye {
             width: 100%;
             object-fit: cover;
         }
+        .wel-form {
+            flex-direction: column;
+        }
+        .img-main {
+            height: 200px;
+            background-position: top;
+        }
+        .form-content {
+            padding: 30px 10px;
+            height: 100%;
+        }
 }
 
 @media (max-width:668px){
 .form-content h2 {
     text-align: center;
 }
+
 }

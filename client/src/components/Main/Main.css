@@ -10,7 +10,7 @@ body{
   font-family: 'Nunito Sans', sans-serif;
 }
 .container {
-  max-width: 1440px !important;
+  /* max-width: 1440px !important; */
   margin: auto !important;
 }
 
@@ -293,7 +293,11 @@ table {
   padding-right: 0px;
   padding-left: 0px;
 }
-
+.cal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
 
 
 
@@ -366,6 +370,10 @@ h3.free-title {
 .upcomming-sec{
   text-align: center;
 }
+.caender {
+  max-width: 400px !important;
+  margin: auto !important;
+}
 }
 
 
@@ -430,6 +438,30 @@ button.btn.freetips-btn {
 .tip-grid {
   grid-gap: 0px;
   justify-content: space-around;
+}
+.caender form.form {
+  max-width: 350px !important;
+  margin: auto !important;
+}
+.caender {
+  max-width: 100% !important;
+  margin: auto !important;
+}
+
+.upcomming-table th {
+  padding: 10px;
+  font-size: 10px !important;
+  line-height: 13px;
+}
+}
+@media (max-width:500px) {
+  .upcomming-table button.btn {
+    background: #16446F;
+    color: #fff;
+    border-radius: 26px;
+    width: 100% !important;
+    font-size: 10px;
+    padding: 0px 30px;
 }
 }
 

@@ -64,11 +64,11 @@ const Home = () => {
 
   return (
     <div>
-      <div className="banner-sec">
+      <div className="banner-sec banne-bg">
         <div className="container her0">
           <div className="row banner-main">
             <div
-              className="col-lg-8 col-md-12"
+              className="col-lg-12 col-md-12"
               style={{ padding: "0", margin: "0" }}
             >
               <div className="baner-ct">

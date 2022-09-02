@@ -6,6 +6,7 @@ import "./Login.css";
 import axios from "axios";
 import {clearErrors,login } from "../../actions/userAction";
 import image1 from "../../Images/Rectangle1.jpg"
+import logimg from "../../Images/loginimg.jpg"
 import { Metadata } from "../layout/Metadata";
 import { Loader } from "../layout/Loader";
 import {useAlert, userAlert} from "react-alert"
@@ -64,8 +65,9 @@ export const Login = () => {
    
 
     <section id="form-section">
+      <div className="container">
     <div className="wel-form">
-      <div className="wel-p1 img-main">
+      <div className="wel-p1 img-main ">
         <div className="img-main">
         </div>
       </div>   
@@ -102,6 +104,7 @@ export const Login = () => {
         </div>
       </div>
       </div>
+    </div>
     </div>
   </section>
   
