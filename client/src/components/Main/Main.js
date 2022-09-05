@@ -154,6 +154,9 @@ export const Main = () => {
     // e.target.reset();
     setnewfetchdate("");
   };
+  const pay=()=>{
+    axios.post("http://localhost:5000/pay")
+  }
 
   return (
     <>
@@ -162,6 +165,7 @@ export const Main = () => {
         <Loader />
       ) : (
         <>
+        <button onClick={pay}>pay</button>
           <div className="slide">
             <section className="container-fluid">
               <div className="container">
