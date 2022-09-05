@@ -1,8 +1,6 @@
 import {
-  BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
   BrowserRouter,
 } from "react-router-dom";
 
@@ -22,12 +20,10 @@ import { Package } from "./components/Signup/Package";
 import { useSelector } from "react-redux";
 import { Aboutus } from "./components/extra/About";
 
-import { ProtectedRoute } from "./components/Route/ProtectedRoute";
 import { Multilf } from "./multi/Multilf";
 import { Loader } from "./components/layout/Loader";
 
 function App() {
-  const { isAuthenticated } = useSelector((state) => state.user);
 
   return (
     <>

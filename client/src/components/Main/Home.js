@@ -3,37 +3,32 @@ import "./Home.css";
 // import"../font/Sportypo-Reguler-Demo.ttf"
 
 import img1 from "../../Images/GOAT_logo.png";
-import horse from "../../Images/goat-tips-hero.jpg";
 import man from "../../Images/man1.21a7578cbf7b6a963356.jpg";
 import Count from "react-countup";
 import img2 from "../../Images/gold.png";
 import img3 from "../../Images/platinum.png";
 import img4 from "../../Images/silver.png";
 import img5 from "../../Images/bronze.png";
-import races from "../../Images/races.png";
 import races1 from "../../Images/races1.png";
-import icon from "../../Images/icon.png";
 import icon2 from "../../Images/icon2.png";
 import horseRacing from "../../Images/Horse-Racing.jpg";
 import horseIcon from "../../Images/horse-icon.png";
 import greyRacing from "../../Images/Greyhound-Racing.jpg";
 import houndIcon from "../../Images/hound-icon.png";
 import reliable from "../../Images/freetips-mobile.png";
-import HomeHeader from "../Header/HomeHeader";
-import scrollTrigger from "react-scroll-trigger";
 import HomeFooter from "../Footer/HomeFooter";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Login } from "../Login/Login";
-import { clearErrors, loaduser } from "../../actions/userAction";
+import { clearErrors } from "../../actions/userAction";
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [counteron, setcounteron] = useState(false);
-  const { error, loading, isAuthenticated, user } = useSelector(
+  // eslint-disable-next-line no-unused-vars
+  const [counteron] = useState(false);
+  const { error, isAuthenticated } = useSelector(
     (state) => state.user
   );
 
