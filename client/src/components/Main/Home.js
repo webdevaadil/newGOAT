@@ -36,11 +36,7 @@ const Home = () => {
   const { error, loading, isAuthenticated, user } = useSelector(
     (state) => state.user
   );
-  // useEffect(() => {
-  //   if (error) {
-  //     alert.error(error);
-  //     dispatch(clearErrors());
-  //   }
+
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -52,7 +48,7 @@ const Home = () => {
       
     }
     else{
-      dispatch(loaduser())
+      // dispatch(loaduser())
       // dispatch(loaduser());
       navigate("/")
     }

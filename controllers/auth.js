@@ -114,9 +114,7 @@ exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   const { token } = req.cookies;
   // console.log(token);
   if (!token) {
-    return res
-      .status(500)
-      .json({ message: "plese login to access this resource" }, 401)
+    return next(new ErrorResponse("plese login to access this resource", 401));
   }
   const decodedData = jwt.verify(token, process.env.JWT_SECRET);
   req.user = await User.findById(decodedData.id);
