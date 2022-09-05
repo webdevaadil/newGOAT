@@ -49,7 +49,7 @@ export const Login = () => {
 
       }
      
-    },[error,navigate,isAuthenticated,loading])
+    },[error,navigate,isAuthenticated,loading,alert,dispatch])
 
     function myFunction() {
       var x = document.getElementById("myInput");

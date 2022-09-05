@@ -258,15 +258,15 @@ const Home = () => {
                     <ul>
                       <li>
                         {" "}
-                        <i class="fa fa-check"></i> Thoroughbred horse racing
+                        <i className="fa fa-check"></i> Thoroughbred horse racing
                       </li>
                       <li>
                         {" "}
-                        <i class="fa fa-check"></i> Greyhound racing
+                        <i className="fa fa-check"></i> Greyhound racing
                       </li>
                       <li>
                         {" "}
-                        <i class="fa fa-check"></i> Additional sports coming
+                        <i className="fa fa-check"></i> Additional sports coming
                         soon!
                       </li>
                     </ul>
@@ -275,11 +275,11 @@ const Home = () => {
                 <div className="col-lg-6 col-md-12">
                   <div className="resut-content">
                     <div className="card card1">
-                      <div class="clearfix">
-                        <button type="button" class="btn  float-start">
+                      <div className="clearfix">
+                        <button type="button" className="btn  float-start">
                           <img src={icon2} alt="" /> The Goats tips
                         </button>
-                        <button type="button" class="btn  float-end">
+                        <button type="button" className="btn  float-end">
                           {" "}
                           <img src="./icon2.png" alt="" /> No. 4
                         </button>
@@ -296,11 +296,11 @@ const Home = () => {
                       </p>
                     </div>
                     <div className="card card1">
-                      <div class="clearfix">
-                        <button type="button" class="btn  float-start">
+                      <div className="clearfix">
+                        <button type="button" className="btn  float-start">
                           <img src={icon2} alt="" /> The Goats tips
                         </button>
-                        <button type="button" class="btn  float-end">
+                        <button type="button" className="btn  float-end">
                           {" "}
                           <img src="./icon2.png" alt="" /> No. 4
                         </button>
@@ -312,11 +312,11 @@ const Home = () => {
                       </p>
                     </div>
                     <div className="card card1">
-                      <div class="clearfix">
-                        <button type="button" class="btn  float-start">
+                      <div className="clearfix">
+                        <button type="button" className="btn  float-start">
                           <img src={icon2} alt="" /> The Goats tips
                         </button>
-                        <button type="button" class="btn  float-end">
+                        <button type="button" className="btn  float-end">
                           {" "}
                           <img src="./icon2.png" alt="" /> No. 4
                         </button>
@@ -354,7 +354,7 @@ const Home = () => {
               style={{ width: "100%", height: "100%" }}
               src={man}
               alt=""
-              srcset=""
+              srcSet=""
             />
           </div>
         </div>
@@ -436,14 +436,14 @@ const Home = () => {
                     <ul className="tiip-list">
                       <li>
                         {" "}
-                        <i class="fa fa-check"></i> Top tip of the day
+                        <i className="fa fa-check"></i> Top tip of the day
                       </li>
                       <li>
-                        <i class="fa fa-check"></i> Every Saturday
+                        <i className="fa fa-check"></i> Every Saturday
                       </li>
                       <li>
                         {" "}
-                        <i class="fa fa-check"></i>Free and direct to your inbox
+                        <i className="fa fa-check"></i>Free and direct to your inbox
                       </li>
                     </ul>
                   </div>
@@ -467,14 +467,14 @@ const Home = () => {
                     <ul className="tiip-list">
                       <li>
                         {" "}
-                        <i class="fa fa-check"></i> Our 10 best tips
+                        <i className="fa fa-check"></i> Our 10 best tips
                       </li>
                       <li>
-                        <i class="fa fa-check"></i>Every Saturday
+                        <i className="fa fa-check"></i>Every Saturday
                       </li>
                       <li>
                         {" "}
-                        <i class="fa fa-check"></i>Direct to your inbox
+                        <i className="fa fa-check"></i>Direct to your inbox
                       </li>
                     </ul>
                   </div>
@@ -498,14 +498,14 @@ const Home = () => {
                     <ul className="tiip-list">
                       <li>
                         {" "}
-                        <i class="fa fa-check"></i>Our top daily tips, plus
+                        <i className="fa fa-check"></i>Our top daily tips, plus
                       </li>
                       <li>
-                        <i class="fa fa-check"></i>Our top 15 Saturday tips
+                        <i className="fa fa-check"></i>Our top 15 Saturday tips
                       </li>
                       <li>
                         {" "}
-                        <i class="fa fa-check"></i>Direct to your inbox
+                        <i className="fa fa-check"></i>Direct to your inbox
                       </li>
                     </ul>
                   </div>
@@ -529,14 +529,14 @@ const Home = () => {
                     <ul className="tiip-list">
                       <li>
                         {" "}
-                        <i class="fa fa-check"></i> Our top 5 daily tips, plus
+                        <i className="fa fa-check"></i> Our top 5 daily tips, plus
                       </li>
                       <li>
-                        <i class="fa fa-check"></i> Our top 20 Saturday tips
+                        <i className="fa fa-check"></i> Our top 20 Saturday tips
                       </li>
                       <li>
                         {" "}
-                        <i class="fa fa-check"></i>Direct to your inbox
+                        <i className="fa fa-check"></i>Direct to your inbox
                       </li>
                     </ul>
                   </div>
@@ -624,7 +624,7 @@ const Home = () => {
                 rel="noreferrer"
                 href="https://www.facebook.com/The-GOATs-Tips-102013742449574"
               >
-                <i class="fa fa-facebook-f"> </i>
+                <i className="fa fa-facebook-f"> </i>
               </a>
             </li>
             <li>
@@ -633,7 +633,7 @@ const Home = () => {
                 rel="noreferrer"
                 href="https://twitter.com/thegoatstips"
               >
-                <i class="fa fa-twitter"></i>
+                <i className="fa fa-twitter"></i>
               </a>
             </li>
             <li>
@@ -642,7 +642,7 @@ const Home = () => {
                 rel="noreferrer"
                 href="https://www.instagram.com/goats.tips/"
               >
-                <i class="fa fa-instagram"></i>
+                <i className="fa fa-instagram"></i>
               </a>
             </li>
           </ul>
@@ -665,16 +665,16 @@ const Home = () => {
             <div className="col-md-4">
               <div className="mesbtn">
                 <form>
-                  <div class="mb-3">
+                  <div className="mb-3">
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputEmail1"
                       placeholder="Email Address"
                       aria-describedby="emailHelp"
                     />
                   </div>
-                  <button type="submit" class="btn form-btn">
+                  <button type="submit" className="btn form-btn">
                     Submit
                   </button>
                 </form>
@@ -727,11 +727,11 @@ const Home = () => {
                 </h4>
                 <div className="cont">
                   <div className="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
                   </div>
                   <h3>Trent Davies</h3>
                   <p>
@@ -747,11 +747,11 @@ const Home = () => {
                 </h4>
                 <div className="cont">
                   <div className="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
                   </div>
                   <h3>Trent Davies</h3>
                   <p>
@@ -766,11 +766,11 @@ const Home = () => {
                 </h4>
                 <div className="cont">
                   <div className="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
                   </div>
                   <h3>Trent Davies</h3>
                   <p>

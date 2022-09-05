@@ -22,8 +22,8 @@ export const Dashboard = () => {
     </div>
       <div className="main-body">
         <section>
-          <div class="container profile-sec" style={{ zIndex: "-5" }}>
-            <div class="flexbox profil-main">
+          <div className="container profile-sec" style={{ zIndex: "-5" }}>
+            <div className="flexbox profil-main">
               <ProfileNav />
               <Outlet />
             </div>

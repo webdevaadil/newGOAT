@@ -22,9 +22,9 @@ export const Aboutus = () => {
       }}
     >
       {" "}
-      <div class="box-about">
-        <h2 class="pro_heading">Terms of Service</h2>
-        <p class="text_content">
+      <div className="box-about">
+        <h2 className="pro_heading">Terms of Service</h2>
+        <p className="text_content">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit
           tincidunt pellentesque egestas eu rutrum sed. Consectetur urna tempus
           rhoncus volutpat aliquam vel ut nisi. Quisque cursus malesuada morbi
@@ -47,9 +47,9 @@ export const Aboutus = () => {
           sit dolor cum magna morbi auctor vel hac nisi.
         </p>
       </div>
-      <div class="box-about">
-        <h2 class="pro_heading">Privacy Policy</h2>
-        <p class="text_content">
+      <div className="box-about">
+        <h2 className="pro_heading">Privacy Policy</h2>
+        <p className="text_content">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit
           tincidunt pellentesque egestas eu rutrum sed. Consectetur urna tempus
           rhoncus volutpat aliquam vel ut nisi. Quisque cursus malesuada morbi

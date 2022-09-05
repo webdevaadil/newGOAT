@@ -36,72 +36,72 @@ export const Package = () => {
 <section style={{    display: "flex",
     flexDirection: "column",
     height: "100%",  margin:"100px 0"}}>
-        <div class="container">
-            <h1 class="main_head">Packages</h1>
-            <div class="flex_box">
-                <div class="box_one">
+        <div className="container">
+            <h1 className="main_head">Packages</h1>
+            <div className="flex_box">
+                <div className="box_one">
                     <h2>Pub Punters</h2>
                     <h3>Free</h3>
-                    <button class="b1-btn_one" style={{width:"216px"}}>78% Returns</button>
-                    <ul class="list_item">
+                    <button className="b1-btn_one" style={{width:"216px"}}>78% Returns</button>
+                    <ul className="list_item">
                         <li>1234 Users</li>
                         <li>234 Tips sent</li>
                         <li>Recommended tips</li>
                         <li>Recommended tips</li>
                     </ul>
                      <Link to="/dashboard/payment">
-                    <button class="btn_two" >Select</button>
+                    <button className="btn_two" >Select</button>
                     </Link>
                 </div>
 
 
-                <div class="box_one">
+                <div className="box_one">
                     <h2>Bronze</h2>
                     <h3>$15 / week</h3>
-                    <button class="b2-btn_one"style={{width:"216px"}}>98% Returns</button>
-                    <ul class="list_item">
+                    <button className="b2-btn_one"style={{width:"216px"}}>98% Returns</button>
+                    <ul className="list_item">
                         <li>1234 Users</li>
                         <li>234 Tips sent</li>
                         <li>Recommended tips</li>
                         <li>Recommended tips</li>
                     </ul>
                      <Link to="/dashboard/payment">
-                    <button class="btn_two" >Select</button>
+                    <button className="btn_two" >Select</button>
                     </Link>
                 </div>
-                <div class="box_one">
+                <div className="box_one">
                     <h2>Silver</h2>
                     <h3>$30 / week</h3>
-                    <button class="b3-btn_one"style={{width:"216px"}}>120% Returns</button>
-                    <ul class="list_item">
+                    <button className="b3-btn_one"style={{width:"216px"}}>120% Returns</button>
+                    <ul className="list_item">
                         <li>1234 Users</li>
                         <li>234 Tips sent</li>
                         <li>Recommended tips</li>
                         <li>Recommended tips</li>
                     </ul>
                      <Link to="/dashboard/payment">
-                    <button class="btn_two" >Select</button>
+                    <button className="btn_two" >Select</button>
                     </Link>
                 </div>
-                <div class="box_one">
+                <div className="box_one">
                     <h2>Gold</h2>
                     <h3>$45 / week</h3>
-                    <button class="b4-btn_one"style={{width:"216px"}}>165% Returns</button>
-                    <ul class="list_item">
+                    <button className="b4-btn_one"style={{width:"216px"}}>165% Returns</button>
+                    <ul className="list_item">
                         <li>1234 Users</li>
                         <li>234 Tips sent</li>
                         <li>Recommended tips</li>
                         <li>Recommended tips</li>
                     </ul>
                      <Link to="/dashboard/payment">
-                    <button class="btn_two" >Select</button>
+                    <button className="btn_two" >Select</button>
                     </Link>
                 </div>
-                <div class="box_one">
+                <div className="box_one">
                     <h2>Platinum</h2>
                     <h3>$60 / week</h3>
-                    <button class="b5-btn_one"style={{width:"216px"}}>265% Returns</button>
-                    <ul class="list_item">
+                    <button className="b5-btn_one"style={{width:"216px"}}>265% Returns</button>
+                    <ul className="list_item">
                         <li>1234 Users</li>
                         <li>234 Tips sent</li>
                         <li>Recommended tips</li>
@@ -109,7 +109,7 @@ export const Package = () => {
                     </ul>
                     <Link to="/dashboard/payment">
                      
-                    <button class="btn_two" >Select</button>
+                    <button className="btn_two" >Select</button>
                     </Link>
                 </div>
             </div>
