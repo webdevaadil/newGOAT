@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
+import { logout } from '../../actions/userAction'
 import Footer from '../Footer/Footer'
 import { Header } from '../Header/Header'
 
 export const Thankyou = () => {
+  let { isAuthenticated, loading } = useSelector((state) => state.user);
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    dispatch(logout())
+  })
+
   return (
+    
    <>
 <div style={{display:"flex",flexDirection:"column",justifyContent:"space-between",height:'100vh'}}>
    <Header/>

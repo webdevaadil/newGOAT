@@ -1,9 +1,4 @@
-import {
-  Route,
-  Routes,
-  Navigate,
-  BrowserRouter,
-} from "react-router-dom";
+import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 
 import { Main } from "./components/Main/Main";
 import Home from "./components/Main/Home";
@@ -29,15 +24,13 @@ import { Thankyou } from "./components/Profile/Thankyou";
 import { RequireAuth } from "./RequireAuth";
 
 function App() {
-
-
   return (
     <>
       <Metadata title="The Goat Tips" />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route index path="/main" element={<Main/>} />
+          <Route index path="/main" element={<Main />} />
           <Route path="/signup" element={<Multilf />} />
           <Route path="/login" element={<Login />} />
           <Route path="/thoroughbreds" element={<Thoroughbreds />} />
@@ -57,7 +50,7 @@ function App() {
           <Route path="/packages" element={<Package />} />
           <Route path="/pac" element={<Multilf />} />
           {/* <Route element={<RequireAuth />}> */}
-            <Route path="/thankyou" element={<Thankyou />} />
+          <Route path="/thankyou" element={<Thankyou />} />
           {/* </Route> */}
         </Routes>
       </BrowserRouter>
@@ -66,16 +59,12 @@ function App() {
 }
 
 export default App;
-export function ProtectedRoute(props){
-
+export function ProtectedRoute(props) {
   const { user } = useSelector((state) => state.user);
 
-  if(user)
-  {
-    return props.children
-  
-  }else{
-   return <Navigate to="/"/>
+  if (user) {
+    return props.children;
+  } else {
+    return <Navigate to="/login" />;
   }
-
 }

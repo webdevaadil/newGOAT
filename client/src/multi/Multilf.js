@@ -50,7 +50,7 @@ export const Multilf = () => {
 
     if (isAuthenticated) {
       alert.success("Signup Successfull");
-      navigate("/");
+      navigate("/main");
     }
   }, [navigate, isAuthenticated, loading, error, formData,alert, dispatch]);
     const props = { formData, setForm, navigation };

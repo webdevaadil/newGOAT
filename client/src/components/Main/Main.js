@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./Main.css";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Footer from "../Footer/Footer";
 
@@ -20,14 +20,26 @@ import { apidata } from "../../actions/apiAction";
 
 import img1 from "../../Images/Vector.png";
 import { Loader } from "../layout/Loader";
+import { clearErrors } from "../../actions/userAction";
 
 export const Main = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { isAuthenticated, user, error, loading } = useSelector(
     (state) => state.user
   );
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    if(!isAuthenticated){
+      navigate("/")
+    }
+    
+
+  }, [error, navigate, dispatch]);
 
   const [detail, setDetail] = useState([]);
 
@@ -143,7 +155,6 @@ export const Main = () => {
     setnewfetchdate("");
   };
 
-
   return (
     <>
       <Header />
@@ -227,7 +238,10 @@ export const Main = () => {
                       })
                     ) : (
                       <div className="content">
-                        <div className="wrapper-1" style={{height:"auto !important" }}>
+                        <div
+                          className="wrapper-1"
+                          style={{ height: "auto !important" }}
+                        >
                           <div className="wrapper-2">
                             <p>
                               "No tips for the day stay tuned for daily tips"
@@ -278,48 +292,43 @@ export const Main = () => {
             <div className="row">
               <div className="col-md-9"></div>
               <div className="col-md-3">
-              <div className="caender">
-
+                <div className="caender">
                   <form
-                  
-                  className="form"
-                  onSubmit={handlechange}
-                  onReset={resetcalender}
+                    className="form"
+                    onSubmit={handlechange}
+                    onReset={resetcalender}
                   >
-                  <input
-                    className="datepicker form-control "
-                    style={{
-                    
-                      alignItems: "center",
-                      textAlign: "center",
-                      letterSpacing: "2px",
-                      textTransform: "uppercase",
-                    }}
-                    onChange={handle}
-                    name="min"
-                    id="min"
-                    type="date"
-                  />
+                    <input
+                      className="datepicker form-control "
+                      style={{
+                        alignItems: "center",
+                        textAlign: "center",
+                        letterSpacing: "2px",
+                        textTransform: "uppercase",
+                      }}
+                      onChange={handle}
+                      name="min"
+                      id="min"
+                      type="date"
+                    />
 
                     <div className="cal-btn">
-                    
-                  <input
-                      className="btn btn-primary"
-                      style={{margin:"10px", backgroundColor: "#10867f" }}
-                      type="submit"
-                      value={"submit"}
+                      <input
+                        className="btn btn-primary"
+                        style={{ margin: "10px", backgroundColor: "#10867f" }}
+                        type="submit"
+                        value={"submit"}
                       />
-                    <input
-                      className="btn btn-danger "
-                      type="reset"
-                      value={"reset"}
-                    />
-                  </div>
+                      <input
+                        className="btn btn-danger "
+                        type="reset"
+                        value={"reset"}
+                      />
+                    </div>
                   </form>
-                  </div>
-                  </div>
+                </div>
+              </div>
             </div>
-           
           </div>
           <Records horseimg={img1} loading={loading} detail={currentRecords} />
 

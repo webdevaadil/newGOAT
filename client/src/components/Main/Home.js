@@ -33,24 +33,31 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const [counteron, setcounteron] = useState(false);
-  const { error, loading, isAuthenticated } = useSelector(
+  const { error, loading, isAuthenticated, user } = useSelector(
     (state) => state.user
   );
+  // useEffect(() => {
+  //   if (error) {
+  //     alert.error(error);
+  //     dispatch(clearErrors());
+  //   }
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
-    // if (!isAuthenticated) {
-    //   dispatch(loaduser());
-    // }
-
-    // if (isAuthenticated) {
-    //   // alert.success("Signup Successfull");
-    //   navigate("/main");
-    // }
+    
+    if (isAuthenticated) {
+      navigate("/main");
+      
+    }
+    else{
+      dispatch(loaduser())
+      // dispatch(loaduser());
+      navigate("/")
+    }
   }, [dispatch, isAuthenticated, error, navigate]);
- 
+
   const redy = () => {
     navigate("/packages");
   };
@@ -74,7 +81,7 @@ const Home = () => {
                 <h2>
                   <span>Win Better</span> with <br></br> The GOAT's Tips
                 </h2>
-                <p style={{margin:"0"}}>
+                <p style={{ margin: "0" }}>
                   A sports tipping service that consistently delivers a positive
                   return on investment for its clients. The GOAT's Tips utilises
                   the latest technology and artificial intelligence to improve
@@ -89,7 +96,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      
 
       <div className="tips-sec">
         <div className="container tips-main">
@@ -99,12 +105,7 @@ const Home = () => {
                 <h2>
                   {" "}
                   &#62;
-                  <Count
-                    start={0}
-                    end={6000}
-                    duration={10}
-                    delay={0}
-                  />{" "}
+                  <Count start={0} end={6000} duration={10} delay={0} />{" "}
                 </h2>
 
                 <p>Tips Sent</p>
@@ -112,23 +113,20 @@ const Home = () => {
             </div>
             <div className="col-md-4">
               <div className="tips-ct brde">
-                <h2> &#62;<Count
-                    start={0}
-                    end={37}
-                    duration={4}
-                    delay={0}
-                  />%</h2>
+                <h2>
+                  {" "}
+                  &#62;
+                  <Count start={0} end={37} duration={4} delay={0} />%
+                </h2>
                 <p>Tips Sent</p>
               </div>
             </div>
             <div className="col-md-4">
               <div className="tips-ct">
-                <h2> <Count
-                    start={0}
-                    end={400}
-                    duration={6}
-                    delay={0}
-                  />+</h2>
+                <h2>
+                  {" "}
+                  <Count start={0} end={400} duration={6} delay={0} />+
+                </h2>
                 <p>Satisfied Clients</p>
               </div>
             </div>
@@ -185,31 +183,20 @@ const Home = () => {
                   <div className="col-md-4 col-sm-4">
                     <h3>
                       {/* <Count start={0} end={37} duration={7} delay={0} /> */}
-                      <Count
-                    start={0}
-                    end={37}
-                    duration={4}
-                    delay={0}
-                  />%
+                      <Count start={0} end={37} duration={4} delay={0} />%
                     </h3>
                     <p>Win strike rate</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3>$<Count
-                    start={0}
-                    end={2.9}
-                    duration={2}
-                    delay={0}
-                  /></h3>
+                    <h3>
+                      $<Count start={0} end={2.9} duration={2} delay={0} />
+                    </h3>
                     <p>Average winning odds</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3><Count
-                    start={0}
-                    end={56}
-                    duration={5}
-                    delay={0}
-                  />%</h3>
+                    <h3>
+                      <Count start={0} end={56} duration={5} delay={0} />%
+                    </h3>
                     <p>Top 2 place rate</p>
                   </div>
                 </div>
@@ -222,30 +209,21 @@ const Home = () => {
               >
                 <div className="row rate-mian">
                   <div className="col-md-4 col-sm-4">
-                    <h3><Count
-                    start={0}
-                    end={57}
-                    duration={7}
-                    delay={0}
-                  />%</h3>
+                    <h3>
+                      <Count start={0} end={57} duration={7} delay={0} />%
+                    </h3>
                     <p>Win strike rate</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3>$<Count
-                    start={0}
-                    end={2.3}
-                    duration={2}
-                    delay={0}
-                  /></h3>
+                    <h3>
+                      $<Count start={0} end={2.3} duration={2} delay={0} />
+                    </h3>
                     <p>Average winning odds</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
-                    <h3><Count
-                    start={0}
-                    end={68}
-                    duration={7}
-                    delay={0}
-                  />%</h3>
+                    <h3>
+                      <Count start={0} end={68} duration={7} delay={0} />%
+                    </h3>
                     <p>Top 2 place rate</p>
                   </div>
                 </div>
@@ -513,7 +491,7 @@ const Home = () => {
               </div>
             </div>
             <div className="btn" style={{ width: "50%" }} onClick={redy}>
-              <div className="row tipping1"  style={{ width: "100%" }}>
+              <div className="row tipping1" style={{ width: "100%" }}>
                 <div className="col-md-6">
                   <div className="tipp-img">
                     <img src={img2} alt="" />

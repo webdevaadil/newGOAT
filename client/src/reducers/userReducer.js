@@ -22,20 +22,25 @@ import {
   UPDATE_PROFILE_IMAGE_SUCCESS,
   UPDATE_PROFILE_IMAGE_FAIL,
 } from "../constants/userConstants";
+const INTIAL_STATE={
+  user:{},
+  loading:false,
+  isAuthenticated:false,
 
-export const userReducer = (state = {}, action) => {
+}
+export const userReducer = (state =INTIAL_STATE, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
     case REGISTER_USER_REQUEST:
       return {
         loading: true,
-        isAuthenticated: false,
+        // isAuthenticated: false,
       };
 
     case LOGIN_SUCCESS:
     case REGISTER_USER_SUCCESS:
       return {
-        ...state,
+        ...state, 
         loading: false,
         isAuthenticated: true,
         user: action.payload,
@@ -71,7 +76,7 @@ export const userReducer = (state = {}, action) => {
     case DETAIL_USER_REQUEST:
       return {
         loading: true,
-        isAuthenticated: false,
+        // isAuthenticated: false,
       };
     case DETAIL_USER_SUCCESS:
       return {

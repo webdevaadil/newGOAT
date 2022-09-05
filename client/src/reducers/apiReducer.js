@@ -8,13 +8,13 @@ switch(action.type){
    case API_REQUEST:
     return{
         loading:true,
-        isAuthenticated:false,
+        isapi:false,
     };
     case API_SUCCESS:
         return {
             ...state,
             loading:false,
-            isAuthenticated:true,
+            isapi:true,
             data:action.payload,
 
         }
@@ -22,7 +22,7 @@ switch(action.type){
         return {
             ...state,
             loading:true,
-            isAuthenticated:true,
+            isapi:true,
             error:action.payload,
 
         };

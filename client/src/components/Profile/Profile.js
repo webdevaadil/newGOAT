@@ -35,7 +35,7 @@ export const Profile = () => {
   const [username, setName] = useState("");
   const [gender, setgender] = useState("");
   const [dob, setdob] = useState("");
-  const [avatar, setavatar] = useState("");
+  const [avatar, setavatar] = useState({});
   const [avatarPreview, setavatarPreview] = useState("/Profile.png");
 
   const updateProfileSubmit = (e) => {
@@ -53,7 +53,7 @@ export const Profile = () => {
     const reader = new FileReader();
     reader.onload = () => {
       if (reader.readyState === 2) {
-        // setavatarPreview(reader.result);
+        setavatarPreview(reader.result);
         setavatar(reader.result);
       }
     };
@@ -65,7 +65,7 @@ export const Profile = () => {
       setgender(user.gender);
       setName(user.username);
       setdob(user.dob);
-      setavatar(user.avatar.url);
+      setavatar(user.avatar);
     }
 
     if (error) {
@@ -133,9 +133,11 @@ export const Profile = () => {
                     
                   >
                     {/* <div style={{display: "flex",}}id="updateProfileImage"> */}
+                  
                     <img
                       className="profile-img"
-                      src={avatar}
+                      src={avatar.url}
+                      
                       alt="Avatar Preview"
                     />
                     {/* <input type="file"className="profil-img"name="avatar"accept="image/*"onChange={handle}/> */}
