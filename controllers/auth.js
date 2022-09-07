@@ -5,6 +5,11 @@ const jwt = require("jsonwebtoken");
 var cloudinary = require("cloudinary").v2;
 const emailValidator = require("deep-email-validator");
 const { expressjwt } = require("express-jwt");
+const fetch = require("node-fetch");
+
+const CLIENT_ID="AUs4GD83qdVUKpNH1BSakU1J_vd2GlYAv6wAvOk_dNq0l9GqrrmsG55ZfoyJbPR_CRKPriEwoH4dI1or"
+const APP_SECRET="EOE01sceruosL8yyjsggl2uHMTLGyj_J00ppHhTLzNP57fdFFGxZ0o65xaz_bT7-gAZTuPYIq_w3C-0G"
+const base = "https://api-m.sandbox.paypal.com";
 
 async function isEmailValid(email) {
   return emailValidator.validate(email);
@@ -27,13 +32,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
   if (
     !username ||
     !email ||
-    !password ||
-    !dob ||
-    !Name_of_card ||
-    !card_no ||
-    !Expiry ||
-    !cvc ||
-    !packages
+    !password 
   ) {
     return res.status(400).json("plese fill all input ");
   }
@@ -41,17 +40,21 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     return res.status(400).json("password must be 6 character long");
   }
   try {
+   
     User.findOne({ email }, async (err, user) => {
-      const { valid, reason, validators } = await isEmailValid(email);
-      console.log(validators);
+      // const { valid, reason, validators } = await isEmailValid(email);
+      // console.log(validators,'dfbvhf');
 
-      if (!valid) {
-        return res
-          .status(500)
-          .json("email is invalid please enter a valid email");
-      } else if (user) {
-        return res.status(500).json("user already registered");
-      } else {
+      // if (!valid) {
+      //   return res
+      //     .status(500)
+      //     .json("email is invalid please enter a valid email");
+      // } else if (user) {
+      //   return res.status(500).json("user already registered");
+      // } else {
+       console.log('shfh');
+       
+
         const myCloud = await cloudinary.uploader.upload(
           "https://res.cloudinary.com/degu3b9yz/image/upload/v1659352924/avatars/blilsisofr6pbhnuxbte.png",
           {
@@ -60,7 +63,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
             crop: "scale",
           }
         );
-        const user = await User.create({
+        const userss = await User.create({
           username,
           email,
           password,
@@ -76,14 +79,83 @@ exports.register = catchAsyncerror(async (req, res, next) => {
             url: myCloud.secure_url,
           },
         });
-
+        const order = await createOrder();
+        console.log(order.id,'hfghdf')
         sendToken(user, 201, res);
-      }
+      // }
     });
   } catch (error) {
     console.log(error.message);
   }
 });
+
+exports.order = catchAsyncerror(async (req, res, next) => {
+  const order = await createOrder();
+  console.log(order.id)
+  res.json(order);
+});
+
+exports.captureorder = catchAsyncerror(async (req, res, next) => {
+  const { orderID } = req.params;
+  const captureData = await capturePayment(orderID);
+  // TODO: store payment information such as the transaction ID
+  res.json(captureData);
+});
+
+// use the orders api to create an order
+async function createOrder() {
+  const accessToken = await generateAccessToken();
+  const url = `${base}/v2/checkout/orders`;
+  const response = await fetch(url, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      intent: "CAPTURE",
+      purchase_units: [
+        {
+          amount: {
+            currency_code: "USD",
+            value: "100.00",
+          },
+        },
+      ],
+    }),
+  });
+  const data = await response.json();
+  return data;
+}
+
+// use the orders api to capture payment for an order
+async function capturePayment(orderId) {
+  const accessToken = await generateAccessToken();
+  const url = `${base}/v2/checkout/orders/${orderId}/capture`;
+  const response = await fetch(url, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  const data = await response.json();
+  return data;
+}
+
+// generate an access token using client id and app secret
+async function generateAccessToken() {
+  const auth = Buffer.from(CLIENT_ID + ":" + APP_SECRET).toString("base64")
+  const response = await fetch(`${base}/v1/oauth2/token`, {
+    method: "post",
+    body: "grant_type=client_credentials",
+    headers: {
+      Authorization: `Basic ${auth}`,
+    },
+  });
+  const data = await response.json();
+  return data.access_token;
+}
 
 exports.login = catchAsyncerror(async (req, res, next) => {
   const { email, password } = req.body;
