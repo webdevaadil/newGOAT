@@ -96,7 +96,7 @@ const Home = () => {
                 <h2>
                   {" "}
                   &#62;
-                  <Count start={0} end={6000} duration={10} delay={0} />{" "}
+                  <Count start={0} end={6000} duration={3} delay={0} />{" "}
                 </h2>
 
                 <p>Tips Sent</p>
@@ -107,16 +107,16 @@ const Home = () => {
                 <h2>
                   {" "}
                   &#62;
-                  <Count start={0} end={37} duration={4} delay={0} />%
+                  <Count start={0} end={37} duration={3} delay={0} />%
                 </h2>
-                <p>Tips Sent</p>
+                <p>strike Rate</p>
               </div>
             </div>
             <div className="col-md-4">
               <div className="tips-ct">
                 <h2>
                   {" "}
-                  <Count start={0} end={400} duration={6} delay={0} />+
+                  <Count start={0} end={400} duration={3} delay={0} />+
                 </h2>
                 <p>Satisfied Clients</p>
               </div>
@@ -173,20 +173,20 @@ const Home = () => {
                 <div className="row rate-mian">
                   <div className="col-md-4 col-sm-4">
                     <h3>
-                      {/* <Count start={0} end={37} duration={7} delay={0} /> */}
-                      <Count start={0} end={37} duration={4} delay={0} />%
+                      {/* <Count start={0} end={37} duration={3} delay={0} /> */}
+                      <Count start={0} end={37} duration={3} delay={0} />%
                     </h3>
                     <p>Win strike rate</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
                     <h3>
-                      $<Count start={0} end={2.9} duration={2} delay={0} />
+                      $<Count start={0} end={2.9} duration={3} delay={0} />
                     </h3>
                     <p>Average winning odds</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
                     <h3>
-                      <Count start={0} end={56} duration={5} delay={0} />%
+                      <Count start={0} end={56} duration={3} delay={0} />%
                     </h3>
                     <p>Top 2 place rate</p>
                   </div>
@@ -201,19 +201,19 @@ const Home = () => {
                 <div className="row rate-mian">
                   <div className="col-md-4 col-sm-4">
                     <h3>
-                      <Count start={0} end={57} duration={7} delay={0} />%
+                      <Count start={0} end={57} duration={3} delay={0} />%
                     </h3>
                     <p>Win strike rate</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
                     <h3>
-                      $<Count start={0} end={2.3} duration={2} delay={0} />
+                      $<Count start={0} end={2.3} duration={3} delay={0} />
                     </h3>
                     <p>Average winning odds</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
                     <h3>
-                      <Count start={0} end={68} duration={7} delay={0} />%
+                      <Count start={0} end={68} duration={3} delay={0} />%
                     </h3>
                     <p>Top 2 place rate</p>
                   </div>

@@ -1,13 +1,65 @@
 const User = require("../models/User");
+const fetch = require("node-fetch");
+const base = "https://api-m.sandbox.paypal.com";
 const ErrorResponse = require("../utlis/errorresponse.js");
 const catchAsyncerror = require("../middleware/catchAsyncerror");
 const jwt = require("jsonwebtoken");
 var cloudinary = require("cloudinary").v2;
 const emailValidator = require("deep-email-validator");
 const { expressjwt } = require("express-jwt");
-
+const paypal = require("../payment/payment.js");
+const { CLIENT_ID, APP_SECRET } = process.env;
+async function generateAccessToken() {
+  const auth = Buffer.from(CLIENT_ID + ":" + APP_SECRET).toString("base64");
+  const response = await fetch(`${base}/v1/oauth2/token`, {
+    method: "post",
+    body: "grant_type=client_credentials",
+    headers: {
+      Authorization: `Basic ${auth}`,
+    },
+  });
+  const data = await response.json();
+  return data.access_token;
+}
 async function isEmailValid(email) {
   return emailValidator.validate(email);
+}
+async function capturePayment(orderId) {
+  const accessToken = await generateAccessToken();
+  const url = `${base}/v2/checkout/orders/${orderId}/capture`;
+  const response = await fetch(url, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  const data = await response.json();
+  return data;
+}
+async function createOrder() {
+  const accessToken = await generateAccessToken();
+  const url = `${base}/v2/checkout/orders`;
+  const response = await fetch(url, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      intent: "CAPTURE",
+      purchase_units: [
+        {
+          amount: {
+            currency_code: "USD",
+            value: "100.00",
+          },
+        },
+      ],
+    }),
+  });
+  const data = await response.json();
+  return data;
 }
 exports.register = catchAsyncerror(async (req, res, next) => {
   const {
@@ -24,8 +76,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
   } = req.body;
 
   console.log(req.body.Expiry);
-  if (
-    !username ||
+  if (    !username ||
     !email ||
     !password ||
     !dob ||
@@ -42,6 +93,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
   }
   try {
     User.findOne({ email }, async (err, user) => {
+    
       const { valid, reason, validators } = await isEmailValid(email);
       console.log(validators);
 
@@ -76,12 +128,33 @@ exports.register = catchAsyncerror(async (req, res, next) => {
             url: myCloud.secure_url,
           },
         });
-
-        sendToken(user, 201, res);
+        const order = await createOrder();
+        console.log(order);
+        res.json(order);
+       await capturePayment(order.id)
+        res.json(order, user, res);
+        return;
+        // sendToken(user, 201, res);
       }
     });
   } catch (error) {
     console.log(error.message);
+  }
+});
+exports.ordertest = catchAsyncerror(async (req, res) => {
+  const { orderID } = req.params;
+  const captureData = await capturePayment(orderID);
+  // TODO: store payment information such as the transaction ID
+  res.json(captureData);
+});
+exports.ordercapture = catchAsyncerror(async (req, res) => {
+  const { orderID } = req.params;
+  try {
+    const captureData = await paypal.capturePayment(orderID);
+    console.log(captureData);
+    res.json(captureData);
+  } catch (err) {
+    res.status(500).send(err.message);
   }
 });
 
