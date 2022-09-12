@@ -76,7 +76,8 @@ exports.register = catchAsyncerror(async (req, res, next) => {
   } = req.body;
 
   console.log(req.body.Expiry);
-  if (    !username ||
+  if (
+    !username ||
     !email ||
     !password ||
     !dob ||
@@ -93,15 +94,10 @@ exports.register = catchAsyncerror(async (req, res, next) => {
   }
   try {
     User.findOne({ email }, async (err, user) => {
-    
-      const { valid, reason, validators } = await isEmailValid(email);
-      console.log(validators);
+      // const { valid, reason, validators } = await isEmailValid(email);
+      // console.log(validators);
 
-      if (!valid) {
-        return res
-          .status(500)
-          .json("email is invalid please enter a valid email");
-      } else if (user) {
+      if (user) {
         return res.status(500).json("user already registered");
       } else {
         const myCloud = await cloudinary.uploader.upload(
@@ -123,40 +119,51 @@ exports.register = catchAsyncerror(async (req, res, next) => {
           Expiry,
           cvc,
           packages,
+          paymentstatus,
+
           avatar: {
             public_id: myCloud.public_id,
             url: myCloud.secure_url,
           },
         });
-        const order = await createOrder();
-        console.log(order);
-        res.json(order);
-       await capturePayment(order.id)
-        res.json(order, user, res);
-        return;
-        // sendToken(user, 201, res);
+
+        sendToken(user, 201, res);
       }
     });
   } catch (error) {
     console.log(error.message);
   }
 });
-exports.ordertest = catchAsyncerror(async (req, res) => {
-  const { orderID } = req.params;
-  const captureData = await capturePayment(orderID);
-  // TODO: store payment information such as the transaction ID
-  res.json(captureData);
+exports.pay = catchAsyncerror(async (req, res, next) => {
+  const order = await createOrder();
+  console.log(order);
+  res.json(order);
 });
-exports.ordercapture = catchAsyncerror(async (req, res) => {
+exports.ordercapture = catchAsyncerror(async (req, res, next) => {
   const { orderID } = req.params;
   try {
-    const captureData = await paypal.capturePayment(orderID);
+    const captureData = await capturePayment(orderID);
     console.log(captureData);
     res.json(captureData);
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).json(err);
   }
+  next();
 });
+// exports.paym = catchAsyncerror(async (req, res) => {
+//   const newUserData = {
+//     paymentstatus: true,
+//   };
+
+  // await User.findByIdAndUpdate(req.user.id, newUserData, {
+  //   new: true,
+  //   runValidators: true,
+  //   useFindAndModify: false,
+  // });
+  // res.status(200).json({
+  //   success: "updated",
+  // });
+// });
 
 exports.login = catchAsyncerror(async (req, res, next) => {
   const { email, password } = req.body;

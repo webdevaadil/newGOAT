@@ -25,20 +25,18 @@ import { clearErrors } from "../../actions/userAction";
 export const Main = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { isAuthenticated, user, error, loading } = useSelector(
     (state) => state.user
   );
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
-    if(!isAuthenticated){
-      navigate("/")
+    if (!isAuthenticated) {
+      navigate("/");
     }
-    
-
   }, [error, navigate, dispatch]);
 
   const [detail, setDetail] = useState([]);
@@ -93,8 +91,6 @@ export const Main = () => {
       );
     });
 
-    // console.log(filterdate);
-
     setTodayRace(filterdate);
   };
 
@@ -130,8 +126,6 @@ export const Main = () => {
 
   const [datenew, setdatenew] = useState("");
 
-  console.log(datenew);
-
   const handlechange = (e) => {
     e.preventDefault();
     setnewfetchdate(datenew);
@@ -154,9 +148,9 @@ export const Main = () => {
     // e.target.reset();
     setnewfetchdate("");
   };
-  const pay=()=>{
-    axios.post("http://localhost:5000/pay")
-  }
+  const pay = () => {
+    axios.post("http://localhost:5000/pay");
+  };
 
   return (
     <>
@@ -165,7 +159,7 @@ export const Main = () => {
         <Loader />
       ) : (
         <>
-        <button onClick={pay}>pay</button>
+          <button onClick={pay}>pay</button>
           <div className="slide">
             <section className="container-fluid">
               <div className="container">
@@ -208,7 +202,6 @@ export const Main = () => {
                         ).getUTCMinutes();
                         const inminutes = minutesprev - minutesnow;
 
-                        console.log(inminutes);
                         const trimlocation = items.RaceLocation.replace(
                           / +/g,
                           "-"

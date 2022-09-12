@@ -26,7 +26,7 @@ export const Password = ({ formData, setForm, navigation }) => {
 
   console.log(formData);
   const handle = async (e) => {
-    // await axios.post("http://localhost:5000/api/auth/register" ,{ formData})
+    // await axios.post("/api/auth/register" ,{ formData})
 
     // setpackages( e.value)
     // setForm({
@@ -36,6 +36,11 @@ export const Password = ({ formData, setForm, navigation }) => {
     setForm(e);
   };
 
+  const [test, settest] = useState();
+  // console.log(00);
+  // if(test.data.status==="COMPLETED"){
+  //   dispatch(register(formData))
+  // }
   const [packagess, setpackages] = useState(packages);
   const options = [
     {
@@ -131,7 +136,7 @@ export const Password = ({ formData, setForm, navigation }) => {
   console.log(formData.packages);
   const handleSub = async (e) => {
     e.preventDefault();
-    // dispatch(register(formData));
+    dispatch(register(formData));
   };
   useEffect(() => {
     if (error) {
@@ -229,45 +234,52 @@ export const Password = ({ formData, setForm, navigation }) => {
                           type="submit"
                           className="btn btn-outline-secondary"
                         >
-                          <div
-                            style={{ maxWidth: "750px", minHeight: "200px" }}
-                          >
-                            <PayPalButton
-                              createOrder={async (data, actions) => {
-                                return fetch(
-                                  "http://localhost:5000/api/auth/register",
-                                  {
+                          <div>
+                            <div
+                              style={{ maxWidth: "750px", minHeight: "200px" }}
+                            >
+                              <PayPalButton
+                                createOrder={async (data, actions) => {
+                                  return await fetch("/api/auth/pay", {
                                     method: "post",
-                                    body: JSON.stringify({
-                                      formData,
-                                    }),
+                                    // body: JSON.stringify({
+                                    //   formData,
+                                    // }),
                                     // use the "body" param to optionally pass additional order information
                                     // like product ids or amount
-                                  }
-                                )
-                                  .then((response) => response.json())
-                                  .then((order) => order.id);
-                              }}
-                             onApprove={async (data, actions) => {
-                                console.log(data);
-                                return await fetch(
-                                  `http://localhost:5000/api/auth/order/${data.orderID}/capture`,
-                                  {
-                                    method: "post",
-                                  }
-                                )
-                                  . then((response) => response.json())
-                                  .then((orderData) => {
-                                    // Successful capture! For dev/demo purposes:
-                                    console.log(
-                                      "Capture result",
-                                      orderData,
-                                      JSON.stringify(orderData, null, 2)
-                                    );
-                                  });
-                                // Capture the funds from the transaction
-                              }}
-                            />
+                                  })
+                                    .then((response) => response.json())
+                                    .then((order) => order.id)
+                                    // .then((response) =>console.log(response))
+
+                                    .catch((err) => {
+                                      console.log(err);
+                                    });
+                                  // console.log(response)
+                                }}
+                                onApprove={async (data, actions) => {
+                                  console.log(data);
+
+                                  return await axios
+                                    .post(
+                                      `http://localhost:5000/api/auth/order/${data.orderID}/capture`,
+                                      { formData }
+                                    )
+                                    .then((response) => response)
+                                    .then((orderData) => {
+                                      settest(orderData);
+                                      // Successful capture! For dev/demo purposes:
+                                      console.log("Capture result", orderData);
+                                    })
+                                    .then((orderData) => console.log(orderData))
+                                    .then(dispatch(register(formData)))
+                                    .catch((err) => {
+                                      console.log(err);
+                                    });
+                                  // Capture the funds from the transaction
+                                }}
+                              />
+                            </div>
                           </div>
                         </button>
                         <button

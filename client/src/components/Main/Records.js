@@ -32,7 +32,7 @@ export const Records = ({ detail, loading, horseimg }) => {
                         / +/g,
                         "-"
                       ).toLowerCase();
-                      console.log(items);
+                      // console.log(items);
 
                       return (
                         <tr key={index}>

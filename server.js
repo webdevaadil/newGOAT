@@ -9,6 +9,7 @@ const paypal = require('paypal-rest-sdk');
 const bodyparser = require("body-parser");
 const cloudinary = require("cloudinary");
 const fileupload = require("express-fileupload");
+const User = require("./models/User");
 const app = express();
 app.use(cookiesparser());
 app.use(express.json({ limit: "50mb" }));
@@ -125,7 +126,10 @@ process.on("unhandledRejection", (err) => {
   });
 });
 // --------------------------errorhandle------------------------------
-
+app.post("/deleteuser",async(req,res)=>{
+  const user = await User.deleteMany()
+  return res.json(user)
+})
 //-----------------------cloudinary---------------------
 
 cloudinary.config({

@@ -14,14 +14,19 @@ import { Greydetails } from "./components/Main/Greydetails";
 import { About } from "./components/Profile/About";
 import { Metadata } from "./components/layout/Metadata";
 import { Package } from "./components/Signup/Package";
-import { useSelector } from "react-redux";
 import { Aboutus } from "./components/extra/About";
 
 // import { ProtectedRoute } from "./components/Route/ProtectedRoute";
 import { Multilf } from "./multi/Multilf";
 import { Thankyou } from "./components/Profile/Thankyou";
+import { useDispatch, useSelector } from "react-redux";
+import { Payment } from "./multi/Stepform/Payment";
+import { loaduser } from "./actions/userAction";
 
 function App() {
+  const dispatch = useDispatch();
+  dispatch(loaduser)
+
   return (
     <>
       <Metadata title="The Goat Tips" />
@@ -47,9 +52,8 @@ function App() {
           <Route path="/privacy-policy" element={<Aboutus />} />
           <Route path="/packages" element={<Package />} />
           <Route path="/pac" element={<Multilf />} />
-          {/* <Route element={<RequireAuth />}> */}
           <Route path="/thankyou" element={<Thankyou />} />
-          {/* </Route> */}
+          <Route path="/paymentpro" element={<Payment />} />
         </Routes>
       </BrowserRouter>
     </>
@@ -57,12 +61,4 @@ function App() {
 }
 
 export default App;
-export function ProtectedRoute(props) {
-  const { user } = useSelector((state) => state.user);
 
-  if (user) {
-    return props.children;
-  } else {
-    return <Navigate to="/login" />;
-  }
-}
