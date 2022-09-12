@@ -24,7 +24,7 @@ import {
 import { confirmAlert } from 'react-confirm-alert'
 import { useNavigate } from "react-router-dom";
 
-
+const bashuel="http://localhost:5000"
 export const login = (email, password) => async (dispatch, getState) => {
   console.log(email, password);
   try {
@@ -38,10 +38,12 @@ export const login = (email, password) => async (dispatch, getState) => {
 
     console.log(error.response);
   }
+  localStorage.setItem("comuser",JSON.stringify(getState().user))
+
   
 };
 
-export const register = (userData) => async (dispatch) => {
+export const register = (userData) => async (dispatch,getState) => {
   try {
     dispatch({ type: REGISTER_USER_REQUEST });
 
@@ -58,8 +60,9 @@ export const register = (userData) => async (dispatch) => {
       type: REGISTER_USER_FAIL,
       payload: error.response.data,
     });
-    // console.log(error);
+    
   }
+  localStorage.setItem("comuser",JSON.stringify(getState().user))
 };
 export const updateimage =(imguplod)=>async(dispatch)=>{
   try {

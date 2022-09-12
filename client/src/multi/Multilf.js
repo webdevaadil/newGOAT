@@ -60,8 +60,7 @@ export const Multilf = () => {
         return <Names {...props} />;
         case "address":
           return <Email {...props} />;
-        case "contact":
-          return <Password {...props} />;
+        
     }
   
     return (

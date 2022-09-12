@@ -1,17 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Header } from "../../components/Header/Header";
 import  Footer  from "../../components/Footer/Footer";
 import "./Email.css";
 import { Breadcrumb } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, register } from "../../actions/userAction";
+import { useAlert } from "react-alert";
+import { Loader } from "../../components/layout/Loader";
 export const Email = ({ formData, setForm, navigation }) => {
+
+  const { error, loading, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
+const navigate=useNavigate()
+  const dispatch=useDispatch()
+  const signup=()=>{
+    dispatch(register(formData))
+  }
+  
   function handle(e) {
    setForm(e)
-   navigation.next(2)
-}
+   console.log(formData);
+   setTimeout(signup, 5000);
+   
+  }
+  console.log(formData);
+  const alert = useAlert();
+useEffect(() => {
+  if (error) {
+    alert.error(error);
+    dispatch(clearErrors());
+  }
+  if (isAuthenticated) {
+    alert.success("Signup Successfull");
+    navigate("/");
+  }
+}, [navigate, isAuthenticated,  error, alert, dispatch]);
 
-  return (<>
-    <section style={{ marginBottom:"10px"}}>
+return   (
+  <>
+{loading&&<Loader/>}
+  <>
+<section style={{ marginBottom:"10px"}}>
       <Header/>
       <Breadcrumb separator=">">
     <Breadcrumb.Item>
@@ -37,7 +68,7 @@ export const Email = ({ formData, setForm, navigation }) => {
               name="packages"
               value={"Free"}
               onClick={handle}
-            >
+              >
               Select
             </button>
           </div>
@@ -56,8 +87,8 @@ export const Email = ({ formData, setForm, navigation }) => {
               className="btn_two"
               name="packages"
               value={"$15 / week"}
-                
-                onClick={handle}
+              
+              onClick={handle}
             >
               Select
             </button>
@@ -77,7 +108,7 @@ export const Email = ({ formData, setForm, navigation }) => {
               name="packages"
               value={"$30 / week"}
               onClick={handle}
-            >
+              >
               Select
             </button>
           </div>
@@ -124,5 +155,10 @@ export const Email = ({ formData, setForm, navigation }) => {
 
     </section >
                     <Footer/>
+                    </>
+               
+    
  </> );
-};
+
+
+}

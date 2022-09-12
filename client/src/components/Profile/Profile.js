@@ -134,12 +134,7 @@ export const Profile = () => {
                   >
                     {/* <div style={{display: "flex",}}id="updateProfileImage"> */}
                   
-                    <img
-                      className="profile-img"
-                      src={avatar.url}
-                      
-                      alt="Avatar Preview"
-                    />
+                 
                     {/* <input type="file"className="profil-img"name="avatar"accept="image/*"onChange={handle}/> */}
                     <Button
                       variant="primary profile-btn"

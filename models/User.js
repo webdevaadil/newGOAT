@@ -28,44 +28,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "false",
   },
-  Name_of_card: {
-    type: String,
-    required: [true, "please provide Name_of_card"],
-  },
-
-  card_no: {
-    type: Number,
-    required: [true, "please provide card_no"],
-  },
+ 
   packages: {
     type: String,
     required: [true, "please provide packages"],
-  },
-
-  Expiry: {
-    type: Date,
-    required: [true, "please provide Expiry"],
-  },
-  cvc: {
-    type: Number,
-    required: [true, "please provide cvc"],
   },
   gender: {
     type: String,
     default: "male",
   },
 
-  avatar: {
-    public_id: {
-      type: String,
-      required: true,
-    },
-    url: {
-      type: String,
-      required: true,
-    },
-  },
-
+  
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 });

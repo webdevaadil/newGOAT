@@ -20,20 +20,21 @@ import { Aboutus } from "./components/extra/About";
 import { Multilf } from "./multi/Multilf";
 import { Thankyou } from "./components/Profile/Thankyou";
 import { useDispatch, useSelector } from "react-redux";
-import { Payment } from "./multi/Stepform/Payment";
 import { loaduser } from "./actions/userAction";
+import { Paypa } from "./multi/Stepform/Password";
 
 function App() {
   const dispatch = useDispatch();
-  dispatch(loaduser)
-
+  dispatch(loaduser())
+  const local = JSON.parse(localStorage.getItem("comuser"))
+// console.log(local.user);
   return (
     <>
       <Metadata title="The Goat Tips" />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route index path="/main" element={<Main />} />
+          <Route index path="/main" element={<ProtectedRoute><Main /></ProtectedRoute>} />
           <Route path="/signup" element={<Multilf />} />
           <Route path="/login" element={<Login />} />
           <Route path="/thoroughbreds" element={<Thoroughbreds />} />
@@ -53,7 +54,7 @@ function App() {
           <Route path="/packages" element={<Package />} />
           <Route path="/pac" element={<Multilf />} />
           <Route path="/thankyou" element={<Thankyou />} />
-          <Route path="/paymentpro" element={<Payment />} />
+          <Route path="/password" element={<Paypa/>} />
         </Routes>
       </BrowserRouter>
     </>
@@ -61,4 +62,17 @@ function App() {
 }
 
 export default App;
+export function ProtectedRoute(props) {
+  const local = JSON.parse(localStorage.getItem("comuser"))
+if(local){
+
+  if (local.user.paymentstatus==="false") {
+    return <Navigate to="/password" />;
+  }
+  } else {
+    return props.children;
+  }
+}
+
+
 

@@ -24,11 +24,8 @@ export const Names = ({ formData, setForm, navigation }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     navigation.next();
-    await axios.get("http://localhost:5000/api/auth/register");
 
-    const myForm = new FormData();
 
-    //  dispatch(register(myForm));
   };
   const [errorMessage, setErrorMessage] = useState("");
   const handle = (e) => {

@@ -68,23 +68,15 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     password,
     dob,
     gender,
-    Name_of_card,
-    card_no,
-    Expiry,
-    cvc,
-    packages,
+    packages
   } = req.body;
 
-  console.log(req.body.Expiry);
   if (
     !username ||
     !email ||
     !password ||
     !dob ||
-    !Name_of_card ||
-    !card_no ||
-    !Expiry ||
-    !cvc ||
+    !gender||
     !packages
   ) {
     return res.status(400).json("plese fill all input ");
@@ -114,17 +106,10 @@ exports.register = catchAsyncerror(async (req, res, next) => {
           password,
           dob,
           gender,
-          Name_of_card,
-          card_no,
-          Expiry,
-          cvc,
           packages,
-          paymentstatus,
+          paymentstatus:"false",
 
-          avatar: {
-            public_id: myCloud.public_id,
-            url: myCloud.secure_url,
-          },
+          
         });
 
         sendToken(user, 201, res);
@@ -192,7 +177,6 @@ exports.login = catchAsyncerror(async (req, res, next) => {
 
 exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   const { token } = req.cookies;
-  // console.log(token);
   if (!token) {
     return next(new ErrorResponse("plese login to access this resource", 401));
   }
