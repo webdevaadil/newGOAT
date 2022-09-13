@@ -17,26 +17,26 @@ export const Multilf = () => {
     password: "",
     gender: "",
     packages: "",
-    Name_of_card: "",
-    card_no: "",
-    Expiry: "",
-    cvc: "",
+    paymentstatus:""
   })
-  
   const steps = [
     { id: "name" },
     { id: "address" },
     { id: "contact" },
-   
+    
   ];
     const [formData, setForm] = useForm(defaultData);
     const { step, navigation } = useStep({
       steps,
       initialStep: 0,
     });
-  
     
-  const navigate = useNavigate();
+    if(formData.packages==="Free"){
+      formData.paymentstatus="true"
+    }
+    console.log(formData);
+    
+    const navigate = useNavigate();
   const alert = useAlert();
   const dispatch = useDispatch();
 

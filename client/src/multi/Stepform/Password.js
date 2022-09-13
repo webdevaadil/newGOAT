@@ -39,6 +39,7 @@ export const Paypa = () => {
       navigate("/main");
     }
   }
+  console.log(packages);
   useEffect(() => {
     if(
       user
@@ -156,15 +157,15 @@ export const Paypa = () => {
     zIndex: -999,
   };
   const handleSub = async (e) => {
-    e.preventDefault();
-    dispatch(register());
+    // e.preventDefault();
+    // dispatch(register());
+    dispatch(updateprofile({ paymentstatus: "true" }));
   };
   // const [paymentstatus, setpaymentstatus] = useState("true");
 
   const myForm = new FormData();
   const updatepro = (e) => {
-    dispatch(updateprofile({ paymentstatus: "true" }));
-    console.log("hi");
+    dispatch(updateprofile({ paymentstatus: "true" ,packages}));
   };
 
   return (
@@ -201,15 +202,20 @@ export const Paypa = () => {
 
                       <div className="fom-btn mb-3">
                         <div>
-                          <div
-                            style={{ maxWidth: "750px", minHeight: "200px" }}
-                          >
-                            <PayPalButton                              createOrder={async (data, actions) => {
-                                return await fetch("/api/auth/pay", {
+                          <div style={{ maxWidth: "750px", minHeight: "200px" }}>
+                          {packages==="Free"?( <button
+              className="btn_two"
+              name="packages"
+              value={"$60 / week"}
+              onClick={updatepro}
+            >
+              Select
+            </button>):(
+                            <>
+                             <PayPalButton createOrder={async (data, actions) => {
+                                return await axios.post("/api/auth/pay", {
                                   method: "post",
-                                  // body: JSON.stringify({
-                                  //   ,
-                                  // }),
+                                  body: JSON.stringify("packages")
                                   // use the "body" param to optionally pass additional order information
                                   // like product ids or amount
                                 })
@@ -252,7 +258,9 @@ export const Paypa = () => {
 
                                 // OPTIONAL: Call your server to save the transaction
                               }}
-                            />
+                            /></>
+                          )}
+                           
                           </div>
                         </div>
                       </div>

@@ -62,13 +62,15 @@ async function createOrder(amount) {
   return data;
 }
 exports.register = catchAsyncerror(async (req, res, next) => {
+  console.log(req.body);
   const {
     username,
     email,
     password,
     dob,
     gender,
-    packages
+    packages,
+    paymentstatus
   } = req.body;
 
   if (
@@ -78,8 +80,12 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     !dob ||
     !gender||
     !packages
+
   ) {
     return res.status(400).json("plese fill all input ");
+  }
+  if(packages==="free"){
+    paymentstatus="true"
   }
 if (password.length < 6) {
     return res.status(400).json("password must be 6 character long");
@@ -91,15 +97,9 @@ if (password.length < 6) {
 
       if (user) {
         return res.status(500).json("user already registered");
-      } else {
-        const myCloud = await cloudinary.uploader.upload(
-          "https://res.cloudinary.com/degu3b9yz/image/upload/v1659352924/avatars/blilsisofr6pbhnuxbte.png",
-          {
-            folder: "avatars",
-            width: 150,
-            crop: "scale",
-          }
-        );
+      } 
+      else {
+    
         const user = await User.create({
           username,
           email,
@@ -107,20 +107,22 @@ if (password.length < 6) {
           dob,
           gender,
           packages,
-          paymentstatus:"false",
+          paymentstatus:req.body.paymentstatus||"false",
 
           
         });
 
         sendToken(user, 201, res);
       }
+      return
     });
   } catch (error) {
     console.log(error.message);
   }
 });
 exports.pay = catchAsyncerror(async (req, res, next) => {
-  const order = await createOrder(req);
+  console.log(req);
+   const order = await createOrder();
   console.log(order);
   res.json(order);
 });
@@ -176,7 +178,6 @@ exports.login = catchAsyncerror(async (req, res, next) => {
 });
 exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   const { token } = req.cookies;
-  console.log(token);
   if (!token) {
     return res.json({ message: "plese login to access this resource" }, 401)
   }

@@ -26,7 +26,6 @@ const userSchema = new mongoose.Schema({
   },
   paymentstatus: {
     type: String,
-    default: "false",
   },
  
   packages: {
