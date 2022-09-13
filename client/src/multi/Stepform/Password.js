@@ -228,7 +228,7 @@ export const Paypa = () => {
 
                                 return await axios
                                   .post(
-                                    `http://localhost:5000/api/auth/order/${data.orderID}/capture`,
+                                    `/api/auth/order/${data.orderID}/capture`,
                                     {}
                                   )
                                   .then((response) => response)
