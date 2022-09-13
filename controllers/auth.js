@@ -37,7 +37,7 @@ async function capturePayment(orderId) {
   const data = await response.json();
   return data;
 }
-async function createOrder() {
+async function createOrder(amount) {
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
   const response = await fetch(url, {
@@ -52,7 +52,7 @@ async function createOrder() {
         {
           amount: {
             currency_code: "USD",
-            value: "100.00",
+            value: "80.00",
           },
         },
       ],
@@ -120,7 +120,7 @@ if (password.length < 6) {
   }
 });
 exports.pay = catchAsyncerror(async (req, res, next) => {
-  const order = await createOrder();
+  const order = await createOrder(req);
   console.log(order);
   res.json(order);
 });
@@ -174,11 +174,11 @@ exports.login = catchAsyncerror(async (req, res, next) => {
     // res.status(500).json({ success: false });
   }
 });
-
 exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   const { token } = req.cookies;
+  console.log(token);
   if (!token) {
-    return next(new ErrorResponse("plese login to access this resource", 401));
+    return res.json({ message: "plese login to access this resource" }, 401)
   }
   const decodedData = jwt.verify(token, process.env.JWT_SECRET);
   req.user = await User.findById(decodedData.id);
@@ -186,8 +186,9 @@ exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
 });
 exports.dashboard = catchAsyncerror(async (req, res, next) => {
   if (req.session) {
-    console.log(req.session.email);
+    console.log(req.session);
   }
+
   const user = await User.findById(req.user.id);
 
   res.status(200).json({

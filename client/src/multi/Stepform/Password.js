@@ -33,24 +33,30 @@ export const Paypa = () => {
   const handle = async (e) => {
     setpackages(e.value);
   };
-  useEffect(() => {
-    if (!user) {
-      navigate("/");
-    }
-    if (local.user.paymentstatus === "true") {
+ 
+  if (user) {
+    if (user.paymentstatus === "true") {
       navigate("/main");
     }
-    if (user) {
+  }
+  useEffect(() => {
+    if(
+      user
+      ){
       setpackages(user.packages);
+
+    }
+    if (!user) {
     }
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
-    if (!isAuthenticated) {
-      dispatch(loaduser());
-      // navigate("/")
-    }
+    // if (!isAuthenticated) {
+    //   dispatch(loaduser());
+    //   navigate("/");
+   
+    // }
   }, [error, navigate, alert, isAuthenticated, user, dispatch]);
 
   const [test, settest] = useState();
@@ -153,7 +159,7 @@ export const Paypa = () => {
     e.preventDefault();
     dispatch(register());
   };
-  const [paymentstatus, setpaymentstatus] = useState("true");
+  // const [paymentstatus, setpaymentstatus] = useState("true");
 
   const myForm = new FormData();
   const updatepro = (e) => {
@@ -189,6 +195,7 @@ export const Paypa = () => {
                             return option.value === packages;
                           })}
                           onChange={handle}
+                          // defaultValue={user.packages}
                         />
                       </div>
 
@@ -197,8 +204,7 @@ export const Paypa = () => {
                           <div
                             style={{ maxWidth: "750px", minHeight: "200px" }}
                           >
-                            <PayPalButton
-                              createOrder={async (data, actions) => {
+                            <PayPalButton                              createOrder={async (data, actions) => {
                                 return await fetch("/api/auth/pay", {
                                   method: "post",
                                   // body: JSON.stringify({
@@ -232,7 +238,10 @@ export const Paypa = () => {
                                     console.log("Capture result", orderData);
                                   })
                                   .then((orderData) => console.log(orderData))
-                                  // .then())
+                                  .then(updatepro())
+                                  .then((orderData)=>{
+                                    navigate("/main")
+                                  })
                                   .catch((err) => {
                                     console.log(err);
                                   });

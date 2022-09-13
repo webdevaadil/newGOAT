@@ -34,7 +34,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route index path="/main" element={<ProtectedRoute><Main /></ProtectedRoute>} />
+          <Route index path="/main" element={<Main />} />
           <Route path="/signup" element={<Multilf />} />
           <Route path="/login" element={<Login />} />
           <Route path="/thoroughbreds" element={<Thoroughbreds />} />
@@ -63,13 +63,28 @@ function App() {
 
 export default App;
 export function ProtectedRoute(props) {
-  const local = JSON.parse(localStorage.getItem("comuser"))
-if(local){
+  const { error, loading, isAuthenticated, user } = useSelector(
+    (state) => state.user
+  );
 
-  if (local.user.paymentstatus==="false") {
+
+  if (user.paymentstatus==="false") {
     return <Navigate to="/password" />;
   }
-  } else {
+   else {
+    return <Navigate to="/main" />;
+  }
+}
+export function Paymentroute(props) {
+  const { error, loading, isAuthenticated, user } = useSelector(
+    (state) => state.user
+  );
+if(user){
+
+  if (user.paymentstatus==="true") {
+    return <Navigate to="/main" />;
+  }
+} else {
     return props.children;
   }
 }

@@ -21,14 +21,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loaduser } from "../../actions/userAction";
+import { useAlert } from "react-alert";
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // eslint-disable-next-line no-unused-vars
-  const [counteron] = useState(false);
-  const { error, isAuthenticated ,user} = useSelector(
+  const alert = useAlert();
+ 
+  const { error, isAuthenticated } = useSelector(
     (state) => state.user
   );
 
@@ -36,15 +36,13 @@ const Home = () => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
-      dispatch(loaduser());
     }
     
-    if (user) {
+    if (isAuthenticated) {
       navigate("/main");
       
     }
-    else{
-    }
+
   }, [dispatch, isAuthenticated, error, navigate]);
 
   const redy = () => {
@@ -52,6 +50,7 @@ const Home = () => {
   };
 
   return (
+
     <div>
       <div className="banner-sec banne-bg">
         <div className="container her0">

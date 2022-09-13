@@ -21,20 +21,24 @@ import { apidata } from "../../actions/apiAction";
 import img1 from "../../Images/Vector.png";
 import { Loader } from "../layout/Loader";
 import { clearErrors, loaduser } from "../../actions/userAction";
+import { useAlert } from "react-alert";
 
 export const Main = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const alert = useAlert();
 
   const { isAuthenticated, user, error, loading } = useSelector(
     (state) => state.user
   );
   useEffect(() => {
+    if(user){
+      if(user.paymentstatus==="false"){
+        navigate("/password")
+       console.log(user.paymentstatus);
+       }
+    }
     dispatch(loaduser())
-    // if(user.paymentstatus==="false"){
-    //  navigate("/password")
-    // console.log(user.paymentstatus);
-    // }
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -261,7 +265,7 @@ export const Main = () => {
                 {isAuthenticated ? (
                   <div className="main_1 main-img">
                     <div className="main_cont">
-                      {/* <h3>Welcome ! {user.username}</h3> */}
+                      <h3>Welcome ! {user.username}</h3>
 
                       <p>And get the hottest tips that can earn you up to </p>
 
