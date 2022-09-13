@@ -20,7 +20,7 @@ import { apidata } from "../../actions/apiAction";
 
 import img1 from "../../Images/Vector.png";
 import { Loader } from "../layout/Loader";
-import { clearErrors } from "../../actions/userAction";
+import { clearErrors, loaduser } from "../../actions/userAction";
 
 export const Main = () => {
   const dispatch = useDispatch();
@@ -30,6 +30,7 @@ export const Main = () => {
     (state) => state.user
   );
   useEffect(() => {
+    dispatch(loaduser())
     // if(user.paymentstatus==="false"){
     //  navigate("/password")
     // console.log(user.paymentstatus);
@@ -260,7 +261,7 @@ export const Main = () => {
                 {isAuthenticated ? (
                   <div className="main_1 main-img">
                     <div className="main_cont">
-                      <h3>Welcome ! {user.username}</h3>
+                      {/* <h3>Welcome ! {user.username}</h3> */}
 
                       <p>And get the hottest tips that can earn you up to </p>
 

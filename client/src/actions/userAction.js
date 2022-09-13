@@ -95,7 +95,7 @@ export const logout = () => async (dispatch) => {
 export const loaduser = () => async (dispatch) => {
   try {
     dispatch({ type: DETAIL_USER_REQUEST });
-    const { data } = await axios.get(`/api/auth/me`);
+    const { data } = await axios.get(`localhost:5000/api/auth/me`);
 
     dispatch({ type: DETAIL_USER_SUCCESS, payload: data.user });
 

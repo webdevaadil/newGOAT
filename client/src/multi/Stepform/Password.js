@@ -9,7 +9,12 @@ import img5 from "../../Images/name4.png";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { clearErrors, loaduser, register, updateprofile } from "../../actions/userAction";
+import {
+  clearErrors,
+  loaduser,
+  register,
+  updateprofile,
+} from "../../actions/userAction";
 import { Loader } from "../../components/layout/Loader";
 import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
@@ -18,39 +23,35 @@ export const Paypa = () => {
   const navigate = useNavigate();
   const alert = useAlert();
 
-  const { error, loading, isAuthenticated ,user} = useSelector(
+  const { error, loading, isAuthenticated, user } = useSelector(
     (state) => state.user
   );
-
+  const local = JSON.parse(localStorage.getItem("comuser"));
   const dispatch = useDispatch();
 
   const [packages, setpackages] = useState("");
   const handle = async (e) => {
-    setpackages( e.value )
-    
+    setpackages(e.value);
   };
   useEffect(() => {
-if(!user){
-  navigate('/')
-}
-if (user) {
-  
-  setpackages(user.packages);
-   
-}
+    if (!user) {
+      navigate("/");
+    }
+    if (local.user.paymentstatus === "true") {
+      navigate("/main");
+    }
+    if (user) {
+      setpackages(user.packages);
+    }
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
-    if(!isAuthenticated){
-      dispatch(loaduser())
+    if (!isAuthenticated) {
+      dispatch(loaduser());
       // navigate("/")
-
     }
-
-    
-
-  }, [error, navigate, dispatch]);
+  }, [error, navigate, alert, isAuthenticated, user, dispatch]);
 
   const [test, settest] = useState();
   // console.log(00);
@@ -146,25 +147,20 @@ if (user) {
   ];
   const customStyles = {
     height: 45,
-    zIndex:-999,
+    zIndex: -999,
   };
-    const handleSub = async (e) => {
+  const handleSub = async (e) => {
     e.preventDefault();
     dispatch(register());
   };
-  const [paymentstatus, setpaymentstatus] = useState("true")
-  useEffect(() => {
-  }, [navigate, isAuthenticated, loading, error, alert, dispatch]);
+  const [paymentstatus, setpaymentstatus] = useState("true");
+
   const myForm = new FormData();
-  const updatepro=(e)=>{ 
-   
-    dispatch(updateprofile(paymentstatus))
-    
-  }
-  console.log(paymentstatus);
-  updatepro()
- 
-  
+  const updatepro = (e) => {
+    dispatch(updateprofile({ paymentstatus: "true" }));
+    console.log("hi");
+  };
+
   return (
     <>
       {loading && <Loader />}
@@ -181,69 +177,75 @@ if (user) {
                   <h2>Packages</h2>
                   <div className="form-main">
                     <form onSubmit={handleSub} className="form-floating mb-3">
-                      <div style={{zIndex:99999999999}}  className="form-floating">
-                      <Select
-                   className="Select_pack"
-                   options={options}
-                   styles={customStyles}
-                    value={options.filter(function(option) {
-                      return option.value === packages;
-                    })}
-            
-                    onChange={handle}
-                  />
+                      <div
+                        style={{ zIndex: 99999999999 }}
+                        className="form-floating"
+                      >
+                        <Select
+                          className="Select_pack"
+                          options={options}
+                          styles={customStyles}
+                          value={options.filter(function (option) {
+                            return option.value === packages;
+                          })}
+                          onChange={handle}
+                        />
                       </div>
-                    
+
                       <div className="fom-btn mb-3">
-                        
-                          <div>
-                            <div
-                              style={{ maxWidth: "750px", minHeight: "200px" }}
-                            >
-                              <PayPalButton 
-                                createOrder={async (data, actions) => {
-                                  return await fetch("/api/auth/pay", {
-                                    method: "post",
-                                    // body: JSON.stringify({
-                                    //   ,
-                                    // }),
-                                    // use the "body" param to optionally pass additional order information
-                                    // like product ids or amount
+                        <div>
+                          <div
+                            style={{ maxWidth: "750px", minHeight: "200px" }}
+                          >
+                            <PayPalButton
+                              createOrder={async (data, actions) => {
+                                return await fetch("/api/auth/pay", {
+                                  method: "post",
+                                  // body: JSON.stringify({
+                                  //   ,
+                                  // }),
+                                  // use the "body" param to optionally pass additional order information
+                                  // like product ids or amount
+                                })
+                                  .then((response) => response.json())
+                                  .then((order) => order.id)
+                                  // .then((response) =>console.log(response))
+
+                                  .catch((err) => {
+                                    console.log(err);
+                                  });
+                                // console.log(response)
+                              }}
+                              ///////////////////////
+                              onApprove={async (data, actions) => {
+                                console.log(data);
+
+                                return await axios
+                                  .post(
+                                    `http://localhost:5000/api/auth/order/${data.orderID}/capture`,
+                                    {}
+                                  )
+                                  .then((response) => response)
+                                  .then((orderData) => {
+                                    settest(orderData);
+                                    // Successful capture! For dev/demo purposes:
+                                    console.log("Capture result", orderData);
                                   })
-                                    .then((response) => response.json())
-                                    .then((order) => order.id)
-                                    // .then((response) =>console.log(response))
+                                  .then((orderData) => console.log(orderData))
+                                  // .then())
+                                  .catch((err) => {
+                                    console.log(err);
+                                  });
+                              }}
+                              catchError={(err, data) => {
+                                // alert("Transaction completed by " + details.payer.name.given_name);
+                                console.log(err);
 
-                                    .catch((err) => {
-                                      console.log(err);
-                                    });
-                                  // console.log(response)
-                                }}
-                                onApprove={async (data, actions) => {
-                                  console.log(data);
-
-                                  return await axios
-                                    .post(
-                                      `http://localhost:5000/api/auth/order/${data.orderID}/capture`,
-                                      {  }
-                                    )
-                                    .then((response) => response)
-                                    .then((orderData) => {
-                                      settest(orderData);
-                                      // Successful capture! For dev/demo purposes:
-                                      console.log("Capture result", orderData);
-                                    })
-                                    .then((orderData) => console.log(orderData))
-                                    .then(onclick={updatepro})
-                                    .catch((err) => {
-                                      console.log(err);
-                                    });
-                                  // Capture the funds from the transaction
-                                }}
-                              />
-                            </div>
+                                // OPTIONAL: Call your server to save the transaction
+                              }}
+                            />
                           </div>
-                      
+                        </div>
                       </div>
                     </form>
                   </div>

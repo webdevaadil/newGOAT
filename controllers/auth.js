@@ -81,12 +81,12 @@ exports.register = catchAsyncerror(async (req, res, next) => {
   ) {
     return res.status(400).json("plese fill all input ");
   }
-  if (password.length < 6) {
+if (password.length < 6) {
     return res.status(400).json("password must be 6 character long");
   }
   try {
     User.findOne({ email }, async (err, user) => {
-      // const { valid, reason, validators } = await isEmailValid(email);
+      const { valid, reason, validators } = await isEmailValid(email);
       // console.log(validators);
 
       if (user) {
@@ -243,7 +243,9 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     Expiry: req.body.Expiry,
     cvc: req.body.cvc,
     packages: req.body.packages,
+    paymentstatus:req.body.paymentstatus
   };
+  console.log(req.body);
 
   await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
