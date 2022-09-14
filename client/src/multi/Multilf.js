@@ -4,12 +4,13 @@ import { useAlert } from "react-alert";
 import { useForm, useStep } from "react-hooks-helper";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { clearErrors } from "../actions/userAction";
+import { clearErrors, register } from "../actions/userAction";
 import { Email } from "./Stepform/Email";
 import { Names } from "./Stepform/Names";
 import { Password } from "./Stepform/Password";
 
 export const Multilf = () => {
+  const dispatch =useDispatch()
   const [defaultData, setDefaultData] = useState({
     username : "",
     email: "",
@@ -34,13 +35,10 @@ export const Multilf = () => {
     if(formData.packages==="Free"){
       formData.paymentstatus="true"
     }
-    console.log(formData);
     
     const navigate = useNavigate();
-  const alert = useAlert();
-  const dispatch = useDispatch();
 
-  
+  console.log(formData);
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
@@ -49,12 +47,11 @@ export const Multilf = () => {
   useEffect(() => {
 
     if (isAuthenticated) {
-      alert.success("Signup Successfull");
       navigate("/main");
     }
-  }, [navigate, isAuthenticated, loading, error, formData,alert, dispatch]);
-    const props = { formData, setForm, navigation };
     
+  }, [navigate, isAuthenticated, loading, ]);
+    const props = { formData, setForm, navigation };
     switch (step.id) {
       case "name":
         return <Names {...props} />;

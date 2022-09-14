@@ -28,7 +28,7 @@ export const Dashboard = () => {
               <Outlet />
             </div>
           </div>
-          <div style={{ zIndex:111}}>
+          <div style={{ position:"absolute",bottom:0, zIndex:111}}>
             <Footer />
           </div>
         </section>

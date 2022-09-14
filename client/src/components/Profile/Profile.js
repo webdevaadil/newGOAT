@@ -49,17 +49,7 @@ export const Profile = () => {
     console.log(myForm);
     dispatch(updateprofile(myForm));
   };
-  const handle = (e) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setavatarPreview(reader.result);
-        setavatar(reader.result);
-      }
-    };
-
-    reader.readAsDataURL(e.target.files[0]);
-  };
+    
   useEffect(() => {
     if (user) {
       setgender(user.gender);
@@ -116,33 +106,15 @@ export const Profile = () => {
               {isAuthenticated !== true ? (
                 <Navigate to={"/login"} />
               ) : (
-                <form
-                  encType="multipart/form-data"
-                  onSubmit={updateProfileSubmit}
-                  style={{
-                    justifyContent: "space-around",
-                    height: "796px",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <h2 className="pro_heading">Profile Photo</h2>
+                
+                  <>
 
                   <div
                     className="pic_flex_box"
                     
                   >
-                    {/* <div style={{display: "flex",}}id="updateProfileImage"> */}
-                  
-                 
-                    {/* <input type="file"className="profil-img"name="avatar"accept="image/*"onChange={handle}/> */}
-                    <Button
-                      variant="primary profile-btn"
-                      style={{ marginTop: "10px" }}
-                      onClick={handleShow}
-                    >
-                      uplaod image
-                    </Button>
+                    
+                    
                     {/* </div> */}
                   </div>
                   <h2 className="per_text">Personal Details</h2>
@@ -152,7 +124,7 @@ export const Profile = () => {
                     className="name"
                     type="text"
                     placeholder="Full name"
-                  />
+                    />
                   <div className="input_flex_box">
                     <input
                       onChange={(e) => setdob(e.target.value)}
@@ -169,7 +141,7 @@ export const Profile = () => {
                         aria-label="Floating label select example"
                         value={gender}
                         autoComplete="new-password"
-                      >
+                        >
                         <option> Select </option>
                         <option>Male</option>
                         <option>Female</option>
@@ -183,30 +155,13 @@ export const Profile = () => {
                     <input type="reset" value="Discard" className="dis_btn" />
                     <input type="submit" value="Update" className="sav_btn" />
                   </div>
-                </form>
+                    </>
+                
               )}
             </div>
           </div>
 
-          <Modal style={{ height: "800px" }} show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <input
-                type="file"
-                className="profil-img"
-                name="avatar"
-                accept="image/*"
-                onChange={handle}
-              />
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="primary" onClick={handleSubmit}>
-                Save Changes
-              </Button>
-            </Modal.Footer>
-          </Modal>
+         
         </>
       )}
     </>

@@ -18,14 +18,11 @@ const navigate=useNavigate()
   const signup=()=>{
     dispatch(register(formData))
   }
+  console.log(formData);
   
   function handle(e) {
-   setForm(e)
-   console.log(formData);
-   setTimeout(signup, 5000);
-   
-  }
-  console.log(formData);
+        setForm(e)
+   }
   const alert = useAlert();
 useEffect(() => {
   if (error) {
@@ -150,6 +147,10 @@ return   (
               Select
             </button>
           </div>
+        {formData.packages!==""?
+        (<button className="btn_two" style={{ backgroundColor: " #10867F", color: "black" ,float:"right"}} onClick={signup}>Register</button>):("")
+
+        }
         </div>
       </div>
 

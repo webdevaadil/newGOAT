@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Loader } from "../layout/Loader";
 
 export const Records = ({ detail, loading, horseimg }) => {
+  console.log(detail);
 
   return (
     <>

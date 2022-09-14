@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 var cloudinary = require("cloudinary").v2;
 const emailValidator = require("deep-email-validator");
 const { expressjwt } = require("express-jwt");
-const paypal = require("../payment/payment.js");
 const { CLIENT_ID, APP_SECRET } = process.env;
 async function generateAccessToken() {
   const auth = Buffer.from(CLIENT_ID + ":" + APP_SECRET).toString("base64");
@@ -51,8 +50,8 @@ async function createOrder(amount) {
       purchase_units: [
         {
           amount: {
-            currency_code: "USD",
-            value: "80.00",
+            currency_code: "AUD",
+            value:amount,
           },
         },
       ],
@@ -88,18 +87,22 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     paymentstatus="true"
   }
 if (password.length < 6) {
-    return res.status(400).json("password must be 6 character long");
+  return res.status(400).json("password must be 6 character long");
   }
   try {
     User.findOne({ email }, async (err, user) => {
       const { valid, reason, validators } = await isEmailValid(email);
       // console.log(validators);
-
-      if (user) {
+      
+      if (!valid) {
+        return res
+        .status(500)
+        .json("email is invalid please enter a valid email");
+      } else if (user) {
         return res.status(500).json("user already registered");
       } 
       else {
-    
+        
         const user = await User.create({
           username,
           email,
@@ -121,8 +124,8 @@ if (password.length < 6) {
   }
 });
 exports.pay = catchAsyncerror(async (req, res, next) => {
-  console.log(req);
-   const order = await createOrder();
+  let amount=req.body.packages.slice(1,3)
+   const order = await createOrder(amount);
   console.log(order);
   res.json(order);
 });
@@ -179,7 +182,7 @@ exports.login = catchAsyncerror(async (req, res, next) => {
 exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   const { token } = req.cookies;
   if (!token) {
-    return res.json({ message: "plese login to access this resource" }, 401)
+    return res.status(401).json({ message: "plese login to access this resource" })
   }
   const decodedData = jwt.verify(token, process.env.JWT_SECRET);
   req.user = await User.findById(decodedData.id);

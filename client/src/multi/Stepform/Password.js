@@ -205,17 +205,18 @@ export const Paypa = () => {
                           <div style={{ maxWidth: "750px", minHeight: "200px" }}>
                           {packages==="Free"?( <button
               className="btn_two"
-              name="packages"
-              value={"$60 / week"}
-              onClick={updatepro}
+               onClick={updatepro}
             >
               Select
             </button>):(
                             <>
                              <PayPalButton createOrder={async (data, actions) => {
-                                return await axios.post("/api/auth/pay", {
+                                return await fetch("/api/auth/pay", {
                                   method: "post",
-                                  body: JSON.stringify("packages")
+                                  headers:{
+                                    "Content-Type":"application/json"
+                                    },
+                                  body: JSON.stringify({packages:packages})
                                   // use the "body" param to optionally pass additional order information
                                   // like product ids or amount
                                 })
