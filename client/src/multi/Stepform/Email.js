@@ -37,18 +37,21 @@ useEffect(() => {
 
 return   (
   <>
-{loading&&<Loader/>}
+{loading?(<Loader/>):("")}
   <>
 <section style={{ marginBottom:"10px"}}>
       <Header/>
-      <Breadcrumb separator=">">
-    <Breadcrumb.Item>
-    <button className="btn"  onClick={()=>{navigation.previous()}}>back</button>
+   
+  <Breadcrumb separator=">">
+  <Breadcrumb.Item>
+    <span className="btn" style={{ padding:"7px"}} onClick={()=>{navigation.previous()}}>Signup</span>
     </Breadcrumb.Item>
-    
+    <Breadcrumb.Item>
+    <span className="btn" style={{ padding:"7px"}}>Packages</span>
+    </Breadcrumb.Item>
   </Breadcrumb>
       <div className="container">
-        <h1 className="main_head">Packages</h1>
+        <h1 style={{textAlign:"center"}}className="main_head">Packages</h1>
         <div className="flex_box">
           <div className="box_one">
             <h2>Pub Punters</h2>
@@ -156,7 +159,7 @@ return   (
 
     </section >
                     <Footer/>
-                    </>
+  </>
                
     
  </> );

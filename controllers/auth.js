@@ -102,7 +102,6 @@ if (password.length < 6) {
         return res.status(500).json("user already registered");
       } 
       else {
-        
         const user = await User.create({
           username,
           email,

@@ -65,7 +65,6 @@ export const Names = ({ formData, setForm, navigation }) => {
   }
   return (
     <>
-      {loading && <Loader />}
 
       <section id="form-section">
         <div className="wel-form">
