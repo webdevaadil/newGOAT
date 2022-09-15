@@ -51,7 +51,7 @@ export const Main = () => {
          navigate("/password")
        console.log(user.paymentstatus);
       }
-      if(user.PaymentexpireDate <= Date()){
+      if(user.PaymentexpireDate >= Date()){
         console.log(Date());
               navigate("/subscriptionexpire")
       }
