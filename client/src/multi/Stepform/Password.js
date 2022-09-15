@@ -156,17 +156,24 @@ export const Paypa = () => {
     height: 45,
     zIndex: -999,
   };
-  const handleSub = async (e) => {
-    // e.preventDefault();
-    // dispatch(register());
-    dispatch(updateprofile({ paymentstatus: "true" }));
+  // 7*24 * 60 * 60 * 100
+  const updatepro = () => {
+    dispatch(updateprofile({ paymentstatus: "true" ,packages,paymentDate:Date.now() ,PaymentexpireDate:date}));
   };
-  // const [paymentstatus, setpaymentstatus] = useState("true");
-
-  const myForm = new FormData();
-  const updatepro = (e) => {
-    dispatch(updateprofile({ paymentstatus: "true" ,packages}));
-  };
+  const date = new Date()
+  date.setDate(date.getDate() - 6);
+  console.log(date.toString());
+  function formatDate(date) {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+    return [year, month, day].join("-");
+  }
+  console.log(formatDate(Date.now()));
+  console.log(formatDate(date));
 
   return (
     <>
@@ -183,7 +190,7 @@ export const Paypa = () => {
                 <div className="row form-content">
                   <h2>Packages</h2>
                   <div className="form-main">
-                    <form onSubmit={handleSub} className="form-floating mb-3">
+                    <form  className="form-floating mb-3">
                       <div
                         style={{ zIndex: 99999999999 }}
                         className="form-floating"
@@ -222,12 +229,10 @@ export const Paypa = () => {
                                 })
                                   .then((response) => response.json())
                                   .then((order) => order.id)
-                                  // .then((response) =>console.log(response))
 
                                   .catch((err) => {
                                     console.log(err);
                                   });
-                                // console.log(response)
                               }}
                               ///////////////////////
                               onApprove={async (data, actions) => {

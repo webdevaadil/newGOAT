@@ -103,7 +103,6 @@ body{
 .form-main label {
     font-size: 14px;
     line-height: 30px;
-    color: #767A81 !important;
     font-weight: 600;
     font-family: 'Nunito Sans';
 }
@@ -117,10 +116,8 @@ i.fa.fa-eye {
     width: 100%;
     padding: 0.375rem 0.75rem;
    
-    color: #AEB2B9;
-    background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

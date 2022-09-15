@@ -151,7 +151,7 @@ return   (
             </button>
           </div>
         {formData.packages!==""?
-        (<button className="btn_two" style={{ backgroundColor: " #10867F", color: "black" ,float:"right"}} onClick={signup}>Register</button>):("")
+        (<button className="btn_two btn" style={{height:"50px", backgroundColor: " #10867F", color: "black" ,float:"right"}} onClick={signup}>Register</button>):("")
 
         }
         </div>

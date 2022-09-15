@@ -8,9 +8,7 @@ import { Profile } from "./Profile";
 
 import { ProfileNav } from "./ProfileNav";
 export const Dashboard = () => {
-  const navigation = useNavigate();
-  let { isAuthenticated, loading } = useSelector((state) => state.user);
-  useEffect(() => {}, [loading, navigation]);
+
 
   return (
     <>

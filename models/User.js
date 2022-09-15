@@ -39,7 +39,12 @@ const userSchema = new mongoose.Schema({
 
   
   resetPasswordToken: String,
-  resetPasswordExpire: Date,
+  paymentDate:{
+    type:Date
+  },
+  PaymentexpireDate:{
+    type:Date
+  }
 });
 
 userSchema.pre("save", async function (next) {
@@ -66,8 +71,8 @@ userSchema.methods.getresetPasswordToken = function () {
     .createHash("sha256")
     .update(resetToken)
     .digest("hex");
-  this.resetPasswordExpire = Date.now() + 24 * 60 * 60 * 100;
-  return resetToken;
-};
+    return resetToken;
+  };
+  // this.PaymentexpireDate =  7*24 * 60 * 60 * 100;
 const user = mongoose.model("userLOgin", userSchema);
 module.exports = user;

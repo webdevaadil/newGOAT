@@ -183,13 +183,15 @@ exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   if (!token) {
     return res.status(401).json({ message: "plese login to access this resource" })
   }
-  const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+  else{
+    const decodedData = jwt.verify(token, process.env.JWT_SECRET);
   req.user = await User.findById(decodedData.id);
   next();
+  }
 });
 exports.dashboard = catchAsyncerror(async (req, res, next) => {
-  if (req.session) {
-    console.log(req.session);
+  if (!req.user) {
+    return res.status(401).json({ message: "plese login to access this resource" })
   }
 
   const user = await User.findById(req.user.id);
@@ -242,12 +244,10 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     username: req.body.username,
     dob: req.body.dob,
     gender: req.body.gender,
-    Name_of_card: req.body.Name_of_card,
-    card_no: req.body.card_no,
-    Expiry: req.body.Expiry,
-    cvc: req.body.cvc,
     packages: req.body.packages,
-    paymentstatus:req.body.paymentstatus
+    paymentstatus:req.body.paymentstatus,
+    paymentDate:req.body.paymentDate,
+    PaymentexpireDate:req.body.PaymentexpireDate
   };
   console.log(req.body);
 

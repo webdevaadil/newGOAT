@@ -18,16 +18,18 @@ import { Aboutus } from "./components/extra/About";
 
 // import { ProtectedRoute } from "./components/Route/ProtectedRoute";
 import { Multilf } from "./multi/Multilf";
-import { Thankyou } from "./components/Profile/Thankyou";
+import { Thankyou } from "./components/Extra/Thankyou";
 import { useDispatch, useSelector } from "react-redux";
 import { loaduser } from "./actions/userAction";
 import { Paypa } from "./multi/Stepform/Password";
+import { Paymentexpirepage } from "./components/Extra/Paymentexpirepage";
 
 function App() {
   const dispatch = useDispatch();
   dispatch(loaduser())
   const local = JSON.parse(localStorage.getItem("comuser"))
-// console.log(local.user);
+ 
+
   return (
     <>
       <Metadata title="The Goat Tips" />
@@ -55,6 +57,8 @@ function App() {
           <Route path="/pac" element={<Multilf />} />
           <Route path="/thankyou" element={<Thankyou />} />
           <Route path="/password" element={<Paypa/>} />
+          <Route path="/subscriptionexpire" element={<Paymentexpirepage/>} />
+
         </Routes>
       </BrowserRouter>
     </>
@@ -76,9 +80,10 @@ export function ProtectedRoute(props) {
   }
 }
 export function Paymentroute(props) {
-  const { error, loading, isAuthenticated, user } = useSelector(
+  const { user } = useSelector(
     (state) => state.user
   );
+  console.log(user.PaymentexpireDate);
 if(user){
 
   if (user.paymentstatus==="true") {

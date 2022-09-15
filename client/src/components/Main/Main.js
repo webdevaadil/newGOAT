@@ -32,12 +32,30 @@ export const Main = () => {
     (state) => state.user
   );
   useEffect(() => {
+    // if(user){
+    //   if(user.PaymentexpireDate >= Date.now()){
+    //     if(user.paymentstatus==="false"){
+    //       navigate("/password")
+    //     }
+    //     else{
+      //    }
+      //    console.log(user.paymentstatus);
+      //    }
+    //    else if(user.paymentstatus==="false"){
+    //     navigate("/password")
+    
+    //    }
+    // }
     if(user){
-      if(user.paymentstatus==="false"){
-        navigate("/password")
+       if(user.paymentstatus==="false"){
+         navigate("/password")
        console.log(user.paymentstatus);
-       }
-    }
+      }
+      if(user.PaymentexpireDate <= Date()){
+        console.log(Date());
+              navigate("/subscriptionexpire")
+      }
+      }
     dispatch(loaduser())
     if (error) {
       alert.error(error);
@@ -139,7 +157,6 @@ export const Main = () => {
 
   const [datenew, setdatenew] = useState("");
 
-  console.log(datenew);
 
   const handlechange = (e) => {
     e.preventDefault();

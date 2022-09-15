@@ -72,12 +72,7 @@ export const Profile = () => {
       });
     }
   }, [dispatch, error, alert, user, isUpdated]);
-  const handleSubmit = () => {
-    const myForm = new FormData();
-    myForm.set("avatar", avatar);
-
-    dispatch(updateimage(myForm));
-  };
+  
   function formatDate(date) {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -91,10 +86,7 @@ export const Profile = () => {
     <Navigate to={<Login />} />;
   }
 
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   return (
     <>
       {loading ? (
@@ -117,8 +109,10 @@ export const Profile = () => {
                     
                     {/* </div> */}
                   </div>
-                  <h2 className="per_text">Personal Details</h2>
+                 <form onSubmit={updateProfileSubmit}>
+                 <h2 className="per_text">Personal Details</h2>
                   <input
+                   name="name"
                     onChange={(e) => setName(e.target.value)}
                     value={username}
                     className="name"
@@ -127,6 +121,7 @@ export const Profile = () => {
                     />
                   <div className="input_flex_box">
                     <input
+                     name="dob"
                       onChange={(e) => setdob(e.target.value)}
                       value={formatDate(dob)}
                       className="dob"
@@ -155,6 +150,7 @@ export const Profile = () => {
                     <input type="reset" value="Discard" className="dis_btn" />
                     <input type="submit" value="Update" className="sav_btn" />
                   </div>
+                 </form>
                     </>
                 
               )}
