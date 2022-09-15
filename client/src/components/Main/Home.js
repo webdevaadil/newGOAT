@@ -88,7 +88,7 @@ const Home = () => {
       <div className="tips-sec">
         <div className="container tips-main">
           <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-3 card card1">
               <div className="tips-ct">
                 <h2>
                   {" "}
@@ -99,7 +99,7 @@ const Home = () => {
                 <p>Tips Sent</p>
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-3 card card1">
               <div className="tips-ct brde">
                 <h2>
                   {" "}
@@ -109,7 +109,7 @@ const Home = () => {
                 <p>Tips Sent</p>
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-3  card card1">
               <div className="tips-ct">
                 <h2>
                   {" "}
@@ -167,13 +167,13 @@ const Home = () => {
                 role="tabpanel"
                 aria-labelledby="home-tab"
               >
+                     <marquee direction="right"> 
                 <div className="row rate-mian">
                   <div className="col-md-4 col-sm-4">
                     <h3>
-                      {/* <Count start={0} end={37} duration={7} delay={0} /> */}
                       <Count start={0} end={37} duration={4} delay={0} />%
                     </h3>
-                    <p>Win strike rate</p>
+               <p>Win strike rate</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
                     <h3>
@@ -188,6 +188,7 @@ const Home = () => {
                     <p>Top 2 place rate</p>
                   </div>
                 </div>
+                </marquee>  
               </div>
               <div
                 className="tab-pane fade"
@@ -403,7 +404,8 @@ const Home = () => {
         </div>
       </div>
       <div className="tipping-sec">
-        <div className="tippimg-main" id="tiping">
+       <div className="tipping_opacity">
+       <div className="tippimg-main" id="tiping">
           <div className="section-title">
             <h3>Tipping Packages for Everyone</h3>
             <p>
@@ -547,6 +549,7 @@ const Home = () => {
             </Link>
           </div>
         </div>
+       </div>
       </div>
 
       <div className="Services-sec">
