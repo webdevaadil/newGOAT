@@ -161,7 +161,7 @@ export const Paypa = () => {
     dispatch(updateprofile({ paymentstatus: "true" ,packages,paymentDate:Date.now() ,PaymentexpireDate:date}));
   };
   const date = new Date()
-  date.setDate(date.getDate() - 6);
+  date.setDate(date.getDate()+6);
   console.log(date.toString());
   function formatDate(date) {
     var d = new Date(date),
