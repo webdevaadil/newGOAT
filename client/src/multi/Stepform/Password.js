@@ -275,7 +275,7 @@ export const Paypa = () => {
                   <p>
                     By signing up, I agree to the{" "}
                     <span>Terms and conditions and Privacy policy</span>
-                  </p>
+                  </p> 
                 </div>
               </div>
             </div>
