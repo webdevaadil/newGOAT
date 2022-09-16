@@ -76,7 +76,7 @@
     /* height: 56px; */
     border-radius: 8px;
     padding: 10px;
-    border: 2px solid #dee2e6!important;
+    border: 2px solid #000!important;
    
 }
 .dob{
@@ -86,7 +86,7 @@
     border-radius: 8px;
     margin-top: 10px;
     margin-right: 15px;
-    border: 2px solid #dee2e6!important;
+    border: 2px solid #000!important;
     
 }
 .gender{
@@ -95,7 +95,7 @@
     padding: 10px;
     margin-top: 10px;
     border-radius: 8px;
-    border: 2px solid #dee2e6!important;
+    border: 2px solid #000!important;
     background-color: #fff;
 
 }
@@ -112,7 +112,7 @@
     line-height: 21px;
     border-radius: 8px;
     margin: 10px 15px 10px 0px;
-    border: 2px solid #dee2e6!important;
+    border: 2px solid #000!important;
     
 }
 .sav_btn{
@@ -133,6 +133,7 @@
    
 }
 .input_flex_box {
+    margin: 10px 0;
     display: flex;
     grid-gap: 10px;
 }

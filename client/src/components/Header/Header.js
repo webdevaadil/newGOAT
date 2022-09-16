@@ -44,19 +44,23 @@ display: "-wflex ebkit-box -moz-box  -ms-flexbox -webkit-flex"}} className="cont
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <Link to="/" className="nav-link">
+                <Link to="/main" className="nav-link">
                   HOME
                 </Link>
               </li>
               <li className="nav-item">
                 <div
-                  onClick={() => {
+                  onMouseEnter={() => {
                     setShow(!show);
+                  }}
+                  onMouseLeave={()=>{
+                    setShow(show);
+
                   }}
                   style={{ color: "white", cursor: "pointer" }}
                   className="nav-link"
                 >
-                  SPORTS
+                  SUBSCRIPTIONS
                 </div>
                 {show && (
                   <div

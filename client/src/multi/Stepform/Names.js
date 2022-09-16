@@ -19,13 +19,19 @@ export const Names = ({ formData, setForm, navigation }) => {
 
   const dispatch = useDispatch();
 
-  const { username, email, password, dob, gender } = formData;
+  const {
+    username,
+    email,
+    password,
+    dob,
+    gender,
+    residientialaddress,
+    phoneno,
+  } = formData;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     navigation.next();
-
-
   };
   const [errorMessage, setErrorMessage] = useState("");
   const handle = (e) => {
@@ -59,10 +65,9 @@ export const Names = ({ formData, setForm, navigation }) => {
       x.type = "password";
     }
   }
-  
+
   return (
     <>
-
       <section id="form-section">
         <div className="wel-form">
           <div className="wel-p1 img-main">
@@ -146,6 +151,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                       />
                       <label htmlFor="floatingInput">Date of Birth</label>
                     </div>
+
                     <div className="form-floating">
                       <select
                         name="gender"
@@ -154,6 +160,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                         aria-label="Floating label select example"
                         value={gender}
                         autoComplete="new-password"
+                        style={{ border: "1px solid" }}
                       >
                         <option>select gender</option>
                         <option>Male</option>
@@ -164,6 +171,39 @@ export const Names = ({ formData, setForm, navigation }) => {
                       <label htmlFor="floatingSelect">Gender (Optional)</label>
                     </div>
                   </div>
+                  <div className="form-inner fom-btn">
+                    <div className="form-floating mb-3">
+                      <input
+                        name="phoneno"
+                        onChange={setForm}
+                        value={phoneno}
+                        required
+                        type="text"
+                        className="form-control"
+                        placeholder="123456-7890"
+                        autoComplete="new-password"
+                        pattern="[0-9]{10}"
+                      />
+                      <label htmlFor="floatingInput">Phone number</label>
+                    </div>
+
+                    <div className="form-floating mb-3">
+                      <input
+                        onChange={setForm}
+                        name="residientialaddress"
+                        value={residientialaddress}
+                        required
+                        type="text "
+                        className="form-control"
+                        placeholder="123456-7890"
+                        autoComplete="new-password"
+                     
+                      />
+                      <label htmlFor="floatingInput">Residiential address</label>
+                    </div>
+                    
+                  </div>
+                  
                   <div className="fom-btn mb-3 mt-3">
                     <Link
                       to="/login"
@@ -173,7 +213,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                       Login
                     </Link>
                     <button
-                      style={{ backgroundColor: " #10867F", color: "black" }}
+                      style={{ backgroundColor: " #f0b91b", color: "black" }}
                       disabled={errorMessage === "Password is less 8 than"}
                       type="submit"
                       className="btn btn-outline-secondary"

@@ -35,8 +35,10 @@ export const Profile = () => {
   const [username, setName] = useState("");
   const [gender, setgender] = useState("");
   const [dob, setdob] = useState("");
-  const [avatar, setavatar] = useState({});
-  const [avatarPreview, setavatarPreview] = useState("/Profile.png");
+  const [phoneno, setphoneno] = useState("");
+  const [residientialaddress, setresidientialaddress] = useState("");
+
+
 
   const updateProfileSubmit = (e) => {
     e.preventDefault();
@@ -45,17 +47,22 @@ export const Profile = () => {
     myForm.set("username", username);
     myForm.set("gender", gender);
     myForm.set("dob", dob);
+    myForm.set("dob", dob);
+    myForm.set("phoneno", phoneno);
+    myForm.set("residientialaddress", residientialaddress);
+
 
     console.log(myForm);
     dispatch(updateprofile(myForm));
   };
-    
+
   useEffect(() => {
     if (user) {
       setgender(user.gender);
       setName(user.username);
       setdob(user.dob);
-      setavatar(user.avatar);
+      setphoneno(user.phoneno);
+      setresidientialaddress(user.residientialaddress);
     }
 
     if (error) {
@@ -72,7 +79,7 @@ export const Profile = () => {
       });
     }
   }, [dispatch, error, alert, user, isUpdated]);
-  
+
   function formatDate(date) {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -86,7 +93,6 @@ export const Profile = () => {
     <Navigate to={<Login />} />;
   }
 
-
   return (
     <>
       {loading ? (
@@ -98,66 +104,56 @@ export const Profile = () => {
               {isAuthenticated !== true ? (
                 <Navigate to={"/login"} />
               ) : (
-                
-                  <>
-
-                  <div
-                    className="pic_flex_box"
-                    
-                  >
-                    
-                    
-                    {/* </div> */}
-                  </div>
-                 <form onSubmit={updateProfileSubmit}>
-                 <h2 className="per_text">Personal Details</h2>
-                  <input
-                   name="name"
-                    onChange={(e) => setName(e.target.value)}
-                    value={username}
-                    className="name"
-                    type="text"
-                    placeholder="Full name"
-                    />
-                  <div className="input_flex_box">
+                <>
+                  <div className="pic_flex_box">{/* </div> */}</div>
+                  <form onSubmit={updateProfileSubmit}>
+                    <h2 className="per_text">Personal Details</h2>
                     <input
-                     name="dob"
-                      onChange={(e) => setdob(e.target.value)}
-                      value={formatDate(dob)}
-                      className="dob"
-                      placeholder="Date of Birth"
-                      type="date"
+                      name="name"
+                      onChange={(e) => setName(e.target.value)}
+                      value={username}
+                      className="name"
+                      type="text"
+                      placeholder="Full name"
                     />
-                    <div style={{ width: "400px" }} className="form-floating">
-                      <select
-                        name="gender"
-                        onChange={(e) => setgender(e.target.value)}
-                        className="form-select"
-                        aria-label="Floating label select example"
-                        value={gender}
-                        autoComplete="new-password"
-                        >
-                        <option> Select </option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Non-binary</option>
-                        <option>Prefer not to say</option>
-                      </select>
-                      <label htmlFor="floatingSelect">Gender (Optional)</label>
+                      <div className="form-floating">
+                    <div className="input_flex_box">
+                      <span name="dob" className="dob">
+                        {formatDate(dob)}
+                      </span>
+                      <span name="dob" className="dob">
+                      {gender}
+                      </span>
+                      </div>
+                      <div className="input_flex_box">
+
+                     <input
+                      name="number"
+                      onChange={(e) => setphoneno(e.target.value)}
+                      value={phoneno}
+                      className="name"
+                      type="text"
+                      placeholder="Full name"
+                    />
+                    <input
+                      name="name"
+                      onChange={(e) => setresidientialaddress(e.target.value)}
+                      value={residientialaddress}
+                      className="name"
+                      type="text"
+                      placeholder="Full name"
+                    />
+                      </div>
                     </div>
-                  </div>
-                  <div className="button_flex_box">
-                    <input type="reset" value="Discard" className="dis_btn" />
-                    <input type="submit" value="Update" className="sav_btn" />
-                  </div>
-                 </form>
-                    </>
-                
+                    <div className="button_flex_box">
+                      <input type="reset" value="Discard" className="dis_btn" />
+                      <input type="submit" value="Update" className="sav_btn" />
+                    </div>
+                  </form>
+                </>
               )}
             </div>
           </div>
-
-         
         </>
       )}
     </>

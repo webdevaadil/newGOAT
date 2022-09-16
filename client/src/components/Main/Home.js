@@ -18,11 +18,10 @@ import houndIcon from "../../Images/hound-icon.png";
 import reliable from "../../Images/freetips-mobile.png";
 import HomeFooter from "../Footer/HomeFooter";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loaduser } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-
+import Marquee from "react-fast-marquee";
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -87,7 +86,7 @@ const Home = () => {
 
       <div className="tips-sec">
         <div className="container tips-main">
-          <div className="row">
+          <div className="row " style={{justifyContent:"center"}}>
             <div className="col-md-3 card card1">
               <div className="tips-ct">
                 <h2>
@@ -100,7 +99,7 @@ const Home = () => {
               </div>
             </div>
             <div className="col-md-3 card card1">
-              <div className="tips-ct brde">
+              <div className="tips-ct ">
                 <h2>
                   {" "}
                   &#62;
@@ -161,13 +160,13 @@ const Home = () => {
               </li>
             </ul>
             <div className="tab-content" id="myTabContent">
-              <div
+             
+             <div
                 className="tab-pane fade show active"
                 id="home"
                 role="tabpanel"
                 aria-labelledby="home-tab"
               >
-                     <marquee direction="right"> 
                 <div className="row rate-mian">
                   <div className="col-md-4 col-sm-4">
                     <h3>
@@ -188,14 +187,17 @@ const Home = () => {
                     <p>Top 2 place rate</p>
                   </div>
                 </div>
-                </marquee>  
+                
               </div>
+             
+              
               <div
                 className="tab-pane fade"
                 id="profile"
                 role="tabpanel"
                 aria-labelledby="profile-tab"
               >
+                    
                 <div className="row rate-mian">
                   <div className="col-md-4 col-sm-4">
                     <h3>
@@ -272,7 +274,7 @@ const Home = () => {
                 </div>
                 <div className="col-lg-6 col-md-12">
                   <div className="resut-content">
-                    <div className="card card1">
+                    <div className="card ">
                       <div className="clearfix">
                         <button type="button" className="btn  float-start">
                           <img src={icon2} alt="" /> The Goats tips
@@ -293,7 +295,7 @@ const Home = () => {
                         consistent returns to enhance your sporting experience.
                       </p>
                     </div>
-                    <div className="card card1">
+                    <div style={{    justifyContent: "center"}} className="card ">
                       <div className="clearfix">
                         <button type="button" className="btn  float-start">
                           <img src={icon2} alt="" /> The Goats tips
@@ -309,7 +311,7 @@ const Home = () => {
                         consistent returns to enhance your sporting experience.
                       </p>
                     </div>
-                    <div className="card card1">
+                    <div className="card ">
                       <div className="clearfix">
                         <button type="button" className="btn  float-start">
                           <img src={icon2} alt="" /> The Goats tips

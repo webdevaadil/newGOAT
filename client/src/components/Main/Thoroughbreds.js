@@ -2,7 +2,7 @@ import React, { useDebugValue, useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
 import "./Sports.css"
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Timetable } from "./Timetable";
 import { Breadcrumb } from 'antd';
 import { Records } from "./Records";
@@ -12,9 +12,13 @@ import { apidata } from "../../actions/apiAction";
 import { useDispatch,useSelector } from "react-redux";
 import { Loader } from "../layout/Loader";
 import img1 from "../../Images/left-Vector.png"
+import { Login } from "../Login/Login";
 
 export const Thoroughbreds=()=>{
-
+  const { isAuthenticated } = useSelector(
+    (state) => state.user
+  );
+  const navigate=useNavigate()
   const [detail,setDetail] = useState([])
   const [loading, setLoading] = useState(true);
   const [todayrace, setTodayRace] = useState([]);
@@ -55,6 +59,9 @@ items.RaceDate===currentdaystring&&items.hour==currenthour&&items.minutes>new Da
   }
   useEffect(()=>{
     getdata()
+    if(!isAuthenticated){
+      navigate("/")
+    }
   },[])
 
   const indexOfLastRecord = currentPage * recordsPerPage;
@@ -62,7 +69,9 @@ const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 const currentRecords = detail.slice(indexOfFirstRecord, indexOfLastRecord);
 const nPages = Math.ceil(detail.length / recordsPerPage)
 console.log(currentRecords)
-
+if (isAuthenticated === false) {
+  <Navigate to={<Login />} />;
+}
     return (
     <>
      <Header/>

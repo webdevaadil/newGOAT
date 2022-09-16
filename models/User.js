@@ -24,6 +24,14 @@ const userSchema = new mongoose.Schema({
     type: Date,
     required: [true, "please provide date of birth"],
   },
+  phoneno: {
+    type: Number,
+    required: [true, "please provide date of birth"],
+  },
+  residientialaddress: {
+    type: String,
+    required: [true, "please provide date of birth"],
+  },
   paymentstatus: {
     type: String,
   },

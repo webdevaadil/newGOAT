@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./Main.css";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import Footer from "../Footer/Footer";
 
@@ -22,6 +22,7 @@ import img1 from "../../Images/Vector.png";
 import { Loader } from "../layout/Loader";
 import { clearErrors, loaduser } from "../../actions/userAction";
 import { useAlert } from "react-alert";
+import { Login } from "../Login/Login";
 
 export const Main = () => {
   const dispatch = useDispatch();
@@ -67,7 +68,9 @@ export const Main = () => {
     
 
   }, [error, navigate, dispatch]);
-
+  if (isAuthenticated === false) {
+    <Navigate to={<Login/>} />;
+  }
   const [detail, setDetail] = useState([]);
 
   const [todayrace, setTodayRace] = useState([]);
@@ -100,7 +103,7 @@ export const Main = () => {
 
     setDetail(finaldata);
 
-    const filtereddata = finaldata.filter((items, index) => {
+  finaldata.filter((items, index) => {
       items.RaceDate = new Date(items.RaceDate).toLocaleDateString();
       items.id = index;
       items.minutes = new Date(items.RaceTime).getUTCMinutes();

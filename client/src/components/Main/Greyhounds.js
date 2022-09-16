@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Timetable } from "./Timetable";
 import {Header} from "../Header/Header"
 import Footer from "../Footer/Footer"
@@ -15,6 +15,10 @@ import img1 from "../../Images/left-Vector.png"
 
 
 export const Greyhounds = ()=>{
+  const { isAuthenticated } = useSelector(
+    (state) => state.user
+  );
+  const navigate=useNavigate()
 
   const [detail,setDetail] = useState([])
   const [loading, setLoading] = useState(true);
@@ -57,7 +61,9 @@ return(
 
   }
   useEffect(()=>{
-
+    if(!isAuthenticated){
+      navigate("/")
+    }
     getdata()
   },[])
 

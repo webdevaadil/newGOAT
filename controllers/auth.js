@@ -69,7 +69,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     dob,
     gender,
     packages,
-    paymentstatus
+    paymentstatus,phoneno,residientialaddress
   } = req.body;
 
   if (
@@ -78,7 +78,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     !password ||
     !dob ||
     !gender||
-    !packages
+    !packages||!phoneno||!residientialaddress
 
   ) {
     return res.status(400).json("plese fill all input ");
@@ -110,6 +110,8 @@ if (password.length < 6) {
           gender,
           packages,
           paymentstatus:req.body.paymentstatus||"false",
+          phoneno,
+          residientialaddress
 
           
         });
@@ -247,7 +249,10 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     packages: req.body.packages,
     paymentstatus:req.body.paymentstatus,
     paymentDate:req.body.paymentDate,
-    PaymentexpireDate:req.body.PaymentexpireDate
+    PaymentexpireDate:req.body.PaymentexpireDate,
+    phoneno:req.body.phoneno,
+    residientialaddress:req.body.residientialaddress
+    
   };
   console.log(req.body);
 

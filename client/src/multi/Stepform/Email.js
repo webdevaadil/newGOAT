@@ -167,7 +167,7 @@ export const Email = ({ formData, setForm, navigation }) => {
 
           
 
-              <Modal.Body style={{ display: "flex", height: "250px", alignItems: "center", justifyContent: "center" ,flexDirection:"column"}} closeButton>
+              <Modal.Body style={{ display: "flex", height: "200  px", alignItems: "center", justifyContent: "center" ,flexDirection:"column"}} closeButton>
 <h1 style={{fontSize:"30px"}}>Now you can register</h1>
                 {formData.packages !== "" ?
                   (<button className="btn_two btn" style={{ height: "50px", backgroundColor: " #10867F", color: "black", float: "right", margin: 0 }} onClick={signup}>Register</button>) : ("")

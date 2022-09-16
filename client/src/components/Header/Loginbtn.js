@@ -18,15 +18,17 @@ export const Loginbtn = () => {
     <>
 
         <span className="home_btn">
-        {isAuthenticated ===true? (<div>
+        {isAuthenticated ===true? (<><div>
+          <ul className="navbar-nav top-btn ml-auto">
 
           {user.packages ==="$45 / week"?<button style = {{backgroundColor:"#DBAF1F"}} onClick={()=>navigate("/dashboard")} className="user_btn">{uppercaseWords(user.username)}</button>:""}
           {user.packages ==="$60 / week"?<button style = {{backgroundColor:"#F0F0EF",color:" #767A81"}} onClick={()=>navigate("/dashboard")} className="user_btn">{uppercaseWords(user.username)}</button>:""}
           {user.packages ==="$30 / week"?<button style = {{backgroundColor:"#B6B1B1"}} onClick={()=>navigate("/dashboard")} className="user_btn">{uppercaseWords(user.username)}</button>:""}
           {user.packages ==="$15 / week"?<button style = {{backgroundColor:" #A55947"}} onClick={()=>navigate("/dashboard")} className="user_btn">{uppercaseWords(user.username)}</button>:""}
           {user.packages ==="Free"?<button style = {{backgroundColor:" #433F3F"}} onClick={()=>navigate("/dashboard")} className="user_btn">{uppercaseWords(user.username)}</button>:""}
-         
-          </div>): (
+         <Link to = "/thankyou"><button className='btn btn-2'>Logout</button>  </Link>
+         </ul></div>
+          </>): (
            <ul className="navbar-nav top-btn ml-auto">
            <Link to = "/login"><button className='btn btn-1'>Login</button>  </Link>
             <Link to = "/signup"><button className='btn btn-2'>Signup</button>  </Link>
