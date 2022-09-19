@@ -60,7 +60,7 @@ items.RaceDate===currentdaystring&&items.hour==currenthour&&items.minutes>new Da
   useEffect(()=>{
     getdata()
     if(!isAuthenticated){
-      navigate("/")
+      navigate("/login")
     }
   },[])
 

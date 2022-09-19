@@ -158,11 +158,13 @@ exports.ordercapture = catchAsyncerror(async (req, res, next) => {
 
 exports.login = catchAsyncerror(async (req, res, next) => {
   const { email, password } = req.body;
-  if (!email || !password) {
-    return next(new ErrorResponse("please provide email&password", 400));
-  }
-
+  
   try {
+    if (!email ||
+      !password 
+    ) {
+      return res.status(400).json("plese fill all input ");
+    }
     const user = await User.findOne({ email }).select("+password");
     if (!user) {
       return res.status(500).json("invalid credentials user not found");

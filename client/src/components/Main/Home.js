@@ -54,11 +54,19 @@ const Home = () => {
       <div className="banner-sec banne-bg">
         <div className="container her0">
           <div className="row banner-main">
+         <span style={{float:"right"}}className="home_btn">
+      
+          
+        
+      </span>
             <div
               className="col-lg-12 col-md-12"
               style={{ padding: "0", margin: "0" }}
             >
               <div className="baner-ct">
+           <ul className="navbar-nav top-btn ml-auto">
+           <Link style={{textAlign:"end" }} to = "/login"><button style={{width:"140px",height:"50px"}}className='btn btn-1'>Login</button>  </Link>
+         </ul>
                 <img src={img1} alt="" />
                 <div className="bnner-btn">
                   <Link to="/signup">
@@ -444,7 +452,7 @@ const Home = () => {
                       </li>
                       <li>
                         {" "}
-                        <i className="fa fa-check"></i>Free and direct to your inbox
+                        <i className="fa fa-check"></i>Direct to your inbox
                       </li>
                     </ul>
                   </div>
@@ -569,8 +577,8 @@ const Home = () => {
               <div className="service-ct">
                 <div className="ser-img">
                   <img src={horseIcon} alt="img" />
-                </div>
                 <h3>Horse Racing Tips</h3>
+                </div>
                 <p>
                   Our eyes are always on the track to ensure we get the inside
                   rail on the winning tips sent out.
@@ -596,9 +604,9 @@ const Home = () => {
             <div className="col-md-6">
               <div className="service-ct">
                 <div className="ser-img">
-                  <img src={houndIcon} alt="img" />
-                </div>
+                  <img style={{height:"10%"}}src={houndIcon} alt="img" />
                 <h3>Greyhound Racing Tips</h3>
+                </div>
                 <p>
                   Our eyes are always on the track to ensure we get the inside
                   rail on the winning tips sent out.
@@ -687,7 +695,7 @@ const Home = () => {
       </div>
 
       <div className="testimpnal-sec">
-        <div className="container">
+        <div className="">
           <div
             className="section-title"
             style={{ textAlign: "center", marginBottom: "10px" }}
@@ -723,7 +731,9 @@ const Home = () => {
             </div>
             <div className="carousel-inner">
               <div className="carousel-item active">
-                <h4>
+              <div  className="cureseldesignparent">
+              <div className="curoseldesign" >
+               <h4>
                   I started on Bronze, moved up to Silver, then Gold and now
                   Platinum – winning all the way!
                 </h4>
@@ -741,8 +751,13 @@ const Home = () => {
                     <span>Thoroughbred Horses - Platinum Subscription</span>
                   </p>
                 </div>
+               </div>
+              </div>
               </div>
               <div className="carousel-item">
+
+                <div className="cureseldesignparent">
+                <div className="curoseldesign" >
                 <h4>
                   I started on Bronze, moved up to Silver, then Gold and now
                   Platinum winning all the way!
@@ -760,9 +775,14 @@ const Home = () => {
                     <span>Thoroughbred Horses - Platinum Subscription</span>
                   </p>
                 </div>
+                </div>
+                </div>
               </div>
               <div className="carousel-item">
-                <h4>
+
+              <div className="cureseldesignparent">
+              <div className="curoseldesign">
+               <h4>
                   I started on Bronze, moved up to Silver, then Gold and now
                   Platinum – winning all the way!
                 </h4>
@@ -780,6 +800,8 @@ const Home = () => {
                     <span>Thoroughbred Horses - Platinum Subscription</span>
                   </p>
                 </div>
+               </div>
+              </div>
               </div>
             </div>
             <button

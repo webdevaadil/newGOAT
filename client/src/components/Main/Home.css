@@ -53,7 +53,6 @@
     text-align: center;
 }
 .baner-ct {
-    clip-path: polygon(0 0, 81% 0, 100% 100%, 0% 100%);
     padding-right: 46px;
     padding: 50px 0px;
     text-align: center;
@@ -107,9 +106,7 @@
     text-align: center;
 }
 
-.result-mian {
-    padding: 100px 0px 242px 0px;
-}
+
 .hor-list ul li {
     list-style: none;
     padding: 0 32px;
@@ -219,7 +216,7 @@
 }
 .resut-content span {
     color: #F0B91C;
-}
+}er-img
 .tips-mian {
     padding: 30px 0px;
 }
@@ -498,6 +495,9 @@ service section start */
     max-width: 100%;
     height: 100%;
 }
+.ser-img{
+    display: flex;
+}
 
 
 /* follwe  */
@@ -623,6 +623,18 @@ ul.socil-link li {
     text-align: left;
     padding-left: 75px;
 }
+.slide{
+    background: url("../../Images/Rectangle_1370.png ") ;
+    background-position:right ;
+      background-repeat: no-repeat ;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 500px;
+      
+  }
+  
 .checked {
     color: orange;
   }
@@ -634,7 +646,7 @@ ul.socil-link li {
 }
 
 .carousel-item h3 {
-    color: #03203e;
+    color: #ffffff;
     font-size: 18px;
     text-transform: none;
     font-weight: 700;
@@ -647,14 +659,14 @@ ul.socil-link li {
     font-style: italic;
     font-weight: 600;
     max-width: 588px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 60px 0px;
 }
-.carousel-item h4:hover {
+/* .carousel-item h4:hover {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
+} */
 .carousel-item p span {
-    color: #A96E3A;
+    color: #ffffff;
     font-size: 18px !important;
     font-style: normal !important;
     font-family: "Nunito Sans",sans-serif !important;
@@ -684,6 +696,20 @@ ul.socil-link li {
     opacity: .5;
     transition: opacity .6s ease;
     border-radius: 45px !important;
+}
+.curoseldesign{
+    display: flex;
+    background-color: #000;
+    flex-direction: column;
+    width: 50%;
+    border-radius: 100px;
+}
+.couroselparent{
+
+}
+.cureseldesignparent {
+    display: flex;
+    justify-content: center;
 }
 .carousel-indicators {
     position: absolute;

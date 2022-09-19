@@ -47,6 +47,10 @@ export const Main = () => {
     
     //    }
     // }
+    if (isAuthenticated === false) {
+      <Navigate to={<Login />} />;
+    }
+  
     if(user){
        if(user.paymentstatus==="false"){
          navigate("/password")
@@ -62,15 +66,16 @@ export const Main = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
+  
     if(!isAuthenticated){
-      navigate("/")
+      navigate("/login")
     }
     
 
-  }, [error, navigate, dispatch]);
-  if (isAuthenticated === false) {
-    <Navigate to={<Login/>} />;
-  }
+    if (isAuthenticated === false) {
+      <Navigate to={<Login/>} />;
+    }
+  }, [error, navigate, dispatch,]);
   const [detail, setDetail] = useState([]);
 
   const [todayrace, setTodayRace] = useState([]);
@@ -146,7 +151,7 @@ export const Main = () => {
     getDogdata();
   }, []);
   const [newfetchdate, setnewfetchdate] = useState("");
-  const handli = async () => {};
+ 
 
   const indexOfLastRecord = currentPage * recordsPerPage;
 
@@ -191,7 +196,7 @@ export const Main = () => {
         <Loader />
       ) : (
         <>
-          <div className="slide">
+          <div className="slid">
             <section className="container-fluid">
               <div className="container">
                 <div className="row">

@@ -38,7 +38,6 @@ export const login = (email, password) => async (dispatch, getState) => {
 
     console.log(error.response);
   }
-  localStorage.setItem("comuser",JSON.stringify(getState().user))
 
   
 };

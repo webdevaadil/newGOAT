@@ -7,6 +7,13 @@
   width: 100%;
   top: 0;
   }
+  .aadil{
+    display: none;
+
+  }
+  .nav-item:hover .aadil{
+display: block;
+  }
   
   .Mainheader a.nav-link {
 	color: #767A81 !important;

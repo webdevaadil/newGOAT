@@ -62,7 +62,7 @@ return(
   }
   useEffect(()=>{
     if(!isAuthenticated){
-      navigate("/")
+      navigate("/login")
     }
     getdata()
   },[])

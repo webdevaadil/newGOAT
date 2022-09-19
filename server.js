@@ -6,7 +6,6 @@ const connectDB = require("./config/db");
 const path = require("path");
 const cors = require("cors");
 const cookiesparser = require("cookie-parser");
-const paypal = require('paypal-rest-sdk');
 const bodyparser = require("body-parser");
 const cloudinary = require("cloudinary");
 const fileupload = require("express-fileupload");

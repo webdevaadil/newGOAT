@@ -92,7 +92,6 @@ export const Names = ({ formData, setForm, navigation }) => {
                       type="text"
                       required
                       className="form-control"
-                      placeholder="Your Full Name"
                       autoComplete="off"
                     />
                     <label htmlFor="floatingInput">Name</label>
@@ -105,7 +104,6 @@ export const Names = ({ formData, setForm, navigation }) => {
                       required
                       value={email}
                       className="form-control"
-                      placeholder="yourmail@mail.com"
                       autoComplete="new-password"
                     />
                     <label htmlFor="floatingInput">Email Address</label>
@@ -120,7 +118,6 @@ export const Names = ({ formData, setForm, navigation }) => {
                       type="password"
                       className="form-control"
                       id="myInput"
-                      placeholder="*******"
                       autoComplete="new-password"
                     />
                     {errorMessage === "" ? null : (
@@ -146,7 +143,6 @@ export const Names = ({ formData, setForm, navigation }) => {
                         required
                         type="date"
                         className="form-control"
-                        placeholder="dd/mm/yyyy"
                         autoComplete="new-password"
                       />
                       <label htmlFor="floatingInput">Date of Birth</label>
@@ -176,14 +172,14 @@ export const Names = ({ formData, setForm, navigation }) => {
                       <input
                         name="phoneno"
                         onChange={setForm}
-                        value={phoneno}
+                        value={phoneno} 
                         required
                         type="text"
                         className="form-control"
-                        placeholder="123456-7890"
                         autoComplete="new-password"
                         pattern="[0-9]{10}"
                       />
+                      <span style={{fontWeight:"100 !important" ,fontSize:"12px",opacity:"0.5"}}>format 1234567890</span>
                       <label htmlFor="floatingInput">Phone number</label>
                     </div>
 
@@ -195,7 +191,6 @@ export const Names = ({ formData, setForm, navigation }) => {
                         required
                         type="text "
                         className="form-control"
-                        placeholder="123456-7890"
                         autoComplete="new-password"
                      
                       />

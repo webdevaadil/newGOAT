@@ -72,11 +72,11 @@ export function ProtectedRoute(props) {
   );
 
 
-  if (user.paymentstatus==="false") {
-    return <Navigate to="/password" />;
+  if (!user) {
+    return <Navigate to="/login" />;
   }
    else {
-    return <Navigate to="/main" />;
+    return props.children;
   }
 }
 export function Paymentroute(props) {

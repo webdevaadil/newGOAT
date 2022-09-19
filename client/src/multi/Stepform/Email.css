@@ -7,8 +7,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
- }
-
+ }.aad{
+display: none;
+}
 
 .main_head{
     color: #0A0E0F;
