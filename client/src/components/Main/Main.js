@@ -33,20 +33,8 @@ export const Main = () => {
     (state) => state.user
   );
   useEffect(() => {
-    // if(user){
-    //   if(user.PaymentexpireDate >= Date.now()){
-    //     if(user.paymentstatus==="false"){
-    //       navigate("/password")
-    //     }
-    //     else{
-      //    }
-      //    console.log(user.paymentstatus);
-      //    }
-    //    else if(user.paymentstatus==="false"){
-    //     navigate("/password")
-    
-    //    }
-    // }
+  
+ 
     if (isAuthenticated === false) {
       <Navigate to={<Login />} />;
     }

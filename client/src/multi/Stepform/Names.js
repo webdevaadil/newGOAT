@@ -5,9 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import "./Signup.css";
 import { clearErrors, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import { Metadata } from "../../components/layout/Metadata";
-import { Loader } from "../../components/layout/Loader";
-import axios from "axios";
+
 
 export const Names = ({ formData, setForm, navigation }) => {
   const navigate = useNavigate();
@@ -68,6 +66,7 @@ export const Names = ({ formData, setForm, navigation }) => {
 
   return (
     <>
+     <div className  = {loading?"aad":""}>
       <section id="form-section">
         <div className="wel-form">
           <div className="wel-p1 img-main">
@@ -228,6 +227,7 @@ export const Names = ({ formData, setForm, navigation }) => {
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 };

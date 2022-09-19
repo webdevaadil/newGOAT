@@ -67,17 +67,18 @@ function App() {
 
 export default App;
 export function ProtectedRoute(props) {
-  const { error, loading, isAuthenticated, user } = useSelector(
+  const { user } = useSelector(
     (state) => state.user
   );
 
+ 
+  if (user.paymentstatus==="false") {
+    return <Navigate to="/password" />;
+  }
 
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
-   else {
-    return props.children;
-  }
+else {
+  return props.children;
+}
 }
 export function Paymentroute(props) {
   const { user } = useSelector(
