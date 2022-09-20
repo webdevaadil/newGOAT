@@ -371,8 +371,9 @@
     margin: 35px 0px;
     width: 50%;
     background-color: black;
-    border-radius: 50px;
+    border-radius: 30px;
     padding: 15px;
+    height: 100%;
 }
 .tipping-ct h3 {
     font-size: 40px;
@@ -405,7 +406,7 @@
     color: #ffffff;
     background: #a55947;
     border-bottom: 1px solid #e97f65;
-    padding: 8px 20px;
+    padding: 8px 10px;
     margin: 12px 0;
     border-radius: 3px;
 }
@@ -449,6 +450,7 @@ ul.tiip-list li {
 
 .tippimg-main .bnner-btn {
     text-align: center;
+    margin-top: 30px;
 }
 .tipp-img img {
     max-width: 100%;
@@ -786,6 +788,10 @@ ul.socil-link li {
     text-transform: capitalize;
     font-weight: 600;
 }
+.tipping1{
+    flex-direction: column;
+    justify-content: center;
+}
 }
 
 
@@ -796,7 +802,7 @@ ul.socil-link li {
 
     }
     .tipp{
-        flex-direction:column;
+        flex-direction:row;
     }
     .tiip-list li{
         text-align: center;
@@ -1009,7 +1015,7 @@ ul.socil-link li {
         padding-bottom: 30px;
     }
     .tipping-sec {
-        padding: 20px;
+        /* padding: 20px; */
     }
     .tipping-sec .section-title h3 {
         font-size: 40px;

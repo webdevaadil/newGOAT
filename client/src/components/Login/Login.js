@@ -3,17 +3,12 @@ import React from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import {useSelector,useDispatch} from "react-redux"
 import "./Login.css";
-import axios from "axios";
 import {clearErrors,login } from "../../actions/userAction";
-import image1 from "../../Images/Rectangle1.jpg"
-import logimg from "../../Images/loginimg.jpg"
-import { Metadata } from "../layout/Metadata";
 import { Loader } from "../layout/Loader";
-import {useAlert, userAlert} from "react-alert"
-import store from "../../store";
+import {useAlert} from "react-alert"
 
 export const Login = () => {
-  const {user,error,loading,isAuthenticated}  = useSelector((state)=>state.user)
+  const {error,loading,isAuthenticated}  = useSelector((state)=>state.user)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -90,8 +85,8 @@ export const Login = () => {
                 <label htmlFor="floatingPassword">Passwords</label>
               </div>
               <div className="fom-btn mb-3">
-                <button style={{backgroundColor:" #f0b91b",color:'black'}} disabled = {loginPassword==""} type="submit" className="btn btn-outline-secondary">Login</button>
-                <Link to ="/signup"  className="btn btn-outline-secondary">Sign Up</Link>
+                <button style={{backgroundColor:" #f0b91b",color:'black'}}  type="submit" className="btn btn-outline-secondary">Login</button>
+                <Link  to ="/signup"  className="btn btn-outline-secondary">Sign Up</Link>
 
               </div>
             </form>
