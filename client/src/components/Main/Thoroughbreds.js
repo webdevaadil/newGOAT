@@ -53,7 +53,6 @@ export const Thoroughbreds = () => {
     setTodayRace(filterdate);
   };
   useEffect(() => {
-    getdata();
     if (!isAuthenticated) {
       navigate("/login");
     }
@@ -65,16 +64,15 @@ export const Thoroughbreds = () => {
         navigate("/subscriptionexpire");
       }
     }
-  }, );
+    getdata();
+  }, []);
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = detail.slice(indexOfFirstRecord, indexOfLastRecord);
   const nPages = Math.ceil(detail.length / recordsPerPage);
   // console.log(currentRecords);
-  if (isAuthenticated === false) {
-    <Navigate to={<Login />} />;
-  }
+
   return (
     <>
       <Header />
