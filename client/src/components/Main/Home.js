@@ -65,7 +65,7 @@ const Home = () => {
             >
               <div className="baner-ct">
            <ul className="navbar-nav top-btn ml-auto">
-           <Link style={{textAlign:"end" }} to = "/login"><button style={{width:"140px",height:"50px"}}className='btn btn-1'>Login</button>  </Link>
+           <Link style={{textAlign:"end" }} to = "/login"><button className="homelogin btn btn-1" style={{width:"140px",height:"50px"}}>Login</button>  </Link>
          </ul>
                 <img src={img1} alt="" />
                 <div className="bnner-btn">
@@ -97,21 +97,21 @@ const Home = () => {
           <div className="row " style={{justifyContent:"center"}}>
             <div className="col-md-3 card card1">
               <div className="tips-ct">
-                <h2>
-                  {" "}
-                  &#62;
-                  <Count start={0} end={6000} duration={10} delay={0} />{" "}
-                </h2>
-
-                <p>Tips Sent</p>
-              </div>
-            </div>
-            <div className="col-md-3 card card1">
-              <div className="tips-ct ">
+              
                 <h2>
                   {" "}
                   &#62;
                   <Count start={0} end={37} duration={4} delay={0} />%
+                </h2>
+                <p>Strike Rate</p>
+              </div>
+            </div>
+            <div className="col-md-3 card card1">
+              <div className="tips-ct ">
+              <h2>
+                  {" "}
+                  &#62;
+                  <Count start={0} end={6000} duration={10} delay={0} />{" "}
                 </h2>
                 <p>Tips Sent</p>
               </div>

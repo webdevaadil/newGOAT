@@ -62,7 +62,10 @@
 .baner-ct img {
     max-width: 135px;
 }
+.homelogin{
+    background-color:rgb(240, 185, 27)!important
 
+}
 
 /* tips css */
 .tips-main {
@@ -181,7 +184,6 @@
 .result {
     height: auto;
     background-image: url("../../Images/bg-img1.png") !important;
-    background-position: left center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -194,6 +196,7 @@
     animation-duration: 4s;
     animation-iteration-count: infinite; */
     animation: example 4s linear infinite ;
+    overflow-x: hidden;
 
 
     
@@ -211,13 +214,13 @@
     text-transform: none;
     color: #03203e;
     text-align: left;
-    margin-top: 15px;
+    /* margin-top: 15px; */
 }
 .resut-content p {
     font-size: 18px;
     font-style: normal;
     color: #03203E;
-    margin-top: 24px;
+    /* margin-top: 24px; */
     text-align: left;
 }
 
@@ -512,6 +515,9 @@ service section start */
 .ser-img{
     display: flex;
 }
+.ser-img img{
+    margin-right: 10px;
+}
 
 
 /* follwe  */
@@ -544,7 +550,7 @@ ul.socil-link li {
     padding: 60px 110px 60px 110px;
     background: linear-gradient(0deg, rgba(62,53,53,1) 0%, rgba(0,0,0,1) 100%);
     /* border-radius: 10px; */
-    margin: 60px 0px;
+    margin: 20px 0px;
 }
 .mes-cont h4 {
     font-size: 3rem;
@@ -896,7 +902,7 @@ ul.socil-link li {
         padding: 40px 0px 40px 0px;
     }
     .tipping-sec {
-        padding: 40px 0px 40px 0px;
+        /* padding: 40px 0px 40px 0px; */
     }
     .tipping-sec .section-title h3 {
         font-size: 40px;

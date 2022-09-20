@@ -38,8 +38,6 @@ export const Profile = () => {
   const [phoneno, setphoneno] = useState("");
   const [residientialaddress, setresidientialaddress] = useState("");
 
-
-
   const updateProfileSubmit = (e) => {
     e.preventDefault();
     const myForm = new FormData();
@@ -50,7 +48,6 @@ export const Profile = () => {
     myForm.set("dob", dob);
     myForm.set("phoneno", phoneno);
     myForm.set("residientialaddress", residientialaddress);
-
 
     console.log(myForm);
     dispatch(updateprofile(myForm));
@@ -106,44 +103,86 @@ export const Profile = () => {
               ) : (
                 <>
                   <div className="pic_flex_box">{/* </div> */}</div>
-                  <form onSubmit={updateProfileSubmit}>
-                    <h2 className="per_text">Personal Details</h2>
-                    <input
-                      name="name"
-                      onChange={(e) => setName(e.target.value)}
-                      value={username}
-                      className="name"
-                      type="text"
-                      placeholder="Full name"
-                    />
-                      <div className="form-floating">
-                    <div className="input_flex_box">
-                      <span name="dob" className="dob">
-                        {formatDate(dob)}
-                      </span>
-                      <span name="dob" className="dob">
-                      {gender}
-                      </span>
-                      </div>
-                      <div className="input_flex_box">
+                  <h2 className="per_text">Personal Details</h2>
+                  <form className="form-group" onSubmit={updateProfileSubmit}>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Name</label>
+                      <input
+                        name="name"
+                        onChange={(e) => setName(e.target.value)}
+                        value={username}
+                        className="name form-control"
+                        type="text"
+                        placeholder="Full name"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <div className="form-group">
+                        <label for="exampleInputPassword1">D.O.B</label>
+                        <input
+                          class="form-control"
+                          name="DoB"
+                          value={formatDate(dob)}
+                          className="name form-control"
+                          type="text"
+                          placeholder="Full name"
+                          id="exampleInputPassword1"
+                          readOnly
+                          style={{backgroundColor:"#fff"}}
+                        />
 
-                     <input
-                      name="number"
-                      onChange={(e) => setphoneno(e.target.value)}
-                      value={phoneno}
-                      className="name"
-                      type="text"
-                      placeholder="Full name"
-                    />
-                    <input
-                      name="name"
-                      onChange={(e) => setresidientialaddress(e.target.value)}
-                      value={residientialaddress}
-                      className="name"
-                      type="text"
-                      placeholder="Full name"
-                    />
+                        
                       </div>
+                      <div className="form-group">
+                        
+                       
+
+                        <label for="exampleInputPassword2">Gender</label>
+                        <input
+                          class="form-control"
+                          name="DoB"
+                          value={gender}
+                          className="name form-control"
+                          type="text"
+                          readOnly
+                          style={{backgroundColor:"#fff"}}
+
+                          id="exampleInputPassword2"
+                          placeholder="Password"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword3">Phone No</label>
+                      <input
+                        onChange={(e) => setphoneno(e.target.value)}
+                        value={phoneno}
+                        className="name form-control"
+                        type="text"
+                        class="form-control"
+                        id="exampleInputPassword3"
+                        placeholder="Password"
+                        pattern="[0-9]{10}"
+                      />
+                      <small id="exampleInputPassword3" class="form-text text-muted">format 1234567890</small>
+                      
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword4">
+                        Residiential Address
+                      </label>
+                      <input
+                        onChange={(e) => setresidientialaddress(e.target.value)}
+                        class="form-control"
+                        value={residientialaddress}
+                        className="name form-control"
+                        type="text"
+                        id="exampleInputPassword4"
+                        placeholder="Password"
+                      />
                     </div>
                     <div className="button_flex_box">
                       <input type="reset" value="Discard" className="dis_btn" />

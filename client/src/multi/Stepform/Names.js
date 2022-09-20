@@ -177,8 +177,9 @@ export const Names = ({ formData, setForm, navigation }) => {
                         className="form-control"
                         autoComplete="new-password"
                         pattern="[0-9]{10}"
+                        aria-describedby="emailHelp"
                       />
-                      <span style={{fontWeight:"100 !important" ,fontSize:"12px",opacity:"0.5"}}>format 1234567890</span>
+                      <small id="emailHelp" class="form-text text-muted">format 1234567890</small>
                       <label htmlFor="floatingInput">Phone number</label>
                     </div>
 
