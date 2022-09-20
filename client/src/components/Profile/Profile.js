@@ -105,7 +105,7 @@ export const Profile = () => {
                   <div className="pic_flex_box">{/* </div> */}</div>
                   <h2 className="per_text">Personal Details</h2>
                   <form className="form-group" onSubmit={updateProfileSubmit}>
-                    <div class="form-group">
+                    <div className="form-group">
                       <label for="exampleInputEmail1">Name</label>
                       <input
                         name="name"
@@ -114,16 +114,16 @@ export const Profile = () => {
                         className="name form-control"
                         type="text"
                         placeholder="Full name"
-                        class="form-control"
+                        className="form-control"
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <div className="form-group">
                         <label for="exampleInputPassword1">D.O.B</label>
                         <input
-                          class="form-control"
+                          className="form-control"
                           name="DoB"
                           value={formatDate(dob)}
                           className="name form-control"
@@ -142,7 +142,7 @@ export const Profile = () => {
 
                         <label for="exampleInputPassword2">Gender</label>
                         <input
-                          class="form-control"
+                          className="form-control"
                           name="DoB"
                           value={gender}
                           className="name form-control"
@@ -155,28 +155,28 @@ export const Profile = () => {
                         />
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <label for="exampleInputPassword3">Phone No</label>
                       <input
                         onChange={(e) => setphoneno(e.target.value)}
                         value={phoneno}
                         className="name form-control"
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="exampleInputPassword3"
                         placeholder="Password"
                         pattern="[0-9]{10}"
                       />
-                      <small id="exampleInputPassword3" class="form-text text-muted">format 1234567890</small>
+                      <small id="exampleInputPassword3" className="form-text text-muted">format 1234567890</small>
                       
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <label for="exampleInputPassword4">
                         Residiential Address
                       </label>
                       <input
                         onChange={(e) => setresidientialaddress(e.target.value)}
-                        class="form-control"
+                        className="form-control"
                         value={residientialaddress}
                         className="name form-control"
                         type="text"

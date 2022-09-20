@@ -179,7 +179,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                         pattern="[0-9]{10}"
                         aria-describedby="emailHelp"
                       />
-                      <small id="emailHelp" class="form-text text-muted">format 1234567890</small>
+                      <small id="emailHelp" className="form-text text-muted">format 1234567890</small>
                       <label htmlFor="floatingInput">Phone number</label>
                     </div>
 

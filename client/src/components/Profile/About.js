@@ -12,10 +12,10 @@ export const About = () => {
     {loading? <Loader/>:
     <>
       {isAuthenticated === true ? (
-        <div class="profile_box_two ">
-          <div class="about_box_two">
-            <h2 class="pro_heading">Terms of Service</h2>
-            <p class="text_content">
+        <div className="profile_box_two ">
+          <div className="about_box_two">
+            <h2 className="pro_heading">Terms of Service</h2>
+            <p className="text_content">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit
               tincidunt pellentesque egestas eu rutrum sed. Consectetur urna
               tempus rhoncus volutpat aliquam vel ut nisi. Quisque cursus
@@ -41,9 +41,9 @@ export const About = () => {
             </p>
           </div>
 
-          <div class="about_box_two">
-            <h2 class="pro_heading">Privacy Policy</h2>
-            <p class="text_content">
+          <div className="about_box_two">
+            <h2 className="pro_heading">Privacy Policy</h2>
+            <p className="text_content">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit
               tincidunt pellentesque egestas eu rutrum sed. Consectetur urna
               tempus rhoncus volutpat aliquam vel ut nisi. Quisque cursus
