@@ -16,13 +16,12 @@ body{
 
 .slid{
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.18) 60%),url("../../Images/goat-slide.png") !important;
-  background-position:right;
+  background-position:center !important;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover !important;
     position: relative;
     display: flex;
     align-items: center;
-    height: 500px;
 }
 
 .main-content{
