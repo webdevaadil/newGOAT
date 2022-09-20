@@ -16,7 +16,7 @@ export const Records = ({ detail, loading, horseimg }) => {
           <div>
             <div className="container-fluid upcomming-sec">
               <div className="container" style={{marginBottom:"10px"}}>
-                <h3>Upcoming Races</h3>
+                <h3 style={{fontSize:"3rem"}}>Upcoming Races</h3>
                 <div className="upcomming-table">
                   <table>
                     <tr>

@@ -161,9 +161,17 @@ font-family: 'Nunito Sans';
   font-family: 'DM Sans';
   padding: 0px 2rem;
 }
+.upcomming-table table tr th {
+  /* width: 100px; */
+  text-align: center;
+}
+.upcomming-table table tr td {
+  /* width: 100px; */
+  text-align: center;
+}
 
 .main_cont h3 {
-  font-size: 2.625rem;
+  font-size: 2.6rem;
   font-weight: 600;
   line-height: 3.438rem;
   font-family: 'DM Sans';
@@ -396,8 +404,10 @@ h3.free-title {
 .slide {
   height: 400px;
 }
-h3.free-head {
+h3.free-head  {
   text-align: center;
+  font-size: 3rem ;
+
 }
 .main_cont {
   text-align: center;

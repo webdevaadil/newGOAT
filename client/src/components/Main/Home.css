@@ -36,7 +36,7 @@
     background: #4AA331 !important;
 }
 .baner-ct h2 {
-    font-size: 54px;
+    font-size: 3rem;
     color: #fff;
     line-height: 64px;
     text-transform: capitalize;
@@ -189,13 +189,23 @@
 .rate-mian {
     margin: 60px 0px;
     text-align: center;
+    position: relative;
+    /* animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite; */
+    animation: example 4s linear infinite ;
 
 
     
 }
+@keyframes example {
+    0%   {right:-100%; }
+ 
+    100% {right:100%; }
+  }
 /* tips start */
 .resut-content h3 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -242,7 +252,7 @@
     margin: 20px;
 }
 .card p {
-    font-size: 14px;
+    font-size: 18px;
     line-height: 20px;
     margin-top:10px;
 }
@@ -262,7 +272,7 @@
     text-align: center;
 }
 .reliable-cont h3 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -278,7 +288,9 @@
     padding-left: 35px;
     padding-right: 25px;
 }
-
+ul.tiip-list li {
+    font-size: 18px;
+}
 
 .relai2 {
     height: auto;
@@ -312,7 +324,7 @@
     background-color: rgba(0, 0, 0, 0.668);
 }
 .tipping-sec .section-title h3 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -320,7 +332,7 @@
     color: #fff;
 }
 .section-title h3 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -464,7 +476,7 @@ service section start */
     padding: 60px 0px 60px 0px;
 }
 .Services-sec .section-title h3 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -518,7 +530,7 @@ ul.socil-link li {
     color: #735652;
 }
 .foll-ct h3 {
-    font-size: 24px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -535,7 +547,7 @@ ul.socil-link li {
     margin: 60px 0px;
 }
 .mes-cont h4 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -601,7 +613,7 @@ ul.socil-link li {
     color: #fff;
 }
 .winner-main h3 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     text-transform: none;
     color: #ffffff;
@@ -614,7 +626,7 @@ ul.socil-link li {
     line-height: 20px;
 }
 .testimpnal-sec .section-title h3 {
-    font-size: 32px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -703,8 +715,8 @@ ul.socil-link li {
     display: flex;
     background-color: #000;
     flex-direction: column;
-    width: 50%;
-    border-radius: 100px;
+    width: 60%;
+    border-radius: 40px;
 }
 .couroselparent{
 
@@ -964,8 +976,10 @@ ul.socil-link li {
         padding-right: 0px;
     }
     .tips-ct {
+      
         margin: 15px;
     }
+    
     .result-mian {
         padding: 45px 0px;
     }

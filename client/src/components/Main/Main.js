@@ -190,7 +190,7 @@ export const Main = () => {
                 <div className="row">
                   <div className="main-sec">
                     <div className="main-content">
-                      <h2>The Goat Tips</h2>
+                      <h2> The Goat Tips</h2>
 
                       <p>
                         The Goat Tips - Betting made easy! Your guide for sports
@@ -212,7 +212,7 @@ export const Main = () => {
           <div>
             <div className="container-fluid" id="freetip-sec">
               <div className="container section">
-                <h3 className="free-head">Today’s Free Tips</h3>
+                <h3 style={{ fontSize:"3rem"}}className="free-head">Today’s Free Tips</h3>
               </div>
 
               <div className="container main-freetips">

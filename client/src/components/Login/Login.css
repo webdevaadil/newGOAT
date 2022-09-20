@@ -62,7 +62,7 @@ body{
     display: flex;
     justify-content: center;
     gap: 25px;
-    margin: 40px;
+    /* margin: 40px; */
 }
 
 .wel-bg{

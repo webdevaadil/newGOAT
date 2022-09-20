@@ -64,6 +64,7 @@ export const AccountSetting = () => {
           value={data.newPassword}
           onChange={handle}
         />
+        
         <input
           className="re_pass"
           type="password"

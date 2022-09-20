@@ -86,8 +86,8 @@ exports.register = catchAsyncerror(async (req, res, next) => {
   if(packages==="free"){
     paymentstatus="true"
   }
-if (password.length < 6) {
-  return res.status(400).json("password must be 6 character long");
+if (password.length < 8) {
+  return res.status(400).json("password must be 8 character long");
   }
   try {
     User.findOne({ email }, async (err, user) => {
@@ -165,6 +165,7 @@ exports.login = catchAsyncerror(async (req, res, next) => {
     ) {
       return res.status(400).json("plese fill all input ");
     }
+    
     const user = await User.findOne({ email }).select("+password");
     if (!user) {
       return res.status(500).json("invalid credentials user not found");
@@ -227,7 +228,12 @@ exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
   console.log(req.body);
   const isPasswordMatched = await user.matchPassword(req.body.oldPassword);
-
+  if (req.body.newPassword .length < 8) {
+    return res.status(400).json({message: "password must be 8 character long"});
+    }
+  if (req.body.confirmPassword .length < 8) {
+    return res.status(400).json({message: "password must be 8 character long"});
+    }
   if (!isPasswordMatched) {
     return res.status(400).json({ message: "Old password is incorrect" });
   }
