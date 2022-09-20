@@ -248,7 +248,7 @@ export const PaymentMethoad = () => {
                               }}
                               ///////////////////////
                               onApprove={async (data, actions) => {
-                                // console.log(data);
+                                console.log(data);
 
                                 return await axios
                                   .post(

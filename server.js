@@ -42,6 +42,9 @@ if (process.env.NODE_ENV === "production") {
 
 // --------------------------deployment------------------------------
 // --------------------------errorhandle------------------------------
+process.on('uncaughtException', function (err) {
+  console.log(err);
+}); 
 process.on("unhandledRejection", (err) => {
   console.log(`Error:${err.message}`);
   console.log(`shutting down the server due to unhandled promise rejection`);
