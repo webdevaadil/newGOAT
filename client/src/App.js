@@ -84,7 +84,6 @@ export function Paymentroute(props) {
   const { user } = useSelector(
     (state) => state.user
   );
-  console.log(user.PaymentexpireDate);
 if(user){
 
   if (user.paymentstatus==="true") {

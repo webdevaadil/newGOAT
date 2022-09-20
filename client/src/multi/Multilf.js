@@ -40,7 +40,6 @@ export const Multilf = () => {
     
     const navigate = useNavigate();
 
-  console.log(formData);
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user

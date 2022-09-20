@@ -33,7 +33,6 @@ export const ProfileNav = () => {
       
   
   }
-  console.log(user);
 
   return (
     <>

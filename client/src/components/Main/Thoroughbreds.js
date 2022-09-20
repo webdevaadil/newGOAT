@@ -40,7 +40,7 @@ export const Thoroughbreds = () => {
     const filterdate = finaldata.filter((items, index) => {
       const currentday = new Date();
       const currenthour = new Date().getHours();
-      console.log(currenthour);
+      // console.log(currenthour);
 
       const currentdaystring = new Date(currentday).toLocaleDateString();
       return (
@@ -49,7 +49,7 @@ export const Thoroughbreds = () => {
         items.minutes > new Date().getMinutes()
       );
     });
-    console.log(filterdate);
+    // console.log(filterdate);
     setTodayRace(filterdate);
   };
   useEffect(() => {
@@ -71,7 +71,7 @@ export const Thoroughbreds = () => {
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = detail.slice(indexOfFirstRecord, indexOfLastRecord);
   const nPages = Math.ceil(detail.length / recordsPerPage);
-  console.log(currentRecords);
+  // console.log(currentRecords);
   if (isAuthenticated === false) {
     <Navigate to={<Login />} />;
   }
@@ -105,7 +105,7 @@ export const Thoroughbreds = () => {
                   const minutesnow = new Date().getMinutes();
                   const minutesprev = new Date(items.RaceTime).getUTCMinutes();
                   const inminutes = minutesprev - minutesnow;
-                  console.log(inminutes);
+                  // console.log(inminutes);
                   const trimlocation = items.RaceLocation.replace(
                     / +/g,
                     "-"

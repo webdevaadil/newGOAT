@@ -32,7 +32,7 @@ export const Greyhounds = () => {
       items.minutes = new Date(items.RaceTime).getUTCMinutes();
       items.hour = new Date(items.RaceTime).getUTCHours();
     });
-    console.log(finaldata);
+    // console.log(finaldata);
 
     const filterdate = finaldata.filter((items, index) => {
       const currentday = new Date();
@@ -43,7 +43,7 @@ export const Greyhounds = () => {
         items.hour === new Date().getHours()
       );
     });
-    console.log(filterdate);
+    // console.log(filterdate);
     setTodayRace(filterdate);
 
     setDetail(finaldata);
@@ -69,7 +69,7 @@ export const Greyhounds = () => {
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = detail.slice(indexOfFirstRecord, indexOfLastRecord);
   const nPages = Math.ceil(detail.length / recordsPerPage);
-  console.log(currentRecords);
+  // console.log(currentRecords);
 
   return (
     <>
@@ -99,7 +99,7 @@ export const Greyhounds = () => {
                   const minutesnow = new Date().getMinutes();
                   const minutesprev = new Date(items.RaceTime).getUTCMinutes();
                   const inminutes = minutesprev - minutesnow;
-                  console.log(inminutes);
+                  // console.log(inminutes);
                   const trimlocation = items.RaceLocation.replace(
                     / +/g,
                     "-"

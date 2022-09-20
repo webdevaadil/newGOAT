@@ -15,7 +15,7 @@ export const Timetable = ({detail,loading,dogimg}) => {
   const currentday = new Date()
   const currentdaystring = new Date(currentday).toLocaleDateString()
   
-  console.log(currentdaystring)
+  // console.log(currentdaystring)
 
    const filtereddate = detail.filter((items,index)=>{
     return(
@@ -24,13 +24,13 @@ export const Timetable = ({detail,loading,dogimg}) => {
       
     })
 
-console.log(detail)
+// console.log(detail)
     //Getting Tommoroww date
     const nextday  = new Date(currentday)
     nextday.setDate(nextday.getDate()+1)
    
     const newdate = nextday.toLocaleDateString()
-    console.log(newdate)
+    // console.log(newdate)
 
 
     const tommorow = detail.filter((items,index)=>{
@@ -40,7 +40,7 @@ console.log(detail)
     })
     
 
-    console.log(tommorow)
+    // console.log(tommorow)
 
  
   return (

@@ -135,7 +135,7 @@ export const PaymentMethoad = () => {
     
     myForm.set("packages", packages);
 
-    console.log(myForm);
+    // console.log(myForm);
     dispatch(updateprofile(myForm));
   };
   function formatDate(date) {
@@ -248,7 +248,7 @@ export const PaymentMethoad = () => {
                               }}
                               ///////////////////////
                               onApprove={async (data, actions) => {
-                                console.log(data);
+                                // console.log(data);
 
                                 return await axios
                                   .post(
@@ -261,7 +261,7 @@ export const PaymentMethoad = () => {
                                     // Successful capture! For dev/demo purposes:
                                     console.log("Capture result", orderData);
                                   })
-                                  .then((orderData) => console.log(orderData))
+                                  .then((orderData) => console.log("orderData"))
                                   .then(updatepro())
                                   
                                   .catch((err) => {

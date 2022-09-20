@@ -61,7 +61,7 @@ async function createOrder(amount) {
   return data;
 }
 exports.register = catchAsyncerror(async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   const {
     username,
     email,
@@ -127,14 +127,14 @@ if (password.length < 8) {
 exports.pay = catchAsyncerror(async (req, res, next) => {
   let amount=req.body.packages.slice(1,3)
    const order = await createOrder(amount);
-  console.log(order);
+  // console.log(order);
   res.json(order);
 });
 exports.ordercapture = catchAsyncerror(async (req, res, next) => {
   const { orderID } = req.params;
   try {
     const captureData = await capturePayment(orderID);
-    console.log(captureData);
+    // console.log(captureData);
     res.json(captureData);
   } catch (err) {
     res.status(500).json(err);
@@ -226,7 +226,7 @@ exports.requireSignin = catchAsyncerror(async (req, res, next) => {
 // update User password
 exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
-  console.log(req.body);
+  // console.log(req.body);
   const isPasswordMatched = await user.matchPassword(req.body.oldPassword);
   if (req.body.newPassword .length < 8) {
     return res.status(400).json({message: "password must be 8 character long"});
@@ -262,7 +262,7 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     residientialaddress:req.body.residientialaddress
     
   };
-  console.log(req.body);
+  // console.log(req.body);
 
   await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,

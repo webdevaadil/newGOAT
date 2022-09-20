@@ -26,17 +26,17 @@ import { useNavigate } from "react-router-dom";
 
 const bashuel="http://localhost:5000"
 export const login = (email, password) => async (dispatch, getState) => {
-  console.log(email, password);
+  // console.log(email, password);
   try {
     dispatch({ type: LOGIN_REQUEST });
     const { data } = await axios.post(`/api/auth/login`, { email, password });
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
-    console.log(data);
+    // console.log(data);
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response.data });
 
-    console.log(error.response);
+    // console.log(error.response);
   }
 
   
@@ -53,7 +53,7 @@ export const register = (userData) => async (dispatch,getState) => {
     
 
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
-    console.log(data);
+    // console.log(data);
   } catch (error) {
     dispatch({
       type: REGISTER_USER_FAIL,
@@ -61,26 +61,25 @@ export const register = (userData) => async (dispatch,getState) => {
     });
     
   }
-  localStorage.setItem("comuser",JSON.stringify(getState().user))
 };
-export const updateimage =(imguplod)=>async(dispatch)=>{
-  try {
-    dispatch({ type: UPDATE_PROFILE_IMAGE_request });
-    const config = { headers: { "Content-Type": "multipart/form-data" } };  
-      const data = await axios.put(
-      `/api/auth/update/profilepic`,
-      imguplod,
-      config
-    );
-    console.log(imguplod);
-    dispatch({ type: UPDATE_PROFILE_IMAGE_SUCCESS, payload: data.success });
-  } catch (error) {
-    dispatch({
-      type: UPDATE_PASSWORD_FAIL,
-      payload: error.response.data,
-    });
-  }
-}
+// export const updateimage =(imguplod)=>async(dispatch)=>{
+//   try {
+//     dispatch({ type: UPDATE_PROFILE_IMAGE_request });
+//     const config = { headers: { "Content-Type": "multipart/form-data" } };  
+//       const data = await axios.put(
+//       `/api/auth/update/profilepic`,
+//       imguplod,
+//       config
+//     );
+//     console.log(imguplod);
+//     dispatch({ type: UPDATE_PROFILE_IMAGE_SUCCESS, payload: data.success });
+//   } catch (error) {
+//     dispatch({
+//       type: UPDATE_PASSWORD_FAIL,
+//       payload: error.response.data,
+//     });
+//   }
+// }
 export const logout = () => async (dispatch) => {
   try {
     await axios.get(`/api/auth/logout`);
@@ -98,7 +97,7 @@ export const loaduser = () => async (dispatch) => {
 
     dispatch({ type: DETAIL_USER_SUCCESS, payload: data.user });
 
-    console.log(data.user);
+    // console.log(data.user);
   } catch (error) {
     dispatch({ type: DETAIL_USER_FAIL });
   }
@@ -128,7 +127,7 @@ export const updateprofile = (updatedata) => async (dispatch) => {
       updatedata,
       config
     );
-    console.log(updatedata);
+    // console.log(updatedata);
     dispatch({ type: UPDATE_PROFIE_SUCCESS, payload: data.success });
   } catch (error) {
     dispatch({

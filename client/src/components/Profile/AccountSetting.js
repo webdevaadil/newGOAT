@@ -20,7 +20,7 @@ export const AccountSetting = () => {
   const handle = (e) => {
     setdata({ ...data, [e.target.name]: e.target.value });
   };
-  console.log(data);
+  // console.log(data);
   const updatePasswordSubmit = (e) => {
     e.preventDefault();
 

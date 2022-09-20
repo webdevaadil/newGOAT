@@ -49,7 +49,7 @@ export const Profile = () => {
     myForm.set("phoneno", phoneno);
     myForm.set("residientialaddress", residientialaddress);
 
-    console.log(myForm);
+    // console.log(myForm);
     dispatch(updateprofile(myForm));
   };
 

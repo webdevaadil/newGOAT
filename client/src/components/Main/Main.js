@@ -42,10 +42,10 @@ export const Main = () => {
     if(user){
        if(user.paymentstatus==="false"){
          navigate("/password")
-       console.log(user.paymentstatus);
+      //  console.log(user.paymentstatus);
       }
       if(user.PaymentexpireDate >= Date()){
-        console.log(Date());
+        // console.log(Date());
               navigate("/subscriptionexpire")
       }
       }
@@ -116,7 +116,7 @@ export const Main = () => {
       );
     });
 
-    // console.log(filterdate);
+    console.log(filterdate);
 
     setTodayRace(filterdate);
   };
@@ -226,7 +226,7 @@ export const Main = () => {
                         ).getUTCMinutes();
                         const inminutes = minutesprev - minutesnow;
 
-                        console.log(inminutes);
+                        // console.log(inminutes);
                         const trimlocation = items.RaceLocation.replace(
                           / +/g,
                           "-"

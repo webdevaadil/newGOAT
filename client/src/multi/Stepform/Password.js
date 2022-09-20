@@ -39,7 +39,6 @@ export const Paypa = () => {
       navigate("/main");
     }
   }
-  console.log(packages);
   useEffect(() => {
     if(
       user
@@ -162,7 +161,7 @@ export const Paypa = () => {
   };
   const date = new Date()
   date.setDate(date.getDate()+6);
-  console.log(date.toString());
+  // console.log(date.toString());
   function formatDate(date) {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -172,8 +171,8 @@ export const Paypa = () => {
     if (day.length < 2) day = "0" + day;
     return [year, month, day].join("-");
   }
-  console.log(formatDate(Date.now()));
-  console.log(formatDate(date));
+  // console.log(formatDate(Date.now()));
+  // console.log(formatDate(date));
 
   return (
     <>

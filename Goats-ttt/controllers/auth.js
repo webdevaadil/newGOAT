@@ -18,7 +18,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
   try {
     User.findOne({ email }, async (err, user) => {
       const { valid, reason, validators } = await isEmailValid(email);
-      console.log(validators);
+      // console.log(validators);
 
       if (!valid) {
         return res
@@ -80,7 +80,7 @@ exports.login = catchAsyncerror(async (req, res, next) => {
 
 exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   const { token } = req.cookies;
-  console.log(token);
+  // console.log(token);
   if (!token) {
     return next(new ErrorResponse("plese login to access this resource", 401));
   }
@@ -90,7 +90,7 @@ exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
 });
 exports.dashboard = catchAsyncerror(async (req, res, next) => {
   if (req.session) {
-    console.log(req.session.email);
+    // console.log(req.session.email);
   }
   const user = await User.findById(req.user.id);
   // const productCount = await Product.countDocuments()
@@ -103,7 +103,7 @@ exports.dashboard = catchAsyncerror(async (req, res, next) => {
 
     // productCount,
   });
-  console.log(user);
+  // console.log(user);
   // console.log({token});
 });
 exports.logout = catchAsyncerror(async (req, res, next) => {
@@ -120,7 +120,7 @@ exports.logout = catchAsyncerror(async (req, res, next) => {
 // update User password
 exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
-  console.log(req.body);
+  // console.log(req.body);
   const isPasswordMatched = await user.matchPassword(req.body.oldPassword);
 
   if (!isPasswordMatched) {
@@ -146,7 +146,7 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
   };
   if (req.body.avatar!='') {
     const user = await User.findById(req.user.id);
-    console.log("hi");
+    // console.log("hi");
     const imageId = user.avatar.public_id;
 
     cloudinary.uploader.destroy(imageId);
