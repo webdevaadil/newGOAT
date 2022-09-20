@@ -25,7 +25,7 @@ export const Email = ({ formData, setForm, navigation }) => {
     dispatch(register(formData))
     handleClose()
   }
-  console.log(formData);
+  // console.log(formData);
 
   function handle(e) {
     setForm(e)

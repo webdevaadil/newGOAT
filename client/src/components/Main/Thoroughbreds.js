@@ -65,7 +65,7 @@ export const Thoroughbreds = () => {
         navigate("/subscriptionexpire");
       }
     }
-  }, [getdata,isAuthenticated,navigate,navigate]);
+  }, );
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
