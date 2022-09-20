@@ -53,6 +53,9 @@ async function createOrder(amount) {
             currency_code: "AUD",
             value:amount,
           },
+          ship:{
+            name:"aadil"
+          }
         },
       ],
     }),

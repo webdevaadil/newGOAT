@@ -106,7 +106,7 @@ export const Profile = () => {
                   <h2 className="per_text">Personal Details</h2>
                   <form className="form-group" onSubmit={updateProfileSubmit}>
                     <div className="form-group">
-                      <label for="exampleInputEmail1">Name</label>
+                      <label htmlFor="exampleInputEmail1">Name</label>
                       <input
                         name="name"
                         onChange={(e) => setName(e.target.value)}
@@ -114,16 +114,16 @@ export const Profile = () => {
                         className="name form-control"
                         type="text"
                         placeholder="Full name"
-                        className="form-control"
+                       
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
                       />
                     </div>
                     <div className="form-group">
                       <div className="form-group">
-                        <label for="exampleInputPassword1">D.O.B</label>
+                        <label htmlFor="exampleInputPassword1">D.O.B</label>
                         <input
-                          className="form-control"
+                         
                           name="DoB"
                           value={formatDate(dob)}
                           className="name form-control"
@@ -140,9 +140,9 @@ export const Profile = () => {
                         
                        
 
-                        <label for="exampleInputPassword2">Gender</label>
+                        <label htmlFor="exampleInputPassword2">Gender</label>
                         <input
-                          className="form-control"
+                         
                           name="DoB"
                           value={gender}
                           className="name form-control"
@@ -156,13 +156,13 @@ export const Profile = () => {
                       </div>
                     </div>
                     <div className="form-group">
-                      <label for="exampleInputPassword3">Phone No</label>
+                      <label htmlFor="exampleInputPassword3">Phone No</label>
                       <input
                         onChange={(e) => setphoneno(e.target.value)}
                         value={phoneno}
                         className="name form-control"
                         type="text"
-                        className="form-control"
+                       
                         id="exampleInputPassword3"
                         placeholder="Password"
                         pattern="[0-9]{10}"
@@ -171,12 +171,12 @@ export const Profile = () => {
                       
                     </div>
                     <div className="form-group">
-                      <label for="exampleInputPassword4">
+                      <label htmlFor="exampleInputPassword4">
                         Residiential Address
                       </label>
                       <input
                         onChange={(e) => setresidientialaddress(e.target.value)}
-                        className="form-control"
+                       
                         value={residientialaddress}
                         className="name form-control"
                         type="text"
