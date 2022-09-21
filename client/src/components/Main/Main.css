@@ -22,6 +22,7 @@ body{
     position: relative;
     display: flex;
     align-items: center;
+    height: 550px;
 }
 
 .main-content{

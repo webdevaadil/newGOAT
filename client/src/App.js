@@ -14,7 +14,6 @@ import { Greydetails } from "./components/Main/Greydetails";
 import { About } from "./components/Profile/About";
 import { Metadata } from "./components/layout/Metadata";
 import { Package } from "./components/Signup/Package";
-import { Aboutus } from "./components/extra/About";
 
 // import { ProtectedRoute } from "./components/Route/ProtectedRoute";
 import { Multilf } from "./multi/Multilf";
@@ -23,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loaduser } from "./actions/userAction";
 import { Paypa } from "./multi/Stepform/Password";
 import { Paymentexpirepage } from "./components/Extra/Paymentexpirepage";
+import { Aboutus } from "./components/Extra/About";
 
 function App() {
   const dispatch = useDispatch();
