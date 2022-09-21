@@ -128,12 +128,16 @@ if (password.length < 8) {
   }
 });
 exports.pay = catchAsyncerror(async (req, res, next) => {
+  console.log(req.body);
   let amount=req.body.packages.slice(1,3)
    const order = await createOrder(amount);
   // console.log(order);
   res.json(order);
 });
 exports.ordercapture = catchAsyncerror(async (req, res, next) => {
+  console.log(req.body);
+  console.log(req.params);
+
   const { orderID } = req.params;
   try {
     const captureData = await capturePayment(orderID);
