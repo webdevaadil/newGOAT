@@ -27,7 +27,6 @@ import { Aboutus } from "./components/Extra/About";
 function App() {
   const dispatch = useDispatch();
   dispatch(loaduser())
-  const local = JSON.parse(localStorage.getItem("comuser"))
  
 
   return (
