@@ -24,7 +24,7 @@ connectDB();
 
 
 app.use("/api/auth", require("./routes/auth"));
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 // --------------------------deployment------------------------------
 if (process.env.NODE_ENV === "production") {
