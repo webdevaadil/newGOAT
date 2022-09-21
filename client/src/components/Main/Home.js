@@ -698,7 +698,7 @@ const Home = () => {
         <div className="">
           <div
             className="section-title"
-            style={{ textAlign: "center", marginBottom: "10px" }}
+            style={{ textAlign: "center", marginBottom: "50px",marginTop:"70px" }}
           >
             <h3>Testimonials</h3>
           </div>
