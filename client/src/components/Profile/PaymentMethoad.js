@@ -259,7 +259,7 @@ export const PaymentMethoad = () => {
                                   .then((orderData) => {
                                     settest(orderData);
                                     // Successful capture! For dev/demo purposes:
-                                    console.log("Capture result", orderData);
+                                    console.log("Capture result", );
                                   })
                                   .then((orderData) => console.log("orderData"))
                                   .then(updatepro())
