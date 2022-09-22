@@ -1,4 +1,5 @@
-const dotenv = require("dotenv");
+'use strict'
+const dotenv = require("dotenv"); 
 dotenv.config({ path: "./config.env" });
 const compression = require('compression');
 const express = require("express");
