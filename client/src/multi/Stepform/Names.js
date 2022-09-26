@@ -160,8 +160,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                         <option>select gender</option>
                         <option>Male</option>
                         <option>Female</option>
-                        <option>Non-binary</option>
-                        <option>Prefer not to say</option>
+                
                       </select>
                       <label htmlFor="floatingSelect">Gender (Optional)</label>
                     </div>

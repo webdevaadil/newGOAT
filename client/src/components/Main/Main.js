@@ -218,8 +218,8 @@ export const Main = () => {
               <div className="container main-freetips">
                 <div className="main_1">
                   <div className="main-grid 1">
-                    {todayrace.length !== 0 ? (
-                      todayrace.map((items, index) => {
+                    {currentRecords.length !== 0 ? (
+                      currentRecords.map((items, index) => {
                         const minutesnow = new Date().getMinutes();
                         const minutesprev = new Date(
                           items.RaceTime

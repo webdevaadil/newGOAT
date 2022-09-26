@@ -16,7 +16,6 @@ const {
   pay,
   paym,
 } = require("../controllers/auth");
-// const { test } = require("../payment/payment");
 router.route("/register").post(register);
 router.route("/pay").post(pay);
 

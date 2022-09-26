@@ -70,10 +70,9 @@ body{
 
 .wel-bg{
     background:linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url('../../Images/goat_png_grey\ \(1\).png ' );
-    background-size: cover;
+    background-size: contain;
     background-position: 48% 20%;
     background-repeat: no-repeat;
-    background-size: 45%;
    
 }
 .img-main{

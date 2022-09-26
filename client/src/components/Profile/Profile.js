@@ -172,7 +172,7 @@ export const Profile = () => {
                     </div>
                     <div className="form-group">
                       <label htmlFor="exampleInputPassword4">
-                        Residiential Address
+                        Residential Address
                       </label>
                       <input
                         onChange={(e) => setresidientialaddress(e.target.value)}

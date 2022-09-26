@@ -20,10 +20,10 @@ export const ProfileNav = () => {
   },[])
   
   function logoutUser() {
-    const confirmdata =   window.confirm("are you sure,You Want to Logout",navigate("/Thankyou"))
+    const confirmdata =   window.confirm("are you sure,You Want to Logout")
     if(confirmdata===true){
       dispatch(logout());
-     navigate("/Thankyou")
+      navigate("/")
     }
     else{
       navigate("/dashboard")

@@ -9,64 +9,68 @@ import img2 from "../../Images/gold.png";
 import img3 from "../../Images/platinum.png";
 import img4 from "../../Images/silver.png";
 import img5 from "../../Images/bronze.png";
-import races1 from "../../Images/races1.png";
+import races1 from "../../Images/races.png";
 import icon2 from "../../Images/icon2.png";
 import horseRacing from "../../Images/Horse-Racing.jpg";
 import horseIcon from "../../Images/horse-icon.png";
 import greyRacing from "../../Images/Greyhound-Racing.jpg";
 import houndIcon from "../../Images/hound-icon.png";
-import reliable from "../../Images/freetips-mobile.png";
+import reliable from "../../Images/races22";
 import HomeFooter from "../Footer/HomeFooter";
+import vv from "../../Images/Randwick_V1-0030.mp4";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loaduser } from "../../actions/userAction";
-import { useAlert } from "react-alert";
+import { positions, useAlert } from "react-alert";
 import Marquee from "react-fast-marquee";
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
- 
-  const { error, isAuthenticated } = useSelector(
-    (state) => state.user
-  );
+
+  const { error, isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
-    
+
     if (isAuthenticated) {
       navigate("/main");
-      
     }
-
   }, [dispatch, isAuthenticated, error, navigate]);
 
   const redy = () => {
-    navigate("/packages");
+    navigate("/signup");
   };
 
   return (
-
     <div>
-      <div className="banner-sec banne-bg">
-        <div className="container her0">
-          <div className="row banner-main">
-         <span style={{float:"right"}}className="home_btn">
-      
-          
-        
-      </span>
+      <div className="video-container">
+    <div className="caption">
+    <div className="container her0">
+        <div className="row banner-main">
+      <video autoPlay loop muted id="background-video">
+        <source src={vv} type="video/mp4" />
+      </video>
+          <div className="banner-sec banne-bg">
+            <span style={{ float: "right" }} className="home_btn"></span>
             <div
-              className="col-lg-12 col-md-12"
-              style={{ padding: "0", margin: "0" }}
+              className="col-lg-12 col-md-12 vp"
+              style={{ padding: "0", margin: "0", position:"absolute",top:"0"}}
             >
               <div className="baner-ct">
-           <ul className="navbar-nav top-btn ml-auto">
-           <Link style={{textAlign:"end" }} to = "/login"><button className="homelogin btn btn-1" style={{width:"140px",height:"50px"}}>Login</button>  </Link>
-         </ul>
+                <ul className="navbar-nav top-btn ml-auto">
+                  <Link style={{ textAlign: "end" }} to="/login">
+                    <button
+                      className="homelogin btn btn-1"
+                      style={{ width: "140px", height: "50px" }}
+                    >
+                      Login
+                    </button>{" "}
+                  </Link>
+                </ul>
                 <img src={img1} alt="" />
                 <div className="bnner-btn">
                   <Link to="/signup">
@@ -91,13 +95,42 @@ const Home = () => {
           </div>
         </div>
       </div>
+    </div>
+</div>
+     
 
+      
+      <div className="container" style={{ textAlign: "center" }}>
+        <div className="resut-content">
+          <h3>
+            Quality Sporting Tips <span>From Expert Tipsters</span>{" "}
+          </h3>
+          <p>
+            Whether you're a professional investor or a casual pub punter, we've
+            got you covered. The GOAT's Tips provides consistent returns to
+            enhance your sporting experience.
+          </p>
+          <ul>
+            <li>
+              {" "}
+              <i className="fa fa-check"></i> Thoroughbred horse racing
+            </li>
+            <li>
+              {" "}
+              <i className="fa fa-check"></i> Greyhound racing
+            </li>
+            <li>
+              {" "}
+              <i className="fa fa-check"></i> Additional sports coming soon!
+            </li>
+          </ul>
+        </div>
+      </div>
       <div className="tips-sec">
         <div className="container tips-main">
-          <div className="row " style={{justifyContent:"center"}}>
+          <div className="row " style={{ justifyContent: "center" }}>
             <div className="col-md-3 card card1">
               <div className="tips-ct">
-              
                 <h2>
                   {" "}
                   &#62;
@@ -108,7 +141,7 @@ const Home = () => {
             </div>
             <div className="col-md-3 card card1">
               <div className="tips-ct ">
-              <h2>
+                <h2>
                   {" "}
                   &#62;
                   <Count start={0} end={6000} duration={10} delay={0} />{" "}
@@ -168,8 +201,7 @@ const Home = () => {
               </li>
             </ul>
             <div className="tab-content" id="myTabContent">
-             
-             <div
+              <div
                 className="tab-pane fade show active"
                 id="home"
                 role="tabpanel"
@@ -180,7 +212,7 @@ const Home = () => {
                     <h3>
                       <Count start={0} end={37} duration={4} delay={0} />%
                     </h3>
-               <p>Win strike rate</p>
+                    <p>Win strike rate</p>
                   </div>
                   <div className="col-md-4 col-sm-4">
                     <h3>
@@ -195,18 +227,15 @@ const Home = () => {
                     <p>Top 2 place rate</p>
                   </div>
                 </div>
-                
               </div>
-             
-              
+
               <div
                 className="tab-pane fade"
                 id="profile"
                 role="tabpanel"
                 aria-labelledby="profile-tab"
               >
-                    
-                <div className="row rate-mian">
+                <div className="row rate-mian ">
                   <div className="col-md-4 col-sm-4">
                     <h3>
                       <Count start={0} end={57} duration={7} delay={0} />%
@@ -254,7 +283,7 @@ const Home = () => {
             <div className="container-fluid">
               <div className="row tips-mian">
                 <div className="col-lg-6 col-md-12">
-                  <div className="resut-content">
+                  {/* <div className="resut-content">
                     <h3>
                       Quality Sporting Tips <span>From Expert Tipsters</span>{" "}
                     </h3>
@@ -278,7 +307,7 @@ const Home = () => {
                         soon!
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="col-lg-6 col-md-12">
                   <div className="resut-content">
@@ -303,7 +332,7 @@ const Home = () => {
                         consistent returns to enhance your sporting experience.
                       </p>
                     </div>
-                    <div style={{    justifyContent: "center"}} className="card ">
+                    <div style={{ justifyContent: "center" }} className="card ">
                       <div className="clearfix">
                         <button type="button" className="btn  float-start">
                           <img src={icon2} alt="" /> The Goats tips
@@ -414,152 +443,172 @@ const Home = () => {
         </div>
       </div>
       <div className="tipping-sec">
-       <div className="tipping_opacity">
-       <div className="tippimg-main" id="tiping">
-          <div className="section-title">
-            <h3>Tipping Packages for Everyone</h3>
-            <p>
-              Choose the package that suits your favourite sport, confidence
-              level, and budget - we've got the right one for you!
-            </p>
-            <h4>
-              {" "}
-              <span>Thoroughbred Horse Racing</span>
-            </h4>
-          </div>
-          <div className="tipp">
-            <div className="btn" style={{ width: "50%" }} onClick={redy}>
-              <div className="row tipping1 " style={{ width: "100%" }}>
-                <div className="col-md-6">
-                  <div className="tipp-img">
-                    <img src={img5} alt="" />
+        <div className="tipping_opacity">
+          <div className="tippimg-main" id="tiping">
+            <div className="section-title">
+              <h3>Tipping Packages for Everyone</h3>
+              <p>
+                Choose the package that suits your favourite sport, confidence
+                level, and budget - we've got the right one for you!
+              </p>
+              <h4>
+                {" "}
+                <span>Thoroughbred Horse Racing</span>
+              </h4>
+            </div>
+            <div className="tipp">
+              <div
+                className="btn"
+                style={{ width: "50%", padding: 0, border: 0 }}
+                onClick={redy}
+              >
+                <div className="row tipping1 " style={{ width: "100%" }}>
+                  <div className="col-md-6">
+                    <div className="tipp-img">
+                      <img src={img5} alt="" />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="tipping-ct">
+                      <h3>Bronze</h3>
+                      <p>$15 / Week</p>
+                      <div className="return">
+                        <span>98% returns</span>
+                      </div>
+                      <ul className="tiip-list">
+                        <li>
+                          {" "}
+                          <i className="fa fa-check"></i> Top tip of the day
+                        </li>
+                        <li>
+                          <i className="fa fa-check"></i> Every Saturday
+                        </li>
+                        <li>
+                          {" "}
+                          <i className="fa fa-check"></i>Direct to your inbox
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-                <div className="col-md-6">
-                  <div className="tipping-ct">
-                    <h3>Bronze</h3>
-                    <p>$15 / Week</p>
-                    <div className="return">
-                      <span>98% returns</span>
+              </div>
+              <div
+                className="btn"
+                style={{ width: "50%", padding: 0, border: 0 }}
+                onClick={redy}
+              >
+                <div className="row tipping1" style={{ width: "100%" }}>
+                  <div className="col-md-6">
+                    <div className="tipp-img">
+                      <img src={img4} alt="" />
                     </div>
-                    <ul className="tiip-list">
-                      <li>
-                        {" "}
-                        <i className="fa fa-check"></i> Top tip of the day
-                      </li>
-                      <li>
-                        <i className="fa fa-check"></i> Every Saturday
-                      </li>
-                      <li>
-                        {" "}
-                        <i className="fa fa-check"></i>Direct to your inbox
-                      </li>
-                    </ul>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="tipping-ct">
+                      <h3>Silver</h3>
+                      <p>$30 / Week</p>
+                      <div className="return">
+                        <span>120% returns</span>
+                      </div>
+                      <ul className="tiip-list">
+                        <li>
+                          {" "}
+                          <i className="fa fa-check"></i> Our 10 best tips
+                        </li>
+                        <li>
+                          <i className="fa fa-check"></i>Every Saturday
+                        </li>
+                        <li>
+                          {" "}
+                          <i className="fa fa-check"></i>Direct to your inbox
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="btn"
+                style={{ width: "50%", padding: 0, border: 0 }}
+                onClick={redy}
+              >
+                <div className="row tipping1" style={{ width: "100%" }}>
+                  <div className="col-md-6">
+                    <div className="tipp-img">
+                      <img src={img2} alt="" />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="tipping-ct">
+                      <h3>Gold</h3>
+                      <p>$45 / Week</p>
+                      <div className="return">
+                        <span>165% returns</span>
+                      </div>
+                      <ul className="tiip-list">
+                        <li>
+                          {" "}
+                          <i className="fa fa-check"></i>Our top daily tips,
+                          plus
+                        </li>
+                        <li>
+                          <i className="fa fa-check"></i>Our top 15 Saturday
+                          tips
+                        </li>
+                        <li>
+                          {" "}
+                          <i className="fa fa-check"></i>Direct to your inbox
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="btn"
+                style={{ width: "50%", padding: 0, border: 0 }}
+                onClick={redy}
+              >
+                <div className="row tipping1" style={{ width: "100%" }}>
+                  <div className="col-md-6">
+                    <div className="tipp-img">
+                      <img src={img3} alt="" />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="tipping-ct">
+                      <h3>Platinum</h3>
+                      <p>$60 / Week</p>
+                      <div className="return">
+                        <span>265% returns</span>
+                      </div>
+                      <ul className="tiip-list">
+                        <li>
+                          {" "}
+                          <i className="fa fa-check"></i> Our top 5 daily tips,
+                          plus
+                        </li>
+                        <li>
+                          <i className="fa fa-check"></i> Our top 20 Saturday
+                          tips
+                        </li>
+                        <li>
+                          {" "}
+                          <i className="fa fa-check"></i>Direct to your inbox
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="btn" style={{ width: "50%" }} onClick={redy}>
-              <div className="row tipping1" style={{ width: "100%" }}>
-                <div className="col-md-6">
-                  <div className="tipp-img">
-                    <img src={img4} alt="" />
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="tipping-ct">
-                    <h3>Silver</h3>
-                    <p>$30 / Week</p>
-                    <div className="return">
-                      <span>120% returns</span>
-                    </div>
-                    <ul className="tiip-list">
-                      <li>
-                        {" "}
-                        <i className="fa fa-check"></i> Our 10 best tips
-                      </li>
-                      <li>
-                        <i className="fa fa-check"></i>Every Saturday
-                      </li>
-                      <li>
-                        {" "}
-                        <i className="fa fa-check"></i>Direct to your inbox
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            <div className="bnner-btn">
+              <Link to="/signup">
+                <button className="signbtn">Sign Me Up</button>
+              </Link>
             </div>
-            <div className="btn" style={{ width: "50%" }} onClick={redy}>
-              <div className="row tipping1" style={{ width: "100%" }}>
-                <div className="col-md-6">
-                  <div className="tipp-img">
-                    <img src={img2} alt="" />
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="tipping-ct">
-                    <h3>Gold</h3>
-                    <p>$45 / Week</p>
-                    <div className="return">
-                      <span>165% returns</span>
-                    </div>
-                    <ul className="tiip-list">
-                      <li>
-                        {" "}
-                        <i className="fa fa-check"></i>Our top daily tips, plus
-                      </li>
-                      <li>
-                        <i className="fa fa-check"></i>Our top 15 Saturday tips
-                      </li>
-                      <li>
-                        {" "}
-                        <i className="fa fa-check"></i>Direct to your inbox
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="btn" style={{ width: "50%" }} onClick={redy}>
-              <div className="row tipping1" style={{ width: "100%" }}>
-                <div className="col-md-6">
-                  <div className="tipp-img">
-                    <img src={img3} alt="" />
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="tipping-ct">
-                    <h3>Platinum</h3>
-                    <p>$60 / Week</p>
-                    <div className="return">
-                      <span>265% returns</span>
-                    </div>
-                    <ul className="tiip-list">
-                      <li>
-                        {" "}
-                        <i className="fa fa-check"></i> Our top 5 daily tips, plus
-                      </li>
-                      <li>
-                        <i className="fa fa-check"></i> Our top 20 Saturday tips
-                      </li>
-                      <li>
-                        {" "}
-                        <i className="fa fa-check"></i>Direct to your inbox
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="bnner-btn">
-            <Link to="/signup">
-              <button className="signbtn">Sign Me Up</button>
-            </Link>
           </div>
         </div>
-       </div>
       </div>
 
       <div className="Services-sec">
@@ -577,7 +626,7 @@ const Home = () => {
               <div className="service-ct">
                 <div className="ser-img">
                   <img src={horseIcon} alt="img" />
-                <h3>Horse Racing Tips</h3>
+                  <h3>Horse Racing Tips</h3>
                 </div>
                 <p>
                   Our eyes are always on the track to ensure we get the inside
@@ -604,8 +653,8 @@ const Home = () => {
             <div className="col-md-6">
               <div className="service-ct">
                 <div className="ser-img">
-                  <img style={{height:"10%"}}src={houndIcon} alt="img" />
-                <h3>Greyhound Racing Tips</h3>
+                  <img style={{ height: "10%" }} src={houndIcon} alt="img" />
+                  <h3>Greyhound Racing Tips</h3>
                 </div>
                 <p>
                   Our eyes are always on the track to ensure we get the inside
@@ -698,7 +747,11 @@ const Home = () => {
         <div className="">
           <div
             className="section-title"
-            style={{ textAlign: "center", marginBottom: "50px",marginTop:"70px" }}
+            style={{
+              textAlign: "center",
+              marginBottom: "50px",
+              marginTop: "70px",
+            }}
           >
             <h3>Testimonials</h3>
           </div>
@@ -731,77 +784,75 @@ const Home = () => {
             </div>
             <div className="carousel-inner">
               <div className="carousel-item active">
-              <div  className="cureseldesignparent">
-              <div className="curoseldesign" >
-               <h4>
-                  I started on Bronze, moved up to Silver, then Gold and now
-                  Platinum – winning all the way!
-                </h4>
-                <div className="cont">
-                  <div className="rating">
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                  </div>
-                  <h3>Trent Davies</h3>
-                  <p>
-                    {" "}
-                    <span>Thoroughbred Horses - Platinum Subscription</span>
-                  </p>
-                </div>
-               </div>
-              </div>
-              </div>
-              <div className="carousel-item">
-
                 <div className="cureseldesignparent">
-                <div className="curoseldesign" >
-                <h4>
-                  I started on Bronze, moved up to Silver, then Gold and now
-                  Platinum winning all the way!
-                </h4>
-                <div className="cont">
-                  <div className="rating">
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
+                  <div className="curoseldesign">
+                    <h4>
+                      I started on Bronze, moved up to Silver, then Gold and now
+                      Platinum – winning all the way!
+                    </h4>
+                    <div className="cont">
+                      <div className="rating">
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                      </div>
+                      <h3>Trent Davies</h3>
+                      <p>
+                        {" "}
+                        <span>Thoroughbred Horses - Platinum Subscription</span>
+                      </p>
+                    </div>
                   </div>
-                  <h3>Trent Davies</h3>
-                  <p>
-                    <span>Thoroughbred Horses - Platinum Subscription</span>
-                  </p>
-                </div>
-                </div>
                 </div>
               </div>
               <div className="carousel-item">
-
-              <div className="cureseldesignparent">
-              <div className="curoseldesign">
-               <h4>
-                  I started on Bronze, moved up to Silver, then Gold and now
-                  Platinum – winning all the way!
-                </h4>
-                <div className="cont">
-                  <div className="rating">
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
+                <div className="cureseldesignparent">
+                  <div className="curoseldesign">
+                    <h4>
+                      I started on Bronze, moved up to Silver, then Gold and now
+                      Platinum winning all the way!
+                    </h4>
+                    <div className="cont">
+                      <div className="rating">
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                      </div>
+                      <h3>Trent Davies</h3>
+                      <p>
+                        <span>Thoroughbred Horses - Platinum Subscription</span>
+                      </p>
+                    </div>
                   </div>
-                  <h3>Trent Davies</h3>
-                  <p>
-                    {" "}
-                    <span>Thoroughbred Horses - Platinum Subscription</span>
-                  </p>
                 </div>
-               </div>
               </div>
+              <div className="carousel-item">
+                <div className="cureseldesignparent">
+                  <div className="curoseldesign">
+                    <h4>
+                      I started on Bronze, moved up to Silver, then Gold and now
+                      Platinum – winning all the way!
+                    </h4>
+                    <div className="cont">
+                      <div className="rating">
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                      </div>
+                      <h3>Trent Davies</h3>
+                      <p>
+                        {" "}
+                        <span>Thoroughbred Horses - Platinum Subscription</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <button

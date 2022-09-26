@@ -9,9 +9,21 @@
     background-color:#000000a6;
 }
 
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* position: fixed; */
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1999;
+    padding: 0;
+  }
 .banner-sec {
     height: auto;
-    background-image: url("../../Images/new-hero.png");
+    /* background: url("../../Images/Randwick_V1-0030.mp4"); */
     background-position:top;
     background-repeat: no-repeat;
     background-size: auto;
@@ -60,7 +72,7 @@
     margin: auto;
 }
 .baner-ct img {
-    max-width: 135px;
+    max-width: 157px;
 }
 .homelogin{
     background-color:rgb(240, 185, 27)!important
@@ -195,17 +207,22 @@
     /* animation-name: example;
     animation-duration: 4s;
     animation-iteration-count: infinite; */
-    animation: example 4s linear infinite ;
-    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1pxsolidrgba(0,0,0,.125);
+    border-radius: 20px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    padding: 10px;
+    margin: 20px;
 
 
     
 }
-@keyframes example {
-    0%   {right:-100%; }
- 
-    100% {right:100%; }
-  }
+
 /* tips start */
 .resut-content h3 {
     font-size: 3rem;
@@ -213,7 +230,7 @@
     letter-spacing: 0px;
     text-transform: none;
     color: #03203e;
-    text-align: left;
+    text-align: center;
     /* margin-top: 15px; */
 }
 .resut-content p {
@@ -221,11 +238,14 @@
     font-style: normal;
     color: #03203E;
     /* margin-top: 24px; */
-    text-align: left;
+    text-align: center;
+}
+.resut-content{
+    margin: 50px;
 }
 
 .resut-content ul li {
-    text-align: left;
+    text-align: center  ;
 }
 .resut-content span {
     color: #F0B91C;
@@ -383,10 +403,8 @@ ul.tiip-list li {
     display: flex;
     align-items: center;
     color: #fff;
-    margin: 35px 0px;
     width: 50%;
     background-color: black;
-    border-radius: 30px;
     padding: 15px;
     height: 100%;
 }
@@ -773,7 +791,9 @@ ul.socil-link li {
 .tab-section .nav-tabs {
     border-bottom: none !important;
 }
-
+.mes-cont{
+    text-align: center;
+}
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     color: #e8a600;
 
@@ -859,10 +879,38 @@ ul.socil-link li {
         text-transform: none;
         color: #ffffff;
     }
+    /* //video */
+    .video-container {
+        /* height: 300px;
+        width: 300px; */
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .video-container video {
+        /* min-width: 100%;
+        min-height: 100%; */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* transform: translateX(-50%) translateY(-50%); */
+      }
+      
+      /* Just styling the content of the div, the *magic* in the previous rules */
+      .video-container .caption {
+        z-index: 1;
+        position: relative;
+        text-align: center;
+        color: #dc0000;
+        padding: 10px;
+      }
+    /* //video */
     .her0 {
         max-width: 100%;
         margin: auto;
         padding: 0px;
+        bottom: 0;
+        z-index: 99999999999999;
     }
     .baner-ct p {
         padding-right: 0px;
@@ -919,6 +967,11 @@ ul.socil-link li {
 }
 
 @media(max-width:778px) {
+    .vp{position: unset;}
+    #background-video {
+        position: unset;
+        z-index: 0;
+    }
     .return span{
         font-size:2vw;
 
@@ -994,7 +1047,8 @@ ul.socil-link li {
     }
     .rate-mian p {
         font-size: 18px;
-    }   
+    } 
+ 
     .resut-content p {
         font-size: 16px;
         text-align: center;
