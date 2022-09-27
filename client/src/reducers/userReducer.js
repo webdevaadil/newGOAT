@@ -21,6 +21,7 @@ import {
   UPDATE_PROFILE_IMAGE_request,
   UPDATE_PROFILE_IMAGE_SUCCESS,
   UPDATE_PROFILE_IMAGE_FAIL,
+  LOGOUT_USER_REQUEST,
 } from "../constants/userConstants";
 const INTIAL_STATE={
   user:{},
@@ -32,6 +33,7 @@ export const userReducer = (state =INTIAL_STATE, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
     case REGISTER_USER_REQUEST:
+      case LOGOUT_USER_REQUEST:
       return {
         loading: true,
         // isAuthenticated: false,

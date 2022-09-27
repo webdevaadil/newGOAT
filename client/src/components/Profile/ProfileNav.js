@@ -20,14 +20,13 @@ export const ProfileNav = () => {
   },[])
   
   function logoutUser() {
-    const confirmdata =   window.confirm("are you sure,You Want to Logout")
-    if(confirmdata===true){
-      dispatch(logout());
-      navigate("/")
-    }
-    else{
-      navigate("/dashboard")
-    }
+    dispatch(logout());
+    // const confirmdata =   window.confirm("are you sure,You Want to Logout")
+    // if(confirmdata===true){
+    // }
+    // else{
+    //   navigate("/dashboard")
+    // }
 
       
       

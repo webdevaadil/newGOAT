@@ -47,7 +47,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="video-container">
+      <div className="video-container"> 
     <div className="caption">
     <div className="container her0">
         <div className="row banner-main">
@@ -58,7 +58,7 @@ const Home = () => {
             <span style={{ float: "right" }} className="home_btn"></span>
             <div
               className="col-lg-12 col-md-12 vp"
-              style={{ padding: "0", margin: "0", position:"absolute",top:"0"}}
+              style={{ padding: "0", margin: "-11px", position:"absolute",top:"0"}}
             >
               <div className="baner-ct">
                 <ul className="navbar-nav top-btn ml-auto">
@@ -96,8 +96,9 @@ const Home = () => {
         </div>
       </div>
     </div>
-</div>
+      </div>
      
+   
 
       
       <div className="container" style={{ textAlign: "center" }}>

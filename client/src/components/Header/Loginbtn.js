@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import store from "../../store";
-import { loaduser } from "../../actions/userAction";
+import { loaduser, logout } from "../../actions/userAction";
 import { Loader } from "../layout/Loader";
 
 export const Loginbtn = () => {
+  const dispatch =useDispatch()
   const navigate = useNavigate();
   const { user, isAuthenticated, loading} = useSelector((state) =>state.user);
   useEffect(()=>{
@@ -14,6 +15,10 @@ export const Loginbtn = () => {
 
   },[])
   const uppercaseWords = str => str.replace(/^(.)|\s+(.)/g, c => c.toUpperCase());
+  const logoutUser=()=>{
+    dispatch(logout());
+    navigate("/");
+  }
   return (
     <>
 
@@ -26,7 +31,7 @@ export const Loginbtn = () => {
           {user.packages ==="$30 / week"?<button style = {{backgroundColor:"#B6B1B1"}} onClick={()=>navigate("/dashboard")} className="user_btn">{uppercaseWords(user.username)}</button>:""}
           {user.packages ==="$15 / week"?<button style = {{backgroundColor:" #A55947"}} onClick={()=>navigate("/dashboard")} className="user_btn">{uppercaseWords(user.username)}</button>:""}
           {user.packages ==="Free"?<button style = {{backgroundColor:" #433F3F"}} onClick={()=>navigate("/dashboard")} className="user_btn">{uppercaseWords(user.username)}</button>:""}
-         <Link to = "/thankyou"><button className='btn btn-2'>Logout</button>  </Link>
+         <a ><button onClick={logoutUser} className='btn btn-2'>Logout</button>  </a>
          </ul></div>
           </>): (
            <ul className="navbar-nav top-btn ml-auto">

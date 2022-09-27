@@ -8,6 +8,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGOUT_USER_FAIL,
+  LOGOUT_USER_REQUEST,
   LOGOUT_USER_SUCCESS,
   REGISTER_USER_FAIL,
   REGISTER_USER_REQUEST,
@@ -47,11 +48,11 @@ export const register = (userData) => async (dispatch,getState) => {
     dispatch({ type: REGISTER_USER_REQUEST });
 
     const config = { headers: { "Content-Type": "Application/json" } };
-
-    const { data } = await axios.post(`/api/auth/register`, userData, config);
-        
     
-
+    const { data } = await axios.post(`/api/auth/register`, userData, config);
+    
+    
+    
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
     // console.log(data);
   } catch (error) {
@@ -63,14 +64,14 @@ export const register = (userData) => async (dispatch,getState) => {
   }
 };
 // export const updateimage =(imguplod)=>async(dispatch)=>{
-//   try {
-//     dispatch({ type: UPDATE_PROFILE_IMAGE_request });
-//     const config = { headers: { "Content-Type": "multipart/form-data" } };  
-//       const data = await axios.put(
-//       `/api/auth/update/profilepic`,
-//       imguplod,
-//       config
-//     );
+  //   try {
+    //     dispatch({ type: UPDATE_PROFILE_IMAGE_request });
+    //     const config = { headers: { "Content-Type": "multipart/form-data" } };  
+    //       const data = await axios.put(
+      //       `/api/auth/update/profilepic`,
+      //       imguplod,
+      //       config
+      //     );
 //     console.log(imguplod);
 //     dispatch({ type: UPDATE_PROFILE_IMAGE_SUCCESS, payload: data.success });
 //   } catch (error) {
@@ -82,9 +83,11 @@ export const register = (userData) => async (dispatch,getState) => {
 // }
 export const logout = () => async (dispatch) => {
   try {
+    dispatch({ type: LOGOUT_USER_REQUEST });
     await axios.get(`/api/auth/logout`);
-
+    
     dispatch({ type: LOGOUT_USER_SUCCESS });
+ 
     
   } catch (error) {
     dispatch({ type: LOGOUT_USER_FAIL, payload: error.response.data.message });

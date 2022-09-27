@@ -99,7 +99,7 @@ export const Profile = () => {
           <div className="profile_box_two ">
             <div className="row">
               {isAuthenticated !== true ? (
-                <Navigate to={"/login"} />
+                <Navigate to={"/"} />
               ) : (
                 <>
                   <div className="pic_flex_box">{/* </div> */}</div>

@@ -26,8 +26,7 @@ import { Aboutus } from "./components/Extra/About";
 function App() {
   "use strict";
   const dispatch = useDispatch();
-  dispatch(loaduser())
- 
+  dispatch(loaduser());
 
   return (
     <>
@@ -49,15 +48,14 @@ function App() {
             <Route path="" element={<Profile />} />
             <Route path="payment" element={<PaymentMethoad />} />
             <Route path="accountsetting" element={<AccountSetting />} />
-            <Route path="about" element={<About/>} />
+            <Route path="about" element={<About />} />
           </Route>
           <Route path="/privacy-policy" element={<Aboutus />} />
           <Route path="/packages" element={<Package />} />
           <Route path="/pac" element={<Multilf />} />
           <Route path="/thankyou" element={<Thankyou />} />
-          <Route path="/password" element={<Paypa/>} />
-          <Route path="/subscriptionexpire" element={<Paymentexpirepage/>} />
-
+          <Route path="/password" element={<Paypa />} />
+          <Route path="/subscriptionexpire" element={<Paymentexpirepage />} />
         </Routes>
       </BrowserRouter>
     </>
@@ -66,32 +64,24 @@ function App() {
 
 export default App;
 export function ProtectedRoute(props) {
-  const { user } = useSelector(
-    (state) => state.user
-  );
+  const { user, isAuthenticated } = useSelector((state) => state.user);
+  
 
- 
-  if (user.paymentstatus==="false") {
-    return <Navigate to="/password" />;
+  if (isAuthenticated === "false") {
+    return <Navigate to="/" />;
+  } else {
+    return props.children;
   }
-
-else {
-  return props.children;
-}
+    
+  
 }
 export function Paymentroute(props) {
-  const { user } = useSelector(
-    (state) => state.user
-  );
-if(user){
-
-  if (user.paymentstatus==="true") {
-    return <Navigate to="/main" />;
-  }
-} else {
+  const { user } = useSelector((state) => state.user);
+  if (user) {
+    if (user.paymentstatus === "true") {
+      return <Navigate to="/main" />;
+    }
+  } else {
     return props.children;
   }
 }
-
-
-

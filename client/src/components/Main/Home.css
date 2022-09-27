@@ -1,7 +1,7 @@
 
 .banner-sec {
     height: 100vh;
-    background: #000;
+    /* background: #000; */
 }
 .her0 {
     max-width: 100%;
@@ -816,7 +816,16 @@ ul.socil-link li {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
 
+
+
 /* responsive */
+@media(max-width:1200px) {
+    .banner-main {
+        height: 900px;
+    }
+}
+
+
 
 @media(max-width:1024px) {
 .baner-ct h2 {
@@ -829,6 +838,9 @@ ul.socil-link li {
 .tipping1{
     flex-direction: column;
     justify-content: center;
+}
+.banner-main {
+    height: 700px;
 }
 }
 
@@ -856,8 +868,9 @@ ul.socil-link li {
         display: block !important;
     }
     .banner-main{
-        /* width: 100%; */
+        width: 100%;
         margin: 0;
+        height:560px;
      }
    
     .result {
@@ -902,7 +915,7 @@ ul.socil-link li {
         position: relative;
         text-align: center;
         color: #dc0000;
-        padding: 10px;
+        padding: 0px;
       }
     /* //video */
     .her0 {
@@ -990,6 +1003,7 @@ ul.socil-link li {
     }
     .her0 {
         max-width: 100%;
+        background-color: #000000a6 !important;
     }
     .logo img {
         max-width: 100px;
@@ -1013,8 +1027,7 @@ ul.socil-link li {
      }
     .baner-ct {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        background: #0000004f;
-        
+        background-color: #000000a6;  
         text-align: center;
     }
     .media-banner{
@@ -1180,6 +1193,9 @@ ul.socil-link li {
     .tipp .btn {
         width: 100% !important;
     }
+    .banner-main {
+        height: 537px !important;
+    }
   }
   @media(max-width:667px) {
     .tipping-sec .section-title h3 {
@@ -1215,6 +1231,12 @@ ul.socil-link li {
     .result-mian {
         padding: 0px 0px;
     }
+    .banner-main {
+        height: 575px;
+    }
+    .baner-ct img {
+        max-width: 90px;
+    }
   }
 
   @media(max-width:1082px) {
@@ -1223,4 +1245,18 @@ ul.socil-link li {
         justify-content: center;
         width: auto;
     }
+  }
+
+  @media(max-width:500px) {
+    .banner-main {
+        height: 534px !important ;
+    }
+    .baner-ct h2 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+    .bnner-btn .signbtn {
+        padding: 9px 25px 9px 25px;
+    }
+   
   }

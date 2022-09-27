@@ -23,6 +23,7 @@ import { Loader } from "../layout/Loader";
 import { clearErrors, loaduser } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import { Login } from "../Login/Login";
+import Home from "./Home";
 
 export const Main = () => {
   const dispatch = useDispatch();
@@ -63,7 +64,7 @@ export const Main = () => {
     if (isAuthenticated === false) {
       <Navigate to={<Login/>} />;
     }
-  }, [error, navigate, dispatch,]);
+  }, [error, navigate, dispatch,  ]);
   const [detail, setDetail] = useState([]);
 
   const [todayrace, setTodayRace] = useState([]);
@@ -218,8 +219,8 @@ export const Main = () => {
               <div className="container main-freetips">
                 <div className="main_1">
                   <div className="main-grid 1">
-                    {currentRecords.length !== 0 ? (
-                      currentRecords.map((items, index) => {
+                    {todayrace.length !== 0 ? (
+                      todayrace.map((items, index) => {
                         const minutesnow = new Date().getMinutes();
                         const minutesprev = new Date(
                           items.RaceTime
