@@ -675,7 +675,7 @@ const Home = () => {
         </div>
         </div>
 
-      <div style = {{marginTop:"20px"}} className="follw-sec">
+      <div style = {{marginTop:"45px"}} className="follw-sec">
         <div className="container">
           <div className="foll-ct">
             <h3>Follow Us on our Socials</h3>
