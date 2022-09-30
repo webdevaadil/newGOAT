@@ -15,6 +15,7 @@ import horseRacing from "../../Images/Horse-Racing.jpg";
 import horseIcon from "../../Images/horse-icon.png";
 import greyRacing from "../../Images/Greyhound-Racing.jpg";
 import houndIcon from "../../Images/hound-icon.png";
+import serviceBackground from "../../Images/serviceback.jpg"
 import reliable from "../../Images/races22";
 import HomeFooter from "../Footer/HomeFooter";
 import vv from "../../Images/Randwick_V1-0030.mp4";
@@ -460,7 +461,7 @@ const Home = () => {
             <div className="tipp">
               <div
                 className="btn"
-                style={{ width: "50%", padding: 0, border: 0 }}
+                style={{ width: "50%"}}
                 onClick={redy}
               >
                 <div className="row tipping1 " style={{ width: "100%" }}>
@@ -495,7 +496,7 @@ const Home = () => {
               </div>
               <div
                 className="btn"
-                style={{ width: "50%", padding: 0, border: 0 }}
+                style={{ width: "50%"}}
                 onClick={redy}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
@@ -530,7 +531,7 @@ const Home = () => {
               </div>
               <div
                 className="btn"
-                style={{ width: "50%", padding: 0, border: 0 }}
+                style={{ width: "50%",marginTop:"8px"}}
                 onClick={redy}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
@@ -567,7 +568,7 @@ const Home = () => {
               </div>
               <div
                 className="btn"
-                style={{ width: "50%", padding: 0, border: 0 }}
+                style={{ width: "50%",marginTop:"8px"}}
                 onClick={redy}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
@@ -613,6 +614,7 @@ const Home = () => {
       </div>
 
       <div className="Services-sec">
+        <div style = {{height:"100%",backgroundColor:"rgba(0, 0, 0, 0.688)"}}>
         <div className="container">
           <div className="section-title">
             <h3>Services Provided</h3>
@@ -626,10 +628,10 @@ const Home = () => {
             <div className="col-md-6">
               <div className="service-ct">
                 <div className="ser-img">
-                  <img src={horseIcon} alt="img" />
-                  <h3>Horse Racing Tips</h3>
+                  <img style = {{color:"black"}} src={horseIcon} alt="img" />
+                  <h3 >Horse Racing Tips</h3>
                 </div>
-                <p>
+                <p >
                   Our eyes are always on the track to ensure we get the inside
                   rail on the winning tips sent out.
                 </p>
@@ -670,9 +672,10 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+        </div>
 
-      <div className="follw-sec">
+      <div style = {{marginTop:"20px"}} className="follw-sec">
         <div className="container">
           <div className="foll-ct">
             <h3>Follow Us on our Socials</h3>

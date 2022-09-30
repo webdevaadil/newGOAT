@@ -339,13 +339,13 @@ export const Main = () => {
                       <input
                         className="btn btn-primary"
                         style={{ margin: "10px", backgroundColor: "#10867f" }}
-                        type="submit"
-                        value={"submit"}
+                        type="Submit"
+                        value={"Submit"}
                       />
                       <input
                         className="btn btn-danger "
                         type="reset"
-                        value={"reset"}
+                        value={"Reset"}
                       />
                     </div>
                   </form>

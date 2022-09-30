@@ -5,6 +5,7 @@ import { Header } from "../Header/Header";
 import { Breadcrumb } from 'antd';
 import axios from "axios";
 import { Loader } from "../layout/Loader";
+import "../../multi/Stepform/Email.css"
 
 
 export const Greydetails = ()=>{
@@ -109,11 +110,15 @@ export const Greydetails = ()=>{
             <>
                <Header/>  
       <div id="sport-sec">        
-      <Breadcrumb separator=">">
+   
+        </div>  
+        <div>
+        <div className="container-fluid details-sec">
+        <div className="container section">
+        <Breadcrumb separator=">" >
 
 <Breadcrumb.Item >
 <Link to="/Thoroughbreds" >Greyhounds</Link>
-
 </Breadcrumb.Item>
 <Breadcrumb.Item >
 <Link style={{color:"#10867F"}} to = "/thoroughbreds">
@@ -121,9 +126,6 @@ Details
 </Link>
 </Breadcrumb.Item>
 </Breadcrumb>
-        </div>  
-        <div>
-        <div className="container-fluid details-sec">
            <div className="container mt-3">
            <div className="row">
                 <div className="col-lg-12">
@@ -247,6 +249,8 @@ Details
               
             </div>
             </div>
+
+        </div>
             </div>
         </div>       
         <Footer/> 

@@ -82,6 +82,17 @@ text-align: left;
     height: 40px; */
 }
 
+.ant-breadcrumb {
+    display: flex;
+    padding-bottom: 20px;
+    padding-left: 0px;
+  }
+  .ant-breadcrumb ol{
+    display: flex;
+    list-style: none;
+    padding: 0;
+
+  }
 
     /* color: #4E4F51;
     font-size: 16px;

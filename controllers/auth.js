@@ -64,8 +64,14 @@ async function createOrder(amount) {
   return data;
 }
 exports.register = catchAsyncerror(async (req, res, next) => {
-  // console.log(req.body);
-  const {
+
+let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ''))
+let year = new Date(req.body.dob).getUTCFullYear()
+let month = new Date(req.body.dob).getUTCMonth()
+let day = new Date(req.body.dob).getUTCDate()
+let birthDate = year * 10000 + month * 100 + day * 1
+
+  const{
     username,
     email,
     password,
@@ -75,6 +81,10 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     paymentstatus,phoneno,residientialaddress
   } = req.body;
 
+  
+if(now-birthDate<180000){
+  return res.status(400).json("Only 18+ Person Can Register Here")
+}
   if (
     !username ||
     !email ||

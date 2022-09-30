@@ -404,7 +404,10 @@ ul.tiip-list li {
     align-items: center;
     color: #fff;
     width: 50%;
+    border-radius: 20px;
+    border: 0.5px solid rgba(255, 255, 255, 0.587);
     background-color: black;
+    margin:20px 10px;
     padding: 15px;
     height: 100%;
 }
@@ -493,15 +496,19 @@ ul.tiip-list li {
 
 /* 
 service section start */
-.Services-sec {
-    padding: 60px 0px 60px 0px;
+.Services-sec{
+    background-image: url("../../Images/serviceback.jpg");
+    background-position: center;
+    background-size: cover;
+
 }
+
 .Services-sec .section-title h3 {
     font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
-    color: #000;
+    color: #fff;
     line-height: 64px;
 }
 .service-main {
@@ -516,13 +523,13 @@ service section start */
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
-    color: #03203e;
+    color: #fff;
     line-height: 50px;
 }
 .service-ct p {
     font-size: 18px;
     font-style: normal;
-    color: #03203E;
+    color: #fff;
     line-height: 24px;
 }
 .service-img2 img {
@@ -544,13 +551,14 @@ service section start */
 }
 ul.socil-link {
     list-style: none;
+    margin: auto;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 ul.socil-link li {
-    padding: 10px;
-    font-size: 35px;
+    padding: 10px 90px;
+    margin-right: 5px;
+    font-size: 45px;
     color: #735652;
 }
 .foll-ct h3 {

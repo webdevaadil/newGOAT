@@ -20,6 +20,7 @@ export const Greyhounds = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
+  
 
   const getdata = async () => {
     const res = await axios.get(
@@ -74,22 +75,23 @@ export const Greyhounds = () => {
   return (
     <>
       <Header />
-      <div id="sport-sec">
+     
+      <div>
+        <div className="container-fluid" id="freetip-sec">
+          <div className="container section">
+          <div id="sport-sec">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
             <Link to="/main">Home</Link>
           </Breadcrumb.Item>
 
-          <Breadcrumb.Item>
+          <Breadcrumb.Item style = {{marginLeft:"4px"}}>
             {/* <Link style={{color:"#10867F"}} to = "/greyhounds"> */}
             Greyhounds
             {/* </Link> */}
           </Breadcrumb.Item>
         </Breadcrumb>
       </div>
-      <div>
-        <div className="container-fluid" id="freetip-sec">
-          <div className="container section">
             <h3 className="free-title">Races Up Next</h3>
           </div>
           <div className="container main-freetips">

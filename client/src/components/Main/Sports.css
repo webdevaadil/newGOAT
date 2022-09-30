@@ -187,20 +187,13 @@ p.card-text {
 
 .ant-breadcrumb {
   display: flex;
-  padding: 20px 0;
+  padding-bottom: 20px;
 }
 .ant-breadcrumb ol{
   display: flex;
   list-style: none;
-  position: absolute;
-  left:11%;
-
+  padding: 0;
 }
-.ant-breadcrumb ol li{
-padding: 5px;
-
-}
-
 
 /* Details end */
 

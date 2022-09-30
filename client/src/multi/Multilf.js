@@ -38,8 +38,14 @@ export const Multilf = () => {
       formData.paymentstatus="true"
     }
     
-    const navigate = useNavigate();
+const today = new Date()
+const birthDate = new Date(formData.dob)
+var age_now = today.getFullYear() - birthDate.getFullYear()
 
+
+    console.log(formData.dob)
+
+    const navigate = useNavigate();
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
@@ -58,9 +64,7 @@ export const Multilf = () => {
         return <Names {...props} />;
         case "address":
           return <Email {...props} />;
-        
     }
-  
     return (
       <></>
     );

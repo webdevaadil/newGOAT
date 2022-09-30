@@ -20,7 +20,7 @@ export const Thoroughbreds = () => {
   const [todayrace, setTodayRace] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
-
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const getdata = async () => {
     const res = await axios.get(
       "https://script.googleusercontent.com/macros/echo?user_content_key=z8U-J-WGfUKgT7aI036ce0-LqgyvluBVYO6sl3MBidqsoxeP8zVCsBqh3KALwEXqsmH3b3AH8f2vhzGCuq80mZw5OuI2BYhEm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnM5Ekl7EwoTMsxbGD7Mk6JPN3Ls7Oyxjmrsr3ZQwRD52M_vMAqczDkXfnrBBGFFHff8VMKaSWAE-WxUrUSiQwyHxctBCURm4-9z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl"
@@ -76,6 +76,10 @@ export const Thoroughbreds = () => {
   return (
     <>
       <Header />
+     
+      <div>
+        <div className="container-fluid" id="freetip-sec">
+          <div className="container section">
       <div id="sport-sec">
         {/* <div className="container"> */}
         <Breadcrumb separator=">">
@@ -90,10 +94,6 @@ export const Thoroughbreds = () => {
           </Breadcrumb.Item>
         </Breadcrumb>
       </div>
-
-      <div>
-        <div className="container-fluid" id="freetip-sec">
-          <div className="container section">
             <h3 className="free-title">Races Up Next</h3>
           </div>
           <div className="container main-freetips">
@@ -146,7 +146,7 @@ export const Thoroughbreds = () => {
       <div>
         <div className="container-fluid raceup-sec">
           <div className="container">
-            <h3 className="free-title">Today,{new Date().toDateString()}</h3>
+            <h3 className="free-title">Today,{new Date().toLocaleDateString('en-US', options)}</h3>
             <div className="upcomming-table">
               <table>
                 <tbody>

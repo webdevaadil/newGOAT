@@ -54,6 +54,10 @@ export const Email = ({ formData, setForm, navigation }) => {
        <section  style={{ marginBottom: "10px" }}>
          <Header />
 
+         <div className="container">
+
+<div className="container section">
+         <div style={{paddingLeft:"110px"}} id="sport-sec">
          <Breadcrumb separator=">">
            <Breadcrumb.Item>
              <span className="btn" style={{ padding: "7px" }} onClick={() => { navigation.previous() }}>Signup</span>
@@ -62,7 +66,8 @@ export const Email = ({ formData, setForm, navigation }) => {
              <span className="btn" style={{ padding: "7px"}}>Packages</span>
            </Breadcrumb.Item>
          </Breadcrumb>
-         <div className="container">
+         </div>
+
            <h1 style={{ textAlign: "center",fontWeight:800  }} className="main_head">Packages</h1>
            <div className="flex_box">
              <div className="box_one">
@@ -164,6 +169,9 @@ export const Email = ({ formData, setForm, navigation }) => {
              </div>
 
            </div>
+</div>
+
+       
          </div>
          <Modal style={{ height: "800px" }} show={show} onHide={handleClose}>
 

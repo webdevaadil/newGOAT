@@ -14,6 +14,7 @@ export const Timetable = ({detail,loading,dogimg}) => {
    
   const currentday = new Date()
   const currentdaystring = new Date(currentday).toLocaleDateString()
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   
   // console.log(currentdaystring)
 
@@ -47,7 +48,7 @@ export const Timetable = ({detail,loading,dogimg}) => {
     <>
     <div className='container-fluid raceup-sec'>
           <div className='container'>
-            <h3 className="free-title">Today,{currentday.toDateString()}</h3>
+            <h3 className="free-title">Today,{currentday.toLocaleDateString('en-US', options)}</h3>
             <div className='upcomming-table'>
             <table>
 
@@ -84,7 +85,7 @@ export const Timetable = ({detail,loading,dogimg}) => {
 
         <div className='container-fluid raceup-sec'>
           <div className='container'>
-            <h3 className="free-title">Tomorrow, {nextday.toDateString()}</h3>
+            <h3 className="free-title">Tomorrow, {nextday.toLocaleDateString('en-US', options)}</h3>
 
             {
                loading?<Loader/>:

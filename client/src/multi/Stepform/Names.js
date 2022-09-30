@@ -16,8 +16,7 @@ export const Names = ({ formData, setForm, navigation }) => {
   );
 
   const dispatch = useDispatch();
-
-  const {
+  const{
     username,
     email,
     password,
@@ -25,7 +24,7 @@ export const Names = ({ formData, setForm, navigation }) => {
     gender,
     residientialaddress,
     phoneno,
-  } = formData;
+  }=formData;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -111,7 +111,12 @@ const [useloc, setuseloc] = useState(location)
         loading?<Loader/>:(
             <>
               <Header/>    
-      <div id="sport-sec">        
+    
+        <div>
+        <div style = {{paddingLeft:"15px"}} id="sport-sec">        
+        </div>  
+        <div className="container-fluid details-sec">
+        <div className="container section">
       <Breadcrumb separator=">">
 
     <Breadcrumb.Item >
@@ -124,9 +129,6 @@ const [useloc, setuseloc] = useState(location)
  </Link>
     </Breadcrumb.Item>
   </Breadcrumb>
-        </div>  
-        <div>
-        <div className="container-fluid details-sec">
            <div className="container mt-3">
            <div  className="row">
                 <div className="col-lg-12 col-width">
@@ -263,6 +265,8 @@ const [useloc, setuseloc] = useState(location)
 
             </div>
             </div>
+
+        </div>
             </div>
         </div>        
 <Footer/>
