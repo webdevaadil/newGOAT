@@ -549,7 +549,7 @@ const Home = () => {
                       </div>
                       <ul className="tiip-list">
                         <li>
-                          {" "}
+                        
                           <i className="fa fa-check"></i>Our top daily tips,
                           plus
                         </li>
@@ -558,7 +558,7 @@ const Home = () => {
                           tips
                         </li>
                         <li>
-                          {" "}
+                          
                           <i className="fa fa-check"></i>Direct to your inbox
                         </li>
                       </ul>
@@ -687,7 +687,7 @@ const Home = () => {
                 rel="noreferrer"
                 href="https://www.facebook.com/The-GOATs-Tips-102013742449574"
               >
-                <i className="fa fa-facebook-f"> </i>
+                <i style = {{color:"#3f3fc1"}} className="fa fa-facebook-f"> </i>
               </a>
             </li>
             <li>
@@ -696,7 +696,7 @@ const Home = () => {
                 rel="noreferrer"
                 href="https://twitter.com/thegoatstips"
               >
-                <i className="fa fa-twitter"></i>
+                <i style = {{color:"#3676e1"}} className="fa fa-twitter"></i>
               </a>
             </li>
             <li>
@@ -705,7 +705,7 @@ const Home = () => {
                 rel="noreferrer"
                 href="https://www.instagram.com/goats.tips/"
               >
-                <i className="fa fa-instagram"></i>
+                <i style= {{color:"#C13584"}} className="fa fa-instagram"></i>
               </a>
             </li>
           </ul>
