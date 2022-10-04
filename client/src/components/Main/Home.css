@@ -406,7 +406,7 @@ ul.tiip-list li {
     border-radius: 20px;
     border: 0.5px solid #ffd9007f;
     backdrop-filter: blur(4px);
-    background:rgba(29, 28, 28, 0.148);
+    background:rgba(0, 0, 0, 0.534);
     margin:20px 10px;
     padding: 15px;
     height: 100%;
