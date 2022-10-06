@@ -117,7 +117,7 @@ const [useloc, setuseloc] = useState(location)
         </div>  
         <div className="container-fluid details-sec">
         <div className="container section">
-      <Breadcrumb separator=">">
+      <Breadcrumb style= {{marginLeft:"15px"}} separator=">">
 
     <Breadcrumb.Item >
     <Link to="/Thoroughbreds" >Thoroughbreds</Link>

@@ -178,8 +178,6 @@ const Home = () => {
                   id="home-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#home"
-                  type="button"
-                  role="tab"
                   aria-controls="home"
                   aria-selected="true"
                 >
@@ -187,28 +185,10 @@ const Home = () => {
                   Horse Racing
                 </button>
               </li>
-              <li className="nav-item" role="presentation">
-                <button
-                  className="nav-link"
-                  id="profile-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#profile"
-                  type="button"
-                  role="tab"
-                  aria-controls="profile"
-                  aria-selected="false"
-                >
-                  Greyhound Racing
-                </button>
-              </li>
+             
             </ul>
             <div className="tab-content" id="myTabContent">
-              <div
-                className="tab-pane fade show active"
-                id="home"
-                role="tabpanel"
-                aria-labelledby="home-tab"
-              >
+              <div className="" id="home">
                 <div className="row rate-mian">
                   <div className="col-md-4 col-sm-4">
                     <h3>
@@ -230,13 +210,23 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-
-              <div
-                className="tab-pane fade"
-                id="profile"
-                role="tabpanel"
-                aria-labelledby="profile-tab"
-              >
+              <ul className="nav nav-tabs" id="myTab" role="tablist">
+              <li className="nav-item" role="presentation">
+                <button
+                  className="nav-link active"
+                  id="home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#home"
+                  aria-controls="home"
+                  aria-selected="true"
+                >
+                  {" "}
+                  Greyhound Racing
+                </button>
+              </li>
+                  
+            </ul>
+              <div className="" id="profile" aria-labelledby="profile-tab">
                 <div className="row rate-mian ">
                   <div className="col-md-4 col-sm-4">
                     <h3>
@@ -378,6 +368,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+    
       <section style={{ height: "100%" }}>
         <div
           className=" media-banner"

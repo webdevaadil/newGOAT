@@ -4,11 +4,12 @@ import { Header } from "../Header/Header";
 import "./Sports.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Breadcrumb } from "antd";
-import { Records } from "./Records";
+import { 
+  Records } from "./Records";
 import axios from "axios";
 import { Pagination } from "./Pagination";
 
-import img1 from "../../Images/left-Vector.png";
+import img1 from "../../Images/Vector.png";
 import { Login } from "../Login/Login";
 import { useSelector } from "react-redux";
 
