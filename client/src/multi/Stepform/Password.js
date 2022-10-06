@@ -26,25 +26,21 @@ export const Paypa = () => {
   const { error, loading, isAuthenticated, user } = useSelector(
     (state) => state.user
   );
-  const local = JSON.parse(localStorage.getItem("comuser"));
   const dispatch = useDispatch();
 
   const [packages, setpackages] = useState("");
   const handle = async (e) => {
     setpackages(e.value);
   };
- 
-  if (user) {
-    if (user.paymentstatus === "true") {
-      navigate("/main");
-    }
-  }
-  useEffect(() => {
-    if(
-      user
-      ){
-      setpackages(user.packages);
 
+  useEffect(() => {
+    if (user) {
+      if (user.paymentstatus === "true") {
+        navigate("/main");
+      }
+    }
+    if (user) {
+      setpackages(user.packages);
     }
     if (!user) {
     }
@@ -55,7 +51,7 @@ export const Paypa = () => {
     // if (!isAuthenticated) {
     //   dispatch(loaduser());
     //   navigate("/");
-   
+
     // }
   }, [error, navigate, alert, isAuthenticated, user, dispatch]);
 
@@ -157,20 +153,27 @@ export const Paypa = () => {
   };
   // 7*24 * 60 * 60 * 100
   const updatepro = () => {
-    dispatch(updateprofile({ paymentstatus: "true" ,packages,paymentDate:Date.now() ,PaymentexpireDate:date}));
+    dispatch(
+      updateprofile({
+        paymentstatus: "true",
+        packages,
+        paymentDate: Date.now(),
+        PaymentexpireDate: date,
+      })
+    );
   };
-  const date = new Date()
-  date.setDate(date.getDate()+6);
-  // console.log(date.toString());
-  function formatDate(date) {
-    var d = new Date(date),
-      month = "" + (d.getMonth() + 1),
-      day = "" + d.getDate(),
-      year = d.getFullYear();
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-    return [year, month, day].join("-");
-  }
+  const date = new Date();
+  date.setDate(date.getDate() + 6);
+  // console.log(date.toS/tring());
+  // function formatDate(date) {
+  //   var d = new Date(date),
+  //     month = "" + (d.getMonth() + 1),
+  //     day = "" + d.getDate(),
+  //     year = d.getFullYear();
+  //   if (month.length < 2) month = "0" + month;
+  //   if (day.length < 2) day = "0" + day;
+  //   return [year, month, day].join("-");
+  // }
   // console.log(formatDate(Date.now()));
   // console.log(formatDate(date));
 
@@ -189,7 +192,7 @@ export const Paypa = () => {
                 <div className="row form-content">
                   <h2>Packages</h2>
                   <div className="form-main">
-                    <form  className="form-floating mb-3">
+                    <form className="form-floating mb-3">
                       <div
                         style={{ zIndex: 99999999999 }}
                         className="form-floating"
@@ -208,64 +211,71 @@ export const Paypa = () => {
 
                       <div className="fom-btn mb-3">
                         <div>
-                          <div style={{ maxWidth: "750px", minHeight: "200px" }}>
-                          {packages==="Free"?( <button
-              className="btn_two"
-               onClick={updatepro}
-            >
-              Select
-            </button>):(
-                            <>
-                             <PayPalButton createOrder={async (data, actions) => {
-                                return await fetch("/api/auth/pay", {
-                                  method: "post",
-                                  headers:{
-                                    "Content-Type":"application/json"
-                                    },
-                                  body: JSON.stringify({packages:packages})
-                                  // use the "body" param to optionally pass additional order information
-                                  // like product ids or amount
-                                })
-                                  .then((response) => response.json())
-                                  .then((order) => order.id)
+                          <div
+                            style={{ maxWidth: "750px", minHeight: "200px" }}
+                          >
+                            {packages === "Free" ? (
+                              <button className="btn_two" onClick={updatepro}>
+                                Select
+                              </button>
+                            ) : (
+                              <>
+                                <PayPalButton
+                                  createOrder={async (data, actions) => {
+                                    return await fetch("/api/auth/pay", {
+                                      method: "post",
+                                      headers: {
+                                        "Content-Type": "application/json",
+                                      },
+                                      body: JSON.stringify({
+                                        packages: packages,
+                                      }),
+                                      // use the "body" param to optionally pass additional order information
+                                      // like product ids or amount
+                                    })
+                                      .then((response) => response.json())
+                                      .then((order) => order.id)
 
-                                  .catch((err) => {
+                                      .catch((err) => {
+                                        console.log(err);
+                                      });
+                                  }}
+                                  ///////////////////////
+                                  onApprove={async (data, actions) => {
+                                    console.log(data);
+
+                                    return await axios
+                                      .post(
+                                        `/api/auth/order/${data.orderID}/capture`,
+                                        {}
+                                      )
+                                      .then((response) => response)
+                                      .then((orderData) => {
+                                        settest(orderData);
+                                        // Successful capture! For dev/demo purposes:
+                                        console.log(
+                                          "Capture result",
+                                          orderData
+                                        );
+                                      })
+                                      .then((orderData) =>
+                                        console.log(orderData)
+                                      )
+                                      .then(updatepro())
+                                      .then(navigate("/main"))
+                                      .catch((err) => {
+                                        console.log(err);
+                                      });
+                                  }}
+                                  catchError={(err, data) => {
+                                    // alert("Transaction completed by " + details.payer.name.given_name);
                                     console.log(err);
-                                  });
-                              }}
-                              ///////////////////////
-                              onApprove={async (data, actions) => {
-                                console.log(data);
 
-                                return await axios
-                                  .post(
-                                    `/api/auth/order/${data.orderID}/capture`,
-                                    {}
-                                  )
-                                  .then((response) => response)
-                                  .then((orderData) => {
-                                    settest(orderData);
-                                    // Successful capture! For dev/demo purposes:
-                                    console.log("Capture result", orderData);
-                                  })
-                                  .then((orderData) => console.log(orderData))
-                                  .then(updatepro())
-                                  .then((orderData)=>{
-                                    navigate("/main")
-                                  })
-                                  .catch((err) => {
-                                    console.log(err);
-                                  });
-                              }}
-                              catchError={(err, data) => {
-                                // alert("Transaction completed by " + details.payer.name.given_name);
-                                console.log(err);
-
-                                // OPTIONAL: Call your server to save the transaction
-                              }}
-                            /></>
-                          )}
-                           
+                                    // OPTIONAL: Call your server to save the transaction
+                                  }}
+                                />
+                              </>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -274,7 +284,7 @@ export const Paypa = () => {
                   <p>
                     By signing up, I agree to the{" "}
                     <span>Terms and conditions and Privacy policy</span>
-                  </p> 
+                  </p>
                 </div>
               </div>
             </div>

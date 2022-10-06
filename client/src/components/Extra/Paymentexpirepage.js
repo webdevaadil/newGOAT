@@ -1,16 +1,26 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { updateprofile } from "../../actions/userAction";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
 
 export const Paymentexpirepage = () => {
+  const { isAuthenticated, user, error, loading } = useSelector(
+    (state) => state.user
+  );
+  const navigat=useNavigate()
   const dispatch= useDispatch()
+  if(user){
 
-  useEffect(()=>{
-    dispatch(updateprofile({ paymentstatus: "false" }));
-  })
+    if(user.paymentstatus ==="true"){
+      navigat("/main")
+    }
+  }
+
+  // useEffect(()=>{
+  //   dispatch(updateprofile({ paymentstatus: "false" }));
+  // })
   return <div>
     <div style={{display:"flex",flexDirection:"column",justifyContent:"space-between",height:'100vh'}}>
    <Header/>

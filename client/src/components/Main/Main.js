@@ -20,7 +20,7 @@ import { apidata } from "../../actions/apiAction";
 
 import img1 from "../../Images/Vector.png";
 import { Loader } from "../layout/Loader";
-import { clearErrors, loaduser } from "../../actions/userAction";
+import { clearErrors, loaduser, updateprofile } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import { Login } from "../Login/Login";
 import Home from "./Home";
@@ -33,39 +33,44 @@ export const Main = () => {
   const { isAuthenticated, user, error, loading } = useSelector(
     (state) => state.user
   );
+
+  if (user) {
+    let nowdate =  Date();
+    let expiredate = user.PaymentexpireDate;
+    console.log(Date.parse(nowdate) , Date.parse(expiredate));
+    console.log();
+    if (Date.parse(nowdate) > Date.parse(expiredate)) {
+      console.log(nowdate);
+      console.log(new Date(user.PaymentexpireDate));
+      dispatch(updateprofile({ paymentstatus: "false" }));
+      navigate("/subscriptionexpire")
+    }
+  }
   useEffect(() => {
-  
- 
     if (isAuthenticated === false) {
       <Navigate to={<Login />} />;
     }
-  
-    if(user){
-       if(user.paymentstatus==="false"){
-         navigate("/password")
-      //  console.log(user.paymentstatus);
+
+    if (user) {
+      if (user.paymentstatus === "false") {
+        navigate("/password");
+        //  console.log(user.paymentstatus);
       }
-  if( Date() >=user.PaymentexpireDate){
-        console.log(Date());
-        console.log(user.PaymentexpireDate);
-              navigate("/subscriptionexpire")
-      }
-      }
-    dispatch(loaduser())
+    }
+    dispatch(loaduser());
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
-  
-    if(!isAuthenticated){
-      navigate("/login")
+
+    if (!isAuthenticated) {
+      navigate("/login");
     }
-    
 
     if (isAuthenticated === false) {
-      <Navigate to={<Login/>} />;
+      <Navigate to={<Login />} />;
     }
-  }, [error, navigate, dispatch,  ]);
+  }, [error, navigate, dispatch]);
   const [detail, setDetail] = useState([]);
 
   const [todayrace, setTodayRace] = useState([]);
@@ -98,7 +103,7 @@ export const Main = () => {
 
     setDetail(finaldata);
 
-  finaldata.filter((items, index) => {
+    finaldata.filter((items, index) => {
       items.RaceDate = new Date(items.RaceDate).toLocaleDateString();
       items.id = index;
       items.minutes = new Date(items.RaceTime).getUTCMinutes();
@@ -141,7 +146,6 @@ export const Main = () => {
     getDogdata();
   }, []);
   const [newfetchdate, setnewfetchdate] = useState("");
- 
 
   const indexOfLastRecord = currentPage * recordsPerPage;
 
@@ -154,7 +158,6 @@ export const Main = () => {
   // const nPages = Math.ceil(currentRecords.length);
 
   const [datenew, setdatenew] = useState("");
-
 
   const handlechange = (e) => {
     e.preventDefault();
@@ -214,7 +217,9 @@ export const Main = () => {
           <div>
             <div className="container-fluid" id="freetip-sec">
               <div className="container section">
-                <h3 style={{ fontSize:"3rem"}}className="free-head">Today’s Free Tips</h3>
+                <h3 style={{ fontSize: "3rem" }} className="free-head">
+                  Today’s Free Tips
+                </h3>
               </div>
 
               <div className="container main-freetips">

@@ -123,6 +123,7 @@ export const updatePassword = (password) => async (dispatch) => {
   }
 };
 export const updateprofile = (updatedata) => async (dispatch) => {
+  console.log(updatedata);
   try {
     dispatch({ type: UPDATE_PROFIE_REQUEST });
     const config = { headers: { "Content-Type": "multipart/form-data" } };  // const data = await axios.put(

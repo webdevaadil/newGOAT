@@ -27,14 +27,15 @@ export const PaymentMethoad = () => {
 
   const dispatch = useDispatch();
   const alert = useAlert();
-
+  const date = new Date();
+  date.setDate(date.getDate() + 6);
   const { user, isAuthenticated, loading, isUpdated, error } = useSelector(
     (state) => state.user
   );
   const [packages, setpackages] = useState("");
 
   const updatepro = (e) => {
-    dispatch(updateprofile({ paymentstatus: "true" ,packages}));
+    dispatch(updateprofile({ paymentstatus: "true" ,packages,paymentDate: Date.now(),PaymentexpireDate: date,}));
   };
   
   useEffect(() => {

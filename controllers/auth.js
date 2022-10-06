@@ -139,7 +139,7 @@ if (password.length < 8) {
 });
 exports.pay = catchAsyncerror(async (req, res, next) => {
  try {
-  console.log(req.body);
+  // console.log(req.body);
   let amount=req.body.packages.slice(1,3)
    const order = await createOrder(amount);
   // console.log(order);
@@ -149,8 +149,8 @@ exports.pay = catchAsyncerror(async (req, res, next) => {
  }
 });
 exports.ordercapture = catchAsyncerror(async (req, res, next) => {
-  console.log(req.body);
-  console.log(req.params);
+  // console.log(req.body);
+  // console.log(req.params);
 
   const { orderID } = req.params;
   try {
