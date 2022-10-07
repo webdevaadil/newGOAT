@@ -36,6 +36,7 @@ display: block;
 	padding: 7px 25px;
 	font-family: 'Nunito Sans';
   font-style: normal;
+  width:145px;
   }
   .navbar-expand-lg {
 	align-items: center;
@@ -146,3 +147,20 @@ color: #10867F;
     width: 41px;
 }
 
+
+@media(max-width:410px) {
+  .top-btn .btn {
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    border: none;
+    margin: 0px 6px;
+    border-radius: 5rem;
+    padding: 7px 25px;
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    width:100px;
+    }
+
+}

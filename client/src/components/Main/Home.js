@@ -3,7 +3,7 @@ import "./Home.css";
 // import"../font/Sportypo-Reguler-Demo.ttf"
 
 import img1 from "../../Images/GOAT_logo.png";
-import man from "../../Images/man1.21a7578cbf7b6a963356.jpg";
+import man from "../../Images/winninghorse.jpg";
 import Count from "react-countup";
 import img2 from "../../Images/gold.png";
 import img3 from "../../Images/platinum.png";
@@ -51,7 +51,7 @@ const Home = () => {
       <div className="video-container"> 
     <div className="caption">
     <div className="container her0">
-        <div className="row banner-main">
+        <div style = {{height:"150vh"}} className="row banner-main">
       <video autoPlay loop muted id="background-video">
         <source src={vv} type="video/mp4" />
       </video>
@@ -66,7 +66,6 @@ const Home = () => {
                   <Link style={{ textAlign: "end" }} to="/login">
                     <button
                       className="homelogin btn btn-1"
-                      style={{ width: "140px", height: "50px" }}
                     >
                       Login
                     </button>{" "}
@@ -275,33 +274,6 @@ const Home = () => {
             <div className="container-fluid">
               <div className="row tips-mian">
                 <div className="col-lg-6 col-md-12">
-                  {/* <div className="resut-content">
-                    <h3>
-                      Quality Sporting Tips <span>From Expert Tipsters</span>{" "}
-                    </h3>
-                    <p>
-                      Whether you're a professional investor or a casual pub
-                      punter, we've got you covered. The GOAT's Tips provides
-                      consistent returns to enhance your sporting experience.
-                    </p>
-                    <ul>
-                      <li>
-                        {" "}
-                        <i className="fa fa-check"></i> Thoroughbred horse racing
-                      </li>
-                      <li>
-                        {" "}
-                        <i className="fa fa-check"></i> Greyhound racing
-                      </li>
-                      <li>
-                        {" "}
-                        <i className="fa fa-check"></i> Additional sports coming
-                        soon!
-                      </li>
-                    </ul>
-                  </div> */}
-                </div>
-                <div className="col-lg-6 col-md-12">
                   <div className="resut-content">
                     <div className="card ">
                       <div className="clearfix">
@@ -363,6 +335,35 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
+
+                <div className="col-lg-6 col-md-12">
+                  {/* <div className="resut-content">
+                    <h3>
+                      Quality Sporting Tips <span>From Expert Tipsters</span>{" "}
+                    </h3>
+                    <p>
+                      Whether you're a professional investor or a casual pub
+                      punter, we've got you covered. The GOAT's Tips provides
+                      consistent returns to enhance your sporting experience.
+                    </p>
+                    <ul>
+                      <li>
+                        {" "}
+                        <i className="fa fa-check"></i> Thoroughbred horse racing
+                      </li>
+                      <li>
+                        {" "}
+                        <i className="fa fa-check"></i> Greyhound racing
+                      </li>
+                      <li>
+                        {" "}
+                        <i className="fa fa-check"></i> Additional sports coming
+                        soon!
+                      </li>
+                    </ul>
+                  </div> */}
+                </div>
+               
               </div>
             </div>
           </div>

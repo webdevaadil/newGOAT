@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../layout/Loader";
 import { Navigate } from "react-router-dom";
 import { useAlert } from "react-alert";
-import img1 from "../../Images/level.png";
-import img2 from "../../Images/name1.png";
-import img3 from "../../Images/name2.png";
-import img4 from "../../Images/name3.png";
-import img5 from "../../Images/name4.png";
+import img1 from "../../edited-btn/level.png";
+import img2 from "../../edited-btn/name1.png";
+import img3 from "../../edited-btn/name2.png";
+import img4 from "../../edited-btn/name3.png";
+import img5 from "../../edited-btn/name4.png";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useNavigate } from "react-router-dom";
 

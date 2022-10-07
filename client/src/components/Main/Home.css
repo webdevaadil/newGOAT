@@ -30,6 +30,10 @@
     width: 100%;
     background-size:cover;
 }
+.homelogin{
+    width: 140px;
+    height: 45px;
+}
 .bnner-btn .signbtn{
     font-size: 18px;
     font-weight: 800;
@@ -196,10 +200,11 @@
 
 .result {
     height: auto;
-    background-image: url("../../Images/bg-img1.png") !important;
+    background-image: url("../../Images/winninghorse.jpg") !important;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
+    background-position: center;
 }
 .rate-mian {
     margin: 60px 0px;
@@ -361,6 +366,7 @@ ul.tiip-list li {
     letter-spacing: 0px;
     text-transform: none;
     line-height: 64px;
+    margin-top: 30px;
 }
 .section-title p {
     font-size: 18px;
@@ -557,7 +563,7 @@ ul.socil-link {
     padding-right: 27px;
 }
 ul.socil-link li {
-    padding: 10px 90px;
+    padding: 10px 65px;
     margin-right: 5px;
     font-size: 80px;
     color: #735652;
@@ -569,7 +575,7 @@ ul.socil-link li {
     letter-spacing: 0px;
     text-transform: none;
     color: #03203e;
-    line-height: 32px;
+    line-height: 44px;
 }
 
 
@@ -975,7 +981,7 @@ ul.socil-link li {
         position: relative;
     }
     .Services-sec {
-        padding: 40px 0px 40px 0px;
+        padding: 40px 0px 1px 0px;
     }
     .tipping-sec {
         /* padding: 40px 0px 40px 0px; */
@@ -1142,7 +1148,7 @@ ul.socil-link li {
         text-align: center;
     }
     .Services-sec {
-        padding: 30px 0px;
+        padding: 30px 0px 0px 0px;
     }
     .testimpnal-sec .section-title {
         text-align: center;
@@ -1239,6 +1245,12 @@ ul.socil-link li {
     .tips-ct h2{
         font-size: 35px;
     }
+    ul.socil-link li {
+        padding: 10px 40px;
+        margin-right: 5px;
+        font-size: 70px;
+        color: #735652;
+    }
     .section-title h3 {
         font-size: 35px;
         line-height: 44px;
@@ -1264,7 +1276,10 @@ ul.socil-link li {
 
   @media(max-width:500px) {
     .banner-main {
-        height: 534px !important ;
+        height: 623px !important ;
+    }
+    .baner-ct img {
+       min-width: 11rem;
     }
     .baner-ct h2 {
         font-size: 26px;
@@ -1273,5 +1288,38 @@ ul.socil-link li {
     .bnner-btn .signbtn {
         padding: 9px 25px 9px 25px;
     }
+
+    .slide{
+        background: url("../../Images/Rectangle_1370.png ") ;
+        background-position:right ;
+          background-repeat: no-repeat ;
+          background-size: cover;
+          background-position: center;
+          position: relative;
+          display: flex;
+          align-items: center;
+          height: 500px;
+          
+      }
+    
+  }
+  @media(max-width:410px) {
+    ul.socil-link {
+        list-style: none;
+        margin: auto;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        padding-right: 27px;
+        flex-direction: column;
+    }
+    ul.socil-link li{
+      font-size: 80px;
+    }
    
+    .homelogin{
+        width: 100px;
+        height: 42px;
+    }
+
   }
