@@ -9,6 +9,7 @@ import { Pagination } from "./Pagination";
 import { useDispatch, useSelector } from "react-redux";
 
 import img1 from "../../Images/left-Vector.png";
+import HomeFooter from "../Footer/HomeFooter";
 
 export const Greyhounds = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -148,7 +149,7 @@ export const Greyhounds = () => {
         setCurrentPage={setCurrentPage}
       />
 
-      <Footer />
+      <HomeFooter/>
     </>
   );
 };

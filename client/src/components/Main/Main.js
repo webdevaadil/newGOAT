@@ -23,7 +23,7 @@ import { Loader } from "../layout/Loader";
 import { clearErrors, loaduser, updateprofile } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import { Login } from "../Login/Login";
-import Home from "./Home";
+import HomeFooter from "../Footer/HomeFooter";
 
 export const Main = () => {
   const dispatch = useDispatch();
@@ -367,7 +367,7 @@ export const Main = () => {
             setCurrentPage={setCurrentPage}
             disabledClass
           />
-          <Footer />
+          <HomeFooter/>
         </>
       )}
     </>

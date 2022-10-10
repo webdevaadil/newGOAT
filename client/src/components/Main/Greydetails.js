@@ -6,6 +6,7 @@ import { Breadcrumb } from 'antd';
 import axios from "axios";
 import { Loader } from "../layout/Loader";
 import "../../multi/Stepform/Email.css"
+import HomeFooter from "../Footer/HomeFooter";
 
 
 export const Greydetails = ()=>{
@@ -253,7 +254,7 @@ Details
         </div>
             </div>
         </div>       
-        <Footer/> 
+        <HomeFooter/> 
             </>
         )
       }

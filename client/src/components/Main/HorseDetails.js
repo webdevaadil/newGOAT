@@ -6,6 +6,7 @@ import axios from "axios";
 import { Breadcrumb } from 'antd';
 import { useSelector,useDispatch } from "react-redux";
 import { Loader } from "../layout/Loader";
+import HomeFooter from "../Footer/HomeFooter";
 
 
 export const HorseDetails = ()=>{
@@ -269,7 +270,7 @@ const [useloc, setuseloc] = useState(location)
         </div>
             </div>
         </div>        
-<Footer/>
+<HomeFooter/>
             </>
         )
      }

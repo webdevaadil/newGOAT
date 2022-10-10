@@ -12,6 +12,7 @@ import { Pagination } from "./Pagination";
 import img1 from "../../Images/Vector.png";
 import { Login } from "../Login/Login";
 import { useSelector } from "react-redux";
+import HomeFooter from "../Footer/HomeFooter";
 
 export const Thoroughbreds = () => {
   const { isAuthenticated ,user} = useSelector((state) => state.user);
@@ -220,7 +221,7 @@ export const Thoroughbreds = () => {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-      <Footer />
+      <HomeFooter/>
     </>
   );
 };
