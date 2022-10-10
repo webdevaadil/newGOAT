@@ -44,7 +44,7 @@ body{
 }
 .form-content {
     padding: 0px 7rem;
-    padding-top: 5.625rem;
+    padding-top:5.525rem;
 }
 .form-content h2 {
     font-size: 3rem;
@@ -67,16 +67,15 @@ body{
 
 
 }
-
 .wel-bg{
-    background:linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url('../../Images/goat_png_grey\ \(1\).png ' );
-    background-size: auto;
-    background-position: 48% 20%;
+    background:linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url('../../Images/GOAT_logo.png' );
+    background-size:20%;
+    background-position: 51% 0%;
+    position: relative;
     background-repeat: no-repeat;
-   
 }
 .img-main{
-    background: url('../../Images/welcome-img.png');
+    background: url('../../Images/serviceback.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -176,7 +175,8 @@ i.fa.fa-eye {
 .welcome-img img {
     width: 100%;
     object-fit: cover;
-        max-width: 100%;
+    /* background-size: contain; */
+    max-width: 100%;
     max-height: 100%;
 }
 
@@ -248,5 +248,16 @@ i.fa.fa-eye {
 .form-content h2 {
     text-align: center;
 }
+
+
+
+
+}
+@media (min-width:1800px){
+
+    .form-content{
+        padding: 0px 7rem;
+        padding-top: 11.625rem;
+    }
 
 }

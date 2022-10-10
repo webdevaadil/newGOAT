@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.1d53e9be.css",
-    "main.js": "/static/js/main.8566a528.js",
+    "main.js": "/static/js/main.0f6049cb.js",
     "static/media/Randwick_V1-0030.mp4": "/static/media/Randwick_V1-0030.17cba7e739318ab10547.mp4",
     "static/media/races.png": "/static/media/races.8682bfb161f733266212.png",
     "static/media/winninghorse.jpg": "/static/media/winninghorse.79dc2c3d17a9fac6f557.jpg",
@@ -21,10 +21,10 @@
     "static/media/goat_png_grey (1).png": "/static/media/goat_png_grey (1).9590acc98e97a3811197.png",
     "index.html": "/index.html",
     "main.1d53e9be.css.map": "/static/css/main.1d53e9be.css.map",
-    "main.8566a528.js.map": "/static/js/main.8566a528.js.map"
+    "main.0f6049cb.js.map": "/static/js/main.0f6049cb.js.map"
   },
   "entrypoints": [
     "static/css/main.1d53e9be.css",
-    "static/js/main.8566a528.js"
+    "static/js/main.0f6049cb.js"
   ]
 }

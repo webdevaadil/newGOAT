@@ -159,7 +159,7 @@ export const PaymentMethoad = () => {
         <>
           {isAuthenticated === true ? (
             <div className="payment_box_two">
-              {user.packages==="$60 / week" ? <>
+              {packages==="$60 / week" ? <>
               <h2>Platinum Membership</h2>
               <h2>$60 / Week</h2>
               <ul>
@@ -167,7 +167,7 @@ export const PaymentMethoad = () => {
                 <li>Recommended tips</li>
                 <li>Recommended tips</li>
               </ul></>:"" }
-              {user.packages==="$45 / week" ? <>
+              {packages==="$45 / week" ? <>
               <h2>Gold Membership</h2>
               <h2>$45 / Week</h2>
               <ul>
@@ -175,7 +175,7 @@ export const PaymentMethoad = () => {
                 <li>Recommended tips</li>
                 <li>Recommended tips</li>
               </ul></>:"" }
-              {user.packages==="$30 / week" ? <>
+              {packages==="$30 / week" ? <>
               <h2>silver Membership</h2>
               <h2>$30 / week</h2>
               <ul>
@@ -183,7 +183,7 @@ export const PaymentMethoad = () => {
                 <li>Recommended tips</li>
                 <li>Recommended tips</li>
               </ul></>:"" }
-              {user.packages==="$15 / week" ? <>
+              {packages==="$15 / week" ? <>
               <h2>Bronze Membership</h2>
               <h2>$15 / Week</h2>
               <ul>
@@ -191,7 +191,7 @@ export const PaymentMethoad = () => {
                 <li>Recommended tips</li>
                 <li>Recommended tips</li>
               </ul></>:"" }
-              {user.packages==="Free" ? <>
+              {packages==="Free" ? <>
               <h2>Pub Punster</h2>
               <h2>Free</h2>
               <ul>

@@ -129,7 +129,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                       </span>
                     )}
                     <i className="fa fa-eye" onClick={myFunction}></i>
-                    <label htmlFor="floatingPassword">Passwords</label>
+                    <label htmlFor="floatingPassword">Password</label>
                   </div>
 
                   <div className="form-inner fom-btn">
@@ -145,7 +145,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                       />
                       <label htmlFor="floatingInput">Date of Birth</label>
                     </div>
-
+{/* 
                     <div className="form-floating">
                       <select
                         name="gender"
@@ -162,7 +162,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                 
                       </select>
                       <label htmlFor="floatingSelect">Gender (Optional)</label>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="form-inner fom-btn">
                     <div className="form-floating mb-3">
@@ -177,11 +177,11 @@ export const Names = ({ formData, setForm, navigation }) => {
                         pattern="[0-9]{10}"
                         aria-describedby="emailHelp"
                       />
-                      <small id="emailHelp" className="form-text text-muted">format 1234567890</small>
+                      <small id="emailHelp" className="form-text text-muted"></small>
                       <label htmlFor="floatingInput">Phone number</label>
                     </div>
 
-                    <div className="form-floating mb-3">
+                    {/* <div className="form-floating mb-3">
                       <input
                         onChange={setForm}
                         name="residientialaddress"
@@ -193,7 +193,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                      
                       />
                       <label htmlFor="floatingInput">Residiential address</label>
-                    </div>
+                    </div> */}
                     
                   </div>
                   

@@ -61,8 +61,8 @@ export const Login = () => {
             </div>
             <div className="col-md-6">
               <div className="wel-bg">
-                <div className="form-content">
-                  <h2>Welcome!</h2>
+                <div style = {{paddingTop:"11rem"}} className="form-content">
+                  <h2 style={{fontSize:"3rem"}}>Welcome!</h2>
                   <div className="form-main">
                     <form
                       onSubmit={handleSubmit}

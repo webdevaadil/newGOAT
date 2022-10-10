@@ -100,7 +100,7 @@ const Home = () => {
      
    
 
-      
+{/*       
       <div className="container" style={{ textAlign: "center" }}>
         <div className="resut-content">
           <h3>
@@ -161,14 +161,14 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="result">
         <div className="container result-mian">
           <div className="section-title">
             <h3>Reliable Results</h3>
           </div>
-
+{/* 
           <div className="tab-section">
             <ul className="nav nav-tabs" id="myTab" role="tablist">
               <li className="nav-item" role="presentation">
@@ -248,29 +248,11 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
-          {/* <div className='hor-list'>
-                <ul>
-                  <li>Horse Racing</li>
-                  <li>Greyhound Racing</li>
-                </ul>
-              </div> */}
+          </div> */}
+          
 
           <div className="rate">
-            {/* <div className='row rate-mian'>
-                  <div className='col-md-4 col-sm-4'>
-                    <h3>37%</h3>
-                    <p>Win strike rate</p>
-                  </div>
-                  <div className='col-md-4 col-sm-4'>
-                    <h3>$2.90</h3>
-                    <p>Average winning odds</p>
-                  </div>
-                  <div className='col-md-4 col-sm-4'>
-                    <h3>56%</h3>
-                    <p>Top 2 place rate</p>
-                  </div>
-                </div> */}
+          
             <div className="container-fluid">
               <div className="row tips-mian">
                 <div className="col-lg-6 col-md-12">
@@ -295,8 +277,11 @@ const Home = () => {
                         punter, we've got you covered. The GOAT's Tips provides
                         consistent returns to enhance your sporting experience.
                       </p>
+                      
                     </div>
-                    <div style={{ justifyContent: "center" }} className="card ">
+
+
+                    {/* <div style={{ justifyContent: "center" }} className="card ">
                       <div className="clearfix">
                         <button type="button" className="btn  float-start">
                           <img src={icon2} alt="" /> The Goats tips
@@ -332,11 +317,11 @@ const Home = () => {
                         punter, we've got you covered. The GOAT's Tips provides
                         consistent returns to enhance your sporting experience.
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
-                <div className="col-lg-6 col-md-12">
+                <div className="col-lg-5 col-md-12">
                   {/* <div className="resut-content">
                     <h3>
                       Quality Sporting Tips <span>From Expert Tipsters</span>{" "}
@@ -364,6 +349,56 @@ const Home = () => {
                   </div> */}
                 </div>
                
+              </div>
+
+              <div className="row tips-mian">
+
+              <div className="tips-sec">
+        <div className="container tips-main">
+          <div className="row " 
+          // style={{ justifyContent: "center" }}
+          >
+            <div className="col-md-2 card card1">
+              <div className="tips-ct">
+                <h2>
+                  {" "}
+                  &#62;
+                  <Count start={0} end={37} duration={4} delay={0} />%
+                </h2>
+                <p>Strike Rate</p>
+              </div>
+            </div>
+            <div className="col-md-2 card card1">
+              <div className="tips-ct ">
+                <h2>
+                  {" "}
+                  &#62;
+                  <Count start={0} end={6000} duration={10} delay={0} />{" "}
+                </h2>
+                <p>Tips Sent</p>
+              </div>
+            </div>
+            <div className="col-md-2  card card1">
+              <div className="tips-ct">
+                <h2>
+                  {" "}
+                  <Count start={0} end={400} duration={6} delay={0} />+
+                </h2>
+                <p>Satisfied Clients</p>
+              </div>
+            </div>
+            <div className="col-md-2  card card1">
+              <div className="tips-ct">
+                <h2>
+                  {" "}
+                  <Count start={0} end={400} duration={6} delay={0} />+
+                </h2>
+                <p>Satisfied Clients</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
               </div>
             </div>
           </div>
