@@ -172,6 +172,7 @@ export const Signup = () => {
                       disabled={data.dob === ""}
                       type="submit"
                       className="btn btn-outline-secondary"
+                     
                     >
                       Sign Up
                     </button>

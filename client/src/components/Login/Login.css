@@ -70,7 +70,7 @@ body{
 .wel-bg{
     background:linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url('../../Images/GOAT_logo.png' );
     background-size:20%;
-    background-position: 51% 0%;
+    background-position: 51% 10%;
     position: relative;
     background-repeat: no-repeat;
 }
@@ -98,7 +98,9 @@ body{
     flex-grow: 0;
 
   }
-
+#loginhover:hover{
+      background-color: #4AA331 !important;
+ }
   
 .form-main label {
     font-size: 14px;
@@ -130,9 +132,9 @@ i.fa.fa-eye {
     line-height: 24px !important;
 }
 .fom-btn .btn:hover {
-    background: #AEB3B9;
+    background: #4AA331;
     border: none;
-    color: #fff;
+    color: #000;
 }
 .form-main .form-content p {
     font-size: 14px;

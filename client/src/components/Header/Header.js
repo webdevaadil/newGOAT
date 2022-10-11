@@ -52,8 +52,9 @@ display: "-wflex ebkit-box -moz-box  -ms-flexbox -webkit-flex"}} className="cont
         <div style={{zIndex: "1",
                       display:"block",
                       position: "absolute",
-                      left: "10%",
-                      top:"35%"
+                      left: "12%",
+                      top:"75%",
+                      borderRadius:"25px"
                     }}
                     className="card"
                   >

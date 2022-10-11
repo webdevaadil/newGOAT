@@ -61,7 +61,7 @@ export const Login = () => {
             </div>
             <div className="col-md-6">
               <div className="wel-bg">
-                <div style = {{paddingTop:"11rem"}} className="form-content">
+                <div style = {{paddingTop:"13rem"}} className="form-content">
                   <h2 style={{fontSize:"3rem"}}>Welcome!</h2>
                   <div className="form-main">
                     <form
@@ -94,10 +94,11 @@ export const Login = () => {
                       <div className="fom-btn mb-3">
                         <button
                           style={{
-                            backgroundColor: " #f0b91b",
+                            backgroundColor: "#f0b91b",
                             color: "black",
                           }}
                           type="submit"
+                          id = "loginhover"
                           className="btn btn-outline-secondary"
                         >
                           Login
@@ -105,6 +106,7 @@ export const Login = () => {
                         <Link
                           to="/signup"
                           className="btn btn-outline-secondary"
+                          id="loginhover"
                         >
                           Sign Up
                         </Link>

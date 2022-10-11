@@ -166,7 +166,8 @@ const Home = () => {
       <div className="result">
         <div className="container result-mian">
           <div className="section-title">
-            <h3>Reliable Results</h3>
+            <h3 style = {{borderBottom:"2px solid black"}}>Reliable Results</h3>
+            
           </div>
 {/* 
           <div className="tab-section">
@@ -254,10 +255,10 @@ const Home = () => {
           <div className="rate">
           
             <div className="container-fluid">
-              <div className="row tips-mian">
-                <div className="col-lg-6 col-md-12">
+              <div className="row tips-mian f-card">
+                <div style = {{position:"relative",right:"5%",top:"25%"}} className="col-lg-6 col-md-12">
                   <div className="resut-content">
-                    <div className="card ">
+                    <div className="card">
                       <div className="clearfix">
                         <button type="button" className="btn  float-start">
                           <img src={icon2} alt="" /> The Goats tips
@@ -351,7 +352,7 @@ const Home = () => {
                
               </div>
 
-              <div className="row tips-mian">
+              <div style = {{position:"relative",right:"5%"}} className="row tips-mian">
 
               <div className="tips-sec">
         <div className="container tips-main">
@@ -369,26 +370,26 @@ const Home = () => {
               </div>
             </div>
             <div className="col-md-2 card card1">
-              <div className="tips-ct ">
+              <div style = {{marginBottom:"4px"}} className="tips-ct ">
                 <h2>
                   {" "}
-                  &#62;
-                  <Count start={0} end={6000} duration={10} delay={0} />{" "}
+                  &#62;$
+                  <Count start={0} end={3} duration={10} delay={0} />{" "}
                 </h2>
-                <p>Tips Sent</p>
+                <p>Average odds</p>
               </div>
             </div>
-            <div className="col-md-2  card card1">
-              <div className="tips-ct">
+            <div className="col-md-2 card card1">
+              <div style = {{marginTop:"11px"}} className="tips-ct">
                 <h2>
                   {" "}
-                  <Count start={0} end={400} duration={6} delay={0} />+
+                  <Count start={0} end={56} duration={10} delay={0} />%
                 </h2>
-                <p>Satisfied Clients</p>
+                <p>Top 2 place rate</p>
               </div>
             </div>
-            <div className="col-md-2  card card1">
-              <div className="tips-ct">
+            <div className="col-md-2 card card1">
+              <div style={{marginTop:"11px"}} className="tips-ct">
                 <h2>
                   {" "}
                   <Count start={0} end={400} duration={6} delay={0} />+
@@ -781,10 +782,14 @@ const Home = () => {
             style={{
               textAlign: "center",
               marginBottom: "50px",
-              marginTop: "70px",
+              marginTop: "25px",
+              
             }}
           >
-            <h3>Testimonials</h3>
+            <h3 style= {{
+              borderBottom:"2px solid black",
+              paddingBottom:"4px"
+            }}>Testimonials</h3>
           </div>
           <div
             id="carouselExampleIndicators"

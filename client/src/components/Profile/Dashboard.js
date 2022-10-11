@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import HomeFooter from "../Footer/HomeFooter";
 import { Header } from "../Header/Header";
 import { Loader } from "../layout/Loader";
 import { Profile } from "./Profile";
@@ -27,7 +28,7 @@ export const Dashboard = () => {
             </div>
           </div>
           <div style={{ zIndex:111}}>
-            <Footer />
+            <HomeFooter/>
           </div>
         </section>
       </div>

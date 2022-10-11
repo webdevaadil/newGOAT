@@ -42,7 +42,7 @@ export const AccountSetting = () => {
     {loading? <Loader/>:
     <>
       {isAuthenticated === true ? ( 
-    <div className="account_box_two" style={{ display: "flex" }}>
+    <div className="account_box_two" style={{ display: "flex",marginBottom:"24px"}}>
       <form className="form-floating account_form" onSubmit={updatePasswordSubmit} >
         <h2 className="per_text">Change Password</h2>
         <input

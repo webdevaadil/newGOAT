@@ -136,7 +136,7 @@ export const Profile = () => {
 
                         
                       </div>
-                      <div className="form-group">
+                      {/* <div className="form-group">
                         
                        
 
@@ -153,7 +153,7 @@ export const Profile = () => {
                           id="exampleInputPassword2"
                           placeholder="Password"
                         />
-                      </div>
+                      </div> */}
                     </div>
                     <div className="form-group">
                       <label htmlFor="exampleInputPassword3">Phone No</label>
@@ -167,10 +167,10 @@ export const Profile = () => {
                         placeholder="Password"
                         pattern="[0-9]{10}"
                       />
-                      <small id="exampleInputPassword3" className="form-text text-muted">format 1234567890</small>
+                      {/* <small id="exampleInputPassword3" className="form-text text-muted">format 1234567890</small> */}
                       
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                       <label htmlFor="exampleInputPassword4">
                         Residential Address
                       </label>
@@ -183,7 +183,7 @@ export const Profile = () => {
                         id="exampleInputPassword4"
                         placeholder="Password"
                       />
-                    </div>
+                    </div> */}
                     <div className="button_flex_box">
                       <input type="reset" value="Discard" className="dis_btn" />
                       <input type="submit" value="Update" className="sav_btn" />
