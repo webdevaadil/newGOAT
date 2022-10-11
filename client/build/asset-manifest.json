@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d2ce7523.css",
+    "main.js": "/static/js/main.df607e05.js",
+    "static/media/Randwick_V1-0030.mp4": "/static/media/Randwick_V1-0030.17cba7e739318ab10547.mp4",
+    "static/media/races.png": "/static/media/races.8682bfb161f733266212.png",
+    "static/media/winninghorse.jpg": "/static/media/winninghorse.79dc2c3d17a9fac6f557.jpg",
+    "static/media/serviceback.jpg": "/static/media/serviceback.44b9431ae17d95bce30d.jpg",
+    "static/media/new-hero.png": "/static/media/new-hero.5282da44efac3d1639f1.png",
+    "static/media/welcome-img.png": "/static/media/welcome-img.dff6d6bd97a9c9184a42.png",
+    "static/media/Rectangle_1370.png": "/static/media/Rectangle_1370.2ae6e0f601e4c37c34e6.png",
+    "static/media/goat-slide.png": "/static/media/goat-slide.6271b5299994c28137ab.png",
+    "static/media/Horse-Racing.jpg": "/static/media/Horse-Racing.adf862ad1343ea506857.jpg",
+    "static/media/Greyhound-Racing.jpg": "/static/media/Greyhound-Racing.f8333851d1b7adff9f5b.jpg",
+    "static/media/races22": "/static/media/races22.74e84a4ca0e9a2ec3180",
+    "static/media/platinum.png": "/static/media/platinum.af3ba86d2cd80448a683.png",
+    "static/media/silver.png": "/static/media/silver.59ec4207540f1d599be4.png",
+    "static/media/gold.png": "/static/media/gold.ad5907b8e4991e195c1b.png",
+    "static/media/bronze.png": "/static/media/bronze.9b18db5c90a1f5ebb9ee.png",
+    "static/media/GOAT_logo.png": "/static/media/GOAT_logo.5936d154906786d09748.png",
+    "index.html": "/index.html",
+    "main.d2ce7523.css.map": "/static/css/main.d2ce7523.css.map",
+    "main.df607e05.js.map": "/static/js/main.df607e05.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d2ce7523.css",
+    "static/js/main.df607e05.js"
+  ]
+}
