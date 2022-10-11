@@ -19,6 +19,7 @@ import { clearErrors, loaduser, updateprofile } from "../../actions/userAction";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import Select from "react-select";
 import axios from "axios";
+import HomeFooter from "../Footer/HomeFooter";
 
 
 export const PaymentMethoad = () => {
@@ -287,6 +288,7 @@ export const PaymentMethoad = () => {
           ) : (
             <Navigate to={"/login"} />
           )}
+
         </>
       )}
     </>

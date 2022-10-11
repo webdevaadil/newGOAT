@@ -6,9 +6,14 @@
     font-family: 'DM Sans', sans-serif;
 
 }
+.overflow{
+overflow-y: hidden;
+}
+
 body{
     width: 100%;
     overflow-x: hidden;
+
 }
 .welcome-sec .row>* {
     padding-right: 0px;
@@ -24,9 +29,9 @@ body{
     width: 100%;
 
 }
-.form-content p {
+/* .form-content p {
     padding-top: 10px;
-}
+} */
 .wel-p1 img { 
        width: 100%;
     object-fit: cover;
@@ -44,10 +49,14 @@ body{
 }
 .form-content {
     padding: 0px 7rem;
-    padding-top:5.525rem;
+}
+.centerlogo{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 .form-content h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     line-height: 56px;
     color: #0A0E0F;
     font-weight: 400;
@@ -67,13 +76,21 @@ body{
 
 
 }
+
+.signimg{
+    width: 4rem;
+}
+.large{
+    width: 8rem;
+}
+/* 
 .wel-bg{
     background:linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url('../../Images/GOAT_logo.png' );
     background-size:20%;
     background-position: 51% 10%;
     position: relative;
     background-repeat: no-repeat;
-}
+} */
 .img-main{
     background: url('../../Images/serviceback.jpg');
     background-size: cover;
@@ -88,8 +105,8 @@ body{
   .fom-btn .btn {
     width: 48%;
     display: inline-block;
-    padding: 14px;
-    font-size: 16px;
+    padding: 10px;
+    font-size: 14px;
     line-height: 22px;
     letter-spacing: 0.5px;
     font-weight: 700;
@@ -116,7 +133,7 @@ i.fa.fa-eye {
 .form-main .form-control {
     display: block;
     width: 100%;
-    padding: 0.375rem 0.75rem;
+    /* padding: 0.375rem 0.75rem; */
    background-color: transparent;
     background-clip: padding-box;
     border: 1px solid;
@@ -129,7 +146,7 @@ i.fa.fa-eye {
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
-    line-height: 24px !important;
+    /* line-height: 24px !important; */
 }
 .fom-btn .btn:hover {
     background: #4AA331;
@@ -194,7 +211,7 @@ i.fa.fa-eye {
 
 @media (max-width:1200px) {
     .form-content {
-        padding: 25px 25px;
+        /* padding: 25px 25px; */
         height: auto;
     }
     .fom-btn {
@@ -243,6 +260,7 @@ i.fa.fa-eye {
         .form-content {
             padding: 30px 10px;
             height: 100%;
+            
         }
 }
 
@@ -251,15 +269,22 @@ i.fa.fa-eye {
     text-align: center;
 }
 
-
-
-
 }
+
+
 @media (min-width:1800px){
 
-    .form-content{
-        padding: 0px 7rem;
-        padding-top: 11.625rem;
+    .signimg{
+        width: 8rem;
+    }
+
+}
+
+
+@media (min-width:2500px){
+
+    .signimg{
+        width: 15rem;
     }
 
 }

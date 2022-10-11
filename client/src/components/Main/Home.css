@@ -1,4 +1,3 @@
-
 .banner-sec {
     height: 100vh;
     /* background: #000; */
@@ -269,7 +268,6 @@
   .f-card{
     height: 750px;
   }
-`
 .card1{
     height: 140px;
     justify-content: center;
@@ -290,7 +288,7 @@
     border: 1pxsolidrgba(0,0,0,.125);
     border-radius: 20px;
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
-    padding:32px;
+    padding:40px;
     margin: 10px;
 }
 .card p {
@@ -593,15 +591,25 @@ ul.socil-link li {
 
 
 /* newsletter  */
+
+.centernews{
+    display: flex;
+    justify-content: center;
+}
+
 .news-main {
-    padding: 60px 110px 60px 110px;
+    padding: 26px 10px 28px 10px;
     background: linear-gradient(0deg, rgba(62,53,53,1) 0%, rgba(0,0,0,1) 100%);
     /* border-radius: 10px; */
-    margin: 20px 0px;
+    width: 70%;
+    border-radius: 50px;
+    margin-bottom: 5rem;
 }
+
+
 .mes-cont h4 {
     font-size: 3rem;
-    padding-bottom: 23px;
+    padding-bottom: 13px;
     margin-top: -3px;
     font-weight: 700;
     letter-spacing: 0px;
@@ -612,7 +620,7 @@ ul.socil-link li {
     font-size: 18px;
     font-style: normal;
     color: #ffffff;
-    margin-top: 16px;
+    margin-top: 12px;
     line-height: 24px;
 }
 .mesbtn input {
@@ -1340,4 +1348,58 @@ background-color: #4AA331;
         height: 42px;
     }
 
+  }
+
+
+  @media(min-width:2500px) {
+
+    .tips-sec{
+        position: relative;
+        top: 20rem;
+        right: 8rem;
+    }
+    .news-main {
+    padding: 26px 99px 28px 134px;
+    background: linear-gradient(0deg, rgba(62,53,53,1) 0%, rgba(0,0,0,1) 100%);
+    /* border-radius: 10px; */
+    width: 60%;
+    border-radius: 50px;
+}
+
+    .f-card .card {
+position: relative;
+right: 8rem;
+height: 700px;
+justify-content: center;
+
+    }
+
+    .f-card .card p{
+   font-size: 30px;
+   line-height: 34px;
+   /* margin-top: 30px; */
+            }
+  }
+
+
+
+  @media(min-width:3000px) {
+
+    .tips-sec{
+        position: relative;
+        top: 35rem;
+        right: 8rem;
+    }
+
+    .f-card .card {
+position: relative;
+right: 8rem;
+height: 800px;
+
+    }
+    .f-card .card p{
+        font-size: 35px;
+        line-height: 40px;
+        margin-top: 30px;
+                 }
   }

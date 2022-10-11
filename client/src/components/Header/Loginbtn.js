@@ -33,12 +33,13 @@ export const Loginbtn = () => {
           {user.packages ==="Free"?<button style = {{backgroundColor:" #433F3F"}} onClick={()=>navigate("/dashboard")} className="user_btn">{uppercaseWords(user.username)}</button>:""}
          <a ><button onClick={logoutUser} className='btn btn-2'>Logout</button>  </a>
          </ul></div>
-          </>): (
-           <ul className="navbar-nav top-btn ml-auto">
-           <Link to = "/login"><button className='btn btn-1'>Login</button>  </Link>
-            <Link to = "/signup"><button className='btn btn-2'>Signup</button>  </Link>
-         </ul>
-          )
+          </>):""
+        //   (
+        //    <ul className="navbar-nav top-btn ml-auto">
+        //    <Link to = "/login"><button className='btn btn-1'>Login</button>  </Link>
+        //     <Link to = "/signup"><button className='btn btn-2'>Signup</button>  </Link>
+        //  </ul>
+        //   )
         }
       </span>
 

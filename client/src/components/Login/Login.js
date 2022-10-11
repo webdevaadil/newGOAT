@@ -6,6 +6,7 @@ import "./Login.css";
 import { clearErrors, login } from "../../actions/userAction";
 import { Loader } from "../layout/Loader";
 import { useAlert } from "react-alert";
+import img3 from "../../Images/GOAT_logo.png"
 
 export const Login = () => {
   const { error, loading, isAuthenticated } = useSelector(
@@ -37,7 +38,7 @@ export const Login = () => {
     }
 
     if (isAuthenticated) {
-      navigate("/main");
+        navigate("/main");
     }
   }, [error, navigate, isAuthenticated, loading, alert, dispatch]);
 
@@ -59,9 +60,10 @@ export const Login = () => {
             <div className="wel-p1 img-main ">
               <div className="img-main"></div>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 centerlogo">
+              <img className="signimg large" src = {img3}/>
               <div className="wel-bg">
-                <div style = {{paddingTop:"13rem"}} className="form-content">
+                <div className="form-content">
                   <h2 style={{fontSize:"3rem"}}>Welcome!</h2>
                   <div className="form-main">
                     <form

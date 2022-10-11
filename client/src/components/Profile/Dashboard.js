@@ -21,18 +21,18 @@ export const Dashboard = () => {
     </div>
       <div className="main-body">
         <section>
-          <div className="container profile-sec" style={{ zIndex: "-5" }}>
+          <div className="container profile-sec" style={{ zIndex: "-5"}}>
             <div className="flexbox profil-main">
               <ProfileNav />
               <Outlet />
             </div>
           </div>
           <div style={{ zIndex:111}}>
-            <HomeFooter/>
           </div>
         </section>
       </div>
       </>
+      <HomeFooter/>
     
     </>
   );

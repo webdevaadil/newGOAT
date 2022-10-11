@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import "./Signup.css";
 import { clearErrors, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
+import img3 from "../../Images/GOAT_logo.png"
 
 
 export const Names = ({ formData, setForm, navigation }) => {
@@ -65,14 +66,16 @@ export const Names = ({ formData, setForm, navigation }) => {
 
   return (
     <>
-     <div className  = {loading?"aad":""}>
+     <div className  = {loading?"aad":"overflow"}>
       <section id="form-section">
         <div className="wel-form">
           <div className="wel-p1 img-main">
             <div className="img-main"></div>
           </div>
-          <div className="col-md-6">
-            <div className="form-content wel-bg ">
+          <div className="col-md-6 centerlogo">
+            <img className="signimg" style ={{position: "relative",
+    top:"4rem"}} src= {img3}/>
+            <div className="form-content wel-bg sign-logo">
               <h2>Hello!</h2>
               <div className="form-main">
                 <form
@@ -82,7 +85,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                   className="form-floating mb-3"
                 >
                   <div className="form-floating"></div>
-                  <div className="form-floating mb-3">
+                  <div className="form-floating mb-2">
                     <input
                       name="username"
                       value={username}
@@ -94,7 +97,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                     />
                     <label htmlFor="floatingInput">Name</label>
                   </div>
-                  <div className="form-floating mb-3">
+                  <div className="form-floating mb-2">
                     <input
                       onChange={setForm}
                       type="email"
@@ -107,7 +110,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                     <label htmlFor="floatingInput">Email Address</label>
                   </div>
 
-                  <div className="form-floating mb-3">
+                  <div className="form-floating mb-2">
                     <input
                       value={password}
                       required
@@ -133,7 +136,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                   </div>
 
                   <div className="form-inner fom-btn">
-                    <div className="form-floating mb-3">
+                    <div className="form-floating mb-2">
                       <input
                         onChange={setForm}
                         name="dob"
@@ -165,7 +168,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                     </div> */}
                   </div>
                   <div className="form-inner fom-btn">
-                    <div className="form-floating mb-3">
+                    <div className="form-floating mb-2">
                       <input
                         name="phoneno"
                         onChange={setForm}
@@ -181,7 +184,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                       <label htmlFor="floatingInput">Phone number</label>
                     </div>
 
-                    {/* <div className="form-floating mb-3">
+                    {/* <div className="form-floating mb-2">
                       <input
                         onChange={setForm}
                         name="residientialaddress"

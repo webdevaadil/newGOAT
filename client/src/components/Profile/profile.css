@@ -7,11 +7,12 @@
 .profile-sec {
     max-width: 75% !important;
     margin: 75px auto !important;
+    margin-bottom: 0;
     width: 100%;
 }
 .main-body {
     /* margin-top: 100px !important; */
-    /* margin-bottom: 40px !important; */
+  
 }
 .profil-main {
     display: grid;
@@ -448,6 +449,29 @@ img.profile-img {
    
     }
  
+    @media screen and (min-width:1440px) {
+    
+        .profile-sec {
+           height: 80vh;
+        }
+       
+        }
 
     
+@media screen and (min-width:2500px) {
+    
+    .profile-sec {
+       height: 70vh;
+    }
+   
+    }
 
+
+
+    @media screen and (min-width:1900px) {
+    
+        .profile-sec {
+           height: 80vh;
+        }
+       
+        }

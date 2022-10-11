@@ -53,9 +53,9 @@ export const ProfileNav = () => {
             </Link>
           </div>
           <div className="pic2">
-            <Link to="/dashboard/payment">Payment Methods</Link>
+            <Link to="/dashboard/Package">Packages</Link>
 
-            <Link to="/dashboard/payment">
+            <Link to="/dashboard/Package">
             <img
               className="img2"
               src="/img/credit-carddfdf.png"
@@ -64,9 +64,9 @@ export const ProfileNav = () => {
             </Link>
           </div>
           <div className="pic3">
-            <Link to="/dashboard/accountsetting">Account Settings</Link>
+            <Link to="/dashboard/changepassword">Change Password</Link>
 
-<Link to="/dashboard/accountsetting">
+<Link to="/dashboard/changepassword">
             <img
               className="img2"
               src= "/img/settings.jpg"
@@ -84,7 +84,7 @@ export const ProfileNav = () => {
             />
 </Link>
           </div>
-          <div onClick={logoutUser} style={{cursor:"pointer"}} >
+          {/* <div onClick={logoutUser} style={{cursor:"pointer"}} >
           <div className="pic5">
             <p >Logout</p>
             <img
@@ -95,7 +95,7 @@ export const ProfileNav = () => {
           </div>
 
           </div>
-        
+         */}
       </div>
     </>
   );

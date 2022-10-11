@@ -46,15 +46,15 @@ function App() {
           <Route path="/greydetails/:id/:location" element={<Greydetails />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="" element={<Profile />} />
-            <Route path="payment" element={<PaymentMethoad />} />
-            <Route path="accountsetting" element={<AccountSetting />} />
+            <Route path="Package" element={<PaymentMethoad />} />
+            <Route path="changepassword" element={<AccountSetting />} />
             <Route path="about" element={<About />} />
           </Route>
           <Route path="/privacy-policy" element={<Aboutus />} />
           <Route path="/packages" element={<Package />} />
           <Route path="/pac" element={<Multilf />} />
           <Route path="/thankyou" element={<Thankyou />} />
-          <Route path="/password" element={<Paypa />} />
+          <Route path="/password" element={<Paypa/>} />
           <Route path="/subscriptionexpire" element={<Paymentexpirepage />} />
         </Routes>
       </BrowserRouter>

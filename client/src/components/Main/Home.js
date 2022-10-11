@@ -166,7 +166,7 @@ const Home = () => {
       <div className="result">
         <div className="container result-mian">
           <div className="section-title">
-            <h3 style = {{borderBottom:"2px solid black"}}>Reliable Results</h3>
+            {/* <h3 style = {{borderBottom:"2px solid black"}}>Reliable Results</h3> */}
             
           </div>
 {/* 
@@ -741,7 +741,7 @@ const Home = () => {
       </div>
 
       <div className="nesletter-sec">
-        <div className="">
+        <div className="centernews">
           <div className="row news-main">
             <div className="col-md-8">
               <div className="mes-cont">
@@ -753,7 +753,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="col-md-4">
+            <div style={{margin:"auto"}} className="col-md-4">
               <div className="mesbtn">
                 <form>
                   <div className="mb-3">
@@ -775,7 +775,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="testimpnal-sec">
+      {/* <div className="testimpnal-sec">
         <div className="">
           <div
             className="section-title"
@@ -917,7 +917,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="wiinner-sec">
         <div className="container">
