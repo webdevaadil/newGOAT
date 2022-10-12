@@ -28,10 +28,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: [true, "please provide date of birth"],
   },
-  residientialaddress: {
-    type: String,
-    required: [true, "please provide date of birth"],
-  },
+  // residientialaddress: {
+  //   type: String,
+  //   required: [true, "please provide date of birth"],
+  // },
   paymentstatus: {
     type: String,
   },
@@ -40,10 +40,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "please provide packages"],
   },
-  gender: {
-    type: String,
-    default: "male",
-  },
+  // gender: {
+  //   type: String,
+  //   default: "male",
+  // },
 
   
   resetPasswordToken: String,

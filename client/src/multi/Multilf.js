@@ -16,11 +16,9 @@ export const Multilf = () => {
     email: "",
     dob: "",
     password: "",
-    gender: "",
     packages: "",
     paymentstatus:"",
     phoneno:"",
-    residientialaddress:"",
   })
   const steps = [
     { id: "name" },

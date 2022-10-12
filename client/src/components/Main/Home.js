@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 // import"../font/Sportypo-Reguler-Demo.ttf"
 
@@ -25,6 +25,12 @@ import { clearErrors, loaduser } from "../../actions/userAction";
 import { positions, useAlert } from "react-alert";
 import Marquee from "react-fast-marquee";
 const Home = () => {
+  const [tips,setTips] = useState({
+    bronze:"$15",
+    silver:"$30",
+    gold:"$45",
+    platinum:"$60"
+  })
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -42,9 +48,9 @@ const Home = () => {
     }
   }, [dispatch, isAuthenticated, error, navigate]);
 
-  const redy = () => {
-    navigate("/signup");
-  };
+  // const redy = () => {
+  //   navigate("/signup");
+  // };
 
   return (
     <div>
@@ -488,9 +494,9 @@ const Home = () => {
             </div>
             <div className="tipp">
               <div
+                onClick={()=>navigate(`/checkout/${tips.bronze}`)}
                 className="btn"
                 style={{ width: "50%"}}
-                onClick={redy}
               >
                 <div className="row tipping1 " style={{ width: "100%" }}>
                   <div className="col-md-6">
@@ -523,9 +529,9 @@ const Home = () => {
                 </div>
               </div>
               <div
+               onClick={()=>navigate(`/checkout/${tips.silver}`)}
                 className="btn"
                 style={{ width: "50%"}}
-                onClick={redy}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
                   <div className="col-md-6">
@@ -558,9 +564,9 @@ const Home = () => {
                 </div>
               </div>
               <div
+                onClick={()=>navigate(`/checkout/${tips.gold}`)}
                 className="btn"
                 style={{ width: "50%",marginTop:"8px"}}
-                onClick={redy}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
                   <div className="col-md-6">
@@ -568,7 +574,7 @@ const Home = () => {
                       <img src={img2} alt="" />
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  <div  className="col-md-6">
                     <div className="tipping-ct">
                       <h3>Gold</h3>
                       <p>$45 / Week</p>
@@ -595,9 +601,9 @@ const Home = () => {
                 </div>
               </div>
               <div
+                onClick={()=>navigate(`/checkout/${tips.platinum}`)}
                 className="btn"
                 style={{ width: "50%",marginTop:"8px"}}
-                onClick={redy}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
                   <div className="col-md-6">
@@ -605,7 +611,7 @@ const Home = () => {
                       <img src={img3} alt="" />
                     </div>
                   </div>
-                  <div className="col-md-6">
+                  <div  className="col-md-6">
                     <div className="tipping-ct">
                       <h3>Platinum</h3>
                       <p>$60 / Week</p>

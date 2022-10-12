@@ -22,6 +22,8 @@ import { loaduser } from "./actions/userAction";
 import { Paypa } from "./multi/Stepform/Password";
 import { Paymentexpirepage } from "./components/Extra/Paymentexpirepage";
 import { Aboutus } from "./components/Extra/About";
+import { Checkout } from "./multi/Stepform/Checkout";
+import { NewLogin } from "./components/Login/NewLogin";
 
 function App() {
   "use strict";
@@ -56,6 +58,10 @@ function App() {
           <Route path="/thankyou" element={<Thankyou />} />
           <Route path="/password" element={<Paypa/>} />
           <Route path="/subscriptionexpire" element={<Paymentexpirepage />} />
+          <Route path="/checkout/:tips" element={<Checkout/>} />
+          <Route path="/newlogin/:tips" element={<NewLogin/>} />
+
+
         </Routes>
       </BrowserRouter>
     </>

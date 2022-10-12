@@ -22,8 +22,6 @@ export const Names = ({ formData, setForm, navigation }) => {
     email,
     password,
     dob,
-    gender,
-    residientialaddress,
     phoneno,
   }=formData;
 

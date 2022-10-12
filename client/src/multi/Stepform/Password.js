@@ -35,7 +35,7 @@ export const Paypa = () => {
 
   useEffect(() => {
     if (user) {
-      if (user.paymentstatus === "true") {
+      if (user.paymentstatus === "true"){
         navigate("/main");
       }
     }
