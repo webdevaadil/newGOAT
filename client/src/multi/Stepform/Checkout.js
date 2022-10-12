@@ -242,7 +242,6 @@ export const Checkout = () => {
          </ul>
           )
 }
-                               
                               </>
                             )}
                           </div>
