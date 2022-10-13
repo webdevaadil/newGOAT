@@ -83,7 +83,7 @@ export const Greyhounds = () => {
           <div id="sport-sec">
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/main">Home</Link>
+            <Link to="The-Goat-Tips">Home</Link>
           </Breadcrumb.Item>
 
           <Breadcrumb.Item style = {{marginLeft:"4px"}}>

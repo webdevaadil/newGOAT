@@ -6,7 +6,7 @@ import img2 from "../../Images/name1.png";
 import img3 from "../../Images/name2.png";
 import img4 from "../../Images/name3.png";
 import img5 from "../../Images/name4.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -36,7 +36,7 @@ export const Paypa = () => {
   useEffect(() => {
     if (user) {
       if (user.paymentstatus === "true"){
-        navigate("/main");
+        navigate("/The-Goat-Tips");
       }
     }
     if (user) {
@@ -74,7 +74,7 @@ export const Paypa = () => {
             src={img1}
             alt="loading"
           />
-          $60 / week
+          $60 per week
         </div>
       ),
     },
@@ -91,7 +91,7 @@ export const Paypa = () => {
             src={img2}
             alt="loading"
           />
-          $45/ week
+          $45 per week
         </div>
       ),
     },
@@ -108,7 +108,7 @@ export const Paypa = () => {
             src={img3}
             alt="loading"
           />
-          $30/ week
+          $30 per week
         </div>
       ),
     },
@@ -125,7 +125,7 @@ export const Paypa = () => {
             src={img4}
             alt="loading"
           />
-          $15/ week
+          $15 per week
         </div>
       ),
     },
@@ -189,7 +189,7 @@ export const Paypa = () => {
             </div>
             <div className="col-md-6">
               <div className="wel-bg">
-                <div className="row form-content">
+                <div className="row form-content check-center">
                   <h2>Packages</h2>
                   <div className="form-main">
                     <form className="form-floating mb-3">
@@ -262,7 +262,7 @@ export const Paypa = () => {
                                         console.log(orderData)
                                       )
                                       .then(updatepro())
-                                      .then(navigate("/main"))
+                                      .then(navigate("/The-Goat-Tips"))
                                       .catch((err) => {
                                         console.log(err);
                                       });
@@ -281,10 +281,13 @@ export const Paypa = () => {
                       </div>
                     </form>
                   </div>
-                  <p>
+                   <Link to="/privacy-policy">
+
+                  <p style = {{textAlign:"center"}}>
                     By signing up, I agree to the{" "}
                     <span>Terms and conditions and Privacy policy</span>
                   </p>
+                   </Link>
                 </div>
               </div>
             </div>

@@ -44,7 +44,7 @@ const Home = () => {
     }
 
     if (isAuthenticated) {
-      navigate("/main");
+      navigate("/The-Goat-Tips");
     }
   }, [dispatch, isAuthenticated, error, navigate]);
 
@@ -265,7 +265,33 @@ const Home = () => {
                 <div style = {{position:"relative",right:"5%",top:"25%"}} className="col-lg-6 col-md-12">
                   <div className="resut-content">
                     <div className="card">
-                      <div className="clearfix">
+
+                    <div className="resut-content">
+          <h3>
+            Quality Sporting Tips <span>From Expert Tipsters</span>{" "}
+          </h3>
+          <p>
+            Whether you're a professional investor or a casual pub punter, we've
+            got you covered. The GOAT's Tips provides consistent returns to
+            enhance your sporting experience.
+          </p>
+          <ul>
+            <li>
+              {" "}
+              <i className="fa fa-check"></i> Thoroughbred horse racing
+            </li>
+            <li>
+              {" "}
+              <i className="fa fa-check"></i> Greyhound racing
+            </li>
+            <li>
+              {" "}
+              <i className="fa fa-check"></i> Additional sports coming soon!
+            </li>
+          </ul>
+        </div>
+
+                      {/* <div className="clearfix">
                         <button type="button" className="btn  float-start">
                           <img src={icon2} alt="" /> The Goats tips
                         </button>
@@ -273,8 +299,8 @@ const Home = () => {
                           {" "}
                           <img src="./icon2.png" alt="" /> No. 4
                         </button>
-                      </div>
-                      <p>
+                      </div> */}
+                      {/* <p>
                         Whether you're a professional investor or a casual pub
                         punter, we've got you covered. The GOAT's Tips provides
                         consistent returns to enhance your sporting experience.
@@ -283,7 +309,7 @@ const Home = () => {
                         Whether you're a professional investor or a casual pub
                         punter, we've got you covered. The GOAT's Tips provides
                         consistent returns to enhance your sporting experience.
-                      </p>
+                      </p> */}
                       
                     </div>
 
@@ -759,10 +785,10 @@ const Home = () => {
               </div>
             </div>
 
-            <div style={{margin:"auto"}} className="col-md-4">
+            <div style={{margin:"auto",marginTop:"15px"}} className="col-md-4">
               <div className="mesbtn">
                 <form>
-                  <div className="mb-3">
+                  <div className="mb-2">
                     <input
                       type="email"
                       className="form-control"
@@ -771,7 +797,7 @@ const Home = () => {
                       aria-describedby="emailHelp"
                     />
                   </div>
-                  <button type="submit" className="btn form-btn">
+                  <button style={{marginTop:"3rem"}} type="submit" className="btn form-btn">
                     Submit
                   </button>
                 </form>

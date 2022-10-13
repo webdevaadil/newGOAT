@@ -36,7 +36,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route index path="/main" element={<Main />} />
+          <Route index path="/The-Goat-Tips" element={<Main />} />
           <Route path="/signup" element={<Multilf />} />
           <Route path="/login" element={<Login />} />
           <Route path="/thoroughbreds" element={<Thoroughbreds />} />

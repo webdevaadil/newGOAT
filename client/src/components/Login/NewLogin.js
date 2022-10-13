@@ -73,6 +73,7 @@ const dispatch = useDispatch()
                     className="form-floating mb-3"
                   >
                     <input
+                    required
                       onChange={(e) => setLoginEmail(e.target.value)}
                       name="email"
                       value={loginEmail}
@@ -84,6 +85,7 @@ const dispatch = useDispatch()
                     <label htmlFor="floatingInputValue">Email Address</label>
                     <div className="form-floating mb-3">
                       <input
+                      required
                         name="password"
                         value={loginPassword}
                         onChange={(e) => setLoginPassword(e.target.value)}

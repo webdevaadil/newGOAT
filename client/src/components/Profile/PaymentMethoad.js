@@ -70,7 +70,7 @@ export const PaymentMethoad = () => {
             src={img1}
             alt="loading"
           />
-          $60 / week
+          $60 per week
         </div>
       ),
     },
@@ -83,7 +83,7 @@ export const PaymentMethoad = () => {
             src={img2}
             alt="loading"
           />
-          $45/ week
+          $45 per week
         </div>
       ),
     },
@@ -96,7 +96,7 @@ export const PaymentMethoad = () => {
             src={img3}
             alt="loading"
           />
-          $30/ week
+          $30 per week
         </div>
       ),
     },
@@ -109,7 +109,7 @@ export const PaymentMethoad = () => {
             src={img4}
             alt="loading"
           />
-          $15/ week
+          $15 per week
         </div>
       ),
     },
@@ -162,7 +162,7 @@ export const PaymentMethoad = () => {
             <div className="payment_box_two">
               {packages==="$60 / week" ? <>
               <h2>Platinum Membership</h2>
-              <h2>$60 / Week</h2>
+              <h2>$60 per Week</h2>
               <ul>
                 <li>Recommended tips</li>
                 <li>Recommended tips</li>
@@ -170,7 +170,7 @@ export const PaymentMethoad = () => {
               </ul></>:"" }
               {packages==="$45 / week" ? <>
               <h2>Gold Membership</h2>
-              <h2>$45 / Week</h2>
+              <h2>$45 per Week</h2>
               <ul>
                 <li>Recommended tips</li>
                 <li>Recommended tips</li>
@@ -178,7 +178,7 @@ export const PaymentMethoad = () => {
               </ul></>:"" }
               {packages==="$30 / week" ? <>
               <h2>silver Membership</h2>
-              <h2>$30 / week</h2>
+              <h2>$30 per week</h2>
               <ul>
                 <li>Recommended tips</li>
                 <li>Recommended tips</li>
@@ -186,7 +186,7 @@ export const PaymentMethoad = () => {
               </ul></>:"" }
               {packages==="$15 / week" ? <>
               <h2>Bronze Membership</h2>
-              <h2>$15 / Week</h2>
+              <h2>$15 per Week</h2>
               <ul>
                 <li>Recommended tips</li>
                 <li>Recommended tips</li>

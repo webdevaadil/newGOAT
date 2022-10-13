@@ -52,7 +52,7 @@ var age_now = today.getFullYear() - birthDate.getFullYear()
   useEffect(() => {
 
     if (isAuthenticated) {
-      navigate("/main");
+      navigate("/The-Goat-Tips");
     }
     
   }, [navigate, isAuthenticated, loading, ]);

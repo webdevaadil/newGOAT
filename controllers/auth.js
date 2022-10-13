@@ -65,6 +65,7 @@ async function createOrder(amount) {
 }
 exports.register = catchAsyncerror(async (req, res, next) => {
 
+  console.log(req.body)
   let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ''))
   let year = new Date(req.body.dob).getUTCFullYear()
   let month = new Date(req.body.dob).getUTCMonth()
@@ -77,8 +78,8 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     password,
     dob,
     packages,
-    paymentstatus, phoneno
-  } = req.body;
+    phoneno
+} = req.body;
 
 
   if (now - birthDate < 180000) {

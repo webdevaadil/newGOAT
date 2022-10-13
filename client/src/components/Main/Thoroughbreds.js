@@ -86,7 +86,7 @@ export const Thoroughbreds = () => {
         {/* <div className="container"> */}
         <Breadcrumb separator=">">
           <Breadcrumb.Item>
-            <Link to="/main">Home</Link>
+            <Link to="/The-Goat-Tips">Home</Link>
           </Breadcrumb.Item>
 
           <Breadcrumb.Item>

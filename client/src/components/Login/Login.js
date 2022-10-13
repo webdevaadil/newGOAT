@@ -38,7 +38,7 @@ export const Login = () => {
     }
 
     if (isAuthenticated) {
-        navigate("/main");
+        navigate("/The-Goat-Tips");
     }
   }, [error, navigate, isAuthenticated, loading, alert, dispatch]);
 

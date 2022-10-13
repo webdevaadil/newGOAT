@@ -47,9 +47,20 @@ body{
     height: 100vh;
     align-items: center;
 }
+
+
 .form-content {
-    padding: 0px 7rem;
+padding: 0px 7rem;
+justify-content: center;
+position: relative;
+top: 2rem;
 }
+
+.check-center{
+    position: relative;
+    top: 13rem;
+}
+
 .centerlogo{
     display: flex;
     align-items: center;
@@ -71,10 +82,7 @@ body{
     display: flex;
     justify-content: center;
     gap: 25px;
-    /* margin: 40px; */
-
-
-
+    margin-top: 20px;
 }
 
 .signimg{

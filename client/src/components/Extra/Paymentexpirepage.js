@@ -14,7 +14,7 @@ export const Paymentexpirepage = () => {
   if(user){
 
     if(user.paymentstatus ==="true"){
-      navigat("/main")
+      navigat("")
     }
   }
 
