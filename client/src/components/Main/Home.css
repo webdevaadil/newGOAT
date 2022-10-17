@@ -1006,22 +1006,26 @@ ul.socil-link li {
     .banner-main {
         height: 900px;
     }
-    .tipp-img{
+
+    .tipp-img {
         max-width: 90%;
 
     }
-    .tipping-ct{
-    width: 110%;
-       padding: 0;
-       margin: 0;
-   
+
+    .tipping-ct {
+        width: 110%;
+        padding: 0;
+        margin: 0;
+
     }
-    .return{
+
+    .return {
         margin: 5px 0;
     }
+
     .tipping-ct p {
         font-size: 16px;
-       
+
         line-height: 18px;
         padding-bottom: 5px;
     }
@@ -1046,14 +1050,15 @@ ul.socil-link li {
     .banner-main {
         height: 840px;
     }
-    .tipping-ct{
+
+    .tipping-ct {
         width: 100%;
         padding: 0;
-           padding-top: 10px;
-           
-           margin: 0;
-       
-        }
+        padding-top: 10px;
+
+        margin: 0;
+
+    }
 }
 
 
@@ -1086,7 +1091,7 @@ ul.socil-link li {
     .banner-main {
         width: 100%;
         margin: 0;
-      
+
     }
 
     /* .result {
@@ -1145,11 +1150,12 @@ ul.socil-link li {
         bottom: 0;
         z-index: 99999999999999;
     }
-    .baner-ct{
+
+    .baner-ct {
         width: 100%;
     }
 
-    .baner-ct p{
+    .baner-ct p {
         padding-right: 0px;
         text-align: center;
         margin: 0 auto;
@@ -1180,6 +1186,7 @@ ul.socil-link li {
         line-height: 54px;
         text-transform: capitalize;
         font-weight: 600;
+
     }
 
     .baner-ct p {
@@ -1218,18 +1225,20 @@ ul.socil-link li {
     }
 
     .result {
-        padding:0px;
+        padding: 0px;
     }
-    .tipp-img{
+
+    .tipp-img {
         max-width: 100%;
 
     }
 }
 
 @media(max-width:778px) {
-    .video-container{
+    .video-container {
         min-height: 100vh;
     }
+
     .vp {
         position: unset;
     }
@@ -1301,7 +1310,7 @@ ul.socil-link li {
 
     .baner-ct {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-       
+
         text-align: center;
     }
 
@@ -1315,9 +1324,9 @@ ul.socil-link li {
 
 
     .baner-ct h2 {
-        font-size: 45px;
+        font-size: 30px;
         color: #fff;
-        line-height: 54px;
+        line-height: 32px;
     }
 
     .baner-ct p {
@@ -1551,9 +1560,11 @@ ul.socil-link li {
     }
 
     .baner-ct h2 {
-        font-size: 35px;
+
+        font-size: 30px;
         color: #fff;
-        line-height: 44px;
+        line-height: 32px;
+
     }
 
     .tips-ct h2 {
