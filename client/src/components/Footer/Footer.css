@@ -1,8 +1,11 @@
 /* footer cdd start */
 .footer-sec {
     background: #03203E;
-    padding: 2.438rem;
+    padding: 1rem;
     color: #fff;
+    text-align: center;
+    align-items: center;
+  
   }
   .foot_1 ul {
     list-style: none;

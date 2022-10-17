@@ -7,6 +7,13 @@
   width: 100%;
   top: 0;
   }
+  .aadil{
+    display: none;
+
+  }
+  .nav-item:hover .aadil{
+display: block;
+  }
   
   .Mainheader a.nav-link {
 	color: #767A81 !important;
@@ -29,7 +36,9 @@
 	padding: 7px 25px;
 	font-family: 'Nunito Sans';
   font-style: normal;
+  width:145px;
   }
+
   .navbar-expand-lg {
 	align-items: center;
   }
@@ -55,11 +64,10 @@
   .user_btn{
     border: none;
 	outline: none;
-	padding: 12px 0;
+	padding: 8px 18px;
     background: #A55947;
 	color: white;
 	border-radius: 20px;
-	width: 100px;
 	font-weight: bold;
 	font-size: 14px;
 	cursor: pointer;
@@ -140,3 +148,20 @@ color: #10867F;
     width: 41px;
 }
 
+
+@media(max-width:410px) {
+  .top-btn .btn {
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    border: none;
+    margin: 0px 6px;
+    border-radius: 5rem;
+    padding: 7px 25px;
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    width:100px;
+    }
+
+}

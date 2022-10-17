@@ -14,8 +14,9 @@ export const Timetable = ({detail,loading,dogimg}) => {
    
   const currentday = new Date()
   const currentdaystring = new Date(currentday).toLocaleDateString()
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   
-  console.log(currentdaystring)
+  // console.log(currentdaystring)
 
    const filtereddate = detail.filter((items,index)=>{
     return(
@@ -24,13 +25,13 @@ export const Timetable = ({detail,loading,dogimg}) => {
       
     })
 
-console.log(detail)
+// console.log(detail)
     //Getting Tommoroww date
     const nextday  = new Date(currentday)
     nextday.setDate(nextday.getDate()+1)
    
     const newdate = nextday.toLocaleDateString()
-    console.log(newdate)
+    // console.log(newdate)
 
 
     const tommorow = detail.filter((items,index)=>{
@@ -40,14 +41,14 @@ console.log(detail)
     })
     
 
-    console.log(tommorow)
+    // console.log(tommorow)
 
  
   return (
     <>
     <div className='container-fluid raceup-sec'>
           <div className='container'>
-            <h3 className="free-title">Today,{currentday.toDateString()}</h3>
+            <h3 className="free-title">Today,{currentday.toLocaleDateString('en-US', options)}</h3>
             <div className='upcomming-table'>
             <table>
 
@@ -84,7 +85,7 @@ console.log(detail)
 
         <div className='container-fluid raceup-sec'>
           <div className='container'>
-            <h3 className="free-title">Tomorrow, {nextday.toDateString()}</h3>
+            <h3 className="free-title">Tomorrow, {nextday.toLocaleDateString('en-US', options)}</h3>
 
             {
                loading?<Loader/>:

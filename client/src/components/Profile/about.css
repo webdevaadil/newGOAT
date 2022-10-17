@@ -7,9 +7,9 @@
 body{
     background-color: #F4F7F8;
 }
-.about_box_two ,.boxx{
+.about_box_two , .boxx{
     height:auto;
-    width: 710px;
+    width: 100%;
     background-color: #fff;
     padding: 15px;
     
@@ -37,9 +37,11 @@ body{
 
 
 @media screen and (max-width:768px){
-    .about_box_two{
-        margin-top:20px;
-        padding: 20px;
+    .about_box_two {
+        margin-top: 20px;
+        padding: 0px;
     }
+    
+    
 }
     

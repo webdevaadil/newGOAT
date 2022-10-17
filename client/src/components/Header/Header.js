@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import {  Link } from "react-router-dom";
 import "./Header.css";
 import img1 from "../../Images/left-Vector.png"
 import img2 from "../../Images/Vector.png"
@@ -30,14 +29,7 @@ display: "-wflex ebkit-box -moz-box  -ms-flexbox -webkit-flex"}} className="cont
           >          
             <div className="container">
             <input type="checkbox" id="checkbox1" className="checkbox1 visuallyHidden"/>
-            <label htmlFor="checkbox1">
-                <div className="hamburger hamburger1">
-                    <span className="bar bar1"></span>
-                    <span className="bar bar2"></span>
-                    <span className="bar bar3"></span>
-                    <span className="bar bar4"></span>
-                </div>
-            </label>
+            <label htmlFor="checkbox1"><div className="hamburger hamburger1"><span className="bar bar1"></span><span className="bar bar2"></span><span className="bar bar3"></span><span className="bar bar4"></span></div></label>
             </div> 
           </button>
 
@@ -50,23 +42,19 @@ display: "-wflex ebkit-box -moz-box  -ms-flexbox -webkit-flex"}} className="cont
               </li>
               <li className="nav-item">
                 <div
-                  onClick={() => {
-                    setShow(!show);
-                  }}
-                  style={{ color: "white", cursor: "pointer" }}
+                
+                  style={{ color: "white", cursor: "pointer",fontWeight:"900" }}
                   className="nav-link"
                 >
-                  SPORTS
+                  SUBSCRIPTIONS
                 </div>
-                {show && (
-                  <div
-                    style={{
-                      zIndex: "1",
-                      // width: "232px",
-                      // height: "160px",
-                      // gap: "24px",
+        <div className="aadil">
+        <div style={{zIndex: "1",
+                      display:"block",
                       position: "absolute",
                       left: "12%",
+                      top:"75%",
+                      borderRadius:"25px"
                     }}
                     className="card"
                   >
@@ -98,7 +86,8 @@ display: "-wflex ebkit-box -moz-box  -ms-flexbox -webkit-flex"}} className="cont
                       </div>
                     </div>
                   </div>
-                )}
+        </div>
+                 
               </li>
             </ul>               
             <Loginbtn />

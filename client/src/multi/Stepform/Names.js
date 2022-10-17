@@ -5,9 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 // import "./Signup.css";
 import { clearErrors, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import { Metadata } from "../../components/layout/Metadata";
-import { Loader } from "../../components/layout/Loader";
-import axios from "axios";
+import img3 from "../../Images/GOAT_logo.png"
+
 
 export const Names = ({ formData, setForm, navigation }) => {
   const navigate = useNavigate();
@@ -18,17 +17,17 @@ export const Names = ({ formData, setForm, navigation }) => {
   );
 
   const dispatch = useDispatch();
-
-  const { username, email, password, dob, gender } = formData;
+  const{
+    username,
+    email,
+    password,
+    dob,
+    phoneno,
+  }=formData;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     navigation.next();
-    await axios.get("http://localhost:5000/api/auth/register");
-
-    const myForm = new FormData();
-
-    //  dispatch(register(myForm));
   };
   const [errorMessage, setErrorMessage] = useState("");
   const handle = (e) => {
@@ -62,21 +61,19 @@ export const Names = ({ formData, setForm, navigation }) => {
       x.type = "password";
     }
   }
-  const payment=async()=>{
-    await axios.post("http://localhost:5000/pay" ,)
 
-  }
   return (
     <>
-      {loading && <Loader />}
-
+     <div className  = {loading?"aad":"overflow"}>
       <section id="form-section">
         <div className="wel-form">
           <div className="wel-p1 img-main">
             <div className="img-main"></div>
           </div>
-          <div className="col-md-6">
-            <div className="form-content wel-bg ">
+          <div className="col-md-6 centerlogo">
+            <img className="signimg" style ={{position: "relative",
+    top:"4rem"}} src= {img3}/>
+            <div className="form-content wel-bg sign-logo">
               <h2>Hello!</h2>
               <div className="form-main">
                 <form
@@ -86,7 +83,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                   className="form-floating mb-3"
                 >
                   <div className="form-floating"></div>
-                  <div className="form-floating mb-3">
+                  <div className="form-floating mb-2">
                     <input
                       name="username"
                       value={username}
@@ -94,12 +91,11 @@ export const Names = ({ formData, setForm, navigation }) => {
                       type="text"
                       required
                       className="form-control"
-                      placeholder="Your Full Name"
                       autoComplete="off"
                     />
                     <label htmlFor="floatingInput">Name</label>
                   </div>
-                  <div className="form-floating mb-3">
+                  <div className="form-floating mb-2">
                     <input
                       onChange={setForm}
                       type="email"
@@ -107,13 +103,12 @@ export const Names = ({ formData, setForm, navigation }) => {
                       required
                       value={email}
                       className="form-control"
-                      placeholder="yourmail@mail.com"
                       autoComplete="new-password"
                     />
                     <label htmlFor="floatingInput">Email Address</label>
                   </div>
 
-                  <div className="form-floating mb-3">
+                  <div className="form-floating mb-2">
                     <input
                       value={password}
                       required
@@ -122,7 +117,6 @@ export const Names = ({ formData, setForm, navigation }) => {
                       type="password"
                       className="form-control"
                       id="myInput"
-                      placeholder="*******"
                       autoComplete="new-password"
                     />
                     {errorMessage === "" ? null : (
@@ -136,11 +130,11 @@ export const Names = ({ formData, setForm, navigation }) => {
                       </span>
                     )}
                     <i className="fa fa-eye" onClick={myFunction}></i>
-                    <label htmlFor="floatingPassword">Passwords</label>
+                    <label htmlFor="floatingPassword">Password</label>
                   </div>
 
                   <div className="form-inner fom-btn">
-                    <div className="form-floating mb-3">
+                    <div className="form-floating mb-2">
                       <input
                         onChange={setForm}
                         name="dob"
@@ -148,11 +142,11 @@ export const Names = ({ formData, setForm, navigation }) => {
                         required
                         type="date"
                         className="form-control"
-                        placeholder="dd/mm/yyyy"
                         autoComplete="new-password"
                       />
                       <label htmlFor="floatingInput">Date of Birth</label>
                     </div>
+{/* 
                     <div className="form-floating">
                       <select
                         name="gender"
@@ -161,16 +155,49 @@ export const Names = ({ formData, setForm, navigation }) => {
                         aria-label="Floating label select example"
                         value={gender}
                         autoComplete="new-password"
+                        style={{ border: "1px solid" }}
                       >
                         <option>select gender</option>
                         <option>Male</option>
                         <option>Female</option>
-                        <option>Non-binary</option>
-                        <option>Prefer not to say</option>
+                
                       </select>
                       <label htmlFor="floatingSelect">Gender (Optional)</label>
-                    </div>
+                    </div> */}
                   </div>
+                  <div className="form-inner fom-btn">
+                    <div className="form-floating mb-2">
+                      <input
+                        name="phoneno"
+                        onChange={setForm}
+                        value={phoneno} 
+                        required
+                        type="text"
+                        className="form-control"
+                        autoComplete="new-password"
+                        pattern="[0-9]{10}"
+                        aria-describedby="emailHelp"
+                      />
+                      <small id="emailHelp" className="form-text text-muted"></small>
+                      <label htmlFor="floatingInput">Phone number</label>
+                    </div>
+
+                    {/* <div className="form-floating mb-2">
+                      <input
+                        onChange={setForm}
+                        name="residientialaddress"
+                        value={residientialaddress}
+                        required
+                        type="text "
+                        className="form-control"
+                        autoComplete="new-password"
+                     
+                      />
+                      <label htmlFor="floatingInput">Residiential address</label>
+                    </div> */}
+                    
+                  </div>
+                  
                   <div className="fom-btn mb-3 mt-3">
                     <Link
                       to="/login"
@@ -180,9 +207,10 @@ export const Names = ({ formData, setForm, navigation }) => {
                       Login
                     </Link>
                     <button
-                      style={{ backgroundColor: " #10867F", color: "black" }}
+                      style={{ backgroundColor: " #f0b91b", color: "black" }}
                       disabled={errorMessage === "Password is less 8 than"}
                       type="submit"
+                      id = "loginhover"
                       className="btn btn-outline-secondary"
                     >
                       Next
@@ -200,6 +228,7 @@ export const Names = ({ formData, setForm, navigation }) => {
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 };

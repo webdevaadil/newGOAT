@@ -1,42 +1,58 @@
-
 .banner-sec {
     height: 100vh;
-    background: #000;
+    /* background: #000; */
 }
 .her0 {
     max-width: 100%;
     margin: auto;
-    background-color:#000000a6;
+    background-color:#1111113f;
 }
 
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* position: fixed; */
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1999;
+    padding: 0;
+  }
 .banner-sec {
     height: auto;
-    background-image: url("../../Images/new-hero.png");
+    /* background: url("../../Images/Randwick_V1-0030.mp4"); */
     background-position:top;
     background-repeat: no-repeat;
     background-size: auto;
     width: 100%;
     background-size:cover;
 }
+.homelogin{
+    width: 140px;
+    height: 45px;
+}
+
 .bnner-btn .signbtn{
     font-size: 18px;
     font-weight: 800;
     letter-spacing: 0px;
     color: #000000;
-    padding: 16px 33px 16px 33px;
+    padding: 15px 33px 15px 33px;
     text-transform: none;
     border-radius: 50px;
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     background: #f0b91b;
     min-width: 300px;
-    margin: 15px 0px;
+    margin: 10px 0px;
 }
 .signbtn:hover{
     background: #4AA331 !important;
 }
 .baner-ct h2 {
-    font-size: 54px;
+    font-size: 3rem;
     color: #fff;
     line-height: 64px;
     text-transform: capitalize;
@@ -53,7 +69,6 @@
     text-align: center;
 }
 .baner-ct {
-    clip-path: polygon(0 0, 81% 0, 100% 100%, 0% 100%);
     padding-right: 46px;
     padding: 50px 0px;
     text-align: center;
@@ -61,24 +76,30 @@
     margin: auto;
 }
 .baner-ct img {
-    max-width: 135px;
+    max-width: 300px;
+    min-width: 18rem;
 }
+.homelogin{
+    background-color:rgb(240, 185, 27)!important
 
+}
+.homelogin:hover{
+    background-color:#4AA331!important
+
+}
 
 /* tips css */
 .tips-main {
-    max-width: 900px;
+    max-width: 1100px;
     margin: auto;
 }
 .tips-sec {
-    background-color: #A96C28;
     padding: 40px 0px;
     text-align: center;
 }
 .tips-ct h2 {
-    font-size: 48px;
-    color: #ffffff;
-    font-weight: 800;
+    font-size: 44px;
+    font-weight: 700;
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -91,14 +112,10 @@
 .tips-ct p {
     font-size: 22px;
     font-style: normal;
-    color: #ffffff;
     margin-top: 5px;
     margin-bottom: 0rem;
 }
-.brde{
-    border-left: 1px solid #e2e2e2;
-    border-right: 1px solid #e2e2e2;
-}
+
 
 .section-title h3 {
     font-size: 48px;
@@ -113,9 +130,7 @@
     text-align: center;
 }
 
-.result-mian {
-    padding: 100px 0px 242px 0px;
-}
+
 .hor-list ul li {
     list-style: none;
     padding: 0 32px;
@@ -189,47 +204,80 @@
 
 .result {
     height: auto;
-    background-image: url("../../Images/bg-img1.png") !important;
-    background-position: left center;
+    background-image: url("../../Images/winninghorse.jpg") !important;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
+    min-height: 133vh;
+    background-position: center;
 }
 .rate-mian {
     margin: 60px 0px;
     text-align: center;
+    position: relative;
+    /* animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite; */
+    position: relative;
+    display: flex;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1pxsolidrgba(0,0,0,.125);
+    border-radius: 20px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    padding: 10px;
+    margin: 20px;
+
+
+    
 }
+
 /* tips start */
 .resut-content h3 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
     color: #03203e;
-    text-align: left;
-    margin-top: 15px;
+    text-align: center;
+    /* margin-top: 15px; */
 }
 .resut-content p {
     font-size: 18px;
     font-style: normal;
     color: #03203E;
-    margin-top: 24px;
-    text-align: left;
+    /* margin-top: 24px; */
+    text-align: center;
+}
+.resut-content{
+    margin:0px;
 }
 
 .resut-content ul li {
-    text-align: left;
+    text-align: center  ;
 }
 .resut-content span {
     color: #F0B91C;
-}
+}er-img
 .tips-mian {
     padding: 30px 0px;
+  
+  }
+  .f-card{
+    height: 750px;
+  }
+.card1{
+    height: 140px;
+    justify-content: center;
+    margin: 13px;
+    border-radius: 22px;
 }
 .card img {
     max-width: 52px !important;
 }
-.card {
+.f-card .card{
     position: relative;
     display: flex;
     flex-direction: column;
@@ -240,11 +288,11 @@
     border: 1pxsolidrgba(0,0,0,.125);
     border-radius: 20px;
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
-    padding: 10px;
-    margin: 20px;
+    padding:40px;
+    margin: 10px;
 }
 .card p {
-    font-size: 14px;
+    font-size: 18px;
     line-height: 20px;
     margin-top:10px;
 }
@@ -264,7 +312,7 @@
     text-align: center;
 }
 .reliable-cont h3 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -280,7 +328,9 @@
     padding-left: 35px;
     padding-right: 25px;
 }
-
+ul.tiip-list li {
+    font-size: 18px;
+}
 
 .relai2 {
     height: auto;
@@ -306,11 +356,15 @@
 
 /* tipping section start */
 .tipping-sec {
-    padding: 60px 0px 60px 0px;
-    background: linear-gradient(0deg, rgba(62,53,53,1) 0%, rgba(0,0,0,1) 100%);
+    background-image: url("../../Images/new-hero.png"  );
+        background-size: cover;
+        background-repeat: no-repeat;
+}
+.tipping_opacity{
+    background-color: rgba(0, 0, 0, 0.668);
 }
 .tipping-sec .section-title h3 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -318,11 +372,12 @@
     color: #fff;
 }
 .section-title h3 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
     line-height: 64px;
+    margin-top: 30px;
 }
 .section-title p {
     font-size: 18px;
@@ -359,15 +414,18 @@
     display: -ms-flexbox; 
     display: -webkit-flex;
     
-    
-
 }
 .tipping1 {
     display: flex;
     align-items: center;
     color: #fff;
-    margin: 35px 0px;
     width: 50%;
+    border-radius: 20px;
+    border: 0.5px solid #ffd9007f;
+    background:rgba(0, 0, 0, 0.61);
+    margin:20px 10px;
+    padding: 15px;
+    height: 100%;
 }
 .tipping-ct h3 {
     font-size: 40px;
@@ -400,7 +458,7 @@
     color: #ffffff;
     background: #a55947;
     border-bottom: 1px solid #e97f65;
-    padding: 8px 20px;
+    padding: 8px 10px;
     margin: 12px 0;
     border-radius: 3px;
 }
@@ -444,6 +502,7 @@ ul.tiip-list li {
 
 .tippimg-main .bnner-btn {
     text-align: center;
+    margin-top: 30px;
 }
 .tipp-img img {
     max-width: 100%;
@@ -453,15 +512,19 @@ ul.tiip-list li {
 
 /* 
 service section start */
-.Services-sec {
-    padding: 60px 0px 60px 0px;
+.Services-sec{
+    background-image: url("../../Images/serviceback.jpg");
+    background-position: center;
+    background-size: cover;
+
 }
+
 .Services-sec .section-title h3 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
-    color: #000;
+    color: #fff;
     line-height: 64px;
 }
 .service-main {
@@ -476,19 +539,25 @@ service section start */
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
-    color: #03203e;
+    color: #fff;
     line-height: 50px;
 }
 .service-ct p {
     font-size: 18px;
     font-style: normal;
-    color: #03203E;
+    color: #fff;
     line-height: 24px;
 }
 .service-img2 img {
     border-radius: 15px;
     max-width: 100%;
     height: 100%;
+}
+.ser-img{
+    display: flex;
+}
+.ser-img img{
+    margin-right: 10px;
 }
 
 
@@ -498,34 +567,50 @@ service section start */
 }
 ul.socil-link {
     list-style: none;
+    margin: auto;
+    text-align: center;
     display: flex;
-    align-items: center;
     justify-content: center;
+    padding-right: 27px;
 }
 ul.socil-link li {
-    padding: 10px;
-    font-size: 35px;
+    padding: 10px 65px;
+    margin-right: 5px;
+    font-size: 80px;
     color: #735652;
 }
+
 .foll-ct h3 {
-    font-size: 24px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
     color: #03203e;
-    line-height: 32px;
+    line-height: 44px;
 }
 
 
 /* newsletter  */
+
+.centernews{
+    display: flex;
+    justify-content: center;
+}
+
 .news-main {
-    padding: 60px 110px 60px 110px;
+    padding: 26px 10px 15px 10px;
     background: linear-gradient(0deg, rgba(62,53,53,1) 0%, rgba(0,0,0,1) 100%);
     /* border-radius: 10px; */
-    margin: 60px 0px;
+    width: 70%;
+    border-radius: 50px;
+    margin-bottom: 5rem;
 }
+
+
 .mes-cont h4 {
-    font-size: 48px;
+    font-size: 3rem;
+    padding-bottom: 13px;
+    margin-top: -3px;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -535,7 +620,7 @@ ul.socil-link li {
     font-size: 18px;
     font-style: normal;
     color: #ffffff;
-    margin-top: 16px;
+    margin-top: 12px;
     line-height: 24px;
 }
 .mesbtn input {
@@ -572,6 +657,11 @@ ul.socil-link li {
     transition: all 250ms ease-in-out;
     min-height: 55px;
 }
+
+.form-btn:hover{
+background-color: #4AA331;
+}
+
 ::-webkit-input-placeholder { /* Edge */
     color: red;
   }
@@ -586,13 +676,13 @@ ul.socil-link li {
 
 .wiinner-sec {
     background: linear-gradient(0deg, rgba(62,53,53,1) 0%, rgba(0,0,0,1) 100%);
-    padding: 70px 0px 70px 0px;
+    padding: 15px 0px 12px 0px;
     text-align: center;
     color: #fff;
 }
 .winner-main h3 {
-    font-size: 48px;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 650;
     text-transform: none;
     color: #ffffff;
     line-height: 64px;
@@ -604,7 +694,7 @@ ul.socil-link li {
     line-height: 20px;
 }
 .testimpnal-sec .section-title h3 {
-    font-size: 32px;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0px;
     text-transform: none;
@@ -615,6 +705,18 @@ ul.socil-link li {
     text-align: left;
     padding-left: 75px;
 }
+.slide{
+    background: url("../../Images/Rectangle_1370.png ") ;
+    background-position:right ;
+      background-repeat: no-repeat ;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 500px;
+      
+  }
+  
 .checked {
     color: orange;
   }
@@ -626,7 +728,7 @@ ul.socil-link li {
 }
 
 .carousel-item h3 {
-    color: #03203e;
+    color: #ffffff;
     font-size: 18px;
     text-transform: none;
     font-weight: 700;
@@ -639,14 +741,14 @@ ul.socil-link li {
     font-style: italic;
     font-weight: 600;
     max-width: 588px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 60px 0px;
 }
-.carousel-item h4:hover {
+/* .carousel-item h4:hover {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
+} */
 .carousel-item p span {
-    color: #A96E3A;
+    color: #ffffff;
     font-size: 18px !important;
     font-style: normal !important;
     font-family: "Nunito Sans",sans-serif !important;
@@ -676,6 +778,18 @@ ul.socil-link li {
     opacity: .5;
     transition: opacity .6s ease;
     border-radius: 45px !important;
+}
+.curoseldesign{
+    display: flex;
+    background-color: #000;
+    flex-direction: column;
+    width: 60%;
+    border-radius: 40px;
+}
+
+.cureseldesignparent {
+    display: flex;
+    justify-content: center;
 }
 .carousel-indicators {
     position: absolute;
@@ -719,9 +833,12 @@ ul.socil-link li {
 .tab-section .nav-tabs {
     border-bottom: none !important;
 }
-
+.mes-cont{
+    text-align: center;
+}
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    color: #495057;
+    color: #e8a600;
+
     background-color: #fff;
     border-color: none !important;
 }
@@ -734,13 +851,23 @@ ul.socil-link li {
 }
 .tab-section .nav-link {
     display: block;
+    color: #495057;
+
     padding: 0.5rem 1rem;
-    color: #e8a600;
     text-decoration: none;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
 
+
+
 /* responsive */
+@media(max-width:1200px) {
+    .banner-main {
+        height: 900px;
+    }
+}
+
+
 
 @media(max-width:1024px) {
 .baner-ct h2 {
@@ -749,6 +876,13 @@ ul.socil-link li {
     line-height: 56px;
     text-transform: capitalize;
     font-weight: 600;
+}
+.tipping1{
+    flex-direction: column;
+    justify-content: center;
+}
+.banner-main {
+    height: 840px;
 }
 }
 
@@ -760,7 +894,7 @@ ul.socil-link li {
 
     }
     .tipp{
-        flex-direction:column;
+        flex-direction:row;
     }
     .tiip-list li{
         text-align: center;
@@ -776,8 +910,9 @@ ul.socil-link li {
         display: block !important;
     }
     .banner-main{
-        /* width: 100%; */
+        width: 100%;
         margin: 0;
+        height:750px;
      }
    
     .result {
@@ -799,10 +934,38 @@ ul.socil-link li {
         text-transform: none;
         color: #ffffff;
     }
+    /* //video */
+    .video-container {
+        /* height: 300px;
+        width: 300px; */
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .video-container video {
+        /* min-width: 100%;
+        min-height: 100%; */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* transform: translateX(-50%) translateY(-50%); */
+      }
+      
+      /* Just styling the content of the div, the *magic* in the previous rules */
+      .video-container .caption {
+        z-index: 1;
+        position: relative;
+        text-align: center;
+        color: #dc0000;
+        padding: 0px;
+      }
+    /* //video */
     .her0 {
         max-width: 100%;
         margin: auto;
         padding: 0px;
+        bottom: 0;
+        z-index: 99999999999999;
     }
     .baner-ct p {
         padding-right: 0px;
@@ -814,8 +977,13 @@ ul.socil-link li {
         padding: 20px;
         text-align: center;
     } */
+    .bnner-btn .signbtn{
+        min-width: 270px;
+    }
     .baner-ct img {
         max-width: 110px;
+        min-width: 16rem;
+    
     }
     .baner-ct h2 {
         font-size: 40px;
@@ -839,10 +1007,10 @@ ul.socil-link li {
         position: relative;
     }
     .Services-sec {
-        padding: 40px 0px 40px 0px;
+        padding: 40px 0px 1px 0px;
     }
     .tipping-sec {
-        padding: 40px 0px 40px 0px;
+        /* padding: 40px 0px 40px 0px; */
     }
     .tipping-sec .section-title h3 {
         font-size: 40px;
@@ -859,6 +1027,11 @@ ul.socil-link li {
 }
 
 @media(max-width:778px) {
+    .vp{position: unset;}
+    #background-video {
+        position: unset;
+        z-index: 0;
+    }
     .return span{
         font-size:2vw;
 
@@ -877,6 +1050,7 @@ ul.socil-link li {
     }
     .her0 {
         max-width: 100%;
+        background-color: #000000a6 !important;
     }
     .logo img {
         max-width: 100px;
@@ -900,8 +1074,7 @@ ul.socil-link li {
      }
     .baner-ct {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        background: #0000004f;
-        
+        background-color: #000000a6;  
         text-align: center;
     }
     .media-banner{
@@ -922,8 +1095,10 @@ ul.socil-link li {
         padding-right: 0px;
     }
     .tips-ct {
+      
         margin: 15px;
     }
+    
     .result-mian {
         padding: 45px 0px;
     }
@@ -932,7 +1107,8 @@ ul.socil-link li {
     }
     .rate-mian p {
         font-size: 18px;
-    }   
+    } 
+ 
     .resut-content p {
         font-size: 16px;
         text-align: center;
@@ -973,7 +1149,7 @@ ul.socil-link li {
         padding-bottom: 30px;
     }
     .tipping-sec {
-        padding: 20px;
+        /* padding: 20px; */
     }
     .tipping-sec .section-title h3 {
         font-size: 40px;
@@ -998,12 +1174,12 @@ ul.socil-link li {
         text-align: center;
     }
     .Services-sec {
-        padding: 30px 0px;
+        padding: 30px 0px 0px 0px;
     }
     .testimpnal-sec .section-title {
         text-align: center;
         padding-left: 0px;
-    }
+    }    
     .carousel-item h4 {
         margin: 20px auto;
         padding: 20px 15px;
@@ -1064,6 +1240,9 @@ ul.socil-link li {
     .tipp .btn {
         width: 100% !important;
     }
+    .banner-main {
+        height: 720px !important;
+    }
   }
   @media(max-width:667px) {
     .tipping-sec .section-title h3 {
@@ -1092,12 +1271,24 @@ ul.socil-link li {
     .tips-ct h2{
         font-size: 35px;
     }
+    ul.socil-link li {
+        padding: 10px 40px;
+        margin-right: 5px;
+        font-size: 70px;
+        color: #735652;
+    }
     .section-title h3 {
         font-size: 35px;
         line-height: 44px;
     }
     .result-mian {
         padding: 0px 0px;
+    }
+    .banner-main {
+        height: 575px;
+    }
+    .baner-ct img {
+        max-width: 90px;
     }
   }
 
@@ -1107,4 +1298,108 @@ ul.socil-link li {
         justify-content: center;
         width: auto;
     }
+  }
+
+  @media(max-width:500px) {
+    .banner-main {
+        height: 623px !important ;
+    }
+    .baner-ct img {
+       min-width: 11rem;
+    }
+    .baner-ct h2 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+    .bnner-btn .signbtn {
+        padding: 9px 25px 9px 25px;
+    }
+
+    .slide{
+        background: url("../../Images/Rectangle_1370.png ") ;
+        background-position:right ;
+          background-repeat: no-repeat ;
+          background-size: cover;
+          background-position: center;
+          position: relative;
+          display: flex;
+          align-items: center;
+          height: 500px;
+          
+      }
+    
+  }
+  @media(max-width:410px) {
+    ul.socil-link {
+        list-style: none;
+        margin: auto;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        padding-right: 27px;
+        flex-direction: column;
+    }
+    ul.socil-link li{
+      font-size: 80px;
+    }
+   
+    .homelogin{
+        width: 100px;
+        height: 42px;
+    }
+
+  }
+
+
+  @media(min-width:2500px) {
+
+    .tips-sec{
+        position: relative;
+        top: 20rem;
+        right: 8rem;
+    }
+    .news-main {
+    padding: 26px 99px 28px 134px;
+    background: linear-gradient(0deg, rgba(62,53,53,1) 0%, rgba(0,0,0,1) 100%);
+    /* border-radius: 10px; */
+    width: 60%;
+    border-radius: 50px;
+}
+
+    .f-card .card {
+position: relative;
+right: 8rem;
+height: 700px;
+justify-content: center;
+
+    }
+
+    .f-card .card p{
+   font-size: 30px;
+   line-height: 34px;
+   /* margin-top: 30px; */
+            }
+  }
+
+
+
+  @media(min-width:3000px) {
+
+    .tips-sec{
+        position: relative;
+        top: 35rem;
+        right: 8rem;
+    }
+
+    .f-card .card {
+position: relative;
+right: 8rem;
+height: 800px;
+
+    }
+    .f-card .card p{
+        font-size: 35px;
+        line-height: 40px;
+        margin-top: 30px;
+                 }
   }

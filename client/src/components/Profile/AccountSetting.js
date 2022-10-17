@@ -20,7 +20,7 @@ export const AccountSetting = () => {
   const handle = (e) => {
     setdata({ ...data, [e.target.name]: e.target.value });
   };
-  console.log(data);
+  // console.log(data);
   const updatePasswordSubmit = (e) => {
     e.preventDefault();
 
@@ -42,8 +42,8 @@ export const AccountSetting = () => {
     {loading? <Loader/>:
     <>
       {isAuthenticated === true ? ( 
-    <div className="account_box_two" style={{ display: "flex" }}>
-      <form className="form-floating" onSubmit={updatePasswordSubmit} >
+    <div className="account_box_two" style={{ display: "flex",marginBottom:"24px"}}>
+      <form className="form-floating account_form" onSubmit={updatePasswordSubmit} >
         <h2 className="per_text">Change Password</h2>
         <input
           className="cuttent_pass"
@@ -64,6 +64,7 @@ export const AccountSetting = () => {
           value={data.newPassword}
           onChange={handle}
         />
+        
         <input
           className="re_pass"
           type="password"

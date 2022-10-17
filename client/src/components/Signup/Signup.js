@@ -131,7 +131,7 @@ export const Signup = () => {
                       placeholder="*******"
                     />
                     <i onClick={showPassword} className="fa fa-eye"></i>
-                    <label htmlFor="floatingPassword">Passwords</label>
+                    <label htmlFor="floatingPassword">Password</label>
                   </div>
 
              
@@ -172,6 +172,7 @@ export const Signup = () => {
                       disabled={data.dob === ""}
                       type="submit"
                       className="btn btn-outline-secondary"
+                     
                     >
                       Sign Up
                     </button>

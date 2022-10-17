@@ -5,6 +5,8 @@ import { Header } from "../Header/Header";
 import { Breadcrumb } from 'antd';
 import axios from "axios";
 import { Loader } from "../layout/Loader";
+import "../../multi/Stepform/Email.css"
+import HomeFooter from "../Footer/HomeFooter";
 
 
 export const Greydetails = ()=>{
@@ -19,7 +21,7 @@ export const Greydetails = ()=>{
 
         const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=mRCJoZmZwDhI9snrKQytAyaYBFA86KZVDFLPkYBXbWHawByMQFgspe7s0zeJeD95vZVdmaoMk9evhzGCuq80mcjgkSfQdbTBm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnF9OXc95fD23eDvAhF7wtmVRghiF34032X6xCyWzrqMkLu9JIXnQGOCkJaLaMp569JzQoN6xAOTwYcScU6dDSajx9N_XZM_k49z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
         let finaldata = await res.data.data[id]
-    console.log(finaldata)
+    // console.log(finaldata)
        setDetail([finaldata])
        
        setLoading(!loading)
@@ -36,10 +38,10 @@ export const Greydetails = ()=>{
       
       const temp = res.data.main.temp
       setTemprature(temp)
-      console.log(temprature)
+    //   console.log(temprature)
       res.data.weather.map((items,index)=>{
           setWeatherData(items.description)
-          console.log(weatherdata)
+        //   console.log(weatherdata)
  
          })
  
@@ -72,9 +74,9 @@ export const Greydetails = ()=>{
         if (min < 10) {
             min = "0" + min
         }
-        console.log(period);
+        // console.log(period);
         return `${date}    ${month}    ${year}`
-        console.log((month + "/" + date));
+        // console.log((month + "/" + date));
 
     }
 
@@ -109,11 +111,15 @@ export const Greydetails = ()=>{
             <>
                <Header/>  
       <div id="sport-sec">        
-      <Breadcrumb separator=">">
+   
+        </div>  
+        <div>
+        <div className="container-fluid details-sec">
+        <div className="container section">
+        <Breadcrumb separator=">" >
 
 <Breadcrumb.Item >
 <Link to="/Thoroughbreds" >Greyhounds</Link>
-
 </Breadcrumb.Item>
 <Breadcrumb.Item >
 <Link style={{color:"#10867F"}} to = "/thoroughbreds">
@@ -121,9 +127,6 @@ Details
 </Link>
 </Breadcrumb.Item>
 </Breadcrumb>
-        </div>  
-        <div>
-        <div className="container-fluid details-sec">
            <div className="container mt-3">
            <div className="row">
                 <div className="col-lg-12">
@@ -247,9 +250,11 @@ Details
               
             </div>
             </div>
+
+        </div>
             </div>
         </div>       
-        <Footer/> 
+        <HomeFooter/> 
             </>
         )
       }

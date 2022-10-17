@@ -20,20 +20,18 @@ export const ProfileNav = () => {
   },[])
   
   function logoutUser() {
-    const confirmdata =   window.confirm("are you sure,You Want to Logout",navigate("/Thankyou"))
-    if(confirmdata===true){
-      dispatch(logout());
-     navigate("/Thankyou")
-    }
-    else{
-      navigate("/dashboard")
-    }
+    dispatch(logout());
+    // const confirmdata =   window.confirm("are you sure,You Want to Logout")
+    // if(confirmdata===true){
+    // }
+    // else{
+    //   navigate("/dashboard")
+    // }
 
       
       
   
   }
-  console.log(user);
 
   return (
     <>
@@ -55,9 +53,9 @@ export const ProfileNav = () => {
             </Link>
           </div>
           <div className="pic2">
-            <Link to="/dashboard/payment">Payment Methods</Link>
+            <Link to="/dashboard/Package">Packages</Link>
 
-            <Link to="/dashboard/payment">
+            <Link to="/dashboard/Package">
             <img
               className="img2"
               src="/img/credit-carddfdf.png"
@@ -66,9 +64,9 @@ export const ProfileNav = () => {
             </Link>
           </div>
           <div className="pic3">
-            <Link to="/dashboard/accountsetting">Account Settings</Link>
+            <Link to="/dashboard/changepassword">Change Password</Link>
 
-<Link to="/dashboard/accountsetting">
+<Link to="/dashboard/changepassword">
             <img
               className="img2"
               src= "/img/settings.jpg"
@@ -86,7 +84,7 @@ export const ProfileNav = () => {
             />
 </Link>
           </div>
-          <div onClick={logoutUser} style={{cursor:"pointer"}} >
+          {/* <div onClick={logoutUser} style={{cursor:"pointer"}} >
           <div className="pic5">
             <p >Logout</p>
             <img
@@ -97,7 +95,7 @@ export const ProfileNav = () => {
           </div>
 
           </div>
-        
+         */}
       </div>
     </>
   );

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Loader } from "../layout/Loader";
 
 export const Records = ({ detail, loading, horseimg }) => {
+  // console.log(detail);
 
   return (
     <>
@@ -15,7 +16,7 @@ export const Records = ({ detail, loading, horseimg }) => {
           <div>
             <div className="container-fluid upcomming-sec">
               <div className="container" style={{marginBottom:"10px"}}>
-                <h3>Upcoming Races</h3>
+                <h3 style={{fontSize:"3rem"}}>Upcoming Races</h3>
                 <div className="upcomming-table">
                   <table>
                     <tr>
@@ -32,7 +33,7 @@ export const Records = ({ detail, loading, horseimg }) => {
                         / +/g,
                         "-"
                       ).toLowerCase();
-                      console.log(items);
+                      // console.log(items);
 
                       return (
                         <tr key={index}>

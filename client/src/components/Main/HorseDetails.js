@@ -6,11 +6,12 @@ import axios from "axios";
 import { Breadcrumb } from 'antd';
 import { useSelector,useDispatch } from "react-redux";
 import { Loader } from "../layout/Loader";
+import HomeFooter from "../Footer/HomeFooter";
 
 
 export const HorseDetails = ()=>{
     const { id,location} = useParams();
-   console.log(location);
+//    console.log(location);
     const [detail,setDetail] = useState([])
     const [loading,setLoading] = useState(true)
     const [weatherdata,setWeatherData]  = useState("")
@@ -19,7 +20,7 @@ export const HorseDetails = ()=>{
         
         const res = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=z8U-J-WGfUKgT7aI036ce0-LqgyvluBVYO6sl3MBidqsoxeP8zVCsBqh3KALwEXqsmH3b3AH8f2vhzGCuq80mZw5OuI2BYhEm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnM5Ekl7EwoTMsxbGD7Mk6JPN3Ls7Oyxjmrsr3ZQwRD52M_vMAqczDkXfnrBBGFFHff8VMKaSWAE-WxUrUSiQwyHxctBCURm4-9z9Jw9Md8uu&lib=MBii240CyOZU5TRkVZr_iMkwZJcFcrlZl")
         let finaldata = await res.data.data[id]
-    console.log(finaldata)
+    // console.log(finaldata)
        setDetail([finaldata])
        
        setLoading(!loading)
@@ -34,10 +35,10 @@ const [useloc, setuseloc] = useState(location)
      
      const temp = res.data.main.temp
      setTemprature(temp)
-     console.log(temprature)
+    //  console.log(temprature)
      res.data.weather.map((items,index)=>{
          setWeatherData(items.description)
-         console.log(weatherdata)
+        //  console.log(weatherdata)
 
         })
 
@@ -50,12 +51,12 @@ const [useloc, setuseloc] = useState(location)
             if(location=== "Central-Park"){
                 setuseloc(`Central Park`) 
            }
-           console.log(location);
+        //    console.log(location);
             getWeather()
           },[])
   
-      console.log(detail)
-      console.log(useloc)
+    //   console.log(detail)
+    //   console.log(useloc)
 
  const  formatDate = (date)=> {
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -76,9 +77,9 @@ const [useloc, setuseloc] = useState(location)
         if (min < 10) {
             min = "0" + min
         }
-        console.log(period);
+        // console.log(period);
         return `${date}    ${month}    ${year}`
-        console.log((month + "/" + date));
+        // console.log((month + "/" + date));
       }
 
       function getTime(date){
@@ -111,8 +112,13 @@ const [useloc, setuseloc] = useState(location)
         loading?<Loader/>:(
             <>
               <Header/>    
-      <div id="sport-sec">        
-      <Breadcrumb separator=">">
+    
+        <div>
+        <div style = {{paddingLeft:"15px"}} id="sport-sec">        
+        </div>  
+        <div className="container-fluid details-sec">
+        <div className="container section">
+      <Breadcrumb style= {{marginLeft:"15px"}} separator=">">
 
     <Breadcrumb.Item >
     <Link to="/Thoroughbreds" >Thoroughbreds</Link>
@@ -124,9 +130,6 @@ const [useloc, setuseloc] = useState(location)
  </Link>
     </Breadcrumb.Item>
   </Breadcrumb>
-        </div>  
-        <div>
-        <div className="container-fluid details-sec">
            <div className="container mt-3">
            <div  className="row">
                 <div className="col-lg-12 col-width">
@@ -263,9 +266,11 @@ const [useloc, setuseloc] = useState(location)
 
             </div>
             </div>
+
+        </div>
             </div>
         </div>        
-<Footer/>
+<HomeFooter/>
             </>
         )
      }

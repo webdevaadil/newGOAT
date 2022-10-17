@@ -159,6 +159,7 @@ color: #4E4F51;
   line-height: 24px;
   color: #03203E;
   text-decoration: none;
+  text-transform: capitalize;
 }
 .card.details-crd {
   box-shadow: 0px 0px 0px 1px rgb(248 247 247 / 3%);
@@ -186,20 +187,13 @@ p.card-text {
 
 .ant-breadcrumb {
   display: flex;
-  padding: 20px 0;
+  padding-bottom: 20px;
 }
 .ant-breadcrumb ol{
   display: flex;
   list-style: none;
-  position: absolute;
-  left:11%;
-
+  padding: 0;
 }
-.ant-breadcrumb ol li{
-padding: 5px;
-
-}
-
 
 /* Details end */
 

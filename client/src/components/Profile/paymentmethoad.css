@@ -3,8 +3,10 @@
 /************* This is box two *****/
 
 .payment_box_two{
-    width:710px;
-    height:35%; 
+    /* width:710px; */
+   max-width: 78%;
+
+    /* height:35%;  */
     background-color: #fff;
     padding: 10px;
 }
@@ -20,7 +22,7 @@
     font-family: 'Nunito Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 24px;
     letter-spacing: 0.15px;
     color: #0A0E0F;
@@ -52,16 +54,7 @@
     font-family: 'Nunito Sans', sans-serif;
    
 }
-.dob{
-    width:100%;
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 10px;
-    margin-right: 15px;
-    border: 2px solid #dee2e6!important;
-    font-family: 'Nunito Sans', sans-serif;
-    
-}
+
 .gender{
     width: 100%;
     /* height: 56px; */
@@ -124,7 +117,6 @@
     /* height: 56px; */
     border-radius: 8px;
     padding: 10px;
-    border: 2px solid #dee2e6!important;
     font-family: 'Nunito Sans', sans-serif;
     background-color: #fff;
 }

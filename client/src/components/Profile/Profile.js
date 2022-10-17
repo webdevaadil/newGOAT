@@ -35,8 +35,8 @@ export const Profile = () => {
   const [username, setName] = useState("");
   const [gender, setgender] = useState("");
   const [dob, setdob] = useState("");
-  const [avatar, setavatar] = useState({});
-  const [avatarPreview, setavatarPreview] = useState("/Profile.png");
+  const [phoneno, setphoneno] = useState("");
+  const [residientialaddress, setresidientialaddress] = useState("");
 
   const updateProfileSubmit = (e) => {
     e.preventDefault();
@@ -45,27 +45,21 @@ export const Profile = () => {
     myForm.set("username", username);
     myForm.set("gender", gender);
     myForm.set("dob", dob);
+    myForm.set("dob", dob);
+    myForm.set("phoneno", phoneno);
+    myForm.set("residientialaddress", residientialaddress);
 
-    console.log(myForm);
+    // console.log(myForm);
     dispatch(updateprofile(myForm));
   };
-  const handle = (e) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setavatarPreview(reader.result);
-        setavatar(reader.result);
-      }
-    };
 
-    reader.readAsDataURL(e.target.files[0]);
-  };
   useEffect(() => {
     if (user) {
       setgender(user.gender);
       setName(user.username);
       setdob(user.dob);
-      setavatar(user.avatar);
+      setphoneno(user.phoneno);
+      setresidientialaddress(user.residientialaddress);
     }
 
     if (error) {
@@ -82,12 +76,7 @@ export const Profile = () => {
       });
     }
   }, [dispatch, error, alert, user, isUpdated]);
-  const handleSubmit = () => {
-    const myForm = new FormData();
-    myForm.set("avatar", avatar);
 
-    dispatch(updateimage(myForm));
-  };
   function formatDate(date) {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -101,10 +90,6 @@ export const Profile = () => {
     <Navigate to={<Login />} />;
   }
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   return (
     <>
       {loading ? (
@@ -114,104 +99,100 @@ export const Profile = () => {
           <div className="profile_box_two ">
             <div className="row">
               {isAuthenticated !== true ? (
-                <Navigate to={"/login"} />
+                <Navigate to={"/"} />
               ) : (
-                <form
-                  encType="multipart/form-data"
-                  onSubmit={updateProfileSubmit}
-                  style={{
-                    justifyContent: "space-around",
-                    height: "796px",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <h2 className="pro_heading">Profile Photo</h2>
-
-                  <div
-                    className="pic_flex_box"
-                    
-                  >
-                    {/* <div style={{display: "flex",}}id="updateProfileImage"> */}
-                  
-                    <img
-                      className="profile-img"
-                      src={avatar.url}
-                      
-                      alt="Avatar Preview"
-                    />
-                    {/* <input type="file"className="profil-img"name="avatar"accept="image/*"onChange={handle}/> */}
-                    <Button
-                      variant="primary profile-btn"
-                      style={{ marginTop: "10px" }}
-                      onClick={handleShow}
-                    >
-                      uplaod image
-                    </Button>
-                    {/* </div> */}
-                  </div>
+                <>
+                  <div className="pic_flex_box">{/* </div> */}</div>
                   <h2 className="per_text">Personal Details</h2>
-                  <input
-                    onChange={(e) => setName(e.target.value)}
-                    value={username}
-                    className="name"
-                    type="text"
-                    placeholder="Full name"
-                  />
-                  <div className="input_flex_box">
-                    <input
-                      onChange={(e) => setdob(e.target.value)}
-                      value={formatDate(dob)}
-                      className="dob"
-                      placeholder="Date of Birth"
-                      type="date"
-                    />
-                    <div style={{ width: "400px" }} className="form-floating">
-                      <select
-                        name="gender"
-                        onChange={(e) => setgender(e.target.value)}
-                        className="form-select"
-                        aria-label="Floating label select example"
-                        value={gender}
-                        autoComplete="new-password"
-                      >
-                        <option> Select </option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Non-binary</option>
-                        <option>Prefer not to say</option>
-                      </select>
-                      <label htmlFor="floatingSelect">Gender (Optional)</label>
+                  <form className="form-group" onSubmit={updateProfileSubmit}>
+                    <div className="form-group">
+                      <label htmlFor="exampleInputEmail1">Name</label>
+                      <input
+                        name="name"
+                        onChange={(e) => setName(e.target.value)}
+                        value={username}
+                        className="name form-control"
+                        type="text"
+                        placeholder="Full name"
+                       
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                      />
                     </div>
-                  </div>
-                  <div className="button_flex_box">
-                    <input type="reset" value="Discard" className="dis_btn" />
-                    <input type="submit" value="Update" className="sav_btn" />
-                  </div>
-                </form>
+                    <div className="form-group">
+                      <div className="form-group">
+                        <label htmlFor="exampleInputPassword1">D.O.B</label>
+                        <input
+                         
+                          name="DoB"
+                          value={formatDate(dob)}
+                          className="name form-control"
+                          type="text"
+                          placeholder="Full name"
+                          id="exampleInputPassword1"
+                          readOnly
+                          style={{backgroundColor:"#fff"}}
+                        />
+
+                        
+                      </div>
+                      {/* <div className="form-group">
+                        
+                       
+
+                        <label htmlFor="exampleInputPassword2">Gender</label>
+                        <input
+                         
+                          name="DoB"
+                          value={gender}
+                          className="name form-control"
+                          type="text"
+                          readOnly
+                          style={{backgroundColor:"#fff"}}
+
+                          id="exampleInputPassword2"
+                          placeholder="Password"
+                        />
+                      </div> */}
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="exampleInputPassword3">Phone No</label>
+                      <input
+                        onChange={(e) => setphoneno(e.target.value)}
+                        value={phoneno}
+                        className="name form-control"
+                        type="text"
+                       
+                        id="exampleInputPassword3"
+                        placeholder="Password"
+                        pattern="[0-9]{10}"
+                      />
+                      {/* <small id="exampleInputPassword3" className="form-text text-muted">format 1234567890</small> */}
+                      
+                    </div>
+                    {/* <div className="form-group">
+                      <label htmlFor="exampleInputPassword4">
+                        Residential Address
+                      </label>
+                      <input
+                        onChange={(e) => setresidientialaddress(e.target.value)}
+                       
+                        value={residientialaddress}
+                        className="name form-control"
+                        type="text"
+                        id="exampleInputPassword4"
+                        placeholder="Password"
+                      />
+                    </div> */}
+                    <div className="button_flex_box">
+                      <input type="reset" value="Discard" className="dis_btn" />
+                      <input type="submit" value="Update" className="sav_btn" />
+                    </div>
+                  </form>
+                </>
               )}
             </div>
           </div>
-
-          <Modal style={{ height: "800px" }} show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <input
-                type="file"
-                className="profil-img"
-                name="avatar"
-                accept="image/*"
-                onChange={handle}
-              />
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="primary" onClick={handleSubmit}>
-                Save Changes
-              </Button>
-            </Modal.Footer>
-          </Modal>
         </>
       )}
     </>

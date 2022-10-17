@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./Main.css";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import Footer from "../Footer/Footer";
 
@@ -20,27 +20,57 @@ import { apidata } from "../../actions/apiAction";
 
 import img1 from "../../Images/Vector.png";
 import { Loader } from "../layout/Loader";
-import { clearErrors } from "../../actions/userAction";
+import { clearErrors, loaduser, updateprofile } from "../../actions/userAction";
+import { useAlert } from "react-alert";
+import { Login } from "../Login/Login";
+import HomeFooter from "../Footer/HomeFooter";
 
 export const Main = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const alert = useAlert();
 
   const { isAuthenticated, user, error, loading } = useSelector(
     (state) => state.user
   );
+
+  if (user) {
+    let nowdate =  Date();
+    let expiredate = user.PaymentexpireDate;
+    console.log(Date.parse(nowdate) , Date.parse(expiredate));
+    console.log();
+    if (Date.parse(nowdate) > Date.parse(expiredate)) {
+      console.log(nowdate);
+      console.log(new Date(user.PaymentexpireDate));
+      dispatch(updateprofile({ paymentstatus: "false" }));
+      navigate("/subscriptionexpire")
+    }
+  }
   useEffect(() => {
+    if (isAuthenticated === false) {
+      <Navigate to={<Login />} />;
+    }
+
+    if (user) {
+      if (user.paymentstatus === "false") {
+        navigate("/password");
+        //  console.log(user.paymentstatus);
+      }
+    }
+    dispatch(loaduser());
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
-    if(!isAuthenticated){
-      navigate("/")
+
+    if (!isAuthenticated) {
+      navigate("/login");
     }
-    
 
+    if (isAuthenticated === false) {
+      <Navigate to={<Login />} />;
+    }
   }, [error, navigate, dispatch]);
-
   const [detail, setDetail] = useState([]);
 
   const [todayrace, setTodayRace] = useState([]);
@@ -73,7 +103,7 @@ export const Main = () => {
 
     setDetail(finaldata);
 
-    const filtereddata = finaldata.filter((items, index) => {
+    finaldata.filter((items, index) => {
       items.RaceDate = new Date(items.RaceDate).toLocaleDateString();
       items.id = index;
       items.minutes = new Date(items.RaceTime).getUTCMinutes();
@@ -93,7 +123,7 @@ export const Main = () => {
       );
     });
 
-    // console.log(filterdate);
+    console.log(filterdate);
 
     setTodayRace(filterdate);
   };
@@ -116,7 +146,6 @@ export const Main = () => {
     getDogdata();
   }, []);
   const [newfetchdate, setnewfetchdate] = useState("");
-  const handli = async () => {};
 
   const indexOfLastRecord = currentPage * recordsPerPage;
 
@@ -129,8 +158,6 @@ export const Main = () => {
   // const nPages = Math.ceil(currentRecords.length);
 
   const [datenew, setdatenew] = useState("");
-
-  console.log(datenew);
 
   const handlechange = (e) => {
     e.preventDefault();
@@ -154,9 +181,6 @@ export const Main = () => {
     // e.target.reset();
     setnewfetchdate("");
   };
-  const pay=()=>{
-    axios.post("http://localhost:5000/pay")
-  }
 
   return (
     <>
@@ -165,14 +189,13 @@ export const Main = () => {
         <Loader />
       ) : (
         <>
-        <button onClick={pay}>pay</button>
-          <div className="slide">
+          <div className="slid">
             <section className="container-fluid">
               <div className="container">
                 <div className="row">
                   <div className="main-sec">
                     <div className="main-content">
-                      <h2>The Goat Tips</h2>
+                      <h2> The Goat Tips</h2>
 
                       <p>
                         The Goat Tips - Betting made easy! Your guide for sports
@@ -194,7 +217,9 @@ export const Main = () => {
           <div>
             <div className="container-fluid" id="freetip-sec">
               <div className="container section">
-                <h3 className="free-head">Today’s Free Tips</h3>
+                <h3 style={{ fontSize: "3rem" }} className="free-head">
+                  Today’s Free Tips
+                </h3>
               </div>
 
               <div className="container main-freetips">
@@ -208,7 +233,7 @@ export const Main = () => {
                         ).getUTCMinutes();
                         const inminutes = minutesprev - minutesnow;
 
-                        console.log(inminutes);
+                        // console.log(inminutes);
                         const trimlocation = items.RaceLocation.replace(
                           / +/g,
                           "-"
@@ -320,13 +345,13 @@ export const Main = () => {
                       <input
                         className="btn btn-primary"
                         style={{ margin: "10px", backgroundColor: "#10867f" }}
-                        type="submit"
-                        value={"submit"}
+                        type="Submit"
+                        value={"Submit"}
                       />
                       <input
                         className="btn btn-danger "
                         type="reset"
-                        value={"reset"}
+                        value={"Reset"}
                       />
                     </div>
                   </form>
@@ -342,7 +367,7 @@ export const Main = () => {
             setCurrentPage={setCurrentPage}
             disabledClass
           />
-          <Footer />
+          <HomeFooter/>
         </>
       )}
     </>
