@@ -147,6 +147,7 @@ color: #10867F;
     transform: rotate(-45deg);
     width: 41px;
 }
+<<<<<<< HEAD
 .card_size{
   width: 15% !important;
 }
@@ -155,6 +156,9 @@ color: #10867F;
     width: 20% !important;
   }
 }
+=======
+
+>>>>>>> 92430e0cc3af66145999627f20d3479c31b902b3
 
 @media(max-width:410px) {
   .top-btn .btn {
