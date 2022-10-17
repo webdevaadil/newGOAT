@@ -38,7 +38,9 @@ display: block;
   font-style: normal;
   width:145px;
   }
-
+  .designcard{
+    width: 20% !important;
+  }
   .navbar-expand-lg {
 	align-items: center;
   }
@@ -147,18 +149,6 @@ color: #10867F;
     transform: rotate(-45deg);
     width: 41px;
 }
-<<<<<<< HEAD
-.card_size{
-  width: 15% !important;
-}
-@media (max-width: 1200px) {
-  .card_size{
-    width: 20% !important;
-  }
-}
-=======
-
->>>>>>> 92430e0cc3af66145999627f20d3479c31b902b3
 
 @media(max-width:410px) {
   .top-btn .btn {
