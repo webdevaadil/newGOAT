@@ -1,0 +1,209 @@
+
+
+/************* This is box two *****/
+
+.payment_box_two{
+    /* width:710px; */
+   max-width: 78%;
+
+    /* height:35%;  */
+    background-color: #fff;
+    padding: 10px;
+}
+.box_three{
+    /* width: 700px;
+    height:440px; */
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 60px;
+
+}
+.payment_box_two h2{
+    font-family: 'Nunito Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #0A0E0F;
+}
+.payment_box_two li::before {
+    content: url(img/Vector-right.png);
+    font-size: 20px;
+    vertical-align: middle;
+    padding-right: 20px;
+    
+}
+.payment_box_two li{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #4E4F51;
+    font-family: 'Nunito Sans', sans-serif;
+    list-style: none;
+    padding: 7px;
+}
+.list_items{
+    padding: 0px;
+}
+.name{
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+    border: 2px solid #dee2e6!important;
+    font-family: 'Nunito Sans', sans-serif;
+   
+}
+
+.gender{
+    width: 100%;
+    /* height: 56px; */
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid #dee2e6!important;
+    font-family: 'Nunito Sans', sans-serif;
+
+}
+.dis_btn{
+    background-color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 19px 24px 18px;
+    color: #000;
+    width: 329px;
+    height: 59px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 21px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-right: 15px;
+    border: 2px solid #dee2e6!important;
+    
+}
+.sav_btn{
+    background: #10867F;
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 19px 24px 18px;
+    color: #000;
+    width: 329px;
+    height: 59px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 21px;
+    border-radius: 8px;
+    margin: 10px 0px 10px 0px;
+    border: none;
+   
+}
+.input_flex_box{
+    display: flex;
+}
+.button_flex_box{
+    display: flex;
+}
+.per_text{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #0A0E0F;
+}
+.Select_pack{
+    width: 100%;
+    /* height: 56px; */
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #fff;
+}
+.pay_detail{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #0A0E0F;
+    padding-top: 10px;
+}
+.card_name{
+    width: 100%;
+    /* height: 56px; */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-right: 15px;
+    border: 2px solid #dee2e6!important;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.card_number{
+    width: 100%;
+    /* height: 56px; */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-right: 15px;
+    border: 2px solid #dee2e6!important;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.exp{
+    width: 100%;
+    /* height: 56px; */
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid #dee2e6!important;
+    margin-right: 10px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.cvc{
+    width:100%;
+    /* height: 56px; */
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid #dee2e6!important;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.btn-save{
+    width: 100%;
+    /* height: 59px; */
+    padding: 19px 24px 18px;
+    background: #10867F;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    size: 16px;
+    letter-spacing: 0.15px;
+    margin-top: 10px;
+    border: none;
+
+}
+@media screen and (max-width:968px) {
+    .box_one{
+        width: 35%;
+    }
+    .payment_box_two{
+        margin-top: 20px;
+        width: 97%;
+    }
+}
+@media screen and (max-width: 768px) {
+  
+    .box_one{
+        height: auto;
+        width: 100%;
+      }
+    .payment_box_two{
+      width: 100%;
+      height: 25%;
+      margin-top: 20px;
+    }
+    .box_three{
+        margin-top: 70px;
+    }
+}

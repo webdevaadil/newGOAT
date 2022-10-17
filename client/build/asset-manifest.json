@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.eb7cb24e.css",
+    "main.js": "/static/js/main.c8bf90fd.js",
+    "static/media/Randwick_V1-0030.mp4": "/static/media/Randwick_V1-0030.74e5499d1d1f6c4f54bc.mp4",
+    "static/media/races.png": "/static/media/races.2d2b1d166cfe7cc25e65.png",
+    "static/media/serviceback.jpg": "/static/media/serviceback.50a28288e00a2437e8cf.jpg",
+    "static/media/winninghorse.jpg": "/static/media/winninghorse.12b7d26dbe15cbde93f0.jpg",
+    "static/media/welcome-img.png": "/static/media/welcome-img.730d45b670db6320db5f.png",
+    "static/media/goat-slide.png": "/static/media/goat-slide.bb7c60208a75bf8b1844.png",
+    "static/media/new-hero.png": "/static/media/new-hero.74182cca71d519874a66.png",
+    "static/media/Rectangle_1370.png": "/static/media/Rectangle_1370.b0cdf491c8aa0936d92a.png",
+    "static/media/Horse-Racing.jpg": "/static/media/Horse-Racing.03aa3ae4124b5d6c36d9.jpg",
+    "static/media/Greyhound-Racing.jpg": "/static/media/Greyhound-Racing.fe5611e4c1ae4697c7b6.jpg",
+    "static/media/races22": "/static/media/races22.74e84a4ca0e9a2ec3180",
+    "static/media/platinum.png": "/static/media/platinum.241528af65c71a171326.png",
+    "static/media/gold.png": "/static/media/gold.272437247b78223b29f2.png",
+    "static/media/silver.png": "/static/media/silver.145bdee2a93cc974a27b.png",
+    "static/media/bronze.png": "/static/media/bronze.3b135785c6c3cfe437c3.png",
+    "static/media/name3.png": "/static/media/name3.b92d8d55cb2487bee07b.png",
+    "static/media/name4.png": "/static/media/name4.04f76895b61145a43103.png",
+    "static/media/name1.png": "/static/media/name1.252733ca2722e1b6fe6c.png",
+    "static/media/name2.png": "/static/media/name2.3b309166f60787892728.png",
+    "static/media/level.png": "/static/media/level.c6db7c86a0b1cd54f6f3.png",
+    "static/media/GOAT_logo.png": "/static/media/GOAT_logo.741c1771da5f374a1c08.png",
+    "index.html": "/index.html",
+    "main.eb7cb24e.css.map": "/static/css/main.eb7cb24e.css.map",
+    "main.c8bf90fd.js.map": "/static/js/main.c8bf90fd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb7cb24e.css",
+    "static/js/main.c8bf90fd.js"
+  ]
+}

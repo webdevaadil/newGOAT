@@ -1,0 +1,50 @@
+Hi Aman
+How's it all going at your end? Is the Paypal integration working ok?
+I've outlined some feedback on the site below - please let me know if you need more clarification on it
+
+General:
+
+- Is it possible to have a secure connection established, e.g. https://;
+- Ensure there is a consistent copyright and disclaimer statement across all pages;
+
+Landing Page (http://thegoatstips.com.au ):
+[done]- Tips counter takes too long to get to 6000 - can this be sped up so as the final number is achieved in 3 seconds?
+
+[not possible]- The tips sent number should be 6753 - is it possible to apply logic so as this is increased by a random number between 200 and 1000 every day?
+[done]- The middle box should say "Strike Rate" instead of "Tips Sent"
+[done]- Remove the bronze banner and make each counter (Tips send, strike rate and satisfied clients) seperate small tile.`
+[video_not_available]- We will have the drone footage playing a 5 seccond video loop of a racetrack in the background at the top of the page (in lieu of the current photo) - can you please create the logic for this?
+[done]- Add 'Sign In' button at top right corner of page;
+[done]- Packages section - the packages need to be placed on black tiles with rounded corners, opacity like the top of the landing page, with photo background;
+[done]- Logo with 'Services Provided' information placed at left, with text to flow. Agree
+[done]- Testimonials are tiled black with rounded corners, opacity, with photo background and different font text. Yeap, we need to change that photo too and make it full size so no white border
+  Trial:
+[confuse]- Logo font for headings? No idea
+[pending]- Is it possible for the 'Reliable results' information (Win strike rate, Average winning odds, Top 2 place rate) should moving across screen from right to left;
+[DONE]- Link to privacy disclaimer and copyright page at bottom of first page (© The GOATs Sports Tips Pty Ltd. All Rights Reserved 2022.)
+
+Login Page (http://thegoatstips.com.au/login):
+
+[done]- Medal water mark to be replaced with a GOATs medal with logo;
+
+Member's Arena (http://thegoatstips.com.au/main):
+
+- Add "Log In" button in top right corner of landing page;
+[done]- Add "Log Out" button in top right corner across all pages required to be signed for;
+[pending]- Add "Keep Me Signed In" option
+[done]- The 'Home' button should be linked to the main page of the member login site https://thegoatstips.com.au/main (not https://thegoatstips.com.au/);
+[done]- 'Sports' button to be renamed "Subscriptions"?
+[done]- 'Sports' button to automatically drop down when hovered over it; Agree
+[done]- 'Sports' selection menu text only first characters capitalised; Agree
+[pending]- The 'login' and 'signup' buttons flicker in the top right corner when pages are selected - remove this;
+[pending]- Word font and sizing consistency across all pages required;
+
+Profile page
+
+[done]- Remove profile pic functionality;
+[done]- Cannot update date of birth once signed up (however it is still displayed);
+[done]- Cannot update gender once signed up (however it is still displayed);
+[done]- Can update mailing and residiential address;
+[done]- Can update or add phone number;
+[done]- Can update or add subscription on payment page;
+- Change password page formatting messy - please fix

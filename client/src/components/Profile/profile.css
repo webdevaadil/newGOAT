@@ -1,0 +1,476 @@
+
+/******************* this is box two ******************/
+/* .flexbox{
+    display: flex;
+    margin: 150px 0;
+} */
+.profile-sec {
+    max-width: 75% !important;
+    margin: 75px auto !important;
+    margin-bottom: 0;
+    width: 100%;
+}
+.main-body {
+    /* margin-top: 100px !important; */
+}
+.profil-main {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-gap: 40px;
+}
+
+.profile_box_two{
+    background-color: #fff;
+   max-width: 78%;
+    padding: 17px;
+
+}
+.pro_heading{
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'Nunito Sans', sans-serif;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #0A0E0F;
+
+}
+.pro_pic{
+    margin-top: 15px;
+    width: 100%;
+    height: auto;
+}
+.big_btn{
+    border: 2px solid #10867F;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px 110px 15px 110px;
+    width: 100%;
+    color: #10867F;
+    font-family: 'Nunito Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;   
+    margin: 0px 15px 0px 15px;
+}
+
+.per_text{
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'Nunito Sans', sans-serif;
+    letter-spacing: 0.15px;
+    color: #0A0E0F;;
+    padding: 25px 0px 5px 0px;
+}
+.pic_flex_box {
+    display: grid;
+}
+.profile-btn {
+    width: 67%;
+}
+
+.name{
+    width: 100%;
+    /* height: 56px; */
+    border-radius: 8px;
+    padding: 10px;
+    /* border: 2px solid #000!important; */
+   
+}
+.dob{
+    width: 100%;
+    /* height: 56px; */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 2px solid #000!important;
+    
+}
+.gender{
+    width: 100%;
+    /* height: 56px; */
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid #000!important;
+    background-color: #fff;
+
+}
+.dis_btn{
+    background-color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 19px 24px 18px;
+    color: #000;
+    width: 40%;
+    /* height: 59px; */
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 21px;
+    border-radius: 8px;
+    margin: 10px 15px 10px 0px;
+    border: 2px solid #000!important;
+    
+}
+.sav_btn{
+    background: #10867F;
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 19px 24px 18px;
+    color: #fff;
+    width: 100%;
+    /* height: 59px; */
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 21px;
+    border-radius: 8px;
+    margin: 10px 0px 10px 0px;
+    border: none;
+    
+   
+}
+.input_flex_box {
+    margin: 10px 0;
+    display: flex;
+    grid-gap: 10px;
+}
+.button_flex_box{
+    display: flex;
+    justify-content: center;
+}
+.pro-form  .input_flex_box {
+    display: flex;
+    grid-gap: 20px;
+}
+
+/* profle css */
+img.profile-img {
+    width: 50%;
+    border-radius: 8px;
+}
+.profile-btn .btn-profile-btn{
+    border: 1px solid #000;
+    background-color: #fff;
+    color: #10867F;
+    padding: 0px;
+}
+.profileimg-btn {
+    width: 100%;
+    text-align: center;
+    border: 2px solid #10867F;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #10867F;
+    padding: 0px;
+}
+button.btn.btn-profile-btn {
+    color: #10867F;
+    text-transform: capitalize;
+}
+.profile-grid {
+    display: flex;
+    align-items: center;
+    grid-gap: 20px;
+}
+.form-select:focus {
+    border-color: #ddd;
+    outline: 0;
+    box-shadow: none;
+}
+
+
+
+/******** Thank You Page css ********/
+
+
+
+
+/* .wrapper-1{
+    width:100%;
+    height:100vh;
+    display: flex;
+  flex-direction: column;
+  } */
+  .wrapper-2{
+    padding :30px;
+    text-align:center;
+  }
+  h1{
+      font-family: 'Kaushan Script', cursive;
+    font-size:4em;
+    letter-spacing:3px;
+    color:#022c7a ;
+    margin:0;
+    margin-bottom:20px;
+  }
+  .wrapper-2 p{
+    margin:0;
+    font-size:1.3em;
+    color:#aaa;
+    font-family: 'Source Sans Pro', sans-serif;
+    letter-spacing:1px;
+  }
+  .go-home{
+    color:#fff;
+    background:#10867F;
+    border:none;
+    padding:10px 50px;
+    margin:30px 0;
+    border-radius:30px;
+    text-transform:capitalize;
+    box-shadow: 0 10px 16px 1px rgba(174, 199, 251, 1);
+  }
+  .footer-like{
+    margin-top: auto; 
+    background:#D7E6FE;
+    padding:6px;
+    text-align:center;
+  }
+  .footer-like p{
+    margin:0;
+    padding:4px;
+    color: #10867F;
+    font-family: 'Source Sans Pro', sans-serif;
+    letter-spacing:1px;
+  }
+  .footer-like p a{
+    text-decoration:none;
+    color:#5892FF;
+    font-weight:600;
+  }
+  
+  @media (min-width:360px){
+    h1{
+      font-size:4.5em;
+    }
+    .go-home{
+      margin-bottom:20px;
+    }
+  }
+  
+  @media (min-width:600px){
+    .content{
+    max-width:1000px;
+    margin:0 auto;
+  }
+    .wrapper-1{
+    height: initial;
+    max-width:620px;
+    margin:0 auto;
+    margin-top:50px;
+    box-shadow: 4px 8px 40px 8px rgba(88, 146, 255, 0.2);
+  }
+    
+  }
+
+
+
+
+@media screen and (max-width: 982px) {
+    .big_btn{
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .pic_flex_box{
+        flex-wrap: wrap;
+    }
+    .big_btn{
+        margin-left: 0px;
+        margin-top: 10px;
+}  
+.profile_box_two {
+    background-color: #fff;   
+    padding: 17px;
+}
+
+}
+
+@media screen and (max-width:992px) { 
+    .pro_pic{
+        width: 50%;
+    }
+    .profile_box_two{
+        width:100%;
+    }
+    .box_one{
+        width: 100%;
+    }
+    .big_btn{
+        width: 52%;
+    }
+    .profile-sec {
+        max-width: 80% !important;
+    }
+    p.text_content {
+        text-align: left;
+    }
+    .flexbox {
+        display: grid;
+        grid-template-columns: 30% 100%;
+        width: 100%;
+        column-gap: 35px;
+    }
+    .profile-img {
+        width: 50%;
+    }
+    .input_flex_box {
+        display: flex;
+        grid-gap: 10px;
+        flex-direction: column;
+    }
+    /* .fom-btn {
+        flex-direction: column;
+    }
+    .fom-btn .btn {
+        width: 100%;
+    } */
+}
+
+
+@media screen and (max-width:778px) {
+.big_btn{
+    padding: 10px 0px 10px 10px;
+}
+.profile_box_two {
+    max-width: 100%;
+}
+.pic_flex_box {
+    display: grid;
+    justify-content: center;
+}
+.profile-btn {
+    width: 100%;
+}
+img.profile-img {
+    max-width: 100%;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.input_flex_box {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 15px;
+}
+.form-floating {
+    width: 100% !important;
+}
+.button_flex_box {
+    display: flex;
+    flex-direction: column;
+}
+.account_box_two {
+    width: 100% !important;
+}
+.new_pass , .re_pass , .cuttent_pass{
+    width: 100%  !important;
+    margin: 10px 0px !important;
+}
+.account_box_two {
+    height: auto;
+}
+.about_box_two, .boxx {
+    width: 100%;
+}
+.about_box_two, .boxx {
+    width: 100% !important;
+}
+.about_box_two {
+    margin-top:0px;
+    padding: 10px;
+}
+p.text_content {
+    text-align: center;
+}
+.pro_heading {
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 5px;
+}
+.profile_box_two {
+    max-width: 100% !important;
+}
+.payment_box_two h2 {
+    text-align: center;
+}
+img.profile-img {
+    max-width: 50%;
+}
+.profil-main {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 40px;
+    padding: 10px;
+}
+.profile-sec {
+    width: 100%;
+}
+.per_text {
+    text-align: center;
+}
+img.profile-img {
+    max-width: 100%;
+}
+.profile-grid {
+    flex-direction: column;
+}
+}
+
+@media screen and (max-width:668px) {
+    
+    .flexbox {
+        display: flex;
+        grid-template-columns: 100%;
+        width: 100%;
+        column-gap: 35px;
+        flex-direction: column;
+        padding: 20px;
+    }
+    .profile-sec {
+        max-width: 100% !important;
+    }
+    .profile_box_one {
+        margin-top: 30px;
+    }
+    .pro_heading {
+        font-size: 24px;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    .per_text , .profile_box_one  {
+        text-align: center;
+    }
+   
+   
+    }
+ 
+    @media screen and (min-width:1440px) {
+    
+        .profile-sec {
+           height: 80vh;
+        }
+       
+        }
+
+    
+@media screen and (min-width:2500px) {
+    
+    .profile-sec {
+       height: 70vh;
+    }
+   
+    }
+
+
+
+    @media screen and (min-width:1900px) {
+    
+        .profile-sec {
+           height: 80vh;
+        }
+       
+        }

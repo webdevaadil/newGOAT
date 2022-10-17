@@ -1,0 +1,329 @@
+
+/* racesup-sec css start */
+.raceup-sec {
+    background: #F3F7F8;
+    padding: 20px;
+  }
+  .raceup-sec .upcomming-table {
+    padding-top: 1rem;
+  }
+  .raceup-sec th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .raceup-sec tr:nth-child(even){
+    background-color: #FAFCFF;
+  }
+  
+  .raceup-sec .upcomming-table tr:first-child {
+    border-radius: 4px !important;
+  }
+  .raceup-sec th.first-border {
+    border-start-start-radius: 17px !important;
+    background: #000;
+  }
+  .raceup-sec th.first-border2 {
+    border-start-end-radius: 20px
+  }
+  .raceup-sec .upcomming-table th {
+    color: #fff;
+    padding: 14px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #FFFFFF;
+    background-color: #000;
+  }
+  .raceup-sec .upcomming-table button.btn {
+    background: #16446F;
+    color: #fff;
+    border-radius: 24px;
+    padding: 5px 21px;
+  }
+  .raceup-sec .upcomming-table .btn-2 {
+    background: #287D1A !important;
+  }
+  .raceup-sec .upcomming-table td:nth-child(3) {
+    color: #10867F;
+  }
+  .raceup-sec .upcomming-table td {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0.25px;
+    color: #0A0E0F;
+    padding: 15px;
+  }
+  .raceup-sec table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: none;
+    box-shadow: 0px 0px 0px 1px rgb(0 0 0 / 16%);
+    border-radius: 16px !important;
+  }
+  .raceup-sec h3.free-title {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    color: #0A0E0F;
+  }
+  li.nav-item {
+    text-transform: uppercase;
+    margin: 0px 10px;
+  }
+  .upraces-img img {
+    height: 392px;
+    width: 100%;
+    object-fit: revert;
+    background-size: cover;
+  }
+  /* racesup css end  */
+
+
+
+/* Details strat */
+.details-sec {
+  background: #F4F7F8;
+  padding: 2rem 0px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  
+}
+.details-sec .row{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  /* width: 1440px !important;
+  margin: auto; */
+}
+
+.details-sec .btn {
+  background: #16446F;
+  color: #fff;
+  border-radius: 24px;
+  padding: 5px 21px;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.detail-date , .detail-time  p {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: #03203E;
+}
+.detail-mt{
+  font-family: 'DM Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+color: #4E4F51;
+}
+.det-cont {
+  align-items: baseline;
+  text-align: left;
+}
+.detisl-bg img {
+  width: 100%;
+}
+.det-des.mt-4 h3 {
+  color: #03203E;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 3.875rem;
+}
+.card-body a {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #03203E;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+.card.details-crd {
+  box-shadow: 0px 0px 0px 1px rgb(248 247 247 / 3%);
+  border-radius: 16px;
+  margin-bottom: 2.25rem;
+  background: #fff;
+}
+p.card-text {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #03203E;
+  text-align: justify;
+  letter-spacing: 0.25px;
+}
+.card-text {
+  padding-top: 1rem;
+}
+.right-cln {
+  padding-left: 25px;
+}
+
+
+.ant-breadcrumb {
+  display: flex;
+  padding-bottom: 20px;
+}
+.ant-breadcrumb ol{
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+/* Details end */
+
+/* Throughbreds page css  start*/
+.Throug-img{
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.18) 60%),url("../../Images/Rectangle_1370.png");
+  background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height:auto;
+    border-radius: 22px;
+    min-height: 400px;
+}
+/* Throughbreds page css end*/
+
+
+
+  @media (max-width: 1200px) {
+    .tip-grid {
+      grid-gap: 10px;
+  }
+  .tip-grid button.btn {
+    padding: 5px 13px;
+  }
+  .space {
+    gap: 10px;
+  }
+  .upcomming-table th {
+    padding: 10px;
+    font-size: 16px;
+    line-height: 13px;    
+}
+.footer-ct {
+  grid-template-columns: repeat(3,1fr);
+  text-align: left;
+}
+  }
+  
+  
+  @media (max-width: 992px) {
+    .main-sec {
+      width: 80%;
+      padding-top: 0px;
+  } 
+    .main-freetips {
+      display: flex;
+      width: 100% !important;
+      gap: 25px;
+      padding-top: 20px;
+      flex-direction: column;
+  }
+  .main_1 {
+    width: 100%;
+  }
+  .main_cont {
+    padding: 2rem 2rem;
+  }
+  .tip-grid {
+    justify-content: space-evenly;
+  }
+  }
+  
+  @media (max-width:778px) {
+    .upraces-img img {
+      height: auto;
+      width: 100%;
+  }
+ 
+  }
+
+  @media (max-width:668px) {
+  .raceup-sec .upcomming-table th {
+    overflow-wrap: break-word;
+  }
+  .raceup-sec .upcomming-table td {
+    font-family: 'Nunito Sans';
+    font-size: 10px;
+    line-height: 16px;
+    padding: 15px;
+    text-align: center;
+}
+.raceup-sec .upcomming-table th {
+  padding: 10px;
+  font-size: 9px;
+  line-height: 16px;
+  letter-spacing: 0.15px;
+  text-align: center;
+}
+.footer-ct {
+  grid-template-columns: repeat(1,1fr);
+  text-align: center;
+}
+.main_cont h3 {
+  font-size: 30px;
+  line-height: 42px;
+}
+  }
+
+
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
