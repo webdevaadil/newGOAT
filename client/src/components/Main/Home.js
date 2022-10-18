@@ -395,7 +395,7 @@ const Home = () => {
 
           <div className="tips-sec">
             <div className="tips-main">
-              <div className="sec2flex">
+              <div className="sec2flex container">
                 <div className="col-md-2 card card1 sec2num">
                   <div className="tips-ct ">
                     <h2>
@@ -417,7 +417,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="col-md-2 card card1 sec2num">
-                  <div style={{ marginTop: "11px" }} className="tips-ct">
+                  <div  className="tips-ct">
                     <h2>
                       {" "}
                       <Count start={0} end={56} duration={10} delay={0} />%
@@ -426,7 +426,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="col-md-2 card card1 sec2num">
-                  <div style={{ marginTop: "11px" }} className="tips-ct">
+                  <div  className="tips-ct">
                     <h2>
                       {" "}
                       <Count start={0} end={400} duration={6} delay={0} />+

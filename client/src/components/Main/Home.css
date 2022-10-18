@@ -274,6 +274,10 @@
 
 
 }
+.sec2num{
+    
+    padding: 35px 0 !important;
+}
 
 
 /* tips start */
@@ -1232,6 +1236,16 @@ ul.socil-link li {
         max-width: 100%;
 
     }
+    .sec2num{
+    
+        padding: 15px 0 !important;
+    }
+    .sec2num h2{
+    
+       font-size: 40px;
+    }
+    
+    
 }
 
 @media(max-width:778px) {
