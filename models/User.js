@@ -52,7 +52,10 @@ const userSchema = new mongoose.Schema({
   },
   PaymentexpireDate:{
     type:Date
-  }
+  },
+  customer_id: {
+    type: String
+  },
 });
 
 userSchema.pre("save", async function (next) {

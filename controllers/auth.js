@@ -6,6 +6,7 @@ const catchAsyncerror = require("../middleware/catchAsyncerror");
 const jwt = require("jsonwebtoken");
 var cloudinary = require("cloudinary").v2;
 const emailValidator = require("deep-email-validator");
+const Stripe = require("../payment/stripe");
 const { expressjwt } = require("express-jwt");
 const { CLIENT_ID, APP_SECRET } = process.env;
 async function generateAccessToken() {
@@ -116,6 +117,8 @@ exports.register = catchAsyncerror(async (req, res, next) => {
         return res.status(500).json("user already registered");
       }
       else {
+
+        let customer_id = await Stripe.CreateCustomer(email, username, "1184 sector-B indore");
         const user = await User.create({
           username,
           email,
@@ -124,6 +127,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
           packages,
           paymentstatus: req.body.paymentstatus || "false",
           phoneno,
+          customer_id
         });
         const order = await createOrder();
         console.log(order.id,'hfghdf')
@@ -135,6 +139,73 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     console.log(error.message);
   }
 });
+
+exports.buyStripePaymentSubscription = async (req, res) => {
+
+  let data = req.body;
+  let amount_pass_to_stripe=data.amount;
+  let currency = data.currency
+    
+    const user = await User.findById(data.id);
+    try {
+      if(user.customer_id){
+        customer = user.customer_id;
+        console.log(customer);
+      }else {
+        customer = await Stripe.CreateCustomer(user.email, data.name, data.address);
+        console.log(customer);
+      }
+    } catch (error) {
+      return res.status(500).send(err);
+    }
+
+    try {
+
+      charged = await Stripe.CreatePayment(amount_pass_to_stripe, currency, req.user.email, customer);
+    } catch (err) {
+      
+      return res.status(500).send(err);
+    }
+
+    try {
+      const paymentConfirm = await Stripe.PaymentConfirm(charged);
+      console.log(paymentConfirm.id);
+      res.status(200).send(paymentConfirm);
+    } catch (err) {
+      return res.status(500).send(err);
+    }
+     
+}
+
+exports.validateStripePayment = async (req, res) => {
+  try {
+    let data = req.body;
+    
+    if (!data.stripe_payment_id) {
+      throw globalCalls.badRequestError("Please pass valid payment id.");
+    }
+
+      const paymentIntent =  await Stripe.retrievePaymentIntent(data.stripe_payment_id);
+      console.log(paymentIntent);
+      // check payment status rozarpay end
+      if (paymentIntent.status == 'requires_payment_method') {
+        throw globalCalls.badRequestError("Your payment was not successful, please try again.");
+      } else if(paymentIntent.status == 'processing'){
+        throw globalCalls.badRequestError("Your payment is processing.");
+      }else if (paymentIntent.status == 'succeeded') {
+        // if(resultRazorpay.data.status=='authorized')
+        // {
+          responseData.is_pay_done_payment_status = true;
+          return globalCalls.okResponse(res, responseData, "");
+        } else {
+          throw globalCalls.badRequestError("Error! Please contact support.");
+        }
+  }
+  catch (error) {
+    throw globalCalls.badRequestError(error.message)
+  }
+}
+
 exports.pay = catchAsyncerror(async (req, res, next) => {
   try {
     // console.log(req.body);

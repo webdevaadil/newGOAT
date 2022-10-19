@@ -44,7 +44,7 @@
     "redis": "^4.2.0",
     "redis-session": "^0.1.0",
     "redis-sessions": "^3.0.0",
-    "stripe": "^10.0.0",
+    "stripe": "^10.14.0",
     "styled-components": "^5.3.5",
     "uuid": "^8.3.2",
     "validator": "^13.7.0"
