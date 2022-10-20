@@ -267,16 +267,20 @@
 
 .sec2flex {
     display: flex !important;
-    width: 100%;
+    
     flex-direction: row !important;
-    justify-content: space-evenly;
+    
+    justify-content: center;
+    
 
 
 
 }
 .sec2num{
+    margin: 30px 20px !important;
+    padding: 30px 0 !important;
     
-    padding: 35px 0 !important;
+    
 }
 
 
@@ -1548,8 +1552,17 @@ ul.socil-link li {
         font-size: 35px;
 
     }
+    .baner-ct img{
+        margin-top: 1cm;
+    }
 }
-
+@media(max-width:700px){
+    .result{
+        background: url("../../Images/winninghorsemga.jpg") !important;
+        background-repeat: no-repeat !important;
+        background-size: cover;
+    }
+}
 @media(max-width:667px) {
     .tipping-sec .section-title h3 {
         font-size: 35px;
@@ -1613,6 +1626,11 @@ ul.socil-link li {
         width: 60vw !important;
         padding: 10px !important;
     }
+    /* .result{
+        background-size: cover;
+
+      
+    } */
 }
 
 @media(max-width:1082px) {
@@ -1629,13 +1647,20 @@ ul.socil-link li {
     }
 
     .baner-ct img {
+        margin-top: 1cm;
         min-width: 11rem;
     }
 
-    .baner-ct h2 {
-        font-size: 26px;
-        line-height: 30px;
-    }
+    /* .baner-ct h2 {
+        font-size: 23px;
+        line-height: 23px;
+    } */
+    /* .baner-ct p {
+        font-size: 15px;
+        line-height: 18px;
+       
+    } */
+
 
     .bnner-btn .signbtn {
         padding: 9px 25px 9px 25px;
@@ -1653,6 +1678,13 @@ ul.socil-link li {
         height: 500px;
 
     }
+    .result{
+        background: url("../../Images/winninghorsemga.jpg") !important;
+        background-repeat: no-repeat !important;
+        background-size: cover;
+        background-position: 10% 0 !important;
+    }
+
 
 }
 
@@ -1682,9 +1714,7 @@ ul.socil-link li {
 @media(min-width:2500px) {
 
     .tips-sec {
-        position: relative;
-        top: 20rem;
-        right: 8rem;
+    margin-top: 90px;
     }
 
     .news-main {
@@ -1715,9 +1745,7 @@ ul.socil-link li {
 @media(min-width:3000px) {
 
     .tips-sec {
-        position: relative;
-        top: 35rem;
-        right: 8rem;
+       margin-top: 200px;
     }
 
     .f-card .card {
