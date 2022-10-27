@@ -28,7 +28,7 @@
     "cors": "^2.8.5",
     "deep-email-validator": "^0.1.21",
     "dotenv": "^16.0.1",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
     "express-jwt": "^7.7.5",
     "express-session": "^1.17.3",
@@ -44,7 +44,7 @@
     "redis": "^4.2.0",
     "redis-session": "^0.1.0",
     "redis-sessions": "^3.0.0",
-    "stripe": "^10.0.0",
+    "stripe": "^10.15.0",
     "styled-components": "^5.3.5",
     "uuid": "^8.3.2",
     "validator": "^13.7.0"

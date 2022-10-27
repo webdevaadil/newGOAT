@@ -15,6 +15,9 @@ const {
   registerrtest,
   pay,
   paym,
+  buyStripePaymentSubscription,
+  validateStripePayment
+
 } = require("../controllers/auth");
 router.route("/register").post(register);
 router.route("/pay").post(pay);
@@ -29,5 +32,8 @@ router.route("/logout").get(logout);
 router.route("/update/password").put(isAuthuser, updatePassword);
 router.route("/update/profilepic").put(isAuthuser, profilepic);
 router.route("/update/profile").put(isAuthuser, updateProfile);
+// 
+
+
 
 module.exports = router;

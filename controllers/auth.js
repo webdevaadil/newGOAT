@@ -20,8 +20,10 @@ async function generateAccessToken() {
   const data = await response.json();
   return data.access_token;
 }
-async function isEmailValid(email) {
-  return emailValidator.validate(email);
+async function isEmailValid(email)
+ {
+  return emailValidator.validate(email)
+;
 }
 async function capturePayment(orderId) {
   const accessToken = await generateAccessToken();
@@ -51,10 +53,10 @@ async function createOrder(amount) {
         {
           amount: {
             currency_code: "AUD",
-            value: amount,
+            value:amount,
           },
-          ship: {
-            name: "aadil"
+          ship:{
+            name:"aadil"
           }
         },
       ],
@@ -65,64 +67,69 @@ async function createOrder(amount) {
 }
 exports.register = catchAsyncerror(async (req, res, next) => {
 
-  console.log(req.body)
-  let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ''))
-  let year = new Date(req.body.dob).getUTCFullYear()
-  let month = new Date(req.body.dob).getUTCMonth()
-  let day = new Date(req.body.dob).getUTCDate()
-  let birthDate = year * 10000 + month * 100 + day * 1
+let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ''))
+let year = new Date(req.body.dob).getUTCFullYear()
+let month = new Date(req.body.dob).getUTCMonth()
+let day = new Date(req.body.dob).getUTCDate()
+let birthDate = year * 10000 + month * 100 + day * 1
 
-  const {
+  const{
     username,
     email,
     password,
     dob,
+    gender,
     packages,
-    phoneno
-} = req.body;
+    paymentstatus,phoneno,residientialaddress
+  } = req.body;
 
-
-  if (now - birthDate < 180000) {
-    return res.status(400).json("Only 18+ Person Can Register Here")
-  }
+  
+if(now-birthDate<180000){
+  return res.status(400).json("Only 18+ Person Can Register Here")
+}
   if (
     !username ||
     !email ||
     !password ||
     !dob ||
-    !packages || 
-    !phoneno
+    !gender||
+    !packages||!phoneno||!residientialaddress
 
   ) {
     return res.status(400).json("plese fill all input ");
   }
-  if (packages === "free") {
-    paymentstatus = "true"
+  if(packages==="free"){
+    paymentstatus="true"
   }
-  if (password.length < 8) {
-    return res.status(400).json("password must be 8 character long");
+if (password.length < 8) {
+  return res.status(400).json("password must be 8 character long");
   }
   try {
     User.findOne({ email }, async (err, user) => {
-      const { valid, reason, validators } = await isEmailValid(email);
+      const { valid, reason, validators } = await isEmailValid(email)
+;
       // console.log(validators);
-
+      
       if (!valid) {
         return res
-          .status(500)
-          .json("email is invalid please enter a valid email");
+        .status(500)
+        .json("email is invalid please enter a valid email");
       } else if (user) {
         return res.status(500).json("user already registered");
-      }
+      } 
       else {
         const user = await User.create({
           username,
           email,
           password,
           dob,
+          gender,
           packages,
-          paymentstatus: req.body.paymentstatus || "false",
+          paymentstatus:req.body.paymentstatus||"false",
           phoneno,
+          residientialaddress
+
+          
         });
 
         sendToken(user, 201, res);
@@ -133,17 +140,19 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     console.log(error.message);
   }
 });
+
 exports.pay = catchAsyncerror(async (req, res, next) => {
-  try {
-    // console.log(req.body);
-    let amount = req.body.packages.slice(1, 3)
-    const order = await createOrder(amount);
-    // console.log(order);
-    res.json(order);
-  } catch (error) {
-    console.log(error);
-  }
+ try {
+  // console.log(req.body);
+  let amount=req.body.packages.slice(1,3)
+   const order = await createOrder(amount);
+  // console.log(order);
+  res.json(order);
+ } catch (error) {
+  console.log(error);
+ }
 });
+
 exports.ordercapture = catchAsyncerror(async (req, res, next) => {
   // console.log(req.body);
   // console.log(req.params);
@@ -158,31 +167,32 @@ exports.ordercapture = catchAsyncerror(async (req, res, next) => {
   }
   next();
 });
-// exports.paym = catchAsyncerror(async (req, res) => {
-//   const newUserData = {
-//     paymentstatus: true,
-//   };
 
-// await User.findByIdAndUpdate(req.user.id, newUserData, {
-//   new: true,
-//   runValidators: true,
-//   useFindAndModify: false,
-// });
-// res.status(200).json({
-//   success: "updated",
-// });
-// });
+exports.paym = catchAsyncerror(async (req, res) => {
+  const newUserData = {
+    paymentstatus: true,
+  };
+
+  await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+  res.status(200).json({
+    success: "updated",
+  });
+});
 
 exports.login = catchAsyncerror(async (req, res, next) => {
   const { email, password } = req.body;
-
+  
   try {
     if (!email ||
-      !password
+      !password 
     ) {
       return res.status(400).json("plese fill all input ");
     }
-
+    
     const user = await User.findOne({ email }).select("+password");
     if (!user) {
       return res.status(500).json("invalid credentials user not found");
@@ -205,10 +215,10 @@ exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   if (!token) {
     return res.status(401).json({ message: "plese login to access this resource" })
   }
-  else {
+  else{
     const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decodedData.id);
-    next();
+  req.user = await User.findById(decodedData.id);
+  next();
   }
 });
 exports.dashboard = catchAsyncerror(async (req, res, next) => {
@@ -245,12 +255,12 @@ exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
   // console.log(req.body);
   const isPasswordMatched = await user.matchPassword(req.body.oldPassword);
-  if (req.body.newPassword.length < 8) {
-    return res.status(400).json({ message: "password must be 8 character long" });
-  }
-  if (req.body.confirmPassword.length < 8) {
-    return res.status(400).json({ message: "password must be 8 character long" });
-  }
+  if (req.body.newPassword .length < 8) {
+    return res.status(400).json({message: "password must be 8 character long"});
+    }
+  if (req.body.confirmPassword .length < 8) {
+    return res.status(400).json({message: "password must be 8 character long"});
+    }
   if (!isPasswordMatched) {
     return res.status(400).json({ message: "Old password is incorrect" });
   }
@@ -272,12 +282,12 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     dob: req.body.dob,
     gender: req.body.gender,
     packages: req.body.packages,
-    paymentstatus: req.body.paymentstatus,
-    paymentDate: req.body.paymentDate,
-    PaymentexpireDate: req.body.PaymentexpireDate,
-    phoneno: req.body.phoneno,
-    residientialaddress: req.body.residientialaddress
-
+    paymentstatus:req.body.paymentstatus,
+    paymentDate:req.body.paymentDate,
+    PaymentexpireDate:req.body.PaymentexpireDate,
+    phoneno:req.body.phoneno,
+    residientialaddress:req.body.residientialaddress
+    
   };
   // console.log(req.body);
 

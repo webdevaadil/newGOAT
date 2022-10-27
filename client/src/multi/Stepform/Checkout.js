@@ -33,7 +33,8 @@ export const Checkout = () => {
   const date = new Date();
   date.setDate(date.getDate() + 6);
 
-  const updatepro = () => {
+  const updatepro = (e) => {
+    e.preventDefault()
     dispatch(
       updateprofile({
         paymentstatus: "true",
@@ -42,6 +43,7 @@ export const Checkout = () => {
         PaymentexpireDate: date,
       })
     );
+    navigate("/The-Goat-Tips")
   };
 
   const options = [

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6e7062b2.css",
-    "main.js": "/static/js/main.cacce3d4.js",
+    "main.js": "/static/js/main.479dd7e6.js",
     "static/media/Randwick_V1-0030.mp4": "/static/media/Randwick_V1-0030.74e5499d1d1f6c4f54bc.mp4",
     "static/media/races.png": "/static/media/races.2d2b1d166cfe7cc25e65.png",
     "static/media/serviceback.jpg": "/static/media/serviceback.50a28288e00a2437e8cf.jpg",
@@ -26,10 +26,10 @@
     "static/media/GOAT_logo.png": "/static/media/GOAT_logo.741c1771da5f374a1c08.png",
     "index.html": "/index.html",
     "main.6e7062b2.css.map": "/static/css/main.6e7062b2.css.map",
-    "main.cacce3d4.js.map": "/static/js/main.cacce3d4.js.map"
+    "main.479dd7e6.js.map": "/static/js/main.479dd7e6.js.map"
   },
   "entrypoints": [
     "static/css/main.6e7062b2.css",
-    "static/js/main.cacce3d4.js"
+    "static/js/main.479dd7e6.js"
   ]
 }
