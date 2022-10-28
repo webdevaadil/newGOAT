@@ -1,3 +1,6 @@
 .box-about{
     width: 710px;
 }
+.pro_heading1ul li {
+    list-style: lower-alpha;
+}
