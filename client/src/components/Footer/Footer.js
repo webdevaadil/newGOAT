@@ -22,10 +22,10 @@ const Footer = () => {
             <div className="foot_1">
               <h4>Group 2</h4>
               <ul>
-              <Link to="/privacy-policy">
+              <Link to="/terms-and-conditions">
                   <li onClick={()=>{ window.scrollBy(100, 0);}}>Terms & Conditions</li>
                 </Link>
-                <Link to="/privacy-policy">
+                <Link to="/terms-and-conditions">
                   <li>Privacy Policy</li>
                 </Link>
                 

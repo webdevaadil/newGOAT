@@ -220,7 +220,7 @@ export const Names = ({ formData, setForm, navigation }) => {
               </div>
               <p>
                 By signing up, I agree to the{" "}
-                <Link to="/privacy-policy">
+                <Link to="/terms-and-conditions">
                   <span>Terms and conditions and Privacy policy</span>
                 </Link>
               </p>

@@ -29,6 +29,10 @@ body{
     
 
 }
+.profile_box_two{
+    height: 90vh;
+    overflow: scroll;
+}
 
 .title {
     text-align: left;

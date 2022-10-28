@@ -9,13 +9,13 @@ import img4 from "../../Images/name3.png";
 import img5 from "../../Images/name4.png";
 import { PayPalButton } from 'react-paypal-button-v2';
 import axios from 'axios';
-import { Link, useNavigate,useParams} from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import { updateprofile } from '../../actions/userAction';
 
 
 export const Checkout = () => {
-  const {tips}  = useParams();
+  const { tips } = useParams();
   const navigate = useNavigate();
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -139,7 +139,7 @@ export const Checkout = () => {
   };
   return (
     <>
-      {loading && <Loader/>}
+      {loading && <Loader />}
 
       <section id="form-section">
         <div className="container-fluid">
@@ -162,10 +162,10 @@ export const Checkout = () => {
                           options={options}
                           styles={customStyles}
                           value={options.filter(function (option) {
-                          return option.value === packages;
+                            return option.value === packages;
                           })}
                           onChange={handle}
-                          // defaultValue={user.packages}
+                        // defaultValue={user.packages}
                         />
                       </div>
 
@@ -181,69 +181,69 @@ export const Checkout = () => {
                             ) : (
                               <>
 
-{
-  isAuthenticated?
-  <PayPalButton
-  createOrder={async (data, actions) => {
-    return await fetch("/api/auth/pay", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        packages: packages,
-      }),
-      // use the "body" param to optionally pass additional order information
-      // like product ids or amount
-    })
-      .then((response) => response.json())
-      .then((order) => order.id)
+                                {
+                                  isAuthenticated ?
+                                    <PayPalButton
+                                      createOrder={async (data, actions) => {
+                                        return await fetch("/api/auth/pay", {
+                                          method: "post",
+                                          headers: {
+                                            "Content-Type": "application/json",
+                                          },
+                                          body: JSON.stringify({
+                                            packages: packages,
+                                          }),
+                                          // use the "body" param to optionally pass additional order information
+                                          // like product ids or amount
+                                        })
+                                          .then((response) => response.json())
+                                          .then((order) => order.id)
 
-      .catch((err) => {
-        console.log(err);
-      });
-  }}
-  ///////////////////////
-  onApprove={async (data, actions) => {
-    console.log(data);
+                                          .catch((err) => {
+                                            console.log(err);
+                                          });
+                                      }}
+                                      ///////////////////////
+                                      onApprove={async (data, actions) => {
+                                        console.log(data);
 
-    return await axios
-      .post(
-        `/api/auth/order/${data.orderID}/capture`,
-        {}
-      )
-      .then((response) => response)
-      .then((orderData) => {
-        settest(orderData);
-        // Successful capture! For dev/demo purposes:
-        console.log(
-          "Capture result",
-          orderData
-        );
-      })
-      .then((orderData) =>
-        console.log(orderData)
-      )
-      .then(updatepro())
-      .then(navigate("/The-Goat-Tips"))
-      .catch((err) => {
-        console.log(err);
-      });
-  }}
-  catchError={(err, data) => {
-    // alert("Transaction completed by " + details.payer.name.given_name);
-    console.log(err);
+                                        return await axios
+                                          .post(
+                                            `/api/auth/order/${data.orderID}/capture`,
+                                            {}
+                                          )
+                                          .then((response) => response)
+                                          .then((orderData) => {
+                                            settest(orderData);
+                                            // Successful capture! For dev/demo purposes:
+                                            console.log(
+                                              "Capture result",
+                                              orderData
+                                            );
+                                          })
+                                          .then((orderData) =>
+                                            console.log(orderData)
+                                          )
+                                          .then(updatepro())
+                                          .then(navigate("/The-Goat-Tips"))
+                                          .catch((err) => {
+                                            console.log(err);
+                                          });
+                                      }}
+                                      catchError={(err, data) => {
+                                        // alert("Transaction completed by " + details.payer.name.given_name);
+                                        console.log(err);
 
-    // OPTIONAL: Call your server to save the transaction
-  }}
-/>:
-    (
-           <ul style = {{flexDirection:"row",justifyContent:"center",marginTop:"1rem"}} className="navbar-nav top-btn ml-auto">
-           <button onClick={()=>navigate(`/newlogin/${tips}`)} style={{width:"90%",marginBottom:"7px"}} className='btn btn-1'>Login</button>
-            <Link to="/signup"><button style = {{width:"160%"}} className='btn btn-2'>Signup</button></Link>
-         </ul>
-          )
-}
+                                        // OPTIONAL: Call your server to save the transaction
+                                      }}
+                                    /> :
+                                    (
+                                      <ul style={{ flexDirection: "row", justifyContent: "center", marginTop: "1rem" }} className="navbar-nav top-btn ml-auto">
+                                        <button onClick={() => navigate(`/newlogin/${tips}`)} style={{ width: "90%", marginBottom: "7px" }} className='btn btn-1'>Login</button>
+                                        <Link to="/signup"><button style={{ width: "160%" }} className='btn btn-2'>Signup</button></Link>
+                                      </ul>
+                                    )
+                                }
                               </>
                             )}
                           </div>
@@ -251,13 +251,13 @@ export const Checkout = () => {
                       </div>
                     </form>
                   </div>
-                  <Link to="/privacy-policy">
+                  <Link to="/terms-and-conditions">
 
-<p style = {{textAlign:"center"}}>
-  By signing up, I agree to the{" "}
-  <span>Terms and conditions and Privacy policy</span>
-</p>
- </Link>
+                    <p style={{ textAlign: "center" }}>
+                      By purchasing, you confirm that you are over 18 years old and agree to our terms and conditions.{" "}
+                      <span>Terms and conditions and Privacy policy</span>
+                    </p>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -265,5 +265,5 @@ export const Checkout = () => {
         </div>
       </section>
     </>
-    )
+  )
 }

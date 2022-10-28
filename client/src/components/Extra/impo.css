@@ -4,3 +4,17 @@
 .pro_heading1ul li {
     list-style: lower-alpha;
 }
+.pro_heading{
+    text-align: center;
+}
+.term_general ul li{
+list-style: lower-alpha;
+
+
+}
+.term_general ul li ul li{
+    list-style: lower-roman;
+}
+.term_general span{
+    font-weight: 600;
+}

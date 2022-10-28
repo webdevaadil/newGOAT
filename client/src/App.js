@@ -52,7 +52,7 @@ function App() {
             <Route path="changepassword" element={<AccountSetting />} />
             <Route path="about" element={<About />} />
           </Route>
-          <Route path="/privacy-policy" element={<Aboutus />} />
+          <Route path="/terms-and-conditions" element={<Aboutus />} />
           <Route path="/packages" element={<Package />} />
           <Route path="/pac" element={<Multilf />} />
           <Route path="/thankyou" element={<Thankyou />} />

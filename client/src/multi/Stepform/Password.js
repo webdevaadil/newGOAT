@@ -281,7 +281,7 @@ export const Paypa = () => {
                       </div>
                     </form>
                   </div>
-                   <Link to="/privacy-policy">
+                   <Link to="/terms-and-conditions">
 
                   <p style = {{textAlign:"center"}}>
                     By signing up, I agree to the{" "}
