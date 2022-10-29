@@ -24,6 +24,7 @@ import { Paymentexpirepage } from "./components/Extra/Paymentexpirepage";
 import { Aboutus } from "./components/Extra/About";
 import { Checkout } from "./multi/Stepform/Checkout";
 import { NewLogin } from "./components/Login/NewLogin";
+import StripeWrapper from "./StripeWrapper";
 
 function App() {
   "use strict";
@@ -33,37 +34,40 @@ function App() {
   return (
     <>
       <Metadata title="The Goat Tips" />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route index path="/The-Goat-Tips" element={<Main />} />
-          <Route path="/signup" element={<Multilf />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/thoroughbreds" element={<Thoroughbreds />} />
-          <Route path="/greyhounds" element={<Greyhounds />} />
-          <Route
-            path="/horsedetails/:id/:location"
-            element={<HorseDetails />}
-          />
-          <Route path="/greydetails/:id/:location" element={<Greydetails />} />
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="" element={<Profile />} />
-            <Route path="Package" element={<PaymentMethoad />} />
-            <Route path="changepassword" element={<AccountSetting />} />
-            <Route path="about" element={<About />} />
-          </Route>
-          <Route path="/terms-and-conditions" element={<Aboutus />} />
-          <Route path="/packages" element={<Package />} />
-          <Route path="/pac" element={<Multilf />} />
-          <Route path="/thankyou" element={<Thankyou />} />
-          <Route path="/password" element={<Paypa/>} />
-          <Route path="/subscriptionexpire" element={<Paymentexpirepage />} />
-          <Route path="/checkout/:tips" element={<Checkout/>} />
-          <Route path="/newlogin/:tips" element={<NewLogin/>} />
-
-
-        </Routes>
-      </BrowserRouter>
+      <StripeWrapper>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route index path="/The-Goat-Tips" element={<Main />} />
+            <Route path="/signup" element={<Multilf />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/thoroughbreds" element={<Thoroughbreds />} />
+            <Route path="/greyhounds" element={<Greyhounds />} />
+            <Route
+              path="/horsedetails/:id/:location"
+              element={<HorseDetails />}
+            />
+            <Route
+              path="/greydetails/:id/:location"
+              element={<Greydetails />}
+            />
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route path="" element={<Profile />} />
+              <Route path="Package" element={<PaymentMethoad />} />
+              <Route path="changepassword" element={<AccountSetting />} />
+              <Route path="about" element={<About />} />
+            </Route>
+            <Route path="/terms-and-conditions" element={<Aboutus />} />
+            <Route path="/packages" element={<Package />} />
+            <Route path="/pac" element={<Multilf />} />
+            <Route path="/thankyou" element={<Thankyou />} />
+            <Route path="/password" element={<Paypa />} />
+            <Route path="/subscriptionexpire" element={<Paymentexpirepage />} />
+            <Route path="/checkout/:tips" element={<Checkout />} />
+            <Route path="/newlogin/:tips" element={<NewLogin />} />
+          </Routes>
+        </BrowserRouter>
+      </StripeWrapper>
     </>
   );
 }
@@ -71,15 +75,12 @@ function App() {
 export default App;
 export function ProtectedRoute(props) {
   const { user, isAuthenticated } = useSelector((state) => state.user);
-  
 
   if (isAuthenticated === "false") {
     return <Navigate to="/" />;
   } else {
     return props.children;
   }
-    
-  
 }
 export function Paymentroute(props) {
   const { user } = useSelector((state) => state.user);

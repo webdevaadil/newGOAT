@@ -251,13 +251,13 @@ export const Checkout = () => {
                       </div>
                     </form>
                   </div>
-                  <Link to="/terms-and-conditions">
 
                     <p style={{ textAlign: "center" }}>
                       By purchasing, you confirm that you are over 18 years old and agree to our terms and conditions.{" "}
-                      <span>Terms and conditions and Privacy policy</span>
-                    </p>
+                  <Link to="/terms-and-conditions">
+                      <span style={{textDecoration:"underline"}}>Terms and Conditions</span>
                   </Link>
+                    </p>
                 </div>
               </div>
             </div>

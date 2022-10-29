@@ -6,6 +6,7 @@ const catchAsyncerror = require("../middleware/catchAsyncerror");
 const jwt = require("jsonwebtoken");
 var cloudinary = require("cloudinary").v2;
 const emailValidator = require("deep-email-validator");
+const Stripe = require("../payment/stripe");
 const { expressjwt } = require("express-jwt");
 const { CLIENT_ID, APP_SECRET } = process.env;
 async function generateAccessToken() {
@@ -20,118 +21,117 @@ async function generateAccessToken() {
   const data = await response.json();
   return data.access_token;
 }
-async function isEmailValid(email)
- {
-  return emailValidator.validate(email)
-;
+async function isEmailValid(email) {
+  return emailValidator.validate(email);
 }
-async function capturePayment(orderId) {
-  const accessToken = await generateAccessToken();
-  const url = `${base}/v2/checkout/orders/${orderId}/capture`;
-  const response = await fetch(url, {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-  const data = await response.json();
-  return data;
-}
-async function createOrder(amount) {
-  const accessToken = await generateAccessToken();
-  const url = `${base}/v2/checkout/orders`;
-  const response = await fetch(url, {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-    body: JSON.stringify({
-      intent: "CAPTURE",
-      purchase_units: [
-        {
-          amount: {
-            currency_code: "AUD",
-            value:amount,
-          },
-          ship:{
-            name:"aadil"
-          }
-        },
-      ],
-    }),
-  });
-  const data = await response.json();
-  return data;
-}
+// async function capturePayment(orderId) {
+//   const accessToken = await generateAccessToken();
+//   const url = `${base}/v2/checkout/orders/${orderId}/capture`;
+//   const response = await fetch(url, {
+//     method: "post",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${accessToken}`,
+//     },
+//   });
+//   const data = await response.json();
+//   return data;
+// }
+// async function createOrder(amount) {
+//   const accessToken = await generateAccessToken();
+//   const url = `${base}/v2/checkout/orders`;
+//   const response = await fetch(url, {
+//     method: "post",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${accessToken}`,
+//     },
+//     body: JSON.stringify({
+//       intent: "CAPTURE",
+//       purchase_units: [
+//         {
+//           amount: {
+//             currency_code: "AUD",
+//             value: amount,
+//           },
+//           ship: {
+//             name: "aadil"
+//           }
+//         },
+//       ],
+//     }),
+//   });
+//   const data = await response.json();
+//   return data;
+// }
 exports.register = catchAsyncerror(async (req, res, next) => {
 
-let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ''))
-let year = new Date(req.body.dob).getUTCFullYear()
-let month = new Date(req.body.dob).getUTCMonth()
-let day = new Date(req.body.dob).getUTCDate()
-let birthDate = year * 10000 + month * 100 + day * 1
+  console.log(req.body)
+  let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ''))
+  let year = new Date(req.body.dob).getUTCFullYear()
+  let month = new Date(req.body.dob).getUTCMonth()
+  let day = new Date(req.body.dob).getUTCDate()
+  let birthDate = year * 10000 + month * 100 + day * 1
 
-  const{
+  const {
     username,
     email,
     password,
     dob,
-    gender,
     packages,
-    paymentstatus,phoneno,residientialaddress
-  } = req.body;
+    phoneno
+} = req.body;
 
-  
-if(now-birthDate<180000){
-  return res.status(400).json("Only 18+ Person Can Register Here")
-}
+
+  if (now - birthDate < 180000) {
+    return res.status(400).json("Only 18+ Person Can Register Here")
+  }
   if (
     !username ||
     !email ||
     !password ||
     !dob ||
-    !gender||
-    !packages||!phoneno||!residientialaddress
+    !packages || 
+    !phoneno
 
   ) {
     return res.status(400).json("plese fill all input ");
   }
-  if(packages==="free"){
-    paymentstatus="true"
+  if (packages === "free") {
+    paymentstatus = "true"
   }
-if (password.length < 8) {
-  return res.status(400).json("password must be 8 character long");
+  if (password.length < 8) {
+    return res.status(400).json("password must be 8 character long");
   }
   try {
+   
     User.findOne({ email }, async (err, user) => {
-      const { valid, reason, validators } = await isEmailValid(email)
-;
+      const { valid, reason, validators } = await isEmailValid(email);
       // console.log(validators);
-      
+
       if (!valid) {
         return res
-        .status(500)
-        .json("email is invalid please enter a valid email");
+          .status(500)
+          .json("email is invalid please enter a valid email");
       } else if (user) {
         return res.status(500).json("user already registered");
-      } 
+      }
       else {
+
+        let customer_id = await Stripe.CreateCustomer(email, username, "1184 sector-B indore");
+        console.log(customer_id);
         const user = await User.create({
           username,
           email,
           password,
           dob,
-          gender,
           packages,
-          paymentstatus:req.body.paymentstatus||"false",
+          paymentstatus: req.body.paymentstatus || "false",
           phoneno,
-          residientialaddress
-
-          
+          customer_id
         });
-
+        // const order = await createOrder();
+        // console.log(order.id,'hfghdf')
         sendToken(user, 201, res);
       }
       return
@@ -141,18 +141,90 @@ if (password.length < 8) {
   }
 });
 
-exports.pay = catchAsyncerror(async (req, res, next) => {
- try {
-  // console.log(req.body);
-  let amount=req.body.packages.slice(1,3)
-   const order = await createOrder(amount);
-  // console.log(order);
-  res.json(order);
- } catch (error) {
-  console.log(error);
- }
-});
+exports.buyStripePaymentSubscription = async (req, res) => {
 
+  let data = req;
+  // console.log(data);
+  let amount_pass_to_stripe=data.amount;
+  const currency = "AUD";
+  let charged;
+  // console.log(req.user);
+    
+    const user = await User.findById("635d2f5dd998ceb823dbc5b6");
+    console.log(user);
+    
+    try {
+      if(user.customer_id){
+        customer = user.customer_id;
+        console.log(customer);
+       
+      }else {
+        customer = await Stripe.CreateCustomer(user.email, data.name, data.address);
+        console.log(customer);
+      }
+    } catch (err) {
+      return res.status(500).send(err);
+    }
+
+    try {
+      console.log('hfg');
+      charged = await Stripe.CreatePayment('100', currency, user.email, customer);
+     
+    } catch (err) {
+      
+      return res.status(500).send(err);
+    }
+    console.log(charged);
+    try {
+      const paymentConfirm = await Stripe.PaymentConfirm(charged);
+      console.log(paymentConfirm.id,"sdsd");
+      res.status(200).send(paymentConfirm);
+    } catch (err) {
+      return res.status(500).send(err);
+    }
+     
+}
+
+exports.validateStripePayment = async (req, res) => {
+  try {
+    let data = req.body;
+    
+    if (!data.stripe_payment_id) {
+      throw globalCalls.badRequestError("Please pass valid payment id.");
+    }
+
+      const paymentIntent =  await Stripe.retrievePaymentIntent(data.stripe_payment_id);
+      console.log(paymentIntent);
+      // check payment status rozarpay end
+      if (paymentIntent.status == 'requires_payment_method') {
+        throw globalCalls.badRequestError("Your payment was not successful, please try again.");
+      } else if(paymentIntent.status == 'processing'){
+        throw globalCalls.badRequestError("Your payment is processing.");
+      }else if (paymentIntent.status == 'succeeded') {
+        // if(resultRazorpay.data.status=='authorized')
+        // {
+          responseData.is_pay_done_payment_status = true;
+          return globalCalls.okResponse(res, responseData, "");
+        } else {
+          throw globalCalls.badRequestError("Error! Please contact support.");
+        }
+  }
+  catch (error) {
+    throw globalCalls.badRequestError(error.message)
+  }
+}
+
+exports.pay = catchAsyncerror(async (req, res, next) => {
+  try {
+    // console.log(req.body);
+    let amount = req.body.packages.slice(1, 3)
+    // const order = await createOrder(amount);
+    // console.log(order);
+    res.json(order);
+  } catch (error) {
+    console.log(error);
+  }
+});
 exports.ordercapture = catchAsyncerror(async (req, res, next) => {
   // console.log(req.body);
   // console.log(req.params);
@@ -167,32 +239,99 @@ exports.ordercapture = catchAsyncerror(async (req, res, next) => {
   }
   next();
 });
+// exports.paym = catchAsyncerror(async (req, res) => {
+//   const newUserData = {
+//     paymentstatus: true,
+//   };
 
-exports.paym = catchAsyncerror(async (req, res) => {
-  const newUserData = {
-    paymentstatus: true,
-  };
+// await User.findByIdAndUpdate(req.user.id, newUserData, {
+//   new: true,
+//   runValidators: true,
+//   useFindAndModify: false,
+// });
+// res.status(200).json({
+//   success: "updated",
+// });
+// });
 
-  await User.findByIdAndUpdate(req.user.id, newUserData, {
-    new: true,
-    runValidators: true,
-    useFindAndModify: false,
-  });
-  res.status(200).json({
-    success: "updated",
-  });
+exports.order = catchAsyncerror(async (req, res, next) => {
+  // const order = await createOrder();
+  console.log(order.id)
+  res.json(order);
 });
+
+exports.captureorder = catchAsyncerror(async (req, res, next) => {
+  const { orderID } = req.params;
+  const captureData = await capturePayment(orderID);
+  // TODO: store payment information such as the transaction ID
+  res.json(captureData);
+});
+
+// use the orders api to create an order
+// async function createOrder() {
+//   const accessToken = await generateAccessToken();
+//   const url = `${base}/v2/checkout/orders`;
+//   const response = await fetch(url, {
+//     method: "post",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${accessToken}`,
+//     },
+//     body: JSON.stringify({
+//       intent: "CAPTURE",
+//       purchase_units: [
+//         {
+//           amount: {
+//             currency_code: "USD",
+//             value: "100.00",
+//           },
+//         },
+//       ],
+//     }),
+//   });
+//   const data = await response.json();
+//   return data;
+// }
+
+// use the orders api to capture payment for an order
+async function capturePayment(orderId) {
+  const accessToken = await generateAccessToken();
+  const url = `${base}/v2/checkout/orders/${orderId}/capture`;
+  const response = await fetch(url, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  const data = await response.json();
+  return data;
+}
+
+// generate an access token using client id and app secret
+async function generateAccessToken() {
+  const auth = Buffer.from(CLIENT_ID + ":" + APP_SECRET).toString("base64")
+  const response = await fetch(`${base}/v1/oauth2/token`, {
+    method: "post",
+    body: "grant_type=client_credentials",
+    headers: {
+      Authorization: `Basic ${auth}`,
+    },
+  });
+  const data = await response.json();
+  return data.access_token;
+}
 
 exports.login = catchAsyncerror(async (req, res, next) => {
   const { email, password } = req.body;
-  
+
   try {
     if (!email ||
-      !password 
+      !password
     ) {
       return res.status(400).json("plese fill all input ");
     }
-    
+
     const user = await User.findOne({ email }).select("+password");
     if (!user) {
       return res.status(500).json("invalid credentials user not found");
@@ -215,10 +354,10 @@ exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   if (!token) {
     return res.status(401).json({ message: "plese login to access this resource" })
   }
-  else{
+  else {
     const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-  req.user = await User.findById(decodedData.id);
-  next();
+    req.user = await User.findById(decodedData.id);
+    next();
   }
 });
 exports.dashboard = catchAsyncerror(async (req, res, next) => {
@@ -255,12 +394,12 @@ exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
   // console.log(req.body);
   const isPasswordMatched = await user.matchPassword(req.body.oldPassword);
-  if (req.body.newPassword .length < 8) {
-    return res.status(400).json({message: "password must be 8 character long"});
-    }
-  if (req.body.confirmPassword .length < 8) {
-    return res.status(400).json({message: "password must be 8 character long"});
-    }
+  if (req.body.newPassword.length < 8) {
+    return res.status(400).json({ message: "password must be 8 character long" });
+  }
+  if (req.body.confirmPassword.length < 8) {
+    return res.status(400).json({ message: "password must be 8 character long" });
+  }
   if (!isPasswordMatched) {
     return res.status(400).json({ message: "Old password is incorrect" });
   }
@@ -282,12 +421,12 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     dob: req.body.dob,
     gender: req.body.gender,
     packages: req.body.packages,
-    paymentstatus:req.body.paymentstatus,
-    paymentDate:req.body.paymentDate,
-    PaymentexpireDate:req.body.PaymentexpireDate,
-    phoneno:req.body.phoneno,
-    residientialaddress:req.body.residientialaddress
-    
+    paymentstatus: req.body.paymentstatus,
+    paymentDate: req.body.paymentDate,
+    PaymentexpireDate: req.body.PaymentexpireDate,
+    phoneno: req.body.phoneno,
+    residientialaddress: req.body.residientialaddress
+
   };
   // console.log(req.body);
 
