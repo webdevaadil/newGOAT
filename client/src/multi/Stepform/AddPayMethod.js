@@ -109,7 +109,7 @@ export default function AddPayMethod({}) {
         .then((resp) => {
             axios 
             .post(
-              "http://localhost:5000/api/auth/paymentmethodattached",
+              "/api/auth/paymentmethodattached",
               {
                 user:user._id,
                 paymentMethod: resp.paymentMethod,

@@ -239,7 +239,7 @@ export const Paypa = () => {
   const pay = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/auth/paymentcreate", {
+      .post("/api/auth/paymentcreate", {
         user,
         cardoptionselect,
         packages,
@@ -259,7 +259,7 @@ export const Paypa = () => {
   };
   async function getPaymentMethods() {
     await axios
-      .post(`http://localhost:5000/api/auth/paymentMethodcardlist`, {
+      .post(`/api/auth/paymentMethodcardlist`, {
         user: user,
       })
       .then((resp) => {
