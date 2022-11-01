@@ -80,7 +80,7 @@ const GetCardList = async (customerId)=> {
 }
 
 
-const addCard = async (customerId, paymentMethod)=> {
+async function addCard({customerId, paymentMethod}){
 
   const paymentMethodAttach = await stripe.paymentMethods.attach(paymentMethod.id, {
     customer: customerId,

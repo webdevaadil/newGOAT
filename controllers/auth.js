@@ -262,7 +262,7 @@ exports.login = catchAsyncerror(async (req, res, next) => {
 });
 exports.isAuthuser = catchAsyncerror(async (req, res, next) => {
   const { token } = req.cookies;
-  // console.log(token);rs
+  // console.log(token);
   if (!token) {
     return res
       .status(401)
@@ -282,8 +282,8 @@ exports.dashboard = catchAsyncerror(async (req, res, next) => {
 
   const user = await User.findById(req.user.id);
 
- let bankdata =  await Stripe.GetCardList(user.customer_id);
- console.log(bankdata);
+//  let bankdata =  await Stripe.GetCardList(user.customer_id);
+//  console.log(bankdata);
 
   res.status(200).json({
     sucess: true,
@@ -446,9 +446,6 @@ exports.buyStripePaymentSubscription = async (req, res) => {
   try {
     console.log("hfg");
 
-    const attchCard = await Stripe.addCard(
-      customer,data.paymentMethod
-    );
     
     charged = await Stripe.CreatePayment(
       amount,

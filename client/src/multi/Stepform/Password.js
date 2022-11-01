@@ -23,6 +23,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
 import AddPayMethod from "./AddPayMethod";
+import ListPaymentMethods from "./ListPaymentMethods";
 export const Paypa = () => {
   // const { packages, Name_of_card, card_no, Expiry, cvc } = ;
   const stripe = useStripe();
@@ -172,143 +173,12 @@ export const Paypa = () => {
   };
   const date = new Date();
   date.setDate(date.getDate() + 6);
-  // console.log(date.toS/tring());
-  // function formatDate(date) {
-  //   var d = new Date(date),
-  //     month = "" + (d.getMonth() + 1),
-  //     day = "" + d.getDate(),
-  //     year = d.getFullYear();
-  //   if (month.length < 2) month = "0" + month;
-  //   if (day.length < 2) day = "0" + day;
-  //   return [year, month, day].join("-");
-  // }
-  // console.log(formatDate(Date.now()));
-  // console.log(formatDate(date));
 
-  const card = useRef();
 
-  const [cardInfo, setCardInfo] = useState({
-    name: "",
-    expiry: "",
-    number: "",
-    address: {
-      line: "",
-      postalCode: "",
-    },
-  });
-
-  const [locations, setLocations] = useState({
-    countries: "",
-    states: "",
-    cities: "",
-  });
-  const [selectedLocation, setSelectedLocation] = useState({
-    country: {},
-    city: {},
-    state: {},
-  });
-
-  function handleChangeAddressLine(e) {
-    const { value } = e.target;
-    setCardInfo((prev) => {
-      return { ...prev, address: { ...prev.address, line: value } };
-    });
-  }
-
-  // function handleChangePostalCode(e) {
-  //   const { value } = e.target;
-  //   setCardInfo((prev) => {
-  //     return { ...prev, address: { ...prev.address, postalCode: value } };
-  //   });
-  // }
-
-  function handleChangeName(e) {
-    const { value } = e.target;
-    setCardInfo((prev) => {
-      return { ...prev, name: value };
-    });
-  }
-
-  function parseForSelect(arr) {
-    return arr.map((item) => ({
-      label: item.name,
-      value: item.isoCode ? item.isoCode : item.name,
-    }));
-  }
-
-  function handleSelectCountry(country) {
-    const states = State.getStatesOfCountry(country.value);
-    setSelectedLocation((prev) => {
-      return { ...prev, country };
-    });
-
-    setLocations((prev) => ({ ...prev, states: parseForSelect(states) }));
-  }
-
-  function handleSelectState(state) {
-    const cities = City.getCitiesOfState(
-      selectedLocation.country.value,
-      state.value
-    );
-    setSelectedLocation((prev) => {
-      return { ...prev, state };
-    });
-
-    setLocations((prev) => ({ ...prev, cities: parseForSelect(cities) }));
-  }
-
-  function handleSelectCity(city) {
-    setSelectedLocation((prev) => {
-      return { ...prev, city };
-    });
-  }
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const address = cardInfo.address;
-    const billingDetails = {
-      name: cardInfo.name,
-      address: {
-        country: address.country,
-        state: address.state,
-        city: address.city,
-        line1: address.line,
-      },
-    };
-
-    try {
-      stripe
-        .createPaymentMethod({
-          type: "card",
-          billing_details: billingDetails,
-          card: elements.getElement(CardElement),
-        })
-        .then((resp) => {
-          console.log(resp);
-          axios 
-            .post(
-              "http://localhost:5000/api/auth/buyStripePaymentSubscription",
-              {
-                paymentMethod: resp.paymentMethod,
-                amount:packages,
-                user: user._id,
-              }
-            )
-            .then((resp) => {
-              /* Handle success */
-               (updatepro())
-               (navigate("/The-Goat-Tips"))
-            })
-            .catch((err) => {
-              /*Handle Error */
-            });
-          console.log(resp);
-        });
-    } catch (err) {
-      /* Handle Error*/
-    }
-  }
 console.log(packages);
+const pay =()=>{
+axios.post("http://localhost:5000/api/auth/paymentMethodcardlist")
+}
   return (
     <>
       {loading && <Loader />}
@@ -351,7 +221,11 @@ console.log(packages);
                                 Select
                               </button>
                             ) : (
+                              <><button> addCard</button>
                               <AddPayMethod packages={packages} user={user}/>
+                              <button onClick={pay}>pay</button>
+                              </>
+                              
                             )}
                           </div>
                         </div>

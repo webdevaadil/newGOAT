@@ -9,8 +9,13 @@ import style from "./Package.css";
 
 import { CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
+import ListPaymentMethods from "./ListPaymentMethods";
+import { useSelector } from "react-redux";
 
-export default function AddPayMethod({packages,user}) {
+export default function AddPayMethod({}) {
+  const { error, loading, isAuthenticated, user } = useSelector(
+    (state) => state.user
+  );
   const stripe = useStripe();
 
   const elements = useElements();
@@ -81,7 +86,8 @@ export default function AddPayMethod({packages,user}) {
     });
   }
 
-  async function handleSubmit() {
+  async function handleSubmit(e) {
+    e.preventDefault()
     const address = cardInfo.address;
     const billingDetails = {
       name: cardInfo.name,
@@ -103,16 +109,20 @@ export default function AddPayMethod({packages,user}) {
         .then((resp) => {
             axios 
             .post(
-              "http://localhost:5000/api/auth/buyStripePaymentSubscription",
+              "http://localhost:5000/api/auth/paymentmethodattached",
               {
+                user:user._id,
                 paymentMethod: resp.paymentMethod,
                 
               }
             )
             .then((resp) => {
               /* Handle success */
+              alert("card add")
             })
             .catch((err) => {
+              alert("error")
+              console.log(err);
               /*Handle Error */
             });
           console.log(resp);
@@ -204,8 +214,10 @@ export default function AddPayMethod({packages,user}) {
           <div className={style.btnContainer}>
             <button onClick={handleSubmit}>Submit</button>
           </div>
+
         </div>
       </div>
+      <ListPaymentMethods/>
     </div>
   );
 }

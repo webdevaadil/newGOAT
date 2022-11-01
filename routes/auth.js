@@ -17,18 +17,22 @@ const {
   paym,
   buyStripePaymentSubscription,
   validateStripePayment,
-  addCard
-
+  addCard,
 } = require("../controllers/auth");
+const { paymentmethodattached, paymentMethodcardlist, paymentcreate } = require("../controllers/payment");
 router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/me").get(isAuthuser, dashboard);
-router.route("/buyStripePaymentSubscription").post(buyStripePaymentSubscription);
+/////payment////
+router.route("/paymentmethodattached").post(paymentmethodattached);
+router.route("/paymentMethodcardlist").get(paymentMethodcardlist);
+router.route("/paymentcreate").post(isAuthuser,paymentcreate);
+/////payment////
 router.route("/logout").get(logout);
 router.route("/update/password").put(isAuthuser, updatePassword);
 router.route("/update/profile").put(isAuthuser, updateProfile);
-router.route("/addcard").post(addCard);
-router.route("/listcard").post(listCard);
+// router.route("/addcard").post(addCard);
+// router.route("/listcard").post(listCard);
 
 // router.route("/pay").post(pay);
 // router.route("/test").get(test)
@@ -36,9 +40,6 @@ router.route("/listcard").post(listCard);
 // router.route("/order").post(ordertest);
 // router.route("/update/profilepic").put(isAuthuser, profilepic);
 
-
-// 
-
-
+//
 
 module.exports = router;
