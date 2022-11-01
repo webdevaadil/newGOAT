@@ -35,7 +35,17 @@
 section.package-sec {
   padding: 60px 0px;
 }
-
+.boxcontant{
+  background-color: "white" !important;
+}
+.cardbox{
+  max-width: 750px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 /* responsive */
 
 @media (max-width: 992px) {
@@ -168,4 +178,14 @@ section.package-sec {
   color: white;
   border-radius: 5px;
   font-weight: 500;
+}
+.cardcard{
+  
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  width: 100%!important;
+  height: 50px;
+
 }

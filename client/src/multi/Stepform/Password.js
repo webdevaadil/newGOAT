@@ -7,9 +7,20 @@ import img2 from "../../Images/name1.png";
 import img3 from "../../Images/name2.png";
 import img4 from "../../Images/name3.png";
 import img5 from "../../Images/name4.png";
+import visa from "../assets/cards/visa.png";
+import americanexpress from "../assets/cards/americanexpress.png";
+import dinersclub from "../assets/cards/dinersclub.jpg";
+import discover from "../assets/cards/discover.jpg";
+import elo from "../assets/cards/elo.png";
+import hiper from "../assets/cards/hiper.png";
+import jcb from "../assets/cards/jcb.png";
+import mastercard from "../assets/cards/mastercard.png";
+import mir from "../assets/cards/mir.png";
+import unionpay from "../assets/cards/unionpay.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
+import { format } from "date-fns";
 
 import { Country, State, City } from "country-state-city";
 import {
@@ -20,11 +31,41 @@ import {
 } from "../../actions/userAction";
 import { Loader } from "../../components/layout/Loader";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { PayPalButton } from "react-paypal-button-v2";
+// import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
 import AddPayMethod from "./AddPayMethod";
 import ListPaymentMethods from "./ListPaymentMethods";
 export const Paypa = () => {
+  function getCardImage(type) {
+    switch (type) {
+      case "visa":
+        return visa;
+      case "mastercard":
+        return mastercard;
+      case "amex":
+        return americanexpress;
+      case "diners club":
+        return dinersclub;
+      case "discover":
+        return discover;
+      case "jcb":
+        return jcb;
+      case "unionpay":
+        return unionpay;
+      case "maestro":
+        return mastercard;
+      case "mir":
+        return mir;
+      case "elo":
+        return elo;
+      case "hiper":
+        return hiper;
+      case "hipercard":
+        return hiper;
+      default:
+        return visa;
+    }
+  }
   // const { packages, Name_of_card, card_no, Expiry, cvc } = ;
   const stripe = useStripe();
   const navigate = useNavigate();
@@ -34,11 +75,18 @@ export const Paypa = () => {
   const { error, loading, isAuthenticated, user } = useSelector(
     (state) => state.user
   );
+  const [paymentMethods, setPaymentMethods] = useState([]);
+  const [cardoption, setCardoption] = useState([]);
+  const [cardoptionselect, setCardoptionselect] = useState();
+
   const dispatch = useDispatch();
 
   const [packages, setpackages] = useState("");
   const handle = async (e) => {
     setpackages(e.value);
+  };
+  const cardhandle = async (e) => {
+    setCardoptionselect(e.value);
   };
 
   useEffect(() => {
@@ -50,11 +98,14 @@ export const Paypa = () => {
     if (user) {
       setpackages(user.packages);
     }
-    if (!user) {
+    if (!isAuthenticated === false) {
+      // navigate("/login");
     }
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
+    }
+    if (user) {
     }
     // if (!isAuthenticated) {
     //   dispatch(loaduser());
@@ -62,8 +113,14 @@ export const Paypa = () => {
 
     // }
   }, [error, navigate, alert, isAuthenticated, user, dispatch]);
-
-  const [test, settest] = useState();
+  useEffect(() => {
+    showcard();
+  }, [paymentMethods]);
+  useEffect(() => {
+    if (user) {
+      getPaymentMethods();
+    }
+  }, [user]);
 
   // console.log(00);
   // if(test.data.status==="COMPLETED"){
@@ -160,6 +217,10 @@ export const Paypa = () => {
     height: 45,
     zIndex: -999,
   };
+  const customStylescard = {
+    height: 100,
+    zIndex: -999,
+  };
   // 7*24 * 60 * 60 * 100
   const updatepro = () => {
     dispatch(
@@ -174,11 +235,70 @@ export const Paypa = () => {
   const date = new Date();
   date.setDate(date.getDate() + 6);
 
+  console.log(packages);
+  const pay = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/api/auth/paymentcreate", {
+        user,
+        cardoptionselect,
+        packages,
+      })
+      .then((resp) => {
+        if (resp.data.status) {
+          dispatch(
+            updateprofile({
+              paymentstatus: "true",
+              packages,
+              paymentDate: Date.now(),
+              PaymentexpireDate: date,
+            })
+          );
+        }
+      });
+  };
+  async function getPaymentMethods() {
+    await axios
+      .post(`http://localhost:5000/api/auth/paymentMethodcardlist`, {
+        user: user,
+      })
+      .then((resp) => {
+        console.log(resp);
+        setPaymentMethods(resp.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  const showcard = (e) => {
+    console.log(paymentMethods);
 
-console.log(packages);
-const pay =()=>{
-axios.post("http://localhost:5000/api/auth/paymentMethodcardlist")
-}
+    const cardoptions = paymentMethods.map((method) => ({
+      value: method.id,
+      label: (
+        <div className={"cardcard card"}>
+          <div className={style.cardLogo}>
+            <img src={getCardImage(method.card.brand)} alt="" />
+          </div>
+
+          <div className={"details"}>
+            **** {method.card.last4}
+            {method.billing_details.name}
+          </div>
+
+          <div className={"expire"}>
+            Expires{" "}
+            {format(
+              new Date(`${method.card.exp_year}/${method.card.exp_month}/01`),
+              "MM/yyyy"
+            )}
+          </div>
+        </div>
+      ),
+    }));
+    setCardoption(cardoptions);
+  };
+
   return (
     <>
       {loading && <Loader />}
@@ -195,10 +315,7 @@ axios.post("http://localhost:5000/api/auth/paymentMethodcardlist")
                   <h2>Packages</h2>
                   <div className="form-main">
                     <form className="form-floating mb-3">
-                      <div
-                        style={{ zIndex: 99999999999 }}
-                        className="form-floating"
-                      >
+                      <div style={{ zIndex: 1000 }} className="form-floating">
                         <Select
                           className="Select_pack"
                           options={options}
@@ -211,21 +328,39 @@ axios.post("http://localhost:5000/api/auth/paymentMethodcardlist")
                         />
                       </div>
 
-                      <div className="fom-btn mb-3">
+                      <div className=" mb-3">
                         <div>
-                          <div
-                            style={{ maxWidth: "750px", minHeight: "200px" }}
+                          <div className="cardbox"
+                            style={{ maxWidth: "750px", minHeight: "200px" ,marginTop:"15px"}}
                           >
                             {packages === "Free" ? (
                               <button className="btn_two" onClick={updatepro}>
                                 Select
                               </button>
                             ) : (
-                              <><button> addCard</button>
-                              <AddPayMethod packages={packages} user={user}/>
-                              <button onClick={pay}>pay</button>
+                              <>
+                                <button
+                                  type="button"
+                                  class="btn btn-primary"
+                                  data-toggle="modal"
+                                  data-target="#exampleModal"
+                                >
+                                  Add card
+                                </button>
+                                <br />
+                                <Select
+                                  className="Select_pack"
+                                  options={cardoption}
+                                  styles={customStylescard}
+                                  value={cardoption.filter(function (option) {
+                                    return option.value === cardoptionselect;
+                                  })}
+                                  onChange={cardhandle}
+                                  // defaultValue={user.packages}
+                                />
+                                <br />
+                                <button className="btn homelogin"  style={{backgroundColor:"gr"}}onClick={pay}>pay Now</button>
                               </>
-                              
                             )}
                           </div>
                         </div>
@@ -244,6 +379,50 @@ axios.post("http://localhost:5000/api/auth/paymentMethodcardlist")
           </div>
         </div>
       </section>
+      {/* 
+<!-- Modal --> */}
+      <div
+        class="modal fade package"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content boxcontant">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Add card
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                onClick={ showcard}
+              >
+                <span  onClick={ showcard} aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <AddPayMethod packages={packages} user={user} />
+            </div>
+            {/* <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div> */}
+          </div>
+        </div>
+      </div>
     </>
   );
 };

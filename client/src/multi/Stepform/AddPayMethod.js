@@ -87,7 +87,7 @@ export default function AddPayMethod({}) {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    // e.preventDefault()
     const address = cardInfo.address;
     const billingDetails = {
       name: cardInfo.name,
@@ -133,6 +133,10 @@ export default function AddPayMethod({}) {
   }
 
   useEffect(() => {
+  if(user){
+    handleSubmit()
+  }
+
     const allCountry = Country.getAllCountries();
 
     setLocations((prev) => {
@@ -217,7 +221,7 @@ export default function AddPayMethod({}) {
 
         </div>
       </div>
-      <ListPaymentMethods/>
+      {/* <ListPaymentMethods/> */}
     </div>
   );
 }

@@ -409,93 +409,93 @@ const sendToken = (user, statusCode, res) => {
 
 
 ///payment///
-exports.buyStripePaymentSubscription = async (req, res) => {
-  let data = req;
-  console.log(req.body);
+// exports.buyStripePaymentSubscription = async (req, res) => {
+//   let data = req;
+//   console.log(req.body);
  
-  const currency = "AUD";
-  let charged;
-  let customer;
-  // console.log(req.user);
+//   const currency = "AUD";
+//   let charged;
+//   let customer;
+//   // console.log(req.user);
 
-  const user = await User.findById(req.body.user);
-  // console.log(user.packages);
-  let amount = req.body.amount.slice(1, 3);
-  // console.log(amount);
-  // return
-  const objid = req.body.user;
-  try {
-    if (user.customer_id) {
-      customer = user.customer_id;
-      // console.log(customer);
-    } else {
-      customer = await Stripe.CreateCustomer(
-        user.email,
-        user.name,
-        user.address
-      );
-      console.log(customer);
-      console.log(objid);
-      await User.findByIdAndUpdate(req.body.user, { customer_id: customer });
-      //  console.log(up);
-    }
-  } catch (err) {
-    return res.status(500).send(err);
-  }
-  // return;
-  try {
-    console.log("hfg");
+//   const user = await User.findById(req.body.user);
+//   // console.log(user.packages);
+//   let amount = req.body.amount.slice(1, 3);
+//   // console.log(amount);
+//   // return
+//   const objid = req.body.user;
+//   try {
+//     if (user.customer_id) {
+//       customer = user.customer_id;
+//       // console.log(customer);
+//     } else {
+//       customer = await Stripe.CreateCustomer(
+//         user.email,
+//         user.name,
+//         user.address
+//       );
+//       console.log(customer);
+//       console.log(objid);
+//       await User.findByIdAndUpdate(req.body.user, { customer_id: customer });
+//       //  console.log(up);
+//     }
+//   } catch (err) {
+//     return res.status(500).send(err);
+//   }
+//   // return;
+//   try {
+//     console.log("hfg");
 
     
-    charged = await Stripe.CreatePayment(
-      amount,
-      currency,
-      user.email,
-      customer,
-      req.body.paymentMethod
-    );
-  } catch (err) {
-    return res.status(500).send(err);
-  }
-  console.log(charged);
-  try {
-    const paymentConfirm = await Stripe.PaymentConfirm(charged);
-    console.log(paymentConfirm.id, "sdsd");
-    res.status(200).send(paymentConfirm);
-  } catch (err) {
-    return res.status(500).send(err);
-  }
-};
+//     charged = await Stripe.CreatePayment(
+//       amount,
+//       currency,
+//       user.email,
+//       customer,
+//       req.body.paymentMethod
+//     );
+//   } catch (err) {
+//     return res.status(500).send(err);
+//   }
+//   console.log(charged);
+//   try {
+//     const paymentConfirm = await Stripe.PaymentConfirm(charged);
+//     console.log(paymentConfirm.id, "sdsd");
+//     res.status(200).send(paymentConfirm);
+//   } catch (err) {
+//     return res.status(500).send(err);
+//   }
+// };
 
-exports.validateStripePayment = async (req, res) => {
-  try {
-    let data = req.body;
+// exports.validateStripePayment = async (req, res) => {
+//   try {
+//     let data = req.body;
 
-    if (!data.stripe_payment_id) {
-      throw globalCalls.badRequestError("Please pass valid payment id.");
-    }
+//     if (!data.stripe_payment_id) {
+//       throw globalCalls.badRequestError("Please pass valid payment id.");
+//     }
 
-    const paymentIntent = await Stripe.retrievePaymentIntent(
-      data.stripe_payment_id
-    );
-    console.log(paymentIntent);
-    // check payment status rozarpay end
-    if (paymentIntent.status == "requires_payment_method") {
-      throw globalCalls.badRequestError(
-        "Your payment was not successful, please try again."
-      );
-    } else if (paymentIntent.status == "processing") {
-      throw globalCalls.badRequestError("Your payment is processing.");
-    } else if (paymentIntent.status == "succeeded") {
-      // if(resultRazorpay.data.status=='authorized')
-      // {
-      responseData.is_pay_done_payment_status = true;
-      return globalCalls.okResponse(res, responseData, "");
-    } else {
-      throw globalCalls.badRequestError("Error! Please contact support.");
-    }
-  } catch (error) {
-    throw globalCalls.badRequestError(error.message);
-  }
-};
+//     const paymentIntent = await Stripe.retrievePaymentIntent(
+//       data.stripe_payment_id
+//     );
+//     console.log(paymentIntent);
+//     // check payment status rozarpay end
+//     if (paymentIntent.status == "requires_payment_method") {
+//       throw globalCalls.badRequestError(
+//         "Your payment was not successful, please try again."
+//       );
+//     } else if (paymentIntent.status == "processing") {
+//       throw globalCalls.badRequestError("Your payment is processing.");
+//     } else if (paymentIntent.status == "succeeded") {
+//       // if(resultRazorpay.data.status=='authorized')
+//       // {
+//       responseData.is_pay_done_payment_status = true;
+//       return globalCalls.okResponse(res, responseData, "");
+//     } else {
+//       throw globalCalls.badRequestError("Error! Please contact support.");
+//     }
+//   } catch (error) {
+//     throw globalCalls.badRequestError(error.message);
+//   }
+// };
 ///payment///

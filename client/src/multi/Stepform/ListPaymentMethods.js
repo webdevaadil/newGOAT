@@ -13,6 +13,7 @@ import jcb from "../assets/cards/jcb.png";
 import mastercard from "../assets/cards/mastercard.png";
 import mir from "../assets/cards/mir.png";
 import unionpay from "../assets/cards/unionpay.png";
+import { useSelector } from "react-redux";
 
 function getCardImage(type) {
   switch (type) {
@@ -46,10 +47,15 @@ function getCardImage(type) {
 }
 export default function ListPaymentMethods({ handleSelectCard }) {
   const [paymentMethods, setPaymentMethods] = useState(null);
-
-  function getPaymentMethods() {
-    axios
-      .get(`http://localhost:5000/api/auth/paymentMethodcardlist`)
+  const { error, loading, isAuthenticated, user } = useSelector(
+    (state) => state.user
+  );
+  console.log(user);
+  async function getPaymentMethods() {
+    await axios
+      .post(`http://localhost:5000/api/auth/paymentMethodcardlist`, {
+        user: user,
+      })
       .then((resp) => {
         console.log(resp);
         setPaymentMethods(resp.data.data);
@@ -59,39 +65,17 @@ export default function ListPaymentMethods({ handleSelectCard }) {
       });
   }
 
-  useEffect(getPaymentMethods, []);
+  useEffect(() => {
+    if (user) {
+      getPaymentMethods();
+    }
+  }, [user]);
 
   return (
     <div className="wrapper">
       <h3>Select your preferred payment method</h3>
-      {paymentMethods &&
-        paymentMethods.map((method) => {
-          console.log(method.card.brand);
-          return (
-            <div className={"card"}>
-              <div className={style.cardLogo}>
-                <img src={getCardImage(method.card.brand)} alt="" />
-              </div>
-
-              <div className={"details"}>
-                <p>
-                  {method.card.brand} **** {method.card.last4}
-                </p>
-                <p>{method.billing_details.name}</p>
-              </div>
-
-              <div className={"expire"}>
-                Expires{" "}
-                {format(
-                  new Date(
-                    `${method.card.exp_year}/${method.card.exp_month}/01`
-                  ),
-                  "MM/yyyy"
-                )}
-              </div>
-            </div>
-          );
-        })}
+      {/* {paymentMethods &&
+    } */}
     </div>
   );
 }

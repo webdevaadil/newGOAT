@@ -25,8 +25,8 @@ router.route("/login").post(login);
 router.route("/me").get(isAuthuser, dashboard);
 /////payment////
 router.route("/paymentmethodattached").post(paymentmethodattached);
-router.route("/paymentMethodcardlist").get(paymentMethodcardlist);
-router.route("/paymentcreate").post(isAuthuser,paymentcreate);
+router.route("/paymentMethodcardlist").post(paymentMethodcardlist);
+router.route("/paymentcreate").post(paymentcreate);
 /////payment////
 router.route("/logout").get(logout);
 router.route("/update/password").put(isAuthuser, updatePassword);

@@ -7,11 +7,11 @@ stripe = require("stripe")(
 );
 
 exports.paymentmethodattached = async (req, res) => {
-    
   const { paymentMethod } = req.body;
-  console.log(req.user);
+    console.log(paymentMethod);
   const user = await User.findById(req.body.user);
   let customer;
+  console.log(customer);
   try {
     if (user.customer_id) {
       customer = user.customer_id;
@@ -57,8 +57,12 @@ exports.paymentmethodattached = async (req, res) => {
 };
 
 exports.paymentMethodcardlist = async (req, res) => {
-  // console.log(req.user.id);
-  const user = await User.findById("6360a29d6f2e1557ca15eddd");
+  //   console.log(req.body.user);
+  let id = req.body.user;
+  console.log(req.body);
+  // console.log(id["_id"]);
+  const user = await User.findById(id["_id"]);
+  console.log(user);
   customer = user.customer_id;
   console.log(user);
   try {
@@ -72,18 +76,21 @@ exports.paymentMethodcardlist = async (req, res) => {
 
 exports.paymentcreate = async (req, res) => {
   /* Query database for getting the payment amount and customer id of the current logged in user */
-
-  const amount = 1000;
+  console.log(req.body,"as");
+  const amount = req.body.packages.slice(1, 3);
   const currency = "AUD";
-  let customer = req.user.customer_id;
-  // console.log(req.user);
+  //   console.log(req.user);
+  let id = req.body.user;
+  console.log(id["_id"]);
+  const user = await User.findById(id["_id"]);
+  let customer = user.customer_id;
   try {
     charged = await Stripe.CreatePayment(
       amount,
       currency,
-      req.user.email,
+      user.email,
       customer,
-      req.body.paymentMethod
+      req.body.cardoptionselect
     );
 
     /* Add the payment intent record to your datbase if required */
@@ -114,4 +121,3 @@ async function listCustomerPayMethods(customerId) {
     }
   });
 }
-
