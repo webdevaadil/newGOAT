@@ -19,16 +19,17 @@ import {
   updateprofile,
 } from "../../actions/userAction";
 import { Loader } from "../../components/layout/Loader";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
+import AddPayMethod from "./AddPayMethod";
 export const Paypa = () => {
   // const { packages, Name_of_card, card_no, Expiry, cvc } = ;
   const stripe = useStripe();
   const navigate = useNavigate();
   const elements = useElements();
   const alert = useAlert();
-  
+
   const { error, loading, isAuthenticated, user } = useSelector(
     (state) => state.user
   );
@@ -41,7 +42,7 @@ export const Paypa = () => {
 
   useEffect(() => {
     if (user) {
-      if (user.paymentstatus === "true"){
+      if (user.paymentstatus === "true") {
         navigate("/The-Goat-Tips");
       }
     }
@@ -184,7 +185,6 @@ export const Paypa = () => {
   // console.log(formatDate(Date.now()));
   // console.log(formatDate(date));
 
-
   const card = useRef();
 
   const [cardInfo, setCardInfo] = useState({
@@ -197,8 +197,16 @@ export const Paypa = () => {
     },
   });
 
-  const [locations, setLocations] = useState({ countries: "", states: "", cities: "" });
-  const [selectedLocation, setSelectedLocation] = useState({ country: {}, city: {}, state: {} });
+  const [locations, setLocations] = useState({
+    countries: "",
+    states: "",
+    cities: "",
+  });
+  const [selectedLocation, setSelectedLocation] = useState({
+    country: {},
+    city: {},
+    state: {},
+  });
 
   function handleChangeAddressLine(e) {
     const { value } = e.target;
@@ -238,7 +246,10 @@ export const Paypa = () => {
   }
 
   function handleSelectState(state) {
-    const cities = City.getCitiesOfState(selectedLocation.country.value, state.value);
+    const cities = City.getCitiesOfState(
+      selectedLocation.country.value,
+      state.value
+    );
     setSelectedLocation((prev) => {
       return { ...prev, state };
     });
@@ -253,7 +264,7 @@ export const Paypa = () => {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     const address = cardInfo.address;
     const billingDetails = {
       name: cardInfo.name,
@@ -274,9 +285,19 @@ export const Paypa = () => {
         })
         .then((resp) => {
           console.log(resp);
-          axios.post("http://localhost:5000/api/auth/buyStripePaymentSubscription", { paymentMethod: resp.paymentMethod,amount: "100"} )
+          axios 
+            .post(
+              "http://localhost:5000/api/auth/buyStripePaymentSubscription",
+              {
+                paymentMethod: resp.paymentMethod,
+                amount:packages,
+                user: user._id,
+              }
+            )
             .then((resp) => {
               /* Handle success */
+               (updatepro())
+               (navigate("/The-Goat-Tips"))
             })
             .catch((err) => {
               /*Handle Error */
@@ -287,7 +308,7 @@ export const Paypa = () => {
       /* Handle Error*/
     }
   }
-
+console.log(packages);
   return (
     <>
       {loading && <Loader />}
@@ -330,95 +351,19 @@ export const Paypa = () => {
                                 Select
                               </button>
                             ) : (
-                              <div className={style.wrapper}>
-      <div className={style.innerWrapper}>
-        <div className={style.title}>Add Payment Method</div>
-        <div className={style.row}>
-          <label>Cardholder Name</label>
-          <input
-            onChange={handleChangeName}
-            type="text"
-            name="name"
-            placeholder="Enter card holder name"
-          />
-        </div>
-        <div className={style.rowPaymentInput}>
-          <CardElement ref={card} />
-        </div>
-
-        <div className={style.addressWrapper}>
-          <div className={style.row}>
-            <label>Address</label>
-            <input
-              onChange={handleChangeAddressLine}
-              type="text"
-              name="address"
-              placeholder="Enter Full Address"
-            />
-          </div>
-          <div className={style.rowSelect}>
-            <div>
-              <label>Country</label>
-              <Select
-                isClearable={true}
-                isSearchable={true}
-                name="country"
-                value={selectedLocation.country}
-                options={locations.countries}
-                onChange={handleSelectCountry}
-              />
-            </div>
-
-            <div>
-              <label>State</label>
-              <Select
-                isClearable={true}
-                isSearchable={true}
-                name="state"
-                value={selectedLocation.state}
-                options={locations.states}
-                onChange={handleSelectState}
-              />
-            </div>
-          </div>
-          <div className={style.rowSelect}>
-            <div>
-              <label>City</label>
-              <Select
-                isClearable={true}
-                isSearchable={true}
-                name="city"
-                value={selectedLocation.city}
-                options={locations.cities}
-                onChange={handleSelectCity}
-              />
-            </div>
-
-            {/* <div>
-              <label>Postal Code</label>
-              <input onChange={handleChangePostalCode} type="text" placeholder="Enter Zip Code" />
-            </div> */}
-          </div>
-
-          <div className={style.btnContainer}>
-            <button onClick={handleSubmit}>Submit</button>
-          </div>
-        </div>
-      </div>
-    </div>)}
-                             
+                              <AddPayMethod packages={packages} user={user}/>
+                            )}
                           </div>
                         </div>
                       </div>
                     </form>
                   </div>
-                   <Link to="/terms-and-conditions">
-
-                  <p style = {{textAlign:"center"}}>
-                    By signing up, I agree to the{" "}
-                    <span>Terms and conditions and Privacy policy</span>
-                  </p>
-                   </Link>
+                  <Link to="/terms-and-conditions">
+                    <p style={{ textAlign: "center" }}>
+                      By signing up, I agree to the{" "}
+                      <span>Terms and conditions and Privacy policy</span>
+                    </p>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -28,17 +28,18 @@ const CreatePayment = async (
   chargeAmt,
   currency,
   email,
-  stripe_customer_id
+  stripe_customer_id,
+  paymentMethod,
 ) => {
   const paymentIntent = await stripe.paymentIntents
     .create({
       amount: chargeAmt * 100,
       currency: currency,
-      payment_method_types: ["card"],
-      // receipt_email: "testagency@yopmail.com",
+      payment_method: paymentMethod,
       receipt_email: email,
       description: "Software development services",
       customer: stripe_customer_id,
+      confirmation_method: "manual", // For 3D Security
       //automatic_payment_methods: {enabled: true},
     })
     .catch((err) => {
@@ -72,10 +73,30 @@ const retrievePaymentIntent = async (paymentid) => {
   return retrivepayment;
 };
 
+const GetCardList = async (customerId)=> {
+  console.log("Stripe -- CardList", customerId);
+  return stripe.customers.listSources(
+      customerId, {limit: 10});
+}
+
+
+const addCard = async (customerId, paymentMethod)=> {
+
+  const paymentMethodAttach = await stripe.paymentMethods.attach(paymentMethod.id, {
+    customer: customerId,
+  });
+    
+  console.log(paymentMethodAttach); 
+  return paymentMethodAttach;
+
+}
+
 module.exports = {
   CreatePayment,
   PaymentConfirm,
   GetCustomerID,
   CreateCustomer,
   retrievePaymentIntent,
+  GetCardList,
+  addCard
 };
