@@ -72,7 +72,7 @@ export const Paypa = () => {
   const elements = useElements();
   const alert = useAlert();
 
-  const { error, loading, isAuthenticated, user } = useSelector(
+  const { error, loading, isAuthenticated, user ,isUpdated} = useSelector(
     (state) => state.user
   );
   const [paymentMethods, setPaymentMethods] = useState([]);
@@ -105,18 +105,20 @@ export const Paypa = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    if (user) {
+    if (isUpdated) {
+      navigate("/The-Goat-Tips")
     }
     // if (!isAuthenticated) {
     //   dispatch(loaduser());
     //   navigate("/");
 
     // }
-  }, [error, navigate, alert, isAuthenticated, user, dispatch]);
+  }, [error, navigate, alert, isAuthenticated, user, dispatch,isUpdated]);
   useEffect(() => {
     showcard();
   }, [paymentMethods]);
   useEffect(() => {
+    
     if (user) {
       getPaymentMethods();
     }
@@ -222,8 +224,8 @@ export const Paypa = () => {
     zIndex: -999,
   };
   // 7*24 * 60 * 60 * 100
-  const updatepro = () => {
-    dispatch(
+  const updatepro = async() => {
+     dispatch(
       updateprofile({
         paymentstatus: "true",
         packages,
@@ -255,7 +257,7 @@ export const Paypa = () => {
             })
           );
         }
-      });
+      })
   };
   async function getPaymentMethods() {
     await axios
