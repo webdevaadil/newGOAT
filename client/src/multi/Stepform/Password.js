@@ -78,7 +78,7 @@ export const Paypa = () => {
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [cardoption, setCardoption] = useState([]);
   const [cardoptionselect, setCardoptionselect] = useState();
-console.log(cardoptionselect);
+  console.log(cardoptionselect);
   const dispatch = useDispatch();
 
   const [packages, setpackages] = useState("");
@@ -98,16 +98,12 @@ console.log(cardoptionselect);
     if (user) {
       setpackages(user.packages);
     }
-    if (!isAuthenticated === false) {
-      // navigate("/login");
-    }
-    if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
-    }
-    if (isUpdated) {
-      navigate("/The-Goat-Tips");
-    }
+
+    // if (error) {
+    //   alert.error(error);
+    //   dispatch(clearErrors());
+    // }
+
     // if (!isAuthenticated) {
     //   dispatch(loaduser());
     //   navigate("/");
@@ -213,15 +209,14 @@ console.log(cardoptionselect);
       ),
     },
   ];
-  
   const customStyles = {
-  container: (provided, state) => ({
-      ...provided,
-        height:35
-    }),
-  };
+    container: (provided, state) => ({
+        ...provided,
+          height:35
+      }),
+    };
   const customStylescard = {
-    height: 80,
+    height: 100,
     zIndex: -999,
   };
   // 7*24 * 60 * 60 * 100
@@ -238,7 +233,6 @@ console.log(cardoptionselect);
   const date = new Date();
   date.setDate(date.getDate() + 6);
 
-  console.log(cardoptionselect);
   const pay = (e) => {
     e.preventDefault();
     axios
@@ -248,16 +242,23 @@ console.log(cardoptionselect);
         packages,
       })
       .then((resp) => {
-        if (resp.data.status) {
+        console.log(resp);
+        if (resp.data.status === "succeeded") {
           dispatch(
             updateprofile({
-              paymentstatus: "true",
+              paymentstatus:  "true",
               packages,
               paymentDate: Date.now(),
               PaymentexpireDate: date,
             })
           );
+          navigate("/The-Goat-Tips");
+          console.log("asas");
         }
+      })
+      .then()
+      .catch((err) => {
+        alert.error(err.response.data);
       });
   };
   async function getPaymentMethods() {
@@ -309,17 +310,16 @@ console.log(cardoptionselect);
       <section id="form-section">
         <div className="container-fluid">
           <div className="row login-form">
-            <div className="col-md-6 image-center">
-              <div className="img-main center-image"></div>
+            <div className="col-md-6">
+              <div className="img-main"></div>
             </div>
             <div className="col-md-6">
-                  <h2 style = {{fontSize:"2.8rem",marginLeft:"-55px"}}>Packages</h2>
               <div className="wel-bg">
-                <div  className="row form-content check-center">
+                <div className="row form-content check-center">
+                  <h2>Packages</h2>
                   <div className="form-main">
                     <form className="form-floating mb-3">
-                    
-                      <div style={{ zIndex: 1000 }} className="form-floating mb-4">
+                      <div style={{ zIndex: 1000 }} className="form-floating">
                         <Select
                           className="Select_pack"
                           options={options}
@@ -356,10 +356,13 @@ console.log(cardoptionselect);
                                 >
                                   Add card
                                 </button> */}
-                                <AddPayMethod packages={packages} user={user} getPaymentMethods={getPaymentMethods}/>
+                                <AddPayMethod
+                                  packages={packages}
+                                  user={user}
+                                  getPaymentMethods={getPaymentMethods}
+                                />
 
                                 <br />
-                               
                                 <Select
                                   className="Select_pack"
                                   options={cardoption}
@@ -373,9 +376,8 @@ console.log(cardoptionselect);
                                 <br />
                                 <button
                                   className="btn homelogin"
-                                  style={{backgroundColor:"gr",position:"relative",bottom:"1rem"}}
+                                  style={{ backgroundColor: "gr" }}
                                   onClick={pay}
-                             
                                 >
                                   pay Now
                                 </button>
@@ -387,7 +389,7 @@ console.log(cardoptionselect);
                     </form>
                   </div>
                   <Link to="/terms-and-conditions">
-                    <p style={{ textAlign: "center",position:"relative",bottom:"20px"}}>
+                    <p style={{ textAlign: "center" }}>
                       By signing up, I agree to the{" "}
                       <span>Terms and conditions and Privacy policy</span>
                     </p>

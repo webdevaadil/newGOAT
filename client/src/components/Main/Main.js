@@ -33,20 +33,20 @@ export const Main = () => {
   const { isAuthenticated, user, error, loading } = useSelector(
     (state) => state.user
   );
-
-  if (user) {
-    let nowdate =  Date();
-    let expiredate = user.PaymentexpireDate;
-    console.log(Date.parse(nowdate) , Date.parse(expiredate));
-    console.log();
-    if (Date.parse(nowdate) > Date.parse(expiredate)) {
-      console.log(nowdate);
-      console.log(new Date(user.PaymentexpireDate));
-      dispatch(updateprofile({ paymentstatus: "false" }));
-      navigate("/subscriptionexpire")
-    }
-  }
   useEffect(() => {
+    
+      if (loading=== false) {
+        let nowdate =  Date();
+        let expiredate = user.PaymentexpireDate;
+        console.log(Date.parse(nowdate) , Date.parse(expiredate));
+        console.log();
+        if (Date.parse(nowdate) > Date.parse(expiredate)) {
+          console.log(nowdate);
+          console.log(new Date(user.PaymentexpireDate));
+          dispatch(updateprofile({ paymentstatus: "false" }));
+          navigate("/subscriptionexpire")
+        }
+      }
     if (isAuthenticated === false) {
       <Navigate to={<Login />} />;
     }
