@@ -31,6 +31,8 @@ const CreatePayment = async (
   stripe_customer_id,
   paymentMethod,
 ) => {
+  console.log(paymentMethod,'payment');
+ 
   const paymentIntent = await stripe.paymentIntents
     .create({
       amount: chargeAmt * 100,
@@ -59,10 +61,10 @@ const GetCustomerID = async (body) => {
   return customer.id;
 };
 
-const PaymentConfirm = async (paymentId, payment_method) => {
+const PaymentConfirm = async (paymentId) => {
   console.log("Stripe -- PaymentConfirm", paymentId);
   const paymentConfirm = await stripe.paymentIntents.confirm(paymentId, {
-    payment_method: "pm_card_visa",
+
   });
   return paymentConfirm;
 };

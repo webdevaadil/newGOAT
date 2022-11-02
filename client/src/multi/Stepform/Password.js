@@ -72,13 +72,13 @@ export const Paypa = () => {
   const elements = useElements();
   const alert = useAlert();
 
-  const { error, loading, isAuthenticated, user ,isUpdated} = useSelector(
+  const { error, loading, isAuthenticated, user, isUpdated } = useSelector(
     (state) => state.user
   );
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [cardoption, setCardoption] = useState([]);
   const [cardoptionselect, setCardoptionselect] = useState();
-
+console.log(cardoptionselect);
   const dispatch = useDispatch();
 
   const [packages, setpackages] = useState("");
@@ -106,19 +106,18 @@ export const Paypa = () => {
       dispatch(clearErrors());
     }
     if (isUpdated) {
-      navigate("/The-Goat-Tips")
+      navigate("/The-Goat-Tips");
     }
     // if (!isAuthenticated) {
     //   dispatch(loaduser());
     //   navigate("/");
 
     // }
-  }, [error, navigate, alert, isAuthenticated, user, dispatch,isUpdated]);
+  }, [error, navigate, alert, isAuthenticated, user, dispatch, isUpdated]);
   useEffect(() => {
     showcard();
   }, [paymentMethods]);
   useEffect(() => {
-    
     if (user) {
       getPaymentMethods();
     }
@@ -224,8 +223,8 @@ export const Paypa = () => {
     zIndex: -999,
   };
   // 7*24 * 60 * 60 * 100
-  const updatepro = async() => {
-     dispatch(
+  const updatepro = async () => {
+    dispatch(
       updateprofile({
         paymentstatus: "true",
         packages,
@@ -237,7 +236,7 @@ export const Paypa = () => {
   const date = new Date();
   date.setDate(date.getDate() + 6);
 
-  console.log(packages);
+  console.log(cardoptionselect);
   const pay = (e) => {
     e.preventDefault();
     axios
@@ -257,7 +256,7 @@ export const Paypa = () => {
             })
           );
         }
-      })
+      });
   };
   async function getPaymentMethods() {
     await axios
@@ -332,8 +331,13 @@ export const Paypa = () => {
 
                       <div className=" mb-3">
                         <div>
-                          <div className="cardbox"
-                            style={{ maxWidth: "750px", minHeight: "200px" ,marginTop:"15px"}}
+                          <div
+                            className="cardboxes"
+                            style={{
+                              maxWidth: "750px",
+                              minHeight: "200px",
+                              marginTop: "15px",
+                            }}
                           >
                             {packages === "Free" ? (
                               <button className="btn_two" onClick={updatepro}>
@@ -341,14 +345,16 @@ export const Paypa = () => {
                               </button>
                             ) : (
                               <>
-                                <button
+                                {/* <button
                                   type="button"
                                   class="btn btn-primary"
                                   data-toggle="modal"
                                   data-target="#exampleModal"
                                 >
                                   Add card
-                                </button>
+                                </button> */}
+                                <AddPayMethod packages={packages} user={user} getPaymentMethods={getPaymentMethods}/>
+
                                 <br />
                                 <Select
                                   className="Select_pack"
@@ -361,7 +367,13 @@ export const Paypa = () => {
                                   // defaultValue={user.packages}
                                 />
                                 <br />
-                                <button className="btn homelogin"  style={{backgroundColor:"gr"}}onClick={pay}>pay Now</button>
+                                <button
+                                  className="btn homelogin"
+                                  style={{ backgroundColor: "gr" }}
+                                  onClick={pay}
+                                >
+                                  pay Now
+                                </button>
                               </>
                             )}
                           </div>
@@ -391,7 +403,7 @@ export const Paypa = () => {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog atmcard" role="document">
           <div class="modal-content boxcontant">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
@@ -402,14 +414,14 @@ export const Paypa = () => {
                 class="close"
                 data-dismiss="modal"
                 aria-label="Close"
-                onClick={ showcard}
+                onClick={showcard}
               >
-                <span  onClick={ showcard} aria-hidden="true">&times;</span>
+                <span onClick={showcard} aria-hidden="true">
+                  &times;
+                </span>
               </button>
             </div>
-            <div class="modal-body">
-              <AddPayMethod packages={packages} user={user} />
-            </div>
+            <div class="modal-body"></div>
             {/* <div class="modal-footer">
               <button
                 type="button"

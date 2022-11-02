@@ -12,7 +12,7 @@ import axios from "axios";
 import ListPaymentMethods from "./ListPaymentMethods";
 import { useSelector } from "react-redux";
 
-export default function AddPayMethod({}) {
+export default function AddPayMethod({getPaymentMethods}) {
   const { error, loading, isAuthenticated, user } = useSelector(
     (state) => state.user
   );
@@ -87,7 +87,7 @@ export default function AddPayMethod({}) {
   }
 
   async function handleSubmit(e) {
-    // e.preventDefault()
+    e.preventDefault()
     const address = cardInfo.address;
     const billingDetails = {
       name: cardInfo.name,
@@ -119,6 +119,7 @@ export default function AddPayMethod({}) {
             .then((resp) => {
               /* Handle success */
               alert("card add")
+              getPaymentMethods()
             })
             .catch((err) => {
               alert("error")
@@ -169,6 +170,9 @@ export default function AddPayMethod({}) {
               type="text"
               name="address"
               placeholder="Enter Full Address"
+              autoComplete="new-password"
+
+
             />
           </div>
           <div className={style.rowSelect}>

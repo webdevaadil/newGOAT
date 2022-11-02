@@ -76,7 +76,7 @@ exports.paymentMethodcardlist = async (req, res) => {
 
 exports.paymentcreate = async (req, res) => {
   /* Query database for getting the payment amount and customer id of the current logged in user */
-  console.log(req.body,"as");
+  console.log(req.body.cardoptionselect,"as");
   const amount = req.body.packages.slice(1, 3);
   const currency = "AUD";
   //   console.log(req.user);
@@ -99,6 +99,7 @@ exports.paymentcreate = async (req, res) => {
     res.status(500).json("Could not create payment");
   }
   try {
+    console.log(charged,'charged');
     const paymentConfirm = await Stripe.PaymentConfirm(charged);
     console.log(paymentConfirm.id, "sdsd");
     res.status(200).send(paymentConfirm);

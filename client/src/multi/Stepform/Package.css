@@ -17,6 +17,9 @@
   left: 0;
   padding: 0;
 }
+.atmcard .modal-content{
+  background-color: #ccc;
+}
 
 .pack-main {
   background: url('../../Images/welcome-img.png');
@@ -38,13 +41,8 @@ section.package-sec {
 .boxcontant{
   background-color: "white" !important;
 }
-.cardbox{
-  max-width: 750px;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.cardboxes ::placeholder{
+  color: rgb(68, 66, 66);
 }
 /* responsive */
 
