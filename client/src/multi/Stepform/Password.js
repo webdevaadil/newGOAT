@@ -315,11 +315,11 @@ console.log(cardoptionselect);
             <div className="col-md-6">
                   <h2 style = {{fontSize:"2.8rem",marginLeft:"-55px"}}>Packages</h2>
               <div className="wel-bg">
-                <div className="row form-content check-center">
+                <div  className="row form-content check-center">
                   <div className="form-main">
                     <form className="form-floating mb-3">
                     
-                      <div style={{ zIndex: 1000 }} className="form-floating">
+                      <div style={{ zIndex: 1000 }} className="form-floating mb-4">
                         <Select
                           className="Select_pack"
                           options={options}
@@ -373,8 +373,9 @@ console.log(cardoptionselect);
                                 <br />
                                 <button
                                   className="btn homelogin"
-                                  style={{ backgroundColor: "gr" }}
+                                  style={{backgroundColor:"gr",position:"relative",bottom:"1rem"}}
                                   onClick={pay}
+                             
                                 >
                                   pay Now
                                 </button>
@@ -386,7 +387,7 @@ console.log(cardoptionselect);
                     </form>
                   </div>
                   <Link to="/terms-and-conditions">
-                    <p style={{ textAlign: "center" }}>
+                    <p style={{ textAlign: "center",position:"relative",bottom:"20px"}}>
                       By signing up, I agree to the{" "}
                       <span>Terms and conditions and Privacy policy</span>
                     </p>

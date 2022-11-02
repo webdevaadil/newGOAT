@@ -22,6 +22,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+.check-center{
+  position: relative;
+  top: 0;
+}
 .main-label label {
   margin: 0;
 }

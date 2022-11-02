@@ -175,7 +175,7 @@ const statecitystyle = {
     <div className={style.wrapper}>
       <div className="main-label">
         {/* <div className={style.title}>Add Payment Method</div> */}
-        <div className="inputrow">
+        <div className="inputrow mb-3">
           <label>Cardholder Name</label>
           <input
             onChange={handleChangeName}
