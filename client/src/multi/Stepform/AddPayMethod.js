@@ -67,7 +67,6 @@ export default function AddPayMethod({getPaymentMethods}) {
     setSelectedLocation((prev) => {
       return { ...prev, country };
     });
-
     setLocations((prev) => ({ ...prev, states: parseForSelect(states) }));
   }
 
@@ -113,7 +112,6 @@ export default function AddPayMethod({getPaymentMethods}) {
               {
                 user:user._id,
                 paymentMethod: resp.paymentMethod,
-                
               }
             )
             .then((resp) => {
@@ -145,25 +143,42 @@ export default function AddPayMethod({getPaymentMethods}) {
     });
   }, []);
 
+
+  const cardElementOptions = {
+    style: {
+      base: {
+        color: "#666",
+        fontSize: "18px",
+        border:"1px solid"
+      },
+      invalid: {
+        color: "#fa755a",
+        fontSize: "18px",
+      }
+    }
+  }
+
   return (
     <div className={style.wrapper}>
       <div className={style.innerWrapper}>
-        <div className={style.title}>Add Payment Method</div>
-        <div className={style.row}>
+        {/* <div className={style.title}>Add Payment Method</div> */}
+        <div className="inputrow">
           <label>Cardholder Name</label>
           <input
             onChange={handleChangeName}
             type="text"
             name="name"
             placeholder="Enter card holder name"
+            className = "input-border"
           />
         </div>
-        <div className={style.rowPaymentInput}>
-          <CardElement ref={card} />
+        <label>Enter Card Details</label>
+        <div  className = "input-border">
+          <CardElement options={cardElementOptions}  ref={card} />
         </div>
 
-        <div className={style.addressWrapper}>
-          <div className={style.row}>
+        <div style = {{marginTop:"10px"}} className={style.addressWrapper}>
+          <div className="inputrow">
             <label>Address</label>
             <input
               onChange={handleChangeAddressLine}
@@ -171,8 +186,8 @@ export default function AddPayMethod({getPaymentMethods}) {
               name="address"
               placeholder="Enter Full Address"
               autoComplete="new-password"
-
-
+              className="input-border"
+              style = {{padding:"15px",border:"1px solid hsl(0deg 0% 84%)"}}
             />
           </div>
           <div className={style.rowSelect}>
@@ -219,8 +234,8 @@ export default function AddPayMethod({getPaymentMethods}) {
             </div> */}
           </div>
 
-          <div className={style.btnContainer}>
-            <button onClick={handleSubmit}>Submit</button>
+          <div className="pay-btn">
+            <button className="homelogin" onClick={handleSubmit}>Submit</button>
           </div>
 
         </div>

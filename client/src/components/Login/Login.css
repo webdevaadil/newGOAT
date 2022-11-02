@@ -34,12 +34,15 @@ body{
 } */
 .wel-p1 img { 
        width: 100%;
-    object-fit: cover;
+     object-fit: cover;
 }
 .form-main {
     padding-top: 1rem;
 }
-
+.CardField{
+    border: 1px solid black;
+  }
+  
 .wel-form {
     position: absolute;
     left: 0;
@@ -47,7 +50,6 @@ body{
     height: 100vh;
     align-items: center;
 }
-
 
 .form-content {
 padding: 0px 7rem;
@@ -58,7 +60,7 @@ top: 2rem;
 
 .check-center{
     position: relative;
-    top: 13rem;
+    /* top: 13rem; */
 }
 
 .centerlogo{
@@ -129,7 +131,7 @@ top: 2rem;
   
 .form-main label {
     font-size: 14px;
-    line-height: 30px;
+    line-height: 23px;
     font-weight: 600;
     font-family: 'Nunito Sans';
 }

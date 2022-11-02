@@ -307,13 +307,13 @@ console.log(cardoptionselect);
       <section id="form-section">
         <div className="container-fluid">
           <div className="row login-form">
-            <div className="col-md-6">
+            <div className="col-md-6 image-center">
               <div className="img-main"></div>
             </div>
             <div className="col-md-6">
+                  <h2 style = {{fontSize:"2.8rem",marginLeft:"-55px"}}>Packages</h2>
               <div className="wel-bg">
                 <div className="row form-content check-center">
-                  <h2>Packages</h2>
                   <div className="form-main">
                     <form className="form-floating mb-3">
                       <div style={{ zIndex: 1000 }} className="form-floating">
