@@ -1,5 +1,3 @@
-
-
 .pay-btn{
   margin-top: 5px;
 }
@@ -7,10 +5,9 @@
   border: none;
   border-radius: 5px;
 }
-
 .input-border{
   border-radius: 4px;
-  padding: 15px;
+  padding: 8px;
   border: 1px solid hsl(0deg 0% 84%);
   background-color: #fff;
 }
@@ -21,7 +18,22 @@
   display: flex;
   flex-direction: column;
 }
+.flex-state{
+  display: flex;
+  justify-content: space-between;
+}
+.main-label label {
+  margin: 0;
+}
+.center-image{
+  /* position: relative; */
+  /* bottom: 4.1rem; */
+}
 
+.css-319lph-ValueContainer{
+  height: 53px;
+  margin-top: -5px
+}
 .sel-main {
   display: flex;
   padding: 8px 0px;
@@ -44,11 +56,9 @@
 .atmcard .modal-content{
   background-color: #ccc;
 }
-
 .image-center{
   margin: auto;
 }
-
 .pack-main {
   background: url('../../Images/welcome-img.png');
   background-size: cover;
@@ -109,13 +119,7 @@ section.package-sec {
   }
 }
 
-
-
-
-
-
 /* 
-
 .wrapper {
   width: 100%;
   display: flex;
@@ -148,15 +152,12 @@ section.package-sec {
   margin-bottom: 15px;
 
 }
-
 .wrapper .innerWrapper .row input {
   width: 100%;
   height: 35px;
   border: 1px solid #ccc;
   padding-left: 10px;
   border-radius: 5px;
-
-
 }
 .wrapper .innerWrapper .row input:focus {
   outline: none;

@@ -137,7 +137,7 @@ console.log(cardoptionselect);
         >
           <img
             className="select-img"
-            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}
             src={img1}
             alt="loading"
           />
@@ -154,7 +154,7 @@ console.log(cardoptionselect);
         >
           <img
             className="select-img"
-            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}
             src={img2}
             alt="loading"
           />
@@ -171,7 +171,7 @@ console.log(cardoptionselect);
         >
           <img
             className="select-img"
-            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}
             src={img3}
             alt="loading"
           />
@@ -188,7 +188,7 @@ console.log(cardoptionselect);
         >
           <img
             className="select-img"
-            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}
             src={img4}
             alt="loading"
           />
@@ -205,8 +205,7 @@ console.log(cardoptionselect);
         >
           <img
             className="select-img"
-            style={{ height: "60px", width: "205px", marginRight: "30px" }}
-            src={img5}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}            src={img5}
             alt="loading"
           />
           Free
@@ -214,12 +213,15 @@ console.log(cardoptionselect);
       ),
     },
   ];
+  
   const customStyles = {
-    height: 45,
-    zIndex: -999,
+  container: (provided, state) => ({
+      ...provided,
+        height:35
+    }),
   };
   const customStylescard = {
-    height: 100,
+    height: 80,
     zIndex: -999,
   };
   // 7*24 * 60 * 60 * 100
@@ -308,7 +310,7 @@ console.log(cardoptionselect);
         <div className="container-fluid">
           <div className="row login-form">
             <div className="col-md-6 image-center">
-              <div className="img-main"></div>
+              <div className="img-main center-image"></div>
             </div>
             <div className="col-md-6">
                   <h2 style = {{fontSize:"2.8rem",marginLeft:"-55px"}}>Packages</h2>
@@ -316,6 +318,7 @@ console.log(cardoptionselect);
                 <div className="row form-content check-center">
                   <div className="form-main">
                     <form className="form-floating mb-3">
+                    
                       <div style={{ zIndex: 1000 }} className="form-floating">
                         <Select
                           className="Select_pack"
@@ -356,6 +359,7 @@ console.log(cardoptionselect);
                                 <AddPayMethod packages={packages} user={user} getPaymentMethods={getPaymentMethods}/>
 
                                 <br />
+                               
                                 <Select
                                   className="Select_pack"
                                   options={cardoption}

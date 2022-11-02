@@ -56,7 +56,7 @@ export const Checkout = () => {
         >
           <img
             className="select-img"
-            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            style={{ height: "40px", width: "150px", marginRight: "30px" }}
             src={img1}
             alt="loading"
           />
@@ -73,7 +73,7 @@ export const Checkout = () => {
         >
           <img
             className="select-img"
-            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            style={{ height: "40px", width: "150px", marginRight: "30px" }}
             src={img2}
             alt="loading"
           />
@@ -90,7 +90,7 @@ export const Checkout = () => {
         >
           <img
             className="select-img"
-            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            style={{ height: "40px", width: "150px", marginRight: "30px" }}
             src={img3}
             alt="loading"
           />
@@ -107,7 +107,7 @@ export const Checkout = () => {
         >
           <img
             className="select-img"
-            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            style={{ height: "40px", width: "150px", marginRight: "30px" }}
             src={img4}
             alt="loading"
           />
@@ -124,7 +124,7 @@ export const Checkout = () => {
         >
           <img
             className="select-img"
-            style={{ height: "60px", width: "205px", marginRight: "30px" }}
+            style={{ height: "40px", width: "150px", marginRight: "30px" }}
             src={img5}
             alt="loading"
           />
@@ -134,7 +134,7 @@ export const Checkout = () => {
     },
   ];
   const customStyles = {
-    height: 45,
+    height: 30,
     zIndex: -999,
   };
   return (

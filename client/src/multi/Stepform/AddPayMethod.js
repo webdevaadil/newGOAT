@@ -158,9 +158,22 @@ export default function AddPayMethod({getPaymentMethods}) {
     }
   }
 
+
+const statecitystyle = {
+  option: (provided, state) => ({
+    ...provided,
+    width:230
+  }),
+  container: (provided, state) => ({
+    ...provided,
+    width:230
+  }),
+}
+
+
   return (
     <div className={style.wrapper}>
-      <div className={style.innerWrapper}>
+      <div className="main-label">
         {/* <div className={style.title}>Add Payment Method</div> */}
         <div className="inputrow">
           <label>Cardholder Name</label>
@@ -187,7 +200,7 @@ export default function AddPayMethod({getPaymentMethods}) {
               placeholder="Enter Full Address"
               autoComplete="new-password"
               className="input-border"
-              style = {{padding:"15px",border:"1px solid hsl(0deg 0% 84%)"}}
+              style = {{border:"1px solid hsl(0deg 0% 84%)"}}
             />
           </div>
           <div className={style.rowSelect}>
@@ -203,23 +216,28 @@ export default function AddPayMethod({getPaymentMethods}) {
               />
             </div>
 
+              </div>
+
+<div className="flex-state">
+
             <div>
               <label>State</label>
               <Select
                 isClearable={true}
                 isSearchable={true}
                 name="state"
+                styles = {statecitystyle}
                 value={selectedLocation.state}
                 options={locations.states}
                 onChange={handleSelectState}
               />
             </div>
-          </div>
           <div className={style.rowSelect}>
             <div>
               <label>City</label>
               <Select
                 isClearable={true}
+                styles = {statecitystyle}
                 isSearchable={true}
                 name="city"
                 value={selectedLocation.city}
@@ -233,6 +251,7 @@ export default function AddPayMethod({getPaymentMethods}) {
               <input onChange={handleChangePostalCode} type="text" placeholder="Enter Zip Code" />
             </div> */}
           </div>
+</div>
 
           <div className="pay-btn">
             <button className="homelogin" onClick={handleSubmit}>Submit</button>
