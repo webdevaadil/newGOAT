@@ -355,8 +355,8 @@ export const Paypa = () => {
               }
             })
             .catch((err) => {
-              alert.error("error");
-              console.log(err);
+              alert.error(err.response.data);
+              console.log(err.response.data);
               /*Handle Error */
             });
           console.log(resp);
