@@ -338,6 +338,7 @@ export const Paypa = () => {
               user: user._id,
               paymentMethod: resp.paymentMethod,
               packages,
+              cardId: cardoptionselect,
             })
             .then((resp) => {
               /* Handle success */
@@ -544,17 +545,21 @@ export const Paypa = () => {
                                 </div>
 
                                 <br />
-                                {/* <Select
-                                  className="Select_pack"
-                                  options={cardoption}
-                                  styles={customStylescard}
-                                  value={cardoption.filter(function (option) {
-                                    return option.value === cardoptionselect;
-                                  })}
-                                  onChange={cardhandle}
-                                  // defaultValue={user.packages}
-                                /> */}
-                                
+                                {cardoption.length >= 1 ? (
+                                  <Select
+                                    className="Select_pack"
+                                    options={cardoption}
+                                    styles={customStylescard}
+                                    value={cardoption.filter(function (option) {
+                                      return option.value === cardoptionselect;
+                                    })}
+                                    onChange={cardhandle}
+                                    // defaultValue={user.packages}
+                                  />
+                                ) : (
+                                  ""
+                                )}
+
                                 <br />
                                 <button
                                   className="btn homelogin"

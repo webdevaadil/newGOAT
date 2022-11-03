@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { Loader } from '../../components/layout/Loader';
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Loader } from "../../components/layout/Loader";
 import style from "./Package.css";
 import { format } from "date-fns";
 
@@ -10,11 +10,11 @@ import img2 from "../../Images/name1.png";
 import img3 from "../../Images/name2.png";
 import img4 from "../../Images/name3.png";
 import img5 from "../../Images/name4.png";
-import { PayPalButton } from 'react-paypal-button-v2';
-import axios from 'axios';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useAlert } from 'react-alert';
-import { updateprofile } from '../../actions/userAction';
+import { PayPalButton } from "react-paypal-button-v2";
+import axios from "axios";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useAlert } from "react-alert";
+import { updateprofile } from "../../actions/userAction";
 import visa from "./assets/cards/visa.png";
 import americanexpress from "./assets/cards/americanexpress.png";
 import dinersclub from "./assets/cards/dinersclub.jpg";
@@ -25,10 +25,9 @@ import jcb from "./assets/cards/jcb.png";
 import mastercard from "./assets/cards/mastercard.png";
 import mir from "./assets/cards/mir.png";
 import unionpay from "./assets/cards/unionpay.png";
-import AddPayMethod from './AddPayMethod';
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import AddPayMethod from "./AddPayMethod";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { Country, State, City } from "country-state-city";
-
 
 export const Checkout = () => {
   const { tips } = useParams();
@@ -36,7 +35,8 @@ export const Checkout = () => {
   const alert = useAlert();
   const stripe = useStripe();
   const elements = useElements();
-  const dispatch = useDispatch();const card = useRef();
+  const dispatch = useDispatch();
+  const card = useRef();
 
   const [packages, setpackages] = useState(`${tips} / week`);
   const [test, settest] = useState();
@@ -60,7 +60,7 @@ export const Checkout = () => {
   date.setDate(date.getDate() + 6);
 
   const updatepro = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(
       updateprofile({
         paymentstatus: "true",
@@ -69,7 +69,7 @@ export const Checkout = () => {
         PaymentexpireDate: date,
       })
     );
-    navigate("/The-Goat-Tips")
+    navigate("/The-Goat-Tips");
   };
   const options = [
     {
@@ -149,7 +149,8 @@ export const Checkout = () => {
         >
           <img
             className="select-img"
-            style={{ height: "43px", width: "150px", marginRight: "30px" }}            src={img5}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}
+            src={img5}
             alt="loading"
           />
           Free
@@ -161,11 +162,11 @@ export const Checkout = () => {
     height: 30,
     zIndex: -999,
   };
-   // ..................payment...................//
-   const [paymentMethods, setPaymentMethods] = useState([]);
-   const [cardoption, setCardoption] = useState([]);
-   const [cardoptionselect, setCardoptionselect] = useState();
-   const [cardInfo, setCardInfo] = useState({
+  // ..................payment...................//
+  const [paymentMethods, setPaymentMethods] = useState([]);
+  const [cardoption, setCardoption] = useState([]);
+  const [cardoptionselect, setCardoptionselect] = useState();
+  const [cardInfo, setCardInfo] = useState({
     name: "",
     expiry: "",
     number: "",
@@ -174,137 +175,136 @@ export const Checkout = () => {
       postalCode: "",
     },
   });
- 
-   const customStylescard = {
-     height: 100,
-     zIndex: -999,
-   };
-   const cardhandle = async (e) => {
-     setCardoptionselect(e.value);
-   };
-   function handleSelectCountry(country) {
+
+  const customStylescard = {
+    height: 100,
+    zIndex: -999,
+  };
+  const cardhandle = async (e) => {
+    setCardoptionselect(e.value);
+  };
+  function handleSelectCountry(country) {
     const states = State.getStatesOfCountry(country.value);
     setSelectedLocation((prev) => {
       return { ...prev, country };
     });
     setLocations((prev) => ({ ...prev, states: parseForSelect(states) }));
   }
-   useEffect(() => {
-     if (user) {
-       getPaymentMethods();
-     }
-   }, [user]);
-   useEffect(() => {
-     showcard();
-   }, [paymentMethods]);
-   const pay = (e) => {
-     e.preventDefault();
-     axios
-       .post("/api/auth/paymentcreate", {
-         user,
-         cardoptionselect,
-         packages,
-       })
-       .then((resp) => {
-         console.log(resp);
-         if (resp.data.status === "succeeded") {
-           dispatch(
-             updateprofile({
-               paymentstatus:  "true",
-               packages,
-               paymentDate: Date.now(),
-               PaymentexpireDate: date,
-             })
-           );
-           navigate("/The-Goat-Tips")
-       
-         }
-       })
-       .then()
-       .catch((err) => {
-         alert.error(err.response.data);
-       });
-   };
-   async function getPaymentMethods() {
-     await axios
-       .post(`/api/auth/paymentMethodcardlist`, {
-         user: user,
-       })
-       .then((resp) => {
-         console.log(resp);
-         setPaymentMethods(resp.data.data);
-         console.log(paymentMethods);
-       })
-       .catch((err) => {
-         console.log(err);
-       });
-   }
-   console.log(paymentMethods);
-   function getCardImage(type) {
-     switch (type) {
-       case "visa":
-         return visa;
-       case "mastercard":
-         return mastercard;
-       case "amex":
-         return americanexpress;
-       case "diners club":
-         return dinersclub;
-       case "discover":
-         return discover;
-       case "jcb":
-         return jcb;
-       case "unionpay":
-         return unionpay;
-       case "maestro":
-         return mastercard;
-       case "mir":
-         return mir;
-       case "elo":
-         return elo;
-       case "hiper":
-         return hiper;
-       case "hipercard":
-         return hiper;
-       default:
-         return visa;
-     }
-   }
-   const showcard = (e) => {
-     console.log(paymentMethods);
- 
-     const cardoptions = paymentMethods.map((method) => ({
-       value: method.id,
-       label: (
-         <div className={"cardcard card"}>
-           <div className={style.cardLogo}>
-             <img src={getCardImage(method.card.brand)} alt="" />
-           </div>
- 
-           <div className={"details"}>
-              {method.card.last4}
-             {method.billing_details.name}
-           </div>
- 
-           <div className={"expire"}>
-             Expires{" "}
-             {format(
-               new Date(`${method.card.exp_year}/${method.card.exp_month}/01`),
-               "MM/yyyy"
-             )}
-           </div>
-         </div>
-       ),
-     }));
-     setCardoption(cardoptions);
-   };
-   function parseForSelect(arr) {
+  useEffect(() => {
+    if (user) {
+      getPaymentMethods();
+    }
+  }, [user]);
+  useEffect(() => {
+    showcard();
+  }, [paymentMethods]);
+  const pay = (e) => {
+    e.preventDefault();
+    axios
+      .post("/api/auth/paymentcreate", {
+        user,
+        cardId: cardoptionselect,
+        packages,
+      })
+      .then((resp) => {
+        console.log(resp);
+        if (resp.data.status === "succeeded") {
+          dispatch(
+            updateprofile({
+              paymentstatus: "true",
+              packages,
+              paymentDate: Date.now(),
+              PaymentexpireDate: date,
+            })
+          );
+          navigate("/The-Goat-Tips");
+        }
+      })
+      .then()
+      .catch((err) => {
+        alert.error(err.response.data);
+      });
+  };
+  async function getPaymentMethods() {
+    await axios
+      .post(`/api/auth/paymentMethodcardlist`, {
+        user: user,
+      })
+      .then((resp) => {
+        console.log(resp);
+        setPaymentMethods(resp.data.data);
+        console.log(paymentMethods);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  console.log(paymentMethods);
+  function getCardImage(type) {
+    switch (type) {
+      case "visa":
+        return visa;
+      case "mastercard":
+        return mastercard;
+      case "amex":
+        return americanexpress;
+      case "diners club":
+        return dinersclub;
+      case "discover":
+        return discover;
+      case "jcb":
+        return jcb;
+      case "unionpay":
+        return unionpay;
+      case "maestro":
+        return mastercard;
+      case "mir":
+        return mir;
+      case "elo":
+        return elo;
+      case "hiper":
+        return hiper;
+      case "hipercard":
+        return hiper;
+      default:
+        return visa;
+    }
+  }
+  const showcard = (e) => {
+    console.log(paymentMethods);
+
+    const cardoptions = paymentMethods.map((method) => ({
+      value: method.id,
+      label: (
+        <div className={"cardcard card"}>
+          <div className={style.cardLogo}>
+            <img src={getCardImage(method.card.brand)} alt="" />
+          </div>
+
+          <div className={"details"}>
+            {method.card.last4}
+            {method.billing_details.name}
+          </div>
+
+          <div className={"expire"}>
+            Expires{" "}
+            {format(
+              new Date(`${method.card.exp_year}/${method.card.exp_month}/01`),
+              "MM/yyyy"
+            )}
+          </div>
+        </div>
+      ),
+    }));
+    setCardoption(cardoptions);
+  };
+  function parseForSelect(arr) {
     return arr.map((item) => ({
       label: item.name,
       value: item.isoCode ? item.isoCode : item.name,
     }));
   }
-   const cardElementOptions = {
+  const cardElementOptions = {
     style: {
       base: {
         color: "#666",
@@ -323,8 +323,8 @@ export const Checkout = () => {
     setLocations((prev) => {
       return { ...prev, countries: parseForSelect(allCountry) };
     });
-  }, []); 
-   function handleChangeName(e) {
+  }, []);
+  function handleChangeName(e) {
     const { value } = e.target;
     setCardInfo((prev) => {
       return { ...prev, name: value };
@@ -356,6 +356,7 @@ export const Checkout = () => {
               user: user._id,
               paymentMethod: resp.paymentMethod,
               packages,
+              cardId: cardoptionselect,
             })
             .then((resp) => {
               /* Handle success */
@@ -367,8 +368,8 @@ export const Checkout = () => {
                     paymentDate: Date.now(),
                     PaymentexpireDate: date,
                   })
-                )
-                navigate("/The-Goat-Tips")
+                );
+                navigate("/The-Goat-Tips");
                 console.log("asas");
               }
             })
@@ -383,7 +384,7 @@ export const Checkout = () => {
       /* Handle Error*/
     }
   }
-   //  ..................payment...................//
+  //  ..................payment...................//
   return (
     <>
       {loading && <Loader />}
@@ -394,11 +395,14 @@ export const Checkout = () => {
             <div className="col-md-6">
               <div className="img-main"></div>
             </div>
-            <div className="col-md-6 d-flex"style={{
+            <div
+              className="col-md-6 d-flex"
+              style={{
                 display: "flex !important",
                 justifyContent: "center",
                 alignItems: "center",
-              }} >
+              }}
+            >
               <div className="wel-bg">
                 <div className="row form-content check-center">
                   <h2>Packages</h2>
@@ -416,100 +420,141 @@ export const Checkout = () => {
                             return option.value === packages;
                           })}
                           onChange={handle}
-                        // defaultValue={user.packages}
+                          // defaultValue={user.packages}
                         />
                       </div>
+                    </form>
 
-                      <div className="fom-btn mb-3 d-block">
-                        <div>
-                          <div
-                            style={{ maxWidth: "750px", minHeight: "200px" }}
-                          >
-                            {packages === "Free" ? (
-                              <button className="btn_two" onClick={updatepro}>
-                                Select
-                              </button>
-                            ) : (
-                              <>
+                    <div className="fom-btn mb-3 d-block">
+                      <div>
+                        <div style={{ maxWidth: "750px", minHeight: "200px" }}>
+                          {packages === "Free" ? (
+                            <button className="btn_two" onClick={updatepro}>
+                              Select
+                            </button>
+                          ) : (
+                            <>
+                              {isAuthenticated ? (
+                                <>
+                                  <div className={style.wrapper}>
+                                    <div className="main-label">
+                                      {/* <div className={style.title}>Add Payment Method</div> */}
+                                      <div className="inputrow mb-3">
+                                        <label>Cardholder Name</label>
+                                        <input
+                                          onChange={handleChangeName}
+                                          type="text"
+                                          name="name"
+                                          placeholder="Enter card holder name"
+                                          className="input-border"
+                                        />
+                                      </div>
+                                      <label>Enter Card Details</label>
+                                      <div className="input-border">
+                                        <CardElement
+                                          options={cardElementOptions}
+                                          ref={card}
+                                        />
+                                      </div>
 
-                                {
-                                  isAuthenticated ?
-                                    <>
-                                         <div className={style.wrapper}>
-                                  <div className="main-label">
-                                    {/* <div className={style.title}>Add Payment Method</div> */}
-                                    <div className="inputrow mb-3">
-                                      <label>Cardholder Name</label>
-                                      <input
-                                        onChange={handleChangeName}
-                                        type="text"
-                                        name="name"
-                                        placeholder="Enter card holder name"
-                                        className="input-border"
-                                      />
-                                    </div>
-                                    <label>Enter Card Details</label>
-                                    <div className="input-border">
-                                      <CardElement
-                                        options={cardElementOptions}
-                                        ref={card}
-                                      />
-                                    </div>
-
-                                    <div
-                                      style={{ marginTop: "10px" }}
-                                      className={style.addressWrapper}
-                                    >
-                                      {}
-                                      <div className={style.rowSelect}>
-                                        <div>
-                                          <label>Country</label>
-                                          <Select
-                                            isClearable={true}
-                                            isSearchable={true}
-                                            name="country"
-                                            value={selectedLocation.country}
-                                            options={locations.countries}
-                                            onChange={handleSelectCountry}
-                                          />
+                                      <div
+                                        style={{ marginTop: "10px" }}
+                                        className={style.addressWrapper}
+                                      >
+                                        {}
+                                        <div className={style.rowSelect}>
+                                          <div>
+                                            <label>Country</label>
+                                            <Select
+                                              isClearable={true}
+                                              isSearchable={true}
+                                              name="country"
+                                              value={selectedLocation.country}
+                                              options={locations.countries}
+                                              onChange={handleSelectCountry}
+                                            />
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                </div>
 
-                                <br />
-                          
-                                
-                                <br />
-                                <button
-                                  className="btn homelogin"
-                                  style={{ backgroundColor: "gr" }}
-                                  onClick={handleSubmit}
+                                  <br />
+                                  {cardoption.length >= 1 ? (
+                                    <Select
+                                      className="Select_pack"
+                                      options={cardoption}
+                                      styles={customStylescard}
+                                      value={cardoption.filter(function (
+                                        option
+                                      ) {
+                                        return (
+                                          option.value === cardoptionselect
+                                        );
+                                      })}
+                                      onChange={cardhandle}
+                                      // defaultValue={user.packages}
+                                    />
+                                  ) : (
+                                    ""
+                                  )}
+
+                                  <br />
+                                  <button
+                                    className="btn homelogin"
+                                    style={{ backgroundColor: "gr" }}
+                                    onClick={handleSubmit}
+                                  >
+                                    pay Now
+                                  </button>
+                                </>
+                              ) : (
+                                <ul
+                                  style={{
+                                    flexDirection: "row",
+                                    justifyContent: "center",
+                                    marginTop: "1rem",
+                                  }}
+                                  className="navbar-nav top-btn ml-auto"
                                 >
-                                  pay Now
-                                </button></> :
-                                    (
-                                      <ul style={{ flexDirection: "row", justifyContent: "center", marginTop: "1rem" }} className="navbar-nav top-btn ml-auto">
-                                        <button onClick={() => navigate(`/newlogin/${tips}`)} style={{ width: "90%", marginBottom: "7px" }} className='btn btn-1'>Login</button>
-                                        <Link to="/signup"><button style={{ width: "160%" }} className='btn btn-2'>Signup</button></Link>
-                                      </ul>
-                                    )
-                                }
-                              </>
-                            )}
-                          </div>
+                                  <button
+                                    onClick={() =>
+                                      navigate(`/newlogin/${tips}`)
+                                    }
+                                    style={{
+                                      width: "30%",
+                                      marginBottom: "7px",
+                                    }}
+                                    className="btn btn-1"
+                                  >
+                                    Login
+                                  </button>
+                                  <Link to="/signup">
+                                    <button
+                                      style={{ width: "160%" }}
+                                      className="btn btn-2"
+                                    >
+                                      Signup
+                                    </button>
+                                  </Link>
+                                </ul>
+                              )}
+                            </>
+                          )}
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </div>
 
-                    <p style={{ textAlign: "center" }}>
-                      By purchasing, you confirm that you are over 18 years old and agree to our terms and conditions.{" "}
-                  <Link to="/terms-and-conditions">
-                      <span style={{textDecoration:"underline"}}>Terms and Conditions</span>
-                  </Link>
-                    </p>
+                  <p style={{ textAlign: "center" }}>
+                    By purchasing, you confirm that you are over 18 years old
+                    and agree to our terms and conditions.{" "}
+                    <Link to="/terms-and-conditions">
+                      <span style={{ textDecoration: "underline" }}>
+                        Terms and Conditions
+                      </span>
+                    </Link>
+                  </p>
                 </div>
               </div>
             </div>
@@ -517,5 +562,5 @@ export const Checkout = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
