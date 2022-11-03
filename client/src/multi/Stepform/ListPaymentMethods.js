@@ -15,7 +15,7 @@ export default function ListPaymentMethods({ handleSelectCard }) {
   console.log(user);
   async function getPaymentMethods() {
     await axios
-      .post(`http://localhost:5000/api/auth/paymentMethodcardlist`, {
+      .post(`/api/auth/paymentMethodcardlist`, {
         user: user,
       })
       .then((resp) => {
