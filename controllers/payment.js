@@ -77,11 +77,18 @@ exports.paymentMethodcardlist = async (req, res) => {
 exports.paymentcreate = async (req, res) => {
   /* Query database for getting the payment amount and customer id of the current logged in user */
   console.log(req.body.cardoptionselect,"as");
-  const amount = req.body.packages.slice(1, 3);
-  const currency = "AUD";
-  //   console.log(req.user);
-  let id = req.body.user;
-  console.log(id["_id"]);
+  if(!req.body.cardoptionselect){
+    res.status(500).json("plz select card");
+
+
+  }
+  else{
+
+    const amount = req.body.packages.slice(1, 3);
+    const currency = "AUD";
+    //   console.log(req.user);
+    let id = req.body.user;
+    console.log(id["_id"]);
   const user = await User.findById(id["_id"]);
   let customer = user.customer_id;
   try {
@@ -91,13 +98,13 @@ exports.paymentcreate = async (req, res) => {
       user.email,
       customer,
       req.body.cardoptionselect
-    );
+      );
 
-    /* Add the payment intent record to your datbase if required */
-  } catch (err) {
-    console.log(err);
-    res.status(500).json("Could not create payment");
-  }
+      /* Add the payment intent record to your datbase if required */
+    } catch (err) {
+      console.log(err);
+      res.status(500).json("Could not create payment");
+    }
   try {
     console.log(charged,'charged');
     const paymentConfirm = await Stripe.PaymentConfirm(charged);
@@ -107,6 +114,7 @@ exports.paymentcreate = async (req, res) => {
     return res.status(500).send(err);
   }
 };
+}
 async function listCustomerPayMethods(customerId) {
   return new Promise(async (resolve, reject) => {
     try {
@@ -115,10 +123,11 @@ async function listCustomerPayMethods(customerId) {
         {
           type: "card",
         }
-      );
-      resolve(paymentMethods);
-    } catch (err) {
-      reject(err);
-    }
-  });
-}
+        );
+        resolve(paymentMethods);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+  

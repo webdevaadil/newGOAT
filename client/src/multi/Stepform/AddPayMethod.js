@@ -86,7 +86,7 @@ export default function AddPayMethod({getPaymentMethods}) {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    // e.preventDefault()
     const address = cardInfo.address;
     const billingDetails = {
       name: cardInfo.name,

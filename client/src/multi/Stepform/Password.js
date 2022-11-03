@@ -251,8 +251,8 @@ export const Paypa = () => {
               paymentDate: Date.now(),
               PaymentexpireDate: date,
             })
-          );
-          navigate("/The-Goat-Tips");
+          
+          ).then(navigate("/The-Goat-Tips"));
           console.log("asas");
         }
       })

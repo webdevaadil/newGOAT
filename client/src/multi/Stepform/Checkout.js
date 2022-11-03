@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from '../../components/layout/Loader';
+import style from "./Package.css";
+import { format } from "date-fns";
+
 import Select from "react-select";
 import img1 from "../../Images/level.png";
 import img2 from "../../Images/name1.png";
@@ -12,6 +15,17 @@ import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import { updateprofile } from '../../actions/userAction';
+import visa from "../assets/cards/visa.png";
+import americanexpress from "../assets/cards/americanexpress.png";
+import dinersclub from "../assets/cards/dinersclub.jpg";
+import discover from "../assets/cards/discover.jpg";
+import elo from "../assets/cards/elo.png";
+import hiper from "../assets/cards/hiper.png";
+import jcb from "../assets/cards/jcb.png";
+import mastercard from "../assets/cards/mastercard.png";
+import mir from "../assets/cards/mir.png";
+import unionpay from "../assets/cards/unionpay.png";
+import AddPayMethod from './AddPayMethod';
 
 
 export const Checkout = () => {
@@ -45,7 +59,6 @@ export const Checkout = () => {
     );
     navigate("/The-Goat-Tips")
   };
-
   const options = [
     {
       value: "$60 / week",
@@ -56,7 +69,7 @@ export const Checkout = () => {
         >
           <img
             className="select-img"
-            style={{ height: "40px", width: "150px", marginRight: "30px" }}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}
             src={img1}
             alt="loading"
           />
@@ -73,7 +86,7 @@ export const Checkout = () => {
         >
           <img
             className="select-img"
-            style={{ height: "40px", width: "150px", marginRight: "30px" }}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}
             src={img2}
             alt="loading"
           />
@@ -90,7 +103,7 @@ export const Checkout = () => {
         >
           <img
             className="select-img"
-            style={{ height: "40px", width: "150px", marginRight: "30px" }}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}
             src={img3}
             alt="loading"
           />
@@ -107,7 +120,7 @@ export const Checkout = () => {
         >
           <img
             className="select-img"
-            style={{ height: "40px", width: "150px", marginRight: "30px" }}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}
             src={img4}
             alt="loading"
           />
@@ -124,8 +137,7 @@ export const Checkout = () => {
         >
           <img
             className="select-img"
-            style={{ height: "40px", width: "150px", marginRight: "30px" }}
-            src={img5}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}            src={img5}
             alt="loading"
           />
           Free
@@ -137,6 +149,129 @@ export const Checkout = () => {
     height: 30,
     zIndex: -999,
   };
+   // ..................payment...................//
+   const [paymentMethods, setPaymentMethods] = useState([]);
+   const [cardoption, setCardoption] = useState([]);
+   const [cardoptionselect, setCardoptionselect] = useState();
+ 
+ 
+   const customStylescard = {
+     height: 100,
+     zIndex: -999,
+   };
+   const cardhandle = async (e) => {
+     setCardoptionselect(e.value);
+   };
+   useEffect(() => {
+     if (user) {
+       getPaymentMethods();
+     }
+   }, [user]);
+   useEffect(() => {
+     showcard();
+   }, [paymentMethods]);
+   const pay = (e) => {
+     e.preventDefault();
+     axios
+       .post("/api/auth/paymentcreate", {
+         user,
+         cardoptionselect,
+         packages,
+       })
+       .then((resp) => {
+         console.log(resp);
+         if (resp.data.status === "succeeded") {
+           dispatch(
+             updateprofile({
+               paymentstatus:  "true",
+               packages,
+               paymentDate: Date.now(),
+               PaymentexpireDate: date,
+             })
+           );
+           navigate("/The-Goat-Tips")
+       
+         }
+       })
+       .then()
+       .catch((err) => {
+         alert.error(err.response.data);
+       });
+   };
+   async function getPaymentMethods() {
+     await axios
+       .post(`/api/auth/paymentMethodcardlist`, {
+         user: user,
+       })
+       .then((resp) => {
+         console.log(resp);
+         setPaymentMethods(resp.data.data);
+         console.log(paymentMethods);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+   }
+   console.log(paymentMethods);
+   function getCardImage(type) {
+     switch (type) {
+       case "visa":
+         return visa;
+       case "mastercard":
+         return mastercard;
+       case "amex":
+         return americanexpress;
+       case "diners club":
+         return dinersclub;
+       case "discover":
+         return discover;
+       case "jcb":
+         return jcb;
+       case "unionpay":
+         return unionpay;
+       case "maestro":
+         return mastercard;
+       case "mir":
+         return mir;
+       case "elo":
+         return elo;
+       case "hiper":
+         return hiper;
+       case "hipercard":
+         return hiper;
+       default:
+         return visa;
+     }
+   }
+   const showcard = (e) => {
+     console.log(paymentMethods);
+ 
+     const cardoptions = paymentMethods.map((method) => ({
+       value: method.id,
+       label: (
+         <div className={"cardcard card"}>
+           <div className={style.cardLogo}>
+             <img src={getCardImage(method.card.brand)} alt="" />
+           </div>
+ 
+           <div className={"details"}>
+              {method.card.last4}
+             {method.billing_details.name}
+           </div>
+ 
+           <div className={"expire"}>
+             Expires{" "}
+             {format(
+               new Date(`${method.card.exp_year}/${method.card.exp_month}/01`),
+               "MM/yyyy"
+             )}
+           </div>
+         </div>
+       ),
+     }));
+     setCardoption(cardoptions);
+   };
+   //  ..................payment...................//
   return (
     <>
       {loading && <Loader />}
@@ -183,60 +318,32 @@ export const Checkout = () => {
 
                                 {
                                   isAuthenticated ?
-                                    <PayPalButton
-                                      createOrder={async (data, actions) => {
-                                        return await fetch("/api/auth/pay", {
-                                          method: "post",
-                                          headers: {
-                                            "Content-Type": "application/json",
-                                          },
-                                          body: JSON.stringify({
-                                            packages: packages,
-                                          }),
-                                          // use the "body" param to optionally pass additional order information
-                                          // like product ids or amount
-                                        })
-                                          .then((response) => response.json())
-                                          .then((order) => order.id)
+                                    <>
+                                    <AddPayMethod
+                                  packages={packages}
+                                  user={user}
+                                  getPaymentMethods={getPaymentMethods}
+                                />
 
-                                          .catch((err) => {
-                                            console.log(err);
-                                          });
-                                      }}
-                                      ///////////////////////
-                                      onApprove={async (data, actions) => {
-                                        console.log(data);
-
-                                        return await axios
-                                          .post(
-                                            `/api/auth/order/${data.orderID}/capture`,
-                                            {}
-                                          )
-                                          .then((response) => response)
-                                          .then((orderData) => {
-                                            settest(orderData);
-                                            // Successful capture! For dev/demo purposes:
-                                            console.log(
-                                              "Capture result",
-                                              orderData
-                                            );
-                                          })
-                                          .then((orderData) =>
-                                            console.log(orderData)
-                                          )
-                                          .then(updatepro())
-                                          .then(navigate("/The-Goat-Tips"))
-                                          .catch((err) => {
-                                            console.log(err);
-                                          });
-                                      }}
-                                      catchError={(err, data) => {
-                                        // alert("Transaction completed by " + details.payer.name.given_name);
-                                        console.log(err);
-
-                                        // OPTIONAL: Call your server to save the transaction
-                                      }}
-                                    /> :
+                                <br />
+                                <Select
+                                  className="Select_pack"
+                                  options={cardoption}
+                                  styles={customStylescard}
+                                  value={cardoption.filter(function (option) {
+                                    return option.value === cardoptionselect;
+                                  })}
+                                  onChange={cardhandle}
+                                  // defaultValue={user.packages}
+                                />
+                                <br />
+                                <button
+                                  className="btn homelogin"
+                                  style={{ backgroundColor: "gr" }}
+                                  onClick={pay}
+                                >
+                                  pay Now
+                                </button></> :
                                     (
                                       <ul style={{ flexDirection: "row", justifyContent: "center", marginTop: "1rem" }} className="navbar-nav top-btn ml-auto">
                                         <button onClick={() => navigate(`/newlogin/${tips}`)} style={{ width: "90%", marginBottom: "7px" }} className='btn btn-1'>Login</button>
