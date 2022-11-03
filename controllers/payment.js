@@ -78,7 +78,12 @@ exports.paymentMethodcardlist = async (req, res) => {
 exports.paymentcreate = async (req, res) => {
   /* Query database for getting the payment amount and customer id of the current logged in user */
   console.log(req.body.cardoptionselect, "as");
+  if(req.body.cardoptionselect){
 
+  }
+  else{
+
+  }
     const amount = req.body.packages.slice(1, 3);
     const currency = "AUD";
     let paymentMethod = req.body.paymentMethod

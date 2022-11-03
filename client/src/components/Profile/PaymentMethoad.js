@@ -447,6 +447,7 @@ export const PaymentMethoad = () => {
               user: user._id,
               paymentMethod: resp.paymentMethod,
               packages,
+              cardoptionselect
             })
             .then((resp) => {
               /* Handle success */
@@ -548,7 +549,7 @@ export const PaymentMethoad = () => {
                   </div>
                   <h2 className="pay_detail">Payment Details</h2>
                   
-                  <div className="fom-btn mb-3" style={{justifyContent:"center"}}>
+                  <div className="fom-btn mb-3 d-block" style={{justifyContent:"center"}}>
                         <div>
                           <div style={{ maxWidth: "750px", minHeight: "200px" }}>
                           {packages==="Free"?( <button
@@ -621,6 +622,16 @@ export const PaymentMethoad = () => {
                                   onChange={cardhandle}
                                   // defaultValue={user.packages}
                                 /> */}
+                                       <Select
+                                  className="Select_pack"
+                                  options={cardoption}
+                                  styles={customStylescard}
+                                  value={cardoption.filter(function (option) {
+                                    return option.value === cardoptionselect;
+                                  })}
+                                  onChange={cardhandle}
+                                  // defaultValue={user.packages}
+                                /> 
                                 <br />
                                 <button
                                   className="btn homelogin"

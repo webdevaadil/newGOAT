@@ -394,7 +394,11 @@ export const Checkout = () => {
             <div className="col-md-6">
               <div className="img-main"></div>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 d-flex"style={{
+                display: "flex !important",
+                justifyContent: "center",
+                alignItems: "center",
+              }} >
               <div className="wel-bg">
                 <div className="row form-content check-center">
                   <h2>Packages</h2>
@@ -416,7 +420,7 @@ export const Checkout = () => {
                         />
                       </div>
 
-                      <div className="fom-btn mb-3">
+                      <div className="fom-btn mb-3 d-block">
                         <div>
                           <div
                             style={{ maxWidth: "750px", minHeight: "200px" }}
@@ -475,16 +479,8 @@ export const Checkout = () => {
                                 </div>
 
                                 <br />
-                                {/* <Select
-                                  className="Select_pack"
-                                  options={cardoption}
-                                  styles={customStylescard}
-                                  value={cardoption.filter(function (option) {
-                                    return option.value === cardoptionselect;
-                                  })}
-                                  onChange={cardhandle}
-                                  // defaultValue={user.packages}
-                                /> */}
+                          
+                                
                                 <br />
                                 <button
                                   className="btn homelogin"
