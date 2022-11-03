@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ProfileNav } from "./ProfileNav";
 import "./paymentmethoad.css";
 import style from "../../multi/Stepform/Package.css";
@@ -35,12 +35,35 @@ import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import Select from "react-select";
 import axios from "axios";
 import HomeFooter from "../Footer/HomeFooter";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
+import { Country, State, City } from "country-state-city";
 
 export const PaymentMethoad = () => {
   const [test, settest] = useState();
+  const card = useRef();
   const navigate = useNavigate();
-
+  const stripe = useStripe();
+  const elements = useElements();
+  const [cardInfo, setCardInfo] = useState({
+    name: "",
+    expiry: "",
+    number: "",
+    address: {
+      line: "",
+      postalCode: "",
+    },
+  });
+  const [selectedLocation, setSelectedLocation] = useState({
+    country: {},
+    city: {},
+    state: {},
+  });
+  const [locations, setLocations] = useState({
+    countries: "",
+    states: "",
+    cities: "",
+  });
   const dispatch = useDispatch();
   const alert = useAlert();
   const date = new Date();
@@ -207,33 +230,89 @@ export const PaymentMethoad = () => {
   useEffect(() => {
     showcard();
   }, [paymentMethods]);
-  const pay = (e) => {
-    e.preventDefault();
-    axios
-      .post("/api/auth/paymentcreate", {
-        user,
-        cardoptionselect,
-        packages,
-      })
-      .then((resp) => {
-        console.log(resp);
-        if (resp.data.status === "succeeded") {
-          dispatch(
-            updateprofile({
-              paymentstatus:  "true",
-              packages,
-              paymentDate: Date.now(),
-              PaymentexpireDate: date,
-            })
-          );
+  // const pay = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .post("/api/auth/paymentcreate", {
+  //       user,
+  //       cardoptionselect,
+  //       packages,
+  //     })
+  //     .then((resp) => {
+  //       console.log(resp);
+  //       if (resp.data.status === "succeeded") {
+  //         dispatch(
+  //           updateprofile({
+  //             paymentstatus:  "true",
+  //             packages,
+  //             paymentDate: Date.now(),
+  //             PaymentexpireDate: date,
+  //           })
+  //         );
       
-        }
-      })
-      .then()
-      .catch((err) => {
-        alert.error(err.response.data);
-      });
-  };
+  //       }
+  //     })
+  //     .then()
+  //     .catch((err) => {
+  //       alert.error(err.response.data);
+  //     });
+  // };
+  async function pay(e) {
+    e.preventDefault()
+   const address = cardInfo.address;
+   const billingDetails = {
+     name: cardInfo.name,
+     address: {
+       country: address.country,
+       state: address.state,
+       city: address.city,
+       line1: address.line,
+     },
+   };
+
+   try {
+     stripe
+       .createPaymentMethod({
+         type: "card",
+         billing_details: billingDetails,
+         card: elements.getElement(CardElement),
+       })
+       .then((resp) => {
+           axios 
+           .post(
+             "/api/auth/paymentcreate",
+             {
+               user:user._id,
+               paymentMethod: resp.paymentMethod,
+               packages,
+             }
+           )
+           .then((resp) => {
+             /* Handle success */
+             if (resp.data.status === "succeeded") {
+               dispatch(
+                 updateprofile({
+                   paymentstatus:  "true",
+                   packages,
+                   paymentDate: Date.now(),
+                   PaymentexpireDate: date,
+                 })
+               
+               ).then(navigate("/The-Goat-Tips"));
+               console.log("asas");
+             }
+           })
+           .catch((err) => {
+             alert("error")
+             console.log(err);
+             /*Handle Error */
+           });
+         console.log(resp);
+       });
+   } catch (err) {
+     /* Handle Error*/
+   }
+ }
   async function getPaymentMethods() {
     await axios
       .post(`/api/auth/paymentMethodcardlist`, {
@@ -307,6 +386,100 @@ export const PaymentMethoad = () => {
     }));
     setCardoption(cardoptions);
   };
+
+  function handleChangeName(e) {
+    const { value } = e.target;
+    setCardInfo((prev) => {
+      return { ...prev, name: value };
+    });
+  }
+  const cardElementOptions = {
+    style: {
+      base: {
+        color: "#666",
+        fontSize: "18px",
+        border: "1px solid",
+      },
+      invalid: {
+        color: "#fa755a",
+        fontSize: "18px",
+      },
+    },
+  };
+
+  function handleSelectCountry(country) {
+    const states = State.getStatesOfCountry(country.value);
+    setSelectedLocation((prev) => {
+      return { ...prev, country };
+    });
+    setLocations((prev) => ({ ...prev, states: parseForSelect(states) }));
+  }
+
+  function parseForSelect(arr) {
+    return arr.map((item) => ({
+      label: item.name,
+      value: item.isoCode ? item.isoCode : item.name,
+    }));
+  }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const address = cardInfo.address;
+    const billingDetails = {
+      name: cardInfo.name,
+      address: {
+        country: address.country,
+        state: address.state,
+        city: address.city,
+        line1: address.line,
+      },
+    };
+
+    try {
+      stripe
+        .createPaymentMethod({
+          type: "card",
+          billing_details: billingDetails,
+          card: elements.getElement(CardElement),
+        })
+        .then((resp) => {
+          axios
+            .post("/api/auth/paymentcreate", {
+              user: user._id,
+              paymentMethod: resp.paymentMethod,
+              packages,
+            })
+            .then((resp) => {
+              /* Handle success */
+              if (resp.data.status === "succeeded") {
+                dispatch(
+                  updateprofile({
+                    paymentstatus: "true",
+                    packages,
+                    paymentDate: Date.now(),
+                    PaymentexpireDate: date,
+                  })
+                )
+                console.log("asas");
+              }
+            })
+            .catch((err) => {
+              alert.error(err.response.data);
+              console.log(err.response.data);
+              /*Handle Error */
+            });
+          });
+        } catch (err) {
+          /* Handle Error*/
+          console.log(err);
+    }
+  }
+  useEffect(() => {
+    const allCountry = Country.getAllCountries();
+
+    setLocations((prev) => {
+      return { ...prev, countries: parseForSelect(allCountry) };
+    });
+  }, []); 
   //  ..................payment...................//
   return (
     <>
@@ -384,55 +557,7 @@ export const PaymentMethoad = () => {
             >
               Select
             </button>):(
-                            // <>
-                            //  <PayPalButton createOrder={async (data, actions) => {
-                            //     return await fetch("/api/auth/pay", {
-                            //       method: "post",
-                            //       headers:{
-                            //         "Content-Type":"application/json"
-                            //         },
-                            //       body: JSON.stringify({packages:packages})
-                            //       // use the "body" param to optionally pass additional order information
-                            //       // like product ids or amount
-                            //     })
-                            //       .then((response) => response.json())
-                            //       .then((order) => order.id)
-                            //       // .then((response) =>console.log(response))
-
-                            //       .catch((err) => {
-                            //         console.log(err);
-                            //       });
-                            //     // console.log(response)
-                            //   }}
-                            //   ///////////////////////
-                            //   onApprove={async (data, actions) => {
-                            //     console.log(data);
-
-                            //     return await axios
-                            //       .post(
-                            //         `/api/auth/order/${data.orderID}/capture`,
-                            //         {}
-                            //       )
-                            //       .then((response) => response)
-                            //       .then((orderData) => {
-                            //         settest(orderData);
-                            //         // Successful capture! For dev/demo purposes:
-                            //         console.log("Capture result", );
-                            //       })
-                            //       .then((orderData) => console.log("orderData"))
-                            //       .then(updatepro())
-                                  
-                            //       .catch((err) => {
-                            //         console.log(err);
-                            //       });
-                            //   }}
-                            //   catchError={(err, data) => {
-                            //     // alert("Transaction completed by " + details.payer.name.given_name);
-                            //     console.log(err);
-
-                            //     // OPTIONAL: Call your server to save the transaction
-                            //   }}
-                            // /></>
+                           
                             <>
                             {/* <button
                               type="button"
@@ -442,31 +567,68 @@ export const PaymentMethoad = () => {
                             >
                               Add card
                             </button> */}
-                            <AddPayMethod
-                              packages={packages}
-                              user={user}
-                              getPaymentMethods={getPaymentMethods}
-                            />
+                             <div className={style.wrapper}>
+                                  <div className="main-label">
+                                    {/* <div className={style.title}>Add Payment Method</div> */}
+                                    <div className="inputrow mb-3">
+                                      <label>Cardholder Name</label>
+                                      <input
+                                        onChange={handleChangeName}
+                                        type="text"
+                                        name="name"
+                                        placeholder="Enter card holder name"
+                                        className="input-border"
+                                      />
+                                    </div>
+                                    <label>Enter Card Details</label>
+                                    <div className="input-border">
+                                      <CardElement
+                                        options={cardElementOptions}
+                                        ref={card}
+                                      />
+                                    </div>
 
-                            <br />
-                            <Select
-                              className="Select_pack"
-                              options={cardoption}
-                              styles={customStylescard}
-                              value={cardoption.filter(function (option) {
-                                return option.value === cardoptionselect;
-                              })}
-                              onChange={cardhandle}
-                              // defaultValue={user.packages}
-                            />
-                            <br />
-                            <button
-                              className="btn homelogin"
-                              style={{ backgroundColor: "gr" }}
-                              onClick={pay}
-                            >
-                              pay Now
-                            </button>
+                                    <div
+                                      style={{ marginTop: "10px" }}
+                                      className={style.addressWrapper}
+                                    >
+                                      {}
+                                      <div className={style.rowSelect}>
+                                        <div>
+                                          <label>Country</label>
+                                          <Select
+                                            isClearable={true}
+                                            isSearchable={true}
+                                            name="country"
+                                            value={selectedLocation.country}
+                                            options={locations.countries}
+                                            onChange={handleSelectCountry}
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <br />
+                                {/* <Select
+                                  className="Select_pack"
+                                  options={cardoption}
+                                  styles={customStylescard}
+                                  value={cardoption.filter(function (option) {
+                                    return option.value === cardoptionselect;
+                                  })}
+                                  onChange={cardhandle}
+                                  // defaultValue={user.packages}
+                                /> */}
+                                <br />
+                                <button
+                                  className="btn homelogin"
+                                  style={{ backgroundColor: "gr" }}
+                                  onClick={handleSubmit}
+                                >
+                                  pay Now
+                                </button>
                           </>
                           )}
                            

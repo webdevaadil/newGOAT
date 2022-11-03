@@ -254,9 +254,9 @@ const statecitystyle = {
           </div>
 </div>
 
-          <div className="pay-btn">
+          {/* <div className="pay-btn">
             <button className="homelogin" onClick={handleSubmit}>Submit</button>
-          </div>
+          </div> */}
 
         </div>
       </div>

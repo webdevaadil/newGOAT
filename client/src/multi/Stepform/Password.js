@@ -78,6 +78,50 @@ export const Paypa = () => {
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [cardoption, setCardoption] = useState([]);
   const [cardoptionselect, setCardoptionselect] = useState();
+
+  const card = useRef();
+
+  const [cardInfo, setCardInfo] = useState({
+    name: "",
+    expiry: "",
+    number: "",
+    address: {
+      line: "",
+      postalCode: "",
+    },
+  });
+
+  function handleChangeName(e) {
+    const { value } = e.target;
+    setCardInfo((prev) => {
+      return { ...prev, name: value };
+    });
+  }
+
+  const cardElementOptions = {
+    style: {
+      base: {
+        color: "#666",
+        fontSize: "18px",
+        border: "1px solid",
+      },
+      invalid: {
+        color: "#fa755a",
+        fontSize: "18px",
+      },
+    },
+  };
+
+  const statecitystyle = {
+    option: (provided, state) => ({
+      ...provided,
+      width: 230,
+    }),
+    container: (provided, state) => ({
+      ...provided,
+      width: 230,
+    }),
+  };
   console.log(cardoptionselect);
   const dispatch = useDispatch();
 
@@ -88,6 +132,40 @@ export const Paypa = () => {
   const cardhandle = async (e) => {
     setCardoptionselect(e.value);
   };
+
+  const [locations, setLocations] = useState({
+    countries: "",
+    states: "",
+    cities: "",
+  });
+  const [selectedLocation, setSelectedLocation] = useState({
+    country: {},
+    city: {},
+    state: {},
+  });
+
+  function handleSelectCountry(country) {
+    const states = State.getStatesOfCountry(country.value);
+    setSelectedLocation((prev) => {
+      return { ...prev, country };
+    });
+    setLocations((prev) => ({ ...prev, states: parseForSelect(states) }));
+  }
+
+  function parseForSelect(arr) {
+    return arr.map((item) => ({
+      label: item.name,
+      value: item.isoCode ? item.isoCode : item.name,
+    }));
+  }
+
+  useEffect(() => {
+    const allCountry = Country.getAllCountries();
+
+    setLocations((prev) => {
+      return { ...prev, countries: parseForSelect(allCountry) };
+    });
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -201,7 +279,8 @@ export const Paypa = () => {
         >
           <img
             className="select-img"
-            style={{ height: "43px", width: "150px", marginRight: "30px" }}            src={img5}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}
+            src={img5}
             alt="loading"
           />
           Free
@@ -211,10 +290,10 @@ export const Paypa = () => {
   ];
   const customStyles = {
     container: (provided, state) => ({
-        ...provided,
-          height:35
-      }),
-    };
+      ...provided,
+      height: 35,
+    }),
+  };
   const customStylescard = {
     height: 100,
     zIndex: -999,
@@ -233,6 +312,59 @@ export const Paypa = () => {
   const date = new Date();
   date.setDate(date.getDate() + 6);
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const address = cardInfo.address;
+    const billingDetails = {
+      name: cardInfo.name,
+      address: {
+        country: address.country,
+        state: address.state,
+        city: address.city,
+        line1: address.line,
+      },
+    };
+
+    try {
+      stripe
+        .createPaymentMethod({
+          type: "card",
+          billing_details: billingDetails,
+          card: elements.getElement(CardElement),
+        })
+        .then((resp) => {
+          axios
+            .post("/api/auth/paymentcreate", {
+              user: user._id,
+              paymentMethod: resp.paymentMethod,
+              packages,
+            })
+            .then((resp) => {
+              /* Handle success */
+              if (resp.data.status === "succeeded") {
+                dispatch(
+                  updateprofile({
+                    paymentstatus: "true",
+                    packages,
+                    paymentDate: Date.now(),
+                    PaymentexpireDate: date,
+                  })
+                ).then(navigate("/The-Goat-Tips"));
+                console.log("asas");
+              }
+            })
+            .catch((err) => {
+              alert.error("error");
+              console.log(err);
+              /*Handle Error */
+            });
+          console.log(resp);
+        });
+    } catch (err) {
+      /* Handle Error*/
+    }
+  }
+
   const pay = (e) => {
     e.preventDefault();
     axios
@@ -246,12 +378,11 @@ export const Paypa = () => {
         if (resp.data.status === "succeeded") {
           dispatch(
             updateprofile({
-              paymentstatus:  "true",
+              paymentstatus: "true",
               packages,
               paymentDate: Date.now(),
               PaymentexpireDate: date,
             })
-          
           ).then(navigate("/The-Goat-Tips"));
           console.log("asas");
         }
@@ -313,7 +444,14 @@ export const Paypa = () => {
             <div className="col-md-6">
               <div className="img-main"></div>
             </div>
-            <div className="col-md-6">
+            <div
+              className="col-md-6 d-flex"
+              style={{
+                display: "flow !important",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <div className="wel-bg">
                 <div className="row form-content check-center">
                   <h2>Packages</h2>
@@ -356,14 +494,57 @@ export const Paypa = () => {
                                 >
                                   Add card
                                 </button> */}
-                                <AddPayMethod
+                                {/* <AddPayMethod
                                   packages={packages}
                                   user={user}
                                   getPaymentMethods={getPaymentMethods}
-                                />
+                                /> */}
+
+                                <div className={style.wrapper}>
+                                  <div className="main-label">
+                                    {/* <div className={style.title}>Add Payment Method</div> */}
+                                    <div className="inputrow mb-3">
+                                      <label>Cardholder Name</label>
+                                      <input
+                                        onChange={handleChangeName}
+                                        type="text"
+                                        name="name"
+                                        placeholder="Enter card holder name"
+                                        className="input-border"
+                                      />
+                                    </div>
+                                    <label>Enter Card Details</label>
+                                    <div className="input-border">
+                                      <CardElement
+                                        options={cardElementOptions}
+                                        ref={card}
+                                      />
+                                    </div>
+
+                                    <div
+                                      style={{ marginTop: "10px" }}
+                                      className={style.addressWrapper}
+                                    >
+                                      {}
+                                      <div className={style.rowSelect}>
+                                        <div>
+                                          <label>Country</label>
+                                          <Select
+                                            isClearable={true}
+                                            isSearchable={true}
+                                            name="country"
+                                            value={selectedLocation.country}
+                                            options={locations.countries}
+                                            onChange={handleSelectCountry}
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
 
                                 <br />
-                                <Select
+                                {/* <Select
                                   className="Select_pack"
                                   options={cardoption}
                                   styles={customStylescard}
@@ -372,12 +553,12 @@ export const Paypa = () => {
                                   })}
                                   onChange={cardhandle}
                                   // defaultValue={user.packages}
-                                />
+                                /> */}
                                 <br />
                                 <button
                                   className="btn homelogin"
                                   style={{ backgroundColor: "gr" }}
-                                  onClick={pay}
+                                  onClick={handleSubmit}
                                 >
                                   pay Now
                                 </button>

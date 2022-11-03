@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from '../../components/layout/Loader';
 import style from "./Package.css";
@@ -26,24 +26,36 @@ import mastercard from "./assets/cards/mastercard.png";
 import mir from "./assets/cards/mir.png";
 import unionpay from "./assets/cards/unionpay.png";
 import AddPayMethod from './AddPayMethod';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { Country, State, City } from "country-state-city";
 
 
 export const Checkout = () => {
   const { tips } = useParams();
   const navigate = useNavigate();
   const alert = useAlert();
-  const dispatch = useDispatch();
+  const stripe = useStripe();
+  const elements = useElements();
+  const dispatch = useDispatch();const card = useRef();
 
   const [packages, setpackages] = useState(`${tips} / week`);
   const [test, settest] = useState();
-
+  const [locations, setLocations] = useState({
+    countries: "",
+    states: "",
+    cities: "",
+  });
   const { error, loading, isAuthenticated, user } = useSelector(
     (state) => state.user
   );
   const handle = async (e) => {
     setpackages(e.value);
   };
-
+  const [selectedLocation, setSelectedLocation] = useState({
+    country: {},
+    city: {},
+    state: {},
+  });
   const date = new Date();
   date.setDate(date.getDate() + 6);
 
@@ -153,7 +165,15 @@ export const Checkout = () => {
    const [paymentMethods, setPaymentMethods] = useState([]);
    const [cardoption, setCardoption] = useState([]);
    const [cardoptionselect, setCardoptionselect] = useState();
- 
+   const [cardInfo, setCardInfo] = useState({
+    name: "",
+    expiry: "",
+    number: "",
+    address: {
+      line: "",
+      postalCode: "",
+    },
+  });
  
    const customStylescard = {
      height: 100,
@@ -162,6 +182,13 @@ export const Checkout = () => {
    const cardhandle = async (e) => {
      setCardoptionselect(e.value);
    };
+   function handleSelectCountry(country) {
+    const states = State.getStatesOfCountry(country.value);
+    setSelectedLocation((prev) => {
+      return { ...prev, country };
+    });
+    setLocations((prev) => ({ ...prev, states: parseForSelect(states) }));
+  }
    useEffect(() => {
      if (user) {
        getPaymentMethods();
@@ -271,6 +298,91 @@ export const Checkout = () => {
      }));
      setCardoption(cardoptions);
    };
+   function parseForSelect(arr) {
+    return arr.map((item) => ({
+      label: item.name,
+      value: item.isoCode ? item.isoCode : item.name,
+    }));
+  }
+   const cardElementOptions = {
+    style: {
+      base: {
+        color: "#666",
+        fontSize: "18px",
+        border: "1px solid",
+      },
+      invalid: {
+        color: "#fa755a",
+        fontSize: "18px",
+      },
+    },
+  };
+  useEffect(() => {
+    const allCountry = Country.getAllCountries();
+
+    setLocations((prev) => {
+      return { ...prev, countries: parseForSelect(allCountry) };
+    });
+  }, []); 
+   function handleChangeName(e) {
+    const { value } = e.target;
+    setCardInfo((prev) => {
+      return { ...prev, name: value };
+    });
+  }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const address = cardInfo.address;
+    const billingDetails = {
+      name: cardInfo.name,
+      address: {
+        country: address.country,
+        state: address.state,
+        city: address.city,
+        line1: address.line,
+      },
+    };
+
+    try {
+      stripe
+        .createPaymentMethod({
+          type: "card",
+          billing_details: billingDetails,
+          card: elements.getElement(CardElement),
+        })
+        .then((resp) => {
+          axios
+            .post("/api/auth/paymentcreate", {
+              user: user._id,
+              paymentMethod: resp.paymentMethod,
+              packages,
+            })
+            .then((resp) => {
+              /* Handle success */
+              if (resp.data.status === "succeeded") {
+                dispatch(
+                  updateprofile({
+                    paymentstatus: "true",
+                    packages,
+                    paymentDate: Date.now(),
+                    PaymentexpireDate: date,
+                  })
+                )
+                navigate("/The-Goat-Tips")
+                console.log("asas");
+              }
+            })
+            .catch((err) => {
+              alert.error(err);
+              console.log(err);
+              /*Handle Error */
+            });
+          console.log(resp);
+        });
+    } catch (err) {
+      /* Handle Error*/
+    }
+  }
    //  ..................payment...................//
   return (
     <>
@@ -319,14 +431,51 @@ export const Checkout = () => {
                                 {
                                   isAuthenticated ?
                                     <>
-                                    <AddPayMethod
-                                  packages={packages}
-                                  user={user}
-                                  getPaymentMethods={getPaymentMethods}
-                                />
+                                         <div className={style.wrapper}>
+                                  <div className="main-label">
+                                    {/* <div className={style.title}>Add Payment Method</div> */}
+                                    <div className="inputrow mb-3">
+                                      <label>Cardholder Name</label>
+                                      <input
+                                        onChange={handleChangeName}
+                                        type="text"
+                                        name="name"
+                                        placeholder="Enter card holder name"
+                                        className="input-border"
+                                      />
+                                    </div>
+                                    <label>Enter Card Details</label>
+                                    <div className="input-border">
+                                      <CardElement
+                                        options={cardElementOptions}
+                                        ref={card}
+                                      />
+                                    </div>
+
+                                    <div
+                                      style={{ marginTop: "10px" }}
+                                      className={style.addressWrapper}
+                                    >
+                                      {}
+                                      <div className={style.rowSelect}>
+                                        <div>
+                                          <label>Country</label>
+                                          <Select
+                                            isClearable={true}
+                                            isSearchable={true}
+                                            name="country"
+                                            value={selectedLocation.country}
+                                            options={locations.countries}
+                                            onChange={handleSelectCountry}
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
 
                                 <br />
-                                <Select
+                                {/* <Select
                                   className="Select_pack"
                                   options={cardoption}
                                   styles={customStylescard}
@@ -335,12 +484,12 @@ export const Checkout = () => {
                                   })}
                                   onChange={cardhandle}
                                   // defaultValue={user.packages}
-                                />
+                                /> */}
                                 <br />
                                 <button
                                   className="btn homelogin"
                                   style={{ backgroundColor: "gr" }}
-                                  onClick={pay}
+                                  onClick={handleSubmit}
                                 >
                                   pay Now
                                 </button></> :

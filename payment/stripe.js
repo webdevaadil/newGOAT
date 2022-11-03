@@ -4,13 +4,13 @@ stripe = require("stripe")(
   "sk_test_51LsM9wFk38wzPf6Ke5xzF6i8KkA9bZXP1jOJ4ThILkatBTQsQAPtZ5PYOoii3CjnLkr2NVYshsv6LZ9vIhpizD6500mMlxIs8M"
 );
 
-const CreateCustomer = async (email, name, address) => {
+const CreateCustomer = async (email, name, address=null) => {
   const customer = await stripe.customers
     .create({
       name: name,
       email: email,
       address: {
-        line1: address,
+        line1: "Indore",
         postal_code: "",
         city: "",
         state: "",
