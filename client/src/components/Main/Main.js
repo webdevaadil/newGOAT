@@ -359,7 +359,7 @@ export const Main = () => {
               </div>
             </div>
           </div>
-          <Records horseimg={img1} loading={loading} detail={currentRecords} />
+          <Records horseimg={img1} loading={loading} detail={currentRecords}/>
 
           <Pagination
             nPages={nPages}

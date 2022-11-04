@@ -27,7 +27,7 @@ import mir from "./assets/cards/mir.png";
 import unionpay from "./assets/cards/unionpay.png";
 import AddPayMethod from "./AddPayMethod";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { Country, State, City } from "country-state-city";
+import { Country, State, City} from "country-state-city";
 
 export const Checkout = () => {
   const { tips } = useParams();

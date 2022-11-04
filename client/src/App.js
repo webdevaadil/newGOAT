@@ -41,6 +41,7 @@ function App() {
             <Route index path="/The-Goat-Tips" element={<Main />} />
             <Route path="/signup" element={<Multilf />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/thankyou" element={<Thankyou />} />
             <Route path="/thoroughbreds" element={<Thoroughbreds />} />
             <Route path="/greyhounds" element={<Greyhounds />} />
             <Route
@@ -60,7 +61,6 @@ function App() {
             <Route path="/terms-and-conditions" element={<Aboutus />} />
             <Route path="/packages" element={<Package />} />
             <Route path="/pac" element={<Multilf />} />
-            <Route path="/thankyou" element={<Thankyou />} />
             <Route path="/password" element={<Paypa />} />
             <Route path="/subscriptionexpire" element={<Paymentexpirepage />} />
             <Route path="/checkout/:tips" element={<Checkout />} />

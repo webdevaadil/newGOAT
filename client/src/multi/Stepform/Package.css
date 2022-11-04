@@ -14,6 +14,49 @@
 .inputrow input::placeholder{
   color: #666;
 }
+
+.payment-box{
+  width: 710px; 
+    max-width: 78%;
+    /* height: 35%; */
+    /* background-color: #fff; */
+    margin-top: 15px;
+    padding: 0px;
+}
+
+.image-size{
+  width: 90%;
+}
+.payment-box h2{
+  font-family: 'Nunito Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #0A0E0F;
+}
+
+.payment-box li{
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4E4F51;
+  font-family: 'Nunito Sans', sans-serif;
+  list-style: none;
+  padding: 0px;
+}
+
+.payment-box li::before{
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAANCAYAAACkTj4ZAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACESURBVHgBpdFRCoAgDAbgWQQdYy+RHaOTd43e8h4RtglG2Yxp/9Nk2wdDAz9ircXDm4XrBipzQ5DfBiqSIG43fi6GJMStqyuCcgj31NAXEqBhnDYu0kYJwom/hh0NIi3UIAFqqcEDEqZFwmm5hZ4KLXJBEhZP1iAPSMBAi7ygBAMtwjkBK1GFdZ6xPyAAAAAASUVORK5CYII=);
+  font-size: 20px;
+  vertical-align: middle;
+  padding-right: 20px;
+}
+
+.tip-center{
+  padding-left: 0;
+}
 .inputrow{
   display: flex;
   flex-direction: column;
@@ -25,11 +68,61 @@
 
 .check-center{
   position: relative;
-  top: 0;
+  top: 1.4rem;
+  padding: 0 3rem;
 }
 .main-label label {
   margin: 0;
 }
+
+.tipping-check{
+
+}
+.checkout-tip{
+  display: flex;
+  align-items: center;
+  color: #fff;
+  width: 50%;
+  border-radius: 20px;
+  border: 0.5px solid #ffd9007f;
+  background: rgba(0, 0, 0, 0.8);
+  margin: 32px 5px 0px 5px;
+  padding: 7px;
+  height: 100%;
+}
+.returns{
+  border-radius: 3px;
+  display: flex;
+  justify-content:right;
+}
+.returns span{
+  font-size:1rem;
+  font-weight: 700;
+  letter-spacing: 0px;
+  text-transform: none;
+  color: #ffffff;
+  background: #a55947;
+  border-bottom: 1px solid #e97f65;
+  padding: 6px 6px;
+  margin: 12px 0;
+  border-radius: 3px;
+}
+.tipping-list{
+padding: 0;
+}
+
+.tipping-list li{
+font-size: 11px;
+font-weight: 600;
+line-height: 15px;
+list-style: none;
+}
+
+.tipping-list li i{
+  color: #a55947;
+  padding-right: 10px;
+}
+
 .center-image{
   /* position: relative; */
   /* bottom: 4.1rem; */

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 import { logout } from '../../actions/userAction'
 import Footer from '../Footer/Footer'
+import HomeFooter from '../Footer/HomeFooter'
 import { Header } from '../Header/Header'
 
 export const Thankyou = () => {
@@ -23,15 +24,24 @@ export const Thankyou = () => {
       <h1>Thank you !</h1>
       <p>Thank You for visiting our website</p>
       <p>you should receive a confirmation email soon</p>
-      <Link to ="/">
+      <div style = {{display:"flex",justifyContent:"center"}}>
+
+      <Link to ="/signup">
       <button className="go-home">
-      go home
+      SignUp
       </button>
       </Link>
+      <Link to ="/login">
+      <button className="go-home ml-4">
+      Login
+      </button>
+      </Link>
+      </div>
+
     </div>
 </div>
 </div>
-<Footer/>
+<HomeFooter/>
   </div>   
    </>
   )

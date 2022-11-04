@@ -71,7 +71,7 @@ exports.paymentMethodcardlist = async (req, res) => {
   }
 };
 
-exports.paymentcreate = async (req, res) => {
+exports.paymentcreateold = async (req, res) => {
   /* Query database for getting the payment amount and customer id of the current logged in user */
   console.log(req.body, "as");
   // return
@@ -125,6 +125,78 @@ exports.paymentcreate = async (req, res) => {
         amount,
         currency,
         user.email,
+        customer,
+        cardId
+      );
+
+      /* Add the payment intent record to your datbase if required */
+    } catch (err) {
+      console.log(err);
+      res.status(500).json("Could not create payment");
+    }
+    try {
+      console.log(charged, "charged");
+      const paymentConfirm = await Stripe.PaymentConfirm(charged);
+      console.log(paymentConfirm.id, "sdsd");
+      res.status(200).send(paymentConfirm);
+    } catch (err) {
+      return res.status(500).send(err);
+    }
+  }
+
+  async function addCard({ customer, paymentMethod }) {
+    console.log(customer);
+    const paymentMethodAttach = await stripe.paymentMethods.attach(
+      paymentMethod.id,
+      {
+        customer: customer,
+      }
+    );
+
+    console.log(paymentMethodAttach);
+    return paymentMethodAttach;
+  }
+};
+
+exports.paymentcreate = async (req, res) => {
+  /* Query database for getting the payment amount and customer id of the current logged in user */
+  console.log(req.body, "as");
+  // return
+  const amount = req.body.packages.slice(1, 3);
+  const currency = "AUD";
+  let paymentMethod = req.body.paymentMethod;
+  //   console.log(req.user);
+  // let id = req.body.user;
+  if (!req.body.paymentMethod && !req.body.cardId) {
+    return res.status(500).json("Could not get payment methods");
+  } else {
+    // const user = await User.findById(id["_id"]);
+
+    // let customer = user.customer_id;
+    let customer;
+    let cardId;
+    console.log(customer);
+
+      customer = await Stripe.CreateCustomer('aman@gmail.com',paymentMethod.billing_details.name);
+      console.log(customer, "customerrer");
+      //  console.log(up);
+    
+      try {
+        cardId = await addCard({ paymentMethod, customer });
+        console.log(cardId.id, "card added");
+      } catch (err) {
+        console.log(err);
+        res.status(400).json({ message: "Could not attach method" });
+      }
+
+      cardId = cardId.id;
+    console.log(cardId, "paymentMe");
+
+    try {
+      charged = await Stripe.CreatePayment(
+        amount,
+        currency,
+        'aman@gmail.com',
         customer,
         cardId
       );

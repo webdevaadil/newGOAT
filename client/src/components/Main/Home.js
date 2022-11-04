@@ -69,7 +69,7 @@ const Home = () => {
                 >
                   <div className="baner-ct">
                     <ul className="navbar-nav top-btn ml-auto">
-                      <Link style={{ textAlign: "end" }} to="/login">
+                      <Link style={{ textAlign: "end" }} to="/password">
                         <button
                           className="homelogin btn btn-1"
                         >
@@ -79,7 +79,7 @@ const Home = () => {
                     </ul>
                     <img src={img1} alt="" />
                     <div className="bnner-btn">
-                      <Link to="/signup">
+                      <Link to="/password">
                         <button className="signbtn">Signup</button>
                       </Link>
                     </div>
@@ -522,14 +522,14 @@ const Home = () => {
             </div>
             <div className="tipp">
               <div
-                onClick={() => navigate(`/checkout/${tips.bronze}`)}
+                onClick={() => navigate(`/password`)}
                 className="btn"
                 style={{ width: "50%" }}
               >
                 <div className="row tipping1 " style={{ width: "100%" }}>
                   <div className="col-md-6">
                     <div className="tipp-img">
-                      <img src={img5} alt="" />
+                      <img src={img5} alt=""/>
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -557,7 +557,7 @@ const Home = () => {
                 </div>
               </div>
               <div
-                onClick={() => navigate(`/checkout/${tips.silver}`)}
+                onClick={() => navigate("/password")}
                 className="btn"
                 style={{ width: "50%" }}
               >
@@ -592,7 +592,7 @@ const Home = () => {
                 </div>
               </div>
               <div
-                onClick={() => navigate(`/checkout/${tips.gold}`)}
+                onClick={() => navigate(`/password`)}
                 className="btn"
                 style={{ width: "50%", marginTop: "8px" }}
               >
@@ -629,7 +629,7 @@ const Home = () => {
                 </div>
               </div>
               <div
-                onClick={() => navigate(`/checkout/${tips.platinum}`)}
+                onClick={() => navigate(`/password`)}
                 className="btn"
                 style={{ width: "50%", marginTop: "8px" }}
               >
@@ -667,7 +667,7 @@ const Home = () => {
               </div>
             </div>
             <div className="bnner-btn">
-              <Link to="/signup">
+              <Link to="/password">
                 <button className="signbtn">Sign Me Up</button>
               </Link>
             </div>
@@ -698,9 +698,16 @@ const Home = () => {
                     rail on the winning tips sent out.
                   </p>
                 </div>
-                <div className="bnner-btn">
+                {/* <div className="bnner-btn">
                   <Link to="/signup">
                     {" "}
+                    <button className="signbtn" href="/signup">
+                      Sign Me Up
+                    </button>
+                  </Link>
+                </div> */}
+                     <div className="bnner-btn">
+                  <Link to="/password">
                     <button className="signbtn" href="/signup">
                       Sign Me Up
                     </button>
@@ -727,7 +734,7 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="bnner-btn">
-                  <Link to="/signup">
+                  <Link to="/password">
                     <button className="signbtn">Sign Me Up</button>
                   </Link>
                 </div>
@@ -962,7 +969,7 @@ const Home = () => {
               your preferences.
             </p>
             <div className="bnner-btn">
-              <Link to="/signup">
+              <Link to="/password">
                 <button className="signbtn">Sign Me Up</button>
               </Link>
             </div>
