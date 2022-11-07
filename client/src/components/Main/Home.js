@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loaduser } from "../../actions/userAction";
 import { positions, useAlert } from "react-alert";
 import Marquee from "react-fast-marquee";
+
 const Home = () => {
   const [tips, setTips] = useState({
     bronze: "$15",
@@ -69,7 +70,7 @@ const Home = () => {
                 >
                   <div className="baner-ct">
                     <ul className="navbar-nav top-btn ml-auto">
-                      <Link style={{ textAlign: "end" }} to="/password">
+                      <Link style={{ textAlign: "end"}} to ={`password/${tips.gold}`}>
                         <button
                           className="homelogin btn btn-1"
                         >
@@ -79,7 +80,7 @@ const Home = () => {
                     </ul>
                     <img src={img1} alt="" />
                     <div className="bnner-btn">
-                      <Link to="/password">
+                      <Link to ={`password/${tips.gold}`}>
                         <button className="signbtn">Signup</button>
                       </Link>
                     </div>
@@ -450,7 +451,7 @@ const Home = () => {
             height: "auto",
           }}
         >
-          <div className="box" style={{ height: "100%  " }}>
+          <div className="box" style={{ height: "100%"}}>
             <img
               style={{ width: "100%", height: "100%" }}
               src={man}
@@ -522,7 +523,7 @@ const Home = () => {
             </div>
             <div className="tipp">
               <div
-                onClick={() => navigate(`/password`)}
+                onClick={() => navigate(`/password/${tips.bronze}`)}
                 className="btn"
                 style={{ width: "50%" }}
               >
@@ -557,7 +558,7 @@ const Home = () => {
                 </div>
               </div>
               <div
-                onClick={() => navigate("/password")}
+                onClick={() => navigate(`/password/${tips.silver}`)}
                 className="btn"
                 style={{ width: "50%" }}
               >
@@ -592,7 +593,7 @@ const Home = () => {
                 </div>
               </div>
               <div
-                onClick={() => navigate(`/password`)}
+                onClick={() => navigate(`/password/${tips.gold}`)}
                 className="btn"
                 style={{ width: "50%", marginTop: "8px" }}
               >
@@ -629,7 +630,7 @@ const Home = () => {
                 </div>
               </div>
               <div
-                onClick={() => navigate(`/password`)}
+                onClick={() => navigate(`/password/${tips.platinum}`)}
                 className="btn"
                 style={{ width: "50%", marginTop: "8px" }}
               >
@@ -667,7 +668,7 @@ const Home = () => {
               </div>
             </div>
             <div className="bnner-btn">
-              <Link to="/password">
+              <Link to ={`password/${tips.gold}`}>
                 <button className="signbtn">Sign Me Up</button>
               </Link>
             </div>
@@ -707,7 +708,7 @@ const Home = () => {
                   </Link>
                 </div> */}
                      <div className="bnner-btn">
-                  <Link to="/password">
+                  <Link to ={`password/${tips.gold}`}>
                     <button className="signbtn" href="/signup">
                       Sign Me Up
                     </button>
@@ -734,7 +735,7 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="bnner-btn">
-                  <Link to="/password">
+                  <Link to ={`password/${tips.gold}`}>
                     <button className="signbtn">Sign Me Up</button>
                   </Link>
                 </div>
@@ -969,7 +970,7 @@ const Home = () => {
               your preferences.
             </p>
             <div className="bnner-btn">
-              <Link to="/password">
+              <Link to={`password/${tips.gold}`}>
                 <button className="signbtn">Sign Me Up</button>
               </Link>
             </div>

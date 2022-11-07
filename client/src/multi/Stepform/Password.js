@@ -21,7 +21,7 @@ import jcb from "./assets/cards/jcb.png";
 import mastercard from "./assets/cards/mastercard.png";
 import mir from "./assets/cards/mir.png";
 import unionpay from "./assets/cards/unionpay.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { format } from "date-fns";
@@ -70,6 +70,7 @@ export const Paypa = () => {
     }
   }
   // const { packages, Name_of_card, card_no, Expiry, cvc } = ;
+  const { tips } = useParams();
   const stripe = useStripe();
   const navigate = useNavigate();
   const elements = useElements();
@@ -81,6 +82,7 @@ export const Paypa = () => {
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [cardoption, setCardoption] = useState([]);
   const [cardoptionselect, setCardoptionselect] = useState();
+  const [email,setEmail] = useState("")
 
   const card = useRef();
 
@@ -117,7 +119,7 @@ export const Paypa = () => {
     },
   };
 
-  const statecitystyle = {
+  const statecitystyle ={
     option: (provided, state) => ({
       ...provided,
       width: 230,
@@ -130,7 +132,7 @@ export const Paypa = () => {
   console.log(cardoptionselect);
   const dispatch = useDispatch();
 
-  const [packages, setpackages] = useState("$45 / week");
+  const [packages, setpackages] = useState(`${tips} / week`);
   const handle = async (e) => {
     setpackages(e.value);
   };
@@ -175,7 +177,7 @@ export const Paypa = () => {
 
   useEffect(() => {
     if (user) {
-      if (user.paymentstatus === "true") {
+      if (user.paymentstatus === "true"){
         navigate("/The-Goat-Tips");
       }
     }
@@ -341,20 +343,21 @@ export const Paypa = () => {
         })
         .then((resp) => {
           axios
-            .post("/api/auth/paymentcreate", {
-              paymentMethod: resp.paymentMethod,
+            .post("/api/auth/paymentcreate",{
+              paymentMethod:resp.paymentMethod,
               packages,
-              cardId: cardoptionselect,
+              cardId:cardoptionselect,
+              email:email
             })
             .then((resp) => {
               /* Handle success */
-              if (resp.data.status === "succeeded") {
+              if (resp.data.status === "succeeded"){
                 dispatch(
                   updateprofile({
-                    paymentstatus: "true",
+                    paymentstatus:"true",
                     packages,
-                    paymentDate: Date.now(),
-                    PaymentexpireDate: date,
+                    paymentDate:Date.now(),
+                    PaymentexpireDate:date,
                   })
                 ).then(navigate("/thankyou"));
                 console.log("asas");
@@ -440,7 +443,6 @@ export const Paypa = () => {
     }));
     setCardoption(cardoptions);
   };
-
   return (
     <>
       {loading && <Loader />}
@@ -451,7 +453,7 @@ export const Paypa = () => {
             <div className="col-md-6 p-0">
               <div className="img-main"></div>
             </div>
-            <div className="wel-bg">
+            <div style = {{margin:"0 auto"}} className="wel-bg">
               <div className="row form-content check-center">
                 <div className="form-main">
                   <form className="form-floating mb-3">
@@ -504,95 +506,21 @@ export const Paypa = () => {
                                 className="row d-flex"
                                 style={{
                                   display: "flex !important",
-
+                                  position:"relative",
+                                  left:"6%"
                                 }}
                               >
 
-                                <div className="col-md-6" style={{ marginTop: "3.5%" }}>
-
-                                  <div className={style.wrapper}>
-                                    <div className="main-label">
-                                      {/* <div className={style.title}>Add Payment Method</div> */}
-                                      <div className="inputrow mb-2">
-                                        <label>Cardholder Name</label>
-                                        <input
-                                          onChange={handleChangeName}
-                                          type="text"
-                                          name="name"
-                                          placeholder="Enter card holder name"
-                                          className="input-border"
-                                        />
-                                      </div>
-                                      <label>Enter Card Details</label>
-                                      <div className="input-border">
-                                        <CardElement
-                                          options={cardElementOptions}
-                                          ref={card}
-                                        />
-                                      </div>
-
-                                      <div
-                                        className={style.addressWrapper}
-                                      >
-                                        { }
-                                        {/* <div className={style.rowSelect}>
-                                        <div>
-                                          <label>Country</label>
-                                          <Select
-                                            isClearable={true}
-                                            isSearchable={true}
-                                            name="country"
-                                            value={selectedLocation.country}
-                                            options={locations.countries}
-                                            onChange={handleSelectCountry}
-                                          />
-                                        </div>
-                                      </div> */}
-                                      </div>
-                                    </div>
-                                  </div>
-                                  {cardoption.length >= 1 ? (
-                                    <div style={{ marginTop: "1.5rem" }}>
-                                      <Select
-                                        className="Select_pack"
-                                        options={cardoption}
-                                        styles={customStylescard}
-                                        value={cardoption.filter(function (option) {
-                                          return option.value === cardoptionselect;
-                                        })}
-                                        onChange={cardhandle}
-                                      // defaultValue={user.packages}
-                                      />
-                                    </div>
-                                  ) : (
-                                    ""
-                                  )}
-                                  <div className="d-flex justify-content-center mt-3">
-                                    <button
-                                      className="btn homelogin"
-                                      style={{ backgroundColor: "gr" }}
-                                      onClick={handleSubmit}
-                                    >
-                                      Pay Now
-                                    </button>
-                                  </div>
-                                  <Link to="/terms-and-conditions">
-                            <p className = "mt-3" style={{ textAlign: "center",fontSize:"14px",width:"24rem"}}>
-                              By signing up, I agree to the{" "}
-                              <span style = {{borderBottom:"1px solid black"}}>Terms and Conditions</span>
-                              
-                            </p>
-                          </Link>
-                                </div>
                                 <div className="col-md-6">
                                   <div
                                     // onClick={() => navigate(`/checkout/${tips.bronze}`)}
                                     className="btn"
-                                    style={{ width: "90%", lineHeight: "1" }}
+                                    style={{ width: "95%", lineHeight: "1" }}
                                   >
                                     {
                                       packages==="$15 / week"?<>
-                                      <div className="row checkout-tip" style={{ width: "92%" }}>
+                                    <div className="row checkout-tip" style={{ width: "92%" }}>
+                                
                                       <div className="col-md-5">
                                         <div className="tipp-img">
                                           <img className = "image-size" src={bronze} alt="" />
@@ -619,18 +547,7 @@ export const Paypa = () => {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="payment-box">
-                                      <div >
-                                        <h2>Bronze Membership</h2>
-                                        <h2>$15 per Week</h2>
-                                        <ul className="tip-center">
-                                          <li>Top tip of the day</li>
-                                          <li>Every Saturday</li>
-                                          <li>Direct to your inbox</li>
-                                        </ul>
-                                      </div>
-
-                                    </div>
+                     
                                       </>:packages==="$30 / week"?<>
                                       <div className="row checkout-tip" style={{ width: "92%" }}>
                                       <div className="col-md-5">
@@ -661,18 +578,7 @@ export const Paypa = () => {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="payment-box">
-                                      <div >
-                                        <h2>Silver Membership</h2>
-                                        <h2>$30 per Week</h2>
-                                        <ul className="tip-center">
-                                          <li>Our 10 best tips</li>
-                                          <li>Every Saturday</li>
-                                          <li>Direct to your inbox</li>
-                                        </ul>
-                                      </div>
-
-                                    </div>
+                                  
                                       </>:packages==="$45 / week"?<>
                                       <div className="row checkout-tip" style={{ width: "89%" }}>
                   <div className="col-md-5">
@@ -703,18 +609,7 @@ export const Paypa = () => {
                     </div>
                   </div>
                 </div>
-                <div className="payment-box">
-                                      <div >
-                                        <h2>Gold Membership</h2>
-                                        <h2>$45 per Week</h2>
-                                        <ul className="tip-center">
-                                          <li>Our top daily tips</li>
-                                          <li>Our top 15 Saturday</li>
-                                          <li>Our top 15 Saturday</li>
-                                        </ul>
-                                      </div>
-
-                                    </div>
+       
                                       </>:packages==="$60 / week"?<>
                                       <div className="row checkout-tip" style={{width:"90%"}}>
                   <div className="col-md-5">
@@ -744,18 +639,7 @@ export const Paypa = () => {
                     </div>
                   </div>
                 </div>
-                <div className="payment-box">
-                                      <div >
-                                        <h2>Our top 5 daily tips</h2>
-                                        <h2>$60 per Week</h2>
-                                        <ul className="tip-center">
-                                          <li>Our top daily tips</li>
-                                          <li>Our top 20 Saturday</li>
-                                          <li>Direct to your inbox</li>
-                                        </ul>
-                                      </div>
 
-                                    </div>
                 </>:""
                                     }
                                     
@@ -763,7 +647,150 @@ export const Paypa = () => {
                                   </div>
                                 </div>
 
+<div className = "col-md-6">
+
+  {
+    packages==="$15 / week"?               <div className="payment-box">
+    <div >
+      <h2>Bronze Membership</h2>
+      <h2>$15 per Week</h2>
+      <ul className="tip-center">
+        <li>Top tip of the day</li>
+        <li>Every Saturday</li>
+        <li>Direct to your inbox</li>
+      </ul>
+    </div>
+
+  </div>:packages==="$30 / week"?  <div className="payment-box">
+                                      <div >
+                                        <h2>Silver Membership</h2>
+                                        <h2>$30 per Week</h2>
+                                        <ul className="tip-center">
+                                          <li>Our 10 best tips</li>
+                                          <li>Every Saturday</li>
+                                          <li>Direct to your inbox</li>
+                                        </ul>
+                                      </div>
+
+                                    </div>:packages==="$45 / week"?
+                                             <div className="payment-box">
+                                             <div >
+                                               <h2>Gold Membership</h2>
+                                               <h2>$45 per Week</h2>
+                                               <ul className="tip-center">
+                                                 <li>Our top daily tips</li>
+                                                 <li>Our top 15 Saturday</li>
+                                                 <li>Our top 15 Saturday</li>
+                                               </ul>
+                                             </div>
+       
+                                           </div>:packages==="$60 / week"?
+                                                           <div className="payment-box">
+                                                           <div >
+                                                             <h2>Our top 5 daily tips</h2>
+                                                             <h2>$60 per Week</h2>
+                                                             <ul className="tip-center">
+                                                               <li>Our top daily tips</li>
+                                                               <li>Our top 20 Saturday</li>
+                                                               <li>Direct to your inbox</li>
+                                                             </ul>
+                                                           </div>
+                     
+                                                         </div>:""
+
+}
+</div>
+
                               </div>
+
+<div className="d-flex justify-content-center">
+<div className="row" style={{ marginTop: "2%"}}>
+
+<div style = {{position:"relative",right:"5%"}}  className="d-flex justify-content-center">
+  <div className="main-label">
+    {/* <div className={style.title}>Add Payment Method</div> */}
+    <div className="inputrow mb-2">
+      <label>Cardholder Name</label>
+      <input
+        onChange={handleChangeName}
+        type="text"
+        name="name"
+        placeholder="Enter card holder name"
+        className="input-border"
+      />
+    </div>
+    <div className="inputrow mb-2">
+      <label>Email Address</label>
+      <input
+        onChange={(e)=>{setEmail(e.target.value)}}
+        type="text"
+        name="name"
+        placeholder="Enter Your Email"
+        className="input-border"
+      />
+    </div>
+    <label>Enter Card Details</label>
+    <div className="input-border">
+      <CardElement
+        options={cardElementOptions}
+        ref={card}
+      />
+    </div>
+
+    <div
+      className={style.addressWrapper}
+    >
+      { }
+      {/* <div className={style.rowSelect}>
+      <div>
+        <label>Country</label>
+        <Select
+          isClearable={true}
+          isSearchable={true}
+          name="country"
+          value={selectedLocation.country}
+          options={locations.countries}
+          onChange={handleSelectCountry}
+        />
+      </div>
+    </div> */}
+    </div>
+  </div>
+</div>
+{cardoption.length >= 1 ? (
+  <div style={{ marginTop: "1.5rem" }}>
+    <Select
+      className="Select_pack"
+      options={cardoption}
+      styles={customStylescard}
+      value={cardoption.filter(function (option) {
+        return option.value === cardoptionselect;
+      })}
+      onChange={cardhandle}
+    // defaultValue={user.packages}
+    />
+  </div>
+) : (
+  ""
+)}
+<div className="d-flex justify-content-center mt-3">
+  <button
+    className="btn homelogin"
+    style={{ backgroundColor: "gr" }}
+    onClick={handleSubmit}
+  >
+    Pay Now
+  </button>
+</div>
+<Link  to="/terms-and-conditions">
+<p className = "mt-3" style={{ textAlign: "center",fontSize:"14px",width:"40rem"}}>
+By signing up, I agree to the{" "}
+<span style = {{borderBottom:"1px solid black"}}>Terms and Conditions</span>
+
+</p>
+</Link>
+</div>
+</div>
                               <br />
 
 

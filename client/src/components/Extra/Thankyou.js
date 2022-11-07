@@ -8,11 +8,6 @@ import { Header } from '../Header/Header'
 
 export const Thankyou = () => {
   let { isAuthenticated, loading } = useSelector((state) => state.user);
-  const dispatch=useDispatch()
-  useEffect(()=>{
-    dispatch(logout())
-  })
-
   return (
     
    <>

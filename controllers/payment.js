@@ -160,11 +160,12 @@ exports.paymentcreateold = async (req, res) => {
 
 exports.paymentcreate = async (req, res) => {
   /* Query database for getting the payment amount and customer id of the current logged in user */
-  console.log(req.body, "as");
-  // return
+  console.log(req.body,"as");
+  //return
   const amount = req.body.packages.slice(1, 3);
   const currency = "AUD";
   let paymentMethod = req.body.paymentMethod;
+  let email = req.body.email
   //   console.log(req.user);
   // let id = req.body.user;
   if (!req.body.paymentMethod && !req.body.cardId) {
@@ -176,11 +177,9 @@ exports.paymentcreate = async (req, res) => {
     let customer;
     let cardId;
     console.log(customer);
-
-      customer = await Stripe.CreateCustomer('aman@gmail.com',paymentMethod.billing_details.name);
+      customer = await Stripe.CreateCustomer(email,paymentMethod.billing_details.name);
       console.log(customer, "customerrer");
       //  console.log(up);
-    
       try {
         cardId = await addCard({ paymentMethod, customer });
         console.log(cardId.id, "card added");
