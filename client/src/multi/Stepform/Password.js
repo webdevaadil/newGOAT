@@ -33,7 +33,7 @@ import {
   updateprofile,
 } from "../../actions/userAction";
 import { Loader } from "../../components/layout/Loader";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 // import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
 import AddPayMethod from "./AddPayMethod";
@@ -359,7 +359,15 @@ export const Paypa = () => {
                     paymentDate:Date.now(),
                     PaymentexpireDate:date,
                   })
-                ).then(navigate("/thankyou"));
+                ).then((res)=>{
+                  const resp = axios.post("/api/auth/register",{email:email,packages:packages,paymentstatus:"true",paymentDate:Date.now(),
+                  PaymentexpireDate:date
+                })
+                  navigate("/thankyou")
+                }
+                ).then((res)=>{
+                  navigate("/thankyou")
+                })
                 console.log("asas");
               }
             })

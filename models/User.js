@@ -6,7 +6,7 @@ const validator = require("validator");
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: [true, "please provide username"],
+    // required: [true, "please provide username"],
   },
   email: {
     type: String,
@@ -16,21 +16,21 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, "please provide password"],
+    // required: [true, "please provide password"],
     minlength: 8,
     select: false,
   },
   dob: {
     type: Date,
-    required: [true, "please provide date of birth"],
+    // required: [true, "please provide date of birth"],
   },
   phoneno: {
     type: Number,
-    required: [true, "please provide date of birth"],
+    // required: [true, "please provide date of birth"],
   },
   customer_id: {
     type: String,
-    required: [true, "please provide date of birth"],
+    // required: [true, "please provide date of birth"],
   },
   paymentstatus: {
     type: String,
@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
  
   packages: {
     type: String,
-    required: [true, "please provide packages"],
+    // required: [true, "please provide packages"],
   },
   // gender: {
   //   type: String,

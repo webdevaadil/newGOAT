@@ -189,13 +189,13 @@ exports.paymentcreate = async (req, res) => {
       }
 
       cardId = cardId.id;
-    console.log(cardId, "paymentMe");
+    console.log(cardId,"paymentMe");
 
     try {
       charged = await Stripe.CreatePayment(
         amount,
         currency,
-        'aman@gmail.com',
+        email,
         customer,
         cardId
       );

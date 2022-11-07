@@ -8,6 +8,7 @@ var cloudinary = require("cloudinary").v2;
 const emailValidator = require("deep-email-validator");
 const Stripe = require("../payment/stripe");
 const { expressjwt } = require("express-jwt");
+const { findByIdAndUpdate } = require("../models/User");
 const { CLIENT_ID, APP_SECRET } = process.env;
 async function generateAccessToken() {
   const auth = Buffer.from(CLIENT_ID + ":" + APP_SECRET).toString("base64");
@@ -64,7 +65,8 @@ async function isEmailValid(email) {
 //   const data = await response.json();
 //   return data;
 // }
-exports.register = catchAsyncerror(async (req, res, next) => {
+
+exports.oldregister = catchAsyncerror(async (req, res, next) => {
   console.log(req.body);
   let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
   let year = new Date(req.body.dob).getUTCFullYear();
@@ -90,7 +92,6 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     User.findOne({ email }, async (err, user) => {
       const { valid, reason, validators } = await isEmailValid(email);
       // console.log(validators);
-
       if (!valid) {
         return res
           .status(500)
@@ -116,6 +117,72 @@ exports.register = catchAsyncerror(async (req, res, next) => {
         });
         // const order = await createOrder();
         // console.log(order.id,'hfghdf')
+        // sendToken(user, 201, res);
+ return res.status(201).json(user)
+      }
+    });
+  } catch (error) {
+    // console.log(error.message);
+  }
+});
+
+
+exports.register = catchAsyncerror(async (req, res, next) => {
+  console.log(req.body);
+  let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
+  let year = new Date(req.body.dob).getUTCFullYear();
+  let month = new Date(req.body.dob).getUTCMonth();
+  let day = new Date(req.body.dob).getUTCDate();
+  let birthDate = year * 10000 + month * 100 + day * 1;
+  const {email, packages} = req.body;
+
+  // if (now - birthDate < 180000) {
+  //   return res.status(400).json("Only 18+ Person Can Register Here");
+  // }
+  // if (!username || !email || !password || !dob || !packages || !phoneno) {
+  //   return res.status(400).json("plese fill all input ");
+  // }
+  if (packages === "free") {
+    paymentstatus = "true";
+  }
+  // if (password.length < 8) {
+  //   return res.status(400).json("password must be 8 character long");
+  // }
+  try {
+    User.findOne({ email }, async (err, user) => {
+      const { valid, reason, validators } = await isEmailValid(email);
+      // console.log(validators);
+
+      if (!valid) {
+        return res
+          .status(500)
+          .json("email is invalid please enter a valid email");
+      } else if (user) {
+        console.log(user._id)
+        findByIdAndUpdate(user._id,{
+          packages:req.body.packages
+        })
+        // return res.status(500).json("user already registered");
+      } 
+      else {
+        let customer_id = await Stripe.CreateCustomer(
+          email,
+          // username,
+          // "1184 sector-B indore"
+        );
+        console.log(customer_id);
+        const user = await User.create({
+          // username:null,
+          email,
+          // password:null,
+          // dob:null,
+          packages,
+          paymentstatus: req.body.paymentstatus || "false",
+          // phoneno:null,
+          customer_id,
+        });
+        // const order = await createOrder();
+        // console.log(order.id,'hfghdf')
         sendToken(user, 201, res);
       }
       return;
@@ -124,6 +191,10 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     console.log(error.message);
   }
 });
+
+
+
+
 
 
 // exports.pay = catchAsyncerror(async (req, res, next) => {
