@@ -14,14 +14,14 @@
 .inputrow input::placeholder{
   color: #666;
 }
-
 .payment-box{
   width: 710px; 
     max-width: 78%;
-    /* height: 35%; */
-    /* background-color: #fff; */
-    margin-top: 15px;
+    /* height: 35%;*/
+    /* background-color: #fff;*/
     padding: 0px;
+    position:relative;
+    top: 14%;
 }
 
 .image-size{
@@ -69,7 +69,7 @@
 .check-center{
   position: relative;
   top: 0rem;
-  padding: 0 3.5rem;
+  padding: 0 2.5rem;
 }
 .main-label label {
   margin: 0;
@@ -80,9 +80,15 @@
   justify-content: center;
 }
 
-.tipping-check{
-
+.tipping-check p{
+margin-bottom: 0.5rem;
+font-size: 14px;
 }
+.tipping-check h5{
+  font-size: 20px;
+  margin-bottom: 0.3rem;
+  }
+
 .checkout-tip{
   display: flex;
   align-items: center;
@@ -114,12 +120,13 @@
 }
 .tipping-list{
 padding: 0;
+margin-top: 4px;
 }
 
 .tipping-list li{
 font-size: 11px;
-font-weight: 600;
-line-height: 15px;
+font-weight: 450;
+line-height: 17px;
 list-style: none;
 }
 

@@ -51,7 +51,7 @@ export const Checkout = () => {
   const handle = async (e) => {
     setpackages(e.value);
   };
-  const [selectedLocation, setSelectedLocation] = useState({
+  const [selectedLocation,setSelectedLocation] = useState({
     country: {},
     city: {},
     state: {},

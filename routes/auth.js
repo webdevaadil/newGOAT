@@ -18,9 +18,11 @@ const {
   buyStripePaymentSubscription,
   validateStripePayment,
   addCard,
+  updatesignup,
 } = require("../controllers/auth");
 const { paymentmethodattached, paymentMethodcardlist, paymentcreate } = require("../controllers/payment");
 router.route("/register").post(register);
+router.route("/updatesignup").post(updatesignup)
 router.route("/login").post(login);
 router.route("/me").get(isAuthuser, dashboard);
 /////payment////

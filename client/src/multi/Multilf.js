@@ -60,8 +60,8 @@ var age_now = today.getFullYear() - birthDate.getFullYear()
     switch (step.id) {
       case "name":
         return <Names {...props} />;
-        case "address":
-          return <Email {...props} />;
+        // case "address":
+        //   return <Email {...props} />;
     }
     return (
       <></>

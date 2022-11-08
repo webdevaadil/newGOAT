@@ -37,7 +37,7 @@ function App() {
       <StripeWrapper>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />}/>
             <Route index path="/The-Goat-Tips" element={<Main />} />
             <Route path="/signup" element={<Multilf />} />
             <Route path="/login" element={<Login />} />

@@ -83,7 +83,7 @@ export const Paypa = () => {
   const [cardoption, setCardoption] = useState([]);
   const [cardoptionselect, setCardoptionselect] = useState();
   const [email,setEmail] = useState("")
-
+  const [loader,setLoader] = useState(false)
   const card = useRef();
 
   const [cardInfo, setCardInfo] = useState({
@@ -300,7 +300,7 @@ export const Paypa = () => {
     container: (provided, state) => ({
       ...provided,
       height: 35,
-      width:500
+      width:508
     }),
   };
   const customStylescard = {
@@ -342,6 +342,8 @@ export const Paypa = () => {
           card: elements.getElement(CardElement),
         })
         .then((resp) => {
+      setLoader(true)
+
           axios
             .post("/api/auth/paymentcreate",{
               paymentMethod:resp.paymentMethod,
@@ -363,7 +365,8 @@ export const Paypa = () => {
                   const resp = axios.post("/api/auth/register",{email:email,packages:packages,paymentstatus:"true",paymentDate:Date.now(),
                   PaymentexpireDate:date
                 })
-                  navigate("/thankyou")
+                setLoader(false)
+
                 }
                 ).then((res)=>{
                   navigate("/thankyou")
@@ -452,16 +455,18 @@ export const Paypa = () => {
     setCardoption(cardoptions);
   };
   return (
-    <>
+    <div style = {{overflow:"hidden"}}>
       {loading && <Loader />}
 
+{
+  loader?<Loader/>:
       <section id="form-section">
         <div className="row container-fluid p-0">
           <div className="login-form d-flex">
             <div className="col-md-6 p-0">
-              <div className="img-main"></div>
+              <div className="img-main img-width"></div>
             </div>
-            <div style = {{margin:"0 auto"}} className="wel-bg">
+            <div style = {{margin:"0 auto",maxHeight:"100vh"}} className="wel-bg">
               <div className="row form-content check-center">
                 <div className="form-main">
                   <form className="form-floating mb-3">
@@ -537,7 +542,7 @@ export const Paypa = () => {
                                       <div className="col-md-6">
                                         <div className="tipping-check">
                                           <h5>Bronze</h5>
-                                          <p style={{ marginBottom: "0" }}>$15 per Week</p>
+                                          <p>$15 per Week</p>
                                           <div className="returns">
                                             <span>98% returns</span>
                                           </div>
@@ -566,7 +571,7 @@ export const Paypa = () => {
                                       <div className="col-md-6">
                                         <div className="tipping-check">
                                           <h5>Silver</h5>
-                                          <p style={{ marginBottom: "0" }}>$15 per Week</p>
+                                          <p >$15 per Week</p>
                                           <div className="returns">
                                             <span>120% returns</span>
                                           </div>
@@ -717,6 +722,18 @@ export const Paypa = () => {
 <div style = {{position:"relative",right:"5%"}}  className="d-flex justify-content-center">
   <div className="main-label">
     {/* <div className={style.title}>Add Payment Method</div> */}
+
+    <div className="inputrow mb-2">
+      <label>Email Address</label>
+      <input
+        onChange={(e)=>{setEmail(e.target.value)}}
+        type="email"
+        name="email"
+        placeholder="Enter Your Email"
+        className="input-border"
+      />
+    </div>
+
     <div className="inputrow mb-2">
       <label>Cardholder Name</label>
       <input
@@ -727,16 +744,7 @@ export const Paypa = () => {
         className="input-border"
       />
     </div>
-    <div className="inputrow mb-2">
-      <label>Email Address</label>
-      <input
-        onChange={(e)=>{setEmail(e.target.value)}}
-        type="text"
-        name="name"
-        placeholder="Enter Your Email"
-        className="input-border"
-      />
-    </div>
+
     <label>Enter Card Details</label>
     <div className="input-border">
       <CardElement
@@ -790,13 +798,13 @@ export const Paypa = () => {
     Pay Now
   </button>
 </div>
-<Link  to="/terms-and-conditions">
 <p className = "mt-3" style={{ textAlign: "center",fontSize:"14px",width:"40rem"}}>
 By signing up, I agree to the{" "}
-<span style = {{borderBottom:"1px solid black"}}>Terms and Conditions</span>
+<Link  to="/terms-and-conditions">
+<span>Terms and Conditions</span>
+</Link>
 
 </p>
-</Link>
 </div>
 </div>
                               <br />
@@ -818,6 +826,7 @@ By signing up, I agree to the{" "}
           </div>
         </div>
       </section>
+}
       {/* 
 <!-- Modal --> */}
       <div
@@ -862,6 +871,6 @@ By signing up, I agree to the{" "}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

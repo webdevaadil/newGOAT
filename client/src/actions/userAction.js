@@ -48,11 +48,8 @@ export const register = (userData) => async (dispatch,getState) => {
     dispatch({ type: REGISTER_USER_REQUEST });
 
     const config = { headers: { "Content-Type": "Application/json" } };
-    
-    const { data } = await axios.post(`/api/auth/register`, userData, config);
-    
-    
-    
+    console.log(userData)
+    const { data } = await axios.post(`/api/auth/updatesignup`,userData, config);   
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
     // console.log(data);
   } catch (error) {

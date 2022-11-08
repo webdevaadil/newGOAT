@@ -8,6 +8,7 @@ var cloudinary = require("cloudinary").v2;
 const emailValidator = require("deep-email-validator");
 const Stripe = require("../payment/stripe");
 const { expressjwt } = require("express-jwt");
+const bcrypt = require("bcrypt")
 const { findByIdAndUpdate } = require("../models/User");
 const { CLIENT_ID, APP_SECRET } = process.env;
 async function generateAccessToken() {
@@ -16,7 +17,7 @@ async function generateAccessToken() {
     method: "post",
     body: "grant_type=client_credentials",
     headers: {
-      Authorization: `Basic ${auth}`,
+      Authorization:`Basic ${auth}`,
     },
   });
   const data = await response.json();
@@ -127,14 +128,14 @@ exports.oldregister = catchAsyncerror(async (req, res, next) => {
 });
 
 
-exports.register = catchAsyncerror(async (req, res, next) => {
+exports.register = catchAsyncerror(async (req, res, next) =>{
   console.log(req.body);
   let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
   let year = new Date(req.body.dob).getUTCFullYear();
   let month = new Date(req.body.dob).getUTCMonth();
   let day = new Date(req.body.dob).getUTCDate();
   let birthDate = year * 10000 + month * 100 + day * 1;
-  const {email, packages} = req.body;
+  const {email,packages,PaymentexpireDate,paymentDate} = req.body;
 
   // if (now - birthDate < 180000) {
   //   return res.status(400).json("Only 18+ Person Can Register Here");
@@ -159,8 +160,11 @@ exports.register = catchAsyncerror(async (req, res, next) => {
           .json("email is invalid please enter a valid email");
       } else if (user) {
         console.log(user._id)
-        findByIdAndUpdate(user._id,{
-          packages:req.body.packages
+        await User.findByIdAndUpdate(user._id,{
+          packages:req.body.packages,
+          paymentDate:req.body.paymentDate,
+          PaymentexpireDate:req.body.PaymentexpireDate,
+          
         })
         // return res.status(500).json("user already registered");
       } 
@@ -174,6 +178,8 @@ exports.register = catchAsyncerror(async (req, res, next) => {
         const user = await User.create({
           // username:null,
           email,
+          PaymentexpireDate,
+          paymentDate,
           // password:null,
           // dob:null,
           packages,
@@ -183,7 +189,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
         });
         // const order = await createOrder();
         // console.log(order.id,'hfghdf')
-        sendToken(user, 201, res);
+        return res.status(201).json(user)
       }
       return;
     });
@@ -194,6 +200,75 @@ exports.register = catchAsyncerror(async (req, res, next) => {
 
 
 
+
+exports.updatesignup = catchAsyncerror(async (req, res, next) => {
+  console.log(req.body);
+  let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
+  let year = new Date(req.body.dob).getUTCFullYear();
+  let month = new Date(req.body.dob).getUTCMonth();
+  let day = new Date(req.body.dob).getUTCDate();
+  let birthDate = year * 10000 + month * 100 + day * 1;
+  const {email, packages} = req.body;
+
+  // if (now - birthDate < 180000) {
+  //   return res.status(400).json("Only 18+ Person Can Register Here");
+  // }
+  // if (!username || !email || !password || !dob || !packages || !phoneno) {
+  //   return res.status(400).json("plese fill all input ");
+  // }
+  if (packages === "free"){
+    paymentstatus = "true";
+  }
+  // if (password.length < 8) {
+  //   return res.status(400).json("password must be 8 character long");
+  // }
+  try {
+    User.findOne({ email }, async (err, user) => {
+      const { valid, reason, validators } = await isEmailValid(email);
+      // console.log(validators);
+      if (!valid) {
+        return res
+          .status(500)
+          .json("email is invalid please enter a valid email");
+      } else if (user) {
+        const salt = await bcrypt.genSalt(10)
+  const password = await bcrypt.hash(req.body.password,salt)
+  console.log(password)
+      const users  =   await User.findByIdAndUpdate(user._id,{
+          username:req.body.username,
+          password:password,
+          dob:req.body.dob,
+          phoneno:req.body.phoneno
+        })
+
+        sendToken(users,200,res)
+        // return res.status(500).json("user already registered");
+      } 
+      else {
+        // let customer_id = await Stripe.CreateCustomer(
+        //   email,
+        //   // username,
+        //   // "1184 sector-B indore"
+        // );
+        // console.log(customer_id);
+        // const user = await User.create({
+        //   // username:null,
+        //   email,
+        //   // password:null,
+        //   // dob:null,
+        //   packages,
+        //   paymentstatus: req.body.paymentstatus || "false",
+        //   // phoneno:null,
+        //   customer_id,
+        // });
+        return res.status(500).json("Please Pay First Then Signup")
+      }
+      return;
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 
 
@@ -382,7 +457,7 @@ exports.requireSignin = catchAsyncerror(async (req, res, next) => {
 exports.updatePassword = catchAsyncerror(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
   // console.log(req.body);
-  const isPasswordMatched = await user.matchPassword(req.body.oldPassword);
+
   if (req.body.newPassword.length < 8) {
     return res
       .status(400)

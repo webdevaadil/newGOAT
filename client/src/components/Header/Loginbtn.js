@@ -11,17 +11,15 @@ export const Loginbtn = () => {
   const { user, isAuthenticated, loading} = useSelector((state) =>state.user);
   useEffect(()=>{
 
-    store.dispatch(loaduser())
-
   },[])
   const uppercaseWords = str => str.replace(/^(.)|\s+(.)/g, c => c.toUpperCase());
   const logoutUser=()=>{
     dispatch(logout());
     navigate("/");
   }
+
   return (
     <>
-
         <span className="home_btn">
         {isAuthenticated ===true? (<><div>
           <ul className="navbar-nav top-btn ml-auto">

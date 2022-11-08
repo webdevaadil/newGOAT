@@ -27,7 +27,8 @@ export const Names = ({ formData, setForm, navigation }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigation.next();
+    dispatch(register(formData));
+    // navigation.next();
   };
   const [errorMessage, setErrorMessage] = useState("");
   const handle = (e) => {
