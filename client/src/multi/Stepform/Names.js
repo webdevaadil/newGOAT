@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import img3 from "../../Images/GOAT_logo.png"
+import { Loader } from "../../components/layout/Loader";
 
 
 export const Names = ({ formData, setForm, navigation }) => {
@@ -36,7 +37,7 @@ export const Names = ({ formData, setForm, navigation }) => {
     setInterval(() => {
       const valued = e.target.value.trim();
       if (valued.length < 8) {
-        setErrorMessage("Password is less 8 than");
+        setErrorMessage("Password is less than 8 character");
       } else {
         setErrorMessage("");
       }
@@ -45,7 +46,7 @@ export const Names = ({ formData, setForm, navigation }) => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      alert.error(error.message);
       dispatch(clearErrors());
     }
 
@@ -65,16 +66,18 @@ export const Names = ({ formData, setForm, navigation }) => {
 
   return (
     <>
+    {
+      loading?<Loader/>:
      <div className  = {loading?"aad":"overflow"}>
       <section id="form-section">
         <div className="wel-form">
           <div className="wel-p1 img-main">
-            <div className="img-main"></div>
+            <div style={{height:"101vh"}} className="img-main"></div>
           </div>
-          <div className="col-md-6 centerlogo">
+          <div className="col-md-6 centerlogo o-hidden">
             <img className="signimg" style ={{position: "relative",
-    top:"4rem"}} src= {img3}/>
-            <div className="form-content wel-bg sign-logo">
+    top:"3.7rem"}} src= {img3}/>
+            <div style={{position:'relative',top:"0"}} className="form-content wel-bg sign-logo">
               <h2>Hello!</h2>
               <div className="form-main">
                 <form
@@ -214,7 +217,7 @@ export const Names = ({ formData, setForm, navigation }) => {
                       id = "loginhover"
                       className="btn btn-outline-secondary"
                     >
-                      Next
+                      SignUp
                     </button>
                   </div>
                 </form>
@@ -230,6 +233,7 @@ export const Names = ({ formData, setForm, navigation }) => {
         </div>
       </section>
       </div>
+    }
     </>
   );
 };

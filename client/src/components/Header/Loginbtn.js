@@ -10,7 +10,7 @@ export const Loginbtn = () => {
   const navigate = useNavigate();
   const { user, isAuthenticated, loading} = useSelector((state) =>state.user);
   useEffect(()=>{
-
+      dispatch(loaduser())
   },[])
   const uppercaseWords = str => str.replace(/^(.)|\s+(.)/g, c => c.toUpperCase());
   const logoutUser=()=>{

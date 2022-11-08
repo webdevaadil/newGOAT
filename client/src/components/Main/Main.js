@@ -34,6 +34,7 @@ export const Main = () => {
     (state) => state.user
   );
   useEffect(() => {
+    dispatch(loaduser());
     
       if (loading=== false) {
         let nowdate =  Date();
@@ -57,7 +58,7 @@ export const Main = () => {
         //  console.log(user.paymentstatus);
       }
     }
-    dispatch(loaduser());
+
     if (error) {
       alert.error(error);
       dispatch(clearErrors());

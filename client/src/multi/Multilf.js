@@ -22,8 +22,8 @@ export const Multilf = () => {
   })
   const steps = [
     { id: "name" },
-    { id: "address" },
-    { id: "contact" },
+    // { id: "address" },
+    // { id: "contact" },
     
   ];
     const [formData, setForm] = useForm(defaultData);
