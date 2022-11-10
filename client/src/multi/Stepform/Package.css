@@ -6,22 +6,28 @@
   border-radius: 5px;
 }
 .input-border{
-  border-radius: 4px;
-  padding: 8px;
+  border-radius: 5px;
+  padding: 6px;
   border: 1px solid hsl(0deg 0% 84%);
   background-color: #fff;
 }
 .inputrow input::placeholder{
   color: #666;
 }
+.inputrow {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+
+}
 .payment-box{
-  width: 710px; 
+    width: 710px; 
     max-width: 78%;
     /* height: 35%;*/
     /* background-color: #fff;*/
     padding: 0px;
     position:relative;
-    top: 14%;
+    top: 12%;
 }
 
 .image-size{
@@ -31,7 +37,7 @@
   font-family: 'Nunito Sans', sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 24px;
   letter-spacing: 0.15px;
   color: #0A0E0F;
@@ -39,7 +45,7 @@
 
 .payment-box li{
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   color: #4E4F51;
   font-family: 'Nunito Sans', sans-serif;
@@ -51,15 +57,11 @@
   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAANCAYAAACkTj4ZAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACESURBVHgBpdFRCoAgDAbgWQQdYy+RHaOTd43e8h4RtglG2Yxp/9Nk2wdDAz9ircXDm4XrBipzQ5DfBiqSIG43fi6GJMStqyuCcgj31NAXEqBhnDYu0kYJwom/hh0NIi3UIAFqqcEDEqZFwmm5hZ4KLXJBEhZP1iAPSMBAi7ygBAMtwjkBK1GFdZ6xPyAAAAAASUVORK5CYII=);
   font-size: 20px;
   vertical-align: middle;
-  padding-right: 20px;
+  padding-right: 6px;
 }
 
 .tip-center{
   padding-left: 0;
-}
-.inputrow{
-  display: flex;
-  flex-direction: column;
 }
 .flex-state{
   display: flex;
@@ -69,15 +71,19 @@
 .check-center{
   position: relative;
   top: 0rem;
-  padding: 0 2.5rem;
+  padding: 0 2rem;
 }
 .main-label label {
   margin: 0;
 }
 
 .main-label{
-  width: 72%;
-  justify-content: center;
+ display: flex;
+ flex-direction: column;
+ margin: 0 auto;
+justify-content: center;
+position: relative;
+left: 4%;
 }
 
 .tipping-check p{
@@ -140,6 +146,10 @@ list-style: none;
   /* bottom: 4.1rem; */
 }
 
+.container-pw{
+  max-width: 100%;
+}
+
 .css-319lph-ValueContainer{
   height: 53px;
   margin-top: -5px
@@ -169,6 +179,18 @@ list-style: none;
 .image-center{
   margin: auto;
 }
+
+.pack-heading{
+  font-size: 2rem;
+}
+
+.box-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .pack-main {
   background: url('../../Images/welcome-img.png');
   background-size: cover;
@@ -198,7 +220,28 @@ section.package-sec {
   flex-direction: row;
   
 }
+
+.tile-main{
+  width:100%;
+  line-height:1;
+}
 /* responsive */
+/* 
+@media (max-width:1170px){
+.tile-main{
+width: 90%;
+}
+.payment-box h2{
+  font-size: 19px;
+}
+.payment-box li{
+  font-size: 14px;
+}
+.check-center{
+  padding: 0 1rem;
+}
+
+}
 
 @media (max-width: 992px) {
   h1.main_head {
@@ -233,7 +276,7 @@ section.package-sec {
   .btn_two {
     margin: 0px 20px 20px 25px !important;
   }
-}
+} */
 
 /* 
 .wrapper {

@@ -50,11 +50,9 @@ var age_now = today.getFullYear() - birthDate.getFullYear()
   );
 
   useEffect(() => {
-
     if (isAuthenticated) {
       navigate("/The-Goat-Tips");
     }
-    
   }, [navigate, isAuthenticated, loading, ]);
     const props = { formData, setForm, navigation };
     switch (step.id) {

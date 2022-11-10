@@ -40,9 +40,7 @@ export const login = (email, password) => async (dispatch, getState) => {
     // console.log(error.response);
   }
 
-  
 };
-
 export const register = (userData) => async (dispatch,getState) => {
   try {
     dispatch({ type: REGISTER_USER_REQUEST });
