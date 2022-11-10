@@ -8,7 +8,7 @@ var cloudinary = require("cloudinary").v2;
 const emailValidator = require("deep-email-validator");
 const Stripe = require("../payment/stripe");
 const { expressjwt } = require("express-jwt");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 const { findByIdAndUpdate } = require("../models/User");
 const { CLIENT_ID, APP_SECRET } = process.env;
 async function generateAccessToken() {
@@ -17,7 +17,7 @@ async function generateAccessToken() {
     method: "post",
     body: "grant_type=client_credentials",
     headers: {
-      Authorization:`Basic ${auth}`,
+      Authorization: `Basic ${auth}`,
     },
   });
   const data = await response.json();
@@ -119,7 +119,7 @@ exports.oldregister = catchAsyncerror(async (req, res, next) => {
         // const order = await createOrder();
         // console.log(order.id,'hfghdf')
         // sendToken(user, 201, res);
- return res.status(201).json(user)
+        return res.status(201).json(user);
       }
     });
   } catch (error) {
@@ -127,15 +127,69 @@ exports.oldregister = catchAsyncerror(async (req, res, next) => {
   }
 });
 
-
-exports.register = catchAsyncerror(async (req, res, next) =>{
+exports.register = catchAsyncerror(async (req, res, next) => {
   console.log(req.body);
   let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
   let year = new Date(req.body.dob).getUTCFullYear();
   let month = new Date(req.body.dob).getUTCMonth();
   let day = new Date(req.body.dob).getUTCDate();
   let birthDate = year * 10000 + month * 100 + day * 1;
-  const {email,packages,PaymentexpireDate,paymentDate} = req.body;
+  const { email, packages, PaymentexpireDate, paymentDate } = req.body;
+
+  // if (now - birthDate < 180000) {
+  //   return res.status(400).json("Only 18+ Person Can Register Here");
+  // }
+  // if (!username || !email || !password || !dob || !packages || !phoneno) {
+  //   return res.status(400).json("plese fill all input ");
+  // }
+  if (packages === "free") {
+    paymentstatus = "true";
+  }
+
+  try {
+    User.findOne({ email }, async (err, user) => {
+      const { valid, reason, validators } = await isEmailValid(email);
+      // console.log(validators);
+console.log(user);
+      if (!valid) {
+        return res
+          .status(500)
+          .json("email is invalid please enter a valid email");
+      } else if (user) {
+        console.log(user._id);
+        await User.findByIdAndUpdate(user._id, {
+          packages: req.body.packages,
+          paymentDate: req.body.paymentDate,
+          PaymentexpireDate: req.body.PaymentexpireDate,
+        });
+      } else {
+        let customer_id = await Stripe.CreateCustomer(email);
+        console.log(customer_id);
+        const user = await User.create({
+          email,
+          PaymentexpireDate,
+          paymentDate,
+          packages,
+          paymentstatus: req.body.paymentstatus || "false",
+          customer_id,
+        });
+        return res.status(201).json(user);
+      }
+      return;
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+exports.updatesignup = catchAsyncerror(async (req, res, next) => {
+  console.log(req.body);
+  let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
+  let year = new Date(req.body.dob).getUTCFullYear();
+  let month = new Date(req.body.dob).getUTCMonth();
+  let day = new Date(req.body.dob).getUTCDate();
+  let birthDate = year * 10000 + month * 100 + day * 1;
+  const { email, packages } = req.body;
 
   // if (now - birthDate < 180000) {
   //   return res.status(400).json("Only 18+ Person Can Register Here");
@@ -153,98 +207,24 @@ exports.register = catchAsyncerror(async (req, res, next) =>{
     User.findOne({ email }, async (err, user) => {
       const { valid, reason, validators } = await isEmailValid(email);
       // console.log(validators);
-
       if (!valid) {
         return res
           .status(500)
           .json("email is invalid please enter a valid email");
       } else if (user) {
-        console.log(user._id)
-        await User.findByIdAndUpdate(user._id,{
-          packages:req.body.packages,
-          paymentDate:req.body.paymentDate,
-          PaymentexpireDate:req.body.PaymentexpireDate,
-          
-        })
-        // return res.status(500).json("user already registered");
-      } 
-      else {
-        let customer_id = await Stripe.CreateCustomer(
-          email,
-          // username,
-          // "1184 sector-B indore"
-        );
-        console.log(customer_id);
-        const user = await User.create({
-          // username:null,
-          email,
-          PaymentexpireDate,
-          paymentDate,
-          // password:null,
-          // dob:null,
-          packages,
-          paymentstatus: req.body.paymentstatus || "false",
-          // phoneno:null,
-          customer_id,
+        const salt = await bcrypt.genSalt(10);
+        const password = await bcrypt.hash(req.body.password, salt);
+        console.log(password);
+        const users = await User.findByIdAndUpdate(user._id, {
+          username: req.body.username,
+          password: password,
+          dob: req.body.dob,
+          phoneno: req.body.phoneno,
         });
-        // const order = await createOrder();
-        // console.log(order.id,'hfghdf')
-        return res.status(201).json(user)
-      }
-      return;
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
-});
 
-
-
-
-exports.updatesignup = catchAsyncerror(async (req, res, next) => {
-  console.log(req.body);
-  let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
-  let year = new Date(req.body.dob).getUTCFullYear();
-  let month = new Date(req.body.dob).getUTCMonth();
-  let day = new Date(req.body.dob).getUTCDate();
-  let birthDate = year * 10000 + month * 100 + day * 1;
-  const {email, packages} = req.body;
-
-  // if (now - birthDate < 180000) {
-  //   return res.status(400).json("Only 18+ Person Can Register Here");
-  // }
-  // if (!username || !email || !password || !dob || !packages || !phoneno) {
-  //   return res.status(400).json("plese fill all input ");
-  // }
-  if (packages === "free"){
-    paymentstatus = "true";
-  }
-  // if (password.length < 8) {
-  //   return res.status(400).json("password must be 8 character long");
-  // }
-  try {
-    User.findOne({ email }, async (err, user) => {
-      const { valid, reason, validators } = await isEmailValid(email);
-      // console.log(validators);
-      if (!valid) {
-        return res
-          .status(500)
-          .json("email is invalid please enter a valid email");
-      } else if (user) {
-        const salt = await bcrypt.genSalt(10)
-  const password = await bcrypt.hash(req.body.password,salt)
-  console.log(password)
-      const users  =   await User.findByIdAndUpdate(user._id,{
-          username:req.body.username,
-          password:password,
-          dob:req.body.dob,
-          phoneno:req.body.phoneno
-        })
-
-        sendToken(users,200,res)
+        sendToken(users, 200, res);
         // return res.status(500).json("user already registered");
-      } 
-      else {
+      } else {
         // let customer_id = await Stripe.CreateCustomer(
         //   email,
         //   // username,
@@ -261,7 +241,7 @@ exports.updatesignup = catchAsyncerror(async (req, res, next) => {
         //   // phoneno:null,
         //   customer_id,
         // });
-        return res.status(500).json("Please Pay First Then Signup")
+        return res.status(500).json("Please Pay First Then Signup");
       }
       return;
     });
@@ -270,13 +250,11 @@ exports.updatesignup = catchAsyncerror(async (req, res, next) => {
   }
 });
 
-
-
 // exports.pay = catchAsyncerror(async (req, res, next) => {
-  //   try {
-    //     // console.log(req.body);
-    //     let amount = req.body.packages.slice(1, 3)
-    
+//   try {
+//     // console.log(req.body);
+//     let amount = req.body.packages.slice(1, 3)
+
 //     // const order = await createOrder(amount);
 //     // console.log(order);
 //     res.json(order);
@@ -428,8 +406,8 @@ exports.dashboard = catchAsyncerror(async (req, res, next) => {
 
   const user = await User.findById(req.user.id);
 
-//  let bankdata =  await Stripe.GetCardList(user.customer_id);
-//  console.log(bankdata);
+  //  let bankdata =  await Stripe.GetCardList(user.customer_id);
+  //  console.log(bankdata);
 
   res.status(200).json({
     sucess: true,
@@ -551,14 +529,11 @@ const sendToken = (user, statusCode, res) => {
   });
 };
 
-
-
-
 ///payment///
 // exports.buyStripePaymentSubscription = async (req, res) => {
 //   let data = req;
 //   console.log(req.body);
- 
+
 //   const currency = "AUD";
 //   let charged;
 //   let customer;
@@ -592,7 +567,6 @@ const sendToken = (user, statusCode, res) => {
 //   try {
 //     console.log("hfg");
 
-    
 //     charged = await Stripe.CreatePayment(
 //       amount,
 //       currency,

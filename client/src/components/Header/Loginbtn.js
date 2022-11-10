@@ -17,11 +17,15 @@ export const Loginbtn = () => {
     dispatch(logout());
     navigate("/");
   }
-
+console.log(loading,"loading");
+console.log(user,"user");
+console.log(isAuthenticated,"is");
   return (
     <>
         <span className="home_btn">
-        {isAuthenticated ===true? (<><div>
+          {loading === false?(
+
+           user &&  user.username? (<><div>
           <ul className="navbar-nav top-btn ml-auto">
 
           {user.packages ==="$45 / week"?<button style = {{backgroundColor:"#DBAF1F"}} onClick={()=>navigate("/dashboard")} className="user_btn">{uppercaseWords(user.username)}</button>:""}
@@ -32,13 +36,9 @@ export const Loginbtn = () => {
          <a ><button onClick={logoutUser} className='btn btn-2'>Logout</button>  </a>
          </ul></div>
           </>):""
-        //   (
-        //    <ul className="navbar-nav top-btn ml-auto">
-        //    <Link to = "/login"><button className='btn btn-1'>Login</button>  </Link>
-        //     <Link to = "/signup"><button className='btn btn-2'>Signup</button>  </Link>
-        //  </ul>
-        //   )
-        }
+      ):("")}
+      
+        
       </span>
 
     </>

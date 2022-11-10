@@ -82,8 +82,8 @@ export const Paypa = () => {
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [cardoption, setCardoption] = useState([]);
   const [cardoptionselect, setCardoptionselect] = useState();
-  const [email, setEmail] = useState("")
-  const [loader, setLoader] = useState(false)
+  const [email, setEmail] = useState("");
+  const [loader, setLoader] = useState(false);
   const card = useRef();
 
   const [cardInfo, setCardInfo] = useState({
@@ -119,16 +119,7 @@ export const Paypa = () => {
     },
   };
 
-  const statecitystyle = {
-    option: (provided, state) => ({
-      ...provided,
-      width: 230,
-    }),
-    container: (provided, state) => ({
-      ...provided,
-      width: 230,
-    }),
-  };
+  
   console.log(cardoptionselect);
   const dispatch = useDispatch();
 
@@ -136,29 +127,8 @@ export const Paypa = () => {
   const handle = async (e) => {
     setpackages(e.value);
   };
-  console.log(packages)
-  const cardhandle = async (e) => {
-    setCardoptionselect(e.value);
-  };
+  console.log(packages);
 
-  const [locations, setLocations] = useState({
-    countries: "",
-    states: "",
-    cities: "",
-  });
-  const [selectedLocation, setSelectedLocation] = useState({
-    country: {},
-    city: {},
-    state: {},
-  });
-
-  function handleSelectCountry(country) {
-    const states = State.getStatesOfCountry(country.value);
-    setSelectedLocation((prev) => {
-      return { ...prev, country };
-    });
-    setLocations((prev) => ({ ...prev, states: parseForSelect(states) }));
-  }
 
   function parseForSelect(arr) {
     return arr.map((item) => ({
@@ -170,9 +140,7 @@ export const Paypa = () => {
   useEffect(() => {
     const allCountry = Country.getAllCountries();
 
-    setLocations((prev) => {
-      return { ...prev, countries: parseForSelect(allCountry) };
-    });
+   
   }, []);
 
   useEffect(() => {
@@ -205,13 +173,10 @@ export const Paypa = () => {
     }
   }, [user]);
 
-  // console.log(00);
-  // if(test.data.status==="COMPLETED"){
-  //   dispatch(register())
-  // }
+ 
   const options = [
     {
-      value: "$60 / week",
+      value: "$49.95 / week",
       label: (
         <div
           className="sele-text"
@@ -223,12 +188,12 @@ export const Paypa = () => {
             src={img1}
             alt="loading"
           />
-          $60 per week
+          $49.95 per week
         </div>
       ),
     },
     {
-      value: "$45 / week",
+      value: "$34.95 / week",
       label: (
         <div
           className="sele-text"
@@ -240,7 +205,7 @@ export const Paypa = () => {
             src={img2}
             alt="loading"
           />
-          $45 per week
+          $34.95 per week
         </div>
       ),
     },
@@ -262,7 +227,7 @@ export const Paypa = () => {
       ),
     },
     {
-      value: "$15 / week",
+      value: "Free",
       label: (
         <div
           className="sele-text"
@@ -274,49 +239,40 @@ export const Paypa = () => {
             src={img4}
             alt="loading"
           />
-          $15 per week
-        </div>
-      ),
-    },
-    {
-      value: "Free",
-      label: (
-        <div
-          className="sele-text"
-          style={{ fontWeight: 600, fontSize: "20px", color: "#282828" }}
-        >
-          <img
-            className="select-img"
-            style={{ height: "43px", width: "150px", marginRight: "30px" }}
-            src={img5}
-            alt="loading"
-          />
           Free
         </div>
       ),
     },
+   
   ];
   const customStyles = {
     container: (provided, state) => ({
       ...provided,
       height: 35,
-      width: 508
+      width: 508,
     }),
   };
-  const customStylescard = {
-    height: 100,
-    zIndex: -999,
-  };
+
   // 7*24 * 60 * 60 * 100
-  const updatepro = async () => {
-    dispatch(
-      updateprofile({
-        paymentstatus: "true",
-        packages,
-        paymentDate: Date.now(),
-        PaymentexpireDate: date,
-      })
-    );
+  const updatepro = async (e) => {
+    e.preventDefault()
+    // dispatch(
+    //   updateprofile({
+    //     paymentstatus: "true",
+    //     packages,
+    //     paymentDate: Date.now(),
+    //     PaymentexpireDate: date,
+    //   })
+    // );
+    axios.post("/api/auth/register", {
+      email: email,
+      packages: packages,
+      paymentstatus: "true",
+      paymentDate: Date.now(),
+      PaymentexpireDate: date,
+    }).then((res)=>{ 
+      navigate("/thankyou");
+    })
   };
   const date = new Date();
   date.setDate(date.getDate() + 6);
@@ -342,14 +298,14 @@ export const Paypa = () => {
           card: elements.getElement(CardElement),
         })
         .then((resp) => {
-          setLoader(true)
+          setLoader(true);
 
           axios
             .post("/api/auth/paymentcreate", {
               paymentMethod: resp.paymentMethod,
               packages,
               cardId: cardoptionselect,
-              email: email
+              email: email,
             })
             .then((resp) => {
               /* Handle success */
@@ -361,17 +317,20 @@ export const Paypa = () => {
                     paymentDate: Date.now(),
                     PaymentexpireDate: date,
                   })
-                ).then((res) => {
-                  const resp = axios.post("/api/auth/register", {
-                    email: email, packages: packages, paymentstatus: "true", paymentDate: Date.now(),
-                    PaymentexpireDate: date
+                )
+                  .then((res) => {
+                    const resp = axios.post("/api/auth/register", {
+                      email: email,
+                      packages: packages,
+                      paymentstatus: "true",
+                      paymentDate: Date.now(),
+                      PaymentexpireDate: date,
+                    });
+                    setLoader(false);
                   })
-                  setLoader(false)
-
-                }
-                ).then((res) => {
-                  navigate("/thankyou")
-                })
+                  .then((res) => {
+                    navigate("/thankyou");
+                  });
                 console.log("asas");
               }
             })
@@ -459,365 +418,416 @@ export const Paypa = () => {
     <div style={{ overflow: "hidden" }}>
       {loading && <Loader />}
 
-      {
-        loader ? <Loader /> :
-          <section id="form-section" className="container-pw">
-            <div className="row container-fluid p-0">
-              <div className="login-form d-flex">
-                <div className="col-md-6 p-0">
-                  <div className="img-main img-width"></div>
-                </div>
-                <div style={{ margin: "0 auto", maxHeight: "103vh" }} className="wel-bg">
-                  <div className="row form-content check-center container">
-                    <div style={{ paddingTop: "0.5rem" }} className="form-main">
-                      <form className="form-floating mb-3">
-                        <div style={{ zIndex: 1000, width: "85%", margin: "auto" }} className="form-floating mb-4">
-                          <h2 className="pack-heading">Packages</h2>
-                          <Select
-                            className="Select_pack"
-                            options={options}
-                            styles={customStyles}
-                            defaultValue={{ value: "default", label: "default" }}
-                            value={options.filter(function (option) {
-                              return option.value === packages;
-                            })}
-                            onChange={handle}
+      {loader ? (
+        <Loader />
+      ) : (
+        <section id="form-section" className="container-pw">
+          <div className="row container-fluid p-0">
+            <div className="login-form d-flex">
+              <div className="col-md-6 p-0">
+                <div className="img-main img-width"></div>
+              </div>
+              <div
+                style={{ margin: "0 auto", maxHeight: "103vh" }}
+                className="wel-bg"
+              >
+                <div className="row form-content check-center container">
+                  <div style={{ paddingTop: "0.5rem" }} className="form-main">
+                    <form className="form-floating mb-3">
+                      <div
+                        style={{ zIndex: 1000, width: "85%", margin: "auto" }}
+                        className="form-floating mb-4"
+                      >
+                        <h2 className="pack-heading">Packages</h2>
+                        <Select
+                          className="Select_pack"
+                          options={options}
+                          styles={customStyles}
+                          defaultValue={{ value: "default", label: "default" }}
+                          value={options.filter(function (option) {
+                            return option.value === packages;
+                          })}
+                          onChange={handle}
                           // defaultValue={user.packages}
-                          />
-                        </div>
+                        />
+                      </div>
 
-                        <div className=" mb-3">
-                          <div>
-                            <div
-                              className="cardboxes box-container"
-                            >
-                              {packages === "Free" ? (
-                                <button style={{ marginLeft: "2.5rem", marginTop: "1rem" }} className="btn_two" onClick={updatepro}>
-                                  Select
-                                </button>
-                              ) : (
-                                <>
-                                  {/* <button
-                                  type="button"
-                                  class="btn btn-primary"
-                                  data-toggle="modal"
-                                  data-target="#exampleModal"
-                                >
-                                  Add card
-                                </button> */}
-                                  {/* <AddPayMethod
-                                  packages={packages}
-                                  user={user}
-                                  getPaymentMethods={getPaymentMethods}
-                                /> */}
+                      <div className=" mb-3">
+                        <div>
+                          <div className="cardboxes box-container">
+                            <>
+                              <div
+                                className="row"
+                                style={{
+                                  display: "flex !important",
+                                  position: "relative",
+                                  left: "6%",
+                                }}
+                              >
+                                <div className="col-lg-6 col-md-5">
                                   <div
-                                    className="row"
-                                    style={{
-                                      display: "flex !important",
-                                      position: "relative",
-                                      left: "6%"
-                                    }}
+                                    // onClick={() => navigate(`/checkout/${tips.bronze}`)}
+                                    className="btn tile-main"
                                   >
-
-                                    <div className="col-lg-6 col-md-5">
-                                      <div
-                                        // onClick={() => navigate(`/checkout/${tips.bronze}`)}
-                                        className="btn tile-main"
-
-                                      >
-                                        {
-                                          packages === "$15 / week" ? <>
-                                            <div className="row checkout-tip" style={{ width: "92%" }}>
-
-                                              <div className="col-md-4">
-                                                <div className="tipp-img">
-                                                  <img className="image-size" src={bronze} alt="" />
-                                                </div>
-                                              </div>
-                                              <div className="col-md-6">
-                                                <div className="tipping-check">
-                                                  <h5>Bronze</h5>
-                                                  <p>$15 per Week</p>
-                                                  <div className="returns">
-                                                    <span>98% returns</span>
-                                                  </div>
-                                                  <ul className="tipping-list">
-                                                    <li>
-                                                      <i className="fa fa-check"></i> Top tip of the day
-                                                    </li>
-                                                    <li>
-                                                      <i className="fa fa-check"></i> Every Saturday
-                                                    </li>
-                                                    <li>
-                                                      <i className="fa fa-check"></i>Direct to your inbox
-                                                    </li>
-                                                  </ul>
-                                                </div>
-                                              </div>
+                                    {packages === "Free" ? (
+                                      <>
+                                        <div
+                                          className="row checkout-tip"
+                                          style={{ width: "92%" }}
+                                        >
+                                          <div className="col-md-4">
+                                            <div className="tipp-img">
+                                              <img
+                                                className="image-size"
+                                                src={bronze}
+                                                alt=""
+                                              />
                                             </div>
-
-                                          </> : packages === "$30 / week" ? <>
-                                            <div className="row checkout-tip" style={{ width: "92%" }}>
-                                              <div className="col-md-5">
-                                                <div className="tipp-img">
-                                                  <img className="image-size" style={{ width: "80%" }} src={silver} alt="" />
-                                                </div>
-                                              </div>
-                                              <div className="col-md-6">
-                                                <div className="tipping-check">
-                                                  <h5>Silver</h5>
-                                                  <p >$15 per Week</p>
-                                                  <div className="returns">
-                                                    <span>120% returns</span>
-                                                  </div>
-                                                  <ul className="tipping-list">
-                                                    <li>
-                                                      {" "}
-                                                      <i className="fa fa-check"></i> Our 10 best tips
-                                                    </li>
-                                                    <li>
-                                                      <i className="fa fa-check"></i>Every Saturday
-                                                    </li>
-                                                    <li>
-                                                      {" "}
-                                                      <i className="fa fa-check"></i>Direct to your inbox
-                                                    </li>
-                                                  </ul>
-                                                </div>
-                                              </div>
-                                            </div>
-
-                                          </> : packages === "$45 / week" ? <>
-                                            <div className="row checkout-tip" style={{ width: "89%" }}>
-                                              <div className="col-md-5">
-                                                <div className="tipp-img">
-                                                  <img className="image-size" src={gold} alt="" style={{ width: "80%" }} />
-                                                </div>
-                                              </div>
-                                              <div className="col-md-6">
-                                                <div className="tipping-check">
-                                                  <h5>Gold</h5>
-                                                  <p>$45 per Week</p>
-                                                  <div className="returns">
-                                                    <span>165% returns</span>
-                                                  </div>
-                                                  <ul className="tipping-list">
-                                                    <li>
-
-                                                      <i className="fa fa-check"></i>Our top daily tips,
-                                                    </li>
-                                                    <li>
-                                                      <i className="fa fa-check"></i>Our top 15 Saturday tips
-                                                    </li>
-                                                    <li>
-
-                                                      <i className="fa fa-check"></i>Direct to your inbox
-                                                    </li>
-                                                  </ul>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </> : packages === "$60 / week" ? <>
-                                            <div className="row checkout-tip" style={{ width: "90%" }}>
-                                              <div className="col-md-5">
-                                                <div className="tipp-img">
-                                                  <img className="image-size" src={platinum} alt="" style={{ width: "80%" }} />
-                                                </div>
-                                              </div>
-                                              <div className="col-md-6">
-                                                <div className="tipping-check">
-                                                  <h5>Platinum</h5>
-                                                  <p>$60 per Week</p>
-                                                  <div className="returns">
-                                                    <span>265% returns</span>
-                                                  </div>
-                                                  <ul className="tipping-list">
-                                                    <li>
-                                                      <i className="fa fa-check"></i>Our top 5 daily tips
-                                                    </li>
-                                                    <li>
-                                                      <i className="fa fa-check"></i> Our top 20 Saturday Tips
-                                                    </li>
-                                                    <li>
-
-                                                      <i className="fa fa-check"></i>Direct to your inbox
-                                                    </li>
-                                                  </ul>
-                                                </div>
-                                              </div>
-                                            </div>
-
-                                          </> : ""
-                                        }
-
-
-                                      </div>
-                                    </div>
-
-                                    <div className="col-6 col-md-4 col-sm-3">
-
-                                      {
-                                        packages === "$15 / week" ? <div className="payment-box">
-                                          <div >
-                                            <h2>Bronze Membership</h2>
-                                            <h2>$15 per Week</h2>
-                                            <ul className="tip-center">
-                                              <li>Top tip of the day</li>
-                                              <li>Every Saturday</li>
-                                              <li>Direct to your inbox</li>
-                                            </ul>
                                           </div>
-
-                                        </div> : packages === "$30 / week" ? <div className="payment-box">
-                                          <div >
-                                            <h2>Silver Membership</h2>
-                                            <h2>$30 per Week</h2>
-                                            <ul className="tip-center">
-                                              <li>Our 10 best tips</li>
-                                              <li>Every Saturday</li>
-                                              <li>Direct to your inbox</li>
-                                            </ul>
-                                          </div>
-
-                                        </div> : packages === "$45 / week" ?
-                                          <div className="payment-box">
-                                            <div >
-                                              <h2>Gold Membership</h2>
-                                              <h2>$45 per Week</h2>
-                                              <ul className="tip-center">
-                                                <li>Our top daily tips</li>
-                                                <li>Our top 15 Saturday</li>
-                                                <li>Our top 15 Saturday</li>
+                                          <div className="col-md-6">
+                                            <div className="tipping-check">
+                                              <h5>Bronze</h5>
+                                              <p>Free</p>
+                                              <div className="returns">
+                                                <span>98% returns</span>
+                                              </div>
+                                              <ul className="tipping-list">
+                                                <li>
+                                                  <i className="fa fa-check"></i>
+                                                  Best bet of the day every
+                                                  Saturday, completely free!
+                                                </li>
                                               </ul>
                                             </div>
-
-                                          </div> : packages === "$60 / week" ?
-                                            <div className="payment-box">
-                                              <div >
-                                                <h2>Our top 5 daily tips</h2>
-                                                <h2>$60 per Week</h2>
-                                                <ul className="tip-center">
-                                                  <li>Our top daily tips</li>
-                                                  <li>Our top 20 Saturday</li>
-                                                  <li>Direct to your inbox</li>
-                                                </ul>
+                                          </div>
+                                        </div>
+                                      </>
+                                    ) : packages === "$30 / week" ? (
+                                      <>
+                                        <div
+                                          className="row checkout-tip"
+                                          style={{ width: "92%" }}
+                                        >
+                                          <div className="col-md-5">
+                                            <div className="tipp-img">
+                                              <img
+                                                className="image-size"
+                                                style={{ width: "80%" }}
+                                                src={silver}
+                                                alt=""
+                                              />
+                                            </div>
+                                          </div>
+                                          <div className="col-md-6">
+                                            <div className="tipping-check">
+                                              <h5>Silver</h5>
+                                              <p>$30 per Week</p>
+                                              <div className="returns">
+                                                <span>120% returns</span>
                                               </div>
-
-                                            </div> : ""
-
-                                      }
-                                    </div>
-
-                                  </div>
-
-                                  {/* <div className="row" style={{ marginTop: "1.3%"}}> */}
-
-                                    <div className="main-label">
-
-                                      <div className="inputrow mb-2">
-                                        <label>Email Address</label>
-                                        <input
-                                          onChange={(e) => { setEmail(e.target.value) }}
-                                          type="email"
-                                          name="email"
-                                          placeholder="Enter Your Email"
-                                          className="input-border"
-                                        />
-                                      </div>
-
-                                      <div className="inputrow mb-2">
-                                        <label>Cardholder Name</label>
-                                        <input
-                                          onChange={handleChangeName}
-                                          type="text"
-                                          name="name"
-                                          placeholder="Enter card holder name"
-                                          className="input-border"
-                                        />
-                                      </div>
-
-                                      <label>Enter Card Details</label>
-                                      <div className=" inputrow input-border">
-                                        <CardElement
-                                          options={cardElementOptions}
-                                          ref={card}
-                                        />
-                                      </div>
-
-                                      <div
-                                        className={style.addressWrapper}
-                                      >
-                                        { }
-                                        {/* <div className={style.rowSelect}>
-      <div>
-        <label>Country</label>
-        <Select
-          isClearable={true}
-          isSearchable={true}
-          name="country"
-          value={selectedLocation.country}
-          options={locations.countries}
-          onChange={handleSelectCountry}
-        />
-      </div>
-    </div> */}
-                                      </div>
-                                    {/* </div> */}
-
-
-                                    {cardoption.length >= 1 ? (
-                                      <div style={{ marginTop: "1.5rem" }}>
-                                        <Select
-                                          className="Select_pack"
-                                          options={cardoption}
-                                          styles={customStylescard}
-                                          value={cardoption.filter(function (option) {
-                                            return option.value === cardoptionselect;
-                                          })}
-                                          onChange={cardhandle}
-                                        // defaultValue={user.packages}
-                                        />
-                                      </div>
+                                              <ul className="tipping-list">
+                                                <li>
+                                                  {" "}
+                                                  <i className="fa fa-check"></i>{" "}
+                                                  5 best bets of the day every
+                                                  Saturday with staking plan &
+                                                  analysis of each race
+                                                </li>
+                                                <li>
+                                                  <i className="fa fa-check"></i>
+                                                  Multi of the day
+                                                </li>
+                                                <li>
+                                                  {" "}
+                                                  <i className="fa fa-check"></i>{" "}
+                                                  Value pick of the day
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </>
+                                    ) : packages === "$34.95 / week" ? (
+                                      <>
+                                        <div
+                                          className="row checkout-tip"
+                                          style={{ width: "89%" }}
+                                        >
+                                          <div className="col-md-5">
+                                            <div className="tipp-img">
+                                              <img
+                                                className="image-size"
+                                                src={gold}
+                                                alt=""
+                                                style={{ width: "80%" }}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div className="col-md-6">
+                                            <div className="tipping-check">
+                                              <h5>Gold</h5>
+                                              <p>$34.95 per Week</p>
+                                              <div className="returns">
+                                                <span>165% returns</span>
+                                              </div>
+                                              <ul className="tipping-list">
+                                                <li>
+                                                  <i className="fa fa-check"></i>
+                                                  21 of the best bets across
+                                                  Australia every Saturday with
+                                                  staking plan & analysis of
+                                                  each race.
+                                                </li>
+                                                <li>
+                                                  <i className="fa fa-check"></i>
+                                                  3 x Best Multis
+                                                </li>
+                                                <li>
+                                                  <i className="fa fa-check"></i>{" "}
+                                                  Value pick of the day
+                                                </li>
+                                                <li>
+                                                  <i className="fa fa-check"></i>
+                                                  Quaddie selections for
+                                                  Brisbane, Sydney & Melbourne.
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </>
+                                    ) : packages === "$49.95 / week" ? (
+                                      <>
+                                        <div
+                                          className="row checkout-tip"
+                                          style={{ width: "90%" }}
+                                        >
+                                          <div className="col-md-5">
+                                            <div className="tipp-img">
+                                              <img
+                                                className="image-size"
+                                                src={platinum}
+                                                alt=""
+                                                style={{ width: "80%" }}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div className="col-md-6">
+                                            <div className="tipping-check">
+                                              <h5>Platinum</h5>
+                                              <p>$49.95 per Week</p>
+                                              <div className="returns">
+                                                <span>265% returns</span>
+                                              </div>
+                                              <ul className="tipping-list">
+                                                <li>
+                                                  <i className="fa fa-check"></i>{" "}
+                                                  21 of the best bets across
+                                                  Australia every Saturday with
+                                                  staking plan & analysis of
+                                                  each race.
+                                                </li>
+                                                <li>
+                                                  <i className="fa fa-check"></i>
+                                                  3 x Best Multis
+                                                </li>
+                                                <li>
+                                                  <i className="fa fa-check"></i>{" "}
+                                                  Value pick of the day
+                                                </li>
+                                                <li>
+                                                  <i className="fa fa-check"></i>
+                                                  DQuaddie for Brisbane, Sydney
+                                                  & Melbourne.
+                                                </li>
+                                                <li>
+                                                  <i className="fa fa-check"></i>{" "}
+                                                  Best bet of the day, everyday!
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </>
                                     ) : (
                                       ""
                                     )}
+                                  </div>
+                                </div>
+
+                                <div className="col-6 col-md-4 col-sm-3">
+                                  {packages === "Free" ? (
+                                    <div className="payment-box">
+                                      <div>
+                                        <h2>Bronze Membership</h2>
+                                        <h2>Free</h2>
+                                        <ul className="tip-center">
+                                          <li>
+                                            -Best bet of the day every Saturday,
+                                            completely free!
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  ) : packages === "$30 / week" ? (
+                                    <div className="payment-box">
+                                      <div>
+                                        <h2>Silver Membership</h2>
+                                        <h2>$30 per Week</h2>
+                                        <ul className="tip-center">
+                                          <li>
+                                            5 best bets of the day every
+                                            Saturday with staking plan &
+                                            analysis of each race
+                                          </li>
+                                          <li>Multi of the day</li>
+                                          <li>Value pick of the day</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  ) : packages === "$34.95 / week" ? (
+                                    <div className="payment-box">
+                                      <div>
+                                        <h2>Gold Membership</h2>
+                                        <h2>$34.95 per Week</h2>
+                                        <ul className="tip-center">
+                                          <li>
+                                            {" "}
+                                            21 of the best bets across Australia
+                                            every Saturday with staking plan &
+                                            analysis of each race.
+                                          </li>
+                                          <li>3 x Best Multis</li>
+                                          <li>Value pick of the day</li>
+                                          <li>
+                                            {" "}
+                                            Quaddie selections for Brisbane,
+                                            Sydney & Melbourne.
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  ) : packages === "$49.95 / week" ? (
+                                    <div className="payment-box">
+                                      <div>
+                                        <h2>Platinum membership</h2>
+                                        <h2>$49.95 per Week</h2>
+                                        <ul className="tip-center">
+                                          <li>
+                                            {" "}
+                                            21 of the best bets across Australia
+                                            every Saturday with staking plan &
+                                            analysis of each race.
+                                          </li>
+                                          <li> 3 x Best Multis</li>
+                                          <li>Value pick of the day</li>
+                                          <li>
+                                            Quaddie for Brisbane, Sydney &
+                                            Melbourne.
+                                          </li>
+                                          <li>
+                                            {" "}
+                                            Best bet of the day, everyday!
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </div>
+
+                              {/* <div className="row" style={{ marginTop: "1.3%"}}> */}
+
+                              <div className="main-label">
+                                <div className="inputrow mb-2">
+                                  <label>Email Address</label>
+                                  <input
+                                    onChange={(e) => {
+                                      setEmail(e.target.value);
+                                    }}
+                                    type="email"
+                                    name="email"
+                                    placeholder="Enter Your Email"
+                                    className="input-border"
+                                  />
+                                </div>
+
+                           
+                                {packages === "Free" ? (
+                                  <button
+                                    style={{
+                                      marginLeft: "2.5rem",
+                                      marginTop: "1rem",
+                                    }}
+                                    className="btn_two"
+                                    onClick={updatepro}
+                                  >
+                                    Select
+                                  </button>
+                                ) : (
+                                  <>
+                                       <div className="inputrow mb-2">
+                                  <label>Cardholder Name</label>
+                                  <input
+                                    onChange={handleChangeName}
+                                    type="text"
+                                    name="name"
+                                    placeholder="Enter card holder name"
+                                    className="input-border"
+                                  />
+                                </div>
+                                    <label>Enter Card Details</label>
+                                    <div className=" inputrow input-border">
+                                      <CardElement
+                                        options={cardElementOptions}
+                                        ref={card}
+                                      />
+                                    </div>
+
+                                    
                                     <div className="d-flex justify-content-center mt-2">
                                       <button
                                         className="btn homelogin"
-                                        style={{ backgroundColor: "gr", height: "36px" }}
+                                        style={{
+                                          backgroundColor: "gr",
+                                          height: "36px",
+                                        }}
                                         onClick={handleSubmit}
                                       >
                                         Pay Now
                                       </button>
                                     </div>
-                                    <p className="mt-2" style={{ textAlign: "center", fontSize: "12px", width: "40rem" }}>
-                                      By signing up, I agree to the{" "}
-                                      <Link to="/terms-and-conditions">
-                                        <span>Terms and Conditions</span>
-                                      </Link>
-                                    </p>
-                                  </div>
+                                  </>
+                                )}
 
-                                  <br />
-
-
-                                  <br />
-
-                                </>
-                              )}
-
-                            </div>
+                                <p
+                                  className="mt-2"
+                                  style={{
+                                    textAlign: "center",
+                                    fontSize: "12px",
+                                    width: "40rem",
+                                  }}
+                                >
+                                  By signing up, I agree to the{" "}
+                                  <Link to="/terms-and-conditions">
+                                    <span>Terms and Conditions</span>
+                                  </Link>
+                                </p>
+                              </div>
+                            </>
                           </div>
                         </div>
-                      </form>
-                    </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
-
               </div>
             </div>
-          </section>
-      }
+          </div>
+        </section>
+      )}
       {/* 
 <!-- Modal --> */}
       <div
