@@ -18,3 +18,11 @@ list-style: lower-alpha;
 .term_general span{
     font-weight: 600;
 }
+.thankyoubg{
+    background: url("../../Images/new-hero.png") no-repeat;
+    background-size: cover;
+    height: 40%;
+    background-size: 99% 294%;
+    background-position: inherit;
+
+}

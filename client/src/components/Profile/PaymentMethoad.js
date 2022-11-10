@@ -28,8 +28,6 @@ import unionpay from "./assets/cards/unionpay.png";
 
 import { useNavigate } from "react-router-dom";
 
-
-
 import { clearErrors, loaduser, updateprofile } from "../../actions/userAction";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import Select from "react-select";
@@ -74,21 +72,27 @@ export const PaymentMethoad = () => {
   const [packages, setpackages] = useState("");
 
   const updatepro = (e) => {
-    dispatch(updateprofile({ paymentstatus: "true" ,packages,paymentDate: Date.now(),PaymentexpireDate: date,}));
+    dispatch(
+      updateprofile({
+        paymentstatus: "true",
+        packages,
+        paymentDate: Date.now(),
+        PaymentexpireDate: date,
+      })
+    );
   };
-  
+
   useEffect(() => {
     if (user) {
-     
       setpackages(user.packages);
-     
     }
-    
+
     if (error) {
-      alert.error(error);
+      console.log(error);
+      alert.error(error.message);
       dispatch(clearErrors());
     }
-    
+
     if (isUpdated) {
       alert.success("Profile Updated Successfully");
       dispatch(loaduser());
@@ -97,10 +101,10 @@ export const PaymentMethoad = () => {
         type: UPDATE_PROFILE_RESET,
       });
     }
-  }, [dispatch, error, user, alert,isUpdated]);
+  }, [dispatch, error, user, alert, isUpdated]);
   const options = [
     {
-      value: "$60 / week",
+      value: "$49.95 / week",
       label: (
         <div
           className="sele-text"
@@ -112,12 +116,12 @@ export const PaymentMethoad = () => {
             src={img1}
             alt="loading"
           />
-          $60 per week
+          $49.95 per week
         </div>
       ),
     },
     {
-      value: "$45 / week",
+      value: "$34.95 / week",
       label: (
         <div
           className="sele-text"
@@ -129,12 +133,12 @@ export const PaymentMethoad = () => {
             src={img2}
             alt="loading"
           />
-          $45 per week
+          $34.95 per week
         </div>
       ),
     },
     {
-      value: "$30 / week",
+      value: "$19.95 / week",
       label: (
         <div
           className="sele-text"
@@ -146,24 +150,7 @@ export const PaymentMethoad = () => {
             src={img3}
             alt="loading"
           />
-          $30 per week
-        </div>
-      ),
-    },
-    {
-      value: "$15 / week",
-      label: (
-        <div
-          className="sele-text"
-          style={{ fontWeight: 600, fontSize: "20px", color: "#282828" }}
-        >
-          <img
-            className="select-img"
-            style={{ height: "43px", width: "150px", marginRight: "30px" }}
-            src={img4}
-            alt="loading"
-          />
-          $15 per week
+          $19.95 per week
         </div>
       ),
     },
@@ -176,7 +163,8 @@ export const PaymentMethoad = () => {
         >
           <img
             className="select-img"
-            style={{ height: "43px", width: "150px", marginRight: "30px" }}            src={img5}
+            style={{ height: "43px", width: "150px", marginRight: "30px" }}
+            src={img4}
             alt="loading"
           />
           Free
@@ -191,7 +179,7 @@ export const PaymentMethoad = () => {
   const updateP = (e) => {
     e.preventDefault();
     const myForm = new FormData();
-    
+
     myForm.set("packages", packages);
 
     // console.log(myForm);
@@ -206,14 +194,13 @@ export const PaymentMethoad = () => {
     if (day.length < 2) day = "0" + day;
     return [year, month, day].join("-");
   }
-  const handle=(e)=>{
-    setpackages( e.value )
-  }
+  const handle = (e) => {
+    setpackages(e.value);
+  };
   // ..................payment...................//
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [cardoption, setCardoption] = useState([]);
   const [cardoptionselect, setCardoptionselect] = useState();
-
 
   const customStylescard = {
     height: 100,
@@ -249,7 +236,7 @@ export const PaymentMethoad = () => {
   //             PaymentexpireDate: date,
   //           })
   //         );
-      
+
   //       }
   //     })
   //     .then()
@@ -258,61 +245,57 @@ export const PaymentMethoad = () => {
   //     });
   // };
   async function pay(e) {
-    e.preventDefault()
-   const address = cardInfo.address;
-   const billingDetails = {
-     name: cardInfo.name,
-     address: {
-       country: address.country,
-       state: address.state,
-       city: address.city,
-       line1: address.line,
-     },
-   };
+    e.preventDefault();
+    const address = cardInfo.address;
+    const billingDetails = {
+      name: cardInfo.name,
+      address: {
+        country: address.country,
+        state: address.state,
+        city: address.city,
+        line1: address.line,
+      },
+    };
 
-   try {
-     stripe
-       .createPaymentMethod({
-         type: "card",
-         billing_details: billingDetails,
-         card: elements.getElement(CardElement),
-       })
-       .then((resp) => {
-           axios 
-           .post(
-             "/api/auth/paymentcreate",
-             {
-               user:user._id,
-               paymentMethod: resp.paymentMethod,
-               packages,
-             }
-           )
-           .then((resp) => {
-             /* Handle success */
-             if (resp.data.status === "succeeded") {
-               dispatch(
-                 updateprofile({
-                   paymentstatus:  "true",
-                   packages,
-                   paymentDate: Date.now(),
-                   PaymentexpireDate: date,
-                 })
-               
-               ).then(navigate("/The-Goat-Tips"));
-               console.log("asas");
-             }
-           })
-           .catch((err) => {
-             alert("error")
-             console.log(err);
-             /*Handle Error */
-           });
-         console.log(resp);
-       });
-   } catch (err) {
-     /* Handle Error*/
-   }
- }
+    try {
+      stripe
+        .createPaymentMethod({
+          type: "card",
+          billing_details: billingDetails,
+          card: elements.getElement(CardElement),
+        })
+        .then((resp) => {
+          axios
+            .post("/api/auth/paymentcreate", {
+              user: user._id,
+              paymentMethod: resp.paymentMethod,
+              packages,
+            })
+            .then((resp) => {
+              /* Handle success */
+              if (resp.data.status === "succeeded") {
+                dispatch(
+                  updateprofile({
+                    paymentstatus: "true",
+                    packages,
+                    paymentDate: Date.now(),
+                    PaymentexpireDate: date,
+                  })
+                ).then(navigate("/The-Goat-Tips"));
+                console.log("asas");
+              }
+            })
+            .catch((err) => {
+              alert("error");
+              console.log(err);
+              /*Handle Error */
+            });
+          console.log(resp);
+        });
+    } catch (err) {
+      /* Handle Error*/
+    }
+  }
   async function getPaymentMethods() {
     await axios
       .post(`/api/auth/paymentMethodcardlist`, {
@@ -370,7 +353,7 @@ export const PaymentMethoad = () => {
           </div>
 
           <div className={"details"}>
-             {method.card.last4}
+            {method.card.last4}
             {method.billing_details.name}
           </div>
 
@@ -447,7 +430,7 @@ export const PaymentMethoad = () => {
               user: user._id,
               paymentMethod: resp.paymentMethod,
               packages,
-              cardId:cardoptionselect
+              cardId: cardoptionselect,
             })
             .then((resp) => {
               /* Handle success */
@@ -459,7 +442,7 @@ export const PaymentMethoad = () => {
                     paymentDate: Date.now(),
                     PaymentexpireDate: date,
                   })
-                )
+                );
                 console.log("asas");
               }
             })
@@ -468,10 +451,10 @@ export const PaymentMethoad = () => {
               console.log(err.response.data);
               /*Handle Error */
             });
-          });
-        } catch (err) {
-          /* Handle Error*/
-          console.log(err);
+        });
+    } catch (err) {
+      /* Handle Error*/
+      console.log(err);
     }
   }
   useEffect(() => {
@@ -480,7 +463,7 @@ export const PaymentMethoad = () => {
     setLocations((prev) => {
       return { ...prev, countries: parseForSelect(allCountry) };
     });
-  }, []); 
+  }, []);
   //  ..................payment...................//
   return (
     <>
@@ -490,76 +473,106 @@ export const PaymentMethoad = () => {
         <>
           {isAuthenticated === true ? (
             <div className="payment_box_two">
-              {packages==="$60 / week" ? <>
-              <h2>Platinum Membership</h2>
-              <h2>$60 per Week</h2>
-              <ul>
-                <li>Recommended tips</li>
-                <li>Recommended tips</li>
-                <li>Recommended tips</li>
-              </ul></>:"" }
-              {packages==="$45 / week" ? <>
-              <h2>Gold Membership</h2>
-              <h2>$45 per Week</h2>
-              <ul>
-                <li>Recommended tips</li>
-                <li>Recommended tips</li>
-                <li>Recommended tips</li>
-              </ul></>:"" }
-              {packages==="$30 / week" ? <>
-              <h2>silver Membership</h2>
-              <h2>$30 per week</h2>
-              <ul>
-                <li>Recommended tips</li>
-                <li>Recommended tips</li>
-                <li>Recommended tips</li>
-              </ul></>:"" }
-              {packages==="$15 / week" ? <>
-              <h2>Bronze Membership</h2>
-              <h2>$15 per Week</h2>
-              <ul>
-                <li>Recommended tips</li>
-                <li>Recommended tips</li>
-                <li>Recommended tips</li>
-              </ul></>:"" }
-              {packages==="Free" ? <>
-              <h2>Pub Punster</h2>
-              <h2>Free</h2>
-              <ul>
-                <li>Recommended tips</li>
-                <li>Recommended tips</li>
-                <li>Recommended tips</li>
-              </ul></>:"" }
-              
+              {packages === "$49.95 / week" ? (
+                <>
+                  <h2>Platinum Membership</h2>
+                  <h2>$60 per Week</h2>
+                  <ul className="tipping-list">
+                    <li>
+                      {" "}
+                      21 of the best bets across Australia every Saturday with
+                      staking plan & analysis of each race.
+                    </li>
+                    <li>3 x Best Multis</li>
+                    <li> Value pick of the day</li>
+                    <li>DQuaddie for Brisbane, Sydney & Melbourne.</li>
+                    <li> Best bet of the day, everyday!</li>
+                  </ul>
+                </>
+              ) : (
+                ""
+              )}
+              {packages === "$34.95 / week" ? (
+                <>
+                  <h2>Gold Membership</h2>
+                  <h2>$45 per Week</h2>
+                  <ul className="tipping-list">
+                    <li>
+                      21 of the best bets across Australia every Saturday with
+                      staking plan & analysis of each race.
+                    </li>
+                    <li>3 x Best Multis</li>
+                    <li> Value pick of the day</li>
+                    <li>
+                      Quaddie selections for Brisbane, Sydney & Melbourne.
+                    </li>
+                  </ul>
+                </>
+              ) : (
+                ""
+              )}
+              {packages === "$19.95 / week" ? (
+                <>
+                  <h2>silver Membership</h2>
+                  <h2>$30 per week</h2>
+                  <ul className="tipping-list">
+                    <li>
+                      {" "}
+                      5 best bets of the day every Saturday with staking plan &
+                      analysis of each race
+                    </li>
+                    <li>Multi of the day</li>
+                    <li> Value pick of the day</li>
+                  </ul>
+                </>
+              ) : (
+                ""
+              )}
+              {packages === "Free" ? (
+                <>
+                  <h2>Bronze Membership</h2>
+                  <h2>Free</h2>
+                  <ul className="tip-center">
+                    <li>
+                      Best bet of the day every Saturday, completely free!
+                    </li>
+                  </ul>
+                </>
+              ) : (
+                ""
+              )}
 
               <div className="top">
-                <form className="box_three form-floating mb-3"  onSubmit={updateP}>
+                <form
+                  className="box_three form-floating mb-3"
+                  onSubmit={updateP}
+                >
                   <h2 className="per_text">Membership Details</h2>
-                  <div className="form-floating" style={{ zIndex: 999,}}>
-                  <Select
-                   className="Select_pack"
-                   options={options}
-                   styles={customStyles}
-                    value={options.filter(function(option) {
-                      return option.value === packages;
-                    })}
-            
-                    onChange={handle}
-                  />
+                  <div className="form-floating" style={{ zIndex: 999 }}>
+                    <Select
+                      className="Select_pack"
+                      options={options}
+                      styles={customStyles}
+                      value={options.filter(function (option) {
+                        return option.value === packages;
+                      })}
+                      onChange={handle}
+                    />
                   </div>
                   <h2 className="pay_detail">Payment Details</h2>
-                  
-                  <div className="fom-btn mb-3 d-block" style={{justifyContent:"center"}}>
-                        <div>
-                          <div style={{ maxWidth: "750px", minHeight: "200px" }}>
-                          {packages==="Free"?( <button
-              className="btn_two"
-               onClick={updatepro}
-            >
-              Select
-            </button>):(
-                           
-                            <>
+
+                  <div
+                    className="fom-btn mb-3 d-block"
+                    style={{ justifyContent: "center" }}
+                  >
+                    <div>
+                      <div style={{ maxWidth: "750px", minHeight: "200px" }}>
+                        {packages === "Free" ? (
+                          <button className="btn_two" onClick={updatepro}>
+                            Select
+                          </button>
+                        ) : (
+                          <>
                             {/* <button
                               type="button"
                               class="btn btn-primary"
@@ -568,51 +581,51 @@ export const PaymentMethoad = () => {
                             >
                               Add card
                             </button> */}
-                             <div className={style.wrapper}>
-                                  <div className="main-label">
-                                    {/* <div className={style.title}>Add Payment Method</div> */}
-                                    <div className="inputrow mb-3">
-                                      <label>Cardholder Name</label>
-                                      <input
-                                        onChange={handleChangeName}
-                                        type="text"
-                                        name="name"
-                                        placeholder="Enter card holder name"
-                                        className="input-border"
-                                      />
-                                    </div>
-                                    <label>Enter Card Details</label>
-                                    <div className="input-border">
-                                      <CardElement
-                                        options={cardElementOptions}
-                                        ref={card}
-                                      />
-                                    </div>
+                            <div className={style.wrapper}>
+                              <div className="main-label">
+                                {/* <div className={style.title}>Add Payment Method</div> */}
+                                <div className="inputrow mb-3">
+                                  <label>Cardholder Name</label>
+                                  <input
+                                    onChange={handleChangeName}
+                                    type="text"
+                                    name="name"
+                                    placeholder="Enter card holder name"
+                                    className="input-border"
+                                  />
+                                </div>
+                                <label>Enter Card Details</label>
+                                <div className="input-border">
+                                  <CardElement
+                                    options={cardElementOptions}
+                                    ref={card}
+                                  />
+                                </div>
 
-                                    <div
-                                      style={{ marginTop: "10px" }}
-                                      className={style.addressWrapper}
-                                    >
-                                      {}
-                                      <div className={style.rowSelect}>
-                                        <div>
-                                          <label>Country</label>
-                                          <Select
-                                            isClearable={true}
-                                            isSearchable={true}
-                                            name="country"
-                                            value={selectedLocation.country}
-                                            options={locations.countries}
-                                            onChange={handleSelectCountry}
-                                          />
-                                        </div>
-                                      </div>
+                                <div
+                                  style={{ marginTop: "10px" }}
+                                  className={style.addressWrapper}
+                                >
+                                  {}
+                                  <div className={style.rowSelect}>
+                                    <div>
+                                      <label>Country</label>
+                                      <Select
+                                        isClearable={true}
+                                        isSearchable={true}
+                                        name="country"
+                                        value={selectedLocation.country}
+                                        options={locations.countries}
+                                        onChange={handleSelectCountry}
+                                      />
                                     </div>
                                   </div>
                                 </div>
+                              </div>
+                            </div>
 
-                                <br />
-                                {/* <Select
+                            <br />
+                            {/* <Select
                                   className="Select_pack"
                                   options={cardoption}
                                   styles={customStylescard}
@@ -622,40 +635,39 @@ export const PaymentMethoad = () => {
                                   onChange={cardhandle}
                                   // defaultValue={user.packages}
                                 /> */}
-                                      {cardoption.length>=1?(
-
-                                        <Select
-                                        className="Select_pack"
-                                        options={cardoption}
-                                        styles={customStylescard}
-                                        value={cardoption.filter(function (option) {
-                                          return option.value === cardoptionselect;
-                                        })}
-                                        onChange={cardhandle}
-                                        // defaultValue={user.packages}
-                                        />):("") 
-                                        }
-                                <br />
-                                <button
-                                  className="btn homelogin"
-                                  style={{ backgroundColor: "gr" }}
-                                  onClick={handleSubmit}
-                                >
-                                  pay Now
-                                </button>
+                            {cardoption.length >= 1 ? (
+                              <Select
+                                className="Select_pack"
+                                options={cardoption}
+                                styles={customStylescard}
+                                value={cardoption.filter(function (option) {
+                                  return option.value === cardoptionselect;
+                                })}
+                                onChange={cardhandle}
+                                // defaultValue={user.packages}
+                              />
+                            ) : (
+                              ""
+                            )}
+                            <br />
+                            <button
+                              className="btn homelogin"
+                              style={{ backgroundColor: "gr" }}
+                              onClick={handleSubmit}
+                            >
+                              pay Now
+                            </button>
                           </>
-                          )}
-                           
-                          </div>
-                        </div>
+                        )}
                       </div>
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>
           ) : (
             <Navigate to={"/login"} />
           )}
-
         </>
       )}
     </>

@@ -252,8 +252,9 @@ button.btn.btn-profile-btn {
   
   @media (min-width:600px){
     .content{
-    max-width:1000px;
-    margin:0 auto;
+        max-width: 1000px;
+        height: 56%;
+        margin: 0 auto;
   }
     .wrapper-1{
     height: initial;

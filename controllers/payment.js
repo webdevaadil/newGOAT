@@ -1,3 +1,4 @@
+
 const User = require("../models/User");
 const Stripe = require("../payment/stripe");
 let stripe;
@@ -76,7 +77,21 @@ exports.paymentcreateold = async (req, res) => {
   console.log(req.body, "as");
   // return
 
-  const amount = req.body.packages.slice(1, 3);
+ let amount;
+  if(req.body.packages==='$19.95 / week' ){
+    amount= 19.95
+
+  }
+  else if(req.body.packages==='$34.95 / week'){
+    amount = 34.95
+
+  }
+  else if(req.body.packages==='$49.95 / week'){
+    amount = 49.95
+
+  }
+  console.log(amount);
+  return
   const currency = "AUD";
   let paymentMethod = req.body.paymentMethod;
   //   console.log(req.user);
@@ -162,7 +177,25 @@ exports.paymentcreate = async (req, res) => {
   /* Query database for getting the payment amount and customer id of the current logged in user */
   console.log(req.body,"as");
   //return
-  const amount = req.body.packages.slice(1, 3);
+ 
+  let amount;
+  if(req.body.packages==='$19.95 / week' ){
+    amount= 19.95
+
+  }
+  else if(req.body.packages==='$34.95 / week'){
+    amount = 34.95
+
+  }
+  else if(req.body.packages==='$49.95 / week'){
+    amount = 49.95
+
+  }
+  else {
+    return( res.status(500).json("invalid amount"))
+
+    console.log(amount);
+  }
   const currency = "AUD";
   let paymentMethod = req.body.paymentMethod;
   let email = req.body.email

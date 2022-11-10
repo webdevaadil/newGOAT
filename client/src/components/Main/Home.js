@@ -27,10 +27,10 @@ import Marquee from "react-fast-marquee";
 
 const Home = () => {
   const [tips, setTips] = useState({
-    bronze: "$15",
-    silver: "$30",
-    gold: "$45",
-    platinum: "$60"
+    bronze: "Free",
+    silver: "$19.95",
+    gold: "$34.95",
+    platinum: "$49.95"
   })
   const navigate = useNavigate();
   const dispatch = useDispatch();

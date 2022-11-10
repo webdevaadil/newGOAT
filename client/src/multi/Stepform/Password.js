@@ -124,6 +124,7 @@ export const Paypa = () => {
   const dispatch = useDispatch();
 
   const [packages, setpackages] = useState(`${tips} / week`);
+  console.log(packages);
   const handle = async (e) => {
     setpackages(e.value);
   };
@@ -210,7 +211,7 @@ export const Paypa = () => {
       ),
     },
     {
-      value: "$30 / week",
+      value: "$19.95 / week",
       label: (
         <div
           className="sele-text"
@@ -222,12 +223,12 @@ export const Paypa = () => {
             src={img3}
             alt="loading"
           />
-          $30 per week
+          $19.95 per week
         </div>
       ),
     },
     {
-      value: "Free",
+      value: "Free / week",
       label: (
         <div
           className="sele-text"
@@ -469,7 +470,7 @@ export const Paypa = () => {
                                     // onClick={() => navigate(`/checkout/${tips.bronze}`)}
                                     className="btn tile-main"
                                   >
-                                    {packages === "Free" ? (
+                                    {packages === "Free / week" ? (
                                       <>
                                         <div
                                           className="row checkout-tip"
@@ -502,7 +503,7 @@ export const Paypa = () => {
                                           </div>
                                         </div>
                                       </>
-                                    ) : packages === "$30 / week" ? (
+                                    ) : packages === "$19.95 / week" ? (
                                       <>
                                         <div
                                           className="row checkout-tip"
@@ -656,7 +657,7 @@ export const Paypa = () => {
                                 </div>
 
                                 <div className="col-6 col-md-4 col-sm-3">
-                                  {packages === "Free" ? (
+                                  {packages === "Free / week" ? (
                                     <div className="payment-box">
                                       <div>
                                         <h2>Bronze Membership</h2>
@@ -669,7 +670,7 @@ export const Paypa = () => {
                                         </ul>
                                       </div>
                                     </div>
-                                  ) : packages === "$30 / week" ? (
+                                  ) : packages === "$19.95 / week" ? (
                                     <div className="payment-box">
                                       <div>
                                         <h2>Silver Membership</h2>
@@ -755,7 +756,7 @@ export const Paypa = () => {
                                 </div>
 
                            
-                                {packages === "Free" ? (
+                                {packages === "Free / week" ? (
                                   <button
                                     style={{
                                       marginLeft: "2.5rem",
@@ -778,16 +779,16 @@ export const Paypa = () => {
                                     className="input-border"
                                   />
                                 </div>
-                                    <label>Enter Card Details</label>
+                                   <div>
+                                     <label>Enter Card Details</label>
                                     <div className=" inputrow input-border">
                                       <CardElement
                                         options={cardElementOptions}
                                         ref={card}
                                       />
+                                   </div>
                                     </div>
-
-                                    
-                                    <div className="d-flex justify-content-center mt-2">
+                                    <div className="d-flex justify-content-center mt-2" style={{width:"80%"}}>
                                       <button
                                         className="btn homelogin"
                                         style={{
@@ -799,6 +800,8 @@ export const Paypa = () => {
                                         Pay Now
                                       </button>
                                     </div>
+
+                                    
                                   </>
                                 )}
 
