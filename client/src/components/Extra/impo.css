@@ -19,10 +19,13 @@ list-style: lower-alpha;
     font-weight: 600;
 }
 .thankyoubg{
-    background: url("../../Images/new-hero.png") no-repeat;
+    background: url("../../Images/goat-slide.png") no-repeat;
     background-size: cover;
-    height: 40%;
-    background-size: 99% 294%;
+    height: 50%;
+    background-size: 100% 129%;
     background-position: inherit;
 
+}
+.content .wrapper-2 p {
+margin:19px auto ;
 }

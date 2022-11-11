@@ -536,22 +536,17 @@ const Home = () => {
                   <div className="col-md-6">
                     <div className="tipping-ct">
                       <h3>Bronze</h3>
-                      <p>$15 per Week</p>
+                      <p>Free</p>
                       <div className="return">
                         <span>98% returns</span>
                       </div>
                       <ul className="tiip-list">
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i> Top tip of the day
+                          <i className="fa fa-check"></i> -Best bet of the day every Saturday,
+                                            completely free!
                         </li>
-                        <li>
-                          <i className="fa fa-check"></i> Every Saturday
-                        </li>
-                        <li>
-                          {" "}
-                          <i className="fa fa-check"></i>Direct to your inbox
-                        </li>
+                        
                       </ul>
                     </div>
                   </div>
@@ -571,21 +566,23 @@ const Home = () => {
                   <div className="col-md-6">
                     <div className="tipping-ct">
                       <h3>Silver</h3>
-                      <p>$30 per Week</p>
+                      <p>$19.95 per Week</p>
                       <div className="return">
                         <span>120% returns</span>
                       </div>
                       <ul className="tiip-list">
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i> Our 10 best tips
+                          <i className="fa fa-check"></i>  5 best bets of the day every
+                                            Saturday with staking plan &
+                                            analysis of each race
                         </li>
                         <li>
-                          <i className="fa fa-check"></i>Every Saturday
+                          <i className="fa fa-check"></i>Multi of the day
                         </li>
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i>Direct to your inbox
+                          <i className="fa fa-check"></i>Value pick of the day
                         </li>
                       </ul>
                     </div>
@@ -606,24 +603,24 @@ const Home = () => {
                   <div className="col-md-6">
                     <div className="tipping-ct">
                       <h3>Gold</h3>
-                      <p>$45 per Week</p>
+                      <p>$34.95 per Week</p>
                       <div className="return">
                         <span>165% returns</span>
                       </div>
                       <ul className="tiip-list">
                         <li>
 
-                          <i className="fa fa-check"></i>Our top daily tips,
-                          plus
+                          <i className="fa fa-check"></i> 21 of the best bets across Australia
+                                            every Saturday with staking plan &
+                                            analysis of each race.
                         </li>
                         <li>
-                          <i className="fa fa-check"></i>Our top 15 Saturday
-                          tips
+                          <i className="fa fa-check"></i>3 x Best Multis
                         </li>
                         <li>
 
-                          <i className="fa fa-check"></i>Direct to your inbox
-                        </li>
+                          <i className="fa fa-check"></i>Quaddie selections for Brisbane,
+                                            Sydney & Melbourne.</li>
                       </ul>
                     </div>
                   </div>
@@ -643,23 +640,32 @@ const Home = () => {
                   <div className="col-md-6">
                     <div className="tipping-ct">
                       <h3>Platinum</h3>
-                      <p>$60 per Week</p>
+                      <p>$19.95 per Week</p>
                       <div className="return">
                         <span>265% returns</span>
                       </div>
                       <ul className="tiip-list">
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i> Our top 5 daily tips,
-                          plus
+                          <i className="fa fa-check"></i>  21 of the best bets across Australia
+                                            every Saturday with staking plan &
+                                            analysis of each race.
                         </li>
                         <li>
-                          <i className="fa fa-check"></i> Our top 20 Saturday
-                          tips
+                          <i className="fa fa-check"></i>  3 x Best Multis
                         </li>
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i>Direct to your inbox
+                          <i className="fa fa-check"></i>Value pick of the day
+                        </li>
+                        <li>
+                          {" "}
+                          <i className="fa fa-check"></i> Quaddie for Brisbane, Sydney &
+                                            Melbourne.
+                        </li>
+                        <li>
+                          {" "}
+                          <i className="fa fa-check"></i> Best bet of the day, everyday!
                         </li>
                       </ul>
                     </div>

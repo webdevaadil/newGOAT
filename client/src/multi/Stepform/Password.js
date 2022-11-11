@@ -337,6 +337,7 @@ export const Paypa = () => {
             })
             .catch((err) => {
               alert.error(err.response.data);
+              setLoader(false);
               console.log(err.response.data);
               /*Handle Error */
             });
@@ -434,7 +435,7 @@ export const Paypa = () => {
               >
                 <div className="row form-content check-center container">
                   <div style={{ paddingTop: "0.5rem" }} className="form-main">
-                    <form className="form-floating mb-3">
+                    <form className="form-floating ">
                       <div
                         style={{ zIndex: 1000, width: "85%", margin: "auto" }}
                         className="form-floating mb-4"
@@ -455,10 +456,10 @@ export const Paypa = () => {
 
                       <div className=" mb-3">
                         <div>
-                          <div className="cardboxes box-container">
+                          <div className="cardboxes box-container col-lg-6 col-md-5">
                             <>
                               <div
-                                className="row"
+                                className="row align-items-center"
                                 style={{
                                   display: "flex !important",
                                   position: "relative",
@@ -638,7 +639,7 @@ export const Paypa = () => {
                                                 </li>
                                                 <li>
                                                   <i className="fa fa-check"></i>
-                                                  DQuaddie for Brisbane, Sydney
+                                                  Quaddie for Brisbane, Sydney
                                                   & Melbourne.
                                                 </li>
                                                 <li>
@@ -656,7 +657,7 @@ export const Paypa = () => {
                                   </div>
                                 </div>
 
-                                <div className="col-6 col-md-4 col-sm-3">
+                                <div className="col-lg-5 col-md-5" >
                                   {packages === "Free / week" ? (
                                     <div className="payment-box">
                                       <div>
@@ -664,7 +665,7 @@ export const Paypa = () => {
                                         <h2>Free</h2>
                                         <ul className="tip-center">
                                           <li>
-                                            -Best bet of the day every Saturday,
+                                            Best bet of the day every Saturday,
                                             completely free!
                                           </li>
                                         </ul>
@@ -674,7 +675,7 @@ export const Paypa = () => {
                                     <div className="payment-box">
                                       <div>
                                         <h2>Silver Membership</h2>
-                                        <h2>$30 per Week</h2>
+                                        <h2>$19.95 per Week</h2>
                                         <ul className="tip-center">
                                           <li>
                                             5 best bets of the day every
