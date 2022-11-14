@@ -196,6 +196,7 @@ button.btn.btn-profile-btn {
   .wrapper-2{
     padding :30px;
     text-align:center;
+    margin: auto;
   }
   h1{
       font-family: 'Kaushan Script', cursive;
