@@ -35,14 +35,14 @@ export const Thankyou = () => {
               <p>
               Lastly, and most importantly, please change the way you are tracking amendment requests fro me. Some of the above items have been requested on three occassions and remain outstanding.              </p>
               
-              <div style={{ display: "flex", justifyContent: "center" }}>
+              {/* <div style={{ display: "flex", justifyContent: "center" }}>
                 <Link to="/signup">
                   <button className="go-home">SignUp</button>
                 </Link>
                 <Link to="/login">
                   <button className="go-home ml-4">Login</button>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
