@@ -19,10 +19,10 @@ list-style: lower-alpha;
     font-weight: 600;
 }
 .thankyoubg{
-    background: url("../../Images/serviceback.jpg") no-repeat;
+    background: url("../../Images/winninghorse.jpg") no-repeat;
     /* background-size: cover; */
-    background-size: 100% 100%;
-    background-position: 100%;
+    background-size: 129% 100%;
+    background-position: 45%;
     width: 50%;
 
 
