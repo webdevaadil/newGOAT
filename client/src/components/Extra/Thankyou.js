@@ -25,7 +25,7 @@ export const Thankyou = () => {
       >
         <div className="thankyoubg"></div>
         <div className="content ">
-          <div className="">
+          <div className="" style={{display:"flex",justifyContent:"center",height:"100vh"}}>
             <div className="wrapper-2">
               <h1>Thank you For Signing up !</h1>
               <p>Welcome to The GOAT's Tips – Winning!</p>
