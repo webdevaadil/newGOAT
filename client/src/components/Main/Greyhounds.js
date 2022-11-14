@@ -58,7 +58,7 @@ export const Greyhounds = () => {
     }
     if (user) {
       if (user.paymentstatus === "false") {
-        navigate("/password");
+        navigate("/Subscribe");
       }
       if (user.PaymentexpireDate >= Date()) {
         navigate("/subscriptionexpire");

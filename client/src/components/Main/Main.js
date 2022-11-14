@@ -54,7 +54,7 @@ export const Main = () => {
 
     if (user) {
       if (user.paymentstatus === "false") {
-        navigate("/password");
+        navigate("/Subscribe");
         //  console.log(user.paymentstatus);
       }
     }

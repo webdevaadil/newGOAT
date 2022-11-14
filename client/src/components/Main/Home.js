@@ -523,7 +523,7 @@ const Home = () => {
             </div>
             <div className="tipp">
               <div
-                onClick={() => navigate(`/password/${tips.bronze}`)}
+                onClick={() => navigate(`/Subscribe/${tips.bronze}`)}
                 className="btn"
                 style={{ width: "50%" }}
               >
@@ -540,20 +540,20 @@ const Home = () => {
                       <div className="return">
                         <span>98% returns</span>
                       </div>
+                    </div>
+                  </div>
                       <ul className="tiip-list">
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i> -Best bet of the day every Saturday,
+                          <i className="fa fa-check"></i> Best bet of the day every Saturday,
                                             completely free!
                         </li>
                         
                       </ul>
-                    </div>
-                  </div>
                 </div>
               </div>
               <div
-                onClick={() => navigate(`/password/${tips.silver}`)}
+                onClick={() => navigate(`/Subscribe/${tips.silver}`)}
                 className="btn"
                 style={{ width: "50%" }}
               >
@@ -570,6 +570,8 @@ const Home = () => {
                       <div className="return">
                         <span>120% returns</span>
                       </div>
+                    </div>
+                  </div>
                       <ul className="tiip-list">
                         <li>
                           {" "}
@@ -585,12 +587,10 @@ const Home = () => {
                           <i className="fa fa-check"></i>Value pick of the day
                         </li>
                       </ul>
-                    </div>
-                  </div>
                 </div>
               </div>
               <div
-                onClick={() => navigate(`/password/${tips.gold}`)}
+                onClick={() => navigate(`/Subscribe/${tips.gold}`)}
                 className="btn"
                 style={{ width: "50%", marginTop: "8px" }}
               >
@@ -607,6 +607,8 @@ const Home = () => {
                       <div className="return">
                         <span>165% returns</span>
                       </div>
+                    </div>
+                  </div>
                       <ul className="tiip-list">
                         <li>
 
@@ -622,12 +624,10 @@ const Home = () => {
                           <i className="fa fa-check"></i>Quaddie selections for Brisbane,
                                             Sydney & Melbourne.</li>
                       </ul>
-                    </div>
-                  </div>
                 </div>
               </div>
               <div
-                onClick={() => navigate(`/password/${tips.platinum}`)}
+                onClick={() => navigate(`/Subscribe/${tips.platinum}`)}
                 className="btn"
                 style={{ width: "50%", marginTop: "8px" }}
               >
@@ -644,6 +644,8 @@ const Home = () => {
                       <div className="return">
                         <span>265% returns</span>
                       </div>
+                    </div>
+                  </div>
                       <ul className="tiip-list">
                         <li>
                           {" "}
@@ -668,8 +670,6 @@ const Home = () => {
                           <i className="fa fa-check"></i> Best bet of the day, everyday!
                         </li>
                       </ul>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

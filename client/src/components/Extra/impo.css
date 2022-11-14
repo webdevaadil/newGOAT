@@ -19,11 +19,12 @@ list-style: lower-alpha;
     font-weight: 600;
 }
 .thankyoubg{
-    background: url("../../Images/goat-slide.png") no-repeat;
-    background-size: cover;
-    height: 50%;
-    background-size: 100% 129%;
-    background-position: inherit;
+    background: url("../../Images/serviceback.jpg") no-repeat;
+    /* background-size: cover; */
+    background-size: 100% 100%;
+    background-position: 100%;
+    width: 50%;
+
 
 }
 .content .wrapper-2 p {

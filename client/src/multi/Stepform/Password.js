@@ -427,18 +427,18 @@ export const Paypa = () => {
           <div className="row container-fluid p-0">
             <div className="login-form d-flex">
               <div className="col-md-6 p-0">
-                <div className="img-main img-width"></div>
+                <div className="img-main col-md-12 img-width"></div>
               </div>
               <div
                 style={{ margin: "0 auto", maxHeight: "103vh" }}
-                className="wel-bg"
+                className="wel-bg col-md-6"
               >
-                <div className="row form-content check-center container">
+                <div className=" check-center container">
                   <div style={{ paddingTop: "0.5rem" }} className="form-main">
                     <form className="form-floating ">
                       <div
-                        style={{ zIndex: 1000, width: "85%", margin: "auto" }}
-                        className="form-floating mb-4"
+                        style={{ zIndex: 1000 }}
+                        className="form-floating mb-4 col-md-6"
                       >
                         <h2 className="pack-heading">Packages</h2>
                         <Select
@@ -456,7 +456,7 @@ export const Paypa = () => {
 
                       <div className=" mb-3">
                         <div>
-                          <div className="cardboxes box-container col-lg-6 col-md-5">
+                          <div className=" row cardboxes box-container  ">
                             <>
                               <div
                                 className="row align-items-center"
@@ -466,7 +466,7 @@ export const Paypa = () => {
                                   left: "6%",
                                 }}
                               >
-                                <div className="col-lg-6 col-md-5">
+                                <div className="col-lg-7 col-md-7">
                                   <div
                                     // onClick={() => navigate(`/checkout/${tips.bronze}`)}
                                     className="btn tile-main"
@@ -760,8 +760,7 @@ export const Paypa = () => {
                                 {packages === "Free / week" ? (
                                   <button
                                     style={{
-                                      marginLeft: "2.5rem",
-                                      marginTop: "1rem",
+                                      margin:"0 auto"
                                     }}
                                     className="btn_two"
                                     onClick={updatepro}
@@ -780,7 +779,7 @@ export const Paypa = () => {
                                     className="input-border"
                                   />
                                 </div>
-                                   <div>
+                                   <div className="inputrow mb-2">
                                      <label>Enter Card Details</label>
                                     <div className=" inputrow input-border">
                                       <CardElement
@@ -789,7 +788,7 @@ export const Paypa = () => {
                                       />
                                    </div>
                                     </div>
-                                    <div className="d-flex justify-content-center mt-2" style={{width:"80%"}}>
+                                    <div className="d-flex justify-content-center mt-2" >
                                       <button
                                         className="btn homelogin"
                                         style={{
@@ -811,7 +810,6 @@ export const Paypa = () => {
                                   style={{
                                     textAlign: "center",
                                     fontSize: "12px",
-                                    width: "40rem",
                                   }}
                                 >
                                   By signing up, I agree to the{" "}

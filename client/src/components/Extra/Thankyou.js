@@ -18,7 +18,7 @@ export const Thankyou = () => {
         className="thankyoucontent"
         style={{
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
           justifyContent: "flex-start",
           height: "100vh",
         }}
@@ -28,25 +28,13 @@ export const Thankyou = () => {
           <div className="">
             <div className="wrapper-2">
               <h1>Thank you For Signing up !</h1>
-              <p>Thank You for visiting our website</p>
-              <p>EXPERT RACING TIPS BY Paul Sharp Thanks for signing up!</p>
+              <p>Welcome to The GOAT's Tips – Winning!</p>
+              <p>You will soon receive an email confirming your purchase and further details about your subscription. If not received within 10 minutes, please check your junk mail folder (please add us to your safe senders list to ensure you’re able to receive your tipping emails), and then contact us at winner@thegoatstips.com.au.</p>
               <p>
-                {" "}
-                You will receive an email shortly explaining what happens next
-              </p>
+              Furthermore, we’d love to hear from you if you have any additional questions or feedback.              </p>
               <p>
-                If you do not receive we come email within 5-10mins please <br/>email&nbsp;<span style={{color:"#70700e"}}>winner@thegoatstips.com.au</span> for assistance
-              </p>
-              <p>
-                If you have any general questions or any issues receiving the
-                preview via email please email <span style={{color:"#70700e"}}>winner@thegoatstips.com.au</span>
-              </p>
-              <p>
-                Note: If you have any issues receiving the emails please check
-                your junk folder or conside ding <span style={{color:"#70700e"}}>winner@thegoatstips.com.au</span> to
-                your email favourites. This will solve the issue a lot of the
-                time
-              </p>
+              Lastly, and most importantly, please change the way you are tracking amendment requests fro me. Some of the above items have been requested on three occassions and remain outstanding.              </p>
+              
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <Link to="/signup">
                   <button className="go-home">SignUp</button>

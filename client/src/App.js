@@ -61,8 +61,8 @@ function App() {
             <Route path="/terms-and-conditions" element={<Aboutus />} />
             <Route path="/packages" element={<Package />} />
             <Route path="/pac" element={<Multilf />} />
-            <Route path="/password/:tips" element={<Paypa />} />
-            <Route path="/password" element={<Paypa />} />
+            <Route path="/Subscribe/:tips" element={<Paypa />} />
+            <Route path="/Subscribe" element={<Paypa />} />
             <Route path="/subscriptionexpire" element={<Paymentexpirepage />} />
             <Route path="/checkout/:tips" element={<Checkout />} />
             <Route path="/newlogin/:tips" element={<NewLogin />} />

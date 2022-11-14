@@ -31,7 +31,7 @@ export const Paymentexpirepage = () => {
       <p>Your Subscription to this service has expired.</p>
       <p>Please renew your subscription to continue with the services
 Thank you </p>
-      <Link to ="/password/$34.95">
+      <Link to ="/Subscribe/$34.95">
       <button className="go-home">
     Renew
       </button>

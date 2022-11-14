@@ -207,7 +207,7 @@ button.btn.btn-profile-btn {
   }
   .wrapper-2 p{
     margin:0;
-    font-size:1.3em;
+    font-size:1em;
     color: "##03203e";
     font-family: 'Source Sans Pro', sans-serif;
     letter-spacing:1px;
@@ -243,7 +243,7 @@ button.btn.btn-profile-btn {
   
   @media (min-width:360px){
     h1{
-      font-size:4.5em;
+      font-size:2.5em;
     }
     .go-home{
       margin-bottom:20px;
@@ -252,9 +252,10 @@ button.btn.btn-profile-btn {
   
   @media (min-width:600px){
     .content{
-        max-width: 1000px;
-        height: 56%;
-        margin: 0 auto;
+      /* max-width: 1000px; */
+    /* height: 50%;  */
+    margin: 0 auto;
+    width: 50%;
   }
     .wrapper-1{
     height: initial;
