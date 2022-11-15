@@ -70,7 +70,7 @@ const Home = () => {
                 >
                   <div className="baner-ct">
                     <ul className="navbar-nav top-btn ml-auto">
-                      <Link style={{ textAlign: "end"}} to ={`password/${tips.gold}`}>
+                      <Link style={{ textAlign: "end"}} to ={`Subscribe/${tips.gold}`}>
                         <button
                           className="homelogin btn btn-1"
                         >
