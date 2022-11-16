@@ -529,7 +529,7 @@ const Home = () => {
               >
                 <div className="row tipping1 " style={{ width: "100%" }}>
                   <div className="col-md-12 tipping1-tiles bronze" >
-                    <div className="tipp-img">
+                    <div className="tipp-img bronzeimg">
                       <img src={img5} alt=""/>
                     </div>
                 
