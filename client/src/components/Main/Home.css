@@ -520,7 +520,17 @@ ul.tiip-list li {
     background: rgba(0, 0, 0, 0.61);
     margin: 20px 10px;
     padding: 15px;
-    height: 500px;
+    height: 600px;
+}
+.tipping1-tiles{
+    display: flex;
+    height: 40%;
+    justify-content: space-evenly;
+}
+.tipping1 .bronze{
+    flex-direction: column;
+    height: 70%;
+    align-items: center;
 }
 
 .tipping-ct h3 {
@@ -620,7 +630,7 @@ ul.tiip-list li {
 
 .tipp-img img {
     max-width: 100%;
-    height: 100%;
+    height: 80%;
 }
 
 
@@ -1021,12 +1031,13 @@ ul.socil-link li {
     }
 
     .tipp-img {
-        max-width: 90%;
+        max-width: 50%;
+        height: 80%;
 
     }
 
     .tipping-ct {
-        width: 110%;
+        width: 65%;
         padding: 0;
         margin: 0;
 
@@ -1056,7 +1067,7 @@ ul.socil-link li {
     }
 
     .tipping1 {
-        flex-direction: column;
+        /* flex-direction: column; */
         justify-content: center;
     }
 
@@ -1065,7 +1076,7 @@ ul.socil-link li {
     }
 
     .tipping-ct {
-        width: 100%;
+        width: 60%;
         padding: 0;
         padding-top: 10px;
 

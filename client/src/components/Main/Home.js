@@ -528,12 +528,11 @@ const Home = () => {
                 style={{ width: "50%" }}
               >
                 <div className="row tipping1 " style={{ width: "100%" }}>
-                  <div className="col-md-6">
+                  <div className="col-md-12 tipping1-tiles bronze" >
                     <div className="tipp-img">
                       <img src={img5} alt=""/>
                     </div>
-                  </div>
-                  <div className="col-md-6">
+                
                     <div className="tipping-ct">
                       <h3>Bronze</h3>
                       <p>Free</p>
@@ -558,12 +557,11 @@ const Home = () => {
                 style={{ width: "50%" }}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
-                  <div className="col-md-6">
+                  <div className="col-md-12 tipping1-tiles " >
                     <div className="tipp-img">
                       <img src={img4} alt="" />
                     </div>
-                  </div>
-                  <div className="col-md-6">
+                
                     <div className="tipping-ct">
                       <h3>Silver</h3>
                       <p>$19.95 per Week</p>
@@ -595,12 +593,11 @@ const Home = () => {
                 style={{ width: "50%", marginTop: "8px" }}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
-                  <div className="col-md-6">
+                  <div className="col-md-12 tipping1-tiles" >
                     <div className="tipp-img">
                       <img src={img2} alt="" />
                     </div>
-                  </div>
-                  <div className="col-md-6">
+                
                     <div className="tipping-ct">
                       <h3>Gold</h3>
                       <p>$34.95 per Week</p>
@@ -632,12 +629,12 @@ const Home = () => {
                 style={{ width: "50%", marginTop: "8px" }}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
-                  <div className="col-md-6">
+                  <div className="col-md-12 tipping1-tiles" >
+                  
                     <div className="tipp-img">
                       <img src={img3} alt="" />
                     </div>
-                  </div>
-                  <div className="col-md-6">
+           
                     <div className="tipping-ct">
                       <h3>Platinum</h3>
                       <p>$19.95 per Week</p>
@@ -649,9 +646,7 @@ const Home = () => {
                       <ul className="tiip-list">
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i>  21 of the best bets across Australia
-                                            every Saturday with staking plan &
-                                            analysis of each race.
+                          <i className="fa fa-check"></i>  21 of the best bets across Australia every Saturday.
                         </li>
                         <li>
                           <i className="fa fa-check"></i>  3 x Best Multis
