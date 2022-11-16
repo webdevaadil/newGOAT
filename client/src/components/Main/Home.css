@@ -532,6 +532,10 @@ ul.tiip-list li {
     height: 70%;
     align-items: center;
 }
+.bronze .tipp-img img { 
+height: 60%;
+margin-bottom: 10%;
+}
 
 .tipping-ct h3 {
     font-size: 40px;
