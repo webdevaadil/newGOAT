@@ -512,7 +512,6 @@ ul.tiip-list li {
 
 .tipping1 {
     display: flex;
-    align-items: center;
     color: #fff;
     width: 50%;
     border-radius: 20px;
@@ -586,6 +585,10 @@ margin-bottom: -10%;
     align-items: center;
     flex-direction: column;
     
+}
+.tiip-list{
+    height: 40%;
+
 }
 
 ul.tiip-list {
