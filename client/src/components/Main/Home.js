@@ -528,9 +528,9 @@ const Home = () => {
                 style={{ width: "50%" }}
               >
                 <div className="row tipping1 " style={{ width: "100%" }}>
-                  <div className="col-md-12 tipping1-tiles bronze" >
-                    <div className="tipp-img bronzeimg">
-                      <img src={img5} alt=""/>
+                  <div className="col-md-12 tipping1-tiles " >
+                    <div className="tipp-img ">
+                      <img className=""src={img5} alt=""/>
                     </div>
                 
                     <div className="tipping-ct">

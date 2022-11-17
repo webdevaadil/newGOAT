@@ -524,7 +524,7 @@ ul.tiip-list li {
 }
 .tipping1-tiles{
     display: flex;
-    height: 40%;
+    height: 55%;
     justify-content: space-evenly;
 }
 .tipping1 .bronze{
@@ -535,6 +535,9 @@ ul.tiip-list li {
 .bronzeimg { 
 /* height: 60%; */
 margin-bottom: -10%;
+}
+.bronzeimgimg{
+    height: 70% !important;
 }
 
 .tipping-ct h3 {
@@ -634,7 +637,7 @@ ul.tiip-list li {
 
 .tipp-img img {
     max-width: 100%;
-    height: 70%;
+    height: 100%;
 }
 
 
@@ -1029,7 +1032,16 @@ ul.socil-link li {
 
 
 /* ........................responsive.................................................... */
-@media(max-width:1200px) {
+@media(min-width:1210px){
+    .tipping1-tiles{
+        height: 40%;  
+    }
+}
+@media(max-width:1209px) {
+    .tipping1-tiles{
+        height: 40%;  
+    
+}
     .banner-main {
         height: 900px;
     }
@@ -1091,7 +1103,10 @@ ul.socil-link li {
 
 
 @media(max-width:992px) {
-
+    .tipping1-tiles{
+        height: 30%;  
+    
+}
     .return span {
         font-size: 2vw;
 
@@ -1273,6 +1288,10 @@ ul.socil-link li {
 }
 
 @media(max-width:778px) {
+    .tipping1-tiles{
+        height: 70%;  
+    
+}
     .video-container {
         min-height: 100vh;
     }
@@ -1662,6 +1681,10 @@ ul.socil-link li {
 }
 
 @media(max-width:500px) {
+    .tipping1-tiles{
+        height: 40%;  
+    
+}
     .banner-main {
         height: 623px !important;
     }
