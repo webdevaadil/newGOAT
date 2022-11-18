@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.04a484d1.css",
-    "main.js": "/static/js/main.d548bb95.js",
+    "main.js": "/static/js/main.a76f311e.js",
     "static/media/Randwick_V1-0030.mp4": "/static/media/Randwick_V1-0030.74e5499d1d1f6c4f54bc.mp4",
     "static/media/races.png": "/static/media/races.2d2b1d166cfe7cc25e65.png",
     "static/media/serviceback.jpg": "/static/media/serviceback.50a28288e00a2437e8cf.jpg",
@@ -31,10 +31,10 @@
     "static/media/visa.png": "/static/media/visa.a05453b4b203ed08557d.png",
     "index.html": "/index.html",
     "main.04a484d1.css.map": "/static/css/main.04a484d1.css.map",
-    "main.d548bb95.js.map": "/static/js/main.d548bb95.js.map"
+    "main.a76f311e.js.map": "/static/js/main.a76f311e.js.map"
   },
   "entrypoints": [
     "static/css/main.04a484d1.css",
-    "static/js/main.d548bb95.js"
+    "static/js/main.a76f311e.js"
   ]
 }
