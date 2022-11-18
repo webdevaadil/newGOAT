@@ -61,7 +61,7 @@ const Home = () => {
     setnewloading(true);
 
     await axios
-      .post("/api/auth/chargebeepay", { package: ec })
+      .post("http://localhost:5000/api/auth/chargebeepay", { package: ec })
       .then(
         (res) => (window.open(res.data.hosted_page.url), setnewloading(false))
       );
