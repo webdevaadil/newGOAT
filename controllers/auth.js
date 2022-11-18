@@ -26,47 +26,6 @@ async function generateAccessToken() {
 async function isEmailValid(email) {
   return emailValidator.validate(email);
 }
-// async function capturePayment(orderId) {
-//   const accessToken = await generateAccessToken();
-//   const url = `${base}/v2/checkout/orders/${orderId}/capture`;
-//   const response = await fetch(url, {
-//     method: "post",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${accessToken}`,
-//     },
-//   });
-//   const data = await response.json();
-//   return data;
-// }
-// async function createOrder(amount) {
-//   const accessToken = await generateAccessToken();
-//   const url = `${base}/v2/checkout/orders`;
-//   const response = await fetch(url, {
-//     method: "post",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${accessToken}`,
-//     },
-//     body: JSON.stringify({
-//       intent: "CAPTURE",
-//       purchase_units: [
-//         {
-//           amount: {
-//             currency_code: "AUD",
-//             value: amount,
-//           },
-//           ship: {
-//             name: "aadil"
-//           }
-//         },
-//       ],
-//     }),
-//   });
-//   const data = await response.json();
-//   return data;
-// }
-
 exports.oldregister = catchAsyncerror(async (req, res, next) => {
   console.log(req.body);
   let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
@@ -250,47 +209,6 @@ exports.updatesignup = catchAsyncerror(async (req, res, next) => {
   }
 });
 
-// exports.pay = catchAsyncerror(async (req, res, next) => {
-//   try {
-//     // console.log(req.body);
-//     let amount = req.body.packages.slice(1, 3)
-
-//     // const order = await createOrder(amount);
-//     // console.log(order);
-//     res.json(order);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-// exports.ordercapture = catchAsyncerror(async (req, res, next) => {
-//   // console.log(req.body);
-//   // console.log(req.params);
-
-//   const { orderID } = req.params;
-//   try {
-//     const captureData = await capturePayment(orderID);
-//     // console.log(captureData);
-//     res.json(captureData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-//   next();
-// });
-// exports.paym = catchAsyncerror(async (req, res) => {
-//   const newUserData = {
-//     paymentstatus: true,
-//   };
-
-// await User.findByIdAndUpdate(req.user.id, newUserData, {
-//   new: true,
-//   runValidators: true,
-//   useFindAndModify: false,
-// });
-// res.status(200).json({
-//   success: "updated",
-// });
-// });
-
 exports.order = catchAsyncerror(async (req, res, next) => {
   // const order = await createOrder();
   console.log(order.id);
@@ -303,34 +221,6 @@ exports.captureorder = catchAsyncerror(async (req, res, next) => {
   // TODO: store payment information such as the transaction ID
   res.json(captureData);
 });
-
-// use the orders api to create an order
-// async function createOrder() {
-//   const accessToken = await generateAccessToken();
-//   const url = `${base}/v2/checkout/orders`;
-//   const response = await fetch(url, {
-//     method: "post",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${accessToken}`,
-//     },
-//     body: JSON.stringify({
-//       intent: "CAPTURE",
-//       purchase_units: [
-//         {
-//           amount: {
-//             currency_code: "USD",
-//             value: "100.00",
-//           },
-//         },
-//       ],
-//     }),
-//   });
-//   const data = await response.json();
-//   return data;
-// }
-
-// use the orders api to capture payment for an order
 async function capturePayment(orderId) {
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders/${orderId}/capture`;
@@ -484,36 +374,6 @@ exports.updateProfile = catchAsyncerror(async (req, res, next) => {
     success: "updated",
   });
 });
-// exports.profilepic = catchAsyncerror(async (req, res, next) => {
-//   const newUserData = {
-//     avatar: req.body.avatar,
-//   };
-//   if (req.body.avatar) {
-//     const user = await User.findById(req.user.id);
-//     const imageId = user.avatar.public_id;
-
-//     cloudinary.uploader.destroy(imageId);
-
-//     const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
-//       folder: "horse",
-//       // width: 150,
-//       crop: "scale",
-//     });
-
-//     newUserData.avatar = {
-//       public_id: myCloud.public_id,
-//       url: myCloud.secure_url,
-//     };
-//     await User.findByIdAndUpdate(req.user.id, newUserData, {
-//       new: true,
-//       runValidators: true,
-//       useFindAndModify: false,
-//     });
-//     res.status(200).json({
-//       success: "updated",
-//     });
-//   }
-// });
 
 const sendToken = (user, statusCode, res) => {
   const token = user.getSignedToken();
@@ -529,93 +389,3 @@ const sendToken = (user, statusCode, res) => {
   });
 };
 
-///payment///
-// exports.buyStripePaymentSubscription = async (req, res) => {
-//   let data = req;
-//   console.log(req.body);
-
-//   const currency = "AUD";
-//   let charged;
-//   let customer;
-//   // console.log(req.user);
-
-//   const user = await User.findById(req.body.user);
-//   // console.log(user.packages);
-//   let amount = req.body.amount.slice(1, 3);
-//   // console.log(amount);
-//   // return
-//   const objid = req.body.user;
-//   try {
-//     if (user.customer_id) {
-//       customer = user.customer_id;
-//       // console.log(customer);
-//     } else {
-//       customer = await Stripe.CreateCustomer(
-//         user.email,
-//         user.name,
-//         user.address
-//       );
-//       console.log(customer);
-//       console.log(objid);
-//       await User.findByIdAndUpdate(req.body.user, { customer_id: customer });
-//       //  console.log(up);
-//     }
-//   } catch (err) {
-//     return res.status(500).send(err);
-//   }
-//   // return;
-//   try {
-//     console.log("hfg");
-
-//     charged = await Stripe.CreatePayment(
-//       amount,
-//       currency,
-//       user.email,
-//       customer,
-//       req.body.paymentMethod
-//     );
-//   } catch (err) {
-//     return res.status(500).send(err);
-//   }
-//   console.log(charged);
-//   try {
-//     const paymentConfirm = await Stripe.PaymentConfirm(charged);
-//     console.log(paymentConfirm.id, "sdsd");
-//     res.status(200).send(paymentConfirm);
-//   } catch (err) {
-//     return res.status(500).send(err);
-//   }
-// };
-
-// exports.validateStripePayment = async (req, res) => {
-//   try {
-//     let data = req.body;
-
-//     if (!data.stripe_payment_id) {
-//       throw globalCalls.badRequestError("Please pass valid payment id.");
-//     }
-
-//     const paymentIntent = await Stripe.retrievePaymentIntent(
-//       data.stripe_payment_id
-//     );
-//     console.log(paymentIntent);
-//     // check payment status rozarpay end
-//     if (paymentIntent.status == "requires_payment_method") {
-//       throw globalCalls.badRequestError(
-//         "Your payment was not successful, please try again."
-//       );
-//     } else if (paymentIntent.status == "processing") {
-//       throw globalCalls.badRequestError("Your payment is processing.");
-//     } else if (paymentIntent.status == "succeeded") {
-//       // if(resultRazorpay.data.status=='authorized')
-//       // {
-//       responseData.is_pay_done_payment_status = true;
-//       return globalCalls.okResponse(res, responseData, "");
-//     } else {
-//       throw globalCalls.badRequestError("Error! Please contact support.");
-//     }
-//   } catch (error) {
-//     throw globalCalls.badRequestError(error.message);
-//   }
-// };
-///payment///

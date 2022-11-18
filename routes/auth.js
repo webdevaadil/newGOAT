@@ -20,9 +20,14 @@ const {
   addCard,
   updatesignup,
 } = require("../controllers/auth");
-const { paymentmethodattached, paymentMethodcardlist, paymentcreate } = require("../controllers/payment");
+const { chargebeepay } = require("../controllers/chargebee");
+const {
+  paymentmethodattached,
+  paymentMethodcardlist,
+  paymentcreate,
+} = require("../controllers/payment");
 router.route("/register").post(register);
-router.route("/updatesignup").post(updatesignup)
+router.route("/updatesignup").post(updatesignup);
 router.route("/login").post(login);
 router.route("/me").get(isAuthuser, dashboard);
 /////payment////
@@ -33,6 +38,7 @@ router.route("/paymentcreate").post(paymentcreate);
 router.route("/logout").get(logout);
 router.route("/update/password").put(isAuthuser, updatePassword);
 router.route("/update/profile").put(isAuthuser, updateProfile);
+router.route("/chargebeepay").post(chargebeepay);
 // router.route("/addcard").post(addCard);
 // router.route("/listcard").post(listCard);
 
