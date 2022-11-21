@@ -1323,6 +1323,8 @@ ul.socil-link li {
 
     .tipp {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .tipp btn {
@@ -1688,6 +1690,9 @@ ul.socil-link li {
         height: 40%;  
     
 }
+.tips-mian .tips-main{
+    display: none;
+ }
     .banner-main {
         height: 623px !important;
     }
