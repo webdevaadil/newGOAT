@@ -25,6 +25,7 @@ import { Aboutus } from "./components/Extra/About";
 import { Checkout } from "./multi/Stepform/Checkout";
 import { NewLogin } from "./components/Login/NewLogin";
 import StripeWrapper from "./StripeWrapper";
+import { Paymentbtn } from "./components/Paymentbtn";
 
 function App() {
   "use strict";
@@ -66,6 +67,7 @@ function App() {
             <Route path="/subscriptionexpire" element={<Paymentexpirepage />} />
             <Route path="/checkout/:tips" element={<Checkout />} />
             <Route path="/newlogin/:tips" element={<NewLogin />} />
+
           </Routes>
         </BrowserRouter>
       </StripeWrapper>
