@@ -26,17 +26,27 @@ app.use("/api/auth", require("./routes/auth"));
 const PORT = process.env.PORT;
 
 // --------------------------deployment------------------------------
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "./client/build")));
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "./client/build")));
 
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-  );
-} else {
+//   app.get("*", (req, res) =>
+//     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+//   );
+// } else {
   app.get("/", (req, res) => {
-    res.send("API is running..");
+    const protocol = req.protocol;
+    const host = req.hostname;
+    const url = req.originalUrl;
+    const port = process.env.PORT || 5000;
+    const fullUrl = `${protocol}://${host}:${port}${url}`
+  console.log(fullUrl,"hii")
+    const responseString = `Full URL is: ${fullUrl}`;                       
+    res.send(responseString);  
   });
-}
+// }
+
+
+
 // ..........payment.....//
 // app.post("/payment/method/attach", async (req, res) => {
 //   const { paymentMethod } = req.body;
@@ -116,6 +126,7 @@ if (process.env.NODE_ENV === "production") {
 // });
 
 // ..........payment.....//
+
 
 // --------------------------deployment------------------------------
 // --------------------------errorhandle------------------------------
