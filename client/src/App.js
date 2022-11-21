@@ -25,7 +25,6 @@ import { Aboutus } from "./components/Extra/About";
 import { Checkout } from "./multi/Stepform/Checkout";
 import { NewLogin } from "./components/Login/NewLogin";
 import StripeWrapper from "./StripeWrapper";
-import { Paymentbtn } from "./components/Paymentbtn";
 
 function App() {
   "use strict";

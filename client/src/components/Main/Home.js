@@ -26,6 +26,11 @@ import { positions, useAlert } from "react-alert";
 import Marquee from "react-fast-marquee";
 import axios from "axios";
 import { Loader } from "../layout/Loader";
+import group1 from "../../Images/Group1.png"
+import group2 from "../../Images/Group2.png"
+import group3 from "../../Images/Group3.png"
+import group4 from "../../Images/Group4.png"
+
 
 const Home = () => {
   const [newloading, setnewloading] = useState(false);
@@ -410,10 +415,13 @@ const Home = () => {
                       chargebeepay("BRONZE-AUD-Weekly");
                     }}
                     value="BRONZE-AUD-Weekly"
-                    className="btn"
+                    className="btn row"
                     style={{ width: "50%" }}
                   >
-                    <div className="row tipping1 " style={{ width: "100%" }}>
+
+<img src={group1} alt="" />
+
+                    {/* <div className="row tipping1 " style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
                         <div className="tipp-img ">
                           <img className="" src={img5} alt="" />
@@ -434,16 +442,17 @@ const Home = () => {
                           every Saturday, completely free!
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
                   </div>
                   <div
                     onClick={() => {
                       chargebeepay("SILVER-AUD-Weekly");
                     }}
-                    className="btn"
+                    className="btn row"
                     style={{ width: "50%" }}
                   >
-                    <div className="row tipping1" style={{ width: "100%" }}>
+                    <img src={group2} alt="" />
+                    {/* <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
                         <div className="tipp-img">
                           <img src={img4} alt="" />
@@ -472,16 +481,19 @@ const Home = () => {
                           <i className="fa fa-check"></i>Value pick of the day
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
                   </div>
                   <div
                     onClick={() => {
                       chargebeepay("GOLD-AUD-Weekly");
                     }}
-                    className="btn"
+                    className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
                   >
-                    <div className="row tipping1" style={{ width: "100%" }}>
+                    <img src={group3} alt="" />
+
+                    {/* <div className="row tipping1" style={{ width: "100%" }}>
+
                       <div className="col-md-12 tipping1-tiles">
                         <div className="tipp-img">
                           <img src={img2} alt="" />
@@ -509,16 +521,18 @@ const Home = () => {
                           Brisbane, Sydney & Melbourne.
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
                   </div>
                   <div
                     onClick={() => {
                       chargebeepay("PLATINUM-AUD-Weekly");
                     }}
-                    className="btn"
+                    className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
                   >
-                    <div className="row tipping1" style={{ width: "100%" }}>
+                    <img src={group4} alt="" />
+
+                    {/* <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles">
                         <div className="tipp-img">
                           <img src={img3} alt="" />
@@ -556,7 +570,7 @@ const Home = () => {
                           everyday!
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className="bnner-btn">
