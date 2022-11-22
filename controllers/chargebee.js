@@ -20,7 +20,7 @@ chargebee.hosted_page.checkout_new_for_items({
     var hosted_page = result.hosted_page;
     return res
     .status(200)
-    .json({hosted_page });
+    .json({result });
   }
 });
 
