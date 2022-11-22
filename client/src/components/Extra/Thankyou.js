@@ -32,8 +32,6 @@ export const Thankyou = () => {
               <p>You will soon receive an email confirming your purchase and further details about your subscription. If not received within 10 minutes, please check your junk mail folder (please add us to your safe senders list to ensure you’re able to receive your tipping emails), and then contact us at winner@thegoatstips.com.au.</p>
               <p>
               Furthermore, we’d love to hear from you if you have any additional questions or feedback.              </p>
-              <p>
-              Lastly, and most importantly, please change the way you are tracking amendment requests fro me. Some of the above items have been requested on three occassions and remain outstanding.              </p>
               
               {/* <div style={{ display: "flex", justifyContent: "center" }}>
                 <Link to="/signup">
