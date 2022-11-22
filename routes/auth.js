@@ -38,7 +38,7 @@ router.route("/paymentcreate").post(paymentcreate);
 router.route("/logout").get(logout);
 router.route("/update/password").put(isAuthuser, updatePassword);
 router.route("/update/profile").put(isAuthuser, updateProfile);
-router.route("/chargebeepays").put(chargebeepay);
+router.route("/chargebeepays/:packages").get(chargebeepay);
 // router.route("/addcard").post(addCard);
 // router.route("/listcard").post(listCard);
 

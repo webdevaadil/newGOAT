@@ -2,8 +2,8 @@ const catchAsyncerror = require("../middleware/catchAsyncerror");
 var chargebee = require("chargebee");
 
 exports.chargebeepay=catchAsyncerror(async(req,res,)=>{
-  console.log(req.body.package);
-  let packages=req.body.package;
+  console.log(req.params);
+  let packages=req.params.packages;
    chargebee.configure({site :"thegoatstips-test",
   api_key : "test_Hne1MTcd5FhtsPwKVD77MFsGIfsYsTCDj"})
 chargebee.hosted_page.checkout_new_for_items({
