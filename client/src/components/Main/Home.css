@@ -106,7 +106,7 @@
 .tips-sec {
     padding: 0px;
     text-align: center;
-    background: linear-gradient(0deg, rgba(62, 53, 53, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    /* background: linear-gradient(0deg, rgba(62, 53, 53, 1) 0%, rgba(0, 0, 0, 1) 100%); */
     width: 100%;
 }
 
@@ -1607,6 +1607,14 @@ ul.socil-link li {
         background-size: cover;
     }
 }
+.Services-sec h3 ,.Services-sec p  {
+    color: #000000 !important;
+}
+.section-title h3{
+    color: #000000;
+
+}
+
 @media(max-width:667px) {
     .tipping-sec .section-title h3 {
         font-size: 35px;
@@ -1629,7 +1637,7 @@ ul.socil-link li {
     .Services-sec {
         padding: 0px 0px 0px;
     }
-
+  
     .baner-ct h2 {
 
         font-size: 30px;

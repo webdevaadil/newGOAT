@@ -66,7 +66,7 @@ const Home = () => {
     setnewloading(true);
 
     await axios
-      .post("/api/auth/chargebeepay",{ package: ec })
+      .post("/api/auth/chargebeepay", { package: ec })
       .then(
         (res) => (window.open(res.data.hosted_page.url),setnewloading(false))
       );
@@ -586,7 +586,7 @@ const Home = () => {
             <div
               style={{
                 height: "100%",
-                backgroundColor: "rgba(0, 0, 0, 0.688)",
+                // backgroundColor: "rgba(0, 0, 0, 0.688)",
               }}
             >
               <div className="container">
