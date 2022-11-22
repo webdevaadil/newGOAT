@@ -66,9 +66,9 @@ const Home = () => {
     setnewloading(true);
 
     await axios
-      .get(`/api/auth/chargebeepays/${ec}`)
+      .post(`/api/auth/chargebeepays/${ec}`)
       .then(
-        (res) => (window.open(res.data.hosted_page.url),setnewloading(false))
+        (res) => (window.open(res.data.hosted_page.url),setnewloading(false),console.log(res))
       );
   };
   return (
