@@ -19,7 +19,7 @@ import serviceBackground from "../../Images/serviceback.jpg";
 import reliable from "../../Images/races22";
 import HomeFooter from "../Footer/HomeFooter";
 import vv from "../../Images/Randwick_V1-0030.mp4";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loaduser } from "../../actions/userAction";
 import { positions, useAlert } from "react-alert";
@@ -68,7 +68,7 @@ const Home = () => {
     await axios
       .get(`/api/auth/chargebeepays/${ec}`)
       .then(
-        (res) => (console.log(res), window.open(res.data.result.hosted_page.url),setnewloading(false))
+        (res) => (console.log(res), Navigate(res.data.result.hosted_page.url),setnewloading(false))
       );
   };
   return (
