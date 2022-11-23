@@ -30,13 +30,13 @@ app.get("/charge" ,(req,res) => {
 });
 
 // --------------------------deployment------------------------------
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "./client/build")));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "./client/build")));
 
-//   app.get("*", (req, res) =>
-//     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-//   );
-// } else {
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  );
+} else {
   app.get("/", (req, res) => {
     const protocol = req.protocol;
     const host = req.hostname;
@@ -47,7 +47,7 @@ app.get("/charge" ,(req,res) => {
     const responseString = `Full URL is: ${fullUrl}`;                       
     res.send(responseString);  
   });
-// }
+}
 
 
 
