@@ -25,9 +25,11 @@ connectDB();
 app.use("/api/auth", require("./routes/auth"));
 const PORT = process.env.PORT;
 
-app.get("/charge" ,(req,res) => {
-  res.sendFile(path.join(__dirname,'./template/index.html')); 
-});
+// app.get("/charge" ,(req,res) => {
+//   res.sendFile(path.join(__dirname,'./template/index.html')); 
+// });
+
+app.use('/charge', express.static(__dirname + './template/index.html'));
 
 // --------------------------deployment------------------------------
 if (process.env.NODE_ENV === "production") {
