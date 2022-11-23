@@ -209,6 +209,10 @@ exports.updatesignup = catchAsyncerror(async (req, res, next) => {
   }
 });
 
+exports.checkData = catchAsyncerror(async (req,res,next) =>{
+  return res.send("success");
+})
+
 exports.order = catchAsyncerror(async (req, res, next) => {
   // const order = await createOrder();
   console.log(order.id);
