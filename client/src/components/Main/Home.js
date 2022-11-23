@@ -66,7 +66,7 @@ const Home = () => {
     setnewloading(true);
 
     await axios
-      .get(`/api/auth/chargebeepays/${ec}`)
+      .post(`/api/auth/chargebeepays/${ec}`)
       .then(
         (res) => (console.log(res), Navigate(res.data.result.hosted_page.url),setnewloading(false))
       );
