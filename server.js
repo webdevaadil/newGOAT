@@ -38,17 +38,9 @@ if (process.env.NODE_ENV === "production") {
   );
 } else {
   app.get("/", (req, res) => {
-    const protocol = req.protocol;
-    const host = req.hostname;
-    const url = req.originalUrl;
-    const port = process.env.PORT || 5000;
-    const fullUrl = `${protocol}://${host}:${port}${url}`
-  console.log(fullUrl,"hii")
-    const responseString = `Full URL is: ${fullUrl}`;                       
-    res.send(responseString);  
+    res.send("API is running..");
   });
 }
-
 
 
 // ..........payment.....//
