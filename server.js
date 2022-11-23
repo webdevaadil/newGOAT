@@ -1,23 +1,17 @@
 "use strict";
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
-const compression = require("compression");
 const express = require("express");
 const connectDB = require("./config/db");
 const path = require("path");
 const cors = require("cors");
 const cookiesparser = require("cookie-parser");
 const bodyparser = require("body-parser");
-const cloudinary = require("cloudinary");
-const fileupload = require("express-fileupload");
 const User = require("./models/User");
 const app = express();
 app.use(cookiesparser());
 app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "5mb", extended: true }));
 
-app.use(fileupload());
-app.use(compression());
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: true }));
 connectDB();
@@ -71,12 +65,7 @@ app.post("/deleteuser", async (req, res) => {
 });
 //-----------------------cloudinary---------------------
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-  secure: true,
-});
+
 //-----------------------cloudinary---------------------
 const server = app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
