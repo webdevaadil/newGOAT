@@ -69,7 +69,7 @@ function App() {
 
           </Routes>
         </BrowserRouter>
-      </StripeWrapper>
+      </StripeWrapper>  
     </>
   );
 }
