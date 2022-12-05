@@ -29,9 +29,9 @@ export const Thankyou = () => {
             <div className="wrapper-2">
               <h1>Thank you For Signing up !</h1>
               <p>Welcome to The GOAT's Tips – Winning!</p>
-              <p>You will soon receive an email confirming your purchase and further details about your subscription. If not received within 10 minutes, please check your junk mail folder (please add us to your safe senders list to ensure you’re able to receive your tipping emails), and then contact us at winner@thegoatstips.com.au.</p>
+              <p>You will soon receive an email confirming your purchase and further details about your subscription. If not received within 10 minutes, please check your junk mail folder (please add us to your safe senders list to ensure you’re able to receive your tipping emails).</p>
               <p>
-              Furthermore, we’d love to hear from you if you have any additional questions or feedback.              </p>
+              Furthermore, we’d love to hear from you if you have any additional questions or feedback, you contact us at winner@thegoatstips.com.au.              </p>
               
               {/* <div style={{ display: "flex", justifyContent: "center" }}>
                 <Link to="/signup">

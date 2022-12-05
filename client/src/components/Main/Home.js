@@ -113,8 +113,10 @@ const Home = () => {
                         </ul>
                         <img src={img1} alt="" />
                         <div className="bnner-btn">
-                          <Link to={`password/${tips.gold}`}>
-                            <button className="signbtn">Signup</button>
+                          <Link >
+                            <button onClick={() => {
+                      chargebeepay("GOLD-AUD-Weekly");
+                    }} className="signbtn">Signup</button>
                           </Link>
                         </div>
                         <h2>
@@ -488,7 +490,8 @@ const Home = () => {
                  
                   <div
                     onClick={() => {
-                      chargebeepay("PLATINUM-AUD-Weekly");
+                      chargebeepay("GOLD-AUD-Weekly");
+                      
                     }}
                     className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
@@ -537,7 +540,7 @@ const Home = () => {
                   </div>
                   <div
                     onClick={() => {
-                      chargebeepay("GOLD-AUD-Weekly");
+                      chargebeepay("PLATINUM-AUD-Weekly");
                     }}
                     className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
@@ -577,8 +580,10 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="bnner-btn">
-                  <Link to={`password/${tips.gold}`}>
-                    <button className="signbtn">Sign Me Up</button>
+                  <Link >
+                    <button onClick={() => {
+                      chargebeepay("GOLD-AUD-Weekly");
+                    }} className="signbtn">Sign Me Up</button>
                   </Link>
                 </div>
               </div>
@@ -626,8 +631,10 @@ const Home = () => {
                   </Link>
                 </div> */}
                     <div className="bnner-btn">
-                      <Link to={`password/${tips.gold}`}>
-                        <button className="signbtn" href="/signup">
+                      <Link>
+                        <button onClick={() => {
+                      chargebeepay("GOLD-AUD-Weekly");
+                    }} className="signbtn" href="/signup">
                           Sign Me Up
                         </button>
                       </Link>
@@ -657,8 +664,10 @@ const Home = () => {
                       </p>
                     </div>
                     <div className="bnner-btn">
-                      <Link to={`password/${tips.gold}`}>
-                        <button className="signbtn">Sign Me Up</button>
+                      <Link >
+                        <button onClick={() => {
+                      chargebeepay("GOLD-AUD-Weekly");
+                    }} className="signbtn">Sign Me Up</button>
                       </Link>
                     </div>
                   </div>
@@ -910,8 +919,10 @@ const Home = () => {
                   to your preferences.
                 </p>
                 <div className="bnner-btn">
-                  <Link to={`password/${tips.gold}`}>
-                    <button className="signbtn">Sign Me Up</button>
+                  <Link >
+                    <button onClick={() => {
+                      chargebeepay("GOLD-AUD-Weekly");
+                    }} className="signbtn">Sign Me Up</button>
                   </Link>
                 </div>
               </div>
