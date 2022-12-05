@@ -68,7 +68,8 @@ const Home = () => {
     await axios
       .get(`/api/auth/chargebeepays/${ec}`)
       .then(
-        (res) => (console.log(res), window.location.replace(res.data.result.hosted_page.url),setnewloading(false))
+        (res) => (console.log(res), window.location.assign(res.data.result.hosted_page.url))
+        .then(setnewloading(false))
       );
   };
   return (
@@ -102,9 +103,10 @@ const Home = () => {
                         <ul className="navbar-nav top-btn ml-auto">
                           <Link
                             style={{ textAlign: "end" }}
-                            to={`Subscribe/${tips.gold}`}
                           >
-                            <button className="homelogin btn btn-1">
+                            <button  onClick={() => {
+                      chargebeepay("GOLD-AUD-Weekly");
+                    }} className="homelogin btn btn-1">
                               Login
                             </button>{" "}
                           </Link>
@@ -483,46 +485,7 @@ const Home = () => {
                       </ul>
                     </div> */}
                   </div>
-                  <div
-                    onClick={() => {
-                      chargebeepay("GOLD-AUD-Weekly");
-                    }}
-                    className="btn row"
-                    style={{ width: "50%", marginTop: "8px" }}
-                  >
-                    <img src={group3} alt="" />
-
-                    {/* <div className="row tipping1" style={{ width: "100%" }}>
-
-                      <div className="col-md-12 tipping1-tiles">
-                        <div className="tipp-img">
-                          <img src={img2} alt="" />
-                        </div>
-
-                        <div className="tipping-ct">
-                          <h3>Gold</h3>
-                          <p>$34.95 per Week</p>
-                          <div className="return">
-                            <span>165% returns</span>
-                          </div>
-                        </div>
-                      </div>
-                      <ul className="tiip-list">
-                        <li>
-                          <i className="fa fa-check"></i> 21 of the best bets
-                          across Australia every Saturday with staking plan &
-                          analysis of each race.
-                        </li>
-                        <li>
-                          <i className="fa fa-check"></i>3 x Best Multis
-                        </li>
-                        <li>
-                          <i className="fa fa-check"></i>Quaddie selections for
-                          Brisbane, Sydney & Melbourne.
-                        </li>
-                      </ul>
-                    </div> */}
-                  </div>
+                 
                   <div
                     onClick={() => {
                       chargebeepay("PLATINUM-AUD-Weekly");
@@ -568,6 +531,46 @@ const Home = () => {
                           {" "}
                           <i className="fa fa-check"></i> Best bet of the day,
                           everyday!
+                        </li>
+                      </ul>
+                    </div> */}
+                  </div>
+                  <div
+                    onClick={() => {
+                      chargebeepay("GOLD-AUD-Weekly");
+                    }}
+                    className="btn row"
+                    style={{ width: "50%", marginTop: "8px" }}
+                  >
+                    <img src={group3} alt="" />
+
+                    {/* <div className="row tipping1" style={{ width: "100%" }}>
+
+                      <div className="col-md-12 tipping1-tiles">
+                        <div className="tipp-img">
+                          <img src={img2} alt="" />
+                        </div>
+
+                        <div className="tipping-ct">
+                          <h3>Gold</h3>
+                          <p>$34.95 per Week</p>
+                          <div className="return">
+                            <span>165% returns</span>
+                          </div>
+                        </div>
+                      </div>
+                      <ul className="tiip-list">
+                        <li>
+                          <i className="fa fa-check"></i> 21 of the best bets
+                          across Australia every Saturday with staking plan &
+                          analysis of each race.
+                        </li>
+                        <li>
+                          <i className="fa fa-check"></i>3 x Best Multis
+                        </li>
+                        <li>
+                          <i className="fa fa-check"></i>Quaddie selections for
+                          Brisbane, Sydney & Melbourne.
                         </li>
                       </ul>
                     </div> */}
