@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 // import"../font/Sportypo-Reguler-Demo.ttf"
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
 import img1 from "../../Images/GOAT_logo.png";
 import man from "../../Images/winninghorse.jpg";
 import Count from "react-countup";
@@ -16,7 +14,6 @@ import horseRacing from "../../Images/Horse-Racing.jpg";
 import horseIcon from "../../Images/horse-icon.png";
 import greyRacing from "../../Images/Greyhound-Racing.jpg";
 import houndIcon from "../../Images/hound-icon.png";
-import serviceBackground from "../../Images/serviceback.jpg";
 import reliable from "../../Images/races22";
 import HomeFooter from "../Footer/HomeFooter";
 import vv from "../../Images/Randwick_V1-0030.mp4";
@@ -28,8 +25,8 @@ import axios from "axios";
 import { Loader } from "../layout/Loader";
 import group1 from "../../Images/BRONZE.png"
 import group2 from "../../Images/SILVER.png"
-import group3 from "../../Images/PLATINUM.png"
-import group4 from "../../Images/gOLD.png"
+import group3 from "../../Images/PLATINUM .png"
+import group4 from "../../Images/gOLD .png"
 
 
 const Home = () => {
@@ -68,7 +65,7 @@ const Home = () => {
     await axios
       .get(`/api/auth/chargebeepays/${ec}`)
       .then(
-        (res) => (console.log(res),  window.open(res.data.result.hosted_page.url, "_self", "popup"))
+        (res) => (console.log(res),   window.location.assign(res.data.result.hosted_page.url))
         .then(setnewloading(false))
       );
   };
