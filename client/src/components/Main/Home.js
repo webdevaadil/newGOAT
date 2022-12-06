@@ -163,17 +163,17 @@ const Home = () => {
                               <ul>
                                 <li>
                                   {" "}
-                                  <img src={check} alt="" srcset="" /> Thoroughbred
+                                  <img src={check}width="25px " height="19px" alt="" srcset="" /> Thoroughbred
                                   horse racing
                                 </li>
                                 <li>
                                   {" "}
-                                   <img src={check} alt="" srcset="" /> Greyhound
+                                   <img src={check} alt="" srcset="" width="25px " height="19px"/> Greyhound
                                   racing
                                 </li>
                                 <li>
                                   {" "}
-                                   <img src={check} alt="" srcset="" /> Additional
+                                   <img src={check} alt="" srcset="" width="25px " height="19px"/> Additional
                                   sports coming soon!
                                 </li>
                               </ul>
@@ -679,7 +679,7 @@ const Home = () => {
                     rel="noreferrer"
                     href="https://www.facebook.com/The-GOATs-Tips-102013742449574"
                   >
-             <img  width="10%"src={facebook}/>
+             <img  src={facebook} width="30px " height="58px"/>
                   </a>
                 </li>
                 <li>
@@ -688,7 +688,7 @@ const Home = () => {
                     rel="noreferrer"
                     href="https://twitter.com/thegoatstips"
                   >
-                                <img width="20%" src={twitter}/>
+                                <img width="60px " height="49px" src={twitter}/>
 
                   </a>
                 </li>
@@ -698,7 +698,7 @@ const Home = () => {
                     rel="noreferrer"
                     href="https://www.instagram.com/goats.tips/"
                   >
-                                <img  width="20%"src={insta}/>
+                                <img  width="60px " height="60px"src={insta}/>
 
                   </a>
                 </li>
