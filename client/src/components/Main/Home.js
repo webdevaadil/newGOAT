@@ -291,8 +291,7 @@ const Home = () => {
                       <div style={{ marginBottom: "4px" }} className="tips-ct ">
                         <h2>
                           {" "}
-                          &#62;$
-                        4
+                          &#62;$4
                         </h2>
                         <p>Average odds</p>
                       </div>
