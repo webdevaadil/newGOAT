@@ -4,10 +4,10 @@ import "./Home.css";
 import img1 from "../../Images/GOAT_logo.png";
 import man from "../../Images/winninghorse.WebP";
 import Count from "react-countup";
-import img2 from "../../Images/gold.png";
-import img3 from "../../Images/platinum.png";
-import img4 from "../../Images/silver.png";
-import img5 from "../../Images/bronze.png";
+import facebook from "../../Images/Facebook.svg";
+import insta from "../../Images/InstagramPink.svg";
+import twitter from "../../Images/Twitter.svg";
+import check from "../../Images/TickRed.svg";
 import races1 from "../../Images/races.WebP";
 import icon2 from "../../Images/icon2.png";
 import horseRacing from "../../Images/Horse-Racing.WebP";
@@ -163,17 +163,17 @@ const Home = () => {
                               <ul>
                                 <li>
                                   {" "}
-                                  <i className="fa fa-check"></i> Thoroughbred
+                                  <img src={check} alt="" srcset="" /> Thoroughbred
                                   horse racing
                                 </li>
                                 <li>
                                   {" "}
-                                  <i className="fa fa-check"></i> Greyhound
+                                   <img src={check} alt="" srcset="" /> Greyhound
                                   racing
                                 </li>
                                 <li>
                                   {" "}
-                                  <i className="fa fa-check"></i> Additional
+                                   <img src={check} alt="" srcset="" /> Additional
                                   sports coming soon!
                                 </li>
                               </ul>
@@ -253,7 +253,7 @@ const Home = () => {
                     <ul>
                       <li>
                         {" "}
-                        <i className="fa fa-check"></i> Thoroughbred horse racing
+                         <img src={check} alt="" srcset="" /> Thoroughbred horse racing
                       </li>
                       <li>
                         {" "}
@@ -679,12 +679,7 @@ const Home = () => {
                     rel="noreferrer"
                     href="https://www.facebook.com/The-GOATs-Tips-102013742449574"
                   >
-                    <i
-                      style={{ color: "#3f3fc1" }}
-                      className="fa fa-facebook-f"
-                    >
-                      {" "}
-                    </i>
+             <img  width="10%"src={facebook}/>
                   </a>
                 </li>
                 <li>
@@ -693,10 +688,8 @@ const Home = () => {
                     rel="noreferrer"
                     href="https://twitter.com/thegoatstips"
                   >
-                    <i
-                      style={{ color: "#3676e1" }}
-                      className="fa fa-twitter"
-                    ></i>
+                                <img width="20%" src={twitter}/>
+
                   </a>
                 </li>
                 <li>
@@ -705,10 +698,8 @@ const Home = () => {
                     rel="noreferrer"
                     href="https://www.instagram.com/goats.tips/"
                   >
-                    <i
-                      style={{ color: "#C13584" }}
-                      className="fa fa-instagram"
-                    ></i>
+                                <img  width="20%"src={insta}/>
+
                   </a>
                 </li>
               </ul>
