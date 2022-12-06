@@ -26,7 +26,7 @@ import { Loader } from "../layout/Loader";
 import group1 from "../../Images/BRONZE.png"
 import group2 from "../../Images/SILVER.png"
 import group3 from "../../Images/PLATINUM .png"
-import group4 from "../../Images/gOLD .png"
+import group4 from "../../Images/gOLD.png"
 
 
 const Home = () => {
