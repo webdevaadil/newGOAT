@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 // import"../font/Sportypo-Reguler-Demo.ttf"
-
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import img1 from "../../Images/GOAT_logo.png";
 import man from "../../Images/winninghorse.jpg";
 import Count from "react-countup";
@@ -23,13 +24,12 @@ import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loaduser } from "../../actions/userAction";
 import { positions, useAlert } from "react-alert";
-import Marquee from "react-fast-marquee";
 import axios from "axios";
 import { Loader } from "../layout/Loader";
-import group1 from "../../Images/Group1.png"
-import group2 from "../../Images/Group2.png"
-import group3 from "../../Images/Group3.png"
-import group4 from "../../Images/Group4.png"
+import group1 from "../../Images/BRONZE.png"
+import group2 from "../../Images/SILVER.png"
+import group3 from "../../Images/PLATINUM.png"
+import group4 from "../../Images/gOLD.png"
 
 
 const Home = () => {
@@ -68,7 +68,7 @@ const Home = () => {
     await axios
       .get(`/api/auth/chargebeepays/${ec}`)
       .then(
-        (res) => (console.log(res), window.location.assign(res.data.result.hosted_page.url))
+        (res) => (console.log(res),  window.open(res.data.result.hosted_page.url, "_self", "popup"))
         .then(setnewloading(false))
       );
   };
@@ -153,10 +153,10 @@ const Home = () => {
                         <div className="resut-content">
                           <div className="card mediaCard">
                             <div className="resut-content">
-                              <h3>
+                              <h2>
                                 Quality Sporting Tips{" "}
                                 <span>From Expert Tipsters</span>{" "}
-                              </h3>
+                              </h2>
                               <p>
                                 Whether you're a professional investor or a
                                 casual pub punter, we've got you covered. The
@@ -285,7 +285,7 @@ const Home = () => {
                         <h2>
                           {" "}
                           &#62;
-                          <Count start={0} end={37} duration={4} delay={0} />%
+                          <Count start={0} end={46} duration={4} delay={0} />%
                         </h2>
                         <p>Strike Rate</p>
                       </div>
@@ -309,9 +309,9 @@ const Home = () => {
                       <div className="tips-ct">
                         <h2>
                           {" "}
-                          <Count start={0} end={56} duration={10} delay={0} />%
+                          <Count start={0} end={72} duration={8} delay={0} />%
                         </h2>
-                        <p>Top 2 place rate</p>
+                        <p>Win/Place Rate</p>
                       </div>
                     </div>
                     <div className="col-md-2 card card1 sec2num">

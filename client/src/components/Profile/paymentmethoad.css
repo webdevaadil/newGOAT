@@ -19,7 +19,7 @@
 
 }
 .payment_box_two h2{
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 22px;
@@ -39,7 +39,7 @@
     font-size: 16px;
     line-height: 24px;
     color: #4E4F51;
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
     list-style: none;
     padding: 7px;
 }
@@ -51,7 +51,7 @@
     border-radius: 8px;
     padding: 10px;
     border: 2px solid #dee2e6!important;
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
    
 }
 
@@ -62,12 +62,12 @@
     margin-top: 10px;
     border-radius: 8px;
     border: 2px solid #dee2e6!important;
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
 
 }
 .dis_btn{
     background-color: #fff;
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
     padding: 19px 24px 18px;
     color: #000;
     width: 329px;
@@ -84,7 +84,7 @@
 }
 .sav_btn{
     background: #10867F;
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
     padding: 19px 24px 18px;
     color: #000;
     width: 329px;
@@ -105,7 +105,7 @@
     display: flex;
 }
 .per_text{
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
@@ -117,11 +117,11 @@
     /* height: 56px; */
     border-radius: 8px;
     /* padding: 10px; */
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
     background-color: #fff;
 }
 .pay_detail{
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
@@ -137,7 +137,7 @@
     margin-top: 10px;
     margin-right: 15px;
     border: 2px solid #dee2e6!important;
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
 }
 .card_number{
     width: 100%;
@@ -147,7 +147,7 @@
     margin-top: 10px;
     margin-right: 15px;
     border: 2px solid #dee2e6!important;
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
 }
 .exp{
     width: 100%;
@@ -157,7 +157,7 @@
     border-radius: 8px;
     border: 2px solid #dee2e6!important;
     margin-right: 10px;
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
 }
 .cvc{
     width:100%;
@@ -166,7 +166,7 @@
     margin-top: 10px;
     border-radius: 8px;
     border: 2px solid #dee2e6!important;
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
 }
 .btn-save{
     width: 100%;
@@ -175,7 +175,7 @@
     background: #10867F;
     border-radius: 8px;
     color: #fff;
-    font-family: 'Nunito Sans', sans-serif;
+      font-family: 'DM Sans', sans-serif;
     font-weight: 700;
     size: 16px;
     letter-spacing: 0.15px;

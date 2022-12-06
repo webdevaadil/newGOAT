@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 *{
     margin:0;
-    font-family: 'Nunito Sans', sans-serif;
-    font-family: 'DM Sans', sans-serif;
+     font-family: 'DM Sans', sans-serif;
+     font-family: 'DM Sans', sans-serif;
 
 }
 body{
@@ -40,7 +40,7 @@ body{
     line-height: 56px;
     color: #0A0E0F;
     font-weight: 400;
-    font-family: 'Nunito Sans';
+     font-family: 'DM Sans', sans-serif;
 }
   
   .hero-text button:hover {
@@ -97,7 +97,7 @@ body{
     line-height: 30px;
     color: #767A81 !important;
     font-weight: 600;
-    font-family: 'Nunito Sans';
+     font-family: 'DM Sans', sans-serif;
 }
 i.fa.fa-eye {
     position: absolute;
@@ -118,7 +118,7 @@ i.fa.fa-eye {
     appearance: none;
     border-radius:6px;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    font-family: 'Nunito Sans';
+     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -131,7 +131,7 @@ i.fa.fa-eye {
 .form-main .form-content p {
     font-size: 14px;
     line-height: 20px;
-    font-family: 'DM Sans';
+     font-family: 'DM Sans', sans-serif;
     font-weight: 400;
     color: #252729;
 }

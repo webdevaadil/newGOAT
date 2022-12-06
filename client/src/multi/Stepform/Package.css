@@ -34,7 +34,7 @@
   width: 90%;
 }
 .payment-box h2{
-  font-family: 'Nunito Sans', sans-serif;
+   font-family: 'DM Sans', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -48,7 +48,7 @@
   font-size: 14px;
   line-height: 24px;
   color: #4E4F51;
-  font-family: 'Nunito Sans', sans-serif;
+   font-family: 'DM Sans', sans-serif;
   list-style: none;
   padding: 0px;
 }
@@ -162,7 +162,7 @@ list-style: none;
   align-items: center;
 }
 .sel-main p {
-  font-family: "Nunito Sans";
+   font-family: 'DM Sans', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;

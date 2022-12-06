@@ -29,7 +29,7 @@
   .raceup-sec .upcomming-table th {
     color: #fff;
     padding: 14px;
-    font-family: 'DM Sans';
+     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -51,7 +51,7 @@
     color: #10867F;
   }
   .raceup-sec .upcomming-table td {
-    font-family: 'Nunito Sans';
+     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -69,7 +69,7 @@
     border-radius: 16px !important;
   }
   .raceup-sec h3.free-title {
-    font-family: 'Nunito Sans';
+     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -112,7 +112,7 @@
   color: #fff;
   border-radius: 24px;
   padding: 5px 21px;
-  font-family: 'DM Sans';
+   font-family: 'DM Sans', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -120,7 +120,7 @@
 }
 
 .detail-date , .detail-time  p {
-    font-family: 'DM Sans';
+     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -129,7 +129,7 @@
     color: #03203E;
 }
 .detail-mt{
-  font-family: 'DM Sans';
+   font-family: 'DM Sans', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 16px;
@@ -145,14 +145,14 @@ color: #4E4F51;
 }
 .det-des.mt-4 h3 {
   color: #03203E;
-  font-family: 'DM Sans';
+   font-family: 'DM Sans', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 3rem;
   line-height: 3.875rem;
 }
 .card-body a {
-  font-family: 'Nunito Sans';
+   font-family: 'DM Sans', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -168,7 +168,7 @@ color: #4E4F51;
   background: #fff;
 }
 p.card-text {
-  font-family: 'Nunito Sans';
+   font-family: 'DM Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -272,7 +272,7 @@ p.card-text {
     overflow-wrap: break-word;
   }
   .raceup-sec .upcomming-table td {
-    font-family: 'Nunito Sans';
+     font-family: 'DM Sans', sans-serif;
     font-size: 10px;
     line-height: 16px;
     padding: 15px;

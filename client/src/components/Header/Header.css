@@ -34,7 +34,7 @@ display: block;
 	margin: 0px 6px;
 	border-radius: 5rem;
 	padding: 7px 25px;
-	font-family: 'Nunito Sans';
+	 font-family: 'DM Sans', sans-serif;
   font-style: normal;
   width:145px;
   }
@@ -160,7 +160,7 @@ color: #10867F;
     margin: 0px 6px;
     border-radius: 5rem;
     padding: 7px 25px;
-    font-family: 'Nunito Sans';
+     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     width:100px;
     }

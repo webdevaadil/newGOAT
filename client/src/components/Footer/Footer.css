@@ -16,7 +16,7 @@
     grid-template-columns: 1fr 2fr 4fr;
   }
   .foot_1 h4 {
-    font-family: 'DM Sans';
+     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -39,10 +39,10 @@
       line-height: 20px;
       letter-spacing: 0.25px;
       color: #FFFFFF;
-      font-family: 'Lato';
+       font-family: 'DM Sans', sans-serif;
   }
   .foot-link p {
-    font-family: 'Lato';
+     font-family: 'DM Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -50,7 +50,7 @@
     text-align: center;
     color: #FFFFFF;
     padding-top: 2rem;
-    font-family: 'Lato';
+     font-family: 'DM Sans', sans-serif;
   }
   /* footer cdd end */
 
