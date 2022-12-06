@@ -108,7 +108,7 @@ const Home = () => {
                             </button>{" "}
                           </Link>
                         </ul>
-                        <img src={img1} alt="" />
+                        <img width="288px" height="344px" src={img1} alt="" />
                         <div className="bnner-btn">
                           <Link >
                             <button onClick={() => {
@@ -345,7 +345,7 @@ const Home = () => {
               <div className="row reliav-main">
                 <div className="col-md-6">
                   <div className="reliable-img">
-                    <img src={reliable} alt="" />
+                    <img  width="471 px" height="537 px" src={reliable} alt="" />
                   </div>
                 </div>
 
@@ -382,7 +382,7 @@ const Home = () => {
                 <div className="col-md-6">
                   <div className="reliable-img">
                     <div className="mob-img">
-                      <img src={races1} alt="" />
+                      <img src={races1} width ="471px" height="314px"alt="" />
                     </div>
                   </div>
                 </div>
@@ -414,7 +414,7 @@ const Home = () => {
                     style={{ width: "50%" }}
                   >
 
-<img src={group1} alt="" />
+<img width={"490px"} height="490px" src={group1} alt="" />
 
                     {/* <div className="row tipping1 " style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
@@ -446,7 +446,7 @@ const Home = () => {
                     className="btn row"
                     style={{ width: "50%" }}
                   >
-                    <img src={group2} alt="" />
+                    <img  width={"490px"} height="490px"src={group2} alt="" />
                     {/* <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
                         <div className="tipp-img">
@@ -487,7 +487,7 @@ const Home = () => {
                     className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
                   >
-                    <img src={group4} alt="" />
+                    <img  width={"490px"} height="490px" src={group4} alt="" />
 
                     {/* <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles">
@@ -536,7 +536,7 @@ const Home = () => {
                     className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
                   >
-                    <img src={group3} alt="" />
+                    <img  width={"490px"} height="490px"src={group3} alt="" />
 
                     {/* <div className="row tipping1" style={{ width: "100%" }}>
 
@@ -595,7 +595,7 @@ const Home = () => {
                 <div className="row service-main">
                   <div className="col-md-6">
                     <div className="service-img2">
-                      <img src={horseRacing} alt="img" />
+                      <img width="450px" height="320px" src={horseRacing} alt="img" />
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -636,7 +636,7 @@ const Home = () => {
                 <div className="row service-main">
                   <div className="col-md-6">
                     <div className="service-img2">
-                      <img src={greyRacing} alt="img" />
+                      <img width="450px" height="320px"src={greyRacing} alt="img" />
                     </div>
                   </div>
                   <div className="col-md-6">
