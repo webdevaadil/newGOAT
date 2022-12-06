@@ -292,12 +292,7 @@ const Home = () => {
                         <h2>
                           {" "}
                           &#62;$
-                          <Count
-                            start={0}
-                            end={3}
-                            duration={10}
-                            delay={0}
-                          />{" "}
+                        4
                         </h2>
                         <p>Average odds</p>
                       </div>
