@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 // import"../font/Sportypo-Reguler-Demo.ttf"
 import img1 from "../../Images/GOAT_logo.png";
-import man from "../../Images/winninghorse.jpg";
+import man from "../../Images/winninghorse.WebP";
 import Count from "react-countup";
 import img2 from "../../Images/gold.png";
 import img3 from "../../Images/platinum.png";
 import img4 from "../../Images/silver.png";
 import img5 from "../../Images/bronze.png";
-import races1 from "../../Images/races.png";
+import races1 from "../../Images/races.WebP";
 import icon2 from "../../Images/icon2.png";
-import horseRacing from "../../Images/Horse-Racing.jpg";
+import horseRacing from "../../Images/Horse-Racing.WebP";
 import horseIcon from "../../Images/horse-icon.png";
-import greyRacing from "../../Images/Greyhound-Racing.jpg";
+import greyRacing from "../../Images/Greyhound-Racing.WebP";
 import houndIcon from "../../Images/hound-icon.png";
-import reliable from "../../Images/races22";
+import reliable from "../../Images/races22.WebP";
 import HomeFooter from "../Footer/HomeFooter";
 import vv from "../../Images/Randwick_V1-0030.mp4";
 import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
@@ -23,10 +23,10 @@ import { clearErrors, loaduser } from "../../actions/userAction";
 import { positions, useAlert } from "react-alert";
 import axios from "axios";
 import { Loader } from "../layout/Loader";
-import group1 from "../../Images/BRONZE.png"
-import group2 from "../../Images/SILVER.png"
-import group3 from "../../Images/PLATINUM .png"
-import group4 from "../../Images/gOLD.png"
+import group1 from "../../Images/BRONZE.WebP"
+import group2 from "../../Images/SILVER.WebP"
+import group3 from "../../Images/PLATINUM .WebP"
+import group4 from "../../Images/gOLD.WebP"
 
 
 const Home = () => {

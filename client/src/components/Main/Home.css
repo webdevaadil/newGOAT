@@ -229,7 +229,7 @@
 
 .result {
 
-    background-image: url("../../Images/winninghorse.jpg") !important;
+    background-image: url("../../Images/winninghorse.WebP") !important;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -442,7 +442,7 @@ ul.tiip-list li {
 
 /* tipping section start */
 .tipping-sec {
-    background-image: url("../../Images/new-hero.png");
+    background-image: url("../../Images/new-hero.WebP");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -647,7 +647,7 @@ ul.tiip-list li {
 /* 
 service section start */
 .Services-sec {
-    background-image: url("../../Images/serviceback.jpg");
+    background-image: url("../../Images/serviceback.WebP");
     background-position: center;
     background-size: cover;
 
@@ -860,7 +860,7 @@ ul.socil-link li {
 }
 
 .slide {
-    background: url("../../Images/Rectangle_1370.png ");
+    background: url("../../Images/Rectangle_1370.WebP ");
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1602,7 +1602,7 @@ ul.socil-link li {
 }
 @media(max-width:700px){
     .result{
-        background: url("../../Images/winninghorsemga.jpg") !important;
+        background: url("../../Images/winninghorsemga.WebP") !important;
         background-repeat: no-repeat !important;
         background-size: cover;
     }
@@ -1726,7 +1726,7 @@ ul.socil-link li {
     }
 
     .slide {
-        background: url("../../Images/Rectangle_1370.png ");
+        background: url("../../Images/Rectangle_1370.WebP ");
         background-position: right;
         background-repeat: no-repeat;
         background-size: cover;
@@ -1738,7 +1738,7 @@ ul.socil-link li {
 
     }
     .result{
-        background: url("../../Images/winninghorsemga.jpg") !important;
+        background: url("../../Images/winninghorsemga.WebP") !important;
         background-repeat: no-repeat !important;
         background-size: cover;
         background-position: 10% 0 !important;
