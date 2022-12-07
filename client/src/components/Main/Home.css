@@ -714,7 +714,10 @@ ul.socil-link {
     justify-content: center;
     padding-right: 27px;
 }
-
+.packageimg{
+    width: 100%;
+    height: 100%;
+}
 ul.socil-link li {
     padding: 10px 65px;
     margin-right: 5px;

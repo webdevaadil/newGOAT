@@ -414,7 +414,7 @@ const Home = () => {
                     style={{ width: "50%" }}
                   >
 
-<img width={"490px"} height="490px" src={group1} alt="" />
+<img className="packageimg"width={"490px"} height="490px" src={group1} alt="" />
 
                     {/* <div className="row tipping1 " style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
@@ -446,7 +446,7 @@ const Home = () => {
                     className="btn row"
                     style={{ width: "50%" }}
                   >
-                    <img  width={"490px"} height="490px"src={group2} alt="" />
+                    <img className="packageimg" width={"490px"} height="490px"src={group2} alt="" />
                     {/* <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
                         <div className="tipp-img">
@@ -487,7 +487,7 @@ const Home = () => {
                     className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
                   >
-                    <img  width={"490px"} height="490px" src={group4} alt="" />
+                    <img className="packageimg" width={"490px"} height="490px" src={group4} alt="" />
 
                     {/* <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles">
@@ -536,7 +536,7 @@ const Home = () => {
                     className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
                   >
-                    <img  width={"490px"} height="490px"src={group3} alt="" />
+                    <img className="packageimg" width={"490px"} height="490px"src={group3} alt="" />
 
                     {/* <div className="row tipping1" style={{ width: "100%" }}>
 
