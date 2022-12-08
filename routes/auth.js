@@ -40,6 +40,7 @@ router.route("/logout").get(logout);
 router.route("/update/password").put(isAuthuser, updatePassword);
 router.route("/update/profile").put(isAuthuser, updateProfile);
 router.route("/chargebeepays/:packages").get(chargebeepay);
+router.route("/chargebeepays/").post(chargebeepay);
 router.route("/check").get(checkData);
 
 // router.route("/addcard").post(addCard);

@@ -6,10 +6,11 @@ exports.chargebeepay=catchAsyncerror(async(req,res,)=>{
   let packages=req.params.packages;
    chargebee.configure({site :"thegoatstips-test",
   api_key : "test_Hne1MTcd5FhtsPwKVD77MFsGIfsYsTCDj"})
+
 chargebee.hosted_page.checkout_new_for_items({
   subscription_items : [
     {
-      item_price_id : packages,
+      item_price_id : req.body.plan_id,
     },]
 }).request(function(error,result) {
   if(error){
@@ -18,9 +19,10 @@ chargebee.hosted_page.checkout_new_for_items({
   }else{
     console.log(result);
     var hosted_page = result.hosted_page;
-    return res
-    .status(200)
-    .json({result });
+    res.send(result.hosted_page);
+    // return res
+    // .status(200)
+    // .json({result });
   }
 });
 

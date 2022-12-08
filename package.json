@@ -7,7 +7,6 @@
     "node": "16.14.0",
     "npm": "8.13.2"
   },
-  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
@@ -54,5 +53,13 @@
     "chargebee": "^2.17.0",
     "nodemon": "^2.0.20",
     "sass": "^1.53.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anurag-17/newGOAT.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anurag-17/newGOAT/issues"
+  },
+  "homepage": "https://github.com/anurag-17/newGOAT#readme"
 }
