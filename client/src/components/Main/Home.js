@@ -27,6 +27,8 @@ import group1 from "../../Images/BRONZE.WebP"
 import group2 from "../../Images/SILVER.WebP"
 import group3 from "../../Images/PLATINUM .WebP"
 import group4 from "../../Images/gOLD.WebP"
+// import Chargebee from '@chargebee/chargebee-js-react-wrapper';
+
 
 
 const Home = () => {
@@ -41,6 +43,12 @@ const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
+
+  const cbInit = {
+    cbInstance: window.Chargebee.init({
+      site: "thegoatstips-test"
+    })
+  };
 
   const { error, isAuthenticated } = useSelector((state) => state.user);
 
@@ -58,17 +66,56 @@ const Home = () => {
   // const redy = () => {
   //   navigate("/signup");
   // };
+
+  const urlEncode = function(data) {
+    var str = [];
+    for (var p in data) {
+        if (data.hasOwnProperty(p) && (!(data[p] == undefined || data[p] == null))) {
+            str.push(encodeURIComponent(p) + "=" + (data[p] ? encodeURIComponent(data[p]) : ""));
+        }
+    }
+    return str.join("&");
+  }
+
   const chargebeepay = async (ec) => {
     console.log(ec);
+    console.log("data");
     setnewloading(true);
 
-    await axios
-      .get(`/api/auth/chargebeepays/${ec}`)
-      .then(
-        (res) => (console.log(res),   window.location.assign(res.data.result.hosted_page.url))
-        .then(setnewloading(false))
-      );
+    // await axios
+    //   .get(`/api/auth/chargebeepays/${ec}`)
+    //   .then(
+    //     (res) => (console.log(res),   window.location.assign(res.data.result.hosted_page.url))
+    //     .then(setnewloading(false))
+    //   );
+
+      cbInit.cbInstance.openCheckout({
+        hostedPage: () => {
+          var data = {
+            plan_id: ec
+          };
+          // Hit your end point that returns hosted page object as response
+          // This sample end point will call checkout new api
+          // https://apidocs.chargebee.com/docs/api/hosted_pages#checkout_new_subscription
+          // If you want to use paypal, go cardless and plaid, pass embed parameter as false
+          return axios.post(`/api/auth/chargebeepays/`, urlEncode(data)).then((response) =>  response.data)
+        },
+        success(hostedPageId) {
+          console.log(hostedPageId);
+        },
+        close:() => {
+          setnewloading(false)
+          console.log("checkout new closed");
+        },
+        step(step) {
+          console.log("checkout", step);
+        }
+      });
+      this.preventDefault();
   };
+
+ 
+
   return (
     <>
       {newloading ? (
@@ -405,6 +452,11 @@ const Home = () => {
                   </h4>
                 </div>
                 <div className="tipp">
+                {/* <template>
+  <a id="subscribe" href="#">Subscribe</a>
+</template> */}
+                  
+                {/* <a href onClick={onClick} data-cb-type="checkout" data-cb-item0="GOLD-AUD-Weekly" data-cb-item-0-quantity="1" >subscribe</a> */}
                   <div
                     onClick={() => {
                       chargebeepay("BRONZE-AUD-Weekly");
