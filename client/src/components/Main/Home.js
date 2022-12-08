@@ -585,7 +585,7 @@ const Home = () => {
             <div
               style={{
                 height: "100%",
-                // backgroundColor: "rgba(0, 0, 0, 0.688)",
+                backgroundColor: "rgba(0, 0, 0, 40%)",
               }}
             >
               <div className="container">
