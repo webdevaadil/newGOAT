@@ -108,7 +108,7 @@ const Home = () => {
                             </button>{" "}
                           </Link>
                         </ul>
-                        <img width="288px" height="344px" src={img1} alt="" />
+                        <img  src={img1} alt="" />
                         <div className="bnner-btn">
                           <Link >
                             <button onClick={() => {
