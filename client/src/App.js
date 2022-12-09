@@ -24,7 +24,6 @@ import { Paymentexpirepage } from "./components/Extra/Paymentexpirepage";
 import { Aboutus } from "./components/Extra/About";
 import { Checkout } from "./multi/Stepform/Checkout";
 import { NewLogin } from "./components/Login/NewLogin";
-import StripeWrapper from "./StripeWrapper";
 
 function App() {
   "use strict";
@@ -34,7 +33,6 @@ function App() {
   return (
     <>
       <Metadata title="The Goat Tips" />
-      <StripeWrapper>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />}/>
@@ -69,7 +67,6 @@ function App() {
 
           </Routes>
         </BrowserRouter>
-      </StripeWrapper>  
     </>
   );
 }

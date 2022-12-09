@@ -10,7 +10,6 @@ import img2 from "../../Images/name1.png";
 import img3 from "../../Images/name2.png";
 import img4 from "../../Images/name3.png";
 import img5 from "../../Images/name4.png";
-import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAlert } from "react-alert";
@@ -26,15 +25,12 @@ import mastercard from "./assets/cards/mastercard.png";
 import mir from "./assets/cards/mir.png";
 import unionpay from "./assets/cards/unionpay.png";
 import AddPayMethod from "./AddPayMethod";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { Country, State, City} from "country-state-city";
 
 export const Checkout = () => {
   const { tips } = useParams();
   const navigate = useNavigate();
   const alert = useAlert();
-  const stripe = useStripe();
-  const elements = useElements();
   const dispatch = useDispatch();
   const card = useRef();
 
@@ -343,46 +339,7 @@ export const Checkout = () => {
       },
     };
 
-    try {
-      stripe
-        .createPaymentMethod({
-          type: "card",
-          billing_details: billingDetails,
-          card: elements.getElement(CardElement),
-        })
-        .then((resp) => {
-          axios
-            .post("/api/auth/paymentcreate", {
-              user: user._id,
-              paymentMethod: resp.paymentMethod,
-              packages,
-              cardId: cardoptionselect,
-            })
-            .then((resp) => {
-              /* Handle success */
-              if (resp.data.status === "succeeded") {
-                dispatch(
-                  updateprofile({
-                    paymentstatus: "true",
-                    packages,
-                    paymentDate: Date.now(),
-                    PaymentexpireDate: date,
-                  })
-                );
-                navigate("/The-Goat-Tips");
-                console.log("asas");
-              }
-            })
-            .catch((err) => {
-              alert.error(err);
-              console.log(err);
-              /*Handle Error */
-            });
-          console.log(resp);
-        });
-    } catch (err) {
-      /* Handle Error*/
-    }
+    
   }
   //  ..................payment...................//
   return (
@@ -451,10 +408,7 @@ export const Checkout = () => {
                                       </div>
                                       <label>Enter Card Details</label>
                                       <div className="input-border">
-                                        <CardElement
-                                          options={cardElementOptions}
-                                          ref={card}
-                                        />
+                                        
                                       </div>
 
                                       <div

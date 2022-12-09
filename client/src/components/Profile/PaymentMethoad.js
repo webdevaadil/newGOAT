@@ -13,7 +13,6 @@ import img2 from "../../edited-btn/name1.png";
 import img3 from "../../edited-btn/name2.png";
 import img4 from "../../edited-btn/name3.png";
 import img5 from "../../edited-btn/name4.png";
-import { PayPalButton } from "react-paypal-button-v2";
 import AddPayMethod from "../../multi/Stepform/AddPayMethod";
 import visa from "./assets/cards/visa.png";
 import americanexpress from "./assets/cards/americanexpress.png";
@@ -33,7 +32,6 @@ import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import Select from "react-select";
 import axios from "axios";
 import HomeFooter from "../Footer/HomeFooter";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 import { Country, State, City } from "country-state-city";
 
@@ -41,8 +39,6 @@ export const PaymentMethoad = () => {
   const [test, settest] = useState();
   const card = useRef();
   const navigate = useNavigate();
-  const stripe = useStripe();
-  const elements = useElements();
   const [cardInfo, setCardInfo] = useState({
     name: "",
     expiry: "",
@@ -257,44 +253,7 @@ export const PaymentMethoad = () => {
       },
     };
 
-    try {
-      stripe
-        .createPaymentMethod({
-          type: "card",
-          billing_details: billingDetails,
-          card: elements.getElement(CardElement),
-        })
-        .then((resp) => {
-          axios
-            .post("/api/auth/paymentcreate", {
-              user: user._id,
-              paymentMethod: resp.paymentMethod,
-              packages,
-            })
-            .then((resp) => {
-              /* Handle success */
-              if (resp.data.status === "succeeded") {
-                dispatch(
-                  updateprofile({
-                    paymentstatus: "true",
-                    packages,
-                    paymentDate: Date.now(),
-                    PaymentexpireDate: date,
-                  })
-                ).then(navigate("/The-Goat-Tips"));
-                console.log("asas");
-              }
-            })
-            .catch((err) => {
-              alert("error");
-              console.log(err);
-              /*Handle Error */
-            });
-          console.log(resp);
-        });
-    } catch (err) {
-      /* Handle Error*/
-    }
+ 
   }
   async function getPaymentMethods() {
     await axios
@@ -417,45 +376,6 @@ export const PaymentMethoad = () => {
       },
     };
 
-    try {
-      stripe
-        .createPaymentMethod({
-          type: "card",
-          billing_details: billingDetails,
-          card: elements.getElement(CardElement),
-        })
-        .then((resp) => {
-          axios
-            .post("/api/auth/paymentcreate", {
-              user: user._id,
-              paymentMethod: resp.paymentMethod,
-              packages,
-              cardId: cardoptionselect,
-            })
-            .then((resp) => {
-              /* Handle success */
-              if (resp.data.status === "succeeded") {
-                dispatch(
-                  updateprofile({
-                    paymentstatus: "true",
-                    packages,
-                    paymentDate: Date.now(),
-                    PaymentexpireDate: date,
-                  })
-                );
-                console.log("asas");
-              }
-            })
-            .catch((err) => {
-              alert.error(err.response.data);
-              console.log(err.response.data);
-              /*Handle Error */
-            });
-        });
-    } catch (err) {
-      /* Handle Error*/
-      console.log(err);
-    }
   }
   useEffect(() => {
     const allCountry = Country.getAllCountries();
@@ -596,10 +516,7 @@ export const PaymentMethoad = () => {
                                 </div>
                                 <label>Enter Card Details</label>
                                 <div className="input-border">
-                                  <CardElement
-                                    options={cardElementOptions}
-                                    ref={card}
-                                  />
+                                 
                                 </div>
 
                                 <div

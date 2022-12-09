@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-
-import { useElements, useStripe } from "@stripe/react-stripe-js";
-
 import { Country, State, City } from "country-state-city";
 import Select from "react-select";
-
 import style from "./Package.css";
-
-import { CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
 import ListPaymentMethods from "./ListPaymentMethods";
 import { useSelector } from "react-redux";
@@ -16,9 +10,7 @@ export default function AddPayMethod({getPaymentMethods,packages}) {
   const { error, loading, isAuthenticated, user } = useSelector(
     (state) => state.user
   );
-  const stripe = useStripe();
 
-  const elements = useElements();
   const card = useRef();
 
   const [cardInfo, setCardInfo] = useState({
@@ -98,38 +90,7 @@ export default function AddPayMethod({getPaymentMethods,packages}) {
       },
     };
 
-    try {
-      stripe
-        .createPaymentMethod({
-          type: "card",
-          billing_details: billingDetails,
-          card: elements.getElement(CardElement),
-        })
-        .then((resp) => {
-            axios 
-            .post(
-              "/api/auth/paymentmethodattached",
-              {
-                user:user._id,
-                paymentMethod: resp.paymentMethod,
-                packages,
-              }
-            )
-            .then((resp) => {
-              /* Handle success */
-              alert("card add")
-              getPaymentMethods()
-            })
-            .catch((err) => {
-              alert("error")
-              console.log(err);
-              /*Handle Error */
-            });
-          console.log(resp);
-        });
-    } catch (err) {
-      /* Handle Error*/
-    }
+  
   }
 
   useEffect(() => {
@@ -188,7 +149,7 @@ const statecitystyle = {
         </div>
         <label>Enter Card Details</label>
         <div  className = "input-border">
-          <CardElement options={cardElementOptions}  ref={card} />
+         
         </div>
 
         <div style = {{marginTop:"10px"}} className={style.addressWrapper}>

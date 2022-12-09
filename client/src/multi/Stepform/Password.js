@@ -33,8 +33,6 @@ import {
   updateprofile,
 } from "../../actions/userAction";
 import { Loader } from "../../components/layout/Loader";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-// import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
 import AddPayMethod from "./AddPayMethod";
 import ListPaymentMethods from "./ListPaymentMethods";
@@ -71,9 +69,7 @@ export const Paypa = () => {
   }
   // const { packages, Name_of_card, card_no, Expiry, cvc } = ;
   const { tips } = useParams();
-  const stripe = useStripe();
   const navigate = useNavigate();
-  const elements = useElements();
   const alert = useAlert();
 
   const { error, loading, isAuthenticated, user, isUpdated } = useSelector(
@@ -291,61 +287,7 @@ export const Paypa = () => {
       },
     };
 
-    try {
-      stripe
-        .createPaymentMethod({
-          type: "card",
-          billing_details: billingDetails,
-          card: elements.getElement(CardElement),
-        })
-        .then((resp) => {
-          setLoader(true);
-
-          axios
-            .post("/api/auth/paymentcreate", {
-              paymentMethod: resp.paymentMethod,
-              packages,
-              cardId: cardoptionselect,
-              email: email,
-            })
-            .then((resp) => {
-              /* Handle success */
-              if (resp.data.status === "succeeded") {
-                dispatch(
-                  updateprofile({
-                    paymentstatus: "true",
-                    packages,
-                    paymentDate: Date.now(),
-                    PaymentexpireDate: date,
-                  })
-                )
-                  .then((res) => {
-                    const resp = axios.post("/api/auth/register", {
-                      email: email,
-                      packages: packages,
-                      paymentstatus: "true",
-                      paymentDate: Date.now(),
-                      PaymentexpireDate: date,
-                    });
-                    setLoader(false);
-                  })
-                  .then((res) => {
-                    navigate("/thankyou");
-                  });
-                console.log("asas");
-              }
-            })
-            .catch((err) => {
-              alert.error(err.response.data);
-              setLoader(false);
-              console.log(err.response.data);
-              /*Handle Error */
-            });
-          console.log(resp);
-        });
-    } catch (err) {
-      /* Handle Error*/
-    }
+ 
   }
 
   const pay = (e) => {
@@ -782,10 +724,7 @@ export const Paypa = () => {
                                    <div className="inputrow mb-2">
                                      <label>Enter Card Details</label>
                                     <div className=" inputrow input-border">
-                                      <CardElement
-                                        options={cardElementOptions}
-                                        ref={card}
-                                      />
+                                      
                                    </div>
                                     </div>
                                     <div className="d-flex justify-content-center mt-2" >

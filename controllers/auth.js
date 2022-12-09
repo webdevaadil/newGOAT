@@ -6,7 +6,6 @@ const catchAsyncerror = require("../middleware/catchAsyncerror");
 const jwt = require("jsonwebtoken");
 var cloudinary = require("cloudinary").v2;
 const emailValidator = require("deep-email-validator");
-const Stripe = require("../payment/stripe");
 const { expressjwt } = require("express-jwt");
 const bcrypt = require("bcrypt");
 const { findByIdAndUpdate } = require("../models/User");
@@ -59,12 +58,7 @@ exports.oldregister = catchAsyncerror(async (req, res, next) => {
       } else if (user) {
         return res.status(500).json("user already registered");
       } else {
-        let customer_id = await Stripe.CreateCustomer(
-          email,
-          username,
-          "1184 sector-B indore"
-        );
-        console.log(customer_id);
+        
         const user = await User.create({
           username,
           email,
@@ -73,7 +67,7 @@ exports.oldregister = catchAsyncerror(async (req, res, next) => {
           packages,
           paymentstatus: req.body.paymentstatus || "false",
           phoneno,
-          customer_id,
+          
         });
         // const order = await createOrder();
         // console.log(order.id,'hfghdf')
@@ -122,15 +116,12 @@ console.log(user);
           PaymentexpireDate: req.body.PaymentexpireDate,
         });
       } else {
-        let customer_id = await Stripe.CreateCustomer(email);
-        console.log(customer_id);
         const user = await User.create({
           email,
           PaymentexpireDate,
           paymentDate,
           packages,
           paymentstatus: req.body.paymentstatus || "false",
-          customer_id,
         });
         return res.status(201).json(user);
       }
