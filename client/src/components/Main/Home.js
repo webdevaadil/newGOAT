@@ -80,7 +80,7 @@ const Home = () => {
   const chargebeepay = async (ec) => {
     console.log(ec);
     console.log("data");
-    setnewloading(true);
+    // setnewloading(true);
 
     // await axios
     //   .get(`/api/auth/chargebeepays/${ec}`)

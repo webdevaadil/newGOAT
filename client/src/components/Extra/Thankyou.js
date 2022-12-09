@@ -25,8 +25,13 @@ export const Thankyou = () => {
           height: "100vh",
         }}
       >
-        <div className="thankyoubg"></div>
-        <div className="content ">
+        <div className="thankyoubg">
+        <div className="content " style={{
+                height: "100%",
+                backgroundColor: "rgba(0, 0, 0, 40%)",
+                color:"white",
+                fontSize:"20px"
+              }}>
           <div className="" style={{display:"flex",justifyContent:"center",height:"100vh"}}>
             <div className="wrapper-2">
             <img src={img1} alt="" />
@@ -46,6 +51,7 @@ export const Thankyou = () => {
               </div> */}
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>
