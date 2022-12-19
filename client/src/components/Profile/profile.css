@@ -201,14 +201,14 @@ button.btn.btn-profile-btn {
   h1{
        font-family: 'DM Sans', sans-serif;
     font-size:2.9em;
-    color:#022c7a ;
+    color:#fff ;
     margin:0;
     margin-bottom:20px;
   }
   .wrapper-2 p{
     margin:0;
     font-size:1em;
-    color: "##03203e";
+    color: "#fffff" !important; 
      font-family: 'DM Sans', sans-serif;
     letter-spacing:1px;
   }
@@ -254,8 +254,8 @@ button.btn.btn-profile-btn {
     .content{
       /* max-width: 1000px; */
     /* height: 50%;  */
-    margin: 0 auto;
-    width: 50%;
+    /* margin: 0 auto; */
+    /* width: 50%; */
   }
     .wrapper-1{
     height: initial;

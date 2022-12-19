@@ -35,20 +35,13 @@ export const Thankyou = () => {
           <div className="" style={{display:"flex",justifyContent:"center",height:"100vh"}}>
             <div className="wrapper-2">
             <img src={img1} alt="" />
-              <h1>Thankyou For Signing up !</h1>
+              <h1 style={{color:"white"}}>Thankyou For Signing up !</h1>
               <p>Welcome to The GOAT's Tips – Winning!</p>
               <p>You will soon receive an email confirming your purchase and further details about your subscription. If not received within 10 minutes, please check your junk mail folder (please add us to your safe senders list to ensure you’re able to receive your tipping emails).</p>
               <p>
               Furthermore, we’d love to hear from you if you have any additional questions or feedback, you contact us at winner@thegoatstips.com.au.              </p>
               
-              {/* <div style={{ display: "flex", justifyContent: "center" }}>
-                <Link to="/signup">
-                  <button className="go-home">SignUp</button>
-                </Link>
-                <Link to="/login">
-                  <button className="go-home ml-4">Login</button>
-                </Link>
-              </div> */}
+              
             </div>
           </div>
         </div>
