@@ -25,60 +25,60 @@ async function generateAccessToken() {
 async function isEmailValid(email) {
   return emailValidator.validate(email);
 }
-exports.oldregister = catchAsyncerror(async (req, res, next) => {
-  console.log(req.body);
-  let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
-  let year = new Date(req.body.dob).getUTCFullYear();
-  let month = new Date(req.body.dob).getUTCMonth();
-  let day = new Date(req.body.dob).getUTCDate();
-  let birthDate = year * 10000 + month * 100 + day * 1;
+// exports.oldregister = catchAsyncerror(async (req, res, next) => {
+//   console.log(req.body);
+//   let now = parseInt(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
+//   let year = new Date(req.body.dob).getUTCFullYear();
+//   let month = new Date(req.body.dob).getUTCMonth();
+//   let day = new Date(req.body.dob).getUTCDate();
+//   let birthDate = year * 10000 + month * 100 + day * 1;
 
-  const { username, email, password, dob, packages, phoneno } = req.body;
+//   const { username, email, password, dob, packages, phoneno } = req.body;
 
-  if (now - birthDate < 180000) {
-    return res.status(400).json("Only 18+ Person Can Register Here");
-  }
-  if (!username || !email || !password || !dob || !packages || !phoneno) {
-    return res.status(400).json("plese fill all input ");
-  }
-  if (packages === "free") {
-    paymentstatus = "true";
-  }
-  if (password.length < 8) {
-    return res.status(400).json("password must be 8 character long");
-  }
-  try {
-    User.findOne({ email }, async (err, user) => {
-      const { valid, reason, validators } = await isEmailValid(email);
-      // console.log(validators);
-      if (!valid) {
-        return res
-          .status(500)
-          .json("email is invalid please enter a valid email");
-      } else if (user) {
-        return res.status(500).json("user already registered");
-      } else {
+//   if (now - birthDate < 180000) {
+//     return res.status(400).json("Only 18+ Person Can Register Here");
+//   }
+//   if (!username || !email || !password || !dob || !packages || !phoneno) {
+//     return res.status(400).json("plese fill all input ");
+//   }
+//   if (packages === "free") {
+//     paymentstatus = "true";
+//   }
+//   if (password.length < 8) {
+//     return res.status(400).json("password must be 8 character long");
+//   }
+//   try {
+//     User.findOne({ email }, async (err, user) => {
+//       const { valid, reason, validators } = await isEmailValid(email);
+//       // console.log(validators);
+//       if (!valid) {
+//         return res
+//           .status(500)
+//           .json("email is invalid please enter a valid email");
+//       } else if (user) {
+//         return res.status(500).json("user already registered");
+//       } else {
         
-        const user = await User.create({
-          username,
-          email,
-          password,
-          dob,
-          packages,
-          paymentstatus: req.body.paymentstatus || "false",
-          phoneno,
+//         const user = await User.create({
+//           username,
+//           email,
+//           password,
+//           dob,
+//           packages,
+//           paymentstatus: req.body.paymentstatus || "false",
+//           phoneno,
           
-        });
-        // const order = await createOrder();
-        // console.log(order.id,'hfghdf')
-        // sendToken(user, 201, res);
-        return res.status(201).json(user);
-      }
-    });
-  } catch (error) {
-    // console.log(error.message);
-  }
-});
+//         });
+//         // const order = await createOrder();
+//         // console.log(order.id,'hfghdf')
+//         // sendToken(user, 201, res);
+//         return res.status(201).json(user);
+//       }
+//     });
+//   } catch (error) {
+//     // console.log(error.message);
+//   }
+// });
 
 exports.register = catchAsyncerror(async (req, res, next) => {
   console.log(req.body);
@@ -104,7 +104,11 @@ exports.register = catchAsyncerror(async (req, res, next) => {
       const { valid, reason, validators } = await isEmailValid(email);
       // console.log(validators);
 console.log(user);
-      if (user) {
+      if (!valid) {
+        return res
+          .status(500)
+          .json("email is invalid please enter a valid email");
+      } else if (user) {
         console.log(user._id);
         await User.findByIdAndUpdate(user._id, {
           packages: req.body.packages,
@@ -153,11 +157,7 @@ exports.updatesignup = catchAsyncerror(async (req, res, next) => {
     User.findOne({ email }, async (err, user) => {
       const { valid, reason, validators } = await isEmailValid(email);
       // console.log(validators);
-      if (!valid) {
-        return res
-          .status(500)
-          .json("email is invalid please enter a valid email");
-      } else if (user) {
+     if (user) {
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(req.body.password, salt);
         console.log(password);
