@@ -104,11 +104,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
       const { valid, reason, validators } = await isEmailValid(email);
       // console.log(validators);
 console.log(user);
-      if (!valid) {
-        return res
-          .status(500)
-          .json("email is invalid please enter a valid email");
-      } else if (user) {
+      if (user) {
         console.log(user._id);
         await User.findByIdAndUpdate(user._id, {
           packages: req.body.packages,
