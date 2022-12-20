@@ -286,7 +286,7 @@
 
 /* tips start */
 .card {
-    width: 50%;
+    /* width: 50%; */
 
 }
 
@@ -368,6 +368,8 @@
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
     padding: 40px;
     margin: 10px;
+    width: 50%;
+
 }
 
 .card p {
