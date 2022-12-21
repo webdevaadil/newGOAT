@@ -1079,7 +1079,6 @@ ul.socil-link li {
     }
 
     .tipping-ct {
-        /* width: 65%; */
         padding: 0;
         margin: 0;
 
@@ -1126,6 +1125,8 @@ ul.socil-link li {
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
+        width: 35%;
+
 
     }
 }
@@ -1718,6 +1719,7 @@ ul.socil-link li {
         /* display: flex; */
         justify-content: center;
         width: 180px;
+        margin: 19px -29px;
     }
 }
 
