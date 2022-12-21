@@ -31,7 +31,7 @@ export const Thankyou = () => {
                 fontSize:"20px"
               }}>
           <div className="" style={{display:"flex",justifyContent:"center"}}>
-            <div className="wrapper-2">
+            <div className="wrapper-2" >
             <img src={img1} alt="" />
               <h1 style={{color:"white"}}>Thankyou For Signing up !</h1>
               <p>Welcome to The GOAT's Tips – Winning!</p>
