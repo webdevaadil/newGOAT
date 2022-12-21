@@ -15,6 +15,10 @@ import horseIcon from "../../Images/horse-icon.png";
 import greyRacing from "../../Images/Greyhound-Racing.WebP";
 import houndIcon from "../../Images/hound-icon.png";
 import reliable from "../../Images/races22.WebP";
+import bronzelogo from "../../Images/bronze.png";
+import silverlogo from "../../Images/silver.png";
+import goldlogo from "../../Images/gold.png";
+import platinumlogo from "../../Images/platinum.png";
 import HomeFooter from "../Footer/HomeFooter";
 import vv from "../../Images/Randwick_V1-0030.mp4";
 import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
@@ -304,11 +308,11 @@ const Home = () => {
                       </li>
                       <li>
                         {" "}
-                        <i className="fa fa-check"></i> Greyhound racing
+                        Greyhound racing
                       </li>
                       <li>
                         {" "}
-                        <i className="fa fa-check"></i> Additional sports coming
+                        Additional sports coming
                         soon!
                       </li>
                     </ul>
@@ -463,20 +467,20 @@ const Home = () => {
                     }}
                     value="BRONZE-AUD-Weekly"
                     className="btn row"
-                    style={{ width: "50%" }}
+                    style={{ width: "45%" }}
                   >
 
-<img className="packageimg"width={"490px"} height="490px" src={group1} alt="" />
+{/* <img className="packageimg"width={"490px"} height="490px" src={group1} alt="" /> */}
 
-                    {/* <div className="row tipping1 " style={{ width: "100%" }}>
+                    <div className="row tipping1 " style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
                         <div className="tipp-img ">
-                          <img className="" src={img5} alt="" />
+                          <img className="" src={bronzelogo} alt="" />
                         </div>
 
                         <div className="tipping-ct">
-                          <h3>Bronze</h3>
-                          <p>Free</p>
+                          <h2>Bronze</h2>
+                          <h6>Free</h6>
                           <div className="return">
                             <span>98% returns</span>
                           </div>
@@ -485,29 +489,29 @@ const Home = () => {
                       <ul className="tiip-list">
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i> Best bet of the day
+                          Best bet of the day
                           every Saturday, completely free!
                         </li>
                       </ul>
-                    </div> */}
+                    </div>
                   </div>
                   <div
                     onClick={() => {
                       chargebeepay("SILVER-AUD-Weekly");
                     }}
                     className="btn row"
-                    style={{ width: "50%" }}
+                    style={{ width: "45%" }}
                   >
-                    <img className="packageimg" width={"490px"} height="490px"src={group2} alt="" />
-                    {/* <div className="row tipping1" style={{ width: "100%" }}>
+                    {/* <img className="packageimg" width={"490px"} height="490px"src={group2} alt="" /> */}
+                    <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
                         <div className="tipp-img">
-                          <img src={img4} alt="" />
+                          <img src={silverlogo} alt="" />
                         </div>
 
                         <div className="tipping-ct">
-                          <h3>Silver</h3>
-                          <p>$19.95 per Week</p>
+                          <h2>Silver</h2>
+                          <h6>$19.95 per Week</h6>
                           <div className="return">
                             <span>120% returns</span>
                           </div>
@@ -516,19 +520,19 @@ const Home = () => {
                       <ul className="tiip-list">
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i> 5 best bets of the day
+                          5 best bets of the day
                           every Saturday with staking plan & analysis of each
                           race
                         </li>
                         <li>
-                          <i className="fa fa-check"></i>Multi of the day
+                         Multi of the day
                         </li>
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i>Value pick of the day
+                         Value pick of the day
                         </li>
                       </ul>
-                    </div> */}
+                    </div>
                   </div>
                  
                   <div
@@ -537,19 +541,58 @@ const Home = () => {
                       
                     }}
                     className="btn row"
-                    style={{ width: "50%", marginTop: "8px" }}
+                    style={{ width: "45%", marginTop: "8px" }}
                   >
-                    <img className="packageimg" width={"490px"} height="490px" src={group4} alt="" />
+                    {/* <img className="packageimg" width={"490px"} height="490px" src={group4} alt="" /> */}
+                    <div className="row tipping1" style={{ width: "100%" }}>
 
-                    {/* <div className="row tipping1" style={{ width: "100%" }}>
+<div className="col-md-12 tipping1-tiles">
+  <div className="tipp-img">
+    <img src={goldlogo} alt="" />
+  </div>
+
+  <div className="tipping-ct">
+    <h2>Gold</h2>
+    <h6>$34.95 per Week</h6>
+    <div className="return">
+      <span>165% returns</span>
+    </div>
+  </div>
+</div>
+<ul className="tiip-list">
+  <li>
+    21 of the best bets
+    across Australia every Saturday with staking plan &
+    analysis of each race.
+  </li>
+  <li>
+   3 x Best Multis
+  </li>
+  <li>
+   Quaddie selections for
+    Brisbane, Sydney & Melbourne.
+  </li>
+</ul>
+</div>
+                    
+                  </div>
+                  <div
+                    onClick={() => {
+                      chargebeepay("PLATINUM-AUD-Weekly");
+                    }}
+                    className="btn row"
+                    style={{ width: "45%", marginTop: "8px" }}
+                  >
+                    {/* <img className="packageimg" width={"490px"} height="490px"src={group3} alt="" /> */}
+                    <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles">
                         <div className="tipp-img">
-                          <img src={img3} alt="" />
+                          <img src={platinumlogo} alt="" />
                         </div>
 
                         <div className="tipping-ct">
-                          <h3>Platinum</h3>
-                          <p>$19.95 per Week</p>
+                          <h2>Platinum</h2>
+                          <h6>$19.95 per Week</h6>
                           <div className="return">
                             <span>265% returns</span>
                           </div>
@@ -558,68 +601,29 @@ const Home = () => {
                       <ul className="tiip-list">
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i> 21 of the best bets
+                          21 of the best bets
                           across Australia every Saturday.
                         </li>
                         <li>
-                          <i className="fa fa-check"></i> 3 x Best Multis
+                          3 x Best Multis
                         </li>
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i>Value pick of the day
+                         Value pick of the day
                         </li>
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i> Quaddie for Brisbane,
+                          Quaddie for Brisbane,
                           Sydney & Melbourne.
                         </li>
                         <li>
                           {" "}
-                          <i className="fa fa-check"></i> Best bet of the day,
+                          Best bet of the day,
                           everyday!
                         </li>
                       </ul>
-                    </div> */}
-                  </div>
-                  <div
-                    onClick={() => {
-                      chargebeepay("PLATINUM-AUD-Weekly");
-                    }}
-                    className="btn row"
-                    style={{ width: "50%", marginTop: "8px" }}
-                  >
-                    <img className="packageimg" width={"490px"} height="490px"src={group3} alt="" />
-
-                    {/* <div className="row tipping1" style={{ width: "100%" }}>
-
-                      <div className="col-md-12 tipping1-tiles">
-                        <div className="tipp-img">
-                          <img src={img2} alt="" />
-                        </div>
-
-                        <div className="tipping-ct">
-                          <h3>Gold</h3>
-                          <p>$34.95 per Week</p>
-                          <div className="return">
-                            <span>165% returns</span>
-                          </div>
-                        </div>
-                      </div>
-                      <ul className="tiip-list">
-                        <li>
-                          <i className="fa fa-check"></i> 21 of the best bets
-                          across Australia every Saturday with staking plan &
-                          analysis of each race.
-                        </li>
-                        <li>
-                          <i className="fa fa-check"></i>3 x Best Multis
-                        </li>
-                        <li>
-                          <i className="fa fa-check"></i>Quaddie selections for
-                          Brisbane, Sydney & Melbourne.
-                        </li>
-                      </ul>
-                    </div> */}
+                    </div>
+                   
                   </div>
                 </div>
                 <div className="bnner-btn">
