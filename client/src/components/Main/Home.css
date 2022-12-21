@@ -1086,7 +1086,7 @@ ul.socil-link li {
     }
 
     .return {
-        margin: 5px 0;
+        margin: 12px 0;
     }
 
     .tipping-ct p {
@@ -1318,7 +1318,7 @@ ul.socil-link li {
 
 @media(max-width:778px) {
     .tipping1-tiles{
-        height: 70%;  
+        height: 60%;  
     
 }
     .video-container {
