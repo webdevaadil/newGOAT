@@ -22,17 +22,15 @@ export const Thankyou = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "flex-start",
-          height: "100vh",
         }}
       >
-        <div className="thankyoubg">
+        <div className="thankyoucontent1">
         <div className="content " style={{
-                height: "100%",
-                backgroundColor: "rgba(0, 0, 0, 40%)",
+                
                 color:"white",
                 fontSize:"20px"
               }}>
-          <div className="" style={{display:"flex",justifyContent:"center",height:"100vh"}}>
+          <div className="" style={{display:"flex",justifyContent:"center"}}>
             <div className="wrapper-2">
             <img src={img1} alt="" />
               <h1 style={{color:"white"}}>Thankyou For Signing up !</h1>
