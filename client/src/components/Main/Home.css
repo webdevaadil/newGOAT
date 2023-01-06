@@ -1613,9 +1613,9 @@ ul.socil-link li {
         width: 100% !important;
     }
 
-    .banner-main {
+    /* .banner-main {
         height: 720px !important;
-    }
+    } */
 
     .card1 {
         width: 200px;
@@ -1703,9 +1703,9 @@ ul.socil-link li {
         padding: 0px 0px;
     }
 
-    .banner-main {
+    /* .banner-main {
         height: 575px ;
-    }
+    } */
 
     .baner-ct img {
         max-width: 90px;
@@ -1745,9 +1745,9 @@ ul.socil-link li {
 .tips-mian .tips-main{
     display: none;
  }
-    .banner-main {
+    /* .banner-main {
         height: 700px !important;
-    }
+    } */
 
     .baner-ct img {
         margin-top: 1cm;
