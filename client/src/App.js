@@ -26,7 +26,6 @@ import { Checkout } from "./multi/Stepform/Checkout";
 import { NewLogin } from "./components/Login/NewLogin";
 
 function App() {
-  "use strict";
   const dispatch = useDispatch();
   dispatch(loaduser());
 
