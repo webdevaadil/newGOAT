@@ -21,6 +21,7 @@ import goldlogo from "../../Images/gold.png";
 import platinumlogo from "../../Images/platinum.png";
 import HomeFooter from "../Footer/HomeFooter";
 import vv from "../../Images/Randwick_V1-0030.mp4";
+import tt from "../../Images/replacevideo.svg";
 import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loaduser } from "../../actions/userAction";
@@ -31,6 +32,7 @@ import group1 from "../../Images/BRONZE.WebP";
 import group2 from "../../Images/SILVER.WebP";
 import group3 from "../../Images/PLATINUM .WebP";
 import group4 from "../../Images/gOLD.WebP";
+import topimg from "../../Images/goat-slide.png";
 // import Chargebee from '@chargebee/chargebee-js-react-wrapper';
 
 const Home = () => {
@@ -135,9 +137,12 @@ const Home = () => {
             <div className="caption">
               <div className="container her0">
                 <div style={{ height: "150vh" }} className="row banner-main">
-                  <video autoPlay loop muted id="background-video">
+                                    
+                  <video autoPlay loop muted style={{display:"block"}}className="background-video-top"id="background-video">
                     <source src={vv} type="video/mp4" />
                   </video>
+                  <img src={tt} style={{display:"none"}} className="background-img-top" id="background-video"/>
+
                   <div className="banner-sec banne-bg">
                     <span
                       style={{ float: "right" }}
@@ -495,7 +500,13 @@ const Home = () => {
                     className="btn row"
                     style={{ width: "50%" }}
                   >
-                    <img className="packageimg"width={"490px"} height="490px" src={group1} alt="" />
+                    <img
+                      className="packageimg"
+                      width={"490px"}
+                      height="490px"
+                      src={group1}
+                      alt=""
+                    />
 
                     {/* <div className="row tipping1 " style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
@@ -526,7 +537,13 @@ const Home = () => {
                     className="btn row"
                     style={{ width: "50%" }}
                   >
-                    <img className="packageimg" width={"490px"} height="490px"src={group2} alt="" />
+                    <img
+                      className="packageimg"
+                      width={"490px"}
+                      height="490px"
+                      src={group2}
+                      alt=""
+                    />
                     {/* <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
                         <div className="tipp-img">
@@ -560,7 +577,13 @@ const Home = () => {
                     className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
                   >
-                    <img className="packageimg" width={"490px"} height="490px" src={group4} alt="" />
+                    <img
+                      className="packageimg"
+                      width={"490px"}
+                      height="490px"
+                      src={group4}
+                      alt=""
+                    />
                     {/* <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles">
                         <div className="tipp-img">
@@ -594,7 +617,13 @@ const Home = () => {
                     className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
                   >
-                    <img className="packageimg" width={"490px"} height="490px"src={group3} alt="" />
+                    <img
+                      className="packageimg"
+                      width={"490px"}
+                      height="490px"
+                      src={group3}
+                      alt=""
+                    />
                     {/* <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles">
                         <div className="tipp-img">

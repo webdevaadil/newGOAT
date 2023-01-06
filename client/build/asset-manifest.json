@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.dc163074.css",
-    "main.js": "/static/js/main.ecec2ed4.js",
+    "main.css": "/static/css/main.5daa3f91.css",
+    "main.js": "/static/js/main.dccfde3d.js",
     "static/media/Randwick_V1-0030.mp4": "/static/media/Randwick_V1-0030.74e5499d1d1f6c4f54bc.mp4",
+    "static/media/replacevideo.svg": "/static/media/replacevideo.6b9ab3939ee3f0c69281bb4c6ff46cb5.svg",
+    "static/media/goat-slide.png": "/static/media/goat-slide.4560110c3ef470164703.png",
+    "static/media/winninghorse.WebP": "/static/media/winninghorse.b9ae47b98a01aee28b8d.WebP",
     "static/media/serviceback.WebP": "/static/media/serviceback.5494ca39041e917bf1e7.WebP",
-    "static/media/winninghorse.WebP": "/static/media/winninghorse.454170bb4223f8447f69.WebP",
     "static/media/welcome-img.WebP": "/static/media/welcome-img.8a4007155639ea9727c1.WebP",
     "static/media/goat-slide.WebP": "/static/media/goat-slide.5a4f5e0c06c543fd6ecf.WebP",
     "static/media/new-hero.WebP": "/static/media/new-hero.0bf02178e4df9c75510c.WebP",
     "static/media/Rectangle_1370.WebP": "/static/media/Rectangle_1370.b0cdf491c8aa0936d92a.WebP",
     "static/media/races.WebP": "/static/media/races.52e865ac7c35dcfb5f4b.WebP",
-    "static/media/winninghorsemga.WebP": "/static/media/winninghorsemga.45e91eaf24a763dfa244.WebP",
     "static/media/Horse-Racing.WebP": "/static/media/Horse-Racing.03aa3ae4124b5d6c36d9.WebP",
     "static/media/races22.WebP": "/static/media/races22.febcc2306484d22aa95f.WebP",
     "static/media/Greyhound-Racing.WebP": "/static/media/Greyhound-Racing.fe5611e4c1ae4697c7b6.WebP",
@@ -38,11 +39,11 @@
     "static/media/Twitter.svg": "/static/media/Twitter.f33a948b68a47e691ccfd26150fbaf3f.svg",
     "static/media/Facebook.svg": "/static/media/Facebook.5b2bfb1aab409fc73dc37b2c04303fec.svg",
     "static/media/TickRed.svg": "/static/media/TickRed.664fae31564e36baee017fcc614c1c1e.svg",
-    "main.dc163074.css.map": "/static/css/main.dc163074.css.map",
-    "main.ecec2ed4.js.map": "/static/js/main.ecec2ed4.js.map"
+    "main.5daa3f91.css.map": "/static/css/main.5daa3f91.css.map",
+    "main.dccfde3d.js.map": "/static/js/main.dccfde3d.js.map"
   },
   "entrypoints": [
-    "static/css/main.dc163074.css",
-    "static/js/main.ecec2ed4.js"
+    "static/css/main.5daa3f91.css",
+    "static/js/main.dccfde3d.js"
   ]
 }

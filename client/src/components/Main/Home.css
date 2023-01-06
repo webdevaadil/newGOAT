@@ -1637,11 +1637,11 @@ ul.socil-link li {
     }
 }
 @media(max-width:700px){
-    .result{
+    /* .result{
         background: url("../../Images/winninghorsemga.WebP") !important;
         background-repeat: no-repeat !important;
         background-size: cover;
-    }
+    } */
 }
 .Services-sec h3 ,.Services-sec p  {
     /* color: #000000 !important; */
@@ -1652,6 +1652,7 @@ ul.socil-link li {
 }
 
 @media(max-width:667px) {
+   
     .tipping-sec .section-title h3 {
         font-size: 35px;
         line-height: 44px;
@@ -1731,6 +1732,12 @@ ul.socil-link li {
 }
 
 @media(max-width:500px) {
+    .background-video-top{
+        display: none !important;
+    }
+    .background-img-top{
+        display: block !important;
+    }
     .tipping1-tiles{
         height: 40%;  
     
@@ -1774,12 +1781,12 @@ ul.socil-link li {
         height: 500px;
 
     }
-    .result{
+    /* .result{
         background: url("../../Images/winninghorsemga.WebP") !important;
         background-repeat: no-repeat !important;
         background-size: cover;
         background-position: 10% 0 !important;
-    }
+    } */
 
 
 }
