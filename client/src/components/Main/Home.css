@@ -1120,7 +1120,7 @@ ul.socil-link li {
     }
 
     .banner-main {
-        height: 840px;
+        height: 840px !important;
         
     }
 
@@ -1704,7 +1704,7 @@ ul.socil-link li {
     }
 
     .banner-main {
-        height: 575px;
+        height: 575px !important;
     }
 
     .baner-ct img {
