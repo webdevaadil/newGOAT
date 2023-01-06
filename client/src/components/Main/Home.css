@@ -520,7 +520,7 @@ ul.tiip-list li {
     background: rgba(0, 0, 0, 0.61);
     margin: 20px 10px;
     padding: 15px;
-    height: 600px;
+    height: 520px;
     align-content: stretch;
 }
 .tipping1-tiles{
@@ -1073,8 +1073,10 @@ ul.socil-link li {
     }
 
     .tipp-img {
+        margin: auto 0;
         /* max-width: 50%; */
-        height: 50%;
+        height: 70%;
+        border-radius: 50%;
 
     }
 
@@ -1098,6 +1100,10 @@ ul.socil-link li {
 
 
 
+
+@media(max-width:850px) {
+    .tipping1 {}
+    }
 @media(max-width:1024px) {
     .baner-ct h2 {
         font-size: 45px;
@@ -1110,6 +1116,7 @@ ul.socil-link li {
     .tipping1 {
         /* flex-direction: column; */
         justify-content: center;
+        height: 500px;
     }
 
     .banner-main {
@@ -1319,7 +1326,7 @@ ul.socil-link li {
 
 @media(max-width:778px) {
     .tipping1-tiles{
-        height: 60%;  
+        height: 30%;  
     
 }
     .video-container {
@@ -1778,6 +1785,9 @@ ul.socil-link li {
 }
 
 @media(max-width:410px) {
+    .tipp-img {
+        height: 80%;
+    }
     ul.socil-link {
         list-style: none;
         margin: auto;

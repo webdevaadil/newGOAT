@@ -27,13 +27,11 @@ import { clearErrors, loaduser } from "../../actions/userAction";
 import { positions, useAlert } from "react-alert";
 import axios from "axios";
 import { Loader } from "../layout/Loader";
-import group1 from "../../Images/BRONZE.WebP"
-import group2 from "../../Images/SILVER.WebP"
-import group3 from "../../Images/PLATINUM .WebP"
-import group4 from "../../Images/gOLD.WebP"
+import group1 from "../../Images/BRONZE.WebP";
+import group2 from "../../Images/SILVER.WebP";
+import group3 from "../../Images/PLATINUM .WebP";
+import group4 from "../../Images/gOLD.WebP";
 // import Chargebee from '@chargebee/chargebee-js-react-wrapper';
-
-
 
 const Home = () => {
   const [newloading, setnewloading] = useState(false);
@@ -50,8 +48,8 @@ const Home = () => {
 
   const cbInit = {
     cbInstance: window.Chargebee.init({
-      site: "thegoatstips-test"
-    })
+      site: "thegoatstips-test",
+    }),
   };
 
   const { error, isAuthenticated } = useSelector((state) => state.user);
@@ -71,15 +69,22 @@ const Home = () => {
   //   navigate("/signup");
   // };
 
-  const urlEncode = function(data) {
+  const urlEncode = function (data) {
     var str = [];
     for (var p in data) {
-        if (data.hasOwnProperty(p) && (!(data[p] == undefined || data[p] == null))) {
-            str.push(encodeURIComponent(p) + "=" + (data[p] ? encodeURIComponent(data[p]) : ""));
-        }
+      if (
+        data.hasOwnProperty(p) &&
+        !(data[p] == undefined || data[p] == null)
+      ) {
+        str.push(
+          encodeURIComponent(p) +
+            "=" +
+            (data[p] ? encodeURIComponent(data[p]) : "")
+        );
+      }
     }
     return str.join("&");
-  }
+  };
 
   const chargebeepay = async (ec) => {
     console.log(ec);
@@ -93,32 +98,32 @@ const Home = () => {
     //     .then(setnewloading(false))
     //   );
 
-      cbInit.cbInstance.openCheckout({
-        hostedPage: () => {
-          var data = {
-            plan_id: ec
-          };
-          // Hit your end point that returns hosted page object as response
-          // This sample end point will call checkout new api
-          // https://apidocs.chargebee.com/docs/api/hosted_pages#checkout_new_subscription
-          // If you want to use paypal, go cardless and plaid, pass embed parameter as false
-          return axios.post(`/api/auth/chargebeepays/`, urlEncode(data)).then((response) =>  response.data)
-        },
-        success(hostedPageId) {
-          console.log(hostedPageId);
-        },
-        close:() => {
-          setnewloading(false)
-          console.log("checkout new closed");
-        },
-        step(step) {
-          console.log("checkout", step);
-        }
-      });
-      this.preventDefault();
+    cbInit.cbInstance.openCheckout({
+      hostedPage: () => {
+        var data = {
+          plan_id: ec,
+        };
+        // Hit your end point that returns hosted page object as response
+        // This sample end point will call checkout new api
+        // https://apidocs.chargebee.com/docs/api/hosted_pages#checkout_new_subscription
+        // If you want to use paypal, go cardless and plaid, pass embed parameter as false
+        return axios
+          .post(`/api/auth/chargebeepays/`, urlEncode(data))
+          .then((response) => response.data);
+      },
+      success(hostedPageId) {
+        console.log(hostedPageId);
+      },
+      close: () => {
+        setnewloading(false);
+        console.log("checkout new closed");
+      },
+      step(step) {
+        console.log("checkout", step);
+      },
+    });
+    this.preventDefault();
   };
-
- 
 
   return (
     <>
@@ -149,22 +154,28 @@ const Home = () => {
                     >
                       <div className="baner-ct">
                         <ul className="navbar-nav top-btn ml-auto">
-                          <Link
-                            style={{ textAlign: "end" }}
-                          >
-                            <button  onClick={() => {
-                      chargebeepay("GOLD-AUD-Weekly");
-                    }} className="homelogin btn btn-1">
+                          <Link style={{ textAlign: "end" }}>
+                            <button
+                              onClick={() => {
+                                chargebeepay("GOLD-AUD-Weekly");
+                              }}
+                              className="homelogin btn btn-1"
+                            >
                               Login
                             </button>{" "}
                           </Link>
                         </ul>
-                        <img  src={img1} alt="" />
+                        <img src={img1} alt="" />
                         <div className="bnner-btn">
-                          <Link >
-                            <button onClick={() => {
-                      chargebeepay("GOLD-AUD-Weekly");
-                    }} className="signbtn">Signup</button>
+                          <Link>
+                            <button
+                              onClick={() => {
+                                chargebeepay("GOLD-AUD-Weekly");
+                              }}
+                              className="signbtn"
+                            >
+                              Signup
+                            </button>
                           </Link>
                         </div>
                         <h2>
@@ -214,18 +225,36 @@ const Home = () => {
                               <ul>
                                 <li>
                                   {" "}
-                                  <img src={check}width="25px " height="19px" alt="" srcset="" /> Thoroughbred
-                                  horse racing
+                                  <img
+                                    src={check}
+                                    width="25px "
+                                    height="19px"
+                                    alt=""
+                                    srcset=""
+                                  />{" "}
+                                  Thoroughbred horse racing
                                 </li>
                                 <li>
                                   {" "}
-                                   <img src={check} alt="" srcset="" width="25px " height="19px"/> Greyhound
-                                  racing
+                                  <img
+                                    src={check}
+                                    alt=""
+                                    srcset=""
+                                    width="25px "
+                                    height="19px"
+                                  />{" "}
+                                  Greyhound racing
                                 </li>
                                 <li>
                                   {" "}
-                                   <img src={check} alt="" srcset="" width="25px " height="19px"/> Additional
-                                  sports coming soon!
+                                  <img
+                                    src={check}
+                                    alt=""
+                                    srcset=""
+                                    width="25px "
+                                    height="19px"
+                                  />{" "}
+                                  Additional sports coming soon!
                                 </li>
                               </ul>
                             </div>
@@ -340,10 +369,7 @@ const Home = () => {
                     </div>
                     <div className="col-md-2 card card1 sec2num">
                       <div style={{ marginBottom: "4px" }} className="tips-ct ">
-                        <h2>
-                          {" "}
-                          &#62;$4
-                        </h2>
+                        <h2> &#62;$4</h2>
                         <p>Average odds</p>
                       </div>
                     </div>
@@ -396,7 +422,7 @@ const Home = () => {
               <div className="row reliav-main">
                 <div className="col-md-6">
                   <div className="reliable-img">
-                    <img  width="471 px" height="537 px" src={reliable} alt="" />
+                    <img width="471 px" height="537 px" src={reliable} alt="" />
                   </div>
                 </div>
 
@@ -433,7 +459,7 @@ const Home = () => {
                 <div className="col-md-6">
                   <div className="reliable-img">
                     <div className="mob-img">
-                      <img src={races1} width ="471px" height="314px"alt="" />
+                      <img src={races1} width="471px" height="314px" alt="" />
                     </div>
                   </div>
                 </div>
@@ -456,23 +482,22 @@ const Home = () => {
                   </h4>
                 </div>
                 <div className="tipp">
-                {/* <template>
+                  {/* <template>
   <a id="subscribe" href="#">Subscribe</a>
 </template> */}
-                  
-                {/* <a href onClick={onClick} data-cb-type="checkout" data-cb-item0="GOLD-AUD-Weekly" data-cb-item-0-quantity="1" >subscribe</a> */}
+
+                  {/* <a href onClick={onClick} data-cb-type="checkout" data-cb-item0="GOLD-AUD-Weekly" data-cb-item-0-quantity="1" >subscribe</a> */}
                   <div
                     onClick={() => {
                       chargebeepay("BRONZE-AUD-Weekly");
                     }}
                     value="BRONZE-AUD-Weekly"
                     className="btn row"
-                    style={{ width: "45%" }}
+                    style={{ width: "50%" }}
                   >
+                    <img className="packageimg"width={"490px"} height="490px" src={group1} alt="" />
 
-{/* <img className="packageimg"width={"490px"} height="490px" src={group1} alt="" /> */}
-
-                    <div className="row tipping1 " style={{ width: "100%" }}>
+                    {/* <div className="row tipping1 " style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
                         <div className="tipp-img ">
                           <img className="" src={bronzelogo} alt="" />
@@ -489,21 +514,20 @@ const Home = () => {
                       <ul className="tiip-list">
                         <li>
                           {" "}
-                          Best bet of the day
-                          every Saturday, completely free!
+                          Best bet of the day every Saturday, completely free!
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
                   </div>
                   <div
                     onClick={() => {
                       chargebeepay("SILVER-AUD-Weekly");
                     }}
                     className="btn row"
-                    style={{ width: "45%" }}
+                    style={{ width: "50%" }}
                   >
-                    {/* <img className="packageimg" width={"490px"} height="490px"src={group2} alt="" /> */}
-                    <div className="row tipping1" style={{ width: "100%" }}>
+                    <img className="packageimg" width={"490px"} height="490px"src={group2} alt="" />
+                    {/* <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles ">
                         <div className="tipp-img">
                           <img src={silverlogo} alt="" />
@@ -520,71 +544,58 @@ const Home = () => {
                       <ul className="tiip-list">
                         <li>
                           {" "}
-                          5 best bets of the day
-                          every Saturday with staking plan & analysis of each
-                          race
+                          5 best bets of the day every Saturday with staking
+                          plan & analysis of each race
                         </li>
-                        <li>
-                         Multi of the day
-                        </li>
-                        <li>
-                          {" "}
-                         Value pick of the day
-                        </li>
+                        <li>Multi of the day</li>
+                        <li> Value pick of the day</li>
                       </ul>
-                    </div>
+                    </div> */}
                   </div>
-                 
+
                   <div
                     onClick={() => {
                       chargebeepay("GOLD-AUD-Weekly");
-                      
                     }}
                     className="btn row"
-                    style={{ width: "45%", marginTop: "8px" }}
+                    style={{ width: "50%", marginTop: "8px" }}
                   >
-                    {/* <img className="packageimg" width={"490px"} height="490px" src={group4} alt="" /> */}
-                    <div className="row tipping1" style={{ width: "100%" }}>
+                    <img className="packageimg" width={"490px"} height="490px" src={group4} alt="" />
+                    {/* <div className="row tipping1" style={{ width: "100%" }}>
+                      <div className="col-md-12 tipping1-tiles">
+                        <div className="tipp-img">
+                          <img src={goldlogo} alt="" />
+                        </div>
 
-<div className="col-md-12 tipping1-tiles">
-  <div className="tipp-img">
-    <img src={goldlogo} alt="" />
-  </div>
-
-  <div className="tipping-ct">
-    <h2>Gold</h2>
-    <h6>$34.95 per Week</h6>
-    <div className="return">
-      <span>165% returns</span>
-    </div>
-  </div>
-</div>
-<ul className="tiip-list">
-  <li>
-    21 of the best bets
-    across Australia every Saturday with staking plan &
-    analysis of each race.
-  </li>
-  <li>
-   3 x Best Multis
-  </li>
-  <li>
-   Quaddie selections for
-    Brisbane, Sydney & Melbourne.
-  </li>
-</ul>
-</div>
-                    
+                        <div className="tipping-ct">
+                          <h2>Gold</h2>
+                          <h6>$34.95 per Week</h6>
+                          <div className="return">
+                            <span>165% returns</span>
+                          </div>
+                        </div>
+                      </div>
+                      <ul className="tiip-list">
+                        <li>
+                          21 of the best bets across Australia every Saturday
+                          with staking plan & analysis of each race.
+                        </li>
+                        <li>3 x Best Multis</li>
+                        <li>
+                          Quaddie selections for Brisbane, Sydney & Melbourne.
+                        </li>
+                      </ul>
+                    </div> */}
                   </div>
                   <div
                     onClick={() => {
                       chargebeepay("PLATINUM-AUD-Weekly");
                     }}
                     className="btn row"
-                    style={{ width: "45%", marginTop: "8px" }}
+                    style={{ width: "50%", marginTop: "8px" }}
                   >
-                    {/* <img className="packageimg" width={"490px"} height="490px"src={group3} alt="" /> */}
-                    <div className="row tipping1" style={{ width: "100%" }}>
+                    <img className="packageimg" width={"490px"} height="490px"src={group3} alt="" />
+                    {/* <div className="row tipping1" style={{ width: "100%" }}>
                       <div className="col-md-12 tipping1-tiles">
                         <div className="tipp-img">
                           <img src={platinumlogo} alt="" />
@@ -601,36 +612,26 @@ const Home = () => {
                       <ul className="tiip-list">
                         <li>
                           {" "}
-                          21 of the best bets
-                          across Australia every Saturday.
+                          21 of the best bets across Australia every Saturday.
                         </li>
-                        <li>
-                          3 x Best Multis
-                        </li>
-                        <li>
-                          {" "}
-                         Value pick of the day
-                        </li>
-                        <li>
-                          {" "}
-                          Quaddie for Brisbane,
-                          Sydney & Melbourne.
-                        </li>
-                        <li>
-                          {" "}
-                          Best bet of the day,
-                          everyday!
-                        </li>
+                        <li>3 x Best Multis</li>
+                        <li> Value pick of the day</li>
+                        <li> Quaddie for Brisbane, Sydney & Melbourne.</li>
+                        <li> Best bet of the day, everyday!</li>
                       </ul>
-                    </div>
-                   
+                    </div> */}
                   </div>
                 </div>
                 <div className="bnner-btn">
-                  <Link >
-                    <button onClick={() => {
-                      chargebeepay("GOLD-AUD-Weekly");
-                    }} className="signbtn">Sign Me Up</button>
+                  <Link>
+                    <button
+                      onClick={() => {
+                        chargebeepay("GOLD-AUD-Weekly");
+                      }}
+                      className="signbtn"
+                    >
+                      Sign Me Up
+                    </button>
                   </Link>
                 </div>
               </div>
@@ -651,7 +652,12 @@ const Home = () => {
                 <div className="row service-main">
                   <div className="col-md-6">
                     <div className="service-img2">
-                      <img width="450px" height="320px" src={horseRacing} alt="img" />
+                      <img
+                        width="450px"
+                        height="320px"
+                        src={horseRacing}
+                        alt="img"
+                      />
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -679,9 +685,13 @@ const Home = () => {
                 </div> */}
                     <div className="bnner-btn">
                       <Link>
-                        <button onClick={() => {
-                      chargebeepay("GOLD-AUD-Weekly");
-                    }} className="signbtn" href="/signup">
+                        <button
+                          onClick={() => {
+                            chargebeepay("GOLD-AUD-Weekly");
+                          }}
+                          className="signbtn"
+                          href="/signup"
+                        >
                           Sign Me Up
                         </button>
                       </Link>
@@ -692,7 +702,12 @@ const Home = () => {
                 <div className="row service-main">
                   <div className="col-md-6">
                     <div className="service-img2">
-                      <img width="450px" height="320px"src={greyRacing} alt="img" />
+                      <img
+                        width="450px"
+                        height="320px"
+                        src={greyRacing}
+                        alt="img"
+                      />
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -711,10 +726,15 @@ const Home = () => {
                       </p>
                     </div>
                     <div className="bnner-btn">
-                      <Link >
-                        <button onClick={() => {
-                      chargebeepay("GOLD-AUD-Weekly");
-                    }} className="signbtn">Sign Me Up</button>
+                      <Link>
+                        <button
+                          onClick={() => {
+                            chargebeepay("GOLD-AUD-Weekly");
+                          }}
+                          className="signbtn"
+                        >
+                          Sign Me Up
+                        </button>
                       </Link>
                     </div>
                   </div>
@@ -735,7 +755,7 @@ const Home = () => {
                     rel="noreferrer"
                     href="https://www.facebook.com/The-GOATs-Tips-102013742449574"
                   >
-             <img  src={facebook} width="30px " height="58px"/>
+                    <img src={facebook} width="30px " height="58px" />
                   </a>
                 </li>
                 <li>
@@ -744,8 +764,7 @@ const Home = () => {
                     rel="noreferrer"
                     href="https://twitter.com/thegoatstips"
                   >
-                                <img width="60px " height="49px" src={twitter}/>
-
+                    <img width="60px " height="49px" src={twitter} />
                   </a>
                 </li>
                 <li>
@@ -754,8 +773,7 @@ const Home = () => {
                     rel="noreferrer"
                     href="https://www.instagram.com/goats.tips/"
                   >
-                                <img  width="60px " height="60px"src={insta}/>
-
+                    <img width="60px " height="60px" src={insta} />
                   </a>
                 </li>
               </ul>
@@ -957,10 +975,15 @@ const Home = () => {
                   to your preferences.
                 </p>
                 <div className="bnner-btn">
-                  <Link >
-                    <button onClick={() => {
-                      chargebeepay("GOLD-AUD-Weekly");
-                    }} className="signbtn">Sign Me Up</button>
+                  <Link>
+                    <button
+                      onClick={() => {
+                        chargebeepay("GOLD-AUD-Weekly");
+                      }}
+                      className="signbtn"
+                    >
+                      Sign Me Up
+                    </button>
                   </Link>
                 </div>
               </div>
