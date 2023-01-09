@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.3d9614f1.css",
+    "main.css": "/static/css/main.bb929c12.css",
     "main.js": "/static/js/main.dccfde3d.js",
     "static/media/Randwick_V1-0030.mp4": "/static/media/Randwick_V1-0030.74e5499d1d1f6c4f54bc.mp4",
     "static/media/replacevideo.svg": "/static/media/replacevideo.6b9ab3939ee3f0c69281bb4c6ff46cb5.svg",
@@ -39,11 +39,11 @@
     "static/media/Twitter.svg": "/static/media/Twitter.f33a948b68a47e691ccfd26150fbaf3f.svg",
     "static/media/Facebook.svg": "/static/media/Facebook.5b2bfb1aab409fc73dc37b2c04303fec.svg",
     "static/media/TickRed.svg": "/static/media/TickRed.664fae31564e36baee017fcc614c1c1e.svg",
-    "main.3d9614f1.css.map": "/static/css/main.3d9614f1.css.map",
+    "main.bb929c12.css.map": "/static/css/main.bb929c12.css.map",
     "main.dccfde3d.js.map": "/static/js/main.dccfde3d.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d9614f1.css",
+    "static/css/main.bb929c12.css",
     "static/js/main.dccfde3d.js"
   ]
 }
