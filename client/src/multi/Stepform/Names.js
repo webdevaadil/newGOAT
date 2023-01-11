@@ -71,7 +71,7 @@ export const Names = ({ formData, setForm, navigation }) => {
      <div className  = {loading?"aad":"overflow"}>
       <section id="form-section">
         <div className="wel-form">
-          <div className="wel-p1 img-main">
+          <div className="wel-p1 ">
             <div style={{height:"101vh"}} className="img-main"></div>
           </div>
           <div className="col-md-6 centerlogo o-hidden">
