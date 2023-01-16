@@ -4,8 +4,8 @@ var chargebee = require("chargebee");
 exports.chargebeepay=catchAsyncerror(async(req,res,)=>{
   console.log(req.params);
   let packages=req.params.packages;
-   chargebee.configure({site :"thegoatstips",
-  api_key : "live_fUgOvzGowuWIbcOiyr3uEncdrUAPVaZYM"})
+   chargebee.configure({site :"thegoatstips-test",
+  api_key : "test_Hne1MTcd5FhtsPwKVD77MFsGIfsYsTCDj"})
 
 chargebee.hosted_page.checkout_new_for_items({
   subscription_items : [
