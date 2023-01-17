@@ -50,7 +50,7 @@ const Home = () => {
 
   const cbInit = {
     cbInstance: window.Chargebee.init({
-      site: "thegoatstips.chargebee",
+      site: "thegoatstips",
     }),
   };
 
@@ -101,7 +101,7 @@ const Home = () => {
     //   );
 
     cbInit.cbInstance.openCheckout({
-      hostedPage: () => {
+      hostedPage: async () => {
         var data = {
           plan_id: ec,
         };
@@ -109,9 +109,10 @@ const Home = () => {
         // This sample end point will call checkout new api
         // https://apidocs.chargebee.com/docs/api/hosted_pages#checkout_new_subscription
         // If you want to use paypal, go cardless and plaid, pass embed parameter as false
-        return axios
-          .post(`/api/auth/chargebeepays/`, urlEncode(data))
-          .then((response) => response.data);
+        const response = await axios
+          .post(`/api/auth/chargebeepays/`, urlEncode(data));
+          
+        return response.data;
       },
       success(hostedPageId) {
         console.log(hostedPageId);

@@ -4,7 +4,7 @@ var chargebee = require("chargebee");
 exports.chargebeepay=catchAsyncerror(async(req,res,)=>{
   console.log(req.params);
   let packages=req.params.packages;
-   chargebee.configure({site :"thegoatstips.chargebee",
+   chargebee.configure({site :"thegoatstips",
   api_key : "live_fUgOvzGowuWIbcOiyr3uEncdrUAPVaZYM"})
 
 chargebee.hosted_page.checkout_new_for_items({
@@ -20,9 +20,9 @@ chargebee.hosted_page.checkout_new_for_items({
     console.log(result);
     var hosted_page = result.hosted_page;
     res.send(result.hosted_page);
-    // return res
-    // .status(200)
-    // .json({result });
+    return res
+    .status(200)
+    .json({result });
   }
 });
 
