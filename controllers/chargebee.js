@@ -1,13 +1,13 @@
 const catchAsyncerror = require("../middleware/catchAsyncerror");
 var chargebee = require("chargebee");
 
+chargebee.configure({site :"thegoatstips",
+api_key :"live_fUgOvzGowuWIbcOiyr3uEncdrUAPVaZYM"})
 exports.chargebeepay=catchAsyncerror(async(req,res,)=>{
   console.log(req.params);
   let packages=req.params.packages;
-   chargebee.configure({site :"thegoatstips",
-  api_key : "live_fUgOvzGowuWIbcOiyr3uEncdrUAPVaZYM"})
 
-chargebee.hosted_page.checkout_new_for_items({
+chargebee.hosted_page.checkout_new_for_items,"live_fUgOvzGowuWIbcOiyr3uEncdrUAPVaZYM",({
   subscription_items : [
     {
       item_price_id : req.body.plan_id,
