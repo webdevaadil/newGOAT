@@ -50,7 +50,7 @@ const Home = () => {
 
   const cbInit = {
     cbInstance: window.Chargebee.init({
-      site: "https://thegoatstips.chargebee.com/",
+      site: "thegoatstips.chargebee",
     }),
   };
 
