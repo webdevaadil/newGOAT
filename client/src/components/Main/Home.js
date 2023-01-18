@@ -24,19 +24,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loaduser } from "../../actions/userAction";
 import { positions, useAlert } from "react-alert";
 import Marquee from "react-fast-marquee";
+import vvimg from "../../Images/vid-back.png";
 const Home = () => {
-  const [tips,setTips] = useState({
-    bronze:"$15",
-    silver:"$30",
-    gold:"$45",
-    platinum:"$60"
+  const [tips, setTips] = useState({
+    bronze: "$15",
+    silver: "$30",
+    gold: "$45",
+    platinum: "$60"
   })
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
 
   const { error, isAuthenticated } = useSelector((state) => state.user);
-
+  const [showVidDIV, setShowVidDIV] = React.useState(false)
+  const onVidLoaded = () => setShowVidDIV(true)
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -54,59 +56,63 @@ const Home = () => {
 
   return (
     <div>
-      <div className="video-container"> 
-    <div className="caption">
-    <div className="container her0">
-        <div style = {{height:"150vh"}} className="row banner-main">
-      <video autoPlay loop muted id="background-video">
-        <source src={vv} type="video/mp4" />
-      </video>
-          <div className="banner-sec banne-bg">
-            <span style={{ float: "right" }} className="home_btn"></span>
-            <div
-              className="col-lg-12 col-md-12 vp"
-              style={{ padding: "0", margin: "-11px", position:"absolute",top:"0"}}
-            >
-              <div className="baner-ct">
-                <ul className="navbar-nav top-btn ml-auto">
-                  <Link style={{ textAlign: "end" }} to="/login">
-                    <button
-                      className="homelogin btn btn-1"
-                    >
-                      Login
-                    </button>{" "}
-                  </Link>
-                </ul>
-                <img src={img1} alt="" />
-                <div className="bnner-btn">
-                  <Link to="/signup">
-                    <button className="signbtn">Signup</button>
-                  </Link>
+      <div className="video-container">
+        <div className="caption">
+          <div className="container her0">
+            <div style={{ height: "150vh" }} className="row banner-main">
+              <img style={showVidDIV ? { display: 'none' } : { }} src={vvimg} id="background-video"></img>
+              <video style={showVidDIV ? {} : { visibility: 'hidden' }} autoPlay loop muted id="background-video"
+                onLoadedData={() => {
+                  onVidLoaded();
+                }}>
+                <source src={vv} type="video/mp4" />
+              </video>
+              <div className="banner-sec banne-bg">
+                <span style={{ float: "right" }} className="home_btn"></span>
+                <div
+                  className="col-lg-12 col-md-12 vp"
+                  style={{ padding: "0", margin: "-11px", position: "absolute", top: "0" }}
+                >
+                  <div className="baner-ct">
+                    <ul className="navbar-nav top-btn ml-auto">
+                      <Link style={{ textAlign: "end" }} to="/login">
+                        <button
+                          className="homelogin btn btn-1"
+                        >
+                          Login
+                        </button>{" "}
+                      </Link>
+                    </ul>
+                    <img src={img1} alt="" />
+                    <div className="bnner-btn">
+                      <Link to="/signup">
+                        <button className="signbtn">Signup</button>
+                      </Link>
+                    </div>
+                    <h2>
+                      <span>Win Better</span> with <br></br> The GOAT's Tips
+                    </h2>
+                    <p style={{ margin: "0" }}>
+                      A sports tipping service that consistently delivers a positive
+                      return on investment for its clients. The GOAT's Tips utilises
+                      the latest technology and artificial intelligence to improve
+                      returns, frequency, and betting experience. We create smarter
+                      betters who treat gambling as an investment.
+                    </p>
+                  </div>
                 </div>
-                <h2>
-                  <span>Win Better</span> with <br></br> The GOAT's Tips
-                </h2>
-                <p style={{ margin: "0" }}>
-                  A sports tipping service that consistently delivers a positive
-                  return on investment for its clients. The GOAT's Tips utilises
-                  the latest technology and artificial intelligence to improve
-                  returns, frequency, and betting experience. We create smarter
-                  betters who treat gambling as an investment.
-                </p>
+                <div className="col-lg-4 col-md-12">
+                  <div className="baner-img"></div>
+                </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-md-12">
-              <div className="baner-img"></div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-      </div>
-     
-   
 
-{/*       
+
+
+      {/*       
       <div className="container" style={{ textAlign: "center" }}>
         <div className="resut-content">
           <h3>
@@ -173,9 +179,9 @@ const Home = () => {
         <div className="container result-mian">
           <div className="section-title">
             {/* <h3 style = {{borderBottom:"2px solid black"}}>Reliable Results</h3> */}
-            
+
           </div>
-{/* 
+          {/* 
           <div className="tab-section">
             <ul className="nav nav-tabs" id="myTab" role="tablist">
               <li className="nav-item" role="presentation">
@@ -256,40 +262,40 @@ const Home = () => {
               </div>
             </div>
           </div> */}
-          
+
 
           <div className="rate">
-          
+
             <div className="container-fluid">
               <div className="row tips-mian f-card">
-                <div style = {{position:"relative",right:"5%",top:"25%"}} className="col-lg-6 col-md-12">
+                <div style={{ position: "relative", right: "5%", top: "25%" }} className="col-lg-6 col-md-12">
                   <div className="resut-content">
                     <div className="card">
 
-                    <div className="resut-content">
-          <h3>
-            Quality Sporting Tips <span>From Expert Tipsters</span>{" "}
-          </h3>
-          <p>
-            Whether you're a professional investor or a casual pub punter, we've
-            got you covered. The GOAT's Tips provides consistent returns to
-            enhance your sporting experience.
-          </p>
-          <ul>
-            <li>
-              {" "}
-              <i className="fa fa-check"></i> Thoroughbred horse racing
-            </li>
-            <li>
-              {" "}
-              <i className="fa fa-check"></i> Greyhound racing
-            </li>
-            <li>
-              {" "}
-              <i className="fa fa-check"></i> Additional sports coming soon!
-            </li>
-          </ul>
-        </div>
+                      <div className="resut-content">
+                        <h3>
+                          Quality Sporting Tips <span>From Expert Tipsters</span>{" "}
+                        </h3>
+                        <p>
+                          Whether you're a professional investor or a casual pub punter, we've
+                          got you covered. The GOAT's Tips provides consistent returns to
+                          enhance your sporting experience.
+                        </p>
+                        <ul>
+                          <li>
+                            {" "}
+                            <i className="fa fa-check"></i> Thoroughbred horse racing
+                          </li>
+                          <li>
+                            {" "}
+                            <i className="fa fa-check"></i> Greyhound racing
+                          </li>
+                          <li>
+                            {" "}
+                            <i className="fa fa-check"></i> Additional sports coming soon!
+                          </li>
+                        </ul>
+                      </div>
 
                       {/* <div className="clearfix">
                         <button type="button" className="btn  float-start">
@@ -310,7 +316,7 @@ const Home = () => {
                         punter, we've got you covered. The GOAT's Tips provides
                         consistent returns to enhance your sporting experience.
                       </p> */}
-                      
+
                     </div>
 
 
@@ -381,63 +387,63 @@ const Home = () => {
                     </ul>
                   </div> */}
                 </div>
-               
+
               </div>
 
-              <div style = {{position:"relative",right:"5%"}} className="row tips-mian">
+              <div style={{ position: "relative", right: "5%" }} className="row tips-mian">
 
-              <div className="tips-sec">
-        <div className="container tips-main">
-          <div className="row " 
-          // style={{ justifyContent: "center" }}
-          >
-            <div className="col-md-2 card card1">
-              <div className="tips-ct">
-                <h2>
-                  {" "}
-                  &#62;
-                  <Count start={0} end={37} duration={4} delay={0} />%
-                </h2>
-                <p>Strike Rate</p>
-              </div>
-            </div>
-            <div className="col-md-2 card card1">
-              <div style = {{marginBottom:"4px"}} className="tips-ct ">
-                <h2>
-                  {" "}
-                  &#62;$
-                  <Count start={0} end={3} duration={10} delay={0} />{" "}
-                </h2>
-                <p>Average odds</p>
-              </div>
-            </div>
-            <div className="col-md-2 card card1">
-              <div style = {{marginTop:"11px"}} className="tips-ct">
-                <h2>
-                  {" "}
-                  <Count start={0} end={56} duration={10} delay={0} />%
-                </h2>
-                <p>Top 2 place rate</p>
-              </div>
-            </div>
-            <div className="col-md-2 card card1">
-              <div style={{marginTop:"11px"}} className="tips-ct">
-                <h2>
-                  {" "}
-                  <Count start={0} end={400} duration={6} delay={0} />+
-                </h2>
-                <p>Satisfied Clients</p>
+                <div className="tips-sec">
+                  <div className="container tips-main">
+                    <div className="row "
+                    // style={{ justifyContent: "center" }}
+                    >
+                      <div className="col-md-2 card card1">
+                        <div className="tips-ct">
+                          <h2>
+                            {" "}
+                            &#62;
+                            <Count start={0} end={37} duration={4} delay={0} />%
+                          </h2>
+                          <p>Strike Rate</p>
+                        </div>
+                      </div>
+                      <div className="col-md-2 card card1">
+                        <div style={{ marginBottom: "4px" }} className="tips-ct ">
+                          <h2>
+                            {" "}
+                            &#62;$
+                            <Count start={0} end={3} duration={10} delay={0} />{" "}
+                          </h2>
+                          <p>Average odds</p>
+                        </div>
+                      </div>
+                      <div className="col-md-2 card card1">
+                        <div style={{ marginTop: "11px" }} className="tips-ct">
+                          <h2>
+                            {" "}
+                            <Count start={0} end={56} duration={10} delay={0} />%
+                          </h2>
+                          <p>Top 2 place rate</p>
+                        </div>
+                      </div>
+                      <div className="col-md-2 card card1">
+                        <div style={{ marginTop: "11px" }} className="tips-ct">
+                          <h2>
+                            {" "}
+                            <Count start={0} end={400} duration={6} delay={0} />+
+                          </h2>
+                          <p>Satisfied Clients</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
+
       <section style={{ height: "100%" }}>
         <div
           className=" media-banner"
@@ -520,9 +526,9 @@ const Home = () => {
             </div>
             <div className="tipp">
               <div
-                onClick={()=>navigate(`/checkout/${tips.bronze}`)}
+                onClick={() => navigate(`/checkout/${tips.bronze}`)}
                 className="btn"
-                style={{ width: "50%"}}
+                style={{ width: "50%" }}
               >
                 <div className="row tipping1 " style={{ width: "100%" }}>
                   <div className="col-md-6">
@@ -555,9 +561,9 @@ const Home = () => {
                 </div>
               </div>
               <div
-               onClick={()=>navigate(`/checkout/${tips.silver}`)}
+                onClick={() => navigate(`/checkout/${tips.silver}`)}
                 className="btn"
-                style={{ width: "50%"}}
+                style={{ width: "50%" }}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
                   <div className="col-md-6">
@@ -590,9 +596,9 @@ const Home = () => {
                 </div>
               </div>
               <div
-                onClick={()=>navigate(`/checkout/${tips.gold}`)}
+                onClick={() => navigate(`/checkout/${tips.gold}`)}
                 className="btn"
-                style={{ width: "50%",marginTop:"8px"}}
+                style={{ width: "50%", marginTop: "8px" }}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
                   <div className="col-md-6">
@@ -600,7 +606,7 @@ const Home = () => {
                       <img src={img2} alt="" />
                     </div>
                   </div>
-                  <div  className="col-md-6">
+                  <div className="col-md-6">
                     <div className="tipping-ct">
                       <h3>Gold</h3>
                       <p>$45 / Week</p>
@@ -609,7 +615,7 @@ const Home = () => {
                       </div>
                       <ul className="tiip-list">
                         <li>
-                        
+
                           <i className="fa fa-check"></i>Our top daily tips,
                           plus
                         </li>
@@ -618,7 +624,7 @@ const Home = () => {
                           tips
                         </li>
                         <li>
-                          
+
                           <i className="fa fa-check"></i>Direct to your inbox
                         </li>
                       </ul>
@@ -627,9 +633,9 @@ const Home = () => {
                 </div>
               </div>
               <div
-                onClick={()=>navigate(`/checkout/${tips.platinum}`)}
+                onClick={() => navigate(`/checkout/${tips.platinum}`)}
                 className="btn"
-                style={{ width: "50%",marginTop:"8px"}}
+                style={{ width: "50%", marginTop: "8px" }}
               >
                 <div className="row tipping1" style={{ width: "100%" }}>
                   <div className="col-md-6">
@@ -637,7 +643,7 @@ const Home = () => {
                       <img src={img3} alt="" />
                     </div>
                   </div>
-                  <div  className="col-md-6">
+                  <div className="col-md-6">
                     <div className="tipping-ct">
                       <h3>Platinum</h3>
                       <p>$60 / Week</p>
@@ -674,68 +680,68 @@ const Home = () => {
       </div>
 
       <div className="Services-sec">
-        <div style = {{height:"100%",backgroundColor:"rgba(0, 0, 0, 0.688)"}}>
-        <div className="container">
-          <div className="section-title">
-            <h3>Services Provided</h3>
-          </div>
-          <div className="row service-main">
-            <div className="col-md-6">
-              <div className="service-img2">
-                <img src={horseRacing} alt="img" />
-              </div>
+        <div style={{ height: "100%", backgroundColor: "rgba(0, 0, 0, 0.688)" }}>
+          <div className="container">
+            <div className="section-title">
+              <h3>Services Provided</h3>
             </div>
-            <div className="col-md-6">
-              <div className="service-ct">
-                <div className="ser-img">
-                  <img style = {{color:"black"}} src={horseIcon} alt="img" />
-                  <h3 >Horse Racing Tips</h3>
+            <div className="row service-main">
+              <div className="col-md-6">
+                <div className="service-img2">
+                  <img src={horseRacing} alt="img" />
                 </div>
-                <p >
-                  Our eyes are always on the track to ensure we get the inside
-                  rail on the winning tips sent out.
-                </p>
               </div>
-              <div className="bnner-btn">
-                <Link to="/signup">
-                  {" "}
-                  <button className="signbtn" href="/signup">
-                    Sign Me Up
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="row service-main">
-            <div className="col-md-6">
-              <div className="service-img2">
-                <img src={greyRacing} alt="img" />
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="service-ct">
-                <div className="ser-img">
-                  <img style={{ height: "10%" }} src={houndIcon} alt="img" />
-                  <h3>Greyhound Racing Tips</h3>
+              <div className="col-md-6">
+                <div className="service-ct">
+                  <div className="ser-img">
+                    <img style={{ color: "black" }} src={horseIcon} alt="img" />
+                    <h3 >Horse Racing Tips</h3>
+                  </div>
+                  <p >
+                    Our eyes are always on the track to ensure we get the inside
+                    rail on the winning tips sent out.
+                  </p>
                 </div>
-                <p>
-                  Our eyes are always on the track to ensure we get the inside
-                  rail on the winning tips sent out.
-                </p>
+                <div className="bnner-btn">
+                  <Link to="/signup">
+                    {" "}
+                    <button className="signbtn" href="/signup">
+                      Sign Me Up
+                    </button>
+                  </Link>
+                </div>
               </div>
-              <div className="bnner-btn">
-                <Link to="/signup">
-                  <button className="signbtn">Sign Me Up</button>
-                </Link>
+            </div>
+
+            <div className="row service-main">
+              <div className="col-md-6">
+                <div className="service-img2">
+                  <img src={greyRacing} alt="img" />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="service-ct">
+                  <div className="ser-img">
+                    <img style={{ height: "10%" }} src={houndIcon} alt="img" />
+                    <h3>Greyhound Racing Tips</h3>
+                  </div>
+                  <p>
+                    Our eyes are always on the track to ensure we get the inside
+                    rail on the winning tips sent out.
+                  </p>
+                </div>
+                <div className="bnner-btn">
+                  <Link to="/signup">
+                    <button className="signbtn">Sign Me Up</button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        </div>
-        </div>
+      </div>
 
-      <div style = {{marginTop:"45px"}} className="follw-sec">
+      <div style={{ marginTop: "45px" }} className="follw-sec">
         <div className="container">
           <div className="foll-ct">
             <h3>Follow Us on our Socials</h3>
@@ -747,7 +753,7 @@ const Home = () => {
                 rel="noreferrer"
                 href="https://www.facebook.com/The-GOATs-Tips-102013742449574"
               >
-                <i style = {{color:"#3f3fc1"}} className="fa fa-facebook-f"> </i>
+                <i style={{ color: "#3f3fc1" }} className="fa fa-facebook-f"> </i>
               </a>
             </li>
             <li>
@@ -756,7 +762,7 @@ const Home = () => {
                 rel="noreferrer"
                 href="https://twitter.com/thegoatstips"
               >
-                <i style = {{color:"#3676e1"}} className="fa fa-twitter"></i>
+                <i style={{ color: "#3676e1" }} className="fa fa-twitter"></i>
               </a>
             </li>
             <li>
@@ -765,7 +771,7 @@ const Home = () => {
                 rel="noreferrer"
                 href="https://www.instagram.com/goats.tips/"
               >
-                <i style= {{color:"#C13584"}} className="fa fa-instagram"></i>
+                <i style={{ color: "#C13584" }} className="fa fa-instagram"></i>
               </a>
             </li>
           </ul>
@@ -785,7 +791,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div style={{margin:"auto",marginTop:"15px"}} className="col-md-4">
+            <div style={{ margin: "auto", marginTop: "15px" }} className="col-md-4">
               <div className="mesbtn">
                 <form>
                   <div className="mb-2">
@@ -797,7 +803,7 @@ const Home = () => {
                       aria-describedby="emailHelp"
                     />
                   </div>
-                  <button style={{marginTop:"3rem"}} type="submit" className="btn form-btn">
+                  <button style={{ marginTop: "3rem" }} type="submit" className="btn form-btn">
                     Submit
                   </button>
                 </form>
