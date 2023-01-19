@@ -35,6 +35,8 @@ import group4 from "../../Images/gOLD.WebP";
 import topimg from "../../Images/goat-slide.png";
 // import Chargebee from '@chargebee/chargebee-js-react-wrapper';
 
+import vvimg from "../../Images/vid-back.png";
+
 const Home = () => {
   const [newloading, setnewloading] = useState(false);
 
@@ -55,7 +57,8 @@ const Home = () => {
   };
 
   const { error, isAuthenticated } = useSelector((state) => state.user);
-
+  const [showVidDIV, setShowVidDIV] = React.useState(false);
+  const onVidLoaded = () => setShowVidDIV(true);
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -80,8 +83,8 @@ const Home = () => {
       ) {
         str.push(
           encodeURIComponent(p) +
-            "=" +
-            (data[p] ? encodeURIComponent(data[p]) : "")
+          "=" +
+          (data[p] ? encodeURIComponent(data[p]) : "")
         );
       }
     }
@@ -111,7 +114,7 @@ const Home = () => {
         // If you want to use paypal, go cardless and plaid, pass embed parameter as false
         const response = await axios
           .post(`/api/auth/chargebeepays/`, urlEncode(data));
-          
+
         return response.data;
       },
       success(hostedPageId) {
@@ -138,11 +141,15 @@ const Home = () => {
             <div className="caption">
               <div className="container her0">
                 <div style={{ height: "150vh" }} className="row banner-main">
-                                    
-                  <video autoPlay loop muted style={{display:"block"}}className="background-video-top"id="background-video">
+
+                  <img style={showVidDIV ? { display: 'none' } : {}} src={vvimg} id="background-video"></img>
+                  <video style={showVidDIV ? {} : { visibility: 'hidden' }} autoPlay loop muted id="background-video"
+                    onLoadedData={() => {
+                      onVidLoaded();
+                    }}>
                     <source src={vv} type="video/mp4" />
                   </video>
-                  <img src={tt} style={{display:"none"}} className="background-img-top" id="background-video"/>
+                  <img src={tt} style={{ display: "none" }} className="background-img-top" id="background-video" />
 
                   <div className="banner-sec banne-bg">
                     <span
