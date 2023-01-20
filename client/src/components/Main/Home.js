@@ -53,6 +53,7 @@ const Home = () => {
   const cbInit = {
     cbInstance: window.Chargebee.init({
       site: "thegoatstips",
+      publishableKey: "live_fUgOvzGowuWIbcOiyr3uEncdrUAPVaZYM"
     }),
   };
 
@@ -91,7 +92,7 @@ const Home = () => {
     return str.join("&");
   };
 
-  const chargebeepay = async (ec) => {
+  const chargebeepay = async (ec, event) => {
     console.log(ec);
     console.log("data");
     // setnewloading(true);
@@ -128,7 +129,10 @@ const Home = () => {
         console.log("checkout", step);
       },
     });
-    this.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
+
   };
 
   return (
@@ -169,8 +173,8 @@ const Home = () => {
                         <ul className="navbar-nav top-btn ml-auto">
                           <Link style={{ textAlign: "end" }}>
                             <button
-                              onClick={() => {
-                                chargebeepay("GOLD-AUD-Weekly");
+                              onClick={(event) => {
+                                chargebeepay("GOLD-AUD-Weekly", event);
                               }}
                               className="homelogin btn btn-1"
                             >
@@ -182,8 +186,8 @@ const Home = () => {
                         <div className="bnner-btn">
                           <Link>
                             <button
-                              onClick={() => {
-                                chargebeepay("GOLD-AUD-Weekly");
+                              onClick={(event) => {
+                                chargebeepay("GOLD-AUD-Weekly", event);
                               }}
                               className="signbtn"
                             >
@@ -501,8 +505,8 @@ const Home = () => {
 
                   {/* <a href onClick={onClick} data-cb-type="checkout" data-cb-item0="GOLD-AUD-Weekly" data-cb-item-0-quantity="1" >subscribe</a> */}
                   <div
-                    onClick={() => {
-                      chargebeepay("BRONZE-AUD-Weekly");
+                    onClick={(event) => {
+                      chargebeepay("BRONZE-AUD-Weekly", event);
                     }}
                     value="BRONZE-AUD-Weekly"
                     className="btn row"
@@ -539,8 +543,8 @@ const Home = () => {
                     </div> */}
                   </div>
                   <div
-                    onClick={() => {
-                      chargebeepay("SILVER-AUD-Weekly");
+                    onClick={(event) => {
+                      chargebeepay("SILVER-AUD-Weekly", event);
                     }}
                     className="btn row"
                     style={{ width: "50%" }}
@@ -579,8 +583,8 @@ const Home = () => {
                   </div>
 
                   <div
-                    onClick={() => {
-                      chargebeepay("GOLD-AUD-Weekly");
+                    onClick={(event) => {
+                      chargebeepay("GOLD-AUD-Weekly", event);
                     }}
                     className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
@@ -619,8 +623,8 @@ const Home = () => {
                     </div> */}
                   </div>
                   <div
-                    onClick={() => {
-                      chargebeepay("PLATINUM-AUD-Weekly");
+                    onClick={(event) => {
+                      chargebeepay("PLATINUM-AUD-Weekly", event);
                     }}
                     className="btn row"
                     style={{ width: "50%", marginTop: "8px" }}
@@ -662,8 +666,8 @@ const Home = () => {
                 <div className="bnner-btn">
                   <Link>
                     <button
-                      onClick={() => {
-                        chargebeepay("GOLD-AUD-Weekly");
+                      onClick={(event) => {
+                        chargebeepay("GOLD-AUD-Weekly", event);
                       }}
                       className="signbtn"
                     >
@@ -723,8 +727,8 @@ const Home = () => {
                     <div className="bnner-btn">
                       <Link>
                         <button
-                          onClick={() => {
-                            chargebeepay("GOLD-AUD-Weekly");
+                          onClick={(event) => {
+                            chargebeepay("GOLD-AUD-Weekly", event);
                           }}
                           className="signbtn"
                           href="/signup"
@@ -765,8 +769,8 @@ const Home = () => {
                     <div className="bnner-btn">
                       <Link>
                         <button
-                          onClick={() => {
-                            chargebeepay("GOLD-AUD-Weekly");
+                          onClick={(event) => {
+                            chargebeepay("GOLD-AUD-Weekly", event);
                           }}
                           className="signbtn"
                         >
@@ -1014,8 +1018,8 @@ const Home = () => {
                 <div className="bnner-btn">
                   <Link>
                     <button
-                      onClick={() => {
-                        chargebeepay("GOLD-AUD-Weekly");
+                      onClick={(event) => {
+                        chargebeepay("GOLD-AUD-Weekly", event);
                       }}
                       className="signbtn"
                     >
