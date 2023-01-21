@@ -202,7 +202,7 @@ const Home = () => {
                           A sports tipping service that consistently delivers a
                           positive return on investment for its clients. The
                           GOAT's Tips utilises the latest technology and
-                          artificial intelligence to improve returns, frequency,
+                          artificial intelligence to improve returns, frequency of tip success,
                           and betting experience. We create smarter betters who
                           treat gambling as an investment.
                         </p>

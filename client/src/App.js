@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <Metadata title="The Goat Tips" />
+      <Metadata title="The GOAT's Tips - Back a Winner!" />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />}/>

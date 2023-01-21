@@ -7,7 +7,7 @@ const HomeFooter = () => {
         <div className='footer-sec'>
             <div className='container'>
                 <div style={{textAlign:"center"}} className='footer-vct'>
-                    <Link to={"/terms-and-conditions"}><h4 style={{color:"#fff",fontSize:"0.9rem",marginBottom:"0.3rem"}}>© The GOATs Sports Tips Pty Ltd. All Rights Reserved 2022.</h4></Link>
+                    <Link to={"/terms-and-conditions"}><h4 style={{color:"#fff",fontSize:"0.9rem",marginBottom:"0.3rem"}}>© The GOATs Sports Tips Pty Ltd. All Rights Reserved 2023.</h4></Link>
                     
                 </div>
                
