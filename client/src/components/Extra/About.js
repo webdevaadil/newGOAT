@@ -13,16 +13,17 @@ export const Aboutus = () => {
       <div
         style={{
           margin: "0 auto",
-          width: "80%",
+          width: "100%",
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
-          padding: "100px",
+          paddingTop: "100px",
+          paddingBottom: "100px"
         }}
       >
         {" "}
-        <div className="box-about">
+        <div className="box-about wd85">
           <h2 className="pro_heading">Terms and Conditions</h2>
           {/* <ul >
             www.thegoatstips.com.au" www.thegoatstips.com.au, hereon referred

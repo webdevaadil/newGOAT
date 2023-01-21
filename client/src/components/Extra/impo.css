@@ -1,40 +1,53 @@
-.box-about{
+.box-about {
     width: 710px;
 }
+
 .pro_heading1ul li {
     list-style: lower-alpha;
 }
-.pro_heading{
+
+.pro_heading {
     text-align: center;
 }
-.term_general ul li{
-list-style: lower-alpha;
+
+.term_general ul li {
+    list-style: lower-alpha;
 
 
 }
-.term_general ul li ul li{
+
+.term_general ul li ul li {
     list-style: lower-roman;
 }
-.term_general span{
+
+.term_general span {
     font-weight: 600;
 }
-.thankyoucontent{
+
+.thankyoucontent {
     background: url("../../Images/winninghorse.WebP") no-repeat;
     /* background-size: cover; */
     background-size: 100% 100%;
     background-position: 45%;
     /* width: 50%; */
-    
+
     min-height: 100vh;
-    
+
 }
-.thankyoucontent1{
+
+.thankyoucontent1 {
     background-color: rgb(0 0 0 / 55%);
     min-height: 100vh;
-    
+
 }
+
 .content .wrapper-2 p {
-margin:18px auto ;
-font-size: 2rem;
+    margin: 18px auto;
+    font-size: 2rem;
 }
+
+.wd85 {
+    width: 85% !important;
+}
+
 /* // new branch // */
