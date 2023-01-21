@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <div className="container-fluid footer-sec">
+      {/* <div className="container-fluid footer-sec">
         <div className="container">
           <div className="footer-ct" style={{textAlign:"center"}}>
             <div className="foot_1" >
@@ -46,7 +46,18 @@ const Footer = () => {
             <p>© The Goat Tips</p>
           </div>
         </div>
-      </div>
+      </div> */}
+      <div>
+        <div className='footer-sec'>
+            <div className='container'>
+                <div style={{textAlign:"center"}} className='footer-vct'>
+                    <Link to={"/terms-and-conditions"}><h4 style={{color:"#fff",fontSize:"0.9rem",marginBottom:"0.3rem"}}>© The GOATs Sports Tips Pty Ltd. All Rights Reserved 2023.</h4></Link>
+                    
+                </div>
+               
+            </div>
+        </div>
+    </div>
     </>
   );
 };

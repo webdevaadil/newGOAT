@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Footer from "../Footer/Footer";
-import { Header } from "../Header/Header";
+import { HeaderTerms } from "../Header/HeaderTerms";
 import "./impo.css";
 export const Aboutus = () => {
   useEffect(() => {
@@ -8,7 +8,7 @@ export const Aboutus = () => {
   }, []);
   return (
     <>
-      <Header />
+      <HeaderTerms />
 
       <div
         style={{
@@ -396,7 +396,7 @@ export const Aboutus = () => {
             </ul>
            <span> 14)	Contact</span>
             <ul>
-              <li>	To contact The GOATs Tips, please email <a href="mailto:winner@thegoatstips.com.au ">winner@thegoatstips.com.au </a> </li>
+              <li>	To contact The GOATs Tips, please email <a href="mailto:winner@thegoatstips.com.au ">winner (at) thegoatstips.com.au </a> </li>
             </ul>
           </div>
 
