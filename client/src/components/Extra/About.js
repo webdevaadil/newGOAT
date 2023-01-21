@@ -18,8 +18,8 @@ export const Aboutus = () => {
           justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
-          paddingTop: "100px",
-          paddingBottom: "100px"
+          paddingTop: "30px",
+          paddingBottom: "30px"
         }}
       >
         {" "}
