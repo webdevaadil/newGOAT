@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Home.css";
 // import"../font/Sportypo-Reguler-Demo.ttf"
 import img1 from "../../Images/GOAT_logo.png";
@@ -59,7 +59,12 @@ const Home = () => {
 
   const { error, isAuthenticated } = useSelector((state) => state.user);
   const [showVidDIV, setShowVidDIV] = React.useState(false);
-  const onVidLoaded = () => setShowVidDIV(true);
+  const vidRef = useRef();
+  const onVidLoaded = () => {
+    setShowVidDIV(true);
+    vidRef.current.play();
+  };
+
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -147,7 +152,7 @@ const Home = () => {
                 <div style={{ height: "150vh" }} className="row banner-main">
 
                   <img style={showVidDIV ? { display: 'none' } : {}} src={vvimg} id="background-video"></img>
-                  <video style={showVidDIV ? {} : { visibility: 'hidden' }} playsInline autoPlay loop muted id="background-video"
+                  <video ref={vidRef} style={showVidDIV ? {} : { visibility: 'hidden' }} playsInline autoPlay loop muted id="background-video"
                     onLoadedData={() => {
                       onVidLoaded();
                     }}>
