@@ -59,12 +59,19 @@ const Home = () => {
 
   const { error, isAuthenticated } = useSelector((state) => state.user);
   const [showVidDIV, setShowVidDIV] = React.useState(false);
-  const vidRef = useRef();
+  const videoEl = useRef(null);
   const onVidLoaded = () => {
     setShowVidDIV(true);
-    vidRef.current.play();
+    //vidRef.current.play();
+    attemptPlay();
   };
-
+  const attemptPlay = () => {
+    videoEl &&
+      videoEl.current &&
+      videoEl.current.play().catch(error => {
+        console.error("Error attempting to play", error);
+      });
+  };
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -140,6 +147,9 @@ const Home = () => {
 
   };
 
+  useEffect(() => {
+    attemptPlay();
+  }, []);
   return (
     <>
       {newloading ? (
@@ -152,7 +162,7 @@ const Home = () => {
                 <div style={{ height: "150vh" }} className="row banner-main">
 
                   <img style={showVidDIV ? { display: 'none' } : {}} src={vvimg} id="background-video"></img>
-                  <video ref={vidRef} style={showVidDIV ? {} : { visibility: 'hidden' }} playsInline autoPlay loop muted id="background-video"
+                  <video ref={videoEl} style={showVidDIV ? {} : { visibility: 'hidden' }} playsInline autoPlay loop muted id="background-video"
                     onLoadedData={() => {
                       onVidLoaded();
                     }}>
