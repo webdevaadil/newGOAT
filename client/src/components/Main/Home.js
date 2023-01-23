@@ -147,7 +147,7 @@ const Home = () => {
                 <div style={{ height: "150vh" }} className="row banner-main">
 
                   <img style={showVidDIV ? { display: 'none' } : {}} src={vvimg} id="background-video"></img>
-                  <video style={showVidDIV ? {} : { visibility: 'hidden' }} playsinline autoPlay loop muted id="background-video"
+                  <video style={showVidDIV ? {} : { visibility: 'hidden' }} playsInline autoPlay loop muted id="background-video"
                     onLoadedData={() => {
                       onVidLoaded();
                     }}>
