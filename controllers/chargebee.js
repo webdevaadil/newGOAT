@@ -7,7 +7,7 @@ exports.chargebeepay=catchAsyncerror(async(req,res,)=>{
   console.log(req.params);
   let packages=req.params.packages;
 
-chargebee.hosted_page.checkout_new_for_items("live_fUgOvzGowuWIbcOiyr3uEncdrUAPVaZYM",{
+chargebee.hosted_page.checkout_new_for_items({
   subscription_items : [
     {
       item_price_id : req.body.plan_id,
