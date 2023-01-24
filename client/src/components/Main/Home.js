@@ -36,6 +36,9 @@ import topimg from "../../Images/goat-slide.png";
 // import Chargebee from '@chargebee/chargebee-js-react-wrapper';
 
 import vvimg from "../../Images/vid-back.png";
+import vvimg1 from "../../Images/vid-back.webp";
+
+import AutoPlaySilentVideo from "./AutoPlaySilentVideo";
 
 const Home = () => {
   const [newloading, setnewloading] = useState(false);
@@ -63,7 +66,7 @@ const Home = () => {
   const onVidLoaded = () => {
     setShowVidDIV(true);
     //vidRef.current.play();
-    attemptPlay();
+    //attemptPlay();
   };
   const attemptPlay = () => {
     videoEl &&
@@ -71,6 +74,10 @@ const Home = () => {
       videoEl.current.play().catch(error => {
         console.error("Error attempting to play", error);
       });
+  };
+  const dataVid = {
+    className: 'background-video',
+    video: vv
   };
   useEffect(() => {
     if (error) {
@@ -160,14 +167,22 @@ const Home = () => {
             <div className="caption">
               <div className="container her0">
                 <div style={{ height: "150vh" }} className="row banner-main">
-
-                  <img style={showVidDIV ? { display: 'none' } : {}} src={vvimg} id="background-video"></img>
-                  <video ref={videoEl} style={showVidDIV ? {} : { visibility: 'hidden' }} playsInline autoPlay loop muted id="background-video"
+                  <picture style={showVidDIV ? { display: 'none' } : {}} className="background-video">
+                    <source className="background-video" srcSet={vvimg1} type="image/webp" />
+                    <img className="background-video"
+                      decoding="async" loading="lazy"
+                      src={vvimg} />
+                  </picture>
+                  {/* <img style={showVidDIV ? { display: 'none' } : {}} src={vvimg} id="background-video"></img> */}
+                  {/* <video ref={videoEl} style={showVidDIV ? {} : { visibility: 'hidden' }} playsInline autoPlay loop muted id="background-video"
                     onLoadedData={() => {
                       onVidLoaded();
                     }}>
                     <source src={vv} type="video/mp4" />
-                  </video>
+                  </video> */}
+                  <div className="background-video" style={showVidDIV ? {} : { visibility: 'hidden' }}>
+                    <AutoPlaySilentVideo data={dataVid} changeFunc={onVidLoaded} />
+                  </div>
                   <img src={tt} style={{ display: "none" }} className="background-img-top" id="background-video" />
 
                   <div className="banner-sec banne-bg">
