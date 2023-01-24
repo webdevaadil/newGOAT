@@ -17,7 +17,8 @@ const {
   paym,
   addCard,
   updatesignup,
-  checkData
+  checkData,
+  test
 } = require("../controllers/auth");
 const { chargebeepay } = require("../controllers/chargebee");
 
@@ -33,6 +34,7 @@ router.route("/update/profile").put(isAuthuser, updateProfile);
 router.route("/chargebeepays/:packages").get(chargebeepay);
 router.route("/chargebeepays/").post(chargebeepay);
 router.route("/check").get(checkData);
+router.route("/test").get(test);
 
 // router.route("/addcard").post(addCard);
 // router.route("/listcard").post(listCard);

@@ -10,6 +10,11 @@ const { expressjwt } = require("express-jwt");
 const bcrypt = require("bcrypt");
 const { findByIdAndUpdate } = require("../models/User");
 const { CLIENT_ID, APP_SECRET } = process.env;
+var chargebee = require("chargebee");
+chargebee.configure({
+  site: "thegoatstips",
+  api_key: "live_fUgOvzGowuWIbcOiyr3uEncdrUAPVaZYM"
+})
 async function generateAccessToken() {
   const auth = Buffer.from(CLIENT_ID + ":" + APP_SECRET).toString("base64");
   const response = await fetch(`${base}/v1/oauth2/token`, {
@@ -58,7 +63,7 @@ async function isEmailValid(email) {
 //       } else if (user) {
 //         return res.status(500).json("user already registered");
 //       } else {
-        
+
 //         const user = await User.create({
 //           username,
 //           email,
@@ -67,7 +72,7 @@ async function isEmailValid(email) {
 //           packages,
 //           paymentstatus: req.body.paymentstatus || "false",
 //           phoneno,
-          
+
 //         });
 //         // const order = await createOrder();
 //         // console.log(order.id,'hfghdf')
@@ -103,7 +108,7 @@ exports.register = catchAsyncerror(async (req, res, next) => {
     User.findOne({ email }, async (err, user) => {
       const { valid, reason, validators } = await isEmailValid(email);
       // console.log(validators);
-console.log(user);
+      console.log(user);
       if (!valid) {
         return res
           .status(500)
@@ -157,7 +162,7 @@ exports.updatesignup = catchAsyncerror(async (req, res, next) => {
     User.findOne({ email }, async (err, user) => {
       const { valid, reason, validators } = await isEmailValid(email);
       // console.log(validators);
-     if (user) {
+      if (user) {
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(req.body.password, salt);
         console.log(password);
@@ -196,7 +201,7 @@ exports.updatesignup = catchAsyncerror(async (req, res, next) => {
   }
 });
 
-exports.checkData = catchAsyncerror(async (req,res,next) =>{
+exports.checkData = catchAsyncerror(async (req, res, next) => {
   return res.send("success");
 })
 
@@ -379,4 +384,26 @@ const sendToken = (user, statusCode, res) => {
     token,
   });
 };
+
+exports.test = catchAsyncerror((req, res, next) => {
+  chargebee.hosted_page.checkout_new_for_items({
+    subscription_items: [
+      {
+        item_price_id: 'GOLD-AUD-Weekly'
+      }]
+  }).request(function (error, result) {
+    if (error) {
+      //handle error
+      console.log(error);
+      res.send(error);
+    } else {
+      console.log(result);
+      var hosted_page = result.hosted_page;
+      res.send(result.hosted_page);
+      // return res
+      //     .status(200)
+      //     .json({ result });
+    }
+  });
+})
 
