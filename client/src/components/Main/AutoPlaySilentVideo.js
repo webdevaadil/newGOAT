@@ -17,7 +17,7 @@ export default function AutoPlaySilentVideo(props) {
     };
     useEffect(() => {
         videoEl.current.defaultMuted = true;
-        onVidLoaded();
+        //onVidLoaded();
     })
     return (
         <video

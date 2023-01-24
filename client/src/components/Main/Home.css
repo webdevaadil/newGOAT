@@ -1218,12 +1218,11 @@ ul.socil-link li {
     }
 
     /* .video-container video {
-        /* min-width: 100%;
-        min-height: 100%; */
-        /* position: absolute;
+        
+        position: absolute;
         top: 50%;
-        left: 50%; */
-        /* transform: translateX(-50%) translateY(-50%); */
+        left: 50%;
+        
     } */
 
     /* Just styling the content of the div, the *magic* in the previous rules */
