@@ -395,14 +395,14 @@ exports.test = catchAsyncerror((req, res, next) => {
     if (error) {
       //handle error
       console.log(error);
-      res.send(error);
+      return res.send(error);
     } else {
       console.log(result);
       var hosted_page = result.hosted_page;
-      res.send(result.hosted_page);
-      // return res
-      //     .status(200)
-      //     .json({ result });
+      //res.send(result.hosted_page);
+      return res
+        .status(200)
+        .json({ result });
     }
   });
 })
