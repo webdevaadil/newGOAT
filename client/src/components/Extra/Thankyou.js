@@ -25,24 +25,26 @@ export const Thankyou = () => {
         }}
       >
         <div className="thankyoucontent1">
-        <div className="content " style={{
-                
-                color:"white",
-                fontSize:"20px"
-              }}>
-          <div className="" style={{display:"flex",justifyContent:"center"}}>
-            <div className="wrapper-2" >
-            <img src={img1} alt="" />
-              <h1 style={{color:"white"}}>Thankyou For Signing up !</h1>
-              <p>Welcome to The GOAT's Tips – Winning!</p>
-              <p>You will soon receive an email confirming your purchase and further details about your subscription. If not received within 10 minutes, please check your junk mail folder (please add us to your safe senders list to ensure you’re able to receive your tipping emails).</p>
-              <p>
-              Furthermore, we’d love to hear from you if you have any additional questions or feedback, you contact us at winner@thegoatstips.com.au.              </p>
-              
-              
+          <div className="content " style={{
+
+            color: "white",
+            fontSize: "20px"
+          }}>
+            <div className="" style={{ display: "flex", justifyContent: "center" }}>
+              <div className="wrapper-2" >
+                <img src={img1} alt="" />
+                <h1 style={{ color: "white" }}>Thankyou For Signing up !</h1>
+                <p>Welcome to The GOAT's Tips.</p>
+                <p>We know why you're here and we're so excited to have you in our winning community.
+                  Look out for our emails in your inbox (please check your spam/junk) with everything you need to know from event times , odds and most importantly, STAKING.</p>
+                <p>It's easy to get over confident when you win but please remember to always follow the correct staking guide. This will help you win in the longterm.</p>
+                <p>
+                If you have any questions, feedback or you think your good enough to be apart of the elite GOAT tipsters, please email us at winner@thegoatstips.com.au.              </p>
+
+
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </>
