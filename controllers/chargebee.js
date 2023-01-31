@@ -17,7 +17,7 @@ exports.chargebeepay = catchAsyncerror(async (req, res,) => {
   chargebee.hosted_page.checkout_new_for_items({
     subscription_items: [
       {
-        item_price_id: "GOLD-AUD-Weekly",
+        item_price_id:  req.body.plan_id,
       },]
   }).request(function (error, result) {
     if (error) {
