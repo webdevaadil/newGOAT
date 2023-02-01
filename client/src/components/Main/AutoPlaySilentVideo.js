@@ -4,11 +4,11 @@ export default function AutoPlaySilentVideo(props) {
     const videoEl = useRef(undefined);
     const attemptPlay = () => {
         videoEl &&
-          videoEl.current &&
-          videoEl.current.play().catch(error => {
-            console.error("Error attempting to play", error);
-          });
-      };
+            videoEl.current &&
+            videoEl.current.play().catch(error => {
+                console.error("Error attempting to play", error);
+            });
+    };
     const onVidLoaded = () => {
         //setShowVidDIV(true);
         //vidRef.current.play();
@@ -17,8 +17,9 @@ export default function AutoPlaySilentVideo(props) {
     };
     useEffect(() => {
         videoEl.current.defaultMuted = true;
+        attemptPlay();
         //onVidLoaded();
-    })
+    }, [])
     return (
         <video
             className={props.data.className}
