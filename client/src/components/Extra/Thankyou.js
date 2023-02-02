@@ -17,7 +17,7 @@ export const Thankyou = () => {
   return (
     <>
       <div
-        className="thankyoucontent"
+        className="result"
         style={{
           display: "block",
           flexDirection: "row",
