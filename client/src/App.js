@@ -28,7 +28,14 @@ import { NewLogin } from "./components/Login/NewLogin";
 function App() {
   const dispatch = useDispatch();
   dispatch(loaduser());
-
+  // useEffect(() => {
+  //   let url = window.location.href;
+  //   console.log('hi');
+  //   if (url.indexOf('//www.thegoatstips') < 0 && url.indexOf('thegoatstips') >= 0) {
+  //     url = url.replace('//thegoatstips', '//www.thegoatstips')
+  //     window.location.href = url;
+  //   }
+  // }, []);
   return (
     <>
       <Metadata title="The GOAT's Tips - Back a Winner!" />
