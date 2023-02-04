@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  useEffect(() => {
+    let url = window.location.href;
+    if (url.indexOf('//www.thegoatstips') < 0 && url.indexOf('thegoatstips') >= 0) {
+      url = url.replace('//thegoatstips', '//www.thegoatstips')
+      window.location.href = url;
+    }
+  }, []);
   return (
     <>
       {/* <div className="container-fluid footer-sec">

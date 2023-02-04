@@ -63,12 +63,12 @@ const Home = () => {
   const { error, isAuthenticated } = useSelector((state) => state.user);
   const [showVidDIV, setShowVidDIV] = React.useState(false);
   const videoEl = useRef(null);
-  const onVidLoaded = () => {
+  const onVidLoaded = (videoEl) => {
     setShowVidDIV(true);
     //vidRef.current.play();
-    //attemptPlay();
+    attemptPlay(videoEl);
   };
-  const attemptPlay = () => {
+  const attemptPlay = (videoEl) => {
     videoEl &&
       videoEl.current &&
       videoEl.current.play().catch(error => {

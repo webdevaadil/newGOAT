@@ -1,7 +1,8 @@
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useState, useEffect } from "react"
 
 export default function AutoPlaySilentVideo(props) {
     const videoEl = useRef(undefined);
+    const [vloading, setvLoading] = useState(false);
     const attemptPlay = () => {
         videoEl &&
             videoEl.current &&
@@ -10,16 +11,19 @@ export default function AutoPlaySilentVideo(props) {
             });
     };
     const onVidLoaded = () => {
-        //setShowVidDIV(true);
-        //vidRef.current.play();
         attemptPlay();
-        props.changeFunc();
+        setvLoading(true);
+        props.changeFunc(videoEl);
     };
     useEffect(() => {
         videoEl.current.defaultMuted = true;
         attemptPlay();
         //onVidLoaded();
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        attemptPlay();
+    }, [vloading]);
     return (
         <video
             className={props.data.className}
