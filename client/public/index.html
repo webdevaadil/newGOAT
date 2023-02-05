@@ -43,8 +43,8 @@
     <script src="https://js.chargebee.com/v2/chargebee.js" data-cb-site="thegoatstips" ></script>
     <script>
       var url = window.location.href;
-      if (url.toLowerCase().indexOf('//www.thegoatstips') < 0 && url.toLowerCase().indexOf('thegoatstips') >= 0) {
-        url = url.toLowerCase().replace('//thegoatstips', '//www.thegoatstips')
+      if (url.toLowerCase().indexOf('thegoatstips') >= 0 && url.toLowerCase().indexOf('//www.thegoatstips') < 0) {
+        url = url.toLowerCase().replace('thegoatstips.com.au', 'www.thegoatstips.com.au')
         window.location.href = url;
       }
     </script>
