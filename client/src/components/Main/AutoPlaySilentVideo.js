@@ -40,6 +40,8 @@ export default function AutoPlaySilentVideo(props) {
             autoPlay
             muted
             playsInline
+            autoplay
+            playsinline
             onLoadedData={() => {
                 onVidLoaded();
             }}>
