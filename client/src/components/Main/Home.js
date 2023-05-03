@@ -362,7 +362,7 @@ const Home = () => {
                     <p>
                       Whether you're a professional investor or a casual pub
                       punter, we've got you covered. The GOAT's Tips provides
-                      consistent returns to enhance your sporting experience.
+                      consistent returns to enhance your sporting experience .  
                     </p>
                     <ul>
                       <li>

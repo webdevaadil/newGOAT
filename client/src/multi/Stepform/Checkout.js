@@ -33,7 +33,7 @@ export const Checkout = () => {
   const date = new Date();
   date.setDate(date.getDate() + 6);
 
-  const updatepro = () => {
+  const     updatepro = () => {
     dispatch(
       updateprofile({
         paymentstatus: "true",
